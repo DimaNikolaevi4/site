@@ -1,13 +1,92 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="ru" class="no-js">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>ГБПОУ РО &quot;СИТ&quot; | Контакты</title>
   <meta name="description" content="Официальный сайт Сальского индустриального техникума">
+  
+  <!-- Canonical URL -->
+  <link rel="canonical" href="/contacts/">
+  
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="/contacts/">
+  <meta property="og:title" content="ГБПОУ РО &quot;СИТ&quot; | Контакты">
+  <meta property="og:description" content="Официальный сайт Сальского индустриального техникума">
+  <meta property="og:image" content="/assets/images/og-image.jpg">
+  
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:url" content="/contacts/">
+  <meta name="twitter:title" content="ГБПОУ РО &quot;СИТ&quot; | Контакты">
+  <meta name="twitter:description" content="Официальный сайт Сальского индустриального техникума">
+  <meta name="twitter:image" content="/assets/images/og-image.jpg">
+  
   <link rel="stylesheet" href="/assets/css/style.css">
+  <script>
+    // Prevent FOUC by applying accessibility settings immediately
+    (function() {
+      var savedSettings = localStorage.getItem('a11y-settings');
+      if (savedSettings) {
+        try {
+          var settings = JSON.parse(savedSettings);
+          if (settings.enabled) {
+            document.documentElement.classList.add('a11y-enabled');
+            if (settings.largeFont) document.documentElement.classList.add('a11y-large-font');
+            if (settings.highContrast) document.documentElement.classList.add('a11y-high-contrast');
+            if (settings.noAnimations) document.documentElement.classList.add('a11y-no-animations');
+          }
+        } catch(e) {}
+      }
+    })();
+  </script>
 </head>
 <body>
+  <!-- Skip to main content link for accessibility -->
+  <a href="#main-content" class="skip-link">Перейти к основному содержанию</a>
+  
+  <!-- Accessibility toggle button -->
+  <button 
+    type="button" 
+    class="a11y-toggle" 
+    id="a11yToggle" 
+    aria-label="Версия для слабовидящих"
+    aria-expanded="false"
+    aria-controls="a11yPanel"
+  >
+    <span class="a11y-toggle-icon">👁</span>
+    <span class="a11y-toggle-text">Версия для слабовидящих</span>
+  </button>
+  
+  <!-- Accessibility settings panel -->
+  <div class="a11y-panel" id="a11yPanel" role="region" aria-labelledby="a11yToggle" hidden>
+    <div class="a11y-panel-content">
+      <h3 id="a11y-panel-title">Настройки доступности</h3>
+      <div class="a11y-options">
+        <label class="a11y-option">
+          <input type="checkbox" id="a11yLargeFont" aria-describedby="a11y-large-font-desc">
+          <span>Крупный шрифт</span>
+        </label>
+        <span id="a11y-large-font-desc" class="visually-hidden">Увеличивает размер шрифта на странице</span>
+        
+        <label class="a11y-option">
+          <input type="checkbox" id="a11yHighContrast" aria-describedby="a11y-high-contrast-desc">
+          <span>Высокая контрастность</span>
+        </label>
+        <span id="a11y-high-contrast-desc" class="visually-hidden">Включает режим высокой контрастности цветов</span>
+        
+        <label class="a11y-option">
+          <input type="checkbox" id="a11yNoAnimations" aria-describedby="a11y-no-animations-desc">
+          <span>Отключить анимации</span>
+        </label>
+        <span id="a11y-no-animations-desc" class="visually-hidden">Отключает все анимации и переходы</span>
+      </div>
+      <button type="button" class="a11y-reset" id="a11yReset">Сбросить настройки</button>
+      <button type="button" class="a11y-close" id="a11yClose">Закрыть</button>
+    </div>
+  </div>
+  
   <header class="site-header">
   <div class="container">
     <a href="/" class="logo">ГБПОУ РО &quot;СИТ&quot;</a>
@@ -29,7 +108,7 @@
   </div>
 </header>
 
-  <main class="site-main">
+  <main class="site-main" id="main-content" tabindex="-1">
     <h1>Контакты</h1>
 <h2>Адрес</h2>
 <p>347900, Ростовская область, г. Сальск, ул. Ленина, 1</p>
