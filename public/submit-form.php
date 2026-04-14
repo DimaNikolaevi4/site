@@ -6,7 +6,7 @@
  */
 
 // Настройки
-$adminEmail = 'admin@sait.ru'; // Замените на ваш email
+$adminEmail = 'info@sit-saljsk.rf'; // Реальный email для заявок
 $maxFileSize = 5 * 1024 * 1024; // 5 МБ
 $allowedExtensions = ['pdf', 'doc', 'docx', 'txt', 'jpg', 'jpeg', 'png'];
 $uploadDir = __DIR__ . '/uploads/forms/';
@@ -136,7 +136,7 @@ if ($fileName) {
 // Отправка письма
 $headers = "MIME-Version: 1.0\r\n";
 $headers .= "Content-type: text/html; charset=utf-8\r\n";
-$headers .= "From: no-reply@sait.ru\r\n";
+$headers .= "From: no-reply@sit-saljsk.rf\r\n";
 $headers .= "Reply-To: {$email}\r\n";
 $headers .= "X-Mailer: PHP/" . phpversion();
 
