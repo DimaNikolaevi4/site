@@ -10,13 +10,32 @@ eleventyNavigation:
 <!-- Hero Slider Section -->
 <section class="hero-slider">
   <div class="slider-container">
-    <div class="slide active" style="background-image: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+    <div class="slide active" style="background-image: linear-gradient(135deg, rgba(102, 126, 234, 0.9) 0%, rgba(118, 75, 162, 0.9) 100%), url('/src/images/sliders/slider1.jpg'); background-size: cover; background-position: center;">
       <div class="slide-content">
         <h1>ГБПОУ РО "Сальский индустриальный техникум"</h1>
         <p>Современное образование для успешной карьеры</p>
         <div class="slide-buttons">
           <a href="/svedenija/" class="btn btn-primary">Абитуриенту</a>
           <a href="/content/news/" class="btn btn-outline-light">Новости</a>
+        </div>
+      </div>
+    </div>
+    <div class="slide" style="background-image: linear-gradient(135deg, rgba(13, 74, 107, 0.9) 0%, rgba(26, 95, 138, 0.9) 100%), url('/src/images/sliders/slider2.jpg'); background-size: cover; background-position: center;">
+      <div class="slide-content">
+        <h1>Профессиональное образование</h1>
+        <p>Подготовка квалифицированных специалистов</p>
+        <div class="slide-buttons">
+          <a href="/svedenija/education/" class="btn btn-primary">Специальности</a>
+          <a href="/svedenija/" class="btn btn-outline-light">Приёмная кампания</a>
+        </div>
+      </div>
+    </div>
+    <div class="slide" style="background-image: linear-gradient(135deg, rgba(92, 107, 192, 0.9) 0%, rgba(63, 81, 181, 0.9) 100%), url('/src/images/sliders/slider3.jpg'); background-size: cover; background-position: center;">
+      <div class="slide-content">
+        <h1>Доступная среда</h1>
+        <p>Комфортные условия для всех студентов</p>
+        <div class="slide-buttons">
+          <a href="/svedenija/access/" class="btn btn-primary">Узнать больше</a>
         </div>
       </div>
     </div>
@@ -65,45 +84,45 @@ eleventyNavigation:
         <h2 class="section-title">Новости и события</h2>
         <div class="news-grid">
           <article class="news-card featured">
-            <div class="news-card-image" style="background-image: url('https://sit-salsk.ru/wp-content/uploads/2026/02/сити-формат-БПЛА.jpg');">
-              <span class="news-date">13 февраля 2026</span>
-            </div>
-            <div class="news-card-content">
-              <h3><a href="#">Победа ZA нами!</a></h3>
-              <p>Наши студенты заняли призовые места в региональном конкурсе профессионального мастерства...</p>
-              <a href="#" class="read-more">Читать далее →</a>
-            </div>
-          </article>
-          
-          <article class="news-card">
-            <div class="news-card-image" style="background-color: #667eea;">
-              <span class="news-date">12 февраля 2025</span>
-            </div>
-            <div class="news-card-content">
-              <h3><a href="#">День открытых дверей</a></h3>
-              <p>Приглашаем будущих студентов и их родителей познакомиться с нашим техникумом...</p>
-              <a href="#" class="read-more">Читать далее →</a>
-            </div>
-          </article>
-          
-          <article class="news-card">
-            <div class="news-card-image" style="background-color: #764ba2;">
-              <span class="news-date">30 января 2024</span>
-            </div>
-            <div class="news-card-content">
-              <h3><a href="#">Слово директора</a></h3>
-              <p>Обращение директора техникума к абитуриентам и родителям...</p>
-              <a href="#" class="read-more">Читать далее →</a>
-            </div>
-          </article>
-          
-          <article class="news-card">
-            <div class="news-card-image" style="background-color: #A2A2FC;">
+            <div class="news-card-image" style="background-image: url('/src/images/news/news1.jpg'); background-size: cover; background-position: center;">
               <span class="news-date">14 апреля 2026</span>
             </div>
             <div class="news-card-content">
-              <h3><a href="#">Расписание занятий 15 апреля</a></h3>
-              <p>Актуальное расписание учебных занятий на завтра...</p>
+              <h3><a href="#">Всероссийский урок «Мир России»</a></h3>
+              <p>Студенты техникума приняли участие во Всероссийском уроке, посвященном героям специальной военной операции...</p>
+              <a href="#" class="read-more">Читать далее →</a>
+            </div>
+          </article>
+          
+          <article class="news-card">
+            <div class="news-card-image" style="background-image: url('/src/images/news/news2.jpg'); background-size: cover; background-position: center;">
+              <span class="news-date">12 апреля 2026</span>
+            </div>
+            <div class="news-card-content">
+              <h3><a href="#">День космонавтики в техникуме</a></h3>
+              <p>Тематические мероприятия, посвященные Дню космонавтики, прошли во всех группах...</p>
+              <a href="#" class="read-more">Читать далее →</a>
+            </div>
+          </article>
+          
+          <article class="news-card">
+            <div class="news-card-image" style="background-image: url('/src/images/news/news3.jpg'); background-size: cover; background-position: center;">
+              <span class="news-date">8 апреля 2026</span>
+            </div>
+            <div class="news-card-content">
+              <h3><a href="#">Конкурс профессионального мастерства</a></h3>
+              <p>Наши студенты показали отличные результаты в региональном этапе конкурса WorldSkills...</p>
+              <a href="#" class="read-more">Читать далее →</a>
+            </div>
+          </article>
+          
+          <article class="news-card">
+            <div class="news-card-image" style="background-image: url('/src/images/news/news4.jpg'); background-size: cover; background-position: center;">
+              <span class="news-date">8 марта 2026</span>
+            </div>
+            <div class="news-card-content">
+              <h3><a href="#">Праздничный концерт к 8 Марта</a></h3>
+              <p>Творческие коллективы техникума поздравили женщин с международным женским днем...</p>
               <a href="#" class="read-more">Читать далее →</a>
             </div>
           </article>
@@ -123,10 +142,17 @@ eleventyNavigation:
           </form>
         </div>
         
-        <!-- Banner Widget -->
+        <!-- Banner Widget BPLA -->
         <div class="widget banner-widget">
           <a href="https://xn--61-6kc3bbqgrrd.xn--p1ai/bpla.html" target="_blank" rel="noopener">
-            <img src="https://sit-salsk.ru/wp-content/uploads/2026/02/сити-формат-БПЛА.jpg" alt="БПЛА">
+            <img src="/src/images/banners/bpla.jpg" alt="БПЛА">
+          </a>
+        </div>
+        
+        <!-- Banner Widget NOK -->
+        <div class="widget banner-widget">
+          <a href="https://bus.gov.ru/info-card/399429" target="_blank" rel="noopener">
+            <img src="/src/images/banners/nok-2025.jpg" alt="НОК">
           </a>
         </div>
         
@@ -134,15 +160,7 @@ eleventyNavigation:
         <div class="widget">
           <h4 class="widget-title">Наш учредитель</h4>
           <a href="https://minobr.donland.ru/" target="_blank" rel="noopener">
-            <img src="https://sit-salsk.ru/wp-content/uploads/2025/07/минобразования-2025.jpg" alt="Минобр">
-          </a>
-        </div>
-        
-        <!-- Contacts Widget -->
-        <div class="widget">
-          <h4 class="widget-title">Контакты и график работы</h4>
-          <a href="/contacts/">
-            <img src="https://sit-salsk.ru/wp-content/uploads/2025/11/Контакты-и-график-работы-2025.jpg" alt="Контакты">
+            <img src="/src/images/logos/nf-2025.png" alt="Минобр">
           </a>
         </div>
         
@@ -150,14 +168,7 @@ eleventyNavigation:
         <div class="widget">
           <h4 class="widget-title">«Мастер года 2026»</h4>
           <a href="#">
-            <img src="https://sit-salsk.ru/wp-content/uploads/2025/02/мастер-года-2025-300x169.jpg" alt="Мастер года">
-          </a>
-        </div>
-        
-        <!-- Additional Banners -->
-        <div class="widget banner-widget">
-          <a href="https://bus.gov.ru/info-card/399429" target="_blank" rel="noopener">
-            <img src="https://sit-salsk.ru/wp-content/uploads/2025/03/НОК-2025-1024x576.jpg" alt="НОК">
+            <img src="/src/images/banners/master-goda.jpg" alt="Мастер года">
           </a>
         </div>
         
