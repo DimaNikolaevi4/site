@@ -16,4 +16,4 @@ eleventyNavigation:
 ## Контакты
 📍 г. Сальск, Ростовская область  
 📞 +7 (86372) 2-00-00  
-✉️ info@sit-salsk.ru
+✉️ info@sit-saljsk.rf
