@@ -97,19 +97,149 @@
   
   <header class="site-header">
   <div class="container">
-    <a href="/" class="logo">ГБПОУ РО &quot;СИТ&quot;</a>
-    <nav class="main-nav">
+    <a href="/" class="logo">
+      <span class="logo-text">ГБПОУ РО &quot;СИТ&quot;</span>
+    </a>
+    
+    <!-- Mobile menu toggle -->
+    <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Меню" aria-expanded="false" aria-controls="mainNavigation">
+      <span class="hamburger"></span>
+    </button>
+    
+    <nav class="main-nav" id="mainNavigation">
       <ul>
+        
         
         <li><a href="/" class="active">Главная</a></li>
         
-        <li><a href="/about/" >О техникуме</a></li>
         
-        <li><a href="/svedenija/" >Сведения</a></li>
+        
+        <li class="has-submenu">
+          <a href="/about/" class="submenu-toggle" aria-expanded="false">О техникуме
+            <span class="submenu-arrow">▼</span>
+          </a>
+          <ul class="submenu">
+            
+            <li><a href="/about/#history">История</a></li>
+            
+            <li><a href="/about/#leadership">Руководство</a></li>
+            
+            <li><a href="/contacts/">Контакты</a></li>
+            
+          </ul>
+        </li>
+        
+        
+        
+        <li class="has-submenu">
+          <a href="/svedenija/" class="submenu-toggle" aria-expanded="false">Сведения об образовательной организации
+            <span class="submenu-arrow">▼</span>
+          </a>
+          <ul class="submenu">
+            
+            <li><a href="/svedenija/documents/">Документы</a></li>
+            
+            <li><a href="/svedenija/structure/">Структура и органы управления</a></li>
+            
+            <li><a href="/svedenija/education/">Образование</a></li>
+            
+            <li><a href="/svedenija/employees/">Руководство и ППС</a></li>
+            
+            <li><a href="/svedenija/objects/">Материально-техническое обеспечение</a></li>
+            
+            <li><a href="/svedenija/stipend/">Стипендии и поддержка</a></li>
+            
+            <li><a href="/svedenija/finance/">Финансово-хозяйственная деятельность</a></li>
+            
+            <li><a href="/svedenija/vacancies/">Вакантные места</a></li>
+            
+            <li><a href="/svedenija/access/">Доступная среда</a></li>
+            
+            <li><a href="/svedenija/international/">Международное сотрудничество</a></li>
+            
+          </ul>
+        </li>
+        
+        
+        
+        <li class="has-submenu">
+          <a href="/abiturientam/" class="submenu-toggle" aria-expanded="false">Абитуриентам
+            <span class="submenu-arrow">▼</span>
+          </a>
+          <ul class="submenu">
+            
+            <li><a href="/abiturientam/#rules">Правила приема</a></li>
+            
+            <li><a href="/abiturientam/#specialties">Специальности</a></li>
+            
+            <li><a href="/abiturientam/#commission">Приемная комиссия</a></li>
+            
+            <li><a href="/abiturientam/#open-days">Дни открытых дверей</a></li>
+            
+          </ul>
+        </li>
+        
+        
+        
+        <li class="has-submenu">
+          <a href="/studentu/" class="submenu-toggle" aria-expanded="false">Студенту
+            <span class="submenu-arrow">▼</span>
+          </a>
+          <ul class="submenu">
+            
+            <li><a href="/studentu/#schedule">Расписание занятий</a></li>
+            
+            <li><a href="/studentu/#materials">Учебные материалы</a></li>
+            
+            <li><a href="/studentu/#methodical">Методическая работа</a></li>
+            
+            <li><a href="/studentu/#practice">Производственная практика</a></li>
+            
+          </ul>
+        </li>
+        
+        
+        
+        <li class="has-submenu">
+          <a href="/career/" class="submenu-toggle" aria-expanded="false">Центр Карьеры
+            <span class="submenu-arrow">▼</span>
+          </a>
+          <ul class="submenu">
+            
+            <li><a href="/career/#about">О центре</a></li>
+            
+            <li><a href="/career/#vacancies">Вакансии для выпускников</a></li>
+            
+            <li><a href="/career/#partners">Партнеры</a></li>
+            
+          </ul>
+        </li>
+        
+        
+        
+        <li class="has-submenu">
+          <a href="/vospitanie/" class="submenu-toggle" aria-expanded="false">Воспитание
+            <span class="submenu-arrow">▼</span>
+          </a>
+          <ul class="submenu">
+            
+            <li><a href="/vospitanie/#directions">Направления воспитания</a></li>
+            
+            <li><a href="/vospitanie/#events">Мероприятия</a></li>
+            
+            <li><a href="/vospitanie/#clubs">Студенческие объединения</a></li>
+            
+          </ul>
+        </li>
+        
+        
         
         <li><a href="/news/" >Новости</a></li>
         
+        
+        
         <li><a href="/contacts/" >Контакты</a></li>
+        
         
       </ul>
     </nav>

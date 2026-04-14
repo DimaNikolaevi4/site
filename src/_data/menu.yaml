@@ -5,9 +5,81 @@ main:
   - title: О техникуме
     url: /about/
     key: about
-  - title: Сведения
+    children:
+      - title: История
+        url: /about/#history
+      - title: Руководство
+        url: /about/#leadership
+      - title: Контакты
+        url: /contacts/
+  - title: Сведения об образовательной организации
     url: /svedenija/
     key: svedenija
+    children:
+      - title: Документы
+        url: /svedenija/documents/
+      - title: Структура и органы управления
+        url: /svedenija/structure/
+      - title: Образование
+        url: /svedenija/education/
+      - title: Руководство и ППС
+        url: /svedenija/employees/
+      - title: Материально-техническое обеспечение
+        url: /svedenija/objects/
+      - title: Стипендии и поддержка
+        url: /svedenija/stipend/
+      - title: Финансово-хозяйственная деятельность
+        url: /svedenija/finance/
+      - title: Вакантные места
+        url: /svedenija/vacancies/
+      - title: Доступная среда
+        url: /svedenija/access/
+      - title: Международное сотрудничество
+        url: /svedenija/international/
+  - title: Абитуриентам
+    url: /abiturientam/
+    key: abiturientam
+    children:
+      - title: Правила приема
+        url: /abiturientam/#rules
+      - title: Специальности
+        url: /abiturientam/#specialties
+      - title: Приемная комиссия
+        url: /abiturientam/#commission
+      - title: Дни открытых дверей
+        url: /abiturientam/#open-days
+  - title: Студенту
+    url: /studentu/
+    key: studentu
+    children:
+      - title: Расписание занятий
+        url: /studentu/#schedule
+      - title: Учебные материалы
+        url: /studentu/#materials
+      - title: Методическая работа
+        url: /studentu/#methodical
+      - title: Производственная практика
+        url: /studentu/#practice
+  - title: Центр Карьеры
+    url: /career/
+    key: career
+    children:
+      - title: О центре
+        url: /career/#about
+      - title: Вакансии для выпускников
+        url: /career/#vacancies
+      - title: Партнеры
+        url: /career/#partners
+  - title: Воспитание
+    url: /vospitanie/
+    key: vospitanie
+    children:
+      - title: Направления воспитания
+        url: /vospitanie/#directions
+      - title: Мероприятия
+        url: /vospitanie/#events
+      - title: Студенческие объединения
+        url: /vospitanie/#clubs
   - title: Новости
     url: /news/
     key: news

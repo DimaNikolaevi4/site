@@ -1,10 +1,31 @@
 <header class="site-header">
   <div class="container">
-    <a href="/" class="logo">{{ site.title }}</a>
-    <nav class="main-nav">
+    <a href="/" class="logo">
+      <span class="logo-text">{{ site.title }}</span>
+    </a>
+    
+    <!-- Mobile menu toggle -->
+    <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Меню" aria-expanded="false" aria-controls="mainNavigation">
+      <span class="hamburger"></span>
+    </button>
+    
+    <nav class="main-nav" id="mainNavigation">
       <ul>
         {% for item in menu.main %}
+        {% if item.children %}
+        <li class="has-submenu">
+          <a href="{{ item.url }}" class="submenu-toggle" aria-expanded="false">{{ item.title }}
+            <span class="submenu-arrow">▼</span>
+          </a>
+          <ul class="submenu">
+            {% for child in item.children %}
+            <li><a href="{{ child.url }}">{{ child.title }}</a></li>
+            {% endfor %}
+          </ul>
+        </li>
+        {% else %}
         <li><a href="{{ item.url }}" {% if page.url == item.url %}class="active"{% endif %}>{{ item.title }}</a></li>
+        {% endif %}
         {% endfor %}
       </ul>
     </nav>

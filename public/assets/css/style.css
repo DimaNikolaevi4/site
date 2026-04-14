@@ -8,23 +8,25 @@
    CSS VARIABLES (Custom Properties)
    ============================================ */
 :root {
-  /* Color Palette */
+  /* Color Palette - Updated to match sit-salsk.ru style */
   --color-primary: #0d4a6b;
   --color-primary-dark: #0a3a55;
   --color-primary-light: #1a5f8a;
-  --color-accent: #ffd700;
-  --color-accent-hover: #e6c200;
-  --color-secondary: #ff6b35;
-  --color-secondary-hover: #e55a25;
+  --color-accent: #A2A2FC;
+  --color-accent-hover: #8b85ea;
+  --color-secondary: #5c6bc0;
+  --color-secondary-hover: #3f51b5;
+  --color-banner: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   
   /* Background Colors */
-  --bg-body: #f8f9fa;
+  --bg-body: #f5f7fa;
   --bg-white: #ffffff;
-  --bg-light: #f8f9fa;
-  --bg-header: #0d4a6b;
-  --bg-footer: #f5f5f5;
+  --bg-light: #f0f4f8;
+  --bg-header: linear-gradient(135deg, #0d4a6b 0%, #1a5f8a 100%);
+  --bg-footer: #1a2332;
   --bg-card: #ffffff;
   --bg-sidebar: #f8f9fa;
+  --bg-banner: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   
   /* Text Colors */
   --text-primary: #212529;
@@ -230,6 +232,12 @@ a:hover {
   gap: var(--spacing-sm);
   flex-wrap: wrap;
   justify-content: flex-end;
+  margin: 0;
+  padding: 0;
+}
+
+.main-nav > ul {
+  align-items: center;
 }
 
 .main-nav a {
@@ -259,21 +267,190 @@ a:hover {
   outline-offset: 2px;
 }
 
+/* Submenu styles */
+.main-nav .has-submenu {
+  position: relative;
+}
+
+.main-nav .submenu-toggle {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+}
+
+.submenu-arrow {
+  font-size: 0.7em;
+  transition: transform var(--transition-fast);
+  opacity: 0.8;
+}
+
+.main-nav .has-submenu:hover .submenu-arrow,
+.main-nav .has-submenu.open .submenu-arrow {
+  transform: rotate(180deg);
+}
+
+.main-nav .submenu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: var(--bg-white);
+  box-shadow: var(--shadow-lg);
+  border-radius: var(--radius-md);
+  padding: var(--spacing-sm) 0;
+  min-width: 260px;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-10px);
+  transition: all var(--transition-base);
+  z-index: var(--z-dropdown);
+  flex-direction: column;
+  gap: 0;
+}
+
+.main-nav .has-submenu:hover .submenu,
+.main-nav .has-submenu.open .submenu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.main-nav .submenu li {
+  margin: 0;
+}
+
+.main-nav .submenu a {
+  color: var(--text-primary);
+  padding: var(--spacing-sm) var(--spacing-md);
+  border-bottom: none;
+  font-size: var(--font-size-sm);
+  border-radius: 0;
+}
+
+.main-nav .submenu a:hover {
+  background-color: var(--bg-light);
+  color: var(--color-primary);
+  border-bottom-color: transparent;
+}
+
+/* Mobile menu toggle button */
+.mobile-menu-toggle {
+  display: none;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: var(--spacing-sm);
+  z-index: var(--z-modal);
+}
+
+.hamburger {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: var(--text-light);
+  position: relative;
+  transition: background var(--transition-fast);
+}
+
+.hamburger::before,
+.hamburger::after {
+  content: '';
+  position: absolute;
+  width: 24px;
+  height: 2px;
+  background: var(--text-light);
+  left: 0;
+  transition: transform var(--transition-fast);
+}
+
+.hamburger::before {
+  top: -7px;
+}
+
+.hamburger::after {
+  top: 7px;
+}
+
 /* Mobile Navigation */
-@media (max-width: 767px) {
+@media (max-width: 992px) {
+  .mobile-menu-toggle {
+    display: block;
+  }
+  
   .site-header .container {
-    flex-direction: column;
-    text-align: center;
-    gap: var(--spacing-md);
+    flex-wrap: nowrap;
+  }
+  
+  .main-nav {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 300px;
+    max-width: 85vw;
+    height: 100vh;
+    background: var(--bg-header);
+    padding: calc(var(--header-height) + var(--spacing-lg)) var(--spacing-lg) var(--spacing-lg);
+    transition: right var(--transition-base);
+    overflow-y: auto;
+    box-shadow: var(--shadow-xl);
+  }
+  
+  .main-nav.active {
+    right: 0;
   }
   
   .main-nav ul {
-    justify-content: center;
+    flex-direction: column;
+    gap: var(--spacing-xs);
     width: 100%;
+    justify-content: flex-start;
   }
   
   .main-nav a {
-    padding: var(--spacing-sm) var(--spacing-md);
+    padding: var(--spacing-md);
+    justify-content: space-between;
+  }
+  
+  .main-nav .submenu {
+    position: static;
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+    box-shadow: none;
+    background: rgba(255, 255, 255, 0.05);
+    margin-top: var(--spacing-xs);
+    border-radius: var(--radius-md);
+    display: none;
+  }
+  
+  .main-nav .has-submenu.open .submenu {
+    display: flex;
+  }
+  
+  .main-nav .submenu a {
+    color: var(--text-light);
+    padding-left: var(--spacing-xl);
+  }
+  
+  .main-nav .submenu a:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+  }
+  
+  .site-header .container {
+    flex-direction: row;
+    text-align: left;
+    gap: var(--spacing-md);
+  }
+  
+  .logo {
+    flex: 1;
+  }
+}
+
+@media (max-width: 767px) {
+  .main-nav {
+    width: 100%;
+    max-width: none;
   }
 }
 
