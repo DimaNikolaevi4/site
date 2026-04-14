@@ -1,27 +1,7 @@
 ```
 # Build artifacts
-dist/
-build/
-*.css.map
+public/
 
-# Dependencies
-node_modules/
-
-# Environment
-.env
-.env.local
-*.env.*
-
-# Editors
-.vscode/
-.idea/
-
-# Logs and temp files
-*.log
-*.tmp
-*.swp
-
-# OS generated files
-.DS_Store
-Thumbs.db
+# Cache directories
+.nunjucks-cache/
 ```
