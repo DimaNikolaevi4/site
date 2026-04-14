@@ -1,16 +1,15 @@
 {
-  "name": "workspace",
+  "name": "tehnikum-site",
   "version": "1.0.0",
-  "description": "Сайт техникума на Eleventy + Decap CMS",
-  "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "npx @11ty/eleventy --serve",
+    "build": "npx @11ty/eleventy"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
   "dependencies": {
     "@11ty/eleventy": "^2.0.1",
-    "@11ty/eleventy-navigation": "^1.0.5"
+    "@11ty/eleventy-navigation": "^0.3.5"
+  },
+  "devDependencies": {
+    "js-yaml": "^4.1.1"
   }
 }
