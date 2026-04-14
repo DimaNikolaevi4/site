@@ -1,0 +1,16 @@
+main:
+  - title: Главная
+    url: /
+    key: home
+  - title: О техникуме
+    url: /about/
+    key: about
+  - title: Сведения
+    url: /svedenija/
+    key: svedenija
+  - title: Новости
+    url: /news/
+    key: news
+  - title: Контакты
+    url: /contacts/
+    key: contacts

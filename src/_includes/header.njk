@@ -1,0 +1,12 @@
+<header class="site-header">
+  <div class="container">
+    <a href="/" class="logo">{{ site.title }}</a>
+    <nav class="main-nav">
+      <ul>
+        {% for item in menu.main %}
+        <li><a href="{{ item.url }}" {% if page.url == item.url %}class="active"{% endif %}>{{ item.title }}</a></li>
+        {% endfor %}
+      </ul>
+    </nav>
+  </div>
+</header>

@@ -4,10 +4,15 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>{{ site.title }}{% if title %} | {{ title }}{% endif %}</title>
+  <meta name="description" content="{{ site.description }}{% if description %} — {{ description }}{% endif %}">
   <link rel="stylesheet" href="/assets/css/style.css">
 </head>
 <body>
-  {{ content | safe }}
+  {% include "header.njk" %}
+  <main class="site-main">
+    {{ content | safe }}
+  </main>
+  {% include "footer.njk" %}
   <script src="/assets/js/main.js"></script>
 </body>
 </html>
