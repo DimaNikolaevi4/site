@@ -25,3 +25,16 @@ collections:
       - { label: "Заголовок", name: "title", widget: "string" }
       - { label: "Путь", name: "permalink", widget: "string" }
       - { label: "Содержимое", name: "body", widget: "markdown" }
+
+  - name: "documents"
+    label: "Документы"
+    folder: "src/content/documents"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    media_folder: "src/uploads"
+    public_folder: "/uploads"
+    fields:
+      - { label: "Название документа", name: "title", widget: "string" }
+      - { label: "Дата публикации", name: "date", widget: "datetime" }
+      - { label: "Файл", name: "file", widget: "file" }
+      - { label: "Описание", name: "description", widget: "text", required: false }
