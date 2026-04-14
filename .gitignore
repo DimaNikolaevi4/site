@@ -1,1 +1,27 @@
-(public/.htaccess appears to be a configuration file for web server, not a build artifact or temporary file, so it should not be ignored)
+```
+# Build artifacts
+dist/
+build/
+*.css.map
+
+# Dependencies
+node_modules/
+
+# Environment
+.env
+.env.local
+*.env.*
+
+# Editors
+.vscode/
+.idea/
+
+# Logs and temp files
+*.log
+*.tmp
+*.swp
+
+# OS generated files
+.DS_Store
+Thumbs.db
+```
