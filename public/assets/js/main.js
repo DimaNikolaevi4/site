@@ -1,6 +1,87 @@
 console.log("Site loaded");
 
 /**
+ * Mobile menu and submenu toggle functionality
+ */
+(function() {
+  'use strict';
+
+  const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+  const mainNavigation = document.getElementById('mainNavigation');
+  const submenuToggles = document.querySelectorAll('.submenu-toggle');
+
+  // Mobile menu toggle
+  if (mobileMenuToggle && mainNavigation) {
+    mobileMenuToggle.addEventListener('click', function() {
+      const isExpanded = mobileMenuToggle.getAttribute('aria-expanded') === 'true';
+      mobileMenuToggle.setAttribute('aria-expanded', String(!isExpanded));
+      mainNavigation.classList.toggle('active');
+      
+      // Toggle hamburger animation
+      mobileMenuToggle.classList.toggle('active');
+    });
+
+    // Close menu when clicking outside
+    document.addEventListener('click', function(e) {
+      if (!mainNavigation.contains(e.target) && !mobileMenuToggle.contains(e.target)) {
+        mainNavigation.classList.remove('active');
+        mobileMenuToggle.setAttribute('aria-expanded', 'false');
+        mobileMenuToggle.classList.remove('active');
+      }
+    });
+  }
+
+  // Submenu toggle for desktop hover and mobile click
+  submenuToggles.forEach(function(toggle) {
+    const parentLi = toggle.closest('.has-submenu');
+    
+    // Desktop: hover functionality already handled by CSS
+    // Mobile: click to toggle
+    toggle.addEventListener('click', function(e) {
+      // Only prevent default on mobile
+      if (window.innerWidth <= 992) {
+        e.preventDefault();
+        const isOpen = parentLi.classList.contains('open');
+        
+        // Close other open submenus
+        document.querySelectorAll('.has-submenu.open').forEach(function(openItem) {
+          if (openItem !== parentLi) {
+            openItem.classList.remove('open');
+            openItem.querySelector('.submenu-toggle').setAttribute('aria-expanded', 'false');
+          }
+        });
+        
+        // Toggle current submenu
+        parentLi.classList.toggle('open');
+        toggle.setAttribute('aria-expanded', String(!isOpen));
+      }
+    });
+  });
+
+  // Handle window resize
+  let resizeTimer;
+  window.addEventListener('resize', function() {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(function() {
+      // Reset mobile menu state on resize to desktop
+      if (window.innerWidth > 992) {
+        if (mainNavigation) {
+          mainNavigation.classList.remove('active');
+        }
+        if (mobileMenuToggle) {
+          mobileMenuToggle.setAttribute('aria-expanded', 'false');
+          mobileMenuToggle.classList.remove('active');
+        }
+        document.querySelectorAll('.has-submenu.open').forEach(function(openItem) {
+          openItem.classList.remove('open');
+          openItem.querySelector('.submenu-toggle').setAttribute('aria-expanded', 'false');
+        });
+      }
+    }, 250);
+  });
+})();
+
+/**
  * Accessibility settings manager (WCAG 2.1 AA)
  */
 (function() {
