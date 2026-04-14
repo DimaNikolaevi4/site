@@ -1,0 +1,21 @@
+# Меню раздела "Сведения"
+- slug: documents
+  title: Документы
+- slug: structure
+  title: Структура и органы управления
+- slug: education
+  title: Образование
+- slug: employees
+  title: Руководство и педагогический состав
+- slug: objects
+  title: Материально-техническое обеспечение
+- slug: stipend
+  title: Стипендии и меры поддержки
+- slug: finance
+  title: Финансово-хозяйственная деятельность
+- slug: vacancies
+  title: Вакантные места для приёма/перевода
+- slug: access
+  title: Доступная среда
+- slug: international
+  title: Международное сотрудничество

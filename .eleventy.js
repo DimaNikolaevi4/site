@@ -1,5 +1,4 @@
 const yaml = require("js-yaml");
-const fs = require("fs");
 
 module.exports = function(config) {
   config.addPassthroughCopy("src/assets");
@@ -13,7 +12,12 @@ module.exports = function(config) {
   config.addFilter("date", (dateObj) => {
     if (!dateObj) return "";
     const d = new Date(dateObj);
-    return d.getFullYear().toString();
+    return d.toLocaleDateString("ru-RU", { day: '2-digit', month: '2-digit', year: 'numeric' });
+  });
+  
+  // Collection: news
+  config.addCollection("news", function(collectionApi) {
+    return collectionApi.getFilteredByGlob("src/content/news/*.md");
   });
   
   return {
