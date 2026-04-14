@@ -7,28 +7,30 @@ dist/
 build/
 target/
 
+# Cache directories
+.cache/
+.temp/
+.tmp/
+
 # Logs
 *.log
 
-# Environment variables
+# Environment files
 .env
 .env.local
 *.env.*
 
-# IDE and editor files
+# Editor/IDE files
 .vscode/
 .idea/
 *.swp
 *.swo
 
-# OS generated files
+# OS files
 .DS_Store
 Thumbs.db
 
-# Package lock files
-package-lock.json
-
-# Python cache (if any Python files were detected in the project)
+# Python specific
 __pycache__/
 *.pyc
 *.pyo
@@ -39,32 +41,13 @@ coverage/
 htmlcov/
 .coverage
 
+# MyPy cache
+.mypy_cache/
+
+# Pytest cache
+.pytest_cache/
+
 # Temporary files
 *.tmp
 *.temp
-
-# Compressed files
-*.zip
-*.gz
-*.tar
-*.tgz
-*.bz2
-*.xz
-*.7z
-*.rar
-*.zst
-*.lz4
-*.lzh
-*.cab
-*.arj
-*.rpm
-*.deb
-*.Z
-*.lz
-*.lzo
-*.tar.gz
-*.tar.bz2
-*.tar.xz
-*.tar.zst
-
 ```

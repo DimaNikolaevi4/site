@@ -1,2 +1,3 @@
 # Сайт ГБПОУ РО "СИТ"
-Сайт техникума на Eleventy + Decap CMS
+Статический сайт на Eleventy + Decap CMS
+
