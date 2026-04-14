@@ -4,6 +4,7 @@ const lunr = require("lunr");
 module.exports = function(config) {
   config.addPassthroughCopy("src/assets");
   config.addPassthroughCopy("src/admin");
+  config.addPassthroughCopy({ "robots.njk": "robots.txt" });
   config.addPlugin(require("@11ty/eleventy-navigation"));
 
   // Load site.yaml and make it available globally

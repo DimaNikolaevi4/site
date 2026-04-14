@@ -1,28 +1,22 @@
 ```
-# Build outputs
-public/
+# Build artifacts
+dist/
+build/
+*.njk
 
-# Cache directories
-.node_cache/
-.jekyll-cache/
-.11ty-cache/
+# Dependencies
+node_modules/
 
-# Logs
+# Logs and temp files
 *.log
+*.tmp
 
-# Environment variables
+# Environment
 .env
 .env.local
-.env.*
+*.env.*
 
-# OS generated files
-.DS_Store
-Thumbs.db
-
-# Editor files
+# Editors
 .vscode/
 .idea/
-*.swp
-*.swo
-*.tmp
 ```
