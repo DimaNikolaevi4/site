@@ -1,0 +1,40 @@
+backend:
+  name: git-gateway
+  branch: main
+
+media_folder: "src/assets/images"
+public_folder: "/assets/images"
+
+collections:
+  - name: "news"
+    label: "Новости"
+    folder: "src/content/news"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields:
+      - { label: "Заголовок", name: "title", widget: "string" }
+      - { label: "Дата публикации", name: "date", widget: "datetime" }
+      - { label: "Краткое описание", name: "description", widget: "text" }
+      - { label: "Текст новости", name: "body", widget: "markdown" }
+
+  - name: "pages"
+    label: "Страницы"
+    folder: "src/content/pages"
+    create: true
+    fields:
+      - { label: "Заголовок", name: "title", widget: "string" }
+      - { label: "Путь", name: "permalink", widget: "string" }
+      - { label: "Содержимое", name: "body", widget: "markdown" }
+
+  - name: "documents"
+    label: "Документы"
+    folder: "src/content/documents"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    media_folder: "src/uploads"
+    public_folder: "/uploads"
+    fields:
+      - { label: "Название документа", name: "title", widget: "string" }
+      - { label: "Дата публикации", name: "date", widget: "datetime" }
+      - { label: "Файл", name: "file", widget: "file" }
+      - { label: "Описание", name: "description", widget: "text", required: false }
