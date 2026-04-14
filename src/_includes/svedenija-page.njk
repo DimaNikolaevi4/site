@@ -1,38 +1,24 @@
-<!DOCTYPE html>
-<html lang="ru">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>{{ title }} | {{ site.name }}</title>
-  <link rel="stylesheet" href="/assets/css/style.css">
-</head>
-<body>
-  {% include "header.njk" %}
+---
+layout: base.njk
+---
+<div class="svedenija-container">
+  <aside class="svedenija-sidebar" aria-label="Разделы сведений">
+    <nav>
+      <ul>
+        {% for item in svedenijaMenu %}
+        <li>
+          <a href="{{ item.url }}" 
+             {% if page.url == item.url %}class="active" aria-current="page"{% endif %}>
+            {{ item.title }}
+          </a>
+        </li>
+        {% endfor %}
+      </ul>
+    </nav>
+  </aside>
   
-  <main class="svedenija-page">
-    <div class="container">
-      <aside class="svedenija-sidebar">
-        <nav class="svedenija-nav">
-          <h2>Сведения</h2>
-          <ul>
-            {% for item in svedenijaMenu %}
-            <li>
-              <a href="/svedenija/{{ item.slug }}/" {% if section == item.slug %}class="active"{% endif %}>
-                {{ item.title }}
-              </a>
-            </li>
-            {% endfor %}
-          </ul>
-        </nav>
-      </aside>
-      
-      <article class="svedenija-content">
-        {{ content | safe }}
-      </article>
-    </div>
+  <main class="svedenija-content" role="main">
+    <h1>{{ title }}</h1>
+    {{ content | safe }}
   </main>
-  
-  {% include "footer.njk" %}
-  <script src="/assets/js/main.js"></script>
-</body>
-</html>
+</div>

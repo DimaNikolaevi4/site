@@ -1,21 +1,30 @@
-# Меню раздела "Сведения"
-- slug: documents
-  title: Документы
-- slug: structure
-  title: Структура и органы управления
-- slug: education
-  title: Образование
-- slug: employees
-  title: Руководство и педагогический состав
-- slug: objects
-  title: Материально-техническое обеспечение
-- slug: stipend
-  title: Стипендии и меры поддержки
-- slug: finance
-  title: Финансово-хозяйственная деятельность
-- slug: vacancies
-  title: Вакантные места для приёма/перевода
-- slug: access
-  title: Доступная среда
-- slug: international
-  title: Международное сотрудничество
+- title: Документы
+  url: /svedenija/documents/
+  key: documents
+- title: Структура управления
+  url: /svedenija/structure/
+  key: structure
+- title: Образование
+  url: /svedenija/education/
+  key: education
+- title: Руководство и ППС
+  url: /svedenija/employees/
+  key: employees
+- title: Материально-техническое обеспечение
+  url: /svedenija/objects/
+  key: objects
+- title: Стипендии и поддержка
+  url: /svedenija/stipend/
+  key: stipend
+- title: Финансово-хозяйственная деятельность
+  url: /svedenija/finance/
+  key: finance
+- title: Вакантные места
+  url: /svedenija/vacancies/
+  key: vacancies
+- title: Доступная среда
+  url: /svedenija/access/
+  key: access
+- title: Международное сотрудничество
+  url: /svedenija/international/
+  key: international
