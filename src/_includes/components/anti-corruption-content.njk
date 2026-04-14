@@ -1,0 +1,102 @@
+<section class="anti-corruption-page">
+  {% for section in antiCorruption %}
+  <article class="doc-section" id="{{ section.id }}">
+    <header class="doc-section-header">
+      <h2>{{ section.title }}</h2>
+      {% if section.description %}
+      <p class="section-desc">{{ section.description }}</p>
+      {% endif %}
+    </header>
+    
+    {% if section.content %}
+    <div class="section-content">{{ section.content | safe }}</div>
+    {% endif %}
+    
+    {% if section.contacts %}
+    <div class="contact-cards">
+      {% for contact in section.contacts %}
+      <div class="contact-card">
+        <span class="contact-label">{{ contact.label }}:</span>
+        <span class="contact-value">{{ contact.value }}</span>
+      </div>
+      {% endfor %}
+    </div>
+    {% endif %}
+    
+    {% if section.documents %}
+    <ul class="doc-list" role="list">
+      {% for doc in section.documents %}
+      <li class="doc-item">
+        <div class="doc-info">
+          <strong class="doc-title">{{ doc.title }}</strong>
+          <div class="doc-meta">
+            {% if doc.date %}
+            <time class="doc-date" datetime="{{ doc.date }}">{{ doc.date }}</time>
+            {% endif %}
+            {% if doc.type %}
+            <span class="doc-type {{ doc.type }}" title="Формат файла: {{ doc.type | upper }}">{{ doc.type | upper }}</span>
+            {% endif %}
+            {% if doc.size %}
+            <span class="doc-size" title="Размер файла">{{ doc.size }}</span>
+            {% endif %}
+            {% if doc.signed %}
+            <span class="doc-signed" title="Документ подписан электронной подписью">✓ ЭП</span>
+            {% endif %}
+          </div>
+        </div>
+        <a href="{{ doc.url }}" class="doc-download" download aria-label="Скачать документ: {{ doc.title }}">
+          <svg class="icon-download" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+            <polyline points="7,10 12,15 17,10"/>
+            <line x1="12" y1="15" x2="12" y2="3"/>
+          </svg>
+          <span>Скачать</span>
+        </a>
+      </li>
+      {% endfor %}
+    </ul>
+    {% endif %}
+    
+    {% if section.form %}
+    <form class="report-form" action="/submit-form.php" method="POST" enctype="multipart/form-data" data-honeypot="website" novalidate>
+      <input type="text" name="website" class="honeypot" tabindex="-1" autocomplete="off" aria-hidden="true">
+      
+      <div class="form-group">
+        <label for="report-name">Ваше имя (необязательно)</label>
+        <input type="text" id="report-name" name="name" maxlength="100" placeholder="Иван Иванов">
+      </div>
+      
+      <div class="form-group">
+        <label for="report-email">Email для связи (необязательно)</label>
+        <input type="email" id="report-email" name="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" placeholder="example@mail.ru">
+      </div>
+      
+      <div class="form-group">
+        <label for="report-message">Сообщение <span class="required">*</span></label>
+        <textarea id="report-message" name="message" required minlength="20" maxlength="2000" placeholder="Опишите ситуацию подробно..."></textarea>
+        <small class="form-hint">Минимум 20 символов</small>
+      </div>
+      
+      <div class="form-group">
+        <label for="report-attachment">Прикрепить файл (макс. 10 МБ)</label>
+        <input type="file" id="report-attachment" name="attachment" accept=".pdf,.doc,.docx,.jpg,.png,.jpeg" max-size="10485760">
+        <small class="form-hint">PDF, DOC, DOCX, JPG, PNG</small>
+      </div>
+      
+      <div class="form-consent">
+        <input type="checkbox" id="consent" name="consent" required>
+        <label for="consent">Я согласен на обработку <a href="/svedenija/documents/privacy-policy/" target="_blank">персональных данных</a> <span class="required">*</span></label>
+      </div>
+      
+      <button type="submit" class="btn-submit">
+        <span>Отправить сообщение</span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <line x1="22" y1="2" x2="11" y2="13"/>
+          <polygon points="22,2 15,22 11,13 2,9 22,2"/>
+        </svg>
+      </button>
+    </form>
+    {% endif %}
+  </article>
+  {% endfor %}
+</section>

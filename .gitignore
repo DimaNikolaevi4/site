@@ -1,7 +1,28 @@
 ```
-# Build artifacts
+# Build outputs
 public/
 
 # Cache directories
-.nunjucks-cache/
+.node_cache/
+.jekyll-cache/
+.11ty-cache/
+
+# Logs
+*.log
+
+# Environment variables
+.env
+.env.local
+.env.*
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*.tmp
 ```

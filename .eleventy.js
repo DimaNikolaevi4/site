@@ -21,6 +21,11 @@ module.exports = function(config) {
     return collectionApi.getFilteredByGlob("src/content/news/*.md");
   });
 
+  // Collection: anti-corruption data
+  config.addCollection("anti-corruption-data", function(collectionApi) {
+    return collectionApi.getFilteredByGlob("src/content/pages/svedenija/documents/anti-corruption/_data/*.yaml");
+  });
+
   // Search index using lunr
   config.addCollection("searchable", (collection) => {
     return collection.getAll();
