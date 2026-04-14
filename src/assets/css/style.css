@@ -799,3 +799,89 @@ body { font-family: system-ui, sans-serif; line-height: 1.6; color: #333; backgr
     display: none;
   }
 }
+
+/* ========== Баннер разработки ========== */
+.dev-banner {
+  background: #fff3cd;
+  border-bottom: 2px solid #ffc107;
+  padding: 0.75rem 0;
+  font-size: 0.9rem;
+}
+
+.dev-banner-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.dev-banner-text {
+  color: #856404;
+  font-weight: 500;
+}
+
+.dev-banner-link {
+  color: #0056b3;
+  text-decoration: underline;
+  font-weight: 600;
+  white-space: nowrap;
+  transition: color 0.2s ease;
+}
+
+.dev-banner-link:hover,
+.dev-banner-link:focus {
+  color: #003d80;
+  outline: 2px solid #0056b3;
+  outline-offset: 2px;
+}
+
+/* Адаптив для баннера */
+@media (max-width: 768px) {
+  .dev-banner-content {
+    flex-direction: column;
+    text-align: center;
+    gap: 0.5rem;
+  }
+  
+  .dev-banner {
+    padding: 1rem 0;
+  }
+  
+  .dev-banner-text {
+    font-size: 0.85rem;
+  }
+  
+  .dev-banner-link {
+    font-size: 0.9rem;
+  }
+}
+
+/* Режим высокой контрастности */
+.a11y-enabled.a11y-high-contrast .dev-banner {
+  background: #000 !important;
+  border-bottom-color: #ffff00 !important;
+}
+
+.a11y-enabled.a11y-high-contrast .dev-banner-text {
+  color: #ffff00 !important;
+}
+
+.a11y-enabled.a11y-high-contrast .dev-banner-link {
+  color: #ffff00 !important;
+}
+
+.a11y-enabled.a11y-high-contrast .dev-banner-link:hover,
+.a11y-enabled.a11y-high-contrast .dev-banner-link:focus {
+  color: #fff !important;
+}
+
+/* Крупный шрифт */
+.a11y-enabled.a11y-large-font .dev-banner {
+  font-size: 1.1rem;
+}
+
+.a11y-enabled.a11y-large-font .dev-banner-text,
+.a11y-enabled.a11y-large-font .dev-banner-link {
+  font-size: 1em;
+}
