@@ -1,6 +1,196 @@
 console.log("Site loaded");
 
 /**
+ * Accessibility settings manager (WCAG 2.1 AA)
+ */
+(function() {
+  'use strict';
+  
+  const STORAGE_KEY = 'a11y-settings';
+  
+  // Default settings
+  const defaultSettings = {
+    enabled: false,
+    largeFont: false,
+    highContrast: false,
+    noAnimations: false
+  };
+  
+  // Load settings from localStorage
+  function loadSettings() {
+    try {
+      const saved = localStorage.getItem(STORAGE_KEY);
+      if (saved) {
+        return JSON.parse(saved);
+      }
+    } catch(e) {
+      console.error('Error loading a11y settings:', e);
+    }
+    return { ...defaultSettings };
+  }
+  
+  // Save settings to localStorage
+  function saveSettings(settings) {
+    try {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(settings));
+    } catch(e) {
+      console.error('Error saving a11y settings:', e);
+    }
+  }
+  
+  // Apply settings to document
+  function applySettings(settings) {
+    const html = document.documentElement;
+    
+    if (settings.enabled) {
+      html.classList.add('a11y-enabled');
+      html.classList.toggle('a11y-large-font', settings.largeFont);
+      html.classList.toggle('a11y-high-contrast', settings.highContrast);
+      html.classList.toggle('a11y-no-animations', settings.noAnimations);
+    } else {
+      html.classList.remove('a11y-enabled', 'a11y-large-font', 'a11y-high-contrast', 'a11y-no-animations');
+    }
+  }
+  
+  // Initialize accessibility features
+  function init() {
+    const toggleBtn = document.getElementById('a11yToggle');
+    const panel = document.getElementById('a11yPanel');
+    const closeBtn = document.getElementById('a11yClose');
+    const resetBtn = document.getElementById('a11yReset');
+    const largeFontCheckbox = document.getElementById('a11yLargeFont');
+    const highContrastCheckbox = document.getElementById('a11yHighContrast');
+    const noAnimationsCheckbox = document.getElementById('a11yNoAnimations');
+    
+    if (!toggleBtn || !panel) return;
+    
+    let settings = loadSettings();
+    applySettings(settings);
+    
+    // Sync checkboxes with loaded settings
+    if (largeFontCheckbox) largeFontCheckbox.checked = settings.largeFont;
+    if (highContrastCheckbox) highContrastCheckbox.checked = settings.highContrast;
+    if (noAnimationsCheckbox) noAnimationsCheckbox.checked = settings.noAnimations;
+    
+    // Toggle button click - open/close panel
+    toggleBtn.addEventListener('click', function() {
+      const isExpanded = toggleBtn.getAttribute('aria-expanded') === 'true';
+      toggleBtn.setAttribute('aria-expanded', String(!isExpanded));
+      panel.hidden = isExpanded;
+      
+      if (!isExpanded) {
+        // Focus on first checkbox when opening
+        setTimeout(() => {
+          if (largeFontCheckbox) largeFontCheckbox.focus();
+        }, 100);
+      }
+    });
+    
+    // Close button
+    if (closeBtn) {
+      closeBtn.addEventListener('click', function() {
+        toggleBtn.setAttribute('aria-expanded', 'false');
+        panel.hidden = true;
+        toggleBtn.focus();
+      });
+    }
+    
+    // Reset button
+    if (resetBtn) {
+      resetBtn.addEventListener('click', function() {
+        settings = { ...defaultSettings };
+        saveSettings(settings);
+        applySettings(settings);
+        
+        if (largeFontCheckbox) largeFontCheckbox.checked = false;
+        if (highContrastCheckbox) highContrastCheckbox.checked = false;
+        if (noAnimationsCheckbox) noAnimationsCheckbox.checked = false;
+        
+        // Announce reset to screen readers
+        announceToScreenReader('Настройки доступности сброшены');
+      });
+    }
+    
+    // Checkbox change handlers
+    if (largeFontCheckbox) {
+      largeFontCheckbox.addEventListener('change', function() {
+        settings.largeFont = this.checked;
+        settings.enabled = true;
+        saveSettings(settings);
+        applySettings(settings);
+      });
+    }
+    
+    if (highContrastCheckbox) {
+      highContrastCheckbox.addEventListener('change', function() {
+        settings.highContrast = this.checked;
+        settings.enabled = true;
+        saveSettings(settings);
+        applySettings(settings);
+      });
+    }
+    
+    if (noAnimationsCheckbox) {
+      noAnimationsCheckbox.addEventListener('change', function() {
+        settings.noAnimations = this.checked;
+        settings.enabled = true;
+        saveSettings(settings);
+        applySettings(settings);
+      });
+    }
+    
+    // Keyboard navigation - close panel on Escape
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape' && !panel.hidden) {
+        toggleBtn.setAttribute('aria-expanded', 'false');
+        panel.hidden = true;
+        toggleBtn.focus();
+      }
+    });
+    
+    // Trap focus within panel when open
+    panel.addEventListener('keydown', function(e) {
+      if (e.key !== 'Tab') return;
+      
+      const focusableElements = panel.querySelectorAll(
+        'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+      );
+      const firstElement = focusableElements[0];
+      const lastElement = focusableElements[focusableElements.length - 1];
+      
+      if (e.shiftKey && document.activeElement === firstElement) {
+        e.preventDefault();
+        lastElement.focus();
+      } else if (!e.shiftKey && document.activeElement === lastElement) {
+        e.preventDefault();
+        firstElement.focus();
+      }
+    });
+  }
+  
+  // Announce message to screen readers
+  function announceToScreenReader(message) {
+    const announcement = document.createElement('div');
+    announcement.setAttribute('role', 'status');
+    announcement.setAttribute('aria-live', 'polite');
+    announcement.className = 'visually-hidden';
+    announcement.textContent = message;
+    document.body.appendChild(announcement);
+    
+    setTimeout(() => {
+      document.body.removeChild(announcement);
+    }, 1000);
+  }
+  
+  // Initialize when DOM is ready
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+})();
+
+/**
  * Обработчик формы обратной связи
  */
 (function() {
