@@ -1,0 +1,118 @@
+{# Макет для списков (категории, теги) #}
+{% extends "base.njk" %}
+
+{% block content %}
+<div class="listing-layout">
+  {# Секция 2: Контекстная секция (фильтры, заголовок) #}
+  <section class="section-context" aria-label="Фильтры и сортировка">
+    <div class="container">
+      {% include "partials/breadcrumbs.njk" %}
+      
+      <h1 class="page-title">{{ title }}</h1>
+      
+      {% if sectionContext.filters or sectionContext.sortOptions %}
+      <div class="listing-controls">
+        {% if sectionContext.filters %}
+        <div class="listing-filters">
+          <label for="filter-select" class="visually-hidden">Фильтр</label>
+          <select id="filter-select" class="filter-select">
+            <option value="">Все материалы</option>
+            {% for filter in sectionContext.filters %}
+            <option value="{{ filter.value }}">{{ filter.label }}</option>
+            {% endfor %}
+          </select>
+        </div>
+        {% endif %}
+        
+        {% if sectionContext.sortOptions %}
+        <div class="listing-sort">
+          <label for="sort-select" class="visually-hidden">Сортировка</label>
+          <select id="sort-select" class="sort-select">
+            {% for option in sectionContext.sortOptions %}
+            <option value="{{ option.value }}" {% if option.default %}selected{% endif %}>
+              {{ option.label }}
+            </option>
+            {% endfor %}
+          </select>
+        </div>
+        {% endif %}
+      </div>
+      {% endif %}
+      
+      {% if sectionContext.banner %}
+      <div class="page-banner">
+        <img src="{{ sectionContext.banner }}" alt="" role="presentation">
+      </div>
+      {% endif %}
+    </div>
+  </section>
+  
+  {# Секция 3: Основной контент (сетка карточек) #}
+  <section class="section-main">
+    <div class="container">
+      <div class="content-wrapper{% if sidebar and sidebar.show %} with-sidebar{% endif %}">
+        {% if collections[collectionName] and collections[collectionName].length > 0 %}
+        <div class="cards-grid">
+          {% for item in collections[collectionName] %}
+            {% include "partials/card.njk" with { card: { 
+              title: item.data.title,
+              url: item.url,
+              image: item.data.image,
+              imageAlt: item.data.imageAlt,
+              category: item.data.category,
+              date: item.data.date,
+              excerpt: item.data.excerpt,
+              tags: item.data.tags
+            }} %}
+          {% endfor %}
+        </div>
+        
+        {# Пагинация #}
+        {% if pagination %}
+        <nav class="pagination" aria-label="Навигация по страницам">
+          <ul class="pagination-list">
+            {% if pagination.href.previous %}
+            <li class="pagination-item">
+              <a href="{{ pagination.href.previous }}" class="pagination-link prev">← Назад</a>
+            </li>
+            {% endif %}
+            
+            {% for pageLink in pagination.hrefs %}
+            <li class="pagination-item {% if loop.index0 == pagination.pageNumber %}active{% endif %}">
+              <a href="{{ pageLink }}" class="pagination-link" {% if loop.index0 == pagination.pageNumber %}aria-current="page"{% endif %}>
+                {{ loop.index }}
+              </a>
+            </li>
+            {% endfor %}
+            
+            {% if pagination.href.next %}
+            <li class="pagination-item">
+              <a href="{{ pagination.href.next }}" class="pagination-link next">Вперёд →</a>
+            </li>
+            {% endif %}
+          </ul>
+        </nav>
+        {% endif %}
+        
+        {% else %}
+        <div class="no-results">
+          <p>В этой категории пока нет материалов.</p>
+        </div>
+        {% endif %}
+        
+        {# Секция 4: Дополнительные блоки #}
+        {% if additionalBlocks %}
+        <section class="section-extra">
+          {{ additionalBlocks | safe }}
+        </section>
+        {% endif %}
+      </div>
+      
+      {# Секция 5: Сайдбар #}
+      {% if sidebar and sidebar.show %}
+      {% include "partials/sidebar.njk" %}
+      {% endif %}
+    </div>
+  </section>
+</div>
+{% endblock %}
