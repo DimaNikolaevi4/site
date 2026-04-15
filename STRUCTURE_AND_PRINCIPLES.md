@@ -1,6 +1,6 @@
 # Структура и принципы разработки сайта (Modern Mirror of sit-salsk.ru)
 
-> 📄 **Файл:** `docs/СТРУКТУРА_И_ПРИНЦИПЫ.md`  
+> 📄 **Файл:** `STRUCTURE_AND_PRINCIPLES.md`  
 > 🔄 **Версия:** 2.0  
 > 📅 **Обновлено:** Апрель 2026  
 > 👥 **Для команды:** Все разработчики, контент-менеджеры, тестировщики
@@ -337,6 +337,16 @@ category: news
 
 ### 🔧 Техническая реализация (Lunr.js)
 
+**Важно:** Для поддержки русского языка необходимо подключить `lunr.ru.js` — официальный файл локализации Lunr.js для русской морфологии.
+
+**Подключение русской локализации:**
+```html
+<!-- В шаблоне поиска (например, search-modal.njk) -->
+<script src="/assets/js/lunr.min.js"></script>
+<script src="/assets/js/lunr.ru.js"></script> <!-- Обязательный файл для русской локализации -->
+<script src="/assets/js/search.js"></script>
+```
+
 **Генерация индекса при сборке:**
 ```js
 // eleventy.config.js
@@ -355,7 +365,9 @@ config.addPlugin(eleventyPluginLunr, {
     category: {}
   },
   ref: "url",
-  outputPath: "/assets/js/search-index.json"
+  outputPath: "/assets/js/search-index.json",
+  // Важно: включить русскую локализацию
+  language: "ru"
 });
 ```
 
@@ -365,6 +377,8 @@ config.addPlugin(eleventyPluginLunr, {
 (async function initSearch() {
   const indexResp = await fetch('/assets/js/search-index.json');
   const indexData = await indexResp.json();
+  
+  // lunr.ru.js должен быть подключён до этого скрипта
   const idx = lunr.Index.load(indexData.index);
   
   document.querySelector('[data-search-form]').addEventListener('submit', (e) => {
@@ -376,6 +390,11 @@ config.addPlugin(eleventyPluginLunr, {
 })();
 ```
 
+**Установка lunr.ru.js:**
+```bash
+# Скачать файл локализации из официального репозитория Lunr.js
+curl -o src/assets/js/lunr.ru.js https://raw.githubusercontent.com/MihaiValentin/lunr-languages/master/lunr.ru.js
+```
 ---
 
 ## 6. Структура Каталога Файлов (Project Structure)
@@ -470,7 +489,6 @@ public/
 
 # === Зависимости ===
 node_modules/
-package-lock.json
 yarn.lock
 
 # === Логи и кэш ===
@@ -728,6 +746,7 @@ npm run lint:js
 - [ ] 🖼️ Все изображения имеют `alt`, контраст текста ≥ 4.5:1 (проверить через WebAIM)
 - [ ] 🔗 Нет битых внутренних ссылок (проверить через `npm run check:links`)
 - [ ] 📄 Страница 404 отображается при переходе по несуществующему URL
+- [ ] 🏛️ Decap CMS: проверка доступности `/admin/` после сборки (открыть https://ваш-домен.ru/admin/ и убедиться, что редактор загружается)
 - [ ] 📋 Раздел «Сведения» содержит все 10 обязательных подразделов
 
 ### 9.3. Валидация нормативных требований
