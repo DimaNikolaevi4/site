@@ -1,58 +1,64 @@
 const yaml = require("js-yaml");
 const lunr = require("lunr");
 
-module.exports = function(config) {
+module.exports = function(eleventyConfig) {
   // === Плагины ===
-  config.addPlugin(require("@11ty/eleventy-navigation"));
+  eleventyConfig.addPlugin(require("@11ty/eleventy-navigation"));
   
   // === Копирование статики ===
-  config.addPassthroughCopy("src/assets");
-  config.addPassthroughCopy("src/admin");
-  config.addPassthroughCopy("favicons");
-  config.addPassthroughCopy({ "robots.njk": "robots.txt" });
+  eleventyConfig.addPassthroughCopy("src/assets");
+  eleventyConfig.addPassthroughCopy("src/admin");
+  eleventyConfig.addPassthroughCopy("favicons");
+  eleventyConfig.addPassthroughCopy({ "robots.njk": "robots.txt" });
   
   // === Расширения данных ===
-  config.addDataExtension("yaml", contents => yaml.load(contents));
+  eleventyConfig.addDataExtension("yaml", contents => yaml.load(contents));
   
   // === Фильтры ===
-  config.addFilter("dateRu", require("./src/_filters/dateRu"));
-  config.addFilter("truncate", require("./src/_filters/truncate"));
-  config.addFilter("slugify", require("./src/_filters/slugify"));
+  eleventyConfig.addFilter("dateRu", require("./src/_filters/dateRu"));
+  eleventyConfig.addFilter("truncate", require("./src/_filters/truncate"));
+  eleventyConfig.addFilter("slugify", require("./src/_filters/slugify"));
   
   // Фильтр даты (legacy)
-  config.addFilter("date", (dateObj) => {
+  eleventyConfig.addFilter("date", (dateObj) => {
     if (!dateObj) return "";
     const d = new Date(dateObj);
     return d.toLocaleDateString("ru-RU", { day: '2-digit', month: '2-digit', year: 'numeric' });
   });
   
+  // Фильтр upcase (для совместимости с Liquid)
+  eleventyConfig.addFilter("upcase", (str) => {
+    if (!str) return "";
+    return String(str).toUpperCase();
+  });
+  
   // === Коллекции ===
   
   // Новости
-  config.addCollection("news", function(collectionApi) {
+  eleventyConfig.addCollection("news", function(collectionApi) {
     return collectionApi.getFilteredByGlob("src/content/news/*.md")
       .sort((a, b) => b.date - a.date);
   });
   
   // Все материалы для поиска
-  config.addCollection("searchable", (collection) => {
+  eleventyConfig.addCollection("searchable", (collection) => {
     return collection.getAll().filter((item) => {
       return item.data.searchable !== false;
     });
   });
   
   // Документы
-  config.addCollection("documents", function(collectionApi) {
+  eleventyConfig.addCollection("documents", function(collectionApi) {
     return collectionApi.getFilteredByGlob("src/content/documents/**/*.md");
   });
   
   // Страницы сведений
-  config.addCollection("svedenija", function(collectionApi) {
+  eleventyConfig.addCollection("svedenija", function(collectionApi) {
     return collectionApi.getFilteredByGlob("src/content/pages/svedenija/**/*.md");
   });
   
   // === Поиск Lunr ===
-  config.addFilter("lunrIndex", function(collection) {
+  eleventyConfig.addFilter("lunrIndex", function(collection) {
     const documents = collection.map(item => ({
       id: item.url,
       title: item.data.title || '',
@@ -83,8 +89,11 @@ module.exports = function(config) {
   return {
     dir: {
       input: "src",
-      output: "public"
+      output: "public",
+      includes: "_includes",
+      data: "_data"
     },
+    templateFormats: ["njk", "md", "html"],
     htmlTemplateEngine: "njk",
     markdownTemplateEngine: "njk",
     dataTemplateEngine: "njk",
