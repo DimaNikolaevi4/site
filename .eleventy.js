@@ -2,12 +2,6 @@ const yaml = require("js-yaml");
 const lunr = require("lunr");
 
 module.exports = function(config) {
-  // === Пути и настройки ===
-  config.setDir("src", "public");
-  config.setHtmlTemplateEngine("njk");
-  config.setDataTemplateEngine("njk");
-  config.setMarkdownTemplateEngine("njk");
-  
   // === Плагины ===
   config.addPlugin(require("@11ty/eleventy-navigation"));
   
@@ -93,6 +87,7 @@ module.exports = function(config) {
     },
     htmlTemplateEngine: "njk",
     markdownTemplateEngine: "njk",
+    dataTemplateEngine: "njk",
     pathPrefix: pathPrefix
   };
 };
