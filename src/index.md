@@ -10,7 +10,7 @@ eleventyNavigation:
 <!-- Hero Slider Section -->
 <section class="hero-slider">
   <div class="slider-container">
-    <div class="slide active" style="background-image: linear-gradient(135deg, rgba(102, 126, 234, 0.85) 0%, rgba(118, 75, 162, 0.85) 100%), url('/images/sliders/slider1_original.jpg'); background-size: cover; background-position: center;">
+    <div class="slide active" style="background-image: linear-gradient(135deg, rgba(102, 126, 234, 0.85) 0%, rgba(118, 75, 162, 0.85) 100%), url('/images/sliders/slider1.jpg'); background-size: cover; background-position: center;">
       <div class="slide-content">
         <h1>ГБПОУ РО "Сальский индустриальный техникум"</h1>
         <p>Современное образование для успешной карьеры</p>
@@ -20,7 +20,7 @@ eleventyNavigation:
         </div>
       </div>
     </div>
-    <div class="slide" style="background-image: linear-gradient(135deg, rgba(13, 74, 107, 0.85) 0%, rgba(26, 95, 138, 0.85) 100%), url('/images/sliders/slider2_original.jpg'); background-size: cover; background-position: center;">
+    <div class="slide" style="background-image: linear-gradient(135deg, rgba(13, 74, 107, 0.85) 0%, rgba(26, 95, 138, 0.85) 100%), url('/images/sliders/slider2.jpg'); background-size: cover; background-position: center;">
       <div class="slide-content">
         <h1>Профессиональное образование</h1>
         <p>Подготовка квалифицированных специалистов</p>
@@ -30,7 +30,7 @@ eleventyNavigation:
         </div>
       </div>
     </div>
-    <div class="slide" style="background-image: linear-gradient(135deg, rgba(92, 107, 192, 0.85) 0%, rgba(63, 81, 181, 0.85) 100%), url('/images/sliders/slider3_original.jpg'); background-size: cover; background-position: center;">
+    <div class="slide" style="background-image: linear-gradient(135deg, rgba(92, 107, 192, 0.85) 0%, rgba(63, 81, 181, 0.85) 100%), url('/images/sliders/slider3.jpg'); background-size: cover; background-position: center;">
       <div class="slide-content">
         <h1>Доступная среда</h1>
         <p>Комфортные условия для всех студентов</p>
@@ -84,7 +84,7 @@ eleventyNavigation:
         <h2 class="section-title">Новости и события</h2>
         <div class="news-grid">
           <article class="news-card featured">
-            <div class="news-card-image" style="background-image: url('/images/news/news1_original.jpg'); background-size: cover; background-position: center;">
+            <div class="news-card-image" style="background-image: url('/images/news/news1.jpg'); background-size: cover; background-position: center;">
               <span class="news-date">14 апреля 2026</span>
             </div>
             <div class="news-card-content">
@@ -95,7 +95,7 @@ eleventyNavigation:
           </article>
           
           <article class="news-card">
-            <div class="news-card-image" style="background-image: url('/images/news/news2_original.jpg'); background-size: cover; background-position: center;">
+            <div class="news-card-image" style="background-image: url('/images/news/news2.jpg'); background-size: cover; background-position: center;">
               <span class="news-date">12 апреля 2026</span>
             </div>
             <div class="news-card-content">
@@ -106,7 +106,7 @@ eleventyNavigation:
           </article>
           
           <article class="news-card">
-            <div class="news-card-image" style="background-image: url('/images/news/news3_original.jpg'); background-size: cover; background-position: center;">
+            <div class="news-card-image" style="background-image: url('/images/news/news3.jpg'); background-size: cover; background-position: center;">
               <span class="news-date">8 апреля 2026</span>
             </div>
             <div class="news-card-content">
@@ -117,7 +117,7 @@ eleventyNavigation:
           </article>
           
           <article class="news-card">
-            <div class="news-card-image" style="background-image: url('/images/news/news4_original.jpg'); background-size: cover; background-position: center;">
+            <div class="news-card-image" style="background-image: url('/images/news/news4.jpg'); background-size: cover; background-position: center;">
               <span class="news-date">8 марта 2026</span>
             </div>
             <div class="news-card-content">
@@ -145,14 +145,14 @@ eleventyNavigation:
         <!-- Banner Widget BPLA -->
         <div class="widget banner-widget">
           <a href="https://xn--61-6kc3bbqgrrd.xn--p1ai/bpla.html" target="_blank" rel="noopener">
-            <img src="/images/banners/bpla_original.jpg" alt="БПЛА">
+            <img src="/images/banners/bpla.jpg" alt="БПЛА">
           </a>
         </div>
         
         <!-- Banner Widget NOK -->
         <div class="widget banner-widget">
           <a href="https://bus.gov.ru/info-card/399429" target="_blank" rel="noopener">
-            <img src="/images/banners/nok-2025_original.jpg" alt="НОК">
+            <img src="/images/banners/nok-2025.jpg" alt="НОК">
           </a>
         </div>
         
@@ -160,7 +160,7 @@ eleventyNavigation:
         <div class="widget">
           <h4 class="widget-title">Наш учредитель</h4>
           <a href="https://minobr.donland.ru/" target="_blank" rel="noopener">
-            <img src="/images/logos/nf-2025_original.png" alt="Минобр">
+            <img src="/images/logos/nf-2025.png" alt="Минобр">
           </a>
         </div>
         
@@ -168,7 +168,7 @@ eleventyNavigation:
         <div class="widget">
           <h4 class="widget-title">«Мастер года 2026»</h4>
           <a href="#">
-            <img src="/images/banners/master-goda_original.jpg" alt="Мастер года">
+            <img src="/images/banners/master-goda.jpg" alt="Мастер года">
           </a>
         </div>
         
