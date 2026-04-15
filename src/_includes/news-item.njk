@@ -3,7 +3,7 @@
     <h2>
       <a href="{{ newsItem.url }}">{{ newsItem.data.title }}</a>
     </h2>
-    <time class="news-item-date" datetime="{{ newsItem.date }}">{{ newsItem.date | date: "%d.%m.%Y" }}</time>
+    <time class="news-item-date" datetime="{{ newsItem.date }}">{{ newsItem.date | date("%d.%m.%Y") }}</time>
   </header>
   
   {% if newsItem.data.description %}

@@ -20,7 +20,7 @@ description: Все новости Сальского индустриально
         <h2>
           <a href="{{ page.url }}">{{ page.data.title }}</a>
         </h2>
-        <time class="material-preview-date" datetime="{{ page.date }}">{{ page.date | date: "%d.%m.%Y" }}</time>
+        <time class="material-preview-date" datetime="{{ page.date }}">{{ page.date | date("%d.%m.%Y") }}</time>
       </header>
       
       {% if page.data.description %}
