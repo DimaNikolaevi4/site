@@ -1,0 +1,90 @@
+"use strict";
+
+jQuery(function ($) {
+    const html = $("body > *:not('.as-container, meta, script, link, title, style')");
+    const asContainer = $('.as-container');
+
+    const getButton = value => $(`button[value="${value}"]`);
+    const getCurrentFontSize = () => html.css('font-size');
+
+    const applyFilter = (filterName, action) => {
+        const element = $(`body > *:not('.as-container, meta, script, link, title, style')`);
+        action === 'add' ? element.addClass(filterName) : element.removeClass(filterName);
+        localStorage.setItem(filterName, action === 'add');
+    };
+
+    const makeButtonActive = filterName => getButton(filterName).addClass('active-option');
+    const makeButtonUnActive = filterName => getButton(filterName).removeClass('active-option');
+
+    const setFilter = filterName => {
+        applyFilter(filterName, 'add');
+        makeButtonActive(filterName);
+    };
+
+    const removeFilter = filterName => {
+        applyFilter(filterName, 'remove');
+        makeButtonUnActive(filterName);
+    };
+
+    const handleFontSizeChange = (action) => {
+        const currentFontSize = getCurrentFontSize();
+        if ((action === 'increase' && parseInt(currentFontSize) < 25) ||
+            (action === 'decrease' && parseInt(currentFontSize) > 10)) {
+            html.css('font-size', parseInt(currentFontSize) + (action === 'increase' ? 1 : -1));
+        }
+    };
+
+    const handleLinkHighlight = (action) => {
+        $('a').toggleClass('hightlight-links', action === 'add');
+        localStorage.setItem('highlight_links', action === 'add' ? 'yes' : 'no');
+        action === 'add' ? makeButtonActive('links') : makeButtonUnActive('links');
+    };
+
+    getButton('increase').click(() => handleFontSizeChange('increase'));
+    getButton('font-size-default').click(() => html.css('font-size', ''));
+    getButton('decrease').click(() => handleFontSizeChange('decrease'));
+
+    $('.handicap-icon').click(() => {
+        asContainer.css('display', 'block').animate({ 'right': '0' }, 100);
+    });
+
+    $('.as-close').click(() => {
+        asContainer.animate({ 'right': '-250px' }, 100, () => {
+            asContainer.css('display', 'none');
+        });
+    });
+
+    applyValuesToPage();
+
+    function applyValuesToPage() {
+        const filters = ['grayscale', 'sepia', 'contrast', 'invert', 'cursor', 'highlight_links'];
+
+        for (const filter of filters) {
+            const currentItemValue = localStorage.getItem(filter);
+            if (currentItemValue === 'true') {
+                setFilter(filter);
+            } else if (currentItemValue === 'yes' && filter === 'highlight_links') {
+                handleLinkHighlight('add');
+            } else if (currentItemValue === 'no' && filter === 'highlight_links') {
+                handleLinkHighlight('remove');
+            }
+        }
+    }
+
+    getButton('grayscale').click(() => setFilter('grayscale'));
+    getButton('grayscale-default').click(() => removeFilter('grayscale'));
+    getButton('sepia').click(() => setFilter('sepia'));
+    getButton('sepia-default').click(() => removeFilter('sepia'));
+    getButton('contrast').click(() => setFilter('contrast'));
+    getButton('contrast-default').click(() => removeFilter('contrast'));
+    getButton('invert').click(() => setFilter('invert'));
+    getButton('invert-default').click(() => removeFilter('invert'));
+    getButton('cursor').click(() => setFilter('cursor'));
+    getButton('cursor-default').click(() => removeFilter('cursor'));
+    getButton('links').click(() => handleLinkHighlight('add'));
+    getButton('links-default').click(() => handleLinkHighlight('remove'));
+
+    if ($('.field-name').length === 0) {
+        $('.nothing-to-show').css('display', 'block');
+    }
+});
