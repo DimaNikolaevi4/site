@@ -402,7 +402,7 @@ curl -o src/assets/js/lunr.ru.js https://raw.githubusercontent.com/MihaiValentin
 ```
 project-root/
 ├── docs/                       # Документация проекта
-│   ├── СТРУКТУРА_И_ПРИНЦИПЫ.md # Этот файл
+│   ├── STRUCTURE_AND_PRINCIPLES.md # Этот файл
 │   ├── DEPLOY.md              # Инструкция по деплою на Beget
 │   └── CHECKLIST.md           # Чек-лист перед публикацией
 │
@@ -1163,5 +1163,5 @@ docker run -p 8080:80 sit-saljsk-site
 ---
 
 > 📝 **Примечание:** Этот документ — живой. При изменении процессов, стека или требований — обновляйте его и коммитьте изменения.  
-> 🔗 **Ссылка на актуальную версию:** `https://github.com/DimaNikolaevi4/site/blob/main/docs/СТРУКТУРА_И_ПРИНЦИПЫ.md`
+> 🔗 **Ссылка на актуальную версию:** `https://github.com/DimaNikolaevi4/site/blob/main/docs/STRUCTURE_AND_PRINCIPLES.md`
 
