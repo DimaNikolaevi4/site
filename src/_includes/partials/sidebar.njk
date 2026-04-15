@@ -1,0 +1,61 @@
+{# Сайдбар (Секция 5) #}
+{# Используется условно в зависимости от типа страницы #}
+
+{% if sidebar and sidebar.show %}
+<aside class="sidebar" role="complementary">
+  {% if sidebar.widgets %}
+    {% for widget in sidebar.widgets %}
+      {% if widget == 'search' %}
+        {# Виджет поиска #}
+        <div class="sidebar-widget sidebar-search">
+          <h3 class="sidebar-widget-title">Поиск</h3>
+          <form class="sidebar-search-form" data-search-form>
+            <input 
+              type="search" 
+              placeholder="Поиск по сайту..." 
+              data-search-input
+              aria-label="Поиск по сайту"
+            >
+            <button type="submit" aria-label="Найти">
+              <span class="visually-hidden">Найти</span>
+            </button>
+          </form>
+        </div>
+      {% endif %}
+      
+      {% if widget == 'tags' %}
+        {# Облако тегов #}
+        <div class="sidebar-widget sidebar-tags">
+          <h3 class="sidebar-widget-title">Теги</h3>
+          <div class="tag-cloud">
+            {# Здесь будет список тегов из коллекции #}
+            {% for tag in collections.all | getAllTags | unique %}
+              {% if tag != 'all' and tag != 'nav' %}
+                <a href="/tags/{{ tag | slugify }}/" class="tag-cloud-item">{{ tag }}</a>
+              {% endif %}
+            {% endfor %}
+          </div>
+        </div>
+      {% endif %}
+      
+      {% if widget == 'archive' %}
+        {# Архив материалов #}
+        <div class="sidebar-widget sidebar-archive">
+          <h3 class="sidebar-widget-title">Архив</h3>
+          <ul class="archive-list">
+            {# Здесь будет архив по месяцам #}
+          </ul>
+        </div>
+      {% endif %}
+      
+      {% if widget == 'menu' %}
+        {# Боковое меню раздела #}
+        <div class="sidebar-widget sidebar-menu">
+          <h3 class="sidebar-widget-title">Разделы</h3>
+          {{ sidebar.menuContent | safe }}
+        </div>
+      {% endif %}
+    {% endfor %}
+  {% endif %}
+</aside>
+{% endif %}
