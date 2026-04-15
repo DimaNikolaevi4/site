@@ -1,41 +1,23 @@
 ```
-.env.local
-.env
-.env.*
-node_modules/
-.npm/
-npm-debug.log*
-.yarn/
-.yarn-cache/
-.cache/
-tmp/
-temp/
-.DS_Store
-Thumbs.db
+# Build artifacts
+public/dist/
+public/build/
+public/assets/css/
+public/assets/js/
+
+# Generated content
+public/content/**/*.html
+
+# Logs and temp files
 *.log
 *.tmp
-*.swp
+
+# Environment
+.env
+.env.local
+.env.*
+
+# Editors
 .vscode/
 .idea/
-*.pyc
-__pycache__/
-*.class
-*.o
-*.obj
-*.exe
-*.dll
-*.so
-*.a
-*.out
-dist/
-build/
-target/
-.coverage
-coverage/
-htmlcov/
-.mypy_cache/
-.pytest_cache/
-.nyc_output/
-istanbul/
-.jest/
 ```
