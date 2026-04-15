@@ -1,6 +1,9 @@
 ---
 title: Профилактика экстремизма и терроризма
 layout: base.njk
+category: bezopasnost
+tags:
+  - Безопасность
 description: Информация по профилактике экстремизма и терроризма
 ---
 
