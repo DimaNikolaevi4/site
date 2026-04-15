@@ -1,6 +1,9 @@
 ---
 title: Сотрудничество с предприятиями
 layout: base.njk
+category: sotrudnichestvo
+tags:
+  - Сотрудничество
 description: Партнерство с предприятиями и организациями
 ---
 

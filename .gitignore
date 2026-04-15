@@ -1,1 +1,4 @@
-Nothing should be ignored based on the provided file changes. The modified files (`src/_includes/base.njk` and `src/index.md`) are source/config files that should not be ignored.
+```
+# Content files - no build artifacts, dependencies, or temp files detected
+# Only source/config files present (.md files) - keeping .gitignore empty
+```

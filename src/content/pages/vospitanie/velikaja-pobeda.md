@@ -1,6 +1,10 @@
 ---
 title: Великая Победа
 layout: base.njk
+category: vospitanie
+tags:
+  - Великая Победа
+  - воспитание
 description: Патриотическое воспитание и память о Великой Победе
 ---
 

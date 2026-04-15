@@ -1,6 +1,10 @@
 ---
 title: Поздравления
 layout: base.njk
+category: vospitanie
+tags:
+  - Поздравления
+  - Праздники
 description: Поздравления с праздниками и важными событиями
 ---
 
