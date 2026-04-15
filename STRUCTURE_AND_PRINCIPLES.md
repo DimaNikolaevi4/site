@@ -762,6 +762,317 @@ npm run lint:js
 - [ ] 🌐 Указан актуальный домен: `https://сит-сальск.рф/` (Punycode: `xn--80aagf1ajbb5a.xn--p1ai`)
 
 ---
+✅ **Отличная идея! Добавляем раздел 10 — практическое руководство по SEO для вашего стека.**
+
+Вот готовый блок для вставки в `README.md` (после раздела 9 или перед «Поддержка»):
+
+---
+
+## 🔍 10. Поисковая оптимизация (SEO)
+
+> 🎯 **Цель:** Обеспечить высокую видимость сайта в поисковых системах (Яндекс, Google) при сохранении соответствия нормативным требованиям РФ.
+
+### 10.1. Структура сайта и ЧПУ (Человекопонятные URL)
+
+| Требование | Реализация в проекте |
+|------------|---------------------|
+| 🧭 Логичная иерархия (≤3 клика до любой страницы) | SILO-структура: `Главная → Раздел → Подраздел → Страница` |
+| 🔗 ЧПУ: короткие, с ключевыми словами, через дефис | Автоматическая генерация через фильтр `slugify` в Eleventy |
+| 🍞 Хлебные крошки (breadcrumbs) | Компонент `src/_includes/partials/breadcrumbs.njk` |
+
+**Примеры корректных URL:**
+```
+✅ /svedenija/documents/anti-corruption/
+✅ /news/priemnaya-kampaniya-2026/
+✅ /contacts/
+❌ /page?id=157&cat=news
+❌ /Сведения/Документы/Антикоррупция/
+```
+
+**Настройка в Eleventy:**
+```js
+// eleventy.config.js — автоматический slugify для пермалинков
+config.addFilter("slugify", (str) => {
+  return str.toLowerCase()
+    .replace(/[^\w\s-]/g, '')      // удалить спецсимволы
+    .replace(/[\s_-]+/g, '-')      // пробелы/подчёркивания → дефис
+    .replace(/^-+|-+$/g, '');      // убрать дефисы по краям
+});
+```
+
+```yaml
+# Front matter в контенте
+---
+title: Приёмная кампания 2026
+permalink: /news/{{ title | slugify }}/
+---
+```
+
+---
+
+### 10.2. Мета-теги и заголовки
+
+| Элемент | Требования | Реализация |
+|---------|-----------|-----------|
+| `<title>` | Уникальный, 50–70 символов, ключ в начале | `src/_includes/base.njk`: `{{ title }} | {{ site.title }}` |
+| `<meta name="description">` | Уникальный, 120–158 символов, с ключом | Front matter: `description: "..."` + шаблон |
+| `<h1>` | Один на страницу, главный запрос | Контент в Markdown: `# Заголовок` |
+| `<h2>-<h6>` | Строгая иерархия, без пропусков | Ручная разметка в контенте |
+
+**Пример front matter с мета-тегами:**
+```yaml
+---
+title: Приёмная кампания 2026
+description: "Сроки, документы и правила приёма в ГБПОУ РО 'СИТ' в 2026 году. Информация для абитуриентов."
+permalink: /news/priemnaya-kampaniya-2026/
+date: 2026-04-15
+tags: [абитуриенту, приём, 2026]
+---
+```
+
+**Шаблон `base.njk` (автоматическая генерация мета-тегов):**
+```njk
+<head>
+  <title>{{ title }} | {{ site.title }}</title>
+  <meta name="description" content="{{ description | default(site.description) }}">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- Open Graph (для соцсетей) -->
+  <meta property="og:title" content="{{ title }} | {{ site.title }}">
+  <meta property="og:description" content="{{ description | default(site.description) }}">
+  <meta property="og:url" content="{{ site.url }}{{ page.url }}">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="ru_RU">
+  
+  <!-- Canonical URL -->
+  <link rel="canonical" href="{{ site.url }}{{ page.url }}">
+</head>
+```
+
+---
+
+### 10.3. Контент и изображения
+
+#### Текст
+- ✅ Уникальность ≥95% (проверка через text.ru / content-watch.ru)
+- ✅ Ключевые слова — естественно, без переспама (плотность 1–3%)
+- ✅ Структура: введение → подзаголовки (H2–H3) → выводы
+
+#### Изображения
+| Требование | Реализация |
+|------------|-----------|
+| 🖼️ Имя файла | существующее с сайта https://sit-salsk.ru, для новых изображений  `kupit-krovat-iz-massiva.jpg` → `oborudovanie-laboratorii-himii.jpg` |
+| ♿ `alt`-текст | Обязателен для всех информативных изображений (≤125 символов) |
+| ⚡ Оптимизация | Конвертация в WebP при сборке (плагин `eleventy-img`) |
+| 📍 Размещение | Изображение рядом с релевантным текстом |
+
+**Пример в Markdown:**
+```md
+![Химическая лаборатория техникума — рабочее место студента](/assets/img/lab-himija.jpg)
+```
+
+**Настройка оптимизации изображений (опционально):**
+```bash
+# Установить плагин
+npm install @11ty/eleventy-img
+
+# В eleventy.config.js
+const Image = require("@11ty/eleventy-img");
+config.addShortcode("responsiveImage", async (src, alt) => {
+  const metadata = await Image(src, {
+    widths: [300, 600, 900],
+    formats: ["webp", "jpeg"],
+    outputDir: "public/assets/img/"
+  });
+  return metadata.webp[0].url; // Упрощённый пример
+});
+```
+
+---
+
+### 10.4. Внутренняя перелинковка
+
+| Тип | Реализация |
+|-----|-----------|
+| 🧭 Навигационная | Главное меню (`menu.yaml`), сайдбар, подвал |
+| 🔗 Контекстная | Ссылки внутри текста: `[подробнее](/svedenija/education/)` |
+| 📚 «Читайте также» | Блок в `post.njk`: `{% for post in collections.news limit:3 %}` |
+| 🏷️ Теги | Кликабельные метки: `/tags/абитуриенту/` → список материалов |
+
+**Правила анкоров:**
+```
+✅ «Приёмная кампания 2026» → /news/priemnaya-kampaniya-2026/
+✅ «сведения об образовательной организации» → /svedenija/
+❌ «кликните здесь» → /news/...
+❌ «подробнее подробнее подробнее» → /...
+```
+
+---
+
+### 10.5. Техническое SEO
+
+| Компонент | Статус | Настройка |
+|-----------|--------|-----------|
+| 🤖 `robots.txt` | ✅ Готов | `public/robots.txt` — разрешить индексацию, закрыть админку |
+| 🗺️ `sitemap.xml` | ✅ Готов | Генерируется при сборке (плагин `@quasibit/eleventy-plugin-sitemap`) |
+| 🔗 `rel="canonical"` | ✅ Готов | В `base.njk`: `<link rel="canonical" href="{{ site.url }}{{ page.url }}">` |
+| 🔒 HTTPS | ✅ На стороне Beget | Включить в панели хостинга |
+| ⚡ Скорость загрузки | ⚠️ Требует контроля | Цель: <3 сек (мобильные), <1.5 сек (десктоп) |
+| 📱 Mobile-Friendly | ✅ Bootstrap 5 | Адаптивная вёрстка по умолчанию |
+| 🔖 Favicon | ⚠️ Добавить | `public/favicon.ico` + `<link rel="icon">` в `base.njk` |
+
+**Пример `robots.txt`:**
+```txt
+User-agent: *
+Allow: /
+
+# Закрыть служебные разделы
+Disallow: /admin/
+Disallow: /assets/uploads/
+Disallow: /temp-build/
+
+# Указать путь к карте сайта
+Sitemap: https://сит-сальск.рф/sitemap.xml
+```
+
+**Генерация sitemap.xml (плагин):**
+```bash
+npm install --save-dev @quasibit/eleventy-plugin-sitemap
+```
+
+```js
+// eleventy.config.js
+const sitemapPlugin = require("@quasibit/eleventy-plugin-sitemap");
+config.addPlugin(sitemapPlugin, {
+  sitemap: {
+    hostname: "https://сит-сальск.рф",
+    changefreq: "monthly",
+    priority: 0.5
+  },
+  exclude: ["/admin/*", "/404.html"]
+});
+```
+
+---
+
+### 10.6. Микроразметка (Schema.org)
+
+**Рекомендуемые типы для образовательного сайта:**
+
+| Страница | Тип Schema | Пример |
+|----------|-----------|--------|
+| 🏫 Главная / О техникуме | `EducationalOrganization` | Название, адрес, телефон, логотип |
+| 📰 Новость | `NewsArticle` | Заголовок, дата, автор, изображение |
+| 📄 Документ | `DigitalDocument` | Название, дата публикации, формат |
+| 👤 Сотрудник | `Person` | ФИО, должность, фото, контакты |
+
+**Пример микроразметки для организации (в `base.njk` или `header.njk`):**
+```njk
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "EducationalOrganization",
+  "name": "ГБПОУ РО 'Сальский индустриальный техникум'",
+  "url": "{{ site.url }}",
+  "logo": "{{ site.url }}/assets/img/logo.png",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Сальск",
+    "addressRegion": "Ростовская область",
+    "addressCountry": "RU"
+  },
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "telephone": "+7-86372-2-00-00",
+    "contactType": "customer service"
+  }
+}
+</script>
+```
+
+**Для новостей (`post.njk`):**
+```njk
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "NewsArticle",
+  "headline": "{{ title }}",
+  "datePublished": "{{ date | date: '%Y-%m-%d' }}",
+  "description": "{{ excerpt | default(description) }}",
+  "image": "{{ site.url }}{{ image | default('/assets/img/default-news.jpg') }}",
+  "author": {
+    "@type": "Organization",
+    "name": "{{ site.title }}"
+  }
+}
+</script>
+```
+
+---
+
+### 10.7. Контроль качества: чек-лист перед публикацией
+
+```
+🔍 SEO-ЧЕК-ЛИСТ (перед каждым релизом)
+
+[ ] Уникальные title и description на всех страницах
+[ ] Один H1 на страницу, иерархия H2–H6 без пропусков
+[ ] Все изображения имеют alt (кроме декоративных)
+[ ] Внутренние ссылки работают (нет 404)
+[ ] ЧПУ: дефисы, строчные буквы, без стоп-слов
+[ ] robots.txt и sitemap.xml доступны по публичным ссылкам
+[ ] Канонические ссылки указаны
+[ ] Микроразметка валидна (проверить через Google Rich Results Test)
+[ ] Скорость загрузки: <3 сек на мобильных (PageSpeed Insights)
+[ ] Сайт корректно отображается на мобильных (Mobile-Friendly Test)
+
+📊 Инструменты для проверки:
+- Яндекс.Вебмастер: https://webmaster.yandex.ru/
+- Google Search Console: https://search.google.com/search-console/
+- PageSpeed Insights: https://pagespeed.web.dev/
+- Rich Results Test: https://search.google.com/test/rich-results
+- Mobile-Friendly Test: https://search.google.com/test/mobile-friendly
+```
+
+---
+
+### 10.8. Интеграция с поисковыми системами
+
+**После деплоя обязательно:**
+
+1. **Добавить сайт в Яндекс.Вебмастер:**
+   - Подтвердить права (через HTML-файл или мета-тег)
+   - Отправить `sitemap.xml` в разделе «Файлы Sitemap»
+   - Настроить регион: «Ростовская область → Сальск»
+
+2. **Добавить сайт в Google Search Console:**
+   - Подтвердить права (аналогично)
+   - Отправить `sitemap.xml`
+   - Проверить индексацию в разделе «Страницы»
+
+3. **Мониторинг:**
+   - Раз в неделю: проверять «Поисковые запросы» в обоих инструментах
+   - Раз в месяц: анализировать ошибки сканирования, битые ссылки
+   - После крупных обновлений: запрашивать переобход в Яндекс.Вебмастере
+
+---
+
+### 10.9. Ошибки, которых следует избегать
+
+| Ошибка | Последствие | Как избежать |
+|--------|-------------|-------------|
+| 🔁 Дубли страниц без canonical | Пессимизация в выдаче | Всегда указывать `rel="canonical"` |
+| 📢 Переспам ключевыми словами | Фильтры поисковиков | Писать для людей, ключи — естественно |
+| 🔗 Битые внутренние ссылки | Потеря веса страниц, плохой UX | Проверять через `npm run check:links` |
+| 🖼️ Изображения без alt | Потеря трафика из поиска по картинкам | Заполнять alt для всех информативных изображений |
+| 📱 Отсутствие мобильной версии | Понижение в мобильной выдаче | Использовать адаптивную вёрстку (Bootstrap 5) |
+| ⏳ Медленная загрузка | Высокий процент отказов | Оптимизировать изображения, кэшировать статику |
+
+---
+
+> 💡 **Совет:** Начните с базового набора (мета-теги, ЧПУ, sitemap, robots.txt). Микроразметку и расширенную оптимизацию подключайте по мере роста трафика.
+
+---
 
 ## 🚀 Производительность
 
