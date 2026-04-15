@@ -1,3 +1,3 @@
-Nothing should be ignored in this case, as the changes only include image files which are part of the source content and not build artifacts, dependencies, or temporary files.
+Nothing should be ignored in this case, as the changes only include source/config files (`.yaml`, `.pdf`, `.gif`, `.png`, `.jpg`, `.jpeg`) and images, with no build artifacts, dependencies, or temporary files present.
 
 Output: (empty)
