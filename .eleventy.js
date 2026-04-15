@@ -62,6 +62,7 @@ module.exports = function(config) {
       output: "public"
     },
     htmlTemplateEngine: "njk",
+    markdownTemplateEngine: "njk",
     pathPrefix: "/"
   };
 };

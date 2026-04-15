@@ -2,7 +2,7 @@
 title: Абитуриентам
 layout: base.njk
 category: abiturientam
-description: Информация для абитуриентов: правила приема, специальности, день открытых дверей
+description: 'Информация для абитуриентов: правила приема, специальности, день открытых дверей'
 ---
 
 # Абитуриентам
@@ -13,7 +13,7 @@ description: Информация для абитуриентов: правил�
 
 <div class="materials-list">
   {% for page in collections.all %}
-    {% if page.data.category == 'abiturientam' or page.data.tags and page.data.tags.includes('Абитуриентам') %}
+    {% if page.data.category == 'abiturientam' or page.data.tags and page.data.tags.includes("Абитуриентам") %}
       {% if page.url != '/abiturientam/' %}
         <article class="material-preview">
           <header class="material-preview-header">
@@ -21,7 +21,7 @@ description: Информация для абитуриентов: правил�
               <a href="{{ page.url }}">{{ page.data.title }}</a>
             </h2>
             {% if page.date %}
-            <time class="material-preview-date" datetime="{{ page.date }}">{{ page.date | date: "%d.%m.%Y" }}</time>
+            <time class="material-preview-date" datetime="{{ page.date }}">{{ page.date | date("%d.%m.%Y") }}</time>
             {% endif %}
           </header>
           

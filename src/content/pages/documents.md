@@ -18,7 +18,7 @@ eleventyNavigation:
     <div class="documents-info">
       <h3 class="documents-title">{{ doc.data.title }}</h3>
       <p class="documents-meta">
-        {% if doc.data.date %}{{ doc.data.date | date: "%d.%m.%Y" }}{% endif %}
+        {% if doc.data.date %}{{ doc.data.date | date("%d.%m.%Y") }}{% endif %}
         {% if doc.data.fileType %} · {{ doc.data.fileType | upcase }}{% endif %}
         {% if doc.data.fileSize %} · {{ doc.data.fileSize }}{% endif %}
       </p>
