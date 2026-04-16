@@ -162,6 +162,7 @@ mitiba@narnia:~ [0] $ cd ~/sit-saljsk.rf
 mitiba@narnia:~/sit-saljsk.rf [0] $ 
 # Запустить скрипт деплоя на хостинге (через SSH)
 ~/sit-saljsk.rf/deploy.sh
+```
 
 **Что делает скрипт:**
 1. ✅ Клонирует репозиторий во временную папку `temp-build`
