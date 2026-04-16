@@ -1,36 +1,165 @@
-<header class="site-header">
+{# Шапка сайта ГБПОУ РО "СИТ" #}
+{# Секция 1: Header компонент с поддержкой доступности и адаптивности #}
+
+{% set site = site %}
+{% set menu = menu %}
+{% set contacts = contacts %}
+{% set rubrics = rubrics %}
+
+<header class="site-header" role="banner">
   <div class="container">
-    <a href="/" class="logo">
-      <span class="logo-text">{{ site.title }}</span>
-    </a>
-    
-    <!-- Mobile menu toggle -->
-    <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Меню" aria-expanded="false" aria-controls="mainNavigation">
-      <span class="hamburger"></span>
-    </button>
-    
-    <nav class="main-nav" id="mainNavigation">
-      <ul>
-        {% for item in menu.main %}
-        {% if item.children %}
-        <li class="has-submenu">
-          <a href="{{ item.url }}" class="submenu-toggle" aria-expanded="false">{{ item.title }}
-            <span class="submenu-arrow">▼</span>
+    {# Верхняя строка: логотип, телефон, поиск, версия для слабовидящих #}
+    <div class="header-top row align-items-center">
+      {# Логотип и название #}
+      <div class="col-auto header-brand">
+        <a href="/" class="header-brand-link" aria-label="{{ site.title }} - главная страница">
+          <img src="/assets/images/logo.png" alt="{{ site.title }} - логотип" width="60" height="60" class="header-logo" onerror="this.style.display='none'">
+          <span class="header-site-name">{{ site.title }}</span>
+        </a>
+      </div>
+      
+      {# Правая часть верхней строки #}
+      <div class="col-auto ms-auto header-actions d-flex align-items-center gap-2 gap-md-3">
+        {# Телефон #}
+        <div class="header-phone">
+          <a href="{{ contacts.phone_link | default('tel:+78637220000') }}" class="header-phone-link" aria-label="Позвонить: {{ contacts.phone | default('+7 (86372) 2-00-00') }}">
+            <i class="bi bi-telephone-fill" aria-hidden="true"></i>
+            <span class="phone-text d-none d-md-inline">{{ contacts.phone | default('+7 (86372) 2-00-00') }}</span>
           </a>
-          <ul class="submenu">
-            {% for child in item.children %}
-            <li><a href="{{ child.url }}">{{ child.title }}</a></li>
+        </div>
+        
+        {# Поиск по сайту #}
+        <div class="header-search">
+          <button 
+            type="button" 
+            class="btn btn-icon header-search-btn" 
+            data-bs-toggle="modal" 
+            data-bs-target="#searchModal" 
+            aria-label="Поиск по сайту"
+          >
+            <i class="bi bi-search" aria-hidden="true"></i>
+          </button>
+        </div>
+        
+        {# Версия для слабовидящих #}
+        <div class="header-a11y">
+          <button 
+            type="button" 
+            class="btn btn-icon header-a11y-btn" 
+            id="a11yToggle" 
+            aria-label="Версия для слабовидящих"
+            aria-expanded="false"
+            aria-controls="a11yPanel"
+          >
+            <i class="bi bi-eye" aria-hidden="true"></i>
+          </button>
+        </div>
+        
+        {# Бургер-меню для мобильных #}
+        <button 
+          class="navbar-toggler d-lg-none ms-2" 
+          type="button" 
+          data-bs-toggle="collapse" 
+          data-bs-target="#navbarMain" 
+          aria-controls="navbarMain" 
+          aria-expanded="false" 
+          aria-label="Меню"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      </div>
+    </div>
+    
+    {# Нижняя строка: основная навигация #}
+    <nav class="navbar navbar-expand-lg header-nav" aria-label="Главное меню">
+      <div class="container-fluid px-0">
+        {# Сворачиваемое содержимое меню #}
+        <div class="collapse navbar-collapse" id="navbarMain">
+          <ul class="navbar-nav me-auto">
+            {% for item in menu.main %}
+              {% if item.children %}
+                <li class="nav-item dropdown">
+                  <a 
+                    class="nav-link dropdown-toggle" 
+                    href="{{ item.url }}" 
+                    id="navbarDropdown{{ loop.index }}"
+                    role="button"
+                    data-bs-toggle="dropdown" 
+                    aria-expanded="false"
+                    aria-haspopup="true"
+                  >
+                    {{ item.title }}
+                  </a>
+                  <ul class="dropdown-menu" aria-labelledby="navbarDropdown{{ loop.index }}">
+                    {% for child in item.children %}
+                      <li>
+                        <a class="dropdown-item" href="{{ child.url }}">
+                          {{ child.title }}
+                        </a>
+                      </li>
+                    {% endfor %}
+                  </ul>
+                </li>
+              {% else %}
+                <li class="nav-item">
+                  <a 
+                    class="nav-link{% if page.url == item.url %} active{% endif %}" 
+                    href="{{ item.url }}"
+                    {% if page.url == item.url %}aria-current="page"{% endif %}
+                  >
+                    {{ item.title }}
+                  </a>
+                </li>
+              {% endif %}
             {% endfor %}
           </ul>
-        </li>
-        {% else %}
-        <li><a href="{{ item.url }}" {% if page.url == item.url %}class="active"{% endif %}>{{ item.title }}</a></li>
-        {% endif %}
-        {% endfor %}
-      </ul>
+          
+          {# Кнопка CTA (Call to Action) #}
+          <div class="header-cta">
+            <a href="/abiturientam/priemnaya-kampaniya/" class="btn btn-primary cta-button">
+              Подать заявку
+            </a>
+          </div>
+        </div>
+      </div>
     </nav>
     
-    <!-- Выбор рубрики сайта -->
-    {% include "partials/rubric-selector.njk" %}
+    {# Рубрикатор (выпадающий список разделов) #}
+    {% if rubrics and rubrics.main_rubrics %}
+    <div class="header-rubric-selector mt-2">
+      {% include "partials/rubric-selector.njk" %}
+    </div>
+    {% endif %}
   </div>
 </header>
+
+{# Модальное окно поиска #}
+{% include "partials/search-modal.njk" %}
+
+{# Панель настроек доступности #}
+<div class="a11y-panel" id="a11yPanel" hidden role="dialog" aria-labelledby="a11yPanelTitle" aria-modal="true">
+  <div class="a11y-panel-content">
+    <h3 id="a11yPanelTitle">Настройки доступности</h3>
+    <div class="a11y-options">
+      <label class="a11y-option">
+        <input type="checkbox" id="a11yLargeFont" aria-describedby="a11yLargeFontDesc">
+        <span>Увеличенный шрифт</span>
+      </label>
+      <small id="a11yLargeFontDesc" class="visually-hidden">Увеличивает размер шрифта на сайте</small>
+      
+      <label class="a11y-option">
+        <input type="checkbox" id="a11yHighContrast" aria-describedby="a11yHighContrastDesc">
+        <span>Высокая контрастность</span>
+      </label>
+      <small id="a11yHighContrastDesc" class="visually-hidden">Включает режим высокой контрастности</small>
+      
+      <label class="a11y-option">
+        <input type="checkbox" id="a11yNoAnimations" aria-describedby="a11yNoAnimationsDesc">
+        <span>Отключить анимации</span>
+      </label>
+      <small id="a11yNoAnimationsDesc" class="visually-hidden">Отключает все анимации на сайте</small>
+    </div>
+    <button type="button" class="a11y-reset" id="a11yReset">Сбросить настройки</button>
+    <button type="button" class="a11y-close" id="a11yClose" aria-label="Закрыть панель настроек">Закрыть</button>
+  </div>
+</div>

@@ -101,214 +101,542 @@
     </div>
   </div>
   
-  <header class="site-header">
+  
+
+
+
+
+
+
+
+<header class="site-header" role="banner">
   <div class="container">
-    <a href="/" class="logo">
-      <span class="logo-text">ГБПОУ РО &quot;СИТ&quot;</span>
-    </a>
     
-    <!-- Mobile menu toggle -->
-    <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Меню" aria-expanded="false" aria-controls="mainNavigation">
-      <span class="hamburger"></span>
-    </button>
+    <div class="header-top row align-items-center">
+      
+      <div class="col-auto header-brand">
+        <a href="/" class="header-brand-link" aria-label="ГБПОУ РО &quot;СИТ&quot; - главная страница">
+          <img src="/assets/images/logo.png" alt="ГБПОУ РО &quot;СИТ&quot; - логотип" width="60" height="60" class="header-logo" onerror="this.style.display='none'">
+          <span class="header-site-name">ГБПОУ РО &quot;СИТ&quot;</span>
+        </a>
+      </div>
+      
+      
+      <div class="col-auto ms-auto header-actions d-flex align-items-center gap-2 gap-md-3">
+        
+        <div class="header-phone">
+          <a href="tel:+78637220000" class="header-phone-link" aria-label="Позвонить: +7 (86372) 2-00-00">
+            <i class="bi bi-telephone-fill" aria-hidden="true"></i>
+            <span class="phone-text d-none d-md-inline">+7 (86372) 2-00-00</span>
+          </a>
+        </div>
+        
+        
+        <div class="header-search">
+          <button 
+            type="button" 
+            class="btn btn-icon header-search-btn" 
+            data-bs-toggle="modal" 
+            data-bs-target="#searchModal" 
+            aria-label="Поиск по сайту"
+          >
+            <i class="bi bi-search" aria-hidden="true"></i>
+          </button>
+        </div>
+        
+        
+        <div class="header-a11y">
+          <button 
+            type="button" 
+            class="btn btn-icon header-a11y-btn" 
+            id="a11yToggle" 
+            aria-label="Версия для слабовидящих"
+            aria-expanded="false"
+            aria-controls="a11yPanel"
+          >
+            <i class="bi bi-eye" aria-hidden="true"></i>
+          </button>
+        </div>
+        
+        
+        <button 
+          class="navbar-toggler d-lg-none ms-2" 
+          type="button" 
+          data-bs-toggle="collapse" 
+          data-bs-target="#navbarMain" 
+          aria-controls="navbarMain" 
+          aria-expanded="false" 
+          aria-label="Меню"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      </div>
+    </div>
     
-    <nav class="main-nav" id="mainNavigation">
-      <ul>
+    
+    <nav class="navbar navbar-expand-lg header-nav" aria-label="Главное меню">
+      <div class="container-fluid px-0">
         
-        
-        <li><a href="/" >Главная</a></li>
-        
-        
-        
-        <li class="has-submenu">
-          <a href="/about/" class="submenu-toggle" aria-expanded="false">О техникуме
-            <span class="submenu-arrow">▼</span>
-          </a>
-          <ul class="submenu">
+        <div class="collapse navbar-collapse" id="navbarMain">
+          <ul class="navbar-nav me-auto">
             
-            <li><a href="/about/osnovnye-svedenija/">Основные сведения</a></li>
+              
+                <li class="nav-item">
+                  <a 
+                    class="nav-link" 
+                    href="/"
+                    
+                  >
+                    Главная
+                  </a>
+                </li>
+              
             
-            <li><a href="/about/#history">История</a></li>
+              
+                <li class="nav-item dropdown">
+                  <a 
+                    class="nav-link dropdown-toggle" 
+                    href="/about/" 
+                    id="navbarDropdown2"
+                    role="button"
+                    data-bs-toggle="dropdown" 
+                    aria-expanded="false"
+                    aria-haspopup="true"
+                  >
+                    О техникуме
+                  </a>
+                  <ul class="dropdown-menu" aria-labelledby="navbarDropdown2">
+                    
+                      <li>
+                        <a class="dropdown-item" href="/about/osnovnye-svedenija/">
+                          Основные сведения
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a class="dropdown-item" href="/about/#history">
+                          История
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a class="dropdown-item" href="/about/#leadership">
+                          Руководство
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a class="dropdown-item" href="/contacts/">
+                          Контакты
+                        </a>
+                      </li>
+                    
+                  </ul>
+                </li>
+              
             
-            <li><a href="/about/#leadership">Руководство</a></li>
+              
+                <li class="nav-item dropdown">
+                  <a 
+                    class="nav-link dropdown-toggle" 
+                    href="/svedenija/" 
+                    id="navbarDropdown3"
+                    role="button"
+                    data-bs-toggle="dropdown" 
+                    aria-expanded="false"
+                    aria-haspopup="true"
+                  >
+                    Сведения об образовательной организации
+                  </a>
+                  <ul class="dropdown-menu" aria-labelledby="navbarDropdown3">
+                    
+                      <li>
+                        <a class="dropdown-item" href="/svedenija/documents/">
+                          Документы
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a class="dropdown-item" href="/svedenija/structure/">
+                          Структура и органы управления
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a class="dropdown-item" href="/svedenija/education/">
+                          Образование
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a class="dropdown-item" href="/svedenija/employees/">
+                          Руководство и ППС
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a class="dropdown-item" href="/svedenija/objects/">
+                          Материально-техническое обеспечение
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a class="dropdown-item" href="/svedenija/stipend/">
+                          Стипендии и поддержка
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a class="dropdown-item" href="/svedenija/finance/">
+                          Финансово-хозяйственная деятельность
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a class="dropdown-item" href="/svedenija/vacancies/">
+                          Вакантные места
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a class="dropdown-item" href="/svedenija/access/">
+                          Доступная среда
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a class="dropdown-item" href="/svedenija/international/">
+                          Международное сотрудничество
+                        </a>
+                      </li>
+                    
+                  </ul>
+                </li>
+              
             
-            <li><a href="/contacts/">Контакты</a></li>
+              
+                <li class="nav-item dropdown">
+                  <a 
+                    class="nav-link dropdown-toggle" 
+                    href="/abiturientam/" 
+                    id="navbarDropdown4"
+                    role="button"
+                    data-bs-toggle="dropdown" 
+                    aria-expanded="false"
+                    aria-haspopup="true"
+                  >
+                    Абитуриентам
+                  </a>
+                  <ul class="dropdown-menu" aria-labelledby="navbarDropdown4">
+                    
+                      <li>
+                        <a class="dropdown-item" href="/abiturientam/slovo-direktora/">
+                          Слово директора
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a class="dropdown-item" href="/abiturientam/#rules">
+                          Правила приема
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a class="dropdown-item" href="/abiturientam/#specialties">
+                          Специальности
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a class="dropdown-item" href="/abiturientam/#commission">
+                          Приемная комиссия
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a class="dropdown-item" href="/abiturientam/den-otkrytyh-dverej/">
+                          День открытых дверей
+                        </a>
+                      </li>
+                    
+                  </ul>
+                </li>
+              
+            
+              
+                <li class="nav-item dropdown">
+                  <a 
+                    class="nav-link dropdown-toggle" 
+                    href="/uchebno-metodicheskaja-rabota/" 
+                    id="navbarDropdown5"
+                    role="button"
+                    data-bs-toggle="dropdown" 
+                    aria-expanded="false"
+                    aria-haspopup="true"
+                  >
+                    Учебно-методическая работа
+                  </a>
+                  <ul class="dropdown-menu" aria-labelledby="navbarDropdown5">
+                    
+                      <li>
+                        <a class="dropdown-item" href="/uchebno-metodicheskaja-rabota/#materials">
+                          Материалы УМР
+                        </a>
+                      </li>
+                    
+                  </ul>
+                </li>
+              
+            
+              
+                <li class="nav-item dropdown">
+                  <a 
+                    class="nav-link dropdown-toggle" 
+                    href="/vospitanie/" 
+                    id="navbarDropdown6"
+                    role="button"
+                    data-bs-toggle="dropdown" 
+                    aria-expanded="false"
+                    aria-haspopup="true"
+                  >
+                    Воспитание
+                  </a>
+                  <ul class="dropdown-menu" aria-labelledby="navbarDropdown6">
+                    
+                      <li>
+                        <a class="dropdown-item" href="/vospitanie/#directions">
+                          Направления воспитания
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a class="dropdown-item" href="/vospitanie/velikaja-pobeda/">
+                          Великая Победа
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a class="dropdown-item" href="/vospitanie/volonterstvo/">
+                          Волонтерское движение
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a class="dropdown-item" href="/vospitanie/kulturno-massovaja/">
+                          Культурно-массовая работа
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a class="dropdown-item" href="/vospitanie/mediacentr/">
+                          Медиацентр «Новости СИТ»
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a class="dropdown-item" href="/vospitanie/pozdravlenija/">
+                          Поздравления
+                        </a>
+                      </li>
+                    
+                  </ul>
+                </li>
+              
+            
+              
+                <li class="nav-item dropdown">
+                  <a 
+                    class="nav-link dropdown-toggle" 
+                    href="/sotrudnichestvo/" 
+                    id="navbarDropdown7"
+                    role="button"
+                    data-bs-toggle="dropdown" 
+                    aria-expanded="false"
+                    aria-haspopup="true"
+                  >
+                    Сотрудничество
+                  </a>
+                  <ul class="dropdown-menu" aria-labelledby="navbarDropdown7">
+                    
+                      <li>
+                        <a class="dropdown-item" href="/sotrudnichestvo/predprijatija/">
+                          С предприятиями
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a class="dropdown-item" href="/sotrudnichestvo/shkoly/">
+                          Со школами
+                        </a>
+                      </li>
+                    
+                  </ul>
+                </li>
+              
+            
+              
+                <li class="nav-item dropdown">
+                  <a 
+                    class="nav-link dropdown-toggle" 
+                    href="/bezopasnost/" 
+                    id="navbarDropdown8"
+                    role="button"
+                    data-bs-toggle="dropdown" 
+                    aria-expanded="false"
+                    aria-haspopup="true"
+                  >
+                    Безопасность
+                  </a>
+                  <ul class="dropdown-menu" aria-labelledby="navbarDropdown8">
+                    
+                      <li>
+                        <a class="dropdown-item" href="/bezopasnost/#complex">
+                          Комплексная безопасность
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a class="dropdown-item" href="/bezopasnost/extremizm/">
+                          Профилактика экстремизма
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a class="dropdown-item" href="/bezopasnost/antikorrupcija/">
+                          Противодействие коррупции
+                        </a>
+                      </li>
+                    
+                  </ul>
+                </li>
+              
+            
+              
+                <li class="nav-item dropdown">
+                  <a 
+                    class="nav-link dropdown-toggle" 
+                    href="/studentam-i-roditeljam/" 
+                    id="navbarDropdown9"
+                    role="button"
+                    data-bs-toggle="dropdown" 
+                    aria-expanded="false"
+                    aria-haspopup="true"
+                  >
+                    Студентам и родителям
+                  </a>
+                  <ul class="dropdown-menu" aria-labelledby="navbarDropdown9">
+                    
+                      <li>
+                        <a class="dropdown-item" href="/news/">
+                          Новости
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a class="dropdown-item" href="/studentam-i-roditeljam/raspisanie/">
+                          Расписание занятий
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a class="dropdown-item" href="/studentam-i-roditeljam/roditeljam/">
+                          Родителям
+                        </a>
+                      </li>
+                    
+                  </ul>
+                </li>
+              
+            
+              
+                <li class="nav-item dropdown">
+                  <a 
+                    class="nav-link dropdown-toggle" 
+                    href="/career/" 
+                    id="navbarDropdown10"
+                    role="button"
+                    data-bs-toggle="dropdown" 
+                    aria-expanded="false"
+                    aria-haspopup="true"
+                  >
+                    Центр Карьеры
+                  </a>
+                  <ul class="dropdown-menu" aria-labelledby="navbarDropdown10">
+                    
+                      <li>
+                        <a class="dropdown-item" href="/career/#about">
+                          О центре
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a class="dropdown-item" href="/career/#vacancies">
+                          Вакансии для выпускников
+                        </a>
+                      </li>
+                    
+                      <li>
+                        <a class="dropdown-item" href="/career/#partners">
+                          Партнеры
+                        </a>
+                      </li>
+                    
+                  </ul>
+                </li>
+              
+            
+              
+                <li class="nav-item">
+                  <a 
+                    class="nav-link" 
+                    href="/professionaly-2026/"
+                    
+                  >
+                    Профессионалы-2026
+                  </a>
+                </li>
+              
+            
+              
+                <li class="nav-item">
+                  <a 
+                    class="nav-link" 
+                    href="/news/"
+                    
+                  >
+                    Новости
+                  </a>
+                </li>
+              
+            
+              
+                <li class="nav-item">
+                  <a 
+                    class="nav-link" 
+                    href="/contacts/"
+                    
+                  >
+                    Контакты
+                  </a>
+                </li>
+              
             
           </ul>
-        </li>
-        
-        
-        
-        <li class="has-submenu">
-          <a href="/svedenija/" class="submenu-toggle" aria-expanded="false">Сведения об образовательной организации
-            <span class="submenu-arrow">▼</span>
-          </a>
-          <ul class="submenu">
-            
-            <li><a href="/svedenija/documents/">Документы</a></li>
-            
-            <li><a href="/svedenija/structure/">Структура и органы управления</a></li>
-            
-            <li><a href="/svedenija/education/">Образование</a></li>
-            
-            <li><a href="/svedenija/employees/">Руководство и ППС</a></li>
-            
-            <li><a href="/svedenija/objects/">Материально-техническое обеспечение</a></li>
-            
-            <li><a href="/svedenija/stipend/">Стипендии и поддержка</a></li>
-            
-            <li><a href="/svedenija/finance/">Финансово-хозяйственная деятельность</a></li>
-            
-            <li><a href="/svedenija/vacancies/">Вакантные места</a></li>
-            
-            <li><a href="/svedenija/access/">Доступная среда</a></li>
-            
-            <li><a href="/svedenija/international/">Международное сотрудничество</a></li>
-            
-          </ul>
-        </li>
-        
-        
-        
-        <li class="has-submenu">
-          <a href="/abiturientam/" class="submenu-toggle" aria-expanded="false">Абитуриентам
-            <span class="submenu-arrow">▼</span>
-          </a>
-          <ul class="submenu">
-            
-            <li><a href="/abiturientam/slovo-direktora/">Слово директора</a></li>
-            
-            <li><a href="/abiturientam/#rules">Правила приема</a></li>
-            
-            <li><a href="/abiturientam/#specialties">Специальности</a></li>
-            
-            <li><a href="/abiturientam/#commission">Приемная комиссия</a></li>
-            
-            <li><a href="/abiturientam/den-otkrytyh-dverej/">День открытых дверей</a></li>
-            
-          </ul>
-        </li>
-        
-        
-        
-        <li class="has-submenu">
-          <a href="/uchebno-metodicheskaja-rabota/" class="submenu-toggle" aria-expanded="false">Учебно-методическая работа
-            <span class="submenu-arrow">▼</span>
-          </a>
-          <ul class="submenu">
-            
-            <li><a href="/uchebno-metodicheskaja-rabota/#materials">Материалы УМР</a></li>
-            
-          </ul>
-        </li>
-        
-        
-        
-        <li class="has-submenu">
-          <a href="/vospitanie/" class="submenu-toggle" aria-expanded="false">Воспитание
-            <span class="submenu-arrow">▼</span>
-          </a>
-          <ul class="submenu">
-            
-            <li><a href="/vospitanie/#directions">Направления воспитания</a></li>
-            
-            <li><a href="/vospitanie/velikaja-pobeda/">Великая Победа</a></li>
-            
-            <li><a href="/vospitanie/volonterstvo/">Волонтерское движение</a></li>
-            
-            <li><a href="/vospitanie/kulturno-massovaja/">Культурно-массовая работа</a></li>
-            
-            <li><a href="/vospitanie/mediacentr/">Медиацентр «Новости СИТ»</a></li>
-            
-            <li><a href="/vospitanie/pozdravlenija/">Поздравления</a></li>
-            
-          </ul>
-        </li>
-        
-        
-        
-        <li class="has-submenu">
-          <a href="/sotrudnichestvo/" class="submenu-toggle" aria-expanded="false">Сотрудничество
-            <span class="submenu-arrow">▼</span>
-          </a>
-          <ul class="submenu">
-            
-            <li><a href="/sotrudnichestvo/predprijatija/">С предприятиями</a></li>
-            
-            <li><a href="/sotrudnichestvo/shkoly/">Со школами</a></li>
-            
-          </ul>
-        </li>
-        
-        
-        
-        <li class="has-submenu">
-          <a href="/bezopasnost/" class="submenu-toggle" aria-expanded="false">Безопасность
-            <span class="submenu-arrow">▼</span>
-          </a>
-          <ul class="submenu">
-            
-            <li><a href="/bezopasnost/#complex">Комплексная безопасность</a></li>
-            
-            <li><a href="/bezopasnost/extremizm/">Профилактика экстремизма</a></li>
-            
-            <li><a href="/bezopasnost/antikorrupcija/">Противодействие коррупции</a></li>
-            
-          </ul>
-        </li>
-        
-        
-        
-        <li class="has-submenu">
-          <a href="/studentam-i-roditeljam/" class="submenu-toggle" aria-expanded="false">Студентам и родителям
-            <span class="submenu-arrow">▼</span>
-          </a>
-          <ul class="submenu">
-            
-            <li><a href="/news/">Новости</a></li>
-            
-            <li><a href="/studentam-i-roditeljam/raspisanie/">Расписание занятий</a></li>
-            
-            <li><a href="/studentam-i-roditeljam/roditeljam/">Родителям</a></li>
-            
-          </ul>
-        </li>
-        
-        
-        
-        <li class="has-submenu">
-          <a href="/career/" class="submenu-toggle" aria-expanded="false">Центр Карьеры
-            <span class="submenu-arrow">▼</span>
-          </a>
-          <ul class="submenu">
-            
-            <li><a href="/career/#about">О центре</a></li>
-            
-            <li><a href="/career/#vacancies">Вакансии для выпускников</a></li>
-            
-            <li><a href="/career/#partners">Партнеры</a></li>
-            
-          </ul>
-        </li>
-        
-        
-        
-        <li><a href="/professionaly-2026/" >Профессионалы-2026</a></li>
-        
-        
-        
-        <li><a href="/news/" >Новости</a></li>
-        
-        
-        
-        <li><a href="/contacts/" >Контакты</a></li>
-        
-        
-      </ul>
+          
+          
+          <div class="header-cta">
+            <a href="/abiturientam/priemnaya-kampaniya/" class="btn btn-primary cta-button">
+              Подать заявку
+            </a>
+          </div>
+        </div>
+      </div>
     </nav>
     
-    <!-- Выбор рубрики сайта -->
     
+    
+    <div class="header-rubric-selector mt-2">
+      
 
 
 <div class="rubric-selector" data-rubric-selector>
@@ -1318,8 +1646,90 @@
   });
 </script>
 
+    </div>
+    
   </div>
 </header>
+
+
+
+<div class="search-modal" id="searchModal" role="dialog" aria-labelledby="searchModalTitle" aria-modal="true" hidden>
+  <div class="search-modal-overlay" data-search-close></div>
+  
+  <div class="search-modal-content">
+    <header class="search-modal-header">
+      <h2 id="searchModalTitle" class="search-modal-title">Поиск по сайту</h2>
+      <button 
+        type="button" 
+        class="search-modal-close" 
+        data-search-close
+        aria-label="Закрыть поиск"
+      >
+        ×
+      </button>
+    </header>
+    
+    <form class="search-modal-form" data-search-form>
+      <div class="search-input-wrapper">
+        <input 
+          type="search" 
+          class="search-input" 
+          placeholder="Введите запрос..." 
+          data-search-input
+          aria-label="Поисковый запрос"
+          autocomplete="off"
+        >
+        <button type="submit" class="search-submit" aria-label="Найти">
+          <span class="visually-hidden">Найти</span>
+        </button>
+      </div>
+    </form>
+    
+    <div class="search-results" data-search-results aria-live="polite">
+      
+    </div>
+    
+    <div class="search-loading" data-search-loading hidden>
+      <span class="spinner"></span>
+      <span>Поиск...</span>
+    </div>
+    
+    <footer class="search-modal-footer">
+      <p class="search-hint">
+        Введите минимум 2 символа для поиска. Поиск осуществляется по заголовкам и содержанию материалов.
+      </p>
+    </footer>
+  </div>
+</div>
+
+
+
+<div class="a11y-panel" id="a11yPanel" hidden role="dialog" aria-labelledby="a11yPanelTitle" aria-modal="true">
+  <div class="a11y-panel-content">
+    <h3 id="a11yPanelTitle">Настройки доступности</h3>
+    <div class="a11y-options">
+      <label class="a11y-option">
+        <input type="checkbox" id="a11yLargeFont" aria-describedby="a11yLargeFontDesc">
+        <span>Увеличенный шрифт</span>
+      </label>
+      <small id="a11yLargeFontDesc" class="visually-hidden">Увеличивает размер шрифта на сайте</small>
+      
+      <label class="a11y-option">
+        <input type="checkbox" id="a11yHighContrast" aria-describedby="a11yHighContrastDesc">
+        <span>Высокая контрастность</span>
+      </label>
+      <small id="a11yHighContrastDesc" class="visually-hidden">Включает режим высокой контрастности</small>
+      
+      <label class="a11y-option">
+        <input type="checkbox" id="a11yNoAnimations" aria-describedby="a11yNoAnimationsDesc">
+        <span>Отключить анимации</span>
+      </label>
+      <small id="a11yNoAnimationsDesc" class="visually-hidden">Отключает все анимации на сайте</small>
+    </div>
+    <button type="button" class="a11y-reset" id="a11yReset">Сбросить настройки</button>
+    <button type="button" class="a11y-close" id="a11yClose" aria-label="Закрыть панель настроек">Закрыть</button>
+  </div>
+</div>
 
   <main class="site-main" id="main-content" tabindex="-1">
     <h1>Сведения об образовательной организации</h1>
