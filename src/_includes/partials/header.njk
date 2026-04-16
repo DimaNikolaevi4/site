@@ -1,137 +1,21 @@
-{# Шапка сайта ГБПОУ РО "СИТ" #}
-{# Секция 1: Header компонент с поддержкой доступности и адаптивности #}
+{# Заглушка шапки сайта ГБПОУ РО "СИТ" #}
 
-{% set site = site %}
-{% set menu = menu %}
-{% set contacts = contacts %}
-{% set rubrics = rubrics %}
-
-<header class="site-header" role="banner">
+<header class="site-header">
   <div class="container">
-    {# Верхняя строка: логотип, телефон, поиск, версия для слабовидящих #}
-    <div class="header-top row align-items-center">
-      {# Логотип и название #}
-      <div class="col-auto header-brand">
-        <a href="/" class="header-brand-link" aria-label="{{ site.title }} - главная страница">
-          <img src="/assets/images/logo.png" alt="{{ site.title }} - логотип" width="60" height="60" class="header-logo" onerror="this.style.display='none'">
-          <span class="header-site-name">{{ site.title }}</span>
+    <div class="row align-items-center py-3">
+      <div class="col-auto">
+        <a href="/" class="text-decoration-none">
+          <strong>ГБПОУ РО "СИТ"</strong>
         </a>
       </div>
-      
-      {# Правая часть верхней строки #}
-      <div class="col-auto ms-auto header-actions d-flex align-items-center gap-2 gap-md-3">
-        {# Телефон #}
-        <div class="header-phone">
-          <a href="{{ contacts.phone_link | default('tel:+78637220000') }}" class="header-phone-link" aria-label="Позвонить: {{ contacts.phone | default('+7 (86372) 2-00-00') }}">
-            <i class="bi bi-telephone-fill" aria-hidden="true"></i>
-            <span class="phone-text d-none d-md-inline">{{ contacts.phone | default('+7 (86372) 2-00-00') }}</span>
-          </a>
-        </div>
-        
-        {# Поиск по сайту #}
-        <div class="header-search">
-          <button 
-            type="button" 
-            class="btn btn-icon header-search-btn" 
-            data-bs-toggle="modal" 
-            data-bs-target="#searchModal" 
-            aria-label="Поиск по сайту"
-          >
-            <i class="bi bi-search" aria-hidden="true"></i>
-          </button>
-        </div>
-        
-        {# Версия для слабовидящих - кнопка в шапке #}
-        <div class="header-a11y">
-          <button 
-            type="button" 
-            class="btn btn-icon header-a11y-btn" 
-            id="a11yToggleHeader" 
-            aria-label="Версия для слабовидящих"
-            aria-expanded="false"
-            aria-controls="a11yPanel"
-          >
-            <i class="bi bi-eye" aria-hidden="true"></i>
-          </button>
-        </div>
-        
-        {# Бургер-меню для мобильных #}
-        <button 
-          class="navbar-toggler d-lg-none ms-2" 
-          type="button" 
-          data-bs-toggle="collapse" 
-          data-bs-target="#navbarMain" 
-          aria-controls="navbarMain" 
-          aria-expanded="false" 
-          aria-label="Меню"
-        >
-          <span class="navbar-toggler-icon"></span>
-        </button>
-      </div>
-    </div>
-    
-    {# Нижняя строка: основная навигация #}
-    <nav class="navbar navbar-expand-lg header-nav" aria-label="Главное меню">
-      <div class="container-fluid px-0">
-        {# Сворачиваемое содержимое меню #}
-        <div class="collapse navbar-collapse" id="navbarMain">
-          <ul class="navbar-nav me-auto">
-            {% for item in menu.main %}
-              {% if item.children %}
-                <li class="nav-item dropdown">
-                  <a 
-                    class="nav-link dropdown-toggle" 
-                    href="{{ item.url }}" 
-                    id="navbarDropdown{{ loop.index }}"
-                    role="button"
-                    data-bs-toggle="dropdown" 
-                    aria-expanded="false"
-                    aria-haspopup="true"
-                  >
-                    {{ item.title }}
-                  </a>
-                  <ul class="dropdown-menu" aria-labelledby="navbarDropdown{{ loop.index }}">
-                    {% for child in item.children %}
-                      <li>
-                        <a class="dropdown-item" href="{{ child.url }}">
-                          {{ child.title }}
-                        </a>
-                      </li>
-                    {% endfor %}
-                  </ul>
-                </li>
-              {% else %}
-                <li class="nav-item">
-                  <a 
-                    class="nav-link{% if page.url == item.url %} active{% endif %}" 
-                    href="{{ item.url }}"
-                    {% if page.url == item.url %}aria-current="page"{% endif %}
-                  >
-                    {{ item.title }}
-                  </a>
-                </li>
-              {% endif %}
-            {% endfor %}
+      <div class="col-auto ms-auto">
+        <nav>
+          <ul class="nav gap-3">
+            <li class="nav-item"><a href="/" class="nav-link">Главная</a></li>
+            <li class="nav-item"><a href="/contacts/" class="nav-link">Контакты</a></li>
           </ul>
-          
-          {# Кнопка CTA (Call to Action) #}
-          <div class="header-cta">
-            <a href="/abiturientam/priemnaya-kampaniya/" class="btn btn-primary cta-button">
-              Подать заявку
-            </a>
-          </div>
-        </div>
+        </nav>
       </div>
-    </nav>
-    
-    {# Рубрикатор (выпадающий список разделов) #}
-    {% if rubrics and rubrics.main_rubrics %}
-    <div class="header-rubric-selector mt-2">
-      {% include "partials/rubric-selector.njk" %}
     </div>
-    {% endif %}
   </div>
 </header>
-
-{# Модальное окно поиска #}
-{% include "partials/search-modal.njk" %}
