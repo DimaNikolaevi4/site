@@ -2,6 +2,7 @@
 layout: base.njk
 title: Главная
 permalink: /
+fullWidth: true
 eleventyNavigation:
   key: home
   parent: main

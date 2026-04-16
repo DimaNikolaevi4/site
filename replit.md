@@ -30,6 +30,23 @@ A static website for the Salsk Industrial Technical School (ГБПОУ РО "С�
 - **Build:** `npm run build` (outputs to `public/`)
 - **Package manager:** npm
 
+## Layout System
+
+- All pages use `layout: base.njk` directly (no chained layouts currently in use)
+- `base.njk` wraps content in `.page-body` (max-width container + prose styles) unless frontmatter has `fullWidth: true`
+- `src/index.md` has `fullWidth: true` so the home page hero slider remains edge-to-edge
+- `.page-body` provides responsive typography for h1–h4, p, ul, ol, tables, blockquote, a, img
+- Header: Bootstrap 5 sticky navbar with desktop info bar, simplified mobile bar, rubric selector
+- Footer: 3-column grid (brand/social, nav links, contacts) from YAML data; collapses to 1 column on mobile
+
+## Key Data Files
+
+- `src/_data/contacts.yaml` — phones, email, address, working hours, EOS URL
+- `src/_data/social.yaml` — VK, RuTube, Yandex Zen
+- `src/_data/menu.yaml` — main navigation
+- `src/_data/rubrics.yaml` — rubric selector options
+- `src/_data/site.yaml` — site title, description, URL, language
+
 ## Deployment
 
 Configured as a **static** deployment:
