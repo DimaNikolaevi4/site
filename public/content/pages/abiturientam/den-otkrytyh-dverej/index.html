@@ -29,6 +29,10 @@
   <meta name="twitter:description" content="Официальный сайт Сальского индустриального техникума — Информация о днях открытых дверей в Сальском индустриальном техникуме">
   <meta name="twitter:image" content="https://сит-сальск.рф/assets/images/og-image.jpg">
   
+  <!-- Bootstrap 5 CSS + Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.0/font/bootstrap-icons.min.css">
+  
   <link rel="stylesheet" href="/assets/css/style.css">
   <script>
     // Prevent FOUC by applying accessibility settings immediately
@@ -103,1605 +107,595 @@
   
   
 
-
-
-
-
-
-
-<header class="site-header" role="banner">
+<header class="site-header">
   <div class="container">
     
-    <div class="header-top row align-items-center">
-      
-      <div class="col-auto header-brand">
-        <a href="/" class="header-brand-link" aria-label="ГБПОУ РО &quot;СИТ&quot; - главная страница">
-          <img src="/assets/images/logo.png" alt="ГБПОУ РО &quot;СИТ&quot; - логотип" width="60" height="60" class="header-logo" onerror="this.style.display='none'">
-          <span class="header-site-name">ГБПОУ РО &quot;СИТ&quot;</span>
+    <!-- ВЕРХНЯЯ СТРОКА: логотип, название, герб -->
+    <div class="header-top">
+      <div class="header-brand-row">
+        <a href="/" class="logo-link" title="Главная страница ГБПОУ РО «Сальский индустриальный техникум»">
+          <img src="/assets/images/logo.png" alt="Логотип ГБПОУ РО «Сальский индустриальный техникум»" onerror="this.style.display='none'">
         </a>
-      </div>
-      
-      
-      <div class="col-auto ms-auto header-actions d-flex align-items-center gap-2 gap-md-3">
         
-        <div class="header-phone">
-          <a href="tel:+78637220000" class="header-phone-link" aria-label="Позвонить: +7 (86372) 2-00-00">
-            <i class="bi bi-telephone-fill" aria-hidden="true"></i>
-            <span class="phone-text d-none d-md-inline">+7 (86372) 2-00-00</span>
-          </a>
+        <div class="site-title">
+          ГБПОУ РО<br>
+          <small>«Сальский индустриальный техникум»</small>
         </div>
         
-        
-        <div class="header-search">
-          <button 
-            type="button" 
-            class="btn btn-icon header-search-btn" 
-            data-bs-toggle="modal" 
-            data-bs-target="#searchModal" 
-            aria-label="Поиск по сайту"
-          >
-            <i class="bi bi-search" aria-hidden="true"></i>
-          </button>
-        </div>
-        
-        
-        <div class="header-a11y">
-          <button 
-            type="button" 
-            class="btn btn-icon header-a11y-btn" 
-            id="a11yToggleHeader" 
-            aria-label="Версия для слабовидящих"
-            aria-expanded="false"
-            aria-controls="a11yPanel"
-          >
-            <i class="bi bi-eye" aria-hidden="true"></i>
-          </button>
-        </div>
-        
-        
-        <button 
-          class="navbar-toggler d-lg-none ms-2" 
-          type="button" 
-          data-bs-toggle="collapse" 
-          data-bs-target="#navbarMain" 
-          aria-controls="navbarMain" 
-          aria-expanded="false" 
-          aria-label="Меню"
-        >
-          <span class="navbar-toggler-icon"></span>
-        </button>
+        <a href="/" class="gerb-link" title="Герб Ростовской области — официальный сайт техникума">
+          <img src="/assets/images/gerb-red1.png" alt="Герб Ростовской области" onerror="this.style.display='none'">
+        </a>
       </div>
     </div>
     
-    
-    <nav class="navbar navbar-expand-lg header-nav" aria-label="Главное меню">
-      <div class="container-fluid px-0">
-        
-        <div class="collapse navbar-collapse" id="navbarMain">
-          <ul class="navbar-nav me-auto">
-            
-              
-                <li class="nav-item">
-                  <a 
-                    class="nav-link" 
-                    href="/"
-                    
-                  >
-                    Главная
-                  </a>
-                </li>
-              
-            
-              
-                <li class="nav-item dropdown">
-                  <a 
-                    class="nav-link dropdown-toggle" 
-                    href="/about/" 
-                    id="navbarDropdown2"
-                    role="button"
-                    data-bs-toggle="dropdown" 
-                    aria-expanded="false"
-                    aria-haspopup="true"
-                  >
-                    О техникуме
-                  </a>
-                  <ul class="dropdown-menu" aria-labelledby="navbarDropdown2">
-                    
-                      <li>
-                        <a class="dropdown-item" href="/about/osnovnye-svedenija/">
-                          Основные сведения
-                        </a>
-                      </li>
-                    
-                      <li>
-                        <a class="dropdown-item" href="/about/#history">
-                          История
-                        </a>
-                      </li>
-                    
-                      <li>
-                        <a class="dropdown-item" href="/about/#leadership">
-                          Руководство
-                        </a>
-                      </li>
-                    
-                      <li>
-                        <a class="dropdown-item" href="/contacts/">
-                          Контакты
-                        </a>
-                      </li>
-                    
-                  </ul>
-                </li>
-              
-            
-              
-                <li class="nav-item dropdown">
-                  <a 
-                    class="nav-link dropdown-toggle" 
-                    href="/svedenija/" 
-                    id="navbarDropdown3"
-                    role="button"
-                    data-bs-toggle="dropdown" 
-                    aria-expanded="false"
-                    aria-haspopup="true"
-                  >
-                    Сведения об образовательной организации
-                  </a>
-                  <ul class="dropdown-menu" aria-labelledby="navbarDropdown3">
-                    
-                      <li>
-                        <a class="dropdown-item" href="/svedenija/documents/">
-                          Документы
-                        </a>
-                      </li>
-                    
-                      <li>
-                        <a class="dropdown-item" href="/svedenija/structure/">
-                          Структура и органы управления
-                        </a>
-                      </li>
-                    
-                      <li>
-                        <a class="dropdown-item" href="/svedenija/education/">
-                          Образование
-                        </a>
-                      </li>
-                    
-                      <li>
-                        <a class="dropdown-item" href="/svedenija/employees/">
-                          Руководство и ППС
-                        </a>
-                      </li>
-                    
-                      <li>
-                        <a class="dropdown-item" href="/svedenija/objects/">
-                          Материально-техническое обеспечение
-                        </a>
-                      </li>
-                    
-                      <li>
-                        <a class="dropdown-item" href="/svedenija/stipend/">
-                          Стипендии и поддержка
-                        </a>
-                      </li>
-                    
-                      <li>
-                        <a class="dropdown-item" href="/svedenija/finance/">
-                          Финансово-хозяйственная деятельность
-                        </a>
-                      </li>
-                    
-                      <li>
-                        <a class="dropdown-item" href="/svedenija/vacancies/">
-                          Вакантные места
-                        </a>
-                      </li>
-                    
-                      <li>
-                        <a class="dropdown-item" href="/svedenija/access/">
-                          Доступная среда
-                        </a>
-                      </li>
-                    
-                      <li>
-                        <a class="dropdown-item" href="/svedenija/international/">
-                          Международное сотрудничество
-                        </a>
-                      </li>
-                    
-                  </ul>
-                </li>
-              
-            
-              
-                <li class="nav-item dropdown">
-                  <a 
-                    class="nav-link dropdown-toggle" 
-                    href="/abiturientam/" 
-                    id="navbarDropdown4"
-                    role="button"
-                    data-bs-toggle="dropdown" 
-                    aria-expanded="false"
-                    aria-haspopup="true"
-                  >
-                    Абитуриентам
-                  </a>
-                  <ul class="dropdown-menu" aria-labelledby="navbarDropdown4">
-                    
-                      <li>
-                        <a class="dropdown-item" href="/abiturientam/slovo-direktora/">
-                          Слово директора
-                        </a>
-                      </li>
-                    
-                      <li>
-                        <a class="dropdown-item" href="/abiturientam/#rules">
-                          Правила приема
-                        </a>
-                      </li>
-                    
-                      <li>
-                        <a class="dropdown-item" href="/abiturientam/#specialties">
-                          Специальности
-                        </a>
-                      </li>
-                    
-                      <li>
-                        <a class="dropdown-item" href="/abiturientam/#commission">
-                          Приемная комиссия
-                        </a>
-                      </li>
-                    
-                      <li>
-                        <a class="dropdown-item" href="/abiturientam/den-otkrytyh-dverej/">
-                          День открытых дверей
-                        </a>
-                      </li>
-                    
-                  </ul>
-                </li>
-              
-            
-              
-                <li class="nav-item dropdown">
-                  <a 
-                    class="nav-link dropdown-toggle" 
-                    href="/uchebno-metodicheskaja-rabota/" 
-                    id="navbarDropdown5"
-                    role="button"
-                    data-bs-toggle="dropdown" 
-                    aria-expanded="false"
-                    aria-haspopup="true"
-                  >
-                    Учебно-методическая работа
-                  </a>
-                  <ul class="dropdown-menu" aria-labelledby="navbarDropdown5">
-                    
-                      <li>
-                        <a class="dropdown-item" href="/uchebno-metodicheskaja-rabota/#materials">
-                          Материалы УМР
-                        </a>
-                      </li>
-                    
-                  </ul>
-                </li>
-              
-            
-              
-                <li class="nav-item dropdown">
-                  <a 
-                    class="nav-link dropdown-toggle" 
-                    href="/vospitanie/" 
-                    id="navbarDropdown6"
-                    role="button"
-                    data-bs-toggle="dropdown" 
-                    aria-expanded="false"
-                    aria-haspopup="true"
-                  >
-                    Воспитание
-                  </a>
-                  <ul class="dropdown-menu" aria-labelledby="navbarDropdown6">
-                    
-                      <li>
-                        <a class="dropdown-item" href="/vospitanie/#directions">
-                          Направления воспитания
-                        </a>
-                      </li>
-                    
-                      <li>
-                        <a class="dropdown-item" href="/vospitanie/velikaja-pobeda/">
-                          Великая Победа
-                        </a>
-                      </li>
-                    
-                      <li>
-                        <a class="dropdown-item" href="/vospitanie/volonterstvo/">
-                          Волонтерское движение
-                        </a>
-                      </li>
-                    
-                      <li>
-                        <a class="dropdown-item" href="/vospitanie/kulturno-massovaja/">
-                          Культурно-массовая работа
-                        </a>
-                      </li>
-                    
-                      <li>
-                        <a class="dropdown-item" href="/vospitanie/mediacentr/">
-                          Медиацентр «Новости СИТ»
-                        </a>
-                      </li>
-                    
-                      <li>
-                        <a class="dropdown-item" href="/vospitanie/pozdravlenija/">
-                          Поздравления
-                        </a>
-                      </li>
-                    
-                  </ul>
-                </li>
-              
-            
-              
-                <li class="nav-item dropdown">
-                  <a 
-                    class="nav-link dropdown-toggle" 
-                    href="/sotrudnichestvo/" 
-                    id="navbarDropdown7"
-                    role="button"
-                    data-bs-toggle="dropdown" 
-                    aria-expanded="false"
-                    aria-haspopup="true"
-                  >
-                    Сотрудничество
-                  </a>
-                  <ul class="dropdown-menu" aria-labelledby="navbarDropdown7">
-                    
-                      <li>
-                        <a class="dropdown-item" href="/sotrudnichestvo/predprijatija/">
-                          С предприятиями
-                        </a>
-                      </li>
-                    
-                      <li>
-                        <a class="dropdown-item" href="/sotrudnichestvo/shkoly/">
-                          Со школами
-                        </a>
-                      </li>
-                    
-                  </ul>
-                </li>
-              
-            
-              
-                <li class="nav-item dropdown">
-                  <a 
-                    class="nav-link dropdown-toggle" 
-                    href="/bezopasnost/" 
-                    id="navbarDropdown8"
-                    role="button"
-                    data-bs-toggle="dropdown" 
-                    aria-expanded="false"
-                    aria-haspopup="true"
-                  >
-                    Безопасность
-                  </a>
-                  <ul class="dropdown-menu" aria-labelledby="navbarDropdown8">
-                    
-                      <li>
-                        <a class="dropdown-item" href="/bezopasnost/#complex">
-                          Комплексная безопасность
-                        </a>
-                      </li>
-                    
-                      <li>
-                        <a class="dropdown-item" href="/bezopasnost/extremizm/">
-                          Профилактика экстремизма
-                        </a>
-                      </li>
-                    
-                      <li>
-                        <a class="dropdown-item" href="/bezopasnost/antikorrupcija/">
-                          Противодействие коррупции
-                        </a>
-                      </li>
-                    
-                  </ul>
-                </li>
-              
-            
-              
-                <li class="nav-item dropdown">
-                  <a 
-                    class="nav-link dropdown-toggle" 
-                    href="/studentam-i-roditeljam/" 
-                    id="navbarDropdown9"
-                    role="button"
-                    data-bs-toggle="dropdown" 
-                    aria-expanded="false"
-                    aria-haspopup="true"
-                  >
-                    Студентам и родителям
-                  </a>
-                  <ul class="dropdown-menu" aria-labelledby="navbarDropdown9">
-                    
-                      <li>
-                        <a class="dropdown-item" href="/news/">
-                          Новости
-                        </a>
-                      </li>
-                    
-                      <li>
-                        <a class="dropdown-item" href="/studentam-i-roditeljam/raspisanie/">
-                          Расписание занятий
-                        </a>
-                      </li>
-                    
-                      <li>
-                        <a class="dropdown-item" href="/studentam-i-roditeljam/roditeljam/">
-                          Родителям
-                        </a>
-                      </li>
-                    
-                  </ul>
-                </li>
-              
-            
-              
-                <li class="nav-item dropdown">
-                  <a 
-                    class="nav-link dropdown-toggle" 
-                    href="/career/" 
-                    id="navbarDropdown10"
-                    role="button"
-                    data-bs-toggle="dropdown" 
-                    aria-expanded="false"
-                    aria-haspopup="true"
-                  >
-                    Центр Карьеры
-                  </a>
-                  <ul class="dropdown-menu" aria-labelledby="navbarDropdown10">
-                    
-                      <li>
-                        <a class="dropdown-item" href="/career/#about">
-                          О центре
-                        </a>
-                      </li>
-                    
-                      <li>
-                        <a class="dropdown-item" href="/career/#vacancies">
-                          Вакансии для выпускников
-                        </a>
-                      </li>
-                    
-                      <li>
-                        <a class="dropdown-item" href="/career/#partners">
-                          Партнеры
-                        </a>
-                      </li>
-                    
-                  </ul>
-                </li>
-              
-            
-              
-                <li class="nav-item">
-                  <a 
-                    class="nav-link" 
-                    href="/professionaly-2026/"
-                    
-                  >
-                    Профессионалы-2026
-                  </a>
-                </li>
-              
-            
-              
-                <li class="nav-item">
-                  <a 
-                    class="nav-link" 
-                    href="/news/"
-                    
-                  >
-                    Новости
-                  </a>
-                </li>
-              
-            
-              
-                <li class="nav-item">
-                  <a 
-                    class="nav-link" 
-                    href="/contacts/"
-                    
-                  >
-                    Контакты
-                  </a>
-                </li>
-              
-            
-          </ul>
+    <!-- НАВИГАЦИЯ (как на sit-salsk.ru) -->
+    <div class="header-nav">
+      <nav class="navbar navbar-expand-lg" aria-label="Основное меню">
+        <div class="container-fluid px-0">
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMain" 
+                  aria-controls="navbarMain" aria-expanded="false" aria-label="Меню навигации">
+            <span class="navbar-toggler-icon"></span>
+          </button>
           
-          
-          <div class="header-cta">
-            <a href="/abiturientam/priemnaya-kampaniya/" class="btn btn-primary cta-button">
-              Подать заявку
-            </a>
+          <div class="collapse navbar-collapse" id="navbarMain">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              
+                
+                  
+                  <li class="nav-item"><a class="nav-link" href="/" title="Главная">Главная</a></li>
+                  
+                
+              
+                
+              
+                
+                  
+                  <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="/svedenija/" role="button" data-bs-toggle="dropdown" 
+                       aria-expanded="false" title="Сведения об образовательной организации">Сведения об образовательной организации</a>
+                    <ul class="dropdown-menu">
+                      
+                      <li><a class="dropdown-item" href="/svedenija/documents/" title="Документы">Документы</a></li>
+                      
+                      <li><a class="dropdown-item" href="/svedenija/structure/" title="Структура и органы управления">Структура и органы управления</a></li>
+                      
+                      <li><a class="dropdown-item" href="/svedenija/education/" title="Образование">Образование</a></li>
+                      
+                      <li><a class="dropdown-item" href="/svedenija/employees/" title="Руководство и ППС">Руководство и ППС</a></li>
+                      
+                      <li><a class="dropdown-item" href="/svedenija/objects/" title="Материально-техническое обеспечение">Материально-техническое обеспечение</a></li>
+                      
+                      <li><a class="dropdown-item" href="/svedenija/stipend/" title="Стипендии и поддержка">Стипендии и поддержка</a></li>
+                      
+                      <li><a class="dropdown-item" href="/svedenija/finance/" title="Финансово-хозяйственная деятельность">Финансово-хозяйственная деятельность</a></li>
+                      
+                      <li><a class="dropdown-item" href="/svedenija/vacancies/" title="Вакантные места">Вакантные места</a></li>
+                      
+                      <li><a class="dropdown-item" href="/svedenija/access/" title="Доступная среда">Доступная среда</a></li>
+                      
+                      <li><a class="dropdown-item" href="/svedenija/international/" title="Международное сотрудничество">Международное сотрудничество</a></li>
+                      
+                    </ul>
+                  </li>
+                  
+                
+              
+                
+                  
+                  <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="/abiturientam/" role="button" data-bs-toggle="dropdown" 
+                       aria-expanded="false" title="Абитуриентам">Абитуриентам</a>
+                    <ul class="dropdown-menu">
+                      
+                      <li><a class="dropdown-item" href="/abiturientam/slovo-direktora/" title="Слово директора">Слово директора</a></li>
+                      
+                      <li><a class="dropdown-item" href="/abiturientam/#rules" title="Правила приема">Правила приема</a></li>
+                      
+                      <li><a class="dropdown-item" href="/abiturientam/#specialties" title="Специальности">Специальности</a></li>
+                      
+                      <li><a class="dropdown-item" href="/abiturientam/#commission" title="Приемная комиссия">Приемная комиссия</a></li>
+                      
+                      <li><a class="dropdown-item" href="/abiturientam/den-otkrytyh-dverej/" title="День открытых дверей">День открытых дверей</a></li>
+                      
+                    </ul>
+                  </li>
+                  
+                
+              
+                
+                  
+                  <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="/uchebno-metodicheskaja-rabota/" role="button" data-bs-toggle="dropdown" 
+                       aria-expanded="false" title="Учебно-методическая работа">Учебно-методическая работа</a>
+                    <ul class="dropdown-menu">
+                      
+                      <li><a class="dropdown-item" href="/uchebno-metodicheskaja-rabota/#materials" title="Материалы УМР">Материалы УМР</a></li>
+                      
+                    </ul>
+                  </li>
+                  
+                
+              
+                
+                  
+                  <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="/vospitanie/" role="button" data-bs-toggle="dropdown" 
+                       aria-expanded="false" title="Воспитание">Воспитание</a>
+                    <ul class="dropdown-menu">
+                      
+                      <li><a class="dropdown-item" href="/vospitanie/#directions" title="Направления воспитания">Направления воспитания</a></li>
+                      
+                      <li><a class="dropdown-item" href="/vospitanie/velikaja-pobeda/" title="Великая Победа">Великая Победа</a></li>
+                      
+                      <li><a class="dropdown-item" href="/vospitanie/volonterstvo/" title="Волонтерское движение">Волонтерское движение</a></li>
+                      
+                      <li><a class="dropdown-item" href="/vospitanie/kulturno-massovaja/" title="Культурно-массовая работа">Культурно-массовая работа</a></li>
+                      
+                      <li><a class="dropdown-item" href="/vospitanie/mediacentr/" title="Медиацентр «Новости СИТ»">Медиацентр «Новости СИТ»</a></li>
+                      
+                      <li><a class="dropdown-item" href="/vospitanie/pozdravlenija/" title="Поздравления">Поздравления</a></li>
+                      
+                    </ul>
+                  </li>
+                  
+                
+              
+                
+              
+                
+                  
+                  <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="/bezopasnost/" role="button" data-bs-toggle="dropdown" 
+                       aria-expanded="false" title="Безопасность">Безопасность</a>
+                    <ul class="dropdown-menu">
+                      
+                      <li><a class="dropdown-item" href="/bezopasnost/#complex" title="Комплексная безопасность">Комплексная безопасность</a></li>
+                      
+                      <li><a class="dropdown-item" href="/bezopasnost/extremizm/" title="Профилактика экстремизма">Профилактика экстремизма</a></li>
+                      
+                      <li><a class="dropdown-item" href="/bezopasnost/antikorrupcija/" title="Противодействие коррупции">Противодействие коррупции</a></li>
+                      
+                    </ul>
+                  </li>
+                  
+                
+              
+                
+                  
+                  <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="/studentam-i-roditeljam/" role="button" data-bs-toggle="dropdown" 
+                       aria-expanded="false" title="Студентам и родителям">Студентам и родителям</a>
+                    <ul class="dropdown-menu">
+                      
+                      <li><a class="dropdown-item" href="/news/" title="Новости">Новости</a></li>
+                      
+                      <li><a class="dropdown-item" href="/studentam-i-roditeljam/raspisanie/" title="Расписание занятий">Расписание занятий</a></li>
+                      
+                      <li><a class="dropdown-item" href="/studentam-i-roditeljam/roditeljam/" title="Родителям">Родителям</a></li>
+                      
+                    </ul>
+                  </li>
+                  
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+              
+              <!-- Ссылка "Студентам" -->
+              <li class="nav-item"><a class="nav-link" href="/studentam-i-roditeljam/" title="Информация для студентов и родителей">Студентам</a></li>
+            </ul>
           </div>
         </div>
+      </nav>
+    </div>
+    
+    <!-- ИНФОРМАЦИОННАЯ ПАНЕЛЬ: график, телефоны, ЭОС, иконки действий -->
+    <!-- Десктопная версия (видна на md и выше) -->
+    <div class="header-info-bar d-none d-md-block">
+      <div class="d-flex flex-wrap align-items-center justify-content-between">
+        <!-- Левая группа: график -->
+        <div class="info-item">
+          <i class="bi bi-clock" title="Режим работы"></i>
+          <span><strong>Пн–Пт:</strong> 8:00–17:00 &nbsp;|&nbsp; <strong>Сб, Вс:</strong> выходной</span>
+        </div>
+        
+        <!-- Центральная группа: корпуса и ЭОС -->
+        <div class="d-flex gap-4 align-items-center">
+          
+          <div class="info-item">
+            <i class="bi bi-building" title="Корпус №1 (приёмная)"></i>
+            <span>Корпус №1: <a href="tel:+78637250571" title="Позвонить в Корпус №1 (приёмная)">5-05-71</a> (приёмная)</span>
+          </div>
+          
+          <div class="info-item">
+            <i class="bi bi-building" title="Корпус №2 (приёмная)"></i>
+            <span>Корпус №2: <a href="tel:+78637256041" title="Позвонить в Корпус №2 (приёмная)">5-60-41</a> (приёмная)</span>
+          </div>
+          
+          
+          <!-- Ссылка на ЭОС -->
+          <a href="https://эос.сит-сальск.рф/" class="eos-link" target="_blank" rel="noopener" title="Электронная образовательная система ГБПОУ РО «СИТ»">
+            <i class="bi bi-laptop"></i> ЭОС
+          </a>
+        </div>
+        
+        <!-- Правая группа: иконки (ВК, почта, поиск, доступность) -->
+        <div class="header-actions">
+          <a href="https://vk.com/sitsalsksit" class="btn-icon" target="_blank" rel="noopener" title="Официальная группа ВКонтакте">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24" style="display:block;">
+              <path d="M21.579 6.855c.17-.565 0-.98-.802-.98h-2.652c-.67 0-.979.357-1.146.752 0 0-1.34 3.283-3.237 5.414-.614.618-.893.814-1.228.814-.17 0-.42-.196-.42-.76V6.854c0-.671-.19-.98-.76-.98H9.389c-.42 0-.67.315-.67.615 0 .644.96.793 1.06 2.605v3.935c0 .864-.155 1.021-.492 1.021-.893 0-3.066-3.303-4.355-7.083C4.68 6.37 4.428 5.875 3.754 5.875H1.102c-.76 0-.913.357-.913.752 0 .704.893 4.197 4.155 8.817 2.175 3.144 5.239 4.848 8.026 4.848 1.674 0 1.88-.38 1.88-1.035v-2.385c0-.76.16-.912.694-.912.393 0 1.067.198 2.641 1.727 1.798 1.81 2.094 2.62 3.102 2.62h2.652c.76 0 1.14-.38.92-1.134-.237-.744-1.092-1.82-2.226-3.101-.614-.73-1.535-1.517-1.814-1.91-.393-.508-.28-.733 0-1.185 0 0 3.21-4.55 3.546-6.095z"/>
+            </svg>
+          </a>
+          <a href="mailto:sitsalsk@mail.ru" class="btn-icon" title="Написать на почту администрации">
+            <i class="bi bi-envelope-fill"></i>
+          </a>
+          <button class="btn-icon" data-bs-toggle="modal" data-bs-target="#searchModal" title="Поиск по сайту">
+            <i class="bi bi-search"></i>
+          </button>
+          <button class="btn-icon a11y-toggle-btn" id="a11yToggleHeader" title="Версия для слабовидящих">
+            <i class="bi bi-eye"></i>
+          </button>
+        </div>
       </div>
-    </nav>
+    </div>
     
+    <!-- Упрощённая версия для мобильных (видна на <md) -->
+    <div class="header-info-bar d-md-none">
+      <div class="d-flex flex-wrap align-items-center justify-content-between">
+        <div class="d-flex flex-wrap gap-2">
+          <span><i class="bi bi-clock" title="Режим работы"></i> Пн–Пт 8–17, Сб-Вс вых.</span>
+          <span><i class="bi bi-telephone" title="Телефоны"></i> К1: 5-05-71, К2: 5-60-41</span>
+          <a href="https://эос.сит-сальск.рф/" class="eos-link" target="_blank" rel="noopener" title="Электронная образовательная система">
+            <i class="bi bi-laptop"></i> ЭОС
+          </a>
+        </div>
+        <div class="header-actions">
+          <a href="https://vk.com/sitsalsksit" class="btn-icon" target="_blank" rel="noopener" title="ВКонтакте">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24" style="display:block;">
+              <path d="M21.579 6.855c.17-.565 0-.98-.802-.98h-2.652c-.67 0-.979.357-1.146.752 0 0-1.34 3.283-3.237 5.414-.614.618-.893.814-1.228.814-.17 0-.42-.196-.42-.76V6.854c0-.671-.19-.98-.76-.98H9.389c-.42 0-.67.315-.67.615 0 .644.96.793 1.06 2.605v3.935c0 .864-.155 1.021-.492 1.021-.893 0-3.066-3.303-4.355-7.083C4.68 6.37 4.428 5.875 3.754 5.875H1.102c-.76 0-.913.357-.913.752 0 .704.893 4.197 4.155 8.817 2.175 3.144 5.239 4.848 8.026 4.848 1.674 0 1.88-.38 1.88-1.035v-2.385c0-.76.16-.912.694-.912.393 0 1.067.198 2.641 1.727 1.798 1.81 2.094 2.62 3.102 2.62h2.652c.76 0 1.14-.38.92-1.134-.237-.744-1.092-1.82-2.226-3.101-.614-.73-1.535-1.517-1.814-1.91-.393-.508-.28-.733 0-1.185 0 0 3.21-4.55 3.546-6.095z"/>
+            </svg>
+          </a>
+          <a href="mailto:sitsalsk@mail.ru" class="btn-icon" title="Почта">
+            <i class="bi bi-envelope-fill"></i>
+          </a>
+          <button class="btn-icon" data-bs-toggle="modal" data-bs-target="#searchModal" title="Поиск">
+            <i class="bi bi-search"></i>
+          </button>
+          <button class="btn-icon a11y-toggle-btn" id="a11yToggleMobile" title="Версия для слабовидящих">
+            <i class="bi bi-eye"></i>
+          </button>
+        </div>
+      </div>
+    </div>
     
-    
-    <div class="header-rubric-selector mt-2">
-      
-
-
-<div class="rubric-selector" data-rubric-selector>
-  <label for="rubricSelect" class="rubric-selector-label">
-    <span class="visually-hidden">Выберите нужный раздел/рубрику сайта</span>
-  </label>
-  
-  <div class="rubric-select-wrapper">
-    <select id="rubricSelect" class="rubric-select" data-rubric-select aria-label="Выберите рубрику">
-      <option value="">Выберите нужный раздел/рубрику сайта</option>
-      
-      
-        
-        <option 
-          value="/abiturientam/" 
-          data-code="1"
-          data-level="0"
-          class="rubric-level-0"
-        >
-          1. АБИТУРИЕНТАМ
-        </option>
-        
-        
-        
-          
-            <option 
-              value="/abiturientam/slovo-direktora/" 
-              data-code="1.1"
-              data-level="1"
-              class="rubric-level-1"
-            >
-              &nbsp;&nbsp;1.1. Слово директора
-            </option>
-            
-            
-            
-          
-            <option 
-              value="/abiturientam/specialnosti/" 
-              data-code="1.2"
-              data-level="1"
-              class="rubric-level-1"
-            >
-              &nbsp;&nbsp;1.2. Специальности и профессии
-            </option>
-            
-            
-            
-          
-            <option 
-              value="/abiturientam/priemnaya-kampaniya-2025/" 
-              data-code="1.3"
-              data-level="1"
-              class="rubric-level-1"
-            >
-              &nbsp;&nbsp;1.3. Приемная кампания 2025
-            </option>
-            
-            
-            
-          
-            <option 
-              value="/abiturientam/den-otkrytyh-dverej/" 
-              data-code="1.4"
-              data-level="1"
-              class="rubric-level-1"
-            >
-              &nbsp;&nbsp;1.4. День открытых дверей
-            </option>
-            
-            
-            
-          
-            <option 
-              value="/abiturientam/virtualnaya-ekskursiya/" 
-              data-code="1.5"
-              data-level="1"
-              class="rubric-level-1"
-            >
-              &nbsp;&nbsp;1.5. Виртуальная экскурсия
-            </option>
-            
-            
-            
-          
-            <option 
-              value="/abiturientam/podacha-elektronnaya/" 
-              data-code="1.6"
-              data-level="1"
-              class="rubric-level-1"
-            >
-              &nbsp;&nbsp;1.6. Подача документов по электронной почте
-            </option>
-            
-            
-            
-          
-            <option 
-              value="/abiturientam/podacha-pochtovaya/" 
-              data-code="1.7"
-              data-level="1"
-              class="rubric-level-1"
-            >
-              &nbsp;&nbsp;1.7. Подача документов через средства почтовой связи
-            </option>
-            
-            
-            
-          
-            <option 
-              value="/abiturientam/platnaya-osnova/" 
-              data-code="1.8"
-              data-level="1"
-              class="rubric-level-1"
-            >
-              &nbsp;&nbsp;1.8. Платная основа обучения
-            </option>
-            
-            
-            
-          
-            <option 
-              value="/abiturientam/kontakty-grafik/" 
-              data-code="1.9"
-              data-level="1"
-              class="rubric-level-1"
-            >
-              &nbsp;&nbsp;1.9. Контакты и график работы
-            </option>
-            
-            
-            
-          
-        
-      
-        
-        <option 
-          value="/svedenija/" 
-          data-code="2"
-          data-level="0"
-          class="rubric-level-0"
-        >
-          2. СВЕДЕНИЯ ОБ ОБРАЗОВАТЕЛЬНОЙ ОРГАНИЗАЦИИ
-        </option>
-        
-        
-        
-          
-            <option 
-              value="/svedenija/osnovnye-svedenija/" 
-              data-code="2.1"
-              data-level="1"
-              class="rubric-level-1"
-            >
-              &nbsp;&nbsp;2.1. Основные сведения
-            </option>
-            
-            
-            
-          
-            <option 
-              value="/svedenija/struktura-upravleniya/" 
-              data-code="2.2"
-              data-level="1"
-              class="rubric-level-1"
-            >
-              &nbsp;&nbsp;2.2. Структура и органы управления
-            </option>
-            
-            
-            
-          
-            <option 
-              value="/svedenija/dokumenty/" 
-              data-code="2.3"
-              data-level="1"
-              class="rubric-level-1"
-            >
-              &nbsp;&nbsp;2.3. Документы
-            </option>
-            
-            
+    <!-- ПАНЕЛЬ С РУБРИКАТОРОМ (2/3) И ССЫЛКОЙ "Контакты" (1/3) -->
+    <div class="header-actions-panel">
+      <div class="row align-items-center g-3">
+        <!-- Рубрикатор (2/3) -->
+        <div class="col-md-8">
+          <select class="form-select rubric-select" id="rubricSelect" aria-label="Выберите рубрику" title="Навигация по разделам сайта">
+            <option selected disabled>Выберите рубрику</option>
             
               
-                <option 
-                  value="/svedenija/dokumenty/vsoko/" 
-                  data-code="2.3.1"
-                  data-level="2"
-                  class="rubric-level-2"
-                >
-                  &nbsp;&nbsp;&nbsp;&nbsp;2.3.1. ВСОКО
-                </option>
+            <option class="level-0" value="/abiturientam/">1. АБИТУРИЕНТАМ</option>
+                
+                  
+            <option class="level-1" value="/abiturientam/slovo-direktora/">&nbsp;&nbsp;&nbsp;1..1 Слово директора</option>
+                    
+                  
+            <option class="level-1" value="/abiturientam/specialnosti/">&nbsp;&nbsp;&nbsp;1..2 Специальности и профессии</option>
+                    
+                  
+            <option class="level-1" value="/abiturientam/priemnaya-kampaniya-2025/">&nbsp;&nbsp;&nbsp;1..3 Приемная кампания 2025</option>
+                    
+                  
+            <option class="level-1" value="/abiturientam/den-otkrytyh-dverej/">&nbsp;&nbsp;&nbsp;1..4 День открытых дверей</option>
+                    
+                  
+            <option class="level-1" value="/abiturientam/virtualnaya-ekskursiya/">&nbsp;&nbsp;&nbsp;1..5 Виртуальная экскурсия</option>
+                    
+                  
+            <option class="level-1" value="/abiturientam/podacha-elektronnaya/">&nbsp;&nbsp;&nbsp;1..6 Подача документов по электронной почте</option>
+                    
+                  
+            <option class="level-1" value="/abiturientam/podacha-pochtovaya/">&nbsp;&nbsp;&nbsp;1..7 Подача документов через средства почтовой связи</option>
+                    
+                  
+            <option class="level-1" value="/abiturientam/platnaya-osnova/">&nbsp;&nbsp;&nbsp;1..8 Платная основа обучения</option>
+                    
+                  
+            <option class="level-1" value="/abiturientam/kontakty-grafik/">&nbsp;&nbsp;&nbsp;1..9 Контакты и график работы</option>
+                    
+                  
+                
               
             
-          
-            <option 
-              value="/svedenija/obrazovanie/" 
-              data-code="2.4"
-              data-level="1"
-              class="rubric-level-1"
-            >
-              &nbsp;&nbsp;2.4. Образование
-            </option>
-            
-            
-            
               
-                <option 
-                  value="/svedenija/obrazovanie/vakantnye-mesta/" 
-                  data-code="2.4.1"
-                  data-level="2"
-                  class="rubric-level-2"
-                >
-                  &nbsp;&nbsp;&nbsp;&nbsp;2.4.1. Вакантные места
-                </option>
-              
-                <option 
-                  value="/svedenija/obrazovanie/mezhdunarodnoe/" 
-                  data-code="2.4.2"
-                  data-level="2"
-                  class="rubric-level-2"
-                >
-                  &nbsp;&nbsp;&nbsp;&nbsp;2.4.2. Международное сотрудничество
-                </option>
-              
-                <option 
-                  value="/svedenija/obrazovanie/inklyuzivnoe/" 
-                  data-code="2.4.3"
-                  data-level="2"
-                  class="rubric-level-2"
-                >
-                  &nbsp;&nbsp;&nbsp;&nbsp;2.4.3. Инклюзивное образование
-                </option>
-              
-                <option 
-                  value="/svedenija/obrazovanie/trudoustrojstvo/" 
-                  data-code="2.4.4"
-                  data-level="2"
-                  class="rubric-level-2"
-                >
-                  &nbsp;&nbsp;&nbsp;&nbsp;2.4.4. Трудоустройство выпускников
-                </option>
-              
-            
-          
-            <option 
-              value="/svedenija/rukovodstvo/" 
-              data-code="2.5"
-              data-level="1"
-              class="rubric-level-1"
-            >
-              &nbsp;&nbsp;2.5. Руководство
-            </option>
-            
-            
-            
-              
-                <option 
-                  value="/svedenija/rukovodstvo/pedagogicheskiy-sostav/" 
-                  data-code="2.5.1"
-                  data-level="2"
-                  class="rubric-level-2"
-                >
-                  &nbsp;&nbsp;&nbsp;&nbsp;2.5.1. Педагогический состав
-                </option>
+            <option class="level-0" value="/svedenija/">2. СВЕДЕНИЯ ОБ ОБРАЗОВАТЕЛЬНОЙ ОРГАНИЗАЦИИ</option>
+                
+                  
+            <option class="level-1" value="/svedenija/osnovnye-svedenija/">&nbsp;&nbsp;&nbsp;2..1 Основные сведения</option>
+                    
+                  
+            <option class="level-1" value="/svedenija/struktura-upravleniya/">&nbsp;&nbsp;&nbsp;2..2 Структура и органы управления</option>
+                    
+                  
+            <option class="level-1" value="/svedenija/dokumenty/">&nbsp;&nbsp;&nbsp;2..3 Документы</option>
+                    
+                      
+            <option class="level-2" value="/svedenija/dokumenty/vsoko/">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2...1 ВСОКО</option>
+                      
+                    
+                  
+            <option class="level-1" value="/svedenija/obrazovanie/">&nbsp;&nbsp;&nbsp;2..4 Образование</option>
+                    
+                      
+            <option class="level-2" value="/svedenija/obrazovanie/vakantnye-mesta/">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2...1 Вакантные места</option>
+                      
+            <option class="level-2" value="/svedenija/obrazovanie/mezhdunarodnoe/">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2...2 Международное сотрудничество</option>
+                      
+            <option class="level-2" value="/svedenija/obrazovanie/inklyuzivnoe/">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2...3 Инклюзивное образование</option>
+                      
+            <option class="level-2" value="/svedenija/obrazovanie/trudoustrojstvo/">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2...4 Трудоустройство выпускников</option>
+                      
+                    
+                  
+            <option class="level-1" value="/svedenija/rukovodstvo/">&nbsp;&nbsp;&nbsp;2..5 Руководство</option>
+                    
+                      
+            <option class="level-2" value="/svedenija/rukovodstvo/pedagogicheskiy-sostav/">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2...1 Педагогический состав</option>
+                      
+                    
+                  
+            <option class="level-1" value="/svedenija/standarty/">&nbsp;&nbsp;&nbsp;2..6 Образовательные стандарты</option>
+                    
+                  
+            <option class="level-1" value="/svedenija/materialno-tehnicheskoe/">&nbsp;&nbsp;&nbsp;2..7 Материально-техническое обеспечение</option>
+                    
+                      
+            <option class="level-2" value="/svedenija/materialno-tehnicheskoe/elektronnoe-obrazovanie/">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2...1 Электронная информационно-образовательная среда</option>
+                      
+            <option class="level-2" value="/svedenija/materialno-tehnicheskoe/elektronnaya-biblioteka/">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2...2 Цифровая библиотека</option>
+                      
+            <option class="level-2" value="/svedenija/materialno-tehnicheskoe/elektronnye-resursy/">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2...3 Электронные образовательные ресурсы</option>
+                      
+            <option class="level-2" value="/svedenija/materialno-tehnicheskoe/platforma/">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2...4 Образовательная платформа</option>
+                      
+            <option class="level-2" value="/svedenija/materialno-tehnicheskoe/elektronnoe-raspisanie/">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2...5 Электронное расписание</option>
+                      
+            <option class="level-2" value="/svedenija/materialno-tehnicheskoe/pitanie/">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2...6 Организация питания</option>
+                      
+                    
+                  
+            <option class="level-1" value="/svedenija/platnye-uslugi/">&nbsp;&nbsp;&nbsp;2..8 Платные образовательные услуги</option>
+                    
+                  
+            <option class="level-1" value="/svedenija/finansy/">&nbsp;&nbsp;&nbsp;2..9 Финансово-хозяйственная деятельность</option>
+                    
+                      
+            <option class="level-2" value="/svedenija/finansy/stipendii/">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2...1 Стипендии и меры поддержки</option>
+                      
+                    
+                  
+                
               
             
-          
-            <option 
-              value="/svedenija/standarty/" 
-              data-code="2.6"
-              data-level="1"
-              class="rubric-level-1"
-            >
-              &nbsp;&nbsp;2.6. Образовательные стандарты
-            </option>
-            
-            
-            
-          
-            <option 
-              value="/svedenija/materialno-tehnicheskoe/" 
-              data-code="2.7"
-              data-level="1"
-              class="rubric-level-1"
-            >
-              &nbsp;&nbsp;2.7. Материально-техническое обеспечение
-            </option>
-            
-            
-            
               
-                <option 
-                  value="/svedenija/materialno-tehnicheskoe/elektronnoe-obrazovanie/" 
-                  data-code="2.7.1"
-                  data-level="2"
-                  class="rubric-level-2"
-                >
-                  &nbsp;&nbsp;&nbsp;&nbsp;2.7.1. Электронная информационно-образовательная среда
-                </option>
-              
-                <option 
-                  value="/svedenija/materialno-tehnicheskoe/elektronnaya-biblioteka/" 
-                  data-code="2.7.2"
-                  data-level="2"
-                  class="rubric-level-2"
-                >
-                  &nbsp;&nbsp;&nbsp;&nbsp;2.7.2. Цифровая библиотека
-                </option>
-              
-                <option 
-                  value="/svedenija/materialno-tehnicheskoe/elektronnye-resursy/" 
-                  data-code="2.7.3"
-                  data-level="2"
-                  class="rubric-level-2"
-                >
-                  &nbsp;&nbsp;&nbsp;&nbsp;2.7.3. Электронные образовательные ресурсы
-                </option>
-              
-                <option 
-                  value="/svedenija/materialno-tehnicheskoe/platforma/" 
-                  data-code="2.7.4"
-                  data-level="2"
-                  class="rubric-level-2"
-                >
-                  &nbsp;&nbsp;&nbsp;&nbsp;2.7.4. Образовательная платформа
-                </option>
-              
-                <option 
-                  value="/svedenija/materialno-tehnicheskoe/elektronnoe-raspisanie/" 
-                  data-code="2.7.5"
-                  data-level="2"
-                  class="rubric-level-2"
-                >
-                  &nbsp;&nbsp;&nbsp;&nbsp;2.7.5. Электронное расписание
-                </option>
-              
-                <option 
-                  value="/svedenija/materialno-tehnicheskoe/pitanie/" 
-                  data-code="2.7.6"
-                  data-level="2"
-                  class="rubric-level-2"
-                >
-                  &nbsp;&nbsp;&nbsp;&nbsp;2.7.6. Организация питания
-                </option>
+            <option class="level-0" value="/uchebno-metodicheskaya/">3. УЧЕБНО-МЕТОДИЧЕСКАЯ РАБОТА</option>
+                
+                  
+            <option class="level-1" value="/uchebno-metodicheskaya/elektronnoe-obuchenie/">&nbsp;&nbsp;&nbsp;3..1 Электронное обучение и ДОТ</option>
+                    
+                  
+            <option class="level-1" value="/uchebno-metodicheskaya/dopolnitelnoe-obrazovanie/">&nbsp;&nbsp;&nbsp;3..2 Дополнительное образование</option>
+                    
+                  
+            <option class="level-1" value="/uchebno-metodicheskaya/praktika/">&nbsp;&nbsp;&nbsp;3..3 Практика</option>
+                    
+                  
+                
               
             
-          
-            <option 
-              value="/svedenija/platnye-uslugi/" 
-              data-code="2.8"
-              data-level="1"
-              class="rubric-level-1"
-            >
-              &nbsp;&nbsp;2.8. Платные образовательные услуги
-            </option>
-            
-            
-            
-          
-            <option 
-              value="/svedenija/finansy/" 
-              data-code="2.9"
-              data-level="1"
-              class="rubric-level-1"
-            >
-              &nbsp;&nbsp;2.9. Финансово-хозяйственная деятельность
-            </option>
-            
-            
-            
               
-                <option 
-                  value="/svedenija/finansy/stipendii/" 
-                  data-code="2.9.1"
-                  data-level="2"
-                  class="rubric-level-2"
-                >
-                  &nbsp;&nbsp;&nbsp;&nbsp;2.9.1. Стипендии и меры поддержки
-                </option>
-              
-            
-          
-        
-      
-        
-        <option 
-          value="/uchebno-metodicheskaya/" 
-          data-code="3"
-          data-level="0"
-          class="rubric-level-0"
-        >
-          3. УЧЕБНО-МЕТОДИЧЕСКАЯ РАБОТА
-        </option>
-        
-        
-        
-          
-            <option 
-              value="/uchebno-metodicheskaya/elektronnoe-obuchenie/" 
-              data-code="3.1"
-              data-level="1"
-              class="rubric-level-1"
-            >
-              &nbsp;&nbsp;3.1. Электронное обучение и ДОТ
-            </option>
-            
-            
-            
-          
-            <option 
-              value="/uchebno-metodicheskaya/dopolnitelnoe-obrazovanie/" 
-              data-code="3.2"
-              data-level="1"
-              class="rubric-level-1"
-            >
-              &nbsp;&nbsp;3.2. Дополнительное образование
-            </option>
-            
-            
-            
-          
-            <option 
-              value="/uchebno-metodicheskaya/praktika/" 
-              data-code="3.4"
-              data-level="1"
-              class="rubric-level-1"
-            >
-              &nbsp;&nbsp;3.4. Практика
-            </option>
-            
-            
-            
-          
-        
-      
-        
-        <option 
-          value="/vospitanie/" 
-          data-code="4"
-          data-level="0"
-          class="rubric-level-0"
-        >
-          4. ВОСПИТАТЕЛЬНАЯ РАБОТА
-        </option>
-        
-        
-        
-          
-            <option 
-              value="/vospitanie/shtab/" 
-              data-code="4.1"
-              data-level="1"
-              class="rubric-level-1"
-            >
-              &nbsp;&nbsp;4.1. Штаб воспитательной работы
-            </option>
-            
-            
-            
-          
-            <option 
-              value="/vospitanie/plan/" 
-              data-code="4.2"
-              data-level="1"
-              class="rubric-level-1"
-            >
-              &nbsp;&nbsp;4.2. План воспитательной работы
-            </option>
-            
-            
-            
-          
-            <option 
-              value="/vospitanie/mo-rukovoditelej/" 
-              data-code="4.3"
-              data-level="1"
-              class="rubric-level-1"
-            >
-              &nbsp;&nbsp;4.3. МО руководителей учебных групп
-            </option>
-            
-            
-            
-          
-            <option 
-              value="/vospitanie/samoupravlenie/" 
-              data-code="4.4"
-              data-level="1"
-              class="rubric-level-1"
-            >
-              &nbsp;&nbsp;4.4. Студенческое самоуправление
-            </option>
-            
-            
-            
-          
-            <option 
-              value="/vospitanie/volonterstvo/" 
-              data-code="4.5"
-              data-level="1"
-              class="rubric-level-1"
-            >
-              &nbsp;&nbsp;4.5. Волонтерское движение
-            </option>
-            
-            
-            
-              
-                <option 
-                  value="/vospitanie/volonterstvo/raduga-dobra/" 
-                  data-code="4.5.1"
-                  data-level="2"
-                  class="rubric-level-2"
-                >
-                  &nbsp;&nbsp;&nbsp;&nbsp;4.5.1. ВОЛОНТЁРСКИЙ ОТРЯД «РАДУГА ДОБРА»
-                </option>
+            <option class="level-0" value="/vospitanie/">4. ВОСПИТАТЕЛЬНАЯ РАБОТА</option>
+                
+                  
+            <option class="level-1" value="/vospitanie/shtab/">&nbsp;&nbsp;&nbsp;4..1 Штаб воспитательной работы</option>
+                    
+                  
+            <option class="level-1" value="/vospitanie/plan/">&nbsp;&nbsp;&nbsp;4..2 План воспитательной работы</option>
+                    
+                  
+            <option class="level-1" value="/vospitanie/mo-rukovoditelej/">&nbsp;&nbsp;&nbsp;4..3 МО руководителей учебных групп</option>
+                    
+                  
+            <option class="level-1" value="/vospitanie/samoupravlenie/">&nbsp;&nbsp;&nbsp;4..4 Студенческое самоуправление</option>
+                    
+                  
+            <option class="level-1" value="/vospitanie/volonterstvo/">&nbsp;&nbsp;&nbsp;4..5 Волонтерское движение</option>
+                    
+                      
+            <option class="level-2" value="/vospitanie/volonterstvo/raduga-dobra/">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4...1 ВОЛОНТЁРСКИЙ ОТРЯД «РАДУГА ДОБРА»</option>
+                      
+                    
+                  
+            <option class="level-1" value="/vospitanie/patrioticheskoe/">&nbsp;&nbsp;&nbsp;4..6 Патриотическое воспитание</option>
+                    
+                      
+            <option class="level-2" value="/vospitanie/patrioticheskoe/velikaya-pobeda/">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4...1 Великая Победа</option>
+                      
+            <option class="level-2" value="/vospitanie/patrioticheskoe/vitjaz/">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4...2 Клуб «ВИТЯЗЬ»</option>
+                      
+                    
+                  
+            <option class="level-1" value="/vospitanie/kulturno-massovaya/">&nbsp;&nbsp;&nbsp;4..7 Культурно-массовая работа</option>
+                    
+                      
+            <option class="level-2" value="/vospitanie/kulturno-massovaya/teatralnyj-klub/">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4...1 Театральный клуб &quot;Мираж&quot;</option>
+                      
+            <option class="level-2" value="/vospitanie/kulturno-massovaya/mediacentr/">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4...2 Медиацентр «Новости СИТ»</option>
+                      
+            <option class="level-2" value="/vospitanie/kulturno-massovaya/pozdravlenija/">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4...3 Поздравления</option>
+                      
+            <option class="level-2" value="/vospitanie/kulturno-massovaya/dvizhenie-pervyh/">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4...4 «Движение Первых»</option>
+                      
+                    
+                  
+            <option class="level-1" value="/vospitanie/fizkultura-sport/">&nbsp;&nbsp;&nbsp;4..8 Физическая культура и спорт</option>
+                    
+                      
+            <option class="level-2" value="/vospitanie/fizkultura-sport/ssk-avangard/">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4...1 ССК &quot;Авангард&quot;</option>
+                      
+                    
+                  
+            <option class="level-1" value="/vospitanie/upolnomochennyj-prava/">&nbsp;&nbsp;&nbsp;4..9 Уполномоченный по правам ребенка</option>
+                    
+                  
+                
               
             
-          
-            <option 
-              value="/vospitanie/patrioticheskoe/" 
-              data-code="4.6"
-              data-level="1"
-              class="rubric-level-1"
-            >
-              &nbsp;&nbsp;4.6. Патриотическое воспитание
-            </option>
-            
-            
-            
               
-                <option 
-                  value="/vospitanie/patrioticheskoe/velikaya-pobeda/" 
-                  data-code="4.6.1"
-                  data-level="2"
-                  class="rubric-level-2"
-                >
-                  &nbsp;&nbsp;&nbsp;&nbsp;4.6.1. Великая Победа
-                </option>
-              
-                <option 
-                  value="/vospitanie/patrioticheskoe/vitjaz/" 
-                  data-code="4.6.2"
-                  data-level="2"
-                  class="rubric-level-2"
-                >
-                  &nbsp;&nbsp;&nbsp;&nbsp;4.6.2. Клуб «ВИТЯЗЬ»
-                </option>
+            <option class="level-0" value="/partnerstvo/">5. СОЦИАЛЬНОЕ ПАРТНЕРСТВО И ПРОФОРИЕНТАЦИЯ</option>
+                
+                  
+            <option class="level-1" value="/partnerstvo/vuzy/">&nbsp;&nbsp;&nbsp;5..1 Сотрудничество с ВУЗами</option>
+                    
+                  
+            <option class="level-1" value="/partnerstvo/zanyatost/">&nbsp;&nbsp;&nbsp;5..2 Сотрудничество с органами занятости</option>
+                    
+                  
+            <option class="level-1" value="/partnerstvo/predprijatija/">&nbsp;&nbsp;&nbsp;5..3 Сотрудничество с предприятиями</option>
+                    
+                  
+            <option class="level-1" value="/partnerstvo/shkoly/">&nbsp;&nbsp;&nbsp;5..4 Сотрудничество со школами</option>
+                    
+                  
+                
               
             
-          
-            <option 
-              value="/vospitanie/kulturno-massovaya/" 
-              data-code="4.7"
-              data-level="1"
-              class="rubric-level-1"
-            >
-              &nbsp;&nbsp;4.7. Культурно-массовая работа
-            </option>
-            
-            
-            
               
-                <option 
-                  value="/vospitanie/kulturno-massovaya/teatralnyj-klub/" 
-                  data-code="4.7.1"
-                  data-level="2"
-                  class="rubric-level-2"
-                >
-                  &nbsp;&nbsp;&nbsp;&nbsp;4.7.1. Театральный клуб &quot;Мираж&quot;
-                </option>
-              
-                <option 
-                  value="/vospitanie/kulturno-massovaya/mediacentr/" 
-                  data-code="4.7.2"
-                  data-level="2"
-                  class="rubric-level-2"
-                >
-                  &nbsp;&nbsp;&nbsp;&nbsp;4.7.2. Медиацентр «Новости СИТ»
-                </option>
-              
-                <option 
-                  value="/vospitanie/kulturno-massovaya/pozdravlenija/" 
-                  data-code="4.7.3"
-                  data-level="2"
-                  class="rubric-level-2"
-                >
-                  &nbsp;&nbsp;&nbsp;&nbsp;4.7.3. Поздравления
-                </option>
-              
-                <option 
-                  value="/vospitanie/kulturno-massovaya/dvizhenie-pervyh/" 
-                  data-code="4.7.4"
-                  data-level="2"
-                  class="rubric-level-2"
-                >
-                  &nbsp;&nbsp;&nbsp;&nbsp;4.7.4. «Движение Первых»
-                </option>
+            <option class="level-0" value="/psihologicheskoe/">6. ПСИХОЛОГИЧЕСКОЕ СОПРОВОЖДЕНИЕ</option>
+                
+                  
+            <option class="level-1" value="/psihologicheskoe/organizacionno-metodicheskaya/">&nbsp;&nbsp;&nbsp;6..1 Организационно-методическая основа</option>
+                    
+                  
+            <option class="level-1" value="/psihologicheskoe/rezultaty-testirovanij/">&nbsp;&nbsp;&nbsp;6..2 Результаты тестирований</option>
+                    
+                  
+            <option class="level-1" value="/psihologicheskoe/sovety-prepodavatelyam/">&nbsp;&nbsp;&nbsp;6..3 Советы преподавателям</option>
+                    
+                  
+            <option class="level-1" value="/psihologicheskoe/sovety-roditelyam/">&nbsp;&nbsp;&nbsp;6..4 Советы родителям</option>
+                    
+                  
+            <option class="level-1" value="/psihologicheskoe/sovety-studentam/">&nbsp;&nbsp;&nbsp;6..5 Советы студентам</option>
+                    
+                  
+            <option class="level-1" value="/psihologicheskoe/profilaktika-narkotikov/">&nbsp;&nbsp;&nbsp;6..6 Профилактика наркотиков</option>
+                    
+                  
+            <option class="level-1" value="/psihologicheskoe/podderzhka-ovz/">&nbsp;&nbsp;&nbsp;6..7 Поддержка лиц с ОВЗ</option>
+                    
+                  
+                
               
             
-          
-            <option 
-              value="/vospitanie/fizkultura-sport/" 
-              data-code="4.8"
-              data-level="1"
-              class="rubric-level-1"
-            >
-              &nbsp;&nbsp;4.8. Физическая культура и спорт
-            </option>
-            
-            
-            
               
-                <option 
-                  value="/vospitanie/fizkultura-sport/ssk-avangard/" 
-                  data-code="4.8.1"
-                  data-level="2"
-                  class="rubric-level-2"
-                >
-                  &nbsp;&nbsp;&nbsp;&nbsp;4.8.1. ССК &quot;Авангард&quot;
-                </option>
+            <option class="level-0" value="/bezopasnost/">7. КОМПЛЕКСНАЯ БЕЗОПАСНОСТЬ</option>
+                
+                  
+            <option class="level-1" value="/bezopasnost/antiterror/">&nbsp;&nbsp;&nbsp;7..1 Антитеррористическая защищенность</option>
+                    
+                  
+            <option class="level-1" value="/bezopasnost/ekstremizm/">&nbsp;&nbsp;&nbsp;7..2 Профилактика экстремизма</option>
+                    
+                  
+            <option class="level-1" value="/bezopasnost/korrupcija/">&nbsp;&nbsp;&nbsp;7..3 Противодействие коррупции</option>
+                    
+                  
+            <option class="level-1" value="/bezopasnost/pozharnaya/">&nbsp;&nbsp;&nbsp;7..4 Пожарная безопасность</option>
+                    
+                  
+                
               
             
-          
-            <option 
-              value="/vospitanie/upolnomochennyj-prava/" 
-              data-code="4.9"
-              data-level="1"
-              class="rubric-level-1"
-            >
-              &nbsp;&nbsp;4.9. Уполномоченный по правам ребенка
-            </option>
-            
-            
-            
-          
-        
-      
-        
-        <option 
-          value="/partnerstvo/" 
-          data-code="5"
-          data-level="0"
-          class="rubric-level-0"
-        >
-          5. СОЦИАЛЬНОЕ ПАРТНЕРСТВО И ПРОФОРИЕНТАЦИЯ
-        </option>
-        
-        
-        
-          
-            <option 
-              value="/partnerstvo/vuzy/" 
-              data-code="5.1"
-              data-level="1"
-              class="rubric-level-1"
-            >
-              &nbsp;&nbsp;5.1. Сотрудничество с ВУЗами
-            </option>
-            
-            
-            
-          
-            <option 
-              value="/partnerstvo/zanyatost/" 
-              data-code="5.2"
-              data-level="1"
-              class="rubric-level-1"
-            >
-              &nbsp;&nbsp;5.2. Сотрудничество с органами занятости
-            </option>
-            
-            
-            
-          
-            <option 
-              value="/partnerstvo/predprijatija/" 
-              data-code="5.3"
-              data-level="1"
-              class="rubric-level-1"
-            >
-              &nbsp;&nbsp;5.3. Сотрудничество с предприятиями
-            </option>
-            
-            
-            
-          
-            <option 
-              value="/partnerstvo/shkoly/" 
-              data-code="5.4"
-              data-level="1"
-              class="rubric-level-1"
-            >
-              &nbsp;&nbsp;5.4. Сотрудничество со школами
-            </option>
-            
-            
-            
-          
-        
-      
-        
-        <option 
-          value="/psihologicheskoe/" 
-          data-code="6"
-          data-level="0"
-          class="rubric-level-0"
-        >
-          6. ПСИХОЛОГИЧЕСКОЕ СОПРОВОЖДЕНИЕ
-        </option>
-        
-        
-        
-          
-            <option 
-              value="/psihologicheskoe/organizacionno-metodicheskaya/" 
-              data-code="6.1"
-              data-level="1"
-              class="rubric-level-1"
-            >
-              &nbsp;&nbsp;6.1. Организационно-методическая основа
-            </option>
-            
-            
-            
-          
-            <option 
-              value="/psihologicheskoe/rezultaty-testirovanij/" 
-              data-code="6.2"
-              data-level="1"
-              class="rubric-level-1"
-            >
-              &nbsp;&nbsp;6.2. Результаты тестирований
-            </option>
-            
-            
-            
-          
-            <option 
-              value="/psihologicheskoe/sovety-prepodavatelyam/" 
-              data-code="6.3"
-              data-level="1"
-              class="rubric-level-1"
-            >
-              &nbsp;&nbsp;6.3. Советы преподавателям
-            </option>
-            
-            
-            
-          
-            <option 
-              value="/psihologicheskoe/sovety-roditelyam/" 
-              data-code="6.4"
-              data-level="1"
-              class="rubric-level-1"
-            >
-              &nbsp;&nbsp;6.4. Советы родителям
-            </option>
-            
-            
-            
-          
-            <option 
-              value="/psihologicheskoe/sovety-studentam/" 
-              data-code="6.5"
-              data-level="1"
-              class="rubric-level-1"
-            >
-              &nbsp;&nbsp;6.5. Советы студентам
-            </option>
-            
-            
-            
-          
-            <option 
-              value="/psihologicheskoe/profilaktika-narkotikov/" 
-              data-code="6.6"
-              data-level="1"
-              class="rubric-level-1"
-            >
-              &nbsp;&nbsp;6.6. Профилактика наркотиков
-            </option>
-            
-            
-            
-          
-            <option 
-              value="/psihologicheskoe/podderzhka-ovz/" 
-              data-code="6.7"
-              data-level="1"
-              class="rubric-level-1"
-            >
-              &nbsp;&nbsp;6.7. Поддержка лиц с ОВЗ
-            </option>
-            
-            
-            
-          
-        
-      
-        
-        <option 
-          value="/bezopasnost/" 
-          data-code="7"
-          data-level="0"
-          class="rubric-level-0"
-        >
-          7. КОМПЛЕКСНАЯ БЕЗОПАСНОСТЬ
-        </option>
-        
-        
-        
-          
-            <option 
-              value="/bezopasnost/antiterror/" 
-              data-code="7.1"
-              data-level="1"
-              class="rubric-level-1"
-            >
-              &nbsp;&nbsp;7.1. Антитеррористическая защищенность
-            </option>
-            
-            
-            
-          
-            <option 
-              value="/bezopasnost/ekstremizm/" 
-              data-code="7.2"
-              data-level="1"
-              class="rubric-level-1"
-            >
-              &nbsp;&nbsp;7.2. Профилактика экстремизма
-            </option>
-            
-            
-            
-          
-            <option 
-              value="/bezopasnost/korrupcija/" 
-              data-code="7.3"
-              data-level="1"
-              class="rubric-level-1"
-            >
-              &nbsp;&nbsp;7.3. Противодействие коррупции
-            </option>
-            
-            
-            
-          
-            <option 
-              value="/bezopasnost/pozharnaya/" 
-              data-code="7.4"
-              data-level="1"
-              class="rubric-level-1"
-            >
-              &nbsp;&nbsp;7.4. Пожарная безопасность
-            </option>
-            
-            
-            
-          
-        
-      
-        
-        <option 
-          value="/studentam-roditeljam/" 
-          data-code="8"
-          data-level="0"
-          class="rubric-level-0"
-        >
-          8. СТУДЕНТАМ И ИХ РОДИТЕЛЯМ
-        </option>
-        
-        
-        
-          
-            <option 
-              value="/studentam-roditeljam/resursy/" 
-              data-code="8.1"
-              data-level="1"
-              class="rubric-level-1"
-            >
-              &nbsp;&nbsp;8.1. Информационно-образовательные ресурсы
-            </option>
-            
-            
-            
               
-                <option 
-                  value="/studentam-roditeljam/resursy/novosti/" 
-                  data-code="8.1.1"
-                  data-level="2"
-                  class="rubric-level-2"
-                >
-                  &nbsp;&nbsp;&nbsp;&nbsp;8.1.1. Новости
-                </option>
-              
-                <option 
-                  value="/studentam-roditeljam/resursy/biblioteka/" 
-                  data-code="8.1.2"
-                  data-level="2"
-                  class="rubric-level-2"
-                >
-                  &nbsp;&nbsp;&nbsp;&nbsp;8.1.2. Библиотека техникума
-                </option>
+            <option class="level-0" value="/studentam-roditeljam/">8. СТУДЕНТАМ И ИХ РОДИТЕЛЯМ</option>
+                
+                  
+            <option class="level-1" value="/studentam-roditeljam/resursy/">&nbsp;&nbsp;&nbsp;8..1 Информационно-образовательные ресурсы</option>
+                    
+                      
+            <option class="level-2" value="/studentam-roditeljam/resursy/novosti/">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;8...1 Новости</option>
+                      
+            <option class="level-2" value="/studentam-roditeljam/resursy/biblioteka/">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;8...2 Библиотека техникума</option>
+                      
+                    
+                  
+            <option class="level-1" value="/studentam-roditeljam/prikaz-zachislenie/">&nbsp;&nbsp;&nbsp;8..2 Приказ о зачислении</option>
+                    
+                  
+            <option class="level-1" value="/studentam-roditeljam/raspisanie/">&nbsp;&nbsp;&nbsp;8..3 Расписание занятий</option>
+                    
+                  
+                
               
             
-          
-            <option 
-              value="/studentam-roditeljam/prikaz-zachislenie/" 
-              data-code="8.2"
-              data-level="1"
-              class="rubric-level-1"
-            >
-              &nbsp;&nbsp;8.2. Приказ о зачислении
-            </option>
+              
+            <option class="level-0" value="/obshestvennoe-mnenie/">9.4. Результаты изучения общественного мнения</option>
+                
+              
             
+              
+            <option class="level-0" value="/vypusknikam/">9.5. Нашим выпускникам</option>
+                
+              
             
+              
+            <option class="level-0" value="/uncategorized/">0. Без рубрики</option>
+                
+              
             
-          
-            <option 
-              value="/studentam-roditeljam/raspisanie/" 
-              data-code="8.3"
-              data-level="1"
-              class="rubric-level-1"
-            >
-              &nbsp;&nbsp;8.3. Расписание занятий
-            </option>
-            
-            
-            
-          
+          </select>
+        </div>
         
-      
-        
-        <option 
-          value="/obshestvennoe-mnenie/" 
-          data-code="9.4"
-          data-level="0"
-          class="rubric-level-0"
-        >
-          9.4. Результаты изучения общественного мнения
-        </option>
-        
-        
-        
-      
-        
-        <option 
-          value="/vypusknikam/" 
-          data-code="9.5"
-          data-level="0"
-          class="rubric-level-0"
-        >
-          9.5. Нашим выпускникам
-        </option>
-        
-        
-        
-      
-        
-        <option 
-          value="/uncategorized/" 
-          data-code="0"
-          data-level="0"
-          class="rubric-level-0"
-        >
-          0. Без рубрики
-        </option>
-        
-        
-        
-      
-    </select>
-    
-    <span class="rubric-select-arrow" aria-hidden="true">▼</span>
-  </div>
-</div>
-
-<script>
-  // Обработчик выбора рубрики
-  document.addEventListener('DOMContentLoaded', function() {
-    const rubricSelect = document.querySelector('[data-rubric-select]');
-    
-    if (!rubricSelect) return;
-    
-    rubricSelect.addEventListener('change', function() {
-      const selectedValue = this.value;
-      if (selectedValue) {
-        window.location.href = selectedValue;
-      }
-    });
-    
-    // Добавляем визуальное выделение при наведении на опции разных уровней
-    rubricSelect.addEventListener('mouseenter', function() {
-      const options = this.querySelectorAll('option');
-      options.forEach(option => {
-        const level = option.getAttribute('data-level');
-        if (level === '1') {
-          option.style.paddingLeft = '20px';
-        } else if (level === '2') {
-          option.style.paddingLeft = '40px';
-        }
-      });
-    });
-  });
-</script>
-
+        <!-- Правая часть (1/3): ссылка "Контакты техникума" -->
+        <div class="col-md-4 svedeniya-block">
+          <a class="nav-link" href="/contacts/" title="Контакты техникума">Контакты</a>
+        </div>
+      </div>
     </div>
     
   </div>
 </header>
 
-
-
-<div class="search-modal" id="searchModal" role="dialog" aria-labelledby="searchModalTitle" aria-modal="true" hidden>
-  <div class="search-modal-overlay" data-search-close></div>
-  
-  <div class="search-modal-content">
-    <header class="search-modal-header">
-      <h2 id="searchModalTitle" class="search-modal-title">Поиск по сайту</h2>
-      <button 
-        type="button" 
-        class="search-modal-close" 
-        data-search-close
-        aria-label="Закрыть поиск"
-      >
-        ×
-      </button>
-    </header>
-    
-    <form class="search-modal-form" data-search-form>
-      <div class="search-input-wrapper">
-        <input 
-          type="search" 
-          class="search-input" 
-          placeholder="Введите запрос..." 
-          data-search-input
-          aria-label="Поисковый запрос"
-          autocomplete="off"
-        >
-        <button type="submit" class="search-submit" aria-label="Найти">
-          <span class="visually-hidden">Найти</span>
-        </button>
+<!-- МОДАЛЬНОЕ ОКНО ПОИСКА (Bootstrap Modal) -->
+<div class="modal fade" id="searchModal" tabindex="-1" aria-labelledby="searchModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="searchModalLabel">Поиск по сайту</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
       </div>
-    </form>
-    
-    <div class="search-results" data-search-results aria-live="polite">
-      
+      <div class="modal-body">
+        
+        <form role="search" action="/search/" method="get">
+          <div class="input-group">
+            <input type="search" class="form-control" name="q" placeholder="Введите запрос..." aria-label="Поисковый запрос">
+            <button class="btn btn-primary" type="submit"><i class="bi bi-search"></i> Найти</button>
+          </div>
+        </form>
+      </div>
     </div>
-    
-    <div class="search-loading" data-search-loading hidden>
-      <span class="spinner"></span>
-      <span>Поиск...</span>
-    </div>
-    
-    <footer class="search-modal-footer">
-      <p class="search-hint">
-        Введите минимум 2 символа для поиска. Поиск осуществляется по заголовкам и содержанию материалов.
-      </p>
-    </footer>
   </div>
 </div>
-
 
   <main class="site-main" id="main-content" tabindex="-1">
     <h1>1.4. День открытых дверей</h1>
@@ -1718,5 +712,7 @@
 
   <script src="/assets/js/main.js"></script>
   <script src="/assets/js/slider.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="/assets/js/header.js"></script>
 </body>
 </html>
