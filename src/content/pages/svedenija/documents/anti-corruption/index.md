@@ -11,6 +11,7 @@ breadcrumb:
   - title: Документы
     url: /svedenija/documents/
   - title: Противодействие коррупции
+rubric: "0"
 ---
 
 {% set antiCorruption = collections["anti-corruption-data"][0].data.sections %}

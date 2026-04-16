@@ -2,6 +2,7 @@
 title: Великая Победа
 layout: base.njk
 category: vospitanie
+rubric: "4.6.1"
 tags:
   - Великая Победа
   - воспитание

@@ -5,6 +5,7 @@ permalink: /documents/
 eleventyNavigation:
   key: documents
   parent: main
+rubric: "0"
 ---
 # Документы
 

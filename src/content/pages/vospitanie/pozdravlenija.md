@@ -2,6 +2,7 @@
 title: Поздравления
 layout: base.njk
 category: vospitanie
+rubric: "4.7.3"
 tags:
   - Поздравления
   - Праздники

@@ -2,6 +2,7 @@
 title: Слово директора
 layout: base.njk
 category: abiturientam
+rubric: "1.1"
 tags:
   - Абитуриентам
 description: Обращение директора Сальского индустриального техникума

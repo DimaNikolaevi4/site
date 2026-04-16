@@ -1,0 +1,85 @@
+{# Компонент выбора рубрики для шапки сайта #}
+{# Использует данные из src/_data/rubrics.yaml #}
+
+<div class="rubric-selector" data-rubric-selector>
+  <label for="rubricSelect" class="rubric-selector-label">
+    <span class="visually-hidden">Выберите нужный раздел/рубрику сайта</span>
+  </label>
+  
+  <div class="rubric-select-wrapper">
+    <select id="rubricSelect" class="rubric-select" data-rubric-select aria-label="Выберите рубрику">
+      <option value="">Выберите нужный раздел/рубрику сайта</option>
+      
+      {% for rubric in rubrics.main_rubrics %}
+        {# Основная рубрика (уровень 0) #}
+        <option 
+          value="/{{ rubric.slug }}/" 
+          data-code="{{ rubric.code }}"
+          data-level="0"
+          class="rubric-level-0"
+        >
+          {{ rubric.code }}. {{ rubric.title }}
+        </option>
+        
+        {# Подрубрики уровня 1 #}
+        {% if rubric.children %}
+          {% for child in rubric.children %}
+            <option 
+              value="/{{ rubric.slug }}/{{ child.slug }}/" 
+              data-code="{{ child.code }}"
+              data-level="1"
+              class="rubric-level-1"
+            >
+              &nbsp;&nbsp;{{ child.code }}. {{ child.title }}
+            </option>
+            
+            {# Подрубрики уровня 2 #}
+            {% if child.children %}
+              {% for subchild in child.children %}
+                <option 
+                  value="/{{ rubric.slug }}/{{ child.slug }}/{{ subchild.slug }}/" 
+                  data-code="{{ subchild.code }}"
+                  data-level="2"
+                  class="rubric-level-2"
+                >
+                  &nbsp;&nbsp;&nbsp;&nbsp;{{ subchild.code }}. {{ subchild.title }}
+                </option>
+              {% endfor %}
+            {% endif %}
+          {% endfor %}
+        {% endif %}
+      {% endfor %}
+    </select>
+    
+    <span class="rubric-select-arrow" aria-hidden="true">▼</span>
+  </div>
+</div>
+
+<script>
+  // Обработчик выбора рубрики
+  document.addEventListener('DOMContentLoaded', function() {
+    const rubricSelect = document.querySelector('[data-rubric-select]');
+    
+    if (!rubricSelect) return;
+    
+    rubricSelect.addEventListener('change', function() {
+      const selectedValue = this.value;
+      if (selectedValue) {
+        window.location.href = selectedValue;
+      }
+    });
+    
+    // Добавляем визуальное выделение при наведении на опции разных уровней
+    rubricSelect.addEventListener('mouseenter', function() {
+      const options = this.querySelectorAll('option');
+      options.forEach(option => {
+        const level = option.getAttribute('data-level');
+        if (level === '1') {
+          option.style.paddingLeft = '20px';
+        } else if (level === '2') {
+          option.style.paddingLeft = '40px';
+        }
+      });
+    });
+  });
+</script>

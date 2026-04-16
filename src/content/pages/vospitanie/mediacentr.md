@@ -2,6 +2,7 @@
 title: Медиацентр «Новости СИТ»
 layout: base.njk
 category: vospitanie
+rubric: "4.7.2"
 tags:
   - воспитание
   - Студентам

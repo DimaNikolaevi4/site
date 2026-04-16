@@ -2,6 +2,7 @@
 title: Противодействие коррупции
 layout: base.njk
 category: bezopasnost
+rubric: "7.3"
 tags:
   - Безопасность
 description: Информация о противодействии коррупции

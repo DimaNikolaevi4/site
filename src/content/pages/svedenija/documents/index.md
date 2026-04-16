@@ -6,6 +6,7 @@ eleventyNavigation:
   key: documents
   parent: svedenija
   title: Документы
+rubric: "0"
 ---
 
 # Документы

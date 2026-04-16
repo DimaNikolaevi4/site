@@ -5,6 +5,7 @@ permalink: /svedenija/
 eleventyNavigation:
   key: svedenija
   parent: main
+rubric: "2"
 ---
 # Сведения об образовательной организации
 

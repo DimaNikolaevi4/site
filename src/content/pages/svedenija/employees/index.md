@@ -2,6 +2,7 @@
 title: Руководство и педагогический состав
 layout: svedenija-page.njk
 section: employees
+rubric: "2.5.1"
 ---
 
 # Руководство и педагогический состав

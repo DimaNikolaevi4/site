@@ -2,6 +2,7 @@
 title: Финансово-хозяйственная деятельность
 layout: svedenija-page.njk
 section: finance
+rubric: "2.9"
 ---
 
 # Финансово-хозяйственная деятельность
