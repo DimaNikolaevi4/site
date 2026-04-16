@@ -1,8 +1,13 @@
 ```
+ сверка-структуры-сайта-304f3
 # Generated from deleted HTML files with attachment IDs
 *.html@attachment_id=*.html
 *.html@cat=*.html
 *.html@p=*.html
 *.html@page_id=*.html
+=======
+# Ignore all index.html files with attachment IDs, page IDs, or other parameters
+index.html@*.html
+upload-files
 
 ```
