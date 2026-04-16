@@ -135,7 +135,12 @@ console.log("Site loaded");
   
   // Initialize accessibility features
   function init() {
-    const toggleBtn = document.getElementById('a11yToggle');
+    // Поддержка нескольких кнопок переключения доступности (в шапке и в base)
+    const toggleBtns = [
+      document.getElementById('a11yToggle'),
+      document.getElementById('a11yToggleHeader')
+    ].filter(Boolean);
+    
     const panel = document.getElementById('a11yPanel');
     const closeBtn = document.getElementById('a11yClose');
     const resetBtn = document.getElementById('a11yReset');
@@ -143,7 +148,7 @@ console.log("Site loaded");
     const highContrastCheckbox = document.getElementById('a11yHighContrast');
     const noAnimationsCheckbox = document.getElementById('a11yNoAnimations');
     
-    if (!toggleBtn || !panel) return;
+    if (!panel || toggleBtns.length === 0) return;
     
     let settings = loadSettings();
     applySettings(settings);
@@ -153,26 +158,36 @@ console.log("Site loaded");
     if (highContrastCheckbox) highContrastCheckbox.checked = settings.highContrast;
     if (noAnimationsCheckbox) noAnimationsCheckbox.checked = settings.noAnimations;
     
-    // Toggle button click - open/close panel
-    toggleBtn.addEventListener('click', function() {
-      const isExpanded = toggleBtn.getAttribute('aria-expanded') === 'true';
-      toggleBtn.setAttribute('aria-expanded', String(!isExpanded));
-      panel.hidden = isExpanded;
-      
-      if (!isExpanded) {
-        // Focus on first checkbox when opening
-        setTimeout(() => {
-          if (largeFontCheckbox) largeFontCheckbox.focus();
-        }, 100);
-      }
+    // Toggle button click - open/close panel (для всех кнопок)
+    toggleBtns.forEach(function(toggleBtn) {
+      toggleBtn.addEventListener('click', function() {
+        const isExpanded = toggleBtn.getAttribute('aria-expanded') === 'true';
+        
+        // Обновляем состояние для всех кнопок
+        toggleBtns.forEach(function(btn) {
+          btn.setAttribute('aria-expanded', String(!isExpanded));
+        });
+        
+        panel.hidden = isExpanded;
+        
+        if (!isExpanded) {
+          // Focus on first checkbox when opening
+          setTimeout(() => {
+            if (largeFontCheckbox) largeFontCheckbox.focus();
+          }, 100);
+        }
+      });
     });
     
     // Close button
     if (closeBtn) {
       closeBtn.addEventListener('click', function() {
-        toggleBtn.setAttribute('aria-expanded', 'false');
+        toggleBtns.forEach(function(btn) {
+          btn.setAttribute('aria-expanded', 'false');
+        });
         panel.hidden = true;
-        toggleBtn.focus();
+        // Focus back to the first toggle button
+        toggleBtns[0].focus();
       });
     }
     
@@ -223,9 +238,12 @@ console.log("Site loaded");
     // Keyboard navigation - close panel on Escape
     document.addEventListener('keydown', function(e) {
       if (e.key === 'Escape' && !panel.hidden) {
-        toggleBtn.setAttribute('aria-expanded', 'false');
+        toggleBtns.forEach(function(btn) {
+          btn.setAttribute('aria-expanded', 'false');
+        });
         panel.hidden = true;
-        toggleBtn.focus();
+        // Focus back to the first toggle button
+        toggleBtns[0].focus();
       }
     });
     
