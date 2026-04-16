@@ -138,7 +138,8 @@ console.log("Site loaded");
     // Поддержка нескольких кнопок переключения доступности (в шапке и в base)
     const toggleBtns = [
       document.getElementById('a11yToggle'),
-      document.getElementById('a11yToggleHeader')
+      document.getElementById('a11yToggleHeader'),
+      document.getElementById('a11yToggleMobile')
     ].filter(Boolean);
     
     const panel = document.getElementById('a11yPanel');
