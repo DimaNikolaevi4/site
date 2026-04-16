@@ -1,23 +1,4 @@
-```
-# Build artifacts
-public/
-
-# Dependencies
-node_modules/
-
-# Environment
-.env
-.env.local
-*.env.*
-
-# Editors
-.vscode/
-.idea/
-
-# Logs
-*.log
-
-# OS generated files
-.DS_Store
-Thumbs.db
+```scss
+// No build artifacts, dependencies, or temporary files detected in changes
+// Only SCSS source files were modified
 ```
