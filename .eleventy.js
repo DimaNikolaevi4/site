@@ -86,6 +86,12 @@ module.exports = function(eleventyConfig) {
   // === Поддержка pathPrefix для деплоя в подпапку ===
   const pathPrefix = process.env.PATH_PREFIX || "/";
   
+  eleventyConfig.setServerOptions({
+    host: "0.0.0.0",
+    port: 5000,
+    showAllHosts: true
+  });
+
   return {
     dir: {
       input: "src",
