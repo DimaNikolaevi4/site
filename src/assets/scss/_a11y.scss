@@ -145,7 +145,105 @@
   }
 }
 
-// Режим высокой контрастности
+// ========== ВЕРСИЯ ДЛЯ СЛАБОВИДЯЩИХ (body-level классы для header.js) ==========
+
+// Высокая контрастность
+body.a11y-high-contrast {
+  background: #000 !important;
+  color: #fff !important;
+  
+  .site-header {
+    background: #1a1a1a !important;
+  }
+  
+  a,
+  .nav-link,
+  .btn-icon,
+  .eos-link,
+  .svedeniya-block .nav-link {
+    color: #ffd700 !important;
+  }
+  
+  .eos-link,
+  .svedeniya-block .nav-link {
+    background-color: #333 !important;
+    
+    &:hover,
+    &:focus {
+      background-color: #444 !important;
+    }
+  }
+  
+  .dropdown-menu {
+    background: #1a1a1a !important;
+    border-color: #444 !important;
+    
+    .dropdown-item {
+      color: #ffd700 !important;
+      
+      &:hover,
+      &:focus {
+        background-color: #333 !important;
+      }
+    }
+  }
+  
+  .navbar-toggler {
+    background-color: #333 !important;
+  }
+  
+  .header-info-bar {
+    background: #1a1a1a !important;
+    border-bottom-color: #444 !important;
+  }
+  
+  .header-actions-panel {
+    background: #000 !important;
+  }
+  
+  .rubric-select {
+    background-color: #1a1a1a !important;
+    border-color: #444 !important;
+    color: #ffd700 !important;
+  }
+}
+
+// Крупный шрифт
+body.a11y-large-font {
+  font-size: 1.2rem;
+  
+  .site-title {
+    font-size: 1.8rem;
+    
+    small {
+      font-size: 1.4rem;
+    }
+  }
+  
+  .nav-link,
+  .dropdown-item,
+  .info-item,
+  .eos-link,
+  .rubric-select {
+    font-size: 1.2rem;
+  }
+  
+  .btn-icon {
+    width: 3rem;
+    height: 3rem;
+    font-size: 1.8rem;
+  }
+}
+
+// Отключение анимаций
+body.a11y-no-animation *,
+body.a11y-no-animation *::before,
+body.a11y-no-animation *::after {
+  transition: none !important;
+  animation: none !important;
+}
+
+// Режим высокой контрастности (для совместимости со старыми классами)
 .a11y-high-contrast {
   body {
     background: #000 !important;
@@ -168,7 +266,7 @@
   }
 }
 
-// Отключение анимаций
+// Отключение анимаций (для совместимости)
 .a11y-no-animations {
   *,
   *::before,
@@ -178,7 +276,7 @@
   }
 }
 
-// Увеличенный шрифт
+// Увеличенный шрифт (для совместимости)
 .a11y-large-font {
   html {
     font-size: 125%;
