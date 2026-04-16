@@ -2,6 +2,7 @@
 title: Структура и органы управления
 layout: svedenija-page.njk
 section: structure
+rubric: "0"
 ---
 
 # Структура и органы управления

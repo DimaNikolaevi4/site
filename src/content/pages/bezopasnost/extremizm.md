@@ -2,6 +2,7 @@
 title: Профилактика экстремизма и терроризма
 layout: base.njk
 category: bezopasnost
+rubric: "7.2"
 tags:
   - Безопасность
 description: Информация по профилактике экстремизма и терроризма

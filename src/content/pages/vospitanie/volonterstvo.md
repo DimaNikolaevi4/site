@@ -2,6 +2,7 @@
 title: Волонтерское движение
 layout: base.njk
 category: vospitanie
+rubric: "4.5"
 tags:
   - воспитание
   - волонтеры

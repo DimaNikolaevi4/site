@@ -3,6 +3,7 @@ layout: base.njk
 title: Спасибо за обращение
 permalink: /thank-you/
 eleventyExcludeFromCollections: true
+rubric: "0"
 ---
 <div class="thank-you-page">
   <h1>Спасибо за ваше сообщение!</h1>

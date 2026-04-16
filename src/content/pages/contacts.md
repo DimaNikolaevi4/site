@@ -5,6 +5,7 @@ permalink: /contacts/
 eleventyNavigation:
   key: contacts
   parent: main
+rubric: "0"
 ---
 # Контакты
 

@@ -2,6 +2,7 @@
 title: Стипендии и меры поддержки
 layout: svedenija-page.njk
 section: stipend
+rubric: "2.9.1"
 ---
 
 # Стипендии и меры поддержки

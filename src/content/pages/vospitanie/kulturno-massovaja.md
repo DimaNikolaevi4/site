@@ -2,6 +2,7 @@
 title: Культурно-массовая работа
 layout: base.njk
 category: vospitanie
+rubric: "4.7"
 tags:
   - воспитание
   - Мероприятия

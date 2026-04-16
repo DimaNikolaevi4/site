@@ -2,6 +2,7 @@
 title: День открытых дверей
 layout: base.njk
 category: abiturientam
+rubric: "1.4"
 tags:
   - Абитуриентам
   - Мероприятия

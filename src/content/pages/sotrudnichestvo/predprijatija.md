@@ -2,6 +2,7 @@
 title: Сотрудничество с предприятиями
 layout: base.njk
 category: sotrudnichestvo
+rubric: "5.3"
 tags:
   - Сотрудничество
 description: Партнерство с предприятиями и организациями

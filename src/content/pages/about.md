@@ -5,6 +5,7 @@ permalink: /about/
 eleventyNavigation:
   key: about
   parent: main
+rubric: "0"
 ---
 # О техникуме
 

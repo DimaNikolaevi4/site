@@ -2,6 +2,7 @@
 title: Материально-техническое обеспечение
 layout: svedenija-page.njk
 section: objects
+rubric: "2.7"
 ---
 
 # Материально-техническое обеспечение

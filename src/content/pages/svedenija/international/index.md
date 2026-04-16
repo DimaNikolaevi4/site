@@ -2,6 +2,7 @@
 title: Международное сотрудничество
 layout: svedenija-page.njk
 section: international
+rubric: "2.4.2"
 ---
 
 # Международное сотрудничество

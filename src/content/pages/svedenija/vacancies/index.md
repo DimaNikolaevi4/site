@@ -2,6 +2,7 @@
 title: Вакантные места для приёма/перевода
 layout: svedenija-page.njk
 section: vacancies
+rubric: "2.4.1"
 ---
 
 # Вакантные места для приёма/перевода

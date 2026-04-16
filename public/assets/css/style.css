@@ -959,6 +959,17 @@ a:hover {
   text-decoration: underline;
 }
 
+.search-result-rubric {
+  display: inline-block;
+  font-size: var(--font-size-xs);
+  color: var(--color-accent);
+  background: rgba(79, 70, 229, 0.1);
+  padding: 2px 8px;
+  border-radius: var(--radius-sm);
+  margin-bottom: var(--spacing-xs);
+  font-weight: 500;
+}
+
 .search-no-results {
   color: var(--text-secondary);
   font-style: italic;
@@ -966,6 +977,134 @@ a:hover {
   text-align: center;
   background: var(--bg-light);
   border-radius: var(--radius-md);
+}
+
+/* ========================================
+   Выбор рубрики (Rubric Selector)
+   ======================================== */
+.rubric-selector {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+}
+
+.rubric-selector-label {
+  margin-right: var(--spacing-sm);
+  font-size: var(--font-size-sm);
+  color: var(--text-secondary);
+  white-space: nowrap;
+}
+
+.rubric-select-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.rubric-select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  padding: var(--spacing-xs) var(--spacing-xl) var(--spacing-xs) var(--spacing-sm);
+  font-size: var(--font-size-sm);
+  font-family: inherit;
+  color: var(--text-primary);
+  background-color: var(--bg-light);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  min-width: 280px;
+  max-width: 350px;
+  line-height: 1.4;
+  transition: all 0.2s ease;
+}
+
+.rubric-select:hover {
+  border-color: var(--color-accent);
+}
+
+.rubric-select:focus {
+  outline: none;
+  border-color: var(--color-accent);
+  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
+}
+
+.rubric-select option {
+  padding: 8px 12px;
+}
+
+.rubric-select option.rubric-level-0 {
+  font-weight: 600;
+  color: var(--color-primary);
+}
+
+.rubric-select option.rubric-level-1 {
+  padding-left: 20px;
+  color: var(--text-primary);
+}
+
+.rubric-select option.rubric-level-2 {
+  padding-left: 40px;
+  color: var(--text-secondary);
+  font-size: 0.9em;
+}
+
+.rubric-select-arrow {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+  font-size: 10px;
+  color: var(--text-secondary);
+  transition: transform 0.2s ease;
+}
+
+.rubric-select-wrapper:hover .rubric-select-arrow {
+  color: var(--color-accent);
+}
+
+/* Адаптивность для рубрикатора */
+@media (max-width: 992px) {
+  .rubric-selector {
+    margin-left: 0;
+    margin-top: var(--spacing-md);
+    width: 100%;
+  }
+  
+  .rubric-selector-label {
+    display: block;
+    margin-bottom: var(--spacing-xs);
+  }
+  
+  .rubric-select {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .rubric-select {
+    min-width: 100%;
+    font-size: 14px;
+  }
+}
+
+/* Высокая контрастность */
+.a11y-high-contrast .rubric-select {
+  border: 2px solid currentColor;
+  background: #000;
+  color: #fff;
+}
+
+.a11y-high-contrast .rubric-select option {
+  background: #000;
+  color: #fff;
+}
+
+/* Увеличенный шрифт */
+.a11y-large-font .rubric-select {
+  font-size: 1.2em;
+  padding: 12px 36px 12px 12px;
 }
 
 @media (max-width: 767px) {
