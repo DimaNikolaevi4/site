@@ -124,6 +124,9 @@ button {
 @import 'a11y';
 @import 'components';
 
+// 8.1. Компоненты (отдельные файлы)
+@import 'components/header';
+
 // 9. Утилиты
 .text-center { text-align: center; }
 .text-right { text-align: right; }
