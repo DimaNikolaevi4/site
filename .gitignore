@@ -1,79 +1,45 @@
-```
+# Logs and temp files
+*.log
+
+# Environment
+.env
+.env.local
+*.env.*
+
+# Editors
+.vscode/
+
 # Dependencies
 node_modules/
-
-# Build artifacts
+venv/
+.venv/
+__pycache__/
+.mypy_cache/
+.pytest_cache/
 dist/
 build/
 target/
+.gradle/
 
-# Python specific
-__pycache__/
+# Compiled files
 *.pyc
-*.pyo
-*.pyd
-*.py.class
-*.py.obj
-*.py.out
-*.py.a
-*.py.so
-*.py.dll
-*.py.exe
-*.py.o
+*.class
+*.o
+*.exe
+*.dll
+*.so
+*.a
+*.obj
+*.out
 
-# Virtual environments
-venv/
-.venv/
-env/
-ENV/
-
-# Logs
-*.log
-
-# Temporary files
-*.tmp
-*.temp
-*.bak
-*.swp
-*.swo
-
-# OS generated files
+# System files
 .DS_Store
-.DS_Store?
-._*
-.Spotlight-V100
-.Trashes
-ehthumbs.db
 Thumbs.db
 
-# Environment variables
-.env
-.env.local
-*.env
-*.env.*
-
-# IDE specific
-.vscode/
-.idea/
-*.swp
-*.swo
-
-# Coverage reports
+# Coverage
 coverage/
 htmlcov/
 .coverage
-
-# MyPy cache
-.mypy_cache/
-
-# Pytest cache
-.pytest_cache/
-
-# Distribution / packaging
-*.tar.gz
-*.whl
-*.egg-info/
-*.egg
 
 # Compressed files
 *.zip
@@ -98,17 +64,3 @@ htmlcov/
 *.tar.bz2
 *.tar.xz
 *.tar.zst
-
-# Gradle
-.gradle/
-
-# Compiled Binary files
-*.class
-*.o
-*.a
-*.obj
-*.out
-*.so
-*.dll
-*.exe
-```
