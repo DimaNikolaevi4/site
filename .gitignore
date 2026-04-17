@@ -1,5 +1,5 @@
 ```
-# Compressed archives
+# Compressed files
 *.zip
 *.gz
 *.tar
@@ -26,29 +26,24 @@
 # Logs
 *.log
 
+# Environment files
+.env
+.env.local
+*.env.*
+
 # Temporary files
 *.tmp
-*.temp
+*.swp
+*.swo
 
 # OS generated files
 .DS_Store
 Thumbs.db
 
-# Environment variables
-.env
-.env.local
-*.env.*
-
 # Coverage reports
 coverage/
 htmlcov/
 .coverage
-
-# IDE specific files
-.vscode/
-.idea/
-*.swp
-*.swo
 
 # Python specific
 __pycache__/
@@ -58,6 +53,7 @@ __pycache__/
 .Python
 *.so
 *.egg-info/
+.eggs/
 
 # Build outputs
 dist/
@@ -69,475 +65,19 @@ build/
 *.a
 *.obj
 
-# Package managers
+# Dependencies
 node_modules/
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-
-# Virtual environments
-venv/
 .venv/
-env/
-ENV/
-
-# Gradle
-.gradle/
-build/
-
-# Maven
-target/
-
-# Ruby
-*.gem
-*.rbc
-.bundle/
-.ruby-version
-.rubocop.yml
-.rbenv-vars
-
-# Java
-*.class
-*.jar
-*.war
-*.ear
-
-# Go
-*.o
-*.a
-*.swp
-
-# Node.js
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-
-# MyPy
-.mypy_cache/
-
-# PyTest
-.pytest_cache/
-
-# Sphinx documentation
-docs/_build/
-
-# Jupyter Notebook
-.ipynb_checkpoints/
-
-# Coverage
-.coverage*
-htmlcov/
-
-# Django
-*.log
-local_settings.py
-db.sqlite3
-db.sqlite3-journal
-
-# Flask
-instance/
-.webassets-cache
-
-# Scrapy
-.scrapy
-
-# Sphinx
-docs/_build/
-
-# PyBuilder
-build/
-
-# Doxygen
-doc/html/
-
-# SASS/SCSS
-.sass-cache/
-
-# Visual Studio Code
-.vscode/
-
-# Vim
-*.swp
-*.swo
-*~
-
-# Emacs
-*~
-\#*\#
-/.emacs.desktop
-/.emacs.desktop.lock
-*.elc
-auto-save-list
-tramp
-.\#*
-
-# Sublime Text
-*.tmlanguage.cache
-*.tmPreferences.cache
-*.sublime-workspace
-
-# IntelliJ IDEA
-.idea/
-
-# NetBeans
-/nbproject/private/
-/nbbuild/
-/dist/
-/nbdist/
-/.nb-gradle/
-
-# Eclipse
-.metadata
-bin/
-tmp/
-*.tmp
-*.bak
-*.swp
-*~.nib
-local.properties
-.settings/
-.loadpath
-.recommenders
-
-# Android Studio
-build/
-.externalNativeBuild/
-
-# CMake
-CMakeFiles/
-CMakeCache.txt
-cmake_install.manifest
-Makefile
-
-# Autotools
-autom4te.cache/
-config.h.in
-config.h
-config.log
-config.status
-configure
-
-# Qt Creator
-*.pro.user
-*.pro.user.*
-*.qbs.user
-*.qbs.user.*
-*.moc
-*.moc.cpp
-*.qm
-*.prl
-
-# CodeLite
-.project
-.cproject
-.workspace
-*.user
-*.user.*
-*.workspace
-*.launch
-
-# Dev-C++
-.dev
-
-# Flash Builder
-.settings
-bin-debug/
-bin-release/
-
-# Flex SDK
-bin/
-lib/
-
-# Force.com
-.metadata
-gen/
-*.flexProperties
-
-# Xcode
-*.xcodeproj/
-*.xcworkspace/
-*.pbxuser
-*.mode1v3
-*.perspectivev3
-*.xcuserstate
-*.xccheckout
-
-# Linux
-*~
-\#*\#
-
-# macOS
-.DS_Store
-.AppleDouble
-.LSOverride
-Icon?
-._*
-.Spotlight-V100
-.Trashes
-.VolumeIcon.icns
-com.apple.timemachine.donotpresent
-AppleDB
-AppleDesktop
-Network Trash Folder
-Temporary Items
-.apdisk
-
-# Windows
-Thumbs.db
-ehthumbs.db
-Desktop.ini
-$RECYCLE.BIN/
-*.cab
-*.msi
-*.msix
-*.msm
-*.msp
-
-# Generated image files (if they follow patterns)
-*_thumb.*
-*_thumbnail.*
-*_resized.*
-*_compressed.*
-
-# Backup files
-*.bak
-*.backup
-*.orig
-*.rej
-*~
-
-# Lock files
-*.lock
-package-lock.json
-npm-shrinkwrap.json
-
-# Test coverage
-coverage.xml
-*.gcov
-*.lcov
-*.profdata
-
-# Documentation
-docs/_build/
-_site/
-
-# Distribution / packaging
-.Python
-*.egg
-*.egg-info/
-MANIFEST
-*.spec
-
-# PyInstaller
-*.manifest
-*.spec
-
-# Installer logs
-*.log
-
-# Unit test / coverage reports
-coverage/
-*.cover
-*.py,cover
-htmlcov/
-.tox/
-.nox/
-.coverage.*
-.cache
-nosetests.xml
-coverage.xml
-*.coveragerc
-
-# Translations
-*.mo
-*.pot
-
-# Django stuff:
-*.log
-local_settings.py
-db.sqlite3
-db.sqlite3-journal
-
-# Flask stuff:
-instance/
-.webassets-cache
-
-# Scrapy stuff:
-.scrapy
-
-# Sphinx documentation
-docs/_build/
-
-# PyBuilder
-.pybuilder/
-target/
-
-# Jupyter Notebook
-.ipynb_checkpoints/
-
-# IPython
-profile_default/
-ipython_config.py
-
-# pyenv
-.python-version
-
-# pipenv
-Pipfile.lock
-
-# PEP 582
-__pypackages__/
-
-# Celery stuff
-celerybeat-schedule
-celerybeat.pid
-
-# SageMath parsed files
-*.sage.py
-
-# Environments
-.env
-.venv
-env/
 venv/
-ENV/
-env.bak/
-venv.bak/
-
-# Spyder project settings
-.spyderproject
-.spyproject
-
-# Rope project settings
-.ropeproject
-
-# mkdocs documentation
-/site/
-
-# mypy
 .mypy_cache/
-.dmypy.json
-dmypy.json
+.pytest_cache/
+target/
+.gradle/
 
-# Pyre type checker
-.pyre/
-
-# pytype static type analyzer
-.pytype/
-
-# Cython debug symbols
-cython_debug/
-
-# PyCharm
+# IDE specific
+.vscode/
 .idea/
 
-# Coverage
-.coverage
-.coverage.*
-
-# Compiled template files
-*.pyc
-*.pyo
-*.pyd
-
-# Distribution / packaging
-*.tar.gz
-*.whl
-
-# Static assets
-*.min.js
-*.min.css
-
-# Database
-*.db
-*.db-journal
-
-# Debug symbol files
-*.dsym
-
-# Temporary folders
-tmp/
-temp/
-
-# Cache directories
-.cache/
-__pycache__/
-*.cache
-
-# System files
-.DS_Store
-Thumbs.db
-
-# Configuration backups
-*.bak
-*.old
-*.orig
-
-# Log files
-*.log
-*.out
-
-# Temporary files
-*.tmp
-*.temp
-~*
-
-# Compressed files
-*.zip
-*.rar
-*.7z
-*.tar
-*.gz
-*.bz2
-*.xz
-
-# Image processing temporary files
-*.tmp
-*.temp
-
-# Generated content that might match image names
-*_thumb.*
-*_preview.*
-*_thumb.*
-*_small.*
-*_large.*
-*_resized.*
-*_converted.*
-*_copy.*
-
-# Mirror directory artifacts (based on pattern in changes)
-mirror/*/assets/*.tmp
-mirror/*/assets/*.temp
-mirror/*/assets/*_thumb.*
-mirror/*/assets/*_preview.*
-mirror/*/assets/*_resized.*
-mirror/*/assets/*_converted.*
-mirror/*/assets/*_copy.*
-
-# Ignore any temporary or cache files in mirror structure
-mirror/*/.DS_Store
-mirror/*/Thumbs.db
-mirror/*/__pycache__/
-mirror/*/node_modules/
-mirror/*/venv/
-mirror/.DS_Store
-mirror/Thumbs.db
-
-# General temporary files in assets directories
-*/assets/*.tmp
-*/assets/*.temp
-*/assets/*_thumb.*
-*/assets/*_preview.*
-*/assets/*_resized.*
-*/assets/*_converted.*
-*/assets/*_copy.*
-
-# Cache and temp files in general
-.cache/
-.tmp/
-.temp/
-*.tmp
-*.temp
-~*
-*~
+# Documentation builds
+docs/_build/
 ```
