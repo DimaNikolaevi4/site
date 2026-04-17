@@ -47,6 +47,36 @@ A static website for the Salsk Industrial Technical School (ГБПОУ РО "С�
 - `src/_data/rubrics.yaml` — rubric selector options
 - `src/_data/site.yaml` — site title, description, URL, language
 
+## Content Pages Status
+
+### Раздел «Сведения об образовательной организации» (Приказ Рособрнадзора №1493) — ЗАПОЛНЕН
+All svedenija subpages require explicit `permalink:` in frontmatter to route to `/svedenija/<section>/`.
+- `/svedenija/` — index
+- `/svedenija/structure/` — Структура и органы управления
+- `/svedenija/education/` — Образование (специальности, численность)
+- `/svedenija/employees/` — Руководство и педагогический состав
+- `/svedenija/objects/` — Материально-техническое обеспечение
+- `/svedenija/stipend/` — Стипендии и меры поддержки
+- `/svedenija/finance/` — Финансово-хозяйственная деятельность
+- `/svedenija/vacancies/` — Вакантные места для приёма/перевода
+- `/svedenija/access/` — Доступная среда
+- `/svedenija/international/` — Международное сотрудничество
+
+### Прочие разделы — ЗАПОЛНЕНЫ
+- `/abiturientam/slovo-direktora/`, `/abiturientam/den-otkrytyh-dverej/`
+- `/bezopasnost/antikorrupcija/`, `/bezopasnost/extremizm/`
+- `/studentam-i-roditeljam/raspisanie/`, `/studentam-i-roditeljam/roditeljam/`
+- `/vospitanie/volonterstvo/`, `/vospitanie/velikaja-pobeda/`, `/vospitanie/mediacentr/`,
+  `/vospitanie/kulturno-massovaja/`, `/vospitanie/pozdravlenija/`
+- `/sotrudnichestvo/predprijatija/`, `/sotrudnichestvo/shkoly/`
+- `/uchebno-metodicheskaja-rabota/`
+- `/professionaly-2026/`
+
+### ВАЖНО: правило permalink
+Все страницы в `src/content/pages/**` НЕ получают автоматический путь из имени файла.
+Каждая страница ОБЯЗАТЕЛЬНО должна иметь `permalink:` в frontmatter!
+Без явного permalink страница строится по пути `/content/pages/<...>/`.
+
 ## Deployment
 
 Configured as a **static** deployment:
