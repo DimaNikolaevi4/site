@@ -1,7 +1,2 @@
-```
-# Compressed files
-*.zip
-
-# Build artifacts
-mirror/2_SVEDENIJA/2.1_Osnovnye_svedenija/*/*.zip
-```
+# Project-specific ignores
+sit-salsk-links.txt
