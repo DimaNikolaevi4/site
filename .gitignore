@@ -1,1 +1,21 @@
-(public/content/pages/abiturientam/index.html, public/content/pages/bezopasnost/index.html, public/content/pages/sotrudnichestvo/index.html, public/content/pages/studentam-i-roditeljam/index.html, public/content/pages/svedenija/index.html, public/content/pages/vospitanie/index.html)
+```
+# Build artifacts
+build/
+dist/
+
+# Dependencies
+node_modules/
+
+# Logs and temp files
+*.log
+*.tmp
+
+# Editors
+.vscode/
+.idea/
+
+# Environment
+.env
+.env.local
+.env.*
+```
