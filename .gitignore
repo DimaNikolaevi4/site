@@ -1,1 +1,7 @@
-Nothing needs to be added to .gitignore for this change list. The added file `create_structure.sh` is a shell script that should be tracked in version control, and there are no build artifacts, dependency directories, or temporary files to ignore.
+```
+# WordPress uploads directory
+mirror/unsorted/wp-content/uploads/
+
+# Keep the plugins directory structure
+!mirror/unsorted/wp-content/plugins/
+```
