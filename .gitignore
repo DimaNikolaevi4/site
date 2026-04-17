@@ -1,3 +1,7 @@
 ```
-temp_repo/
+# Compressed files
+*.zip
+
+# Build artifacts
+mirror/2_SVEDENIJA/2.1_Osnovnye_svedenija/*/*.zip
 ```
