@@ -1,12 +1,49 @@
 ```
-# Web artifacts and temporary HTML files
-*.html@*
-mirror/**/*.html@*
+# Compressed archives
+*.zip
+
+# System files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
 
 # Temporary files
 *.tmp
 *.temp
 
-# Logs
-*.log
+# Environment files
+.env
+.env.local
+*.env.*
+
+# Editor/IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+*.so
+
+# Build directories
+dist/
+build/
+target/
+coverage/
+htmlcov/
+
+# Dependency directories
+node_modules/
+venv/
+.venv/
+.mypy_cache/
+.pytest_cache/
+.gradle/
 ```
