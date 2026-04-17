@@ -1,49 +1,8 @@
 ```
-# Compressed archives
-*.zip
+# Build artifacts and generated HTML files
+*.html
 
-# System files
-.DS_Store
-Thumbs.db
+# Mirror directory
+mirror/
 
-# Logs
-*.log
-
-# Temporary files
-*.tmp
-*.temp
-
-# Environment files
-.env
-.env.local
-*.env.*
-
-# Editor/IDE files
-.vscode/
-.idea/
-*.swp
-*.swo
-
-# Python
-__pycache__/
-*.pyc
-*.pyo
-*.pyd
-.Python
-*.so
-
-# Build directories
-dist/
-build/
-target/
-coverage/
-htmlcov/
-
-# Dependency directories
-node_modules/
-venv/
-.venv/
-.mypy_cache/
-.pytest_cache/
-.gradle/
 ```
