@@ -1,0 +1,11 @@
+/workspace/mirror/6_PSIHOLOGICHESKOE/6.6_Profilaktika_narkotikov|221|sub
+/workspace/mirror/6_PSIHOLOGICHESKOE/6.7_Podderzhka_ovz|147|sub
+/workspace/mirror/7_BEZOPASNOST/7.1_Antiterror|212|sub
+/workspace/mirror/7_BEZOPASNOST/7.2_Ekstremizm|213|sub
+/workspace/mirror/8_STUDENTAM_RODITELJAM/8.1_Resursy|150|sub
+/workspace/mirror/8_STUDENTAM_RODITELJAM/8.2_Prikaz_zachislenie|39|sub
+/workspace/mirror/8_STUDENTAM_RODITELJAM/8.3_Raspisanie|37|sub
+/workspace/mirror/9_DOPOLNITELNYE|None|main
+/workspace/mirror/9_DOPOLNITELNYE/9.4_Obshestvennoe_mnenie|46|sub
+/workspace/mirror/9_DOPOLNITELNYE/9.5_Vypusknikam|45|sub
+/workspace/mirror/0_BEZ_RUBRIKI|1|main
