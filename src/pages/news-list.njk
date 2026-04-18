@@ -1,0 +1,76 @@
+---
+layout: layouts/base.njk
+title: Новости
+description: Все новости техникума
+pagination:
+  data: collections.news
+  size: 10
+  alias: posts
+permalink: "/news/{% if pagination.pageNumber > 0 %}page/{{ pagination.pageNumber + 1 }}/{% endif %}index.html"
+---
+
+<!-- Хлебные крошки -->
+<nav class="breadcrumbs" aria-label="Хлебные крошки">
+  <div class="container">
+    <ol class="breadcrumbs__list">
+      <li class="breadcrumbs__item">
+        <a href="/" class="breadcrumbs__link">Главная</a>
+      </li>
+      <li class="breadcrumbs__item breadcrumbs__item--active" aria-current="page">
+        {{ title }}
+      </li>
+    </ol>
+  </div>
+</nav>
+
+<!-- Заголовок страницы -->
+<section class="section section--header">
+  <div class="container">
+    <h1 class="page-title">{{ title }}</h1>
+  </div>
+</section>
+
+<!-- Основной контент -->
+<div class="container layout">
+  <main class="layout__content layout__content--full">
+    <div class="news-grid news-grid--full">
+      {% for post in pagination.items %}
+      <article class="news-card">
+        <time class="news-card__date" datetime="{{ post.date }}">{{ post.date | dateRu }}</time>
+        <h2 class="news-card__title">
+          <a href="{{ post.url }}">{{ post.data.title }}</a>
+        </h2>
+        <p class="news-card__excerpt">{{ post.data.excerpt or post.templateContent | truncate(200) }}</p>
+        <a href="{{ post.url }}" class="news-card__link">Читать далее →</a>
+      </article>
+      {% endfor %}
+    </div>
+
+    <!-- Пагинация -->
+    {% if pagination.pages.length > 1 %}
+    <nav class="pagination" aria-label="Пагинация новостей">
+      <ul class="pagination__list">
+        {% if pagination.href.previous %}
+        <li class="pagination__item">
+          <a href="{{ pagination.href.previous }}" class="pagination__link">← Назад</a>
+        </li>
+        {% endif %}
+        
+        {% for pageHref in pagination.hrefs %}
+        <li class="pagination__item">
+          <a href="{{ pageHref }}" class="pagination__link {% if loop.index0 == pagination.pageNumber %}active{% endif %}">
+            {{ loop.index }}
+          </a>
+        </li>
+        {% endfor %}
+        
+        {% if pagination.href.next %}
+        <li class="pagination__item">
+          <a href="{{ pagination.href.next }}" class="pagination__link">Вперед →</a>
+        </li>
+        {% endif %}
+      </ul>
+    </nav>
+    {% endif %}
+  </main>
+</div>

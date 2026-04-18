@@ -1,4 +1,11 @@
-title: ГБПОУ РО "СИТ"
-description: Официальный сайт Сальского индустриального техникума
+name: "ГБПОУ РО \"Сальский индустриальный техникум\""
+short_name: "СИТ"
+description: "Официальный сайт Сальского индустриального техникума"
 url: "https://сит-сальск.рф"
-lang: ru
+address: "г. Сальск, ул. Примерная, д. 1"
+phone: "+7 (XXX) XXX-XX-XX"
+email: "info@sit-salsk.ru"
+copyright: "2024"
+social:
+  vk: "https://vk.com/sit_salsk"
+  telegram: "https://t.me/sit_salsk"

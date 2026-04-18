@@ -1,0 +1,76 @@
+---
+layout: layouts/base.njk
+title: Статическая страница
+description: Информация о техникуме
+---
+
+<!-- Хлебные крошки -->
+<nav class="breadcrumbs" aria-label="Хлебные крошки">
+  <div class="container">
+    <ol class="breadcrumbs__list">
+      <li class="breadcrumbs__item">
+        <a href="/" class="breadcrumbs__link">Главная</a>
+      </li>
+      <li class="breadcrumbs__item breadcrumbs__item--active" aria-current="page">
+        {{ title }}
+      </li>
+    </ol>
+  </div>
+</nav>
+
+<!-- Заголовок страницы -->
+<section class="section section--header">
+  <div class="container">
+    <h1 class="page-title">{{ title }}</h1>
+  </div>
+</section>
+
+<!-- Основной контент -->
+<div class="container layout">
+  <main class="layout__content layout__content--full static-content">
+    {{ content | safe }}
+  </main>
+</div>
+
+<!-- Пример контента -->
+<section class="content-section">
+  <h2>О нашем техникуме</h2>
+  <p>ГБПОУ РО "Сальский индустриальный техникум" — это современное образовательное учреждение, осуществляющее подготовку квалифицированных специалистов по различным направлениям.</p>
+  
+  <h3>Наша миссия</h3>
+  <p>Обеспечение качественного профессионального образования, соответствующего требованиям современного рынка труда.</p>
+  
+  <h3>Преимущества обучения</h3>
+  <ul>
+    <li>Современная материально-техническая база</li>
+    <li>Квалифицированный преподавательский состав</li>
+    <li>Практико-ориентированный подход к обучению</li>
+    <li>Трудоустройство выпускников</li>
+  </ul>
+  
+  <h3>История техникума</h3>
+  <p>Техникум был основан в [год] и за годы своей деятельности подготовил тысячи специалистов для различных отраслей экономики.</p>
+</section>
+
+<section class="content-section">
+  <h2>Руководство</h2>
+  <div class="staff-grid">
+    <div class="staff-card">
+      <div class="staff-card__photo"></div>
+      <div class="staff-card__info">
+        <h3 class="staff-card__name">ФИО руководителя</h3>
+        <p class="staff-card__position">Директор техникума</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="content-section">
+  <h2>Контакты</h2>
+  <address class="contact-info">
+    <p><strong>Адрес:</strong> г. Сальск, ул. Примерная, д. 1</p>
+    <p><strong>Телефон:</strong> +7 (XXX) XXX-XX-XX</p>
+    <p><strong>Email:</strong> info@sit-salsk.ru</p>
+    <p><strong>Режим работы:</strong> Пн-Пт: 8:00 - 17:00</p>
+  </address>
+</section>

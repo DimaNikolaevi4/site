@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ title }} | {{ site.name }}</title>
+  <meta name="description" content="{{ description or site.description }}">
+  <link rel="stylesheet" href="/styles/main.css">
+</head>
+<body class="page page--{{ layout or 'default' }}">
+  <!-- Шапка -->
+  {% include "components/header.njk" %}
+
+  <main class="main-content">
+    {{ content | safe }}
+  </main>
+
+  <!-- Подвал -->
+  {% include "components/footer.njk" %}
+
+  <script src="/assets/js/main.js"></script>
+</body>
+</html>
