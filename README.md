@@ -93,9 +93,10 @@ node_modules/
 ```
 project-root/
 ├── docs/                       # Документация проекта
-│   ├── СТРУКТУРА_И_ПРИНЦИПЫ.md # Полное руководство по разработке
 │   ├── DEPLOY.md              # Инструкция по деплою
-│   └── CHECKLIST.md           # Чек-лист перед публикацией
+│   ├── FRONTMATTER_SPEC.md    # Спецификация Front Matter
+│   ├── MIGRATION_PLAN.md      # План миграции контента
+│   └── COLLECTIONS_SETUP.md   # Настройка коллекций Eleventy
 │
 ├── src/                        # Исходный код (единственный источник правды)
 │   ├── _includes/              # Шаблоны (header, footer, card, sidebar)
@@ -113,6 +114,8 @@ project-root/
 ├── eleventy.config.js          # Конфигурация сборщика
 ├── package.json                # Зависимости и скрипты
 ├── deploy.sh                   # Скрипт деплоя на Beget
+├── STRUCTURE_AND_PRINCIPLES.md # Основной технический документ
+├── ROADMAP.md                  # План разработки
 └── README.md                   # Этот файл
 ```
 
@@ -280,10 +283,11 @@ rsync -av --checksum --delete \
 
 | Файл | Описание |
 |------|----------|
-| `docs/СТРУКТУРА_И_ПРИНЦИПЫ.md` | Полное руководство по архитектуре, адаптивности, доступности |
+| `STRUCTURE_AND_PRINCIPLES.md` | Полное руководство по архитектуре, адаптивности, доступности |
 | `docs/DEPLOY.md` | Подробная инструкция по деплою на Beget (SSH, права, проверка) |
-| `docs/CHECKLIST.md` | Чек-лист перед публикацией (тесты, валидация, нормативы) |
-| `.env.example` | Пример переменных окружения для локальной настройки |
+| `docs/FRONTMATTER_SPEC.md` | Спецификация Front Matter для всех Markdown-файлов |
+| `docs/MIGRATION_PLAN.md` | План миграции контента с оригинального сайта |
+| `docs/COLLECTIONS_SETUP.md` | Настройка коллекций Eleventy |
 
 ---
 
