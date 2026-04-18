@@ -1317,5 +1317,5 @@ docker run -p 8080:80 sit-saljsk-site
 ---
 
 > 📝 **Примечание:** Этот документ — живой. При изменении процессов, стека или требований — обновляйте его и коммитьте изменения.  
-> 🔗 **Ссылка на актуальную версию:** `https://github.com/DimaNikolaevi4/site/blob/main/docs/STRUCTURE_AND_PRINCIPLES.md`
+> 🔗 **Ссылка на актуальную версию:** `https://github.com/DimaNikolaevi4/site/blob/main/STRUCTURE_AND_PRINCIPLES.md`
 

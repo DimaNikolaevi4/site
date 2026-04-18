@@ -295,7 +295,7 @@ src/content/
 ### 3.4. 🟢 Деплой на BeGet
 
 **Задачи:**
-- [ ] **3.4.1** Подготовить инструкцию по деплою (DEPLOY_INSTRUCTIONS.md)
+- [ ] **3.4.1** Подготовить инструкцию по деплою (docs/DEPLOY.md)
 - [ ] **3.4.2** Исключить `/mirror` из загрузки на хостинг
 - [ ] **3.4.3** Настроить HTTPS и редиректы
 - [ ] **3.4.4** Протестировать работу на продакшене
@@ -333,7 +333,8 @@ src/content/
 
 - [STRUCTURE_AND_PRINCIPLES.md](./STRUCTURE_AND_PRINCIPLES.md) — основной документ
 - [README.md](./README.md) — общее описание проекта
-- [DEPLOY_INSTRUCTIONS.md](./DEPLOY_INSTRUCTIONS.md) — инструкция по деплою
+- [docs/DEPLOY.md](./docs/DEPLOY.md) — инструкция по деплою
+- [docs/FRONTMATTER_SPEC.md](./docs/FRONTMATTER_SPEC.md) — спецификация Front Matter
 - [/mirror/MIRROR_README.md](./mirror/MIRROR_README.md) — описание зеркала
 - [Eleventy Documentation](https://www.11ty.dev/docs/)
 - [Bootstrap 5 Documentation](https://getbootstrap.com/docs/5.3/)
