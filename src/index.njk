@@ -23,7 +23,7 @@ description: Официальный сайт Сальского индустри
   </section><!-- /Hero Section -->
 
   <!-- About Section -->
-  {% set directorPost = collections.all | selectattr("fileSlug", "equalto", "slovo-direktora") | first %}
+  {% set directorPost = collections.all | findBySlug('slovo-direktora') %}
   {% if directorPost %}
   <section id="about" class="about section">
 
