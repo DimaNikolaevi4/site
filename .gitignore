@@ -1,39 +1,6 @@
-```
-# Compiled and build artifacts
-*.pyc
-__pycache__/
-*.o
-*.obj
-dist/
-build/
-target/
+# Images and other media files should not be ignored as they are part of the content
+# The added files are source content files (.md) and image assets which should be tracked
+# No build artifacts, dependencies, or temporary files detected in changes
 
-# Dependencies
-.venv/
-venv/
-node_modules/
-.mypy_cache/
-.pytest_cache/
-.coverage
-coverage/
-htmlcov/
-
-# Logs and temp files
-*.log
-*.tmp
-*.swp
-*.swo
-
-# Environment
-.env
-.env.local
-.env.*
-
-# Editors
-.vscode/
-.idea/
-
-# System files
-.DS_Store
-Thumbs.db
-```
+# Content and source files should remain tracked
+# No ignore rules needed for this change set
