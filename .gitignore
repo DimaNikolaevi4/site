@@ -69,4 +69,11 @@ htmlcov/
 *.tar.bz2
 *.tar.xz
 *.tar.zst
+
+public/
+node_modules/
+/mirror/
+*.log
+.env
+.DS_Store
 ```
