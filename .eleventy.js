@@ -151,6 +151,12 @@ module.exports = function(eleventyConfig) {
     if (!str) return "";
     return String(str).toUpperCase();
   });
+
+  // Фильтр для поиска элемента коллекции по fileSlug
+  eleventyConfig.addFilter("findBySlug", (collection, slug) => {
+    if (!collection || !Array.isArray(collection)) return null;
+    return collection.find(item => item.fileSlug === slug) || null;
+  });
   
   // === Коллекции (базовые) ===
   // Примечание: коллекции для рубрик уже созданы в collections-config.js
