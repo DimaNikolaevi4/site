@@ -1,0 +1,190 @@
+---
+layout: layouts/base.njk
+title: Главная страница
+description: Официальный сайт Сальского индустриального техникума
+---
+
+<main class="main">
+
+  <!-- Hero Section -->
+  <section id="hero" class="hero section dark-background">
+
+    <img src="/assets/mentor/img/hero-bg.jpg" alt="" data-aos="fade-in">
+
+    <div class="container">
+      <h2 data-aos="fade-up" data-aos-delay="100">Учись сегодня, чтобы вести завтра</h2>
+      <p data-aos="fade-up" data-aos-delay="200">{{ site.description }}</p>
+      <div class="d-flex mt-4" data-aos="fade-up" data-aos-delay="300">
+        <a href="/abiturientam/" class="btn-get-started me-3">Абитуриентам</a>
+        <a href="/svedenija/" class="btn-get-started btn-outline-light">Сведения об организации</a>
+      </div>
+    </div>
+
+  </section><!-- /Hero Section -->
+
+  <!-- About Section -->
+  <section id="about" class="about section">
+
+    <div class="container">
+
+      <div class="row gy-4">
+
+        <div class="col-lg-6 order-1 order-lg-2" data-aos="fade-up" data-aos-delay="100">
+          <img src="/assets/mentor/img/about.jpg" class="img-fluid" alt="Сальский индустриальный техникум">
+        </div>
+
+        <div class="col-lg-6 order-2 order-lg-1 content" data-aos="fade-up" data-aos-delay="200">
+          <h3>Сальский индустриальный техникум — ваш путь к успешной карьере</h3>
+          <p class="fst-italic">
+            ГБПОУ РО «Сальский индустриальный техникум» — современное образовательное учреждение, обеспечивающее качественную подготовку специалистов для различных отраслей экономики.
+          </p>
+          <ul>
+            <li><i class="bi bi-check-circle"></i> <span>Современные образовательные программы, соответствующие требованиям рынка труда</span></li>
+            <li><i class="bi bi-check-circle"></i> <span>Практико-ориентированное обучение в партнерстве с ведущими предприятиями</span></li>
+            <li><i class="bi bi-check-circle"></i> <span>Квалифицированный преподавательский состав с практическим опытом</span></li>
+            <li><i class="bi bi-check-circle"></i> <span>Доступная среда и комфортные условия для всех студентов</span></li>
+          </ul>
+          <a href="/about/" class="read-more"><span>Подробнее о техникуме</span><i class="bi bi-arrow-right"></i></a>
+        </div>
+
+      </div>
+
+    </div>
+
+  </section><!-- /About Section -->
+
+  <!-- News Section (based on Courses) -->
+  <section id="news" class="courses section">
+
+    <!-- Section Title -->
+    <div class="container section-title" data-aos="fade-up">
+      <h2>Новости</h2>
+      <p>Последние события техникума</p>
+    </div><!-- End Section Title -->
+
+    <div class="container">
+
+      <div class="row">
+
+        {% for post in collections.news | reverse %}
+        {% if loop.index <= 3 %}
+        <div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="{{ loop.index * 100 }}">
+          <div class="course-item">
+            <img src="{{ post.data.image or '/assets/mentor/img/course-' ~ (loop.index) ~ '.jpg' }}" class="img-fluid" alt="{{ post.data.title }}">
+            <div class="course-content">
+              <div class="d-flex justify-content-between align-items-center mb-3">
+                <p class="category">{{ post.data.category or 'Новости' }}</p>
+                <p class="date">{{ post.date | dateRu }}</p>
+              </div>
+
+              <h3><a href="{{ post.url }}">{{ post.data.title }}</a></h3>
+              <p class="description">{{ post.data.excerpt or post.templateContent | truncate(120) }}</p>
+              <div class="trainer d-flex justify-content-between align-items-center">
+                <div class="trainer-profile d-flex align-items-center">
+                  <a href="{{ post.url }}" class="trainer-link">Читать далее →</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div> <!-- End News Item -->
+        {% endif %}
+        {% else %}
+        <div class="col-12 text-center">
+          <p>Новости пока не добавлены.</p>
+        </div>
+        {% endfor %}
+
+      </div>
+
+      <div class="text-center mt-4" data-aos="fade-up" data-aos-delay="500">
+        <a href="/news/" class="btn-get-started">Все новости</a>
+      </div>
+
+    </div>
+
+  </section><!-- /News Section -->
+
+  <!-- Popular Sections (based on Trainers) -->
+  <section id="popular-sections" class="section trainers-index">
+
+    <div class="container">
+
+      <!-- Section Title -->
+      <div class="container section-title" data-aos="fade-up">
+        <h2>Популярные разделы</h2>
+        <p>Важная информация для посетителей сайта</p>
+      </div><!-- End Section Title -->
+
+      <div class="row">
+
+        <div class="col-lg-3 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="100">
+          <div class="member">
+            <img src="/assets/mentor/img/trainers/trainer-1.jpg" class="img-fluid" alt="Абитуриентам">
+            <div class="member-content">
+              <h4>Абитуриентам</h4>
+              <span>Прием документов</span>
+              <p>
+                Информация о правилах приема, необходимых документах и сроках подачи заявлений в техникум.
+              </p>
+              <div class="social">
+                <a href="/abiturientam/"><i class="bi bi-arrow-right-circle"></i></a>
+              </div>
+            </div>
+          </div>
+        </div><!-- End Member -->
+
+        <div class="col-lg-3 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="200">
+          <div class="member">
+            <img src="/assets/mentor/img/trainers/trainer-2.jpg" class="img-fluid" alt="Студентам">
+            <div class="member-content">
+              <h4>Студентам</h4>
+              <span>Учебный процесс</span>
+              <p>
+                Расписание занятий, информация о сессиях, стипендиях и студенческой жизни техникума.
+              </p>
+              <div class="social">
+                <a href="/studentam/"><i class="bi bi-arrow-right-circle"></i></a>
+              </div>
+            </div>
+          </div>
+        </div><!-- End Member -->
+
+        <div class="col-lg-3 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="300">
+          <div class="member">
+            <img src="/assets/mentor/img/trainers/trainer-3.jpg" class="img-fluid" alt="Расписание">
+            <div class="member-content">
+              <h4>Расписание</h4>
+              <span>График занятий</span>
+              <p>
+                Актуальное расписание занятий для всех групп и курсов техникума на текущий семестр.
+              </p>
+              <div class="social">
+                <a href="/raspisanie/"><i class="bi bi-arrow-right-circle"></i></a>
+              </div>
+            </div>
+          </div>
+        </div><!-- End Member -->
+
+        <div class="col-lg-3 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="400">
+          <div class="member">
+            <img src="/assets/mentor/img/trainers/trainer-1-2.jpg" class="img-fluid" alt="Контакты">
+            <div class="member-content">
+              <h4>Контакты</h4>
+              <span>Свяжитесь с нами</span>
+              <p>
+                Адреса, телефоны, электронная почта и другие способы связи с администрацией техникума.
+              </p>
+              <div class="social">
+                <a href="/contacts/"><i class="bi bi-arrow-right-circle"></i></a>
+              </div>
+            </div>
+          </div>
+        </div><!-- End Member -->
+
+      </div>
+
+    </div>
+
+  </section><!-- /Popular Sections -->
+
+</main>
