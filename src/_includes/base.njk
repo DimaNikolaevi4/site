@@ -107,6 +107,7 @@
   
   {% include "partials/header.njk" %}
   <main class="site-main" id="main-content" tabindex="-1">
+    {% block content %}
     {% if fullWidth %}
       {{ content | safe }}
     {% else %}
@@ -114,6 +115,7 @@
         {{ content | safe }}
       </div>
     {% endif %}
+    {% endblock %}
   </main>
   {% include "partials/footer.njk" %}
   <script src="/assets/js/main.js"></script>
