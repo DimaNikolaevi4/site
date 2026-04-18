@@ -7,14 +7,56 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://сит-сальск.рф/news/testovaya-novost/</loc>
-    <lastmod>2024-01-15</lastmod>
+    <loc>https://сит-сальск.рф/content/news/2026-03-16-razgovory-o-vazhnom/</loc>
+    <lastmod>2026-03-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://сит-сальск.рф/content/news/example/</loc>
-    <lastmod>2024-01-15</lastmod>
+    <loc>https://сит-сальск.рф/content/news/2026-03-23-ix-chteniya/</loc>
+    <lastmod>2026-03-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://сит-сальск.рф/content/news/2026-03-27-olimpiada-avtomatika/</loc>
+    <lastmod>2026-03-27</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://сит-сальск.рф/content/news/2026-04-01-kulich-konkurs/</loc>
+    <lastmod>2026-04-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://сит-сальск.рф/news/den-pamyati-zhertv-genocida/</loc>
+    <lastmod>2026-04-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://сит-сальск.рф/news/lekcija-osvobozhdenie-salska/</loc>
+    <lastmod>2026-04-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://сит-сальск.рф/news/raspisanie-18-aprelya/</loc>
+    <lastmod>2026-04-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://сит-сальск.рф/news/xxvi-donskoy-festival/</loc>
+    <lastmod>2026-04-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://сит-сальск.рф/news/semero/</loc>
+    <lastmod>2026-04-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -247,6 +289,12 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://сит-сальск.рф/</loc>
+    <lastmod>2026-04-18</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
     <loc>https://сит-сальск.рф/pages/materials/detail/</loc>
     <lastmod>2026-04-18</lastmod>
     <changefreq>monthly</changefreq>
@@ -281,11 +329,5 @@
     <lastmod>2026-04-18</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://сит-сальск.рф/</loc>
-    <lastmod>2026-04-18</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>1.0</priority>
   </url>
 </urlset>
