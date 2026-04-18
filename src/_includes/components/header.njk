@@ -1,27 +1,20 @@
-<header class="header" role="banner">
-  <div class="container header__container">
-    <a href="/" class="header__logo">
-      <span class="header__logo-text">{{ site.name }}</span>
+<header id="header" class="header d-flex align-items-center sticky-top" role="banner">
+  <div class="container-fluid container-xl position-relative d-flex align-items-center">
+    <a href="/" class="logo d-flex align-items-center me-auto" aria-label="Перейти на главную">
+      <h1 class="sitename">{{ site.short_name or site.name }}</h1>
     </a>
-    
-    <nav class="header__nav" role="navigation" aria-label="Основная навигация">
-      <ul class="header__menu">
-        <li class="header__menu-item">
-          <a href="/" class="header__menu-link {% if page.url == '/' %}active{% endif %}">Главная</a>
-        </li>
-        <li class="header__menu-item">
-          <a href="/news/" class="header__menu-link {% if page and page.url and page.url.indexOf('/news/') != -1 %}active{% endif %}">Новости</a>
-        </li>
-        <li class="header__menu-item">
-          <a href="/about/" class="header__menu-link {% if page and page.url and page.url.indexOf('/about/') != -1 %}active{% endif %}">О техникуме</a>
-        </li>
+
+    <nav id="navmenu" class="navmenu" role="navigation" aria-label="Основная навигация">
+      <ul>
+        <li><a href="/" class="{% if page and page.url == '/' %}active{% endif %}">Главная</a></li>
+        <li><a href="/about/" class="{% if page and page.url and page.url.indexOf('/about/') != -1 %}active{% endif %}">О техникуме</a></li>
+        <li><a href="/news/" class="{% if page and page.url and page.url.indexOf('/news/') != -1 %}active{% endif %}">Новости</a></li>
+        <li><a href="/svedenija/" class="{% if page and page.url and page.url.indexOf('/svedenija/') != -1 %}active{% endif %}">Сведения</a></li>
+        <li><a href="/search/" class="{% if page and page.url and page.url.indexOf('/search/') != -1 %}active{% endif %}">Поиск</a></li>
       </ul>
+      <i class="mobile-nav-toggle d-xl-none bi bi-list" aria-hidden="true"></i>
     </nav>
-    
-    <button class="header__toggle" aria-label="Открыть меню">
-      <span></span>
-      <span></span>
-      <span></span>
-    </button>
+
+    <a class="btn-getstarted" href="/abiturientam/">Абитуриенту</a>
   </div>
 </header>
