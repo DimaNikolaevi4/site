@@ -1,13 +1,20 @@
 ```
+# Dependencies
+node_modules/
+
 # Build artifacts
-sitemap.xml
+dist/
+build/
+target/
 
-# Cache directories
-.cache/
-.svelte-kit/
-.output/
-
-# Environment variables
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.py.class
+venv/
+.venv/
 .env
 .env.local
 .env.*
@@ -15,27 +22,43 @@ sitemap.xml
 # Logs
 *.log
 
-# Temporary files
-*.tmp
-*.temp
-
-# OS generated files
-.DS_Store
-Thumbs.db
-
-# Dependencies
-node_modules/
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-
-# Editor files
+# Editor/IDE
 .vscode/
 .idea/
 *.swp
 *.swo
+*.tmp
+
+# System
+.DS_Store
+Thumbs.db
 
 # Coverage
 coverage/
-.nyc_output/
+htmlcov/
+.coverage
+
+# Compressed files
+*.zip
+*.gz
+*.tar
+*.tgz
+*.bz2
+*.xz
+*.7z
+*.rar
+*.zst
+*.lz4
+*.lzh
+*.cab
+*.arj
+*.rpm
+*.deb
+*.Z
+*.lz
+*.lzo
+*.tar.gz
+*.tar.bz2
+*.tar.xz
+*.tar.zst
 ```

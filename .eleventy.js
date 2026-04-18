@@ -64,30 +64,6 @@ module.exports = function(eleventyConfig) {
     console.log(`  ✓ Коллекция "${collectionName}" (${rubric.fullPath})`);
   });
   
-  // === Специальные коллекции ===
-  eleventyConfig.addCollection('allRubricated', function(collectionApi) {
-    return collectionApi.getAll().filter(item => {
-      return item.data.category && item.data.category !== false;
-    });
-  });
-
-  eleventyConfig.addCollection('recent', function(collectionApi) {
-    return collectionApi.getAll()
-      .filter(item => item.data.date && !item.data.draft)
-      .sort((a, b) => b.date - a.date)
-      .slice(0, 10);
-  });
-
-  eleventyConfig.addCollection('tags', function(collectionApi) {
-    let tags = new Set();
-    collectionApi.getAll().forEach(item => {
-      if (item.data.tags && Array.isArray(item.data.tags)) {
-        item.data.tags.forEach(tag => tags.add(tag));
-      }
-    });
-    return Array.from(tags).sort();
-  });
-  
   console.log('✅ Конфигурация коллекций загружена');
   
   // === Фильтры для работы с рубриками ===
