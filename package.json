@@ -6,12 +6,20 @@
     "build": "npx @11ty/eleventy"
   },
   "dependencies": {
-    "@11ty/eleventy": "^2.0.1",
     "@11ty/eleventy-navigation": "^0.3.5",
     "@sherby/eleventy-plugin-files-minifier": "^1.1.1",
     "lunr": "^2.3.9"
   },
   "devDependencies": {
+    "@11ty/eleventy": "^3.1.5",
     "js-yaml": "^4.1.1"
-  }
+  },
+  "description": "> 🏫 **ГБПОУ РО \"Сальский индустриальный техникум\"**   > 🌐 Официальный сайт: `https://сит-сальск.рф/`   > 📦 Статический сайт на **Eleventy + Decap CMS**   > 🚀 Хостинг: **Beget** (SSH, Node.js 18, PHP 8.3)",
+  "main": ".eleventy.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
 }

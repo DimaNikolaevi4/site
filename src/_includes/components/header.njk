@@ -1,0 +1,27 @@
+<header class="header" role="banner">
+  <div class="container header__container">
+    <a href="/" class="header__logo">
+      <span class="header__logo-text">{{ site.name }}</span>
+    </a>
+    
+    <nav class="header__nav" role="navigation" aria-label="Основная навигация">
+      <ul class="header__menu">
+        <li class="header__menu-item">
+          <a href="/" class="header__menu-link {% if page.url == '/' %}active{% endif %}">Главная</a>
+        </li>
+        <li class="header__menu-item">
+          <a href="/news/" class="header__menu-link {% if page.url contains '/news/' %}active{% endif %}">Новости</a>
+        </li>
+        <li class="header__menu-item">
+          <a href="/about/" class="header__menu-link {% if page.url contains '/about/' %}active{% endif %}">О техникуме</a>
+        </li>
+      </ul>
+    </nav>
+    
+    <button class="header__toggle" aria-label="Открыть меню">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </div>
+</header>

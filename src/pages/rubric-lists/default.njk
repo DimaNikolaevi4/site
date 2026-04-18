@@ -1,0 +1,116 @@
+---
+layout: layouts/base.njk
+title: Список материалов
+description: Материалы по специальности
+rubric:
+  title: Информационные системы и программирование
+  code: 09.02.07
+pagination:
+  page: 1
+  perPage: 10
+  total: 25
+---
+
+<!-- Хлебные крошки -->
+<nav class="breadcrumbs" aria-label="Хлебные крошки">
+  <div class="container">
+    <ol class="breadcrumbs__list">
+      <li class="breadcrumbs__item">
+        <a href="/" class="breadcrumbs__link">Главная</a>
+      </li>
+      <li class="breadcrumbs__item">
+        <a href="/specialties/" class="breadcrumbs__link">Специальности</a>
+      </li>
+      <li class="breadcrumbs__item breadcrumbs__item--active" aria-current="page">
+        {{ rubric.title }}
+      </li>
+    </ol>
+  </div>
+</nav>
+
+<!-- Заголовок раздела -->
+<section class="section section--header">
+  <div class="container">
+    <h1 class="page-title">{{ rubric.title }}</h1>
+    <p class="page-subtitle">Код специальности: {{ rubric.code }}</p>
+  </div>
+</section>
+
+<!-- Основной контент с сайдбаром -->
+<div class="container layout layout--with-sidebar">
+  <!-- Основной контент -->
+  <main class="layout__content">
+    <!-- Фильтры/Поиск -->
+    <div class="filters">
+      <form class="filters__form" role="search">
+        <input type="search" class="filters__input" placeholder="Поиск материалов..." aria-label="Поиск">
+        <button type="submit" class="btn btn--primary">Найти</button>
+      </form>
+    </div>
+
+    <!-- Список материалов -->
+    <div class="materials-list">
+      {% for material in collections.materials %}
+      <article class="material-card">
+        <div class="material-card__header">
+          <time class="material-card__date" datetime="{{ material.date }}">
+            {{ material.date | dateRu }}
+          </time>
+          {% if material.data.category %}
+          <span class="material-card__category">{{ material.data.category }}</span>
+          {% endif %}
+        </div>
+        <h2 class="material-card__title">
+          <a href="{{ material.url }}">{{ material.data.title }}</a>
+        </h2>
+        <p class="material-card__excerpt">
+          {{ material.data.excerpt or material.templateContent | truncate(200) }}
+        </p>
+        <div class="material-card__footer">
+          <a href="{{ material.url }}" class="btn btn--outline btn--small">Читать далее</a>
+        </div>
+      </article>
+      {% endfor %}
+    </div>
+
+    <!-- Пагинация -->
+    <nav class="pagination" aria-label="Пагинация">
+      <ul class="pagination__list">
+        <li class="pagination__item pagination__item--prev">
+          <a href="?page={{ pagination.page - 1 }}" class="pagination__link {% if pagination.page <= 1 %}disabled{% endif %}">← Назад</a>
+        </li>
+        {% for i in range(1, pagination.total / pagination.perPage + 1) %}
+        <li class="pagination__item">
+          <a href="?page={{ i }}" class="pagination__link {% if i == pagination.page %}active{% endif %}">{{ i }}</a>
+        </li>
+        {% endfor %}
+        <li class="pagination__item pagination__item--next">
+          <a href="?page={{ pagination.page + 1 }}" class="pagination__link {% if pagination.page >= pagination.total / pagination.perPage %}disabled{% endif %}">Вперед →</a>
+        </li>
+      </ul>
+    </nav>
+  </main>
+
+  <!-- Сайдбар -->
+  <aside class="layout__sidebar" role="complementary">
+    <nav class="sidebar-nav">
+      <h3 class="sidebar-nav__title">Разделы</h3>
+      <ul class="sidebar-nav__list">
+        <li><a href="#" class="sidebar-nav__link sidebar-nav__link--active">Все материалы</a></li>
+        <li><a href="#" class="sidebar-nav__link">Методические указания</a></li>
+        <li><a href="#" class="sidebar-nav__link">Лабораторные работы</a></li>
+        <li><a href="#" class="sidebar-nav__link">Курсовые проекты</a></li>
+        <li><a href="#" class="sidebar-nav__link">Экзаменационные материалы</a></li>
+      </ul>
+    </nav>
+
+    <div class="sidebar-block">
+      <h3 class="sidebar-block__title">Полезные ссылки</h3>
+      <ul class="sidebar-block__list">
+        <li><a href="#">Расписание</a></li>
+        <li><a href="#">Электронный журнал</a></li>
+        <li><a href="#">Библиотека</a></li>
+      </ul>
+    </div>
+  </aside>
+</div>
