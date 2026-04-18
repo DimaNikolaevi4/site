@@ -10,10 +10,10 @@
           <a href="/" class="header__menu-link {% if page.url == '/' %}active{% endif %}">Главная</a>
         </li>
         <li class="header__menu-item">
-          <a href="/news/" class="header__menu-link {% if page.url contains '/news/' %}active{% endif %}">Новости</a>
+          <a href="/news/" class="header__menu-link {% if page and page.url and page.url.indexOf('/news/') != -1 %}active{% endif %}">Новости</a>
         </li>
         <li class="header__menu-item">
-          <a href="/about/" class="header__menu-link {% if page.url contains '/about/' %}active{% endif %}">О техникуме</a>
+          <a href="/about/" class="header__menu-link {% if page and page.url and page.url.indexOf('/about/') != -1 %}active{% endif %}">О техникуме</a>
         </li>
       </ul>
     </nav>

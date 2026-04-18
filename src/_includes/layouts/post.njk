@@ -15,7 +15,7 @@
           {% if date %}
           <time class="post-date" datetime="{{ date | dateToISO }}" itemprop="datePublished">
             <span class="visually-hidden">Дата публикации:</span>
-            {{ date | date: "DD.MM.YYYY" }}
+            {{ date | dateRu }}
           </time>
           {% endif %}
           

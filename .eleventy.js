@@ -127,6 +127,16 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addFilter("dateRu", require("./src/_filters/dateRu"));
   eleventyConfig.addFilter("truncate", require("./src/_filters/truncate"));
   eleventyConfig.addFilter("slugify", require("./src/_filters/slugify"));
+  eleventyConfig.addFilter("head", (array, n) => {
+    if (!Array.isArray(array) || n === 0) return [];
+    if (n < 0) return array.slice(n);
+    return array.slice(0, n);
+  });
+  eleventyConfig.addFilter("dateToISO", (dateObj) => {
+    if (!dateObj) return "";
+    const d = new Date(dateObj);
+    return d.toISOString();
+  });
   
   // Фильтр даты (legacy)
   eleventyConfig.addFilter("date", (dateObj) => {
