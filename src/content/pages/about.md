@@ -1,5 +1,5 @@
 ---
-layout: base.njk
+layout: layouts/page.njk
 title: О техникуме
 permalink: /about/
 eleventyNavigation:
