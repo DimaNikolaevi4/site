@@ -1870,9 +1870,193 @@ section,
   background: color-mix(in srgb, var(--accent-color), transparent 20%);
 }
 
-/*--------------------------------------------------------------
-# Starter Section Section
---------------------------------------------------------------*/
-.starter-section {
-  /* Add your styles here */
+/* ============================================
+   Шапка: иконки в одну строку с меню (десктоп)
+   ============================================ */
+@media (min-width: 1200px) {
+  .header .container-fluid {
+    flex-wrap: nowrap;
+  }
+  .header .header-icons {
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+    margin-right: 15px;
+  }
+  .header .header-icons a,
+  .header .header-icons button {
+    margin: 0 5px;
+    color: var(--nav-color);
+    font-size: 1.2rem;
+    transition: color 0.3s;
+    background: none;
+    border: none;
+    padding: 0;
+  }
+  .header .header-icons a:hover,
+  .header .header-icons button:hover {
+    color: var(--nav-hover-color);
+  }
+}
+
+/* ============================================
+   Offcanvas: двухколоночный аккордеон
+   ============================================ */
+.offcanvas-header {
+  border-bottom: 1px solid rgba(0,0,0,0.1);
+  background-color: var(--background-color);
+}
+
+.offcanvas-title {
+  font-weight: 700;
+  color: var(--heading-color);
+}
+
+.offcanvas-body {
+  padding: 0;
+  overflow-y: auto;
+}
+
+/* Левый столбец: кнопки разделов */
+.offcanvas-body .list-group {
+  border-radius: 0;
+}
+
+.offcanvas-body .list-group-item {
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid rgba(0,0,0,0.05);
+  border-radius: 0;
+  color: var(--nav-color);
+  font-weight: 500;
+  padding: 0.9rem 1rem;
+  transition: all 0.2s;
+  cursor: pointer;
+}
+
+.offcanvas-body .list-group-item:hover {
+  color: var(--accent-color);
+  background-color: rgba(0,0,0,0.01);
+}
+
+.offcanvas-body .list-group-item i {
+  font-size: 0.9rem;
+  transition: transform 0.2s;
+}
+
+.offcanvas-body .list-group-item[aria-expanded="true"] i {
+  transform: rotate(90deg);
+}
+
+/* Правый столбец: контент раздела */
+.offcanvas-body .col-7 {
+  padding: 1rem 1.5rem;
+}
+
+.offcanvas-body .col-7 h6 {
+  color: var(--heading-color);
+  font-weight: 700;
+  border-bottom: 1px solid var(--accent-color);
+  padding-bottom: 0.5rem;
+  margin-bottom: 1.2rem;
+}
+
+/* Стили для вложенных аккордеонов внутри правого столбца */
+.offcanvas-body .col-7 .btn-link {
+  color: var(--nav-color);
+  text-decoration: none;
+  font-weight: 500;
+  padding: 0.25rem 0;
+  width: 100%;
+  text-align: left;
+  border: none;
+  background: transparent;
+}
+
+.offcanvas-body .col-7 .btn-link:hover {
+  color: var(--accent-color);
+}
+
+.offcanvas-body .col-7 .btn-link i {
+  transition: transform 0.2s;
+  font-size: 0.9rem;
+  margin-right: 4px;
+}
+
+.offcanvas-body .col-7 .btn-link[aria-expanded="true"] i {
+  transform: rotate(90deg);
+}
+
+/* Ссылки на конечные страницы (без детей) */
+.offcanvas-body .col-7 a:not(.btn-link) {
+  color: var(--nav-color);
+  text-decoration: none;
+  display: inline-block;
+  padding: 0.25rem 0;
+  transition: color 0.2s, padding-left 0.2s;
+  border-left: 2px solid transparent;
+}
+
+.offcanvas-body .col-7 a:not(.btn-link):hover {
+  color: var(--accent-color);
+  padding-left: 5px;
+  border-left-color: var(--accent-color);
+}
+
+/* Вложенные списки внутри правого столбца */
+.offcanvas-body .col-7 ul {
+  list-style: none;
+  padding-left: 0;
+  margin-bottom: 0.5rem;
+}
+
+.offcanvas-body .col-7 li {
+  margin-bottom: 0.5rem;
+}
+
+.offcanvas-body .col-7 .collapse {
+  margin-left: 1rem;
+  margin-top: 0.25rem;
+}
+
+/* Для очень глубоких уровней (если понадобятся) */
+.offcanvas-body .col-7 .collapse .collapse {
+  margin-left: 1.2rem;
+}
+
+/* Убираем стандартные отступы у списков внутри collapse */
+.offcanvas-body .col-7 .collapse ul {
+  margin-top: 0.5rem;
+}
+/* Offcanvas аккордеон */
+.offcanvas-body .btn-link {
+  color: var(--nav-color);
+  text-decoration: none;
+  font-weight: 500;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid rgba(0,0,0,0.05);
+  border-radius: 0;
+  width: 100%;
+}
+
+.offcanvas-body .btn-link:hover {
+  color: var(--accent-color);
+}
+
+.offcanvas-body .btn-link i {
+  transition: transform 0.2s;
+  font-size: 0.9rem;
+}
+
+.offcanvas-body .btn-link[aria-expanded="true"] i {
+  transform: rotate(180deg);
+}
+
+.offcanvas-body a {
+  color: var(--nav-color);
+  text-decoration: none;
+}
+
+.offcanvas-body a:hover {
+  color: var(--accent-color);
 }

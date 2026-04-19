@@ -1,20 +1,73 @@
-<header id="header" class="header d-flex align-items-center sticky-top" role="banner">
-  <div class="container-fluid container-xl position-relative d-flex align-items-center">
-    <a href="/" class="logo d-flex align-items-center me-auto" aria-label="Перейти на главную">
-      <h1 class="sitename">{{ site.short_name or site.name }}</h1>
-    </a>
+<nav id="navmenu" class="navmenu" role="navigation" aria-label="Основная навигация">  
+  <ul>  
+    <li><a href="/" class="{% if page and page.url == '/' %}active{% endif %}">Главная</a></li>  
+    <li><a href="/abiturientam/">Абитуриентам</a></li>  
+    <li><a href="/svedenija/">Сведения об образовательной организации</a></li>  
+    <li><a href="https://эос.сит-сальск.рф" target="_blank" rel="noopener">ЭОС</a></li>  
+    <li><a href="#footer">Контакты</a></li>  
+    <li><a href="/search/">Поиск</a></li>  
+  </ul>  
+</nav>  
+<div class="header-icons">  
+  <a href="mailto:sitsalsk@mail.ru" class="me-2" title="Написать письмо" aria-label="Написать письмо">  
+    <i class="bi bi-envelope"></i>  
+  </a>  
+  <a href="https://vk.com/sitsalsksit" class="me-2" target="_blank" rel="noopener" title="ВКонтакте" aria-label="ВКонтакте">  
+    <i class="bi bi-vk"></i>  
+  </a>  
+  <a href="/search/" class="me-2" title="Поиск по сайту" aria-label="Поиск">  
+    <i class="bi bi-search"></i>  
+  </a>  
+  <button class="me-2" onclick="toggleA11y(); return false;" title="Версия для слабовидящих" aria-label="Версия для слабовидящих">  
+    <i class="bi bi-eye"></i>  
+  </button>  
+  <button class="me-2" onclick="toggleDarkTheme(); return false;" title="Тёмная тема" aria-label="Тёмная тема">  
+    <i class="bi bi-moon-stars"></i>  
+  </button>  
+  <a href="#" class="me-2" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRubrics" title="Все разделы" aria-label="Все разделы">  
+    <i class="bi bi-grid-3x3-gap-fill"></i>  
+  </a>  
+</div>  
 
-    <nav id="navmenu" class="navmenu" role="navigation" aria-label="Основная навигация">
-      <ul>
-        <li><a href="/" class="{% if page and page.url == '/' %}active{% endif %}">Главная</a></li>
-        <li><a href="/about/" class="{% if page and page.url and page.url.indexOf('/about/') != -1 %}active{% endif %}">О техникуме</a></li>
-        <li><a href="/news/" class="{% if page and page.url and page.url.indexOf('/news/') != -1 %}active{% endif %}">Новости</a></li>
-        <li><a href="/svedenija/" class="{% if page and page.url and page.url.indexOf('/svedenija/') != -1 %}active{% endif %}">Сведения</a></li>
-        <li><a href="/search/" class="{% if page and page.url and page.url.indexOf('/search/') != -1 %}active{% endif %}">Поиск</a></li>
-      </ul>
-      <i class="mobile-nav-toggle d-xl-none bi bi-list" aria-hidden="true"></i>
-    </nav>
+<!-- Offcanvas панель с рубриками (простой аккордеон) -->  
+<div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasRubrics" aria-labelledby="offcanvasRubricsLabel">  
+  <div class="offcanvas-header">  
+    <h5 class="offcanvas-title" id="offcanvasRubricsLabel">Разделы сайта</h5>  
+    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Закрыть"></button>  
+  </div>  
+  <div class="offcanvas-body">  
+    {% macro renderRubrics(items, level=1) %}  
+      <ul class="list-unstyled {% if level > 1 %}ms-3{% endif %}">  
+        {% for item in items %}  
+          <li>  
+            {% if item.children %}  
+              <button class="btn btn-link w-100 text-start d-flex justify-content-between align-items-center"   
+                      type="button"   
+                      data-bs-toggle="collapse"   
+                      data-bs-target="#collapse-{{ item.slug }}"   
+                      aria-expanded="false"  
+                      title="{{ item.title }}">  
+                <span>{{ item.title }}</span>  
+                <i class="bi bi-chevron-down transition"></i>  
+              </button>  
+              <div class="collapse" id="collapse-{{ item.slug }}">  
+                {{ renderRubrics(item.children, level + 1) }}  
+              </div>  
+            {% else %}  
+              <a href="/{{ item.slug }}/"   
+                 class="d-block py-1 text-decoration-none"   
+                 data-bs-dismiss="offcanvas"  
+                 title="{{ item.title }}">  
+                {{ item.title }}  
+              </a>  
+            {% endif %}  
+          </li>  
+        {% endfor %}  
+      </ul>  
+    {% endmacro %}  
+    
+    {{ renderRubrics(rubrics.main_rubrics) }}  
+  </div>  
+</div>  
 
-    <a class="btn-getstarted" href="/abiturientam/">Абитуриенту</a>
-  </div>
-</header>
+<i class="mobile-nav-toggle d-xl-none bi bi-list" aria-hidden="true"></i>
