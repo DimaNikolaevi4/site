@@ -32,31 +32,34 @@ console.log("Site loaded");
   }
 
   // Submenu toggle for desktop hover and mobile click
-  submenuToggles.forEach(function(toggle) {
-    const parentLi = toggle.closest('.has-submenu');
-    
-    // Desktop: hover functionality already handled by CSS
-    // Mobile: click to toggle
-    toggle.addEventListener('click', function(e) {
-      // Only prevent default on mobile
-      if (window.innerWidth <= 992) {
-        e.preventDefault();
-        const isOpen = parentLi.classList.contains('open');
-        
-        // Close other open submenus
-        document.querySelectorAll('.has-submenu.open').forEach(function(openItem) {
-          if (openItem !== parentLi) {
-            openItem.classList.remove('open');
-            openItem.querySelector('.submenu-toggle').setAttribute('aria-expanded', 'false');
-          }
-        });
-        
-        // Toggle current submenu
-        parentLi.classList.toggle('open');
-        toggle.setAttribute('aria-expanded', String(!isOpen));
-      }
+  if (submenuToggles.length > 0) {
+    submenuToggles.forEach(function(toggle) {
+      const parentLi = toggle.closest('.has-submenu');
+      if (!parentLi) return;
+      
+      // Desktop: hover functionality already handled by CSS
+      // Mobile: click to toggle
+      toggle.addEventListener('click', function(e) {
+        // Only prevent default on mobile
+        if (window.innerWidth <= 992) {
+          e.preventDefault();
+          const isOpen = parentLi.classList.contains('open');
+          
+          // Close other open submenus
+          document.querySelectorAll('.has-submenu.open').forEach(function(openItem) {
+            if (openItem !== parentLi) {
+              openItem.classList.remove('open');
+              openItem.querySelector('.submenu-toggle').setAttribute('aria-expanded', 'false');
+            }
+          });
+          
+          // Toggle current submenu
+          parentLi.classList.toggle('open');
+          toggle.setAttribute('aria-expanded', String(!isOpen));
+        }
+      });
     });
-  });
+  }
 
   // Handle window resize
   let resizeTimer;
