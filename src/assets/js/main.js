@@ -32,7 +32,7 @@ console.log("Site loaded");
   }
 
   // Submenu toggle for desktop hover and mobile click
-  if (submenuToggles.length > 0) {
+  if (submenuToggles && submenuToggles.length > 0) {
     submenuToggles.forEach(function(toggle) {
       const parentLi = toggle.closest('.has-submenu');
       if (!parentLi) return;
@@ -49,7 +49,10 @@ console.log("Site loaded");
           document.querySelectorAll('.has-submenu.open').forEach(function(openItem) {
             if (openItem !== parentLi) {
               openItem.classList.remove('open');
-              openItem.querySelector('.submenu-toggle').setAttribute('aria-expanded', 'false');
+              const submenuToggleInItem = openItem.querySelector('.submenu-toggle');
+              if (submenuToggleInItem) {
+                submenuToggleInItem.setAttribute('aria-expanded', 'false');
+              }
             }
           });
           
@@ -77,7 +80,10 @@ console.log("Site loaded");
         }
         document.querySelectorAll('.has-submenu.open').forEach(function(openItem) {
           openItem.classList.remove('open');
-          openItem.querySelector('.submenu-toggle').setAttribute('aria-expanded', 'false');
+          const submenuToggleInItem = openItem.querySelector('.submenu-toggle');
+          if (submenuToggleInItem) {
+            submenuToggleInItem.setAttribute('aria-expanded', 'false');
+          }
         });
       }
     }, 250);
