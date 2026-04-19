@@ -8,7 +8,6 @@ console.log("Site loaded");
 
   const mobileMenuToggle = document.getElementById('mobileMenuToggle');
   const mainNavigation = document.getElementById('mainNavigation');
-  const submenuToggles = document.querySelectorAll('.submenu-toggle');
 
   // Mobile menu toggle
   if (mobileMenuToggle && mainNavigation) {
@@ -31,41 +30,6 @@ console.log("Site loaded");
     });
   }
 
-  // Submenu toggle for desktop hover and mobile click
-  if (submenuToggles && submenuToggles.length > 0) {
-    // Convert NodeList to array for better browser compatibility
-    Array.prototype.forEach.call(submenuToggles, function(toggle) {
-      if (!toggle) return;
-      const parentLi = toggle.closest('.has-submenu');
-      if (!parentLi) return;
-      
-      // Desktop: hover functionality already handled by CSS
-      // Mobile: click to toggle
-      toggle.addEventListener('click', function(e) {
-        // Only prevent default on mobile
-        if (window.innerWidth <= 992) {
-          e.preventDefault();
-          const isOpen = parentLi.classList.contains('open');
-          
-          // Close other open submenus
-          document.querySelectorAll('.has-submenu.open').forEach(function(openItem) {
-            if (openItem !== parentLi) {
-              openItem.classList.remove('open');
-              const submenuToggleInItem = openItem.querySelector('.submenu-toggle');
-              if (submenuToggleInItem) {
-                submenuToggleInItem.setAttribute('aria-expanded', 'false');
-              }
-            }
-          });
-          
-          // Toggle current submenu
-          parentLi.classList.toggle('open');
-          toggle.setAttribute('aria-expanded', String(!isOpen));
-        }
-      });
-    });
-  }
-
   // Handle window resize
   let resizeTimer;
   window.addEventListener('resize', function() {
@@ -80,13 +44,6 @@ console.log("Site loaded");
           mobileMenuToggle.setAttribute('aria-expanded', 'false');
           mobileMenuToggle.classList.remove('active');
         }
-        document.querySelectorAll('.has-submenu.open').forEach(function(openItem) {
-          openItem.classList.remove('open');
-          const submenuToggleInItem = openItem.querySelector('.submenu-toggle');
-          if (submenuToggleInItem) {
-            submenuToggleInItem.setAttribute('aria-expanded', 'false');
-          }
-        });
       }
     }, 250);
   });
