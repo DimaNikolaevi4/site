@@ -7,6 +7,41 @@
     <nav id="navmenu" class="navmenu" role="navigation" aria-label="Основная навигация">
       <ul>
         <li><a href="/" class="{% if page and page.url == '/' %}active{% endif %}">Главная</a></li>
+        
+        <!-- Mega Menu: Разделы сайта -->
+        <li class="dropdown dropdown-mega">
+          <a href="#" class="dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+            Разделы сайта
+          </a>
+          <div class="dropdown-menu mega-menu">
+            <div class="container">
+              <div class="row">
+                {% for section in rubrics.main_rubrics %}
+                <div class="col-md-6 col-lg-3 mb-3 mb-lg-0 mega-menu-column">
+                  <h6 class="mega-menu-title">{{ section.title }}</h6>
+                  <div class="list-group">
+                    {% for item in section.children %}
+                    <a href="/{{ section.slug }}/{{ item.slug }}/" class="list-group-item list-group-item-action">
+                      {{ item.title }}
+                    </a>
+                    {% if item.children and item.children.length > 0 %}
+                    <ul class="mega-menu-submenu">
+                      {% for subitem in item.children %}
+                      <li>
+                        <a href="/{{ section.slug }}/{{ item.slug }}/{{ subitem.slug }}/">{{ subitem.title }}</a>
+                      </li>
+                      {% endfor %}
+                    </ul>
+                    {% endif %}
+                    {% endfor %}
+                  </div>
+                </div>
+                {% endfor %}
+              </div>
+            </div>
+          </div>
+        </li>
+        
         <li><a href="/about/" class="{% if page and page.url and page.url.indexOf('/about/') != -1 %}active{% endif %}">О техникуме</a></li>
         <li><a href="/news/" class="{% if page and page.url and page.url.indexOf('/news/') != -1 %}active{% endif %}">Новости</a></li>
         <li><a href="/svedenija/" class="{% if page and page.url and page.url.indexOf('/svedenija/') != -1 %}active{% endif %}">Сведения</a></li>
@@ -16,5 +51,47 @@
     </nav>
 
     <a class="btn-getstarted" href="/abiturientam/">Абитуриенту</a>
+  </div>
+  
+  <!-- Mobile offcanvas menu -->
+  <button class="mobile-nav-toggle d-xl-none btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#mobileMenuOffcanvas" aria-controls="mobileMenuOffcanvas" aria-label="Открыть меню">
+    <i class="bi bi-list"></i>
+  </button>
+  
+  <div class="offcanvas offcanvas-end" tabindex="-1" id="mobileMenuOffcanvas" aria-labelledby="mobileMenuOffcanvasLabel">
+    <div class="offcanvas-header">
+      <h5 class="offcanvas-title" id="mobileMenuOffcanvasLabel">{{ site.short_name or site.name }}</h5>
+      <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Закрыть"></button>
+    </div>
+    <div class="offcanvas-body">
+      <ul class="mobile-rubrics-list">
+        <li class="mobile-rubrics-item">
+          <a href="/" class="mobile-rubrics-link">Главная</a>
+        </li>
+        {% for section in rubrics.main_rubrics %}
+        <li class="mobile-rubrics-item">
+          <a href="/{{ section.slug }}/" class="mobile-rubrics-link">{{ section.title }}</a>
+          {% if section.children and section.children.length > 0 %}
+          <ul class="mobile-rubrics-submenu">
+            {% for item in section.children %}
+            <li class="mobile-rubrics-item">
+              <a href="/{{ section.slug }}/{{ item.slug }}/" class="mobile-rubrics-link">{{ item.title }}</a>
+              {% if item.children and item.children.length > 0 %}
+              <ul class="mobile-rubrics-submenu">
+                {% for subitem in item.children %}
+                <li class="mobile-rubrics-item">
+                  <a href="/{{ section.slug }}/{{ item.slug }}/{{ subitem.slug }}/" class="mobile-rubrics-link">{{ subitem.title }}</a>
+                </li>
+                {% endfor %}
+              </ul>
+              {% endif %}
+            </li>
+            {% endfor %}
+          </ul>
+          {% endif %}
+        </li>
+        {% endfor %}
+      </ul>
+    </div>
   </div>
 </header>
