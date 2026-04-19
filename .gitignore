@@ -1,35 +1,34 @@
 ```
-# Build outputs
+# Build artifacts
 dist/
 build/
-public/
+*.min.js
+*.bundle.js
 
 # Dependencies
 node_modules/
 
+# Logs and temp files
+*.log
+*.tmp
+
 # Environment
 .env
 .env.local
-.env.*
+*.env.*
 
-# Logs
-*.log
-
-# Editor/IDE
+# Editors
 .vscode/
 .idea/
-*.swp
-*.swo
-*.tmp
 
-# OS
+# OS generated files
 .DS_Store
 Thumbs.db
 
-# Coverage
+# Coverage reports
 coverage/
 htmlcov/
-.coverage
+*.coverage
 
 # Python
 __pycache__/
@@ -37,22 +36,117 @@ __pycache__/
 *.pyo
 *.pyd
 .Python
-env/
-venv/
-.venv/
-pip-log.txt
-pip-delete-this-directory.txt
-.tox/
-.coverage*
-.nox/
-.pytest_cache/
-.mypy_cache/
+*.so
+*.egg-info/
+.eggs/
 
-# Node
+# Java
+*.class
+*.jar
+*.war
+*.ear
+target/
+.gradle/
+build/
+
+# C/C++
+*.o
+*.obj
+*.a
+*.lib
+*.so
+*.dll
+*.exe
+*.out
+*.dylib
+*.ncb
+*.sdf
+*.suo
+*.pdb
+*.idb
+*.o.d
+
+# Node.js
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
-# Eleventy
-.eleventy-cache/
+# Ruby
+*.gem
+*.rbc
+.bundle/
+.config/yardoc
+.yardoc
+Gemfile.lock
+.rspec
+coverage/
+spec/reports/
+*.cover
+*.captain
+*.reek
+*.ru
+{*,!(.)*}.{c,h,yml,xml}.*.rb
+*.podspec
+!(*.podspec)
+
+# Go
+*.o
+*.so
+*.a
+*.out
+*.test
+*.prof
+go.mod
+go.sum
+
+# Rust
+*.o
+*.rlib
+*.so
+*.dylib
+*.dSYM/
+Cargo.lock
+
+# Web
+*.css.map
+*.js.map
+
+# Compression
+*.zip
+*.gz
+*.tar
+*.tgz
+*.bz2
+*.xz
+*.7z
+*.rar
+*.zst
+*.lz4
+*.lzh
+*.cab
+*.arj
+*.rpm
+*.deb
+*.Z
+*.lz
+*.lzo
+*.tar.gz
+*.tar.bz2
+*.tar.xz
+*.tar.zst
+
+# Testing
+.pytest_cache/
+.mypy_cache/
+.coverage
+coverage.xml
+htmlcov/
+.tox/
+.nox/
+
+# IDE
+.vs/
+*.swp
+*.swo
+*~
 ```
