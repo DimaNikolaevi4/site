@@ -1,1 +1,1 @@
-Nothing should be ignored based on the provided file changes. The only modified file is a source template file (`src/_includes/components/header.njk`), which falls under source code that should not be ignored.
+Nothing should be ignored based on the provided file changes. The modified file 'src/_includes/components/header.njk' is a source file that should not be added to .gitignore.
