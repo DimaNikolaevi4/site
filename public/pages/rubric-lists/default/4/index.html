@@ -18,26 +18,650 @@
 </head>
 <body class="page page--layouts/base.njk">
   <!-- Шапка -->
-  <header id="header" class="header d-flex align-items-center sticky-top" role="banner">
-  <div class="container-fluid container-xl position-relative d-flex align-items-center">
-    <a href="/" class="logo d-flex align-items-center me-auto" aria-label="Перейти на главную">
-      <h1 class="sitename">СИТ</h1>
-    </a>
+  
 
-    <nav id="navmenu" class="navmenu" role="navigation" aria-label="Основная навигация">
-      <ul>
-        <li><a href="/" class="">Главная</a></li>
-        <li><a href="/about/" class="">О техникуме</a></li>
-        <li><a href="/news/" class="">Новости</a></li>
-        <li><a href="/svedenija/" class="">Сведения</a></li>
-        <li><a href="/search/" class="">Поиск</a></li>
-      </ul>
-      <i class="mobile-nav-toggle d-xl-none bi bi-list" aria-hidden="true"></i>
-    </nav>
-
-    <a class="btn-getstarted" href="/abiturientam/">Абитуриенту</a>
+<header id="header" class="header sticky-top" role="banner">
+  <div class="container-fluid container-xl position-relative">
+    <div class="header__inner d-flex align-items-center justify-content-between" id="headerInner">
+      
+      
+      <a href="/" class="header__logo d-flex align-items-center" aria-label="Перейти на главную страницу">
+        <img src="/assets/img/logo.png" alt="Логотип ГБПОУ РО СИТ" class="header__logo-img" height="40">
+      </a>
+      
+      
+      <div class="header__desktop d-none d-lg-flex align-items-center" id="headerDesktop">
+        
+        
+        <nav class="header__nav" role="navigation" aria-label="Основная навигация">
+          <ul class="header__nav-list list-unstyled d-flex mb-0 gap-3">
+            <li class="header__nav-item">
+              <a href="/abiturientam/" class="header__nav-link" title="Абитуриентам">Абитуриентам</a>
+            </li>
+            <li class="header__nav-item">
+              <a href="/svedenija/" class="header__nav-link" title="Сведения об образовательной организации">Сведения об образовательной организации</a>
+            </li>
+            <li class="header__nav-item">
+              <a href="https://эос.сит-сальск.рф" class="header__nav-link header__nav-link--external" title="Электронная образовательная среда" target="_blank" rel="noopener noreferrer">ЭОС</a>
+            </li>
+            <li class="header__nav-item">
+              <a href="#footer" class="header__nav-link" title="Контакты">Контакты</a>
+            </li>
+          </ul>
+        </nav>
+        
+        
+        <div class="header__icons d-flex align-items-center gap-2 ms-3" id="headerIcons">
+          
+          
+          <a href="mailto:sitsalsk@mail.ru" class="header__icon-link" title="Написать на email" aria-label="Email" data-priority="low">
+            <i class="bi bi-envelope" aria-hidden="true"></i>
+          </a>
+          
+          
+          <a href="https://vk.com/sitsalsk" class="header__icon-link" title="Группа ВКонтакте" aria-label="ВКонтакте" target="_blank" rel="noopener noreferrer" data-priority="low">
+            <i class="bi bi-vk" aria-hidden="true"></i>
+          </a>
+          
+          
+          <button type="button" class="header__icon-link header__icon-btn" title="Переключить тёмную тему" aria-label="Переключить тёмную тему" onclick="toggleDarkTheme()" data-priority="medium">
+            <i class="bi bi-moon-stars" aria-hidden="true"></i>
+          </button>
+          
+          
+          <button type="button" class="header__icon-link header__icon-btn" title="Версия для слабовидящих" aria-label="Версия для слабовидящих" onclick="toggleA11y()" data-priority="medium">
+            <i class="bi bi-eye" aria-hidden="true"></i>
+          </button>
+          
+          
+          <a href="/search/" class="header__icon-link" title="Поиск по сайту" aria-label="Поиск" data-priority="high">
+            <i class="bi bi-search" aria-hidden="true"></i>
+          </a>
+          
+          
+          <button type="button" class="header__icon-link header__icon-btn header__icon-btn--grid" title="Все разделы сайта" aria-label="Все разделы сайта" data-bs-toggle="offcanvas" data-bs-target="#offcanvasMain" data-priority="high">
+            <i class="bi bi-grid-3x3-gap-fill" aria-hidden="true"></i>
+          </button>
+          
+        </div>
+      </div>
+      
+      
+      <button type="button" class="header__mobile-toggle d-lg-none btn btn-link text-white p-0" 
+              id="mobileToggle"
+              data-bs-toggle="offcanvas" 
+              data-bs-target="#offcanvasMain" 
+              aria-label="Открыть меню"
+              aria-controls="offcanvasMain">
+        <i class="bi bi-list fs-2" aria-hidden="true" id="mobileToggleIcon"></i>
+      </button>
+      
+    </div>
   </div>
 </header>
+
+
+<div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasMain" aria-labelledby="offcanvasMainLabel">
+  
+  <div class="offcanvas-header d-flex justify-content-between align-items-center border-bottom">
+    <h2 class="offcanvas-title h5 mb-0" id="offcanvasMainLabel">Меню</h2>
+    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Закрыть меню"></button>
+  </div>
+  
+  <div class="offcanvas-body p-0">
+    <div class="offcanvas-content">
+      
+      
+      <div id="offcanvas-extra-items" class="offcanvas__extra-items p-3 border-bottom" style="display: none;">
+        <h3 class="h6 mb-2 text-muted">Быстрый доступ</h3>
+        <ul class="list-unstyled mb-0" id="offcanvasExtraList">
+          
+        </ul>
+      </div>
+      
+      
+      <div class="offcanvas__sections p-3">
+        <h3 class="h6 mb-3 text-primary">Разделы сайта</h3>
+        <nav aria-label="Разделы сайта">
+          <ul class="offcanvas__rubrics-list list-unstyled mb-0">
+            
+            <li class="offcanvas__rubric-item mb-2">
+              <a href="/abiturientam/" class="offcanvas__rubric-link d-block py-1 fw-semibold" 
+                 data-bs-dismiss="offcanvas"
+                 title="АБИТУРИЕНТАМ">
+                АБИТУРИЕНТАМ
+              </a>
+              
+              <ul class="offcanvas__subrubrics-list list-unstyled mt-1 ms-3">
+                
+                <li class="offcanvas__subrubric-item">
+                  <a href="/abiturientam/slovo-direktora/" class="offcanvas__subrubric-link d-block py-1 text-secondary" 
+                     data-bs-dismiss="offcanvas"
+                     title="Слово директора">
+                    <small>Слово директора</small>
+                  </a>
+                </li>
+                
+                <li class="offcanvas__subrubric-item">
+                  <a href="/abiturientam/specialnosti/" class="offcanvas__subrubric-link d-block py-1 text-secondary" 
+                     data-bs-dismiss="offcanvas"
+                     title="Специальности и профессии">
+                    <small>Специальности и профессии</small>
+                  </a>
+                </li>
+                
+                <li class="offcanvas__subrubric-item">
+                  <a href="/abiturientam/priemnaya-kampaniya-2025/" class="offcanvas__subrubric-link d-block py-1 text-secondary" 
+                     data-bs-dismiss="offcanvas"
+                     title="Приемная кампания 2025">
+                    <small>Приемная кампания 2025</small>
+                  </a>
+                </li>
+                
+                <li class="offcanvas__subrubric-item">
+                  <a href="/abiturientam/den-otkrytyh-dverej/" class="offcanvas__subrubric-link d-block py-1 text-secondary" 
+                     data-bs-dismiss="offcanvas"
+                     title="День открытых дверей">
+                    <small>День открытых дверей</small>
+                  </a>
+                </li>
+                
+                <li class="offcanvas__subrubric-item">
+                  <a href="/abiturientam/virtualnaya-ekskursiya/" class="offcanvas__subrubric-link d-block py-1 text-secondary" 
+                     data-bs-dismiss="offcanvas"
+                     title="Виртуальная экскурсия">
+                    <small>Виртуальная экскурсия</small>
+                  </a>
+                </li>
+                
+                <li class="offcanvas__subrubric-item">
+                  <a href="/abiturientam/podacha-elektronnaya/" class="offcanvas__subrubric-link d-block py-1 text-secondary" 
+                     data-bs-dismiss="offcanvas"
+                     title="Подача документов по электронной почте">
+                    <small>Подача документов по электронной почте</small>
+                  </a>
+                </li>
+                
+                <li class="offcanvas__subrubric-item">
+                  <a href="/abiturientam/podacha-pochtovaya/" class="offcanvas__subrubric-link d-block py-1 text-secondary" 
+                     data-bs-dismiss="offcanvas"
+                     title="Подача документов через средства почтовой связи">
+                    <small>Подача документов через средства почтовой связи</small>
+                  </a>
+                </li>
+                
+                <li class="offcanvas__subrubric-item">
+                  <a href="/abiturientam/platnaya-osnova/" class="offcanvas__subrubric-link d-block py-1 text-secondary" 
+                     data-bs-dismiss="offcanvas"
+                     title="Платная основа обучения">
+                    <small>Платная основа обучения</small>
+                  </a>
+                </li>
+                
+                <li class="offcanvas__subrubric-item">
+                  <a href="/abiturientam/kontakty-grafik/" class="offcanvas__subrubric-link d-block py-1 text-secondary" 
+                     data-bs-dismiss="offcanvas"
+                     title="Контакты и график работы">
+                    <small>Контакты и график работы</small>
+                  </a>
+                </li>
+                
+              </ul>
+              
+            </li>
+            
+            <li class="offcanvas__rubric-item mb-2">
+              <a href="/svedenija/" class="offcanvas__rubric-link d-block py-1 fw-semibold" 
+                 data-bs-dismiss="offcanvas"
+                 title="СВЕДЕНИЯ ОБ ОБРАЗОВАТЕЛЬНОЙ ОРГАНИЗАЦИИ">
+                СВЕДЕНИЯ ОБ ОБРАЗОВАТЕЛЬНОЙ ОРГАНИЗАЦИИ
+              </a>
+              
+              <ul class="offcanvas__subrubrics-list list-unstyled mt-1 ms-3">
+                
+                <li class="offcanvas__subrubric-item">
+                  <a href="/svedenija/osnovnye-svedenija/" class="offcanvas__subrubric-link d-block py-1 text-secondary" 
+                     data-bs-dismiss="offcanvas"
+                     title="Основные сведения">
+                    <small>Основные сведения</small>
+                  </a>
+                </li>
+                
+                <li class="offcanvas__subrubric-item">
+                  <a href="/svedenija/struktura-upravleniya/" class="offcanvas__subrubric-link d-block py-1 text-secondary" 
+                     data-bs-dismiss="offcanvas"
+                     title="Структура и органы управления">
+                    <small>Структура и органы управления</small>
+                  </a>
+                </li>
+                
+                <li class="offcanvas__subrubric-item">
+                  <a href="/svedenija/dokumenty/" class="offcanvas__subrubric-link d-block py-1 text-secondary" 
+                     data-bs-dismiss="offcanvas"
+                     title="Документы">
+                    <small>Документы</small>
+                  </a>
+                </li>
+                
+                <li class="offcanvas__subrubric-item">
+                  <a href="/svedenija/obrazovanie/" class="offcanvas__subrubric-link d-block py-1 text-secondary" 
+                     data-bs-dismiss="offcanvas"
+                     title="Образование">
+                    <small>Образование</small>
+                  </a>
+                </li>
+                
+                <li class="offcanvas__subrubric-item">
+                  <a href="/svedenija/rukovodstvo/" class="offcanvas__subrubric-link d-block py-1 text-secondary" 
+                     data-bs-dismiss="offcanvas"
+                     title="Руководство">
+                    <small>Руководство</small>
+                  </a>
+                </li>
+                
+                <li class="offcanvas__subrubric-item">
+                  <a href="/svedenija/standarty/" class="offcanvas__subrubric-link d-block py-1 text-secondary" 
+                     data-bs-dismiss="offcanvas"
+                     title="Образовательные стандарты">
+                    <small>Образовательные стандарты</small>
+                  </a>
+                </li>
+                
+                <li class="offcanvas__subrubric-item">
+                  <a href="/svedenija/materialno-tehnicheskoe/" class="offcanvas__subrubric-link d-block py-1 text-secondary" 
+                     data-bs-dismiss="offcanvas"
+                     title="Материально-техническое обеспечение">
+                    <small>Материально-техническое обеспечение</small>
+                  </a>
+                </li>
+                
+                <li class="offcanvas__subrubric-item">
+                  <a href="/svedenija/platnye-uslugi/" class="offcanvas__subrubric-link d-block py-1 text-secondary" 
+                     data-bs-dismiss="offcanvas"
+                     title="Платные образовательные услуги">
+                    <small>Платные образовательные услуги</small>
+                  </a>
+                </li>
+                
+                <li class="offcanvas__subrubric-item">
+                  <a href="/svedenija/finansy/" class="offcanvas__subrubric-link d-block py-1 text-secondary" 
+                     data-bs-dismiss="offcanvas"
+                     title="Финансово-хозяйственная деятельность">
+                    <small>Финансово-хозяйственная деятельность</small>
+                  </a>
+                </li>
+                
+              </ul>
+              
+            </li>
+            
+            <li class="offcanvas__rubric-item mb-2">
+              <a href="/uchebno-metodicheskaya/" class="offcanvas__rubric-link d-block py-1 fw-semibold" 
+                 data-bs-dismiss="offcanvas"
+                 title="УЧЕБНО-МЕТОДИЧЕСКАЯ РАБОТА">
+                УЧЕБНО-МЕТОДИЧЕСКАЯ РАБОТА
+              </a>
+              
+              <ul class="offcanvas__subrubrics-list list-unstyled mt-1 ms-3">
+                
+                <li class="offcanvas__subrubric-item">
+                  <a href="/uchebno-metodicheskaya/elektronnoe-obuchenie/" class="offcanvas__subrubric-link d-block py-1 text-secondary" 
+                     data-bs-dismiss="offcanvas"
+                     title="Электронное обучение и ДОТ">
+                    <small>Электронное обучение и ДОТ</small>
+                  </a>
+                </li>
+                
+                <li class="offcanvas__subrubric-item">
+                  <a href="/uchebno-metodicheskaya/dopolnitelnoe-obrazovanie/" class="offcanvas__subrubric-link d-block py-1 text-secondary" 
+                     data-bs-dismiss="offcanvas"
+                     title="Дополнительное образование">
+                    <small>Дополнительное образование</small>
+                  </a>
+                </li>
+                
+                <li class="offcanvas__subrubric-item">
+                  <a href="/uchebno-metodicheskaya/praktika/" class="offcanvas__subrubric-link d-block py-1 text-secondary" 
+                     data-bs-dismiss="offcanvas"
+                     title="Практика">
+                    <small>Практика</small>
+                  </a>
+                </li>
+                
+              </ul>
+              
+            </li>
+            
+            <li class="offcanvas__rubric-item mb-2">
+              <a href="/vospitanie/" class="offcanvas__rubric-link d-block py-1 fw-semibold" 
+                 data-bs-dismiss="offcanvas"
+                 title="ВОСПИТАТЕЛЬНАЯ РАБОТА">
+                ВОСПИТАТЕЛЬНАЯ РАБОТА
+              </a>
+              
+              <ul class="offcanvas__subrubrics-list list-unstyled mt-1 ms-3">
+                
+                <li class="offcanvas__subrubric-item">
+                  <a href="/vospitanie/shtab/" class="offcanvas__subrubric-link d-block py-1 text-secondary" 
+                     data-bs-dismiss="offcanvas"
+                     title="Штаб воспитательной работы">
+                    <small>Штаб воспитательной работы</small>
+                  </a>
+                </li>
+                
+                <li class="offcanvas__subrubric-item">
+                  <a href="/vospitanie/plan/" class="offcanvas__subrubric-link d-block py-1 text-secondary" 
+                     data-bs-dismiss="offcanvas"
+                     title="План воспитательной работы">
+                    <small>План воспитательной работы</small>
+                  </a>
+                </li>
+                
+                <li class="offcanvas__subrubric-item">
+                  <a href="/vospitanie/mo-rukovoditelej/" class="offcanvas__subrubric-link d-block py-1 text-secondary" 
+                     data-bs-dismiss="offcanvas"
+                     title="МО руководителей учебных групп">
+                    <small>МО руководителей учебных групп</small>
+                  </a>
+                </li>
+                
+                <li class="offcanvas__subrubric-item">
+                  <a href="/vospitanie/samoupravlenie/" class="offcanvas__subrubric-link d-block py-1 text-secondary" 
+                     data-bs-dismiss="offcanvas"
+                     title="Студенческое самоуправление">
+                    <small>Студенческое самоуправление</small>
+                  </a>
+                </li>
+                
+                <li class="offcanvas__subrubric-item">
+                  <a href="/vospitanie/volonterstvo/" class="offcanvas__subrubric-link d-block py-1 text-secondary" 
+                     data-bs-dismiss="offcanvas"
+                     title="Волонтерское движение">
+                    <small>Волонтерское движение</small>
+                  </a>
+                </li>
+                
+                <li class="offcanvas__subrubric-item">
+                  <a href="/vospitanie/patrioticheskoe/" class="offcanvas__subrubric-link d-block py-1 text-secondary" 
+                     data-bs-dismiss="offcanvas"
+                     title="Патриотическое воспитание">
+                    <small>Патриотическое воспитание</small>
+                  </a>
+                </li>
+                
+                <li class="offcanvas__subrubric-item">
+                  <a href="/vospitanie/kulturno-massovaya/" class="offcanvas__subrubric-link d-block py-1 text-secondary" 
+                     data-bs-dismiss="offcanvas"
+                     title="Культурно-массовая работа">
+                    <small>Культурно-массовая работа</small>
+                  </a>
+                </li>
+                
+                <li class="offcanvas__subrubric-item">
+                  <a href="/vospitanie/fizkultura-sport/" class="offcanvas__subrubric-link d-block py-1 text-secondary" 
+                     data-bs-dismiss="offcanvas"
+                     title="Физическая культура и спорт">
+                    <small>Физическая культура и спорт</small>
+                  </a>
+                </li>
+                
+                <li class="offcanvas__subrubric-item">
+                  <a href="/vospitanie/upolnomochennyj-prava/" class="offcanvas__subrubric-link d-block py-1 text-secondary" 
+                     data-bs-dismiss="offcanvas"
+                     title="Уполномоченный по правам ребенка">
+                    <small>Уполномоченный по правам ребенка</small>
+                  </a>
+                </li>
+                
+              </ul>
+              
+            </li>
+            
+            <li class="offcanvas__rubric-item mb-2">
+              <a href="/partnerstvo/" class="offcanvas__rubric-link d-block py-1 fw-semibold" 
+                 data-bs-dismiss="offcanvas"
+                 title="СОЦИАЛЬНОЕ ПАРТНЕРСТВО И ПРОФОРИЕНТАЦИЯ">
+                СОЦИАЛЬНОЕ ПАРТНЕРСТВО И ПРОФОРИЕНТАЦИЯ
+              </a>
+              
+              <ul class="offcanvas__subrubrics-list list-unstyled mt-1 ms-3">
+                
+                <li class="offcanvas__subrubric-item">
+                  <a href="/partnerstvo/vuzy/" class="offcanvas__subrubric-link d-block py-1 text-secondary" 
+                     data-bs-dismiss="offcanvas"
+                     title="Сотрудничество с ВУЗами">
+                    <small>Сотрудничество с ВУЗами</small>
+                  </a>
+                </li>
+                
+                <li class="offcanvas__subrubric-item">
+                  <a href="/partnerstvo/zanyatost/" class="offcanvas__subrubric-link d-block py-1 text-secondary" 
+                     data-bs-dismiss="offcanvas"
+                     title="Сотрудничество с органами занятости">
+                    <small>Сотрудничество с органами занятости</small>
+                  </a>
+                </li>
+                
+                <li class="offcanvas__subrubric-item">
+                  <a href="/partnerstvo/predprijatija/" class="offcanvas__subrubric-link d-block py-1 text-secondary" 
+                     data-bs-dismiss="offcanvas"
+                     title="Сотрудничество с предприятиями">
+                    <small>Сотрудничество с предприятиями</small>
+                  </a>
+                </li>
+                
+                <li class="offcanvas__subrubric-item">
+                  <a href="/partnerstvo/shkoly/" class="offcanvas__subrubric-link d-block py-1 text-secondary" 
+                     data-bs-dismiss="offcanvas"
+                     title="Сотрудничество со школами">
+                    <small>Сотрудничество со школами</small>
+                  </a>
+                </li>
+                
+              </ul>
+              
+            </li>
+            
+            <li class="offcanvas__rubric-item mb-2">
+              <a href="/psihologicheskoe/" class="offcanvas__rubric-link d-block py-1 fw-semibold" 
+                 data-bs-dismiss="offcanvas"
+                 title="ПСИХОЛОГИЧЕСКОЕ СОПРОВОЖДЕНИЕ">
+                ПСИХОЛОГИЧЕСКОЕ СОПРОВОЖДЕНИЕ
+              </a>
+              
+              <ul class="offcanvas__subrubrics-list list-unstyled mt-1 ms-3">
+                
+                <li class="offcanvas__subrubric-item">
+                  <a href="/psihologicheskoe/organizacionno-metodicheskaya/" class="offcanvas__subrubric-link d-block py-1 text-secondary" 
+                     data-bs-dismiss="offcanvas"
+                     title="Организационно-методическая основа">
+                    <small>Организационно-методическая основа</small>
+                  </a>
+                </li>
+                
+                <li class="offcanvas__subrubric-item">
+                  <a href="/psihologicheskoe/rezultaty-testirovanij/" class="offcanvas__subrubric-link d-block py-1 text-secondary" 
+                     data-bs-dismiss="offcanvas"
+                     title="Результаты тестирований">
+                    <small>Результаты тестирований</small>
+                  </a>
+                </li>
+                
+                <li class="offcanvas__subrubric-item">
+                  <a href="/psihologicheskoe/sovety-prepodavatelyam/" class="offcanvas__subrubric-link d-block py-1 text-secondary" 
+                     data-bs-dismiss="offcanvas"
+                     title="Советы преподавателям">
+                    <small>Советы преподавателям</small>
+                  </a>
+                </li>
+                
+                <li class="offcanvas__subrubric-item">
+                  <a href="/psihologicheskoe/sovety-roditelyam/" class="offcanvas__subrubric-link d-block py-1 text-secondary" 
+                     data-bs-dismiss="offcanvas"
+                     title="Советы родителям">
+                    <small>Советы родителям</small>
+                  </a>
+                </li>
+                
+                <li class="offcanvas__subrubric-item">
+                  <a href="/psihologicheskoe/sovety-studentam/" class="offcanvas__subrubric-link d-block py-1 text-secondary" 
+                     data-bs-dismiss="offcanvas"
+                     title="Советы студентам">
+                    <small>Советы студентам</small>
+                  </a>
+                </li>
+                
+                <li class="offcanvas__subrubric-item">
+                  <a href="/psihologicheskoe/profilaktika-narkotikov/" class="offcanvas__subrubric-link d-block py-1 text-secondary" 
+                     data-bs-dismiss="offcanvas"
+                     title="Профилактика наркотиков">
+                    <small>Профилактика наркотиков</small>
+                  </a>
+                </li>
+                
+                <li class="offcanvas__subrubric-item">
+                  <a href="/psihologicheskoe/podderzhka-ovz/" class="offcanvas__subrubric-link d-block py-1 text-secondary" 
+                     data-bs-dismiss="offcanvas"
+                     title="Поддержка лиц с ОВЗ">
+                    <small>Поддержка лиц с ОВЗ</small>
+                  </a>
+                </li>
+                
+              </ul>
+              
+            </li>
+            
+            <li class="offcanvas__rubric-item mb-2">
+              <a href="/bezopasnost/" class="offcanvas__rubric-link d-block py-1 fw-semibold" 
+                 data-bs-dismiss="offcanvas"
+                 title="КОМПЛЕКСНАЯ БЕЗОПАСНОСТЬ">
+                КОМПЛЕКСНАЯ БЕЗОПАСНОСТЬ
+              </a>
+              
+              <ul class="offcanvas__subrubrics-list list-unstyled mt-1 ms-3">
+                
+                <li class="offcanvas__subrubric-item">
+                  <a href="/bezopasnost/antiterror/" class="offcanvas__subrubric-link d-block py-1 text-secondary" 
+                     data-bs-dismiss="offcanvas"
+                     title="Антитеррористическая защищенность">
+                    <small>Антитеррористическая защищенность</small>
+                  </a>
+                </li>
+                
+                <li class="offcanvas__subrubric-item">
+                  <a href="/bezopasnost/ekstremizm/" class="offcanvas__subrubric-link d-block py-1 text-secondary" 
+                     data-bs-dismiss="offcanvas"
+                     title="Профилактика экстремизма">
+                    <small>Профилактика экстремизма</small>
+                  </a>
+                </li>
+                
+                <li class="offcanvas__subrubric-item">
+                  <a href="/bezopasnost/korrupcija/" class="offcanvas__subrubric-link d-block py-1 text-secondary" 
+                     data-bs-dismiss="offcanvas"
+                     title="Противодействие коррупции">
+                    <small>Противодействие коррупции</small>
+                  </a>
+                </li>
+                
+                <li class="offcanvas__subrubric-item">
+                  <a href="/bezopasnost/pozharnaya/" class="offcanvas__subrubric-link d-block py-1 text-secondary" 
+                     data-bs-dismiss="offcanvas"
+                     title="Пожарная безопасность">
+                    <small>Пожарная безопасность</small>
+                  </a>
+                </li>
+                
+              </ul>
+              
+            </li>
+            
+            <li class="offcanvas__rubric-item mb-2">
+              <a href="/studentam-roditeljam/" class="offcanvas__rubric-link d-block py-1 fw-semibold" 
+                 data-bs-dismiss="offcanvas"
+                 title="СТУДЕНТАМ И ИХ РОДИТЕЛЯМ">
+                СТУДЕНТАМ И ИХ РОДИТЕЛЯМ
+              </a>
+              
+              <ul class="offcanvas__subrubrics-list list-unstyled mt-1 ms-3">
+                
+                <li class="offcanvas__subrubric-item">
+                  <a href="/studentam-roditeljam/resursy/" class="offcanvas__subrubric-link d-block py-1 text-secondary" 
+                     data-bs-dismiss="offcanvas"
+                     title="Информационно-образовательные ресурсы">
+                    <small>Информационно-образовательные ресурсы</small>
+                  </a>
+                </li>
+                
+                <li class="offcanvas__subrubric-item">
+                  <a href="/studentam-roditeljam/prikaz-zachislenie/" class="offcanvas__subrubric-link d-block py-1 text-secondary" 
+                     data-bs-dismiss="offcanvas"
+                     title="Приказ о зачислении">
+                    <small>Приказ о зачислении</small>
+                  </a>
+                </li>
+                
+                <li class="offcanvas__subrubric-item">
+                  <a href="/studentam-roditeljam/raspisanie/" class="offcanvas__subrubric-link d-block py-1 text-secondary" 
+                     data-bs-dismiss="offcanvas"
+                     title="Расписание занятий">
+                    <small>Расписание занятий</small>
+                  </a>
+                </li>
+                
+              </ul>
+              
+            </li>
+            
+            <li class="offcanvas__rubric-item mb-2">
+              <a href="/obshestvennoe-mnenie/" class="offcanvas__rubric-link d-block py-1 " 
+                 data-bs-dismiss="offcanvas"
+                 title="Результаты изучения общественного мнения">
+                Результаты изучения общественного мнения
+              </a>
+              
+            </li>
+            
+            <li class="offcanvas__rubric-item mb-2">
+              <a href="/vypusknikam/" class="offcanvas__rubric-link d-block py-1 " 
+                 data-bs-dismiss="offcanvas"
+                 title="Нашим выпускникам">
+                Нашим выпускникам
+              </a>
+              
+            </li>
+            
+            <li class="offcanvas__rubric-item mb-2">
+              <a href="/uncategorized/" class="offcanvas__rubric-link d-block py-1 " 
+                 data-bs-dismiss="offcanvas"
+                 title="Без рубрики">
+                Без рубрики
+              </a>
+              
+            </li>
+            
+          </ul>
+        </nav>
+      </div>
+      
+      
+      <div class="offcanvas__toggles p-3 border-top">
+        <h3 class="h6 mb-3 text-primary">Настройки</h3>
+        <div class="d-flex flex-column gap-2">
+          <button type="button" class="btn btn-outline-secondary d-flex align-items-center justify-content-start gap-2" onclick="toggleDarkTheme()">
+            <i class="bi bi-moon-stars" aria-hidden="true"></i>
+            <span>Тёмная тема</span>
+          </button>
+          <button type="button" class="btn btn-outline-secondary d-flex align-items-center justify-content-start gap-2" onclick="toggleA11y()">
+            <i class="bi bi-eye" aria-hidden="true"></i>
+            <span>Версия для слабовидящих</span>
+          </button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+</div>
 
 
   <main class="main-content">
