@@ -33,7 +33,9 @@ console.log("Site loaded");
 
   // Submenu toggle for desktop hover and mobile click
   if (submenuToggles && submenuToggles.length > 0) {
-    submenuToggles.forEach(function(toggle) {
+    // Convert NodeList to array for better browser compatibility
+    Array.prototype.forEach.call(submenuToggles, function(toggle) {
+      if (!toggle) return;
       const parentLi = toggle.closest('.has-submenu');
       if (!parentLi) return;
       
