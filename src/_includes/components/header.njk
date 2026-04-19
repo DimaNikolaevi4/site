@@ -1,20 +1,155 @@
-<header id="header" class="header d-flex align-items-center sticky-top" role="banner">
-  <div class="container-fluid container-xl position-relative d-flex align-items-center">
-    <a href="/" class="logo d-flex align-items-center me-auto" aria-label="Перейти на главную">
-      <h1 class="sitename">{{ site.short_name or site.name }}</h1>
-    </a>
+{# 
+  Адаптивная шапка с Offcanvas-меню
+  - Десктоп (≥992px): все элементы в одной строке
+  - Планшет (768-991px): элементы переносятся в Offcanvas при нехватке места
+  - Мобильный (<768px): только логотип и гамбургер
+#}
 
-    <nav id="navmenu" class="navmenu" role="navigation" aria-label="Основная навигация">
-      <ul>
-        <li><a href="/" class="{% if page and page.url == '/' %}active{% endif %}">Главная</a></li>
-        <li><a href="/about/" class="{% if page and page.url and page.url.indexOf('/about/') != -1 %}active{% endif %}">О техникуме</a></li>
-        <li><a href="/news/" class="{% if page and page.url and page.url.indexOf('/news/') != -1 %}active{% endif %}">Новости</a></li>
-        <li><a href="/svedenija/" class="{% if page and page.url and page.url.indexOf('/svedenija/') != -1 %}active{% endif %}">Сведения</a></li>
-        <li><a href="/search/" class="{% if page and page.url and page.url.indexOf('/search/') != -1 %}active{% endif %}">Поиск</a></li>
-      </ul>
-      <i class="mobile-nav-toggle d-xl-none bi bi-list" aria-hidden="true"></i>
-    </nav>
-
-    <a class="btn-getstarted" href="/abiturientam/">Абитуриенту</a>
+<header id="header" class="header sticky-top" role="banner">
+  <div class="container-fluid container-xl position-relative">
+    <div class="header__inner d-flex align-items-center justify-content-between" id="headerInner">
+      
+      {# Логотип — всегда виден #}
+      <a href="/" class="header__logo d-flex align-items-center" aria-label="Перейти на главную страницу">
+        <img src="/assets/img/logo.png" alt="Логотип ГБПОУ РО СИТ" class="header__logo-img" height="40">
+      </a>
+      
+      {# Основное меню для десктопа #}
+      <div class="header__desktop d-none d-lg-flex align-items-center" id="headerDesktop">
+        
+        {# Текстовые ссылки #}
+        <nav class="header__nav" role="navigation" aria-label="Основная навигация">
+          <ul class="header__nav-list list-unstyled d-flex mb-0 gap-3">
+            <li class="header__nav-item">
+              <a href="/abiturientam/" class="header__nav-link" title="Абитуриентам">Абитуриентам</a>
+            </li>
+            <li class="header__nav-item">
+              <a href="/svedenija/" class="header__nav-link" title="Сведения об образовательной организации">Сведения об образовательной организации</a>
+            </li>
+            <li class="header__nav-item">
+              <a href="https://эос.сит-сальск.рф" class="header__nav-link header__nav-link--external" title="Электронная образовательная среда" target="_blank" rel="noopener noreferrer">ЭОС</a>
+            </li>
+            <li class="header__nav-item">
+              <a href="#footer" class="header__nav-link" title="Контакты">Контакты</a>
+            </li>
+          </ul>
+        </nav>
+        
+        {# Блок иконок #}
+        <div class="header__icons d-flex align-items-center gap-2 ms-3" id="headerIcons">
+          
+          {# Email #}
+          <a href="mailto:sitsalsk@mail.ru" class="header__icon-link" title="Написать на email" aria-label="Email" data-priority="low">
+            <i class="bi bi-envelope" aria-hidden="true"></i>
+          </a>
+          
+          {# VK #}
+          <a href="https://vk.com/sitsalsk" class="header__icon-link" title="Группа ВКонтакте" aria-label="ВКонтакте" target="_blank" rel="noopener noreferrer" data-priority="low">
+            <i class="bi bi-vk" aria-hidden="true"></i>
+          </a>
+          
+          {# Тёмная тема #}
+          <button type="button" class="header__icon-link header__icon-btn" title="Переключить тёмную тему" aria-label="Переключить тёмную тему" onclick="toggleDarkTheme()" data-priority="medium">
+            <i class="bi bi-moon-stars" aria-hidden="true"></i>
+          </button>
+          
+          {# Версия для слабовидящих #}
+          <button type="button" class="header__icon-link header__icon-btn" title="Версия для слабовидящих" aria-label="Версия для слабовидящих" onclick="toggleA11y()" data-priority="medium">
+            <i class="bi bi-eye" aria-hidden="true"></i>
+          </button>
+          
+          {# Поиск #}
+          <a href="/search/" class="header__icon-link" title="Поиск по сайту" aria-label="Поиск" data-priority="high">
+            <i class="bi bi-search" aria-hidden="true"></i>
+          </a>
+          
+          {# Все разделы — открывает Offcanvas #}
+          <button type="button" class="header__icon-link header__icon-btn header__icon-btn--grid" title="Все разделы сайта" aria-label="Все разделы сайта" data-bs-toggle="offcanvas" data-bs-target="#offcanvasMain" data-priority="high">
+            <i class="bi bi-grid-3x3-gap-fill" aria-hidden="true"></i>
+          </button>
+          
+        </div>
+      </div>
+      
+      {# Кнопка гамбургер для мобильных #}
+      <button type="button" class="header__mobile-toggle d-lg-none btn btn-link text-white p-0" 
+              id="mobileToggle"
+              data-bs-toggle="offcanvas" 
+              data-bs-target="#offcanvasMain" 
+              aria-label="Открыть меню"
+              aria-controls="offcanvasMain">
+        <i class="bi bi-list fs-2" aria-hidden="true" id="mobileToggleIcon"></i>
+      </button>
+      
+    </div>
   </div>
 </header>
+
+{# Offcanvas панель #}
+<div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasMain" aria-labelledby="offcanvasMainLabel">
+  
+  <div class="offcanvas-header d-flex justify-content-between align-items-center border-bottom">
+    <h2 class="offcanvas-title h5 mb-0" id="offcanvasMainLabel">Меню</h2>
+    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Закрыть меню"></button>
+  </div>
+  
+  <div class="offcanvas-body p-0">
+    <div class="offcanvas-content">
+      
+      {# Перенесённые элементы из шапки #}
+      <div id="offcanvas-extra-items" class="offcanvas__extra-items p-3 border-bottom" style="display: none;">
+        <h3 class="h6 mb-2 text-muted">Быстрый доступ</h3>
+        <ul class="list-unstyled mb-0" id="offcanvasExtraList">
+          {# Сюда JavaScript будет перемещать элементы при нехватке места #}
+        </ul>
+      </div>
+      
+      {# Основные разделы сайта из rubrics #}
+      <div class="offcanvas__sections p-3">
+        <h3 class="h6 mb-3 text-primary">Разделы сайта</h3>
+        <nav aria-label="Разделы сайта">
+          <ul class="offcanvas__rubrics-list list-unstyled mb-0">
+            {% for rubric in rubrics.main_rubrics %}
+            <li class="offcanvas__rubric-item mb-2">
+              <a href="/{{ rubric.slug }}/" class="offcanvas__rubric-link d-block py-1 {% if rubric.children and rubric.children.length %}fw-semibold{% endif %}" 
+                 data-bs-dismiss="offcanvas"
+                 title="{{ rubric.title }}">
+                {{ rubric.title }}
+              </a>
+              {% if rubric.children and rubric.children.length %}
+              <ul class="offcanvas__subrubrics-list list-unstyled mt-1 ms-3">
+                {% for child in rubric.children %}
+                <li class="offcanvas__subrubric-item">
+                  <a href="/{{ rubric.slug }}/{{ child.slug }}/" class="offcanvas__subrubric-link d-block py-1 text-secondary" 
+                     data-bs-dismiss="offcanvas"
+                     title="{{ child.title }}">
+                    <small>{{ child.title }}</small>
+                  </a>
+                </li>
+                {% endfor %}
+              </ul>
+              {% endif %}
+            </li>
+            {% endfor %}
+          </ul>
+        </nav>
+      </div>
+      
+      {# Переключатели в Offcanvas для мобильных #}
+      <div class="offcanvas__toggles p-3 border-top">
+        <h3 class="h6 mb-3 text-primary">Настройки</h3>
+        <div class="d-flex flex-column gap-2">
+          <button type="button" class="btn btn-outline-secondary d-flex align-items-center justify-content-start gap-2" onclick="toggleDarkTheme()">
+            <i class="bi bi-moon-stars" aria-hidden="true"></i>
+            <span>Тёмная тема</span>
+          </button>
+          <button type="button" class="btn btn-outline-secondary d-flex align-items-center justify-content-start gap-2" onclick="toggleA11y()">
+            <i class="bi bi-eye" aria-hidden="true"></i>
+            <span>Версия для слабовидящих</span>
+          </button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+</div>
