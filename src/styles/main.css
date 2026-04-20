@@ -3014,3 +3014,212 @@ section,
 .oc-panel-open-link i {
   font-size: 0.7rem;
 }
+
+/* ═══════════════════════════════════════════════════════════
+   ПАНЕЛЬ «ВЕРСИЯ ДЛЯ СЛАБОВИДЯЩИХ»
+   ═══════════════════════════════════════════════════════════ */
+
+/* Обёртка — нужна для абсолютного позиционирования панели */
+.a11y-wrap {
+  position: relative;
+}
+
+/* Dropdown-панель */
+.a11y-panel {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  z-index: 1060;
+  min-width: 220px;
+  background: var(--surface-color, #fff);
+  border: 1.5px solid color-mix(in srgb, var(--accent-color), transparent 60%);
+  border-radius: 12px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.14);
+  padding: 1rem;
+  animation: a11yFadeIn 0.18s ease;
+}
+
+@keyframes a11yFadeIn {
+  from { opacity: 0; transform: translateY(-6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.a11y-panel[hidden] {
+  display: none;
+}
+
+.a11y-panel__title {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--heading-color);
+  margin: 0 0 0.75rem 0;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid color-mix(in srgb, var(--accent-color), transparent 65%);
+}
+
+.a11y-options {
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+  margin-bottom: 0.85rem;
+}
+
+.a11y-option {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  cursor: pointer;
+  font-size: 0.85rem;
+  color: var(--default-color);
+  padding: 0.3rem 0.4rem;
+  border-radius: 6px;
+  transition: background 0.15s;
+}
+
+.a11y-option:hover {
+  background: color-mix(in srgb, var(--accent-color), transparent 88%);
+}
+
+.a11y-option input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  accent-color: var(--accent-color);
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.a11y-panel__footer {
+  display: flex;
+  gap: 0.4rem;
+}
+
+.a11y-reset,
+.a11y-close {
+  flex: 1;
+  font-size: 0.75rem;
+  padding: 0.35rem 0.5rem;
+  border-radius: 6px;
+  border: 1.5px solid color-mix(in srgb, var(--default-color), transparent 75%);
+  background: transparent;
+  color: var(--default-color);
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s;
+}
+
+.a11y-reset:hover,
+.a11y-close:hover {
+  background: color-mix(in srgb, var(--accent-color), transparent 88%);
+  border-color: var(--accent-color);
+}
+
+/* Кнопка-глаз подсвечивается когда режим активен */
+body.a11y-high-contrast #a11yToggle,
+body.a11y-large-font    #a11yToggle,
+body.a11y-no-animations #a11yToggle {
+  color: var(--accent-color);
+}
+
+/* Мобильные: панель выравнивается по правому краю экрана */
+@media (max-width: 480px) {
+  .a11y-panel {
+    right: -0.5rem;
+    min-width: 200px;
+  }
+}
+
+/* ═══ РЕЖИМ: КРУПНЫЙ ШРИФТ ═══ */
+body.a11y-large-font {
+  font-size: 1.15rem;
+}
+
+body.a11y-large-font h1 { font-size: 2.2rem; }
+body.a11y-large-font h2 { font-size: 1.9rem; }
+body.a11y-large-font h3 { font-size: 1.6rem; }
+body.a11y-large-font h4 { font-size: 1.35rem; }
+
+body.a11y-large-font .main-nav__link,
+body.a11y-large-font .oc-main-item__link,
+body.a11y-large-font .oc-sub-item a {
+  font-size: 1.05rem;
+}
+
+body.a11y-large-font .header-icon-btn {
+  font-size: 1.3rem;
+  width: 42px;
+  height: 42px;
+}
+
+/* ═══ РЕЖИМ: ВЫСОКИЙ КОНТРАСТ ═══ */
+body.a11y-high-contrast,
+html.a11y-high-contrast body {
+  background-color: #000 !important;
+  color: #fff !important;
+}
+
+body.a11y-high-contrast .header {
+  background-color: #111 !important;
+  border-bottom: 2px solid #ff0 !important;
+}
+
+body.a11y-high-contrast .main-nav__link,
+body.a11y-high-contrast .header-icon-btn,
+body.a11y-high-contrast a {
+  color: #ff0 !important;
+}
+
+body.a11y-high-contrast .main-nav__link:hover,
+body.a11y-high-contrast .header-icon-btn:hover,
+body.a11y-high-contrast a:hover {
+  color: #fff !important;
+  background: #333 !important;
+}
+
+body.a11y-high-contrast .a11y-panel {
+  background: #111 !important;
+  border-color: #ff0 !important;
+  color: #fff !important;
+}
+
+body.a11y-high-contrast .a11y-option,
+body.a11y-high-contrast .a11y-panel__title {
+  color: #fff !important;
+}
+
+body.a11y-high-contrast .a11y-reset,
+body.a11y-high-contrast .a11y-close {
+  color: #ff0 !important;
+  border-color: #ff0 !important;
+  background: #222 !important;
+}
+
+body.a11y-high-contrast .card,
+body.a11y-high-contrast .news-card,
+body.a11y-high-contrast .content-section {
+  background: #111 !important;
+  border-color: #555 !important;
+  color: #fff !important;
+}
+
+body.a11y-high-contrast .oc-header,
+body.a11y-high-contrast .oc-side-panel__header,
+body.a11y-high-contrast #offcanvasRubrics {
+  background: #111 !important;
+  color: #fff !important;
+  border-color: #ff0 !important;
+}
+
+body.a11y-high-contrast .oc-main-item__link,
+body.a11y-high-contrast .oc-sub-item a,
+body.a11y-high-contrast .oc-panel-open-link {
+  color: #ff0 !important;
+}
+
+/* ═══ РЕЖИМ: БЕЗ АНИМАЦИЙ ═══ */
+body.a11y-no-animations *,
+body.a11y-no-animations *::before,
+body.a11y-no-animations *::after {
+  transition: none !important;
+  animation: none !important;
+}

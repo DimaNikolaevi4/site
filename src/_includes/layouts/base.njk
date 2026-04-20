@@ -19,7 +19,15 @@
     (function(){
       try {
         if (localStorage.getItem('sit-dark-theme') === '1') document.documentElement.classList.add('dark-theme');
-        if (localStorage.getItem('sit-a11y') === '1') document.documentElement.classList.add('a11y-high-contrast');
+        var _p = localStorage.getItem('sit-a11y-prefs');
+        if (_p) {
+          _p = JSON.parse(_p);
+          if (_p.hc) document.documentElement.classList.add('a11y-high-contrast');
+          if (_p.lf) document.documentElement.classList.add('a11y-large-font');
+          if (_p.na) document.documentElement.classList.add('a11y-no-animations');
+        } else if (localStorage.getItem('sit-a11y') === '1') {
+          document.documentElement.classList.add('a11y-high-contrast');
+        }
       } catch(e){}
     })();
   </script>

@@ -88,10 +88,37 @@
         <i class="bi bi-telephone-fill" aria-hidden="true"></i>
         <span>{{ contacts.phone_formatted }}</span>
       </a>
-      <button class="header-icon-btn" onclick="toggleA11y(); return false;"
-              title="Версия для слабовидящих" aria-label="Версия для слабовидящих">
-        <i class="bi bi-eye" aria-hidden="true"></i>
-      </button>
+      <div class="a11y-wrap">
+        <button class="header-icon-btn" id="a11yToggle"
+                type="button"
+                title="Версия для слабовидящих"
+                aria-label="Версия для слабовидящих"
+                aria-expanded="false"
+                aria-controls="a11yPanel">
+          <i class="bi bi-eye" aria-hidden="true"></i>
+        </button>
+        <div class="a11y-panel" id="a11yPanel" role="dialog" aria-label="Настройки доступности" hidden>
+          <p class="a11y-panel__title">Версия для слабовидящих</p>
+          <div class="a11y-options">
+            <label class="a11y-option">
+              <input type="checkbox" id="a11yLargeFont">
+              <span>Крупный шрифт</span>
+            </label>
+            <label class="a11y-option">
+              <input type="checkbox" id="a11yHighContrast">
+              <span>Высокий контраст</span>
+            </label>
+            <label class="a11y-option">
+              <input type="checkbox" id="a11yNoAnimations">
+              <span>Без анимаций</span>
+            </label>
+          </div>
+          <div class="a11y-panel__footer">
+            <button type="button" class="a11y-reset" id="a11yReset">↩ Сбросить</button>
+            <button type="button" class="a11y-close" id="a11yClose">✕ Закрыть</button>
+          </div>
+        </div>
+      </div>
       <button class="header-icon-btn" onclick="toggleDarkTheme(); return false;"
               title="Тёмная тема" aria-label="Тёмная / светлая тема">
         <i class="bi bi-moon-stars" aria-hidden="true"></i>
