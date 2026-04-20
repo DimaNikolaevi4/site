@@ -60,13 +60,13 @@
   function openPanel2(rubric) {
     closePanel3();
 
-    ocPanel2Title.textContent       = rubric.title;
-    ocPanel2ParentLink.href         = '/' + rubric.slug + '/';
-    ocSubList.innerHTML             = buildLevel2Items(rubric.children, rubric.slug);
+    ocPanel2Title.textContent = rubric.title;
+    ocPanel2ParentLink.href   = '/' + rubric.slug + '/';
+    ocSubList.innerHTML       = buildLevel2Items(rubric.children, rubric.slug);
 
     ocSubList.querySelectorAll('.oc-open-l3').forEach(function (btn) {
       btn.addEventListener('click', function () {
-        var row  = btn.closest('.oc-split-row');
+        var row   = btn.closest('.oc-split-row');
         var child = JSON.parse(row.dataset.l3Json);
         var href  = row.dataset.l3Href;
         openPanel3(child, href);
@@ -76,6 +76,24 @@
     ocSubList.querySelectorAll('.oc-dismiss-all').forEach(function (el) {
       el.addEventListener('click', closeAll);
     });
+
+    ocPanel2ParentLink.onclick = closeAll;
+
+    var l2isPointer = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+    if (l2isPointer) {
+      ocSubList.querySelectorAll('.oc-split-row').forEach(function (row) {
+        row.addEventListener('mouseenter', function () {
+          var child = JSON.parse(row.dataset.l3Json || 'null');
+          var href  = row.dataset.l3Href;
+          if (child && child.children) {
+            hoverTimer = setTimeout(function () { openPanel3(child, href); }, 220);
+          }
+        });
+        row.addEventListener('mouseleave', function () {
+          clearTimeout(hoverTimer);
+        });
+      });
+    }
 
     ocPanel2.classList.add('is-open');
     ocPanel2.setAttribute('aria-hidden', 'false');
@@ -89,13 +107,15 @@
   }
 
   function openPanel3(child, parentHref) {
-    ocPanel3Title.textContent      = child.title;
-    ocPanel3ParentLink.href        = parentHref;
-    ocSubSubList.innerHTML         = buildLevel3Items(child.children, parentHref);
+    ocPanel3Title.textContent = child.title;
+    ocPanel3ParentLink.href   = parentHref;
+    ocSubSubList.innerHTML    = buildLevel3Items(child.children, parentHref);
 
     ocSubSubList.querySelectorAll('.oc-dismiss-all').forEach(function (el) {
       el.addEventListener('click', closeAll);
     });
+
+    ocPanel3ParentLink.onclick = closeAll;
 
     ocPanel3.classList.add('is-open');
     ocPanel3.setAttribute('aria-hidden', 'false');
