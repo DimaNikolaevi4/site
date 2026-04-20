@@ -2071,21 +2071,85 @@ section,
   --bs-offcanvas-width: var(--oc-panel-w);
 }
 
-/* Шапка offcanvas */
+/* ─── Шапка offcanvas ─── */
 .oc-header {
-  border-bottom: 1px solid color-mix(in srgb, var(--default-color), transparent 88%);
-  min-height: 56px;
-  padding: 0.75rem 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  min-height: 68px;
+  padding: 0.75rem 0.75rem 0.75rem 1rem;
+  border-bottom: 3px solid var(--accent-color);
+  background: var(--surface-color, #fff);
+}
+
+.oc-header__brand {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  flex: 1;
+  min-width: 0;
+  text-decoration: none;
+}
+
+.oc-header__brand:hover .oc-header__title {
+  color: var(--accent-color);
+}
+
+.oc-header__logo {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+  flex-shrink: 0;
+  border-radius: 6px;
+}
+
+.oc-header__text {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
 }
 
 .oc-header__title {
-  font-size: 1rem;
+  font-size: 0.88rem;
   font-weight: 700;
-  margin: 0;
   color: var(--heading-color);
+  line-height: 1.25;
+  transition: color 0.2s;
 }
 
-/* Панель 1 (внутри offcanvas) */
+.oc-header__sub {
+  font-size: 0.72rem;
+  color: color-mix(in srgb, var(--default-color), transparent 45%);
+  line-height: 1.3;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Кнопка закрытия в шапке */
+.oc-dismiss-btn {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  background: none;
+  border: none;
+  border-radius: 8px;
+  color: color-mix(in srgb, var(--nav-color), transparent 30%);
+  font-size: 1rem;
+  cursor: pointer;
+  padding: 0;
+  transition: color 0.2s, background 0.2s;
+}
+
+.oc-dismiss-btn:hover {
+  color: var(--accent-color);
+  background: color-mix(in srgb, var(--accent-color), transparent 90%);
+}
+
+/* ─── Панель 1 (внутри offcanvas) ─── */
 .offcanvas-body.p-0 {
   overflow: hidden;
 }
@@ -2100,23 +2164,42 @@ section,
   height: 100%;
   overflow-y: auto;
   overflow-x: hidden;
+  scrollbar-width: thin;
+  scrollbar-color: color-mix(in srgb, var(--accent-color), transparent 60%) transparent;
 }
 
-/* Быстрые ссылки */
+.oc-panel__scroll::-webkit-scrollbar {
+  width: 4px;
+}
+
+.oc-panel__scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.oc-panel__scroll::-webkit-scrollbar-thumb {
+  background: color-mix(in srgb, var(--accent-color), transparent 60%);
+  border-radius: 2px;
+}
+
+/* ─── Быстрые ссылки ─── */
 .offcanvas-quicklinks {
   margin: 0;
   padding: 0;
 }
 
 .offcanvas-quicklinks__link {
-  display: block;
-  padding: 0.55rem 0;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.5rem 0.25rem;
   color: var(--nav-color);
-  font-size: 0.92rem;
+  font-size: 0.88rem;
   font-weight: 600;
   text-decoration: none;
-  border-bottom: 1px solid color-mix(in srgb, var(--default-color), transparent 90%);
-  transition: color 0.2s;
+  border-bottom: 1px solid color-mix(in srgb, var(--default-color), transparent 92%);
+  border-left: 2px solid transparent;
+  padding-left: 0;
+  transition: color 0.2s, border-color 0.2s;
 }
 
 .offcanvas-quicklinks__link:last-child {
@@ -2125,52 +2208,83 @@ section,
 
 .offcanvas-quicklinks__link:hover {
   color: var(--accent-color);
+  border-left-color: var(--accent-color);
+  padding-left: 4px;
   text-decoration: none;
 }
 
-/* Иконки действий (мобильные) */
-.offcanvas-actions {
-  border-top: 1px solid color-mix(in srgb, var(--default-color), transparent 88%);
-  border-bottom: 1px solid color-mix(in srgb, var(--default-color), transparent 88%);
+.offcanvas-quicklinks__icon {
+  font-size: 0.65rem;
+  flex-shrink: 0;
+  opacity: 0.5;
+  transition: opacity 0.2s, transform 0.2s;
 }
 
-/* Метка раздела */
+.offcanvas-quicklinks__link:hover .offcanvas-quicklinks__icon {
+  opacity: 1;
+  transform: translateX(2px);
+}
+
+/* ─── Иконки действий (мобильные) ─── */
+.offcanvas-actions {
+  background: color-mix(in srgb, var(--default-color), transparent 96%);
+  border-radius: 8px;
+  margin: 0.5rem 0;
+}
+
+/* ─── Метка раздела ─── */
 .offcanvas-section-label {
-  font-size: 0.68rem;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding-top: 0.9rem;
+  padding-bottom: 0.5rem;
+}
+
+.offcanvas-section-label span {
+  font-size: 0.65rem;
   font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.09em;
-  color: color-mix(in srgb, var(--default-color), transparent 52%);
-  padding-top: 0.75rem;
-  padding-bottom: 0.25rem;
+  letter-spacing: 0.1em;
+  color: color-mix(in srgb, var(--default-color), transparent 50%);
+  white-space: nowrap;
+}
+
+.offcanvas-section-label::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: color-mix(in srgb, var(--default-color), transparent 88%);
 }
 
 /* ─── Список 1-го уровня ─── */
 .oc-nav {
-  border-top: 1px solid color-mix(in srgb, var(--default-color), transparent 90%);
+  padding-bottom: 0.5rem;
 }
 
 .oc-split-row {
   display: flex;
   align-items: stretch;
-  border-bottom: 1px solid color-mix(in srgb, var(--default-color), transparent 90%);
-  transition: background 0.15s;
+  border-bottom: 1px solid color-mix(in srgb, var(--default-color), transparent 92%);
+  border-left: 3px solid transparent;
+  transition: background 0.15s, border-left-color 0.15s;
 }
 
 .oc-split-row:hover {
-  background: color-mix(in srgb, var(--accent-color), transparent 96%);
+  background: color-mix(in srgb, var(--accent-color), transparent 95%);
+  border-left-color: var(--accent-color);
 }
 
 .oc-split-row__link {
   flex: 1;
   display: flex;
   align-items: center;
-  padding: 0.7rem 0.5rem 0.7rem 1rem;
+  padding: 0.8rem 0.5rem 0.8rem 0.85rem;
   color: var(--nav-color);
-  font-size: 0.88rem;
+  font-size: 0.82rem;
   font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.02em;
+  letter-spacing: 0.03em;
   text-decoration: none;
   line-height: 1.35;
   transition: color 0.2s;
@@ -2185,24 +2299,26 @@ section,
 .oc-split-row__link--leaf {
   display: flex;
   align-items: center;
-  padding: 0.7rem 1rem;
-  color: color-mix(in srgb, var(--nav-color), transparent 30%);
-  font-size: 0.88rem;
+  padding: 0.8rem 1rem 0.8rem calc(0.85rem + 3px);
+  color: color-mix(in srgb, var(--nav-color), transparent 25%);
+  font-size: 0.82rem;
   font-weight: 600;
   text-transform: uppercase;
-  letter-spacing: 0.02em;
+  letter-spacing: 0.03em;
   text-decoration: none;
-  border-bottom: 1px solid color-mix(in srgb, var(--default-color), transparent 90%);
-  transition: color 0.2s, background 0.15s;
+  border-bottom: 1px solid color-mix(in srgb, var(--default-color), transparent 92%);
+  border-left: 3px solid transparent;
+  transition: color 0.2s, background 0.15s, border-left-color 0.15s;
 }
 
 .oc-split-row__link--leaf:hover {
   color: var(--accent-color);
-  background: color-mix(in srgb, var(--accent-color), transparent 96%);
+  background: color-mix(in srgb, var(--accent-color), transparent 95%);
+  border-left-color: color-mix(in srgb, var(--accent-color), transparent 60%);
   text-decoration: none;
 }
 
-/* Кнопка-стрелка */
+/* Кнопка-стрелка › */
 .oc-split-row__toggle {
   flex-shrink: 0;
   display: flex;
@@ -2211,9 +2327,9 @@ section,
   width: 44px;
   background: none;
   border: none;
-  border-left: 1px solid color-mix(in srgb, var(--default-color), transparent 90%);
-  color: color-mix(in srgb, var(--nav-color), transparent 40%);
-  font-size: 1rem;
+  border-left: 1px solid color-mix(in srgb, var(--default-color), transparent 92%);
+  color: color-mix(in srgb, var(--nav-color), transparent 55%);
+  font-size: 0.85rem;
   cursor: pointer;
   padding: 0;
   transition: color 0.2s, background 0.2s;
@@ -2221,11 +2337,41 @@ section,
 
 .oc-split-row__toggle:hover {
   color: var(--accent-color);
-  background: color-mix(in srgb, var(--accent-color), transparent 90%);
+  background: color-mix(in srgb, var(--accent-color), transparent 88%);
 }
 
 .oc-split-row:hover .oc-split-row__toggle {
   color: var(--accent-color);
+}
+
+/* ─── Подвал offcanvas ─── */
+.oc-footer {
+  border-top: 1px solid color-mix(in srgb, var(--default-color), transparent 90%);
+  margin-top: 0.5rem;
+}
+
+.oc-footer__link {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  color: color-mix(in srgb, var(--default-color), transparent 40%);
+  font-size: 0.75rem;
+  line-height: 1.4;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.oc-footer__link:hover {
+  color: var(--accent-color);
+  text-decoration: none;
+}
+
+.oc-footer__link i {
+  flex-shrink: 0;
+  margin-top: 0.15em;
+  font-size: 0.8rem;
+  color: var(--accent-color);
+  opacity: 0.7;
 }
 
 /* ─── Боковые панели 2/3 ─── */
@@ -2276,21 +2422,30 @@ section,
   }
 }
 
-/* Шапка боковой панели */
+/* Шапка боковой панели — с цветным индикатором уровня */
 .oc-side-panel__header {
   display: flex;
   align-items: center;
   gap: 0.5rem;
   padding: 0.75rem 0.75rem 0.75rem 1rem;
-  min-height: 56px;
-  border-bottom: 1px solid color-mix(in srgb, var(--default-color), transparent 88%);
+  min-height: 64px;
+  border-bottom: 3px solid color-mix(in srgb, var(--accent-color), transparent 50%);
   flex-shrink: 0;
-  background: var(--surface-color, #ffffff);
+  background: color-mix(in srgb, var(--accent-color), var(--surface-color, #fff) 96%);
+}
+
+#ocPanel2 .oc-side-panel__header {
+  border-bottom-color: var(--accent-color);
+}
+
+#ocPanel3 .oc-side-panel__header {
+  border-bottom-color: color-mix(in srgb, var(--accent-color), #000 20%);
+  background: color-mix(in srgb, var(--accent-color), var(--surface-color, #fff) 92%);
 }
 
 .oc-side-panel__title {
   flex: 1;
-  font-size: 0.82rem;
+  font-size: 0.8rem;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.04em;
@@ -2310,13 +2465,13 @@ section,
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  width: 36px;
-  height: 36px;
+  width: 34px;
+  height: 34px;
   background: none;
   border: none;
-  border-radius: 6px;
+  border-radius: 8px;
   color: color-mix(in srgb, var(--nav-color), transparent 30%);
-  font-size: 1rem;
+  font-size: 0.9rem;
   cursor: pointer;
   padding: 0;
   transition: color 0.2s, background 0.2s;
@@ -2324,7 +2479,7 @@ section,
 
 .oc-close-btn:hover {
   color: var(--accent-color);
-  background: color-mix(in srgb, var(--accent-color), transparent 90%);
+  background: color-mix(in srgb, var(--accent-color), transparent 88%);
 }
 
 /* Область прокрутки внутри боковых панелей */
@@ -2333,19 +2488,66 @@ section,
   min-height: 0;
   overflow-y: auto;
   overflow-x: hidden;
+  scrollbar-width: thin;
+  scrollbar-color: color-mix(in srgb, var(--accent-color), transparent 65%) transparent;
+}
+
+.oc-side-panel .oc-panel__scroll::-webkit-scrollbar {
+  width: 3px;
+}
+
+.oc-side-panel .oc-panel__scroll::-webkit-scrollbar-thumb {
+  background: color-mix(in srgb, var(--accent-color), transparent 65%);
+  border-radius: 2px;
 }
 
 .oc-sub-list {
   margin: 0;
-  padding: 0;
+  padding: 0.25rem 0;
 }
 
+/* Пункты 2-го и 3-го уровней */
 .oc-sub-item {
-  border-bottom: 1px solid color-mix(in srgb, var(--default-color), transparent 90%);
+  border-bottom: 1px solid color-mix(in srgb, var(--default-color), transparent 93%);
 }
 
 .oc-sub-item:last-child {
   border-bottom: none;
+}
+
+.oc-sub-item .oc-split-row__link {
+  font-size: 0.86rem;
+  font-weight: 600;
+  text-transform: none;
+  letter-spacing: 0;
+  padding: 0.75rem 0.5rem 0.75rem 1rem;
+  color: var(--nav-color);
+}
+
+.oc-sub-item .oc-split-row__link--leaf {
+  font-size: 0.86rem;
+  font-weight: 500;
+  text-transform: none;
+  letter-spacing: 0;
+  padding: 0.75rem 1rem;
+  color: var(--nav-color);
+  border-bottom: none;
+  border-left: 2px solid transparent;
+}
+
+.oc-sub-item .oc-split-row__link--leaf:hover {
+  border-left-color: color-mix(in srgb, var(--accent-color), transparent 55%);
+  background: color-mix(in srgb, var(--accent-color), transparent 95%);
+  color: var(--accent-color);
+}
+
+.oc-sub-item .oc-split-row {
+  border-left: 2px solid transparent;
+  border-bottom: none;
+}
+
+.oc-sub-item .oc-split-row:hover {
+  border-left-color: color-mix(in srgb, var(--accent-color), transparent 55%);
 }
 
 /* ─── Порядок элементов шапки на планшетах ─── */

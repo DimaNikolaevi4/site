@@ -88,8 +88,16 @@
 <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRubrics" aria-labelledby="offcanvasRubricsLabel">
 
   <div class="offcanvas-header oc-header">
-    <h5 class="offcanvas-title oc-header__title" id="offcanvasRubricsLabel">Разделы сайта</h5>
-    <button type="button" class="btn-close ms-auto" data-bs-dismiss="offcanvas" aria-label="Закрыть"></button>
+    <a href="/" class="oc-header__brand" data-bs-dismiss="offcanvas" title="На главную">
+      <img src="/assets/images/logo.png" alt="" class="oc-header__logo" aria-hidden="true">
+      <div class="oc-header__text">
+        <span class="oc-header__title" id="offcanvasRubricsLabel">Разделы сайта</span>
+        <span class="oc-header__sub">ГБПОУ РО «СИТ»</span>
+      </div>
+    </a>
+    <button type="button" class="oc-dismiss-btn" data-bs-dismiss="offcanvas" aria-label="Закрыть">
+      <i class="bi bi-x-lg" aria-hidden="true"></i>
+    </button>
   </div>
 
   <div class="offcanvas-body p-0">
@@ -100,27 +108,39 @@
         <ul class="list-unstyled offcanvas-quicklinks px-3 pt-3 mb-0">
           <li>
             <a href="/svedenija/" class="offcanvas-quicklinks__link d-lg-none"
-               data-bs-dismiss="offcanvas">Сведения об образовательной организации</a>
+               data-bs-dismiss="offcanvas">
+              <i class="bi bi-chevron-right offcanvas-quicklinks__icon" aria-hidden="true"></i>
+              Сведения об образовательной организации
+            </a>
           </li>
           <li>
             <a href="/abiturientam/" class="offcanvas-quicklinks__link d-xl-none"
-               data-bs-dismiss="offcanvas">Абитуриентам</a>
+               data-bs-dismiss="offcanvas">
+              <i class="bi bi-chevron-right offcanvas-quicklinks__icon" aria-hidden="true"></i>
+              Абитуриентам
+            </a>
           </li>
           <li>
             <a href="https://эос.сит-сальск.рф" target="_blank" rel="noopener"
-               class="offcanvas-quicklinks__link d-xl-none">ЭОС</a>
+               class="offcanvas-quicklinks__link d-xl-none">
+              <i class="bi bi-chevron-right offcanvas-quicklinks__icon" aria-hidden="true"></i>
+              ЭОС
+            </a>
           </li>
           <li>
             <a href="#footer" class="offcanvas-quicklinks__link d-xxl-none"
-               data-bs-dismiss="offcanvas">Контакты</a>
+               data-bs-dismiss="offcanvas">
+              <i class="bi bi-chevron-right offcanvas-quicklinks__icon" aria-hidden="true"></i>
+              Контакты
+            </a>
           </li>
         </ul>
 
         {# Иконки действий — только на мобильных (< 992px) #}
-        <div class="offcanvas-actions d-flex d-lg-none align-items-center gap-2 flex-wrap px-3 py-2">
+        <div class="offcanvas-actions d-flex d-lg-none align-items-center gap-1 px-3 py-2">
           <a href="{{ social.vk }}" target="_blank" rel="noopener"
              class="header-icon-btn" title="ВКонтакте" aria-label="ВКонтакте">
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
               <path d="M21.579 6.855c.17-.565 0-.98-.802-.98h-2.652c-.67 0-.979.357-1.146.752 0 0-1.34 3.283-3.237 5.414-.614.618-.893.814-1.228.814-.17 0-.42-.196-.42-.76V6.854c0-.671-.19-.98-.76-.98H9.389c-.42 0-.67.315-.67.615 0 .644.96.793 1.06 2.605v3.935c0 .864-.155 1.021-.492 1.021-.893 0-3.066-3.303-4.355-7.083C4.68 6.37 4.428 5.875 3.754 5.875H1.102c-.76 0-.913.357-.913.752 0 .704.893 4.197 4.155 8.817 2.175 3.144 5.239 4.848 8.026 4.848 1.674 0 1.88-.38 1.88-1.035v-2.385c0-.76.16-.912.694-.912.393 0 1.067.198 2.641 1.727 1.798 1.81 2.094 2.62 3.102 2.62h2.652c.76 0 1.14-.38.92-1.134-.237-.744-1.092-1.82-2.226-3.101-.614-.73-1.535-1.517-1.814-1.91-.393-.508-.28-.733 0-1.185 0 0 3.21-4.55 3.546-6.095z"/>
             </svg>
           </a>
@@ -142,7 +162,9 @@
           </button>
         </div>
 
-        <p class="offcanvas-section-label px-3 mt-1 mb-0">Все разделы</p>
+        <div class="offcanvas-section-label px-3">
+          <span>Все разделы</span>
+        </div>
 
         {# Список разделов 1-го уровня #}
         <nav class="oc-nav" aria-label="Разделы сайта">
@@ -166,6 +188,18 @@
             {% endif %}
           {% endfor %}
         </nav>
+
+        {# Подвал offcanvas #}
+        <div class="oc-footer px-3 py-3">
+          <a href="#footer" class="oc-footer__link" data-bs-dismiss="offcanvas">
+            <i class="bi bi-geo-alt" aria-hidden="true"></i>
+            <span>{{ contacts.address }}</span>
+          </a>
+          <a href="tel:{{ contacts.phone }}" class="oc-footer__link mt-1">
+            <i class="bi bi-telephone" aria-hidden="true"></i>
+            <span>{{ contacts.phone }}</span>
+          </a>
+        </div>
 
       </div>
     </div>
