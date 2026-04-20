@@ -1,26 +1,38 @@
-window.toggleA11y = function() {
-  if (document.body) {
-    document.body.classList.toggle('a11y-high-contrast');
-  }
+// ─── Применяем сохранённые настройки на body сразу после загрузки DOM ───
+// (classList уже добавлен на <html> inline-скриптом в <head>)
+(function () {
+  var html = document.documentElement;
+  if (html.classList.contains('dark-theme'))        document.body.classList.add('dark-theme');
+  if (html.classList.contains('a11y-high-contrast')) document.body.classList.add('a11y-high-contrast');
+})();
+
+// ─── Переключение версии для слабовидящих ───
+window.toggleA11y = function () {
+  var enabled = document.body.classList.toggle('a11y-high-contrast');
+  document.documentElement.classList.toggle('a11y-high-contrast', enabled);
+  try { localStorage.setItem('sit-a11y', enabled ? '1' : '0'); } catch (e) {}
 };
 
-window.toggleDarkTheme = function() {
-  if (document.body) {
-    document.body.classList.toggle('dark-theme');
-  }
+// ─── Переключение тёмной темы ───
+window.toggleDarkTheme = function () {
+  var enabled = document.body.classList.toggle('dark-theme');
+  document.documentElement.classList.toggle('dark-theme', enabled);
+  try { localStorage.setItem('sit-dark-theme', enabled ? '1' : '0'); } catch (e) {}
 };
 
-document.addEventListener('DOMContentLoaded', function() {
+// ─── Сжатие шапки + инлайн-поиск ───
+document.addEventListener('DOMContentLoaded', function () {
   var header = document.getElementById('header');
   if (!header) return;
 
-  var updateHeaderState = function() {
+  // Сжатие шапки при скролле
+  var updateHeaderState = function () {
     header.classList.toggle('header--compact', window.scrollY > 24);
   };
-
   updateHeaderState();
   window.addEventListener('scroll', updateHeaderState, { passive: true });
 
+  // Инлайн-поиск
   var searchToggle = document.getElementById('headerSearchToggle');
   var searchWrap   = document.getElementById('headerSearchWrap');
   var searchInput  = document.getElementById('headerSearchInput');
@@ -44,16 +56,10 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     searchToggle.addEventListener('click', function () {
-      if (searchWrap.classList.contains('is-open')) {
-        closeSearch();
-      } else {
-        openSearch();
-      }
+      searchWrap.classList.contains('is-open') ? closeSearch() : openSearch();
     });
 
-    if (searchClose) {
-      searchClose.addEventListener('click', closeSearch);
-    }
+    if (searchClose) searchClose.addEventListener('click', closeSearch);
 
     document.addEventListener('keydown', function (e) {
       if (e.key === 'Escape' && searchWrap.classList.contains('is-open')) {

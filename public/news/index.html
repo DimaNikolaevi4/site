@@ -15,6 +15,14 @@
   <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicons/favicon.png">
   <link rel="icon" type="image/png" sizes="192x192" href="/assets/favicons/favicon.png">
   <link rel="apple-touch-icon" href="/assets/favicons/favicon.png">
+  <script>
+    (function(){
+      try {
+        if (localStorage.getItem('sit-dark-theme') === '1') document.documentElement.classList.add('dark-theme');
+        if (localStorage.getItem('sit-a11y') === '1') document.documentElement.classList.add('a11y-high-contrast');
+      } catch(e){}
+    })();
+  </script>
 </head>
 <body class="page page--layouts/base.njk">
   <!-- Шапка -->
