@@ -133,27 +133,6 @@
                 aria-controls="a11yPanel">
           <i class="bi bi-eye" aria-hidden="true"></i>
         </button>
-        <div class="a11y-panel" id="a11yPanel" role="dialog" aria-label="Настройки доступности" hidden>
-          <p class="a11y-panel__title">Версия для слабовидящих</p>
-          <div class="a11y-options">
-            <label class="a11y-option">
-              <input type="checkbox" id="a11yLargeFont">
-              <span>Крупный шрифт</span>
-            </label>
-            <label class="a11y-option">
-              <input type="checkbox" id="a11yHighContrast">
-              <span>Высокий контраст</span>
-            </label>
-            <label class="a11y-option">
-              <input type="checkbox" id="a11yNoAnimations">
-              <span>Без анимаций</span>
-            </label>
-          </div>
-          <div class="a11y-panel__footer">
-            <button type="button" class="a11y-reset" id="a11yReset">↩ Сбросить</button>
-            <button type="button" class="a11y-close" id="a11yClose">✕ Закрыть</button>
-          </div>
-        </div>
       </div>
       <button class="header-icon-btn" onclick="toggleDarkTheme(); return false;"
               title="Тёмная тема" aria-label="Тёмная / светлая тема">
@@ -596,6 +575,29 @@
     <nav aria-label="Под-подразделы">
       <ul class="list-unstyled oc-sub-list" id="ocSubSubList"></ul>
     </nav>
+  </div>
+</div>
+
+
+<div class="a11y-panel a11y-panel--fixed" id="a11yPanel" role="dialog" aria-label="Настройки доступности" hidden>
+  <p class="a11y-panel__title">Версия для слабовидящих</p>
+  <div class="a11y-options">
+    <label class="a11y-option">
+      <input type="checkbox" id="a11yLargeFont">
+      <span>Крупный шрифт</span>
+    </label>
+    <label class="a11y-option">
+      <input type="checkbox" id="a11yHighContrast">
+      <span>Высокий контраст</span>
+    </label>
+    <label class="a11y-option">
+      <input type="checkbox" id="a11yNoAnimations">
+      <span>Без анимаций</span>
+    </label>
+  </div>
+  <div class="a11y-panel__footer">
+    <button type="button" class="a11y-reset" id="a11yReset">↩ Сбросить</button>
+    <button type="button" class="a11y-close" id="a11yClose">✕ Закрыть</button>
   </div>
 </div>
 

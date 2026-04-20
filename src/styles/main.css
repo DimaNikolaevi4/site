@@ -3024,11 +3024,8 @@ section,
   position: relative;
 }
 
-/* Dropdown-панель */
+/* Базовые стили панели */
 .a11y-panel {
-  position: absolute;
-  top: calc(100% + 8px);
-  right: 0;
   z-index: 1060;
   min-width: 220px;
   background: var(--surface-color, #fff);
@@ -3037,6 +3034,21 @@ section,
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.14);
   padding: 1rem;
   animation: a11yFadeIn 0.18s ease;
+}
+
+/* Встроенная панель (внутри .a11y-wrap) */
+.a11y-wrap .a11y-panel {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+}
+
+/* Фиксированная панель (на уровне body, выше offcanvas) */
+.a11y-panel--fixed {
+  position: fixed;
+  top: 70px;
+  right: 16px;
+  z-index: 1100;
 }
 
 @keyframes a11yFadeIn {
