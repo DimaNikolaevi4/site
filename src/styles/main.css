@@ -2174,8 +2174,10 @@ section,
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  min-height: var(--oc-header-h, 78px);
-  padding: 0.9rem 0.75rem 0.9rem 1rem;
+  height: var(--oc-header-h, 78px);
+  flex-shrink: 0;
+  overflow: hidden;
+  padding: 0 0.75rem 0 1rem;
   border-bottom: 3px solid var(--accent-color);
   background: color-mix(in srgb, var(--accent-color), var(--surface-color, #fff) 92%);
 }
@@ -2612,10 +2614,11 @@ section,
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  padding: 0.9rem 0.75rem 0.9rem 1rem;
-  min-height: var(--oc-header-h, 78px);
-  border-bottom: 3px solid var(--accent-color);
+  padding: 0 0.75rem 0 1rem;
+  height: var(--oc-header-h, 78px);
   flex-shrink: 0;
+  overflow: hidden;
+  border-bottom: 3px solid var(--accent-color);
   background: color-mix(in srgb, var(--accent-color), var(--surface-color, #fff) 92%);
 }
 
@@ -2637,10 +2640,7 @@ section,
   color: var(--heading-color);
   overflow: hidden;
   text-overflow: ellipsis;
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-  white-space: normal;
+  white-space: nowrap;
   line-height: 1.3;
 }
 
@@ -2968,7 +2968,8 @@ section,
   display: flex;
   align-items: center;
   gap: 0.45rem;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
+  overflow: hidden;
 }
 
 .oc-panel-breadcrumb {
