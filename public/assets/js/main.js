@@ -9,14 +9,28 @@
 })();
 
 // ─── Переключение тёмной темы ───
+function updateDarkThemeBtn(enabled) {
+  var btn = document.getElementById('darkThemeToggle');
+  if (!btn) return;
+  var icon = btn.querySelector('i');
+  if (icon) {
+    icon.className = enabled ? 'bi bi-sun-fill' : 'bi bi-moon-stars';
+  }
+  btn.setAttribute('aria-label', enabled ? 'Светлая тема' : 'Тёмная / светлая тема');
+  btn.setAttribute('title', enabled ? 'Светлая тема' : 'Тёмная тема');
+}
+
 window.toggleDarkTheme = function () {
   var enabled = document.body.classList.toggle('dark-theme');
   document.documentElement.classList.toggle('dark-theme', enabled);
   try { localStorage.setItem('sit-dark-theme', enabled ? '1' : '0'); } catch (e) {}
+  updateDarkThemeBtn(enabled);
 };
 
 // ─── Панель «Версия для слабовидящих» ───
 document.addEventListener('DOMContentLoaded', function () {
+  // Восстанавливаем иконку кнопки тёмной темы при загрузке
+  updateDarkThemeBtn(document.body.classList.contains('dark-theme'));
 
   var PREFS_KEY = 'sit-a11y-prefs';
 
