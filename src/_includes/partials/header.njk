@@ -34,18 +34,49 @@
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
               {% for item in menu.main %}
                 {% if item.key in ['home', 'svedenija', 'abiturientam', 'studentam', 'umr', 'vospitanie', 'bezopasnost'] %}
+                  {% set isActiveSection = false %}
+                  {% if item.key == 'home' %}
+                    {% set isActiveSection = page.url == item.url %}
+                  {% else %}
+                    {% set isActiveSection = page.url | startsWith(item.url) %}
+                  {% endif %}
+                  {% set sectionIcon = '📁' %}
+                  {% if item.key == 'home' %}
+                    {% set sectionIcon = '🏠' %}
+                  {% elif item.key == 'svedenija' %}
+                    {% set sectionIcon = '📋' %}
+                  {% elif item.key == 'abiturientam' %}
+                    {% set sectionIcon = '🎓' %}
+                  {% elif item.key == 'studentam' %}
+                    {% set sectionIcon = '👨‍👩‍👧‍👦' %}
+                  {% elif item.key == 'umr' %}
+                    {% set sectionIcon = '📚' %}
+                  {% elif item.key == 'vospitanie' %}
+                    {% set sectionIcon = '🏋️' %}
+                  {% elif item.key == 'bezopasnost' %}
+                    {% set sectionIcon = '🛡️' %}
+                  {% endif %}
                   {% if item.children %}
-                  <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="{{ item.url }}" role="button" data-bs-toggle="dropdown" 
-                       aria-expanded="false" title="{{ item.title }}">{{ item.title }}</a>
+                  <li class="nav-item dropdown{% if isActiveSection %} active-section{% endif %}">
+                    <a class="nav-link dropdown-toggle{% if isActiveSection %} active{% endif %}{% if item.key == 'abiturientam' %} nav-link--quick-pill{% endif %}" href="{{ item.url }}" role="button" data-bs-toggle="dropdown" 
+                       aria-expanded="false" title="{{ item.title }}" {% if isActiveSection %}aria-current="page"{% endif %}>
+                      <span class="nav-section-icon" aria-hidden="true">{{ sectionIcon }}</span>
+                      <span>{{ item.title }}</span>
+                    </a>
                     <ul class="dropdown-menu">
                       {% for child in item.children %}
-                      <li><a class="dropdown-item" href="{{ child.url }}" title="{{ child.title }}">{{ child.title }}</a></li>
+                      {% set isActiveChild = page.url | startsWith(child.url) %}
+                      <li><a class="dropdown-item{% if isActiveChild %} active{% endif %}" href="{{ child.url }}" title="{{ child.title }}" {% if isActiveChild %}aria-current="page"{% endif %}>{{ child.title }}</a></li>
                       {% endfor %}
                     </ul>
                   </li>
                   {% else %}
-                  <li class="nav-item"><a class="nav-link{% if page.url == item.url %} active{% endif %}" href="{{ item.url }}" title="{{ item.title }}">{{ item.title }}</a></li>
+                  <li class="nav-item{% if isActiveSection %} active-section{% endif %}">
+                    <a class="nav-link{% if isActiveSection %} active{% endif %}{% if item.key == 'abiturientam' %} nav-link--quick-pill{% endif %}" href="{{ item.url }}" title="{{ item.title }}" {% if isActiveSection %}aria-current="page"{% endif %}>
+                      <span class="nav-section-icon" aria-hidden="true">{{ sectionIcon }}</span>
+                      <span>{{ item.title }}</span>
+                    </a>
+                  </li>
                   {% endif %}
                 {% endif %}
               {% endfor %}
@@ -107,8 +138,8 @@
         <div class="d-flex flex-wrap gap-2">
           <span><i class="bi bi-clock" title="Режим работы"></i> Пн–Пт 8–17, Сб-Вс вых.</span>
           <span><i class="bi bi-telephone" title="Телефоны"></i> К1: 5-05-71, К2: 5-60-41</span>
-          <a href="{{ contacts.eos_url }}" class="eos-link" target="_blank" rel="noopener" title="Электронная образовательная система">
-            <i class="bi bi-laptop"></i> ЭОС
+          <a href="{{ contacts.eos_url }}" class="eos-link header-mobile-pill header-mobile-pill--eos" target="_blank" rel="noopener" title="Электронная образовательная система">
+            <span aria-hidden="true">💻</span> ЭОС
           </a>
         </div>
         <div class="header-actions">

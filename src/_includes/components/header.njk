@@ -14,23 +14,35 @@
           <a href="/svedenija/"
              class="main-nav__link{% if page.url | startsWith('/svedenija/') %} active{% endif %}"
              {% if page.url | startsWith('/svedenija/') %}aria-current="page"{% endif %}
-             title="Официальные сведения об образовательной организации">Сведения об образовательной организации</a>
+             title="Официальные сведения об образовательной организации">
+            <span class="main-nav__icon" aria-hidden="true">📋</span>
+            <span>Сведения об образовательной организации</span>
+          </a>
         </li>
         <li class="d-none d-xl-flex">
           <a href="/abiturientam/"
              class="main-nav__link{% if page.url | startsWith('/abiturientam/') %} active{% endif %}"
              {% if page.url | startsWith('/abiturientam/') %}aria-current="page"{% endif %}
-             title="Информация для абитуриентов">Абитуриентам</a>
+             title="Информация для абитуриентов">
+            <span class="main-nav__icon" aria-hidden="true">🎓</span>
+            <span>Абитуриентам</span>
+          </a>
         </li>
         <li class="d-none d-xl-flex">
           <a href="https://эос.сит-сальск.рф" target="_blank" rel="noopener"
              class="main-nav__link"
-             title="Электронная образовательная система ГБПОУ РО «СИТ»">ЭОС</a>
+             title="Электронная образовательная система ГБПОУ РО «СИТ»">
+            <span class="main-nav__icon" aria-hidden="true">💻</span>
+            <span>ЭОС</span>
+          </a>
         </li>
         <li class="d-none d-xxl-flex">
           <a href="#footer"
              class="main-nav__link"
-             title="Контактная информация">Контакты</a>
+             title="Контактная информация">
+            <span class="main-nav__icon" aria-hidden="true">☎️</span>
+            <span>Контакты</span>
+          </a>
         </li>
       </ul>
     </nav>
@@ -114,23 +126,25 @@
         {# Быстрые ссылки — скрываются когда видны в шапке #}
         <ul class="list-unstyled offcanvas-quicklinks px-3 pt-3 mb-0">
           <li>
-            <a href="/svedenija/" class="offcanvas-quicklinks__link d-lg-none"
-               data-bs-dismiss="offcanvas">
-              <i class="bi bi-chevron-right offcanvas-quicklinks__icon" aria-hidden="true"></i>
+            <a href="/svedenija/" class="offcanvas-quicklinks__link d-lg-none{% if page.url | startsWith('/svedenija/') %} active{% endif %}"
+               data-bs-dismiss="offcanvas"
+               {% if page.url | startsWith('/svedenija/') %}aria-current="page"{% endif %}>
+              <span class="offcanvas-quicklinks__icon" aria-hidden="true">📋</span>
               Сведения об образовательной организации
             </a>
           </li>
           <li>
-            <a href="/abiturientam/" class="offcanvas-quicklinks__link d-xl-none"
-               data-bs-dismiss="offcanvas">
-              <i class="bi bi-chevron-right offcanvas-quicklinks__icon" aria-hidden="true"></i>
+            <a href="/abiturientam/" class="offcanvas-quicklinks__link offcanvas-quicklinks__link--pill d-xl-none{% if page.url | startsWith('/abiturientam/') %} active{% endif %}"
+               data-bs-dismiss="offcanvas"
+               {% if page.url | startsWith('/abiturientam/') %}aria-current="page"{% endif %}>
+              <span class="offcanvas-quicklinks__icon" aria-hidden="true">🎓</span>
               Абитуриентам
             </a>
           </li>
           <li>
             <a href="https://эос.сит-сальск.рф" target="_blank" rel="noopener"
-               class="offcanvas-quicklinks__link d-xl-none">
-              <i class="bi bi-chevron-right offcanvas-quicklinks__icon" aria-hidden="true"></i>
+               class="offcanvas-quicklinks__link offcanvas-quicklinks__link--pill offcanvas-quicklinks__link--pill-alt d-xl-none">
+              <span class="offcanvas-quicklinks__icon" aria-hidden="true">💻</span>
               ЭОС
             </a>
           </li>
@@ -176,11 +190,37 @@
         {# Список разделов 1-го уровня #}
         <nav class="oc-nav" aria-label="Разделы сайта">
           {% for item in rubrics.main_rubrics %}
+            {% set sectionUrl = '/' + item.slug + '/' %}
+            {% set isActiveSection = page.url | startsWith(sectionUrl) %}
+            {% set sectionIcon = '📁' %}
+            {% if item.slug == 'svedenija' %}
+              {% set sectionIcon = '📋' %}
+            {% elif item.slug == 'abiturientam' %}
+              {% set sectionIcon = '🎓' %}
+            {% elif item.slug == 'vospitanie' %}
+              {% set sectionIcon = '🏋️' %}
+            {% elif item.slug == 'uchebno-metodicheskaja-rabota' %}
+              {% set sectionIcon = '📚' %}
+            {% elif item.slug == 'bezopasnost' %}
+              {% set sectionIcon = '🛡️' %}
+            {% elif item.slug == 'psihologicheskoe' %}
+              {% set sectionIcon = '🤝' %}
+            {% elif item.slug == 'studentam-roditeljam' %}
+              {% set sectionIcon = '👨‍👩‍👧‍👦' %}
+            {% elif item.slug == 'vypusknikam' %}
+              {% set sectionIcon = '🎯' %}
+            {% elif item.slug == 'obshestvennoe-mnenie' %}
+              {% set sectionIcon = '💬' %}
+            {% endif %}
             {% if item.children %}
-              <div class="oc-split-row" data-rubric-index="{{ loop.index0 }}">
+              <div class="oc-split-row{% if isActiveSection %} is-active{% endif %}" data-rubric-index="{{ loop.index0 }}">
                 <a href="/{{ item.slug }}/"
-                   class="oc-split-row__link oc-dismiss-all"
-                   title="{{ item.title }}">{{ item.title }}</a>
+                   class="oc-split-row__link oc-dismiss-all{% if isActiveSection %} active{% endif %}"
+                   title="{{ item.title }}"
+                   {% if isActiveSection %}aria-current="page"{% endif %}>
+                  <span class="oc-section-icon" aria-hidden="true">{{ sectionIcon }}</span>
+                  <span>{{ item.title }}</span>
+                </a>
                 <button class="oc-split-row__toggle"
                         type="button"
                         aria-label="Открыть подразделы: {{ item.title }}"
@@ -190,8 +230,12 @@
               </div>
             {% else %}
               <a href="/{{ item.slug }}/"
-                 class="oc-split-row__link oc-split-row__link--leaf oc-dismiss-all"
-                 title="{{ item.title }}">{{ item.title }}</a>
+                 class="oc-split-row__link oc-split-row__link--leaf oc-dismiss-all{% if isActiveSection %} active{% endif %}"
+                 title="{{ item.title }}"
+                 {% if isActiveSection %}aria-current="page"{% endif %}>
+                <span class="oc-section-icon" aria-hidden="true">{{ sectionIcon }}</span>
+                <span>{{ item.title }}</span>
+              </a>
             {% endif %}
           {% endfor %}
         </nav>
