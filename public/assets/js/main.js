@@ -32,6 +32,20 @@ document.addEventListener('DOMContentLoaded', function () {
   updateHeaderState();
   window.addEventListener('scroll', updateHeaderState, { passive: true });
 
+  // Кнопка «Наверх»
+  var scrollTopBtn = document.getElementById('scrollTop');
+  if (scrollTopBtn) {
+    var updateScrollTop = function () {
+      scrollTopBtn.classList.toggle('active', window.scrollY > 300);
+    };
+    updateScrollTop();
+    window.addEventListener('scroll', updateScrollTop, { passive: true });
+    scrollTopBtn.addEventListener('click', function (e) {
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+  }
+
   // Инлайн-поиск
   var searchToggle = document.getElementById('headerSearchToggle');
   var searchWrap   = document.getElementById('headerSearchWrap');
