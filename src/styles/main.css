@@ -2038,6 +2038,13 @@ section,
 .offcanvas-body .col-7 .collapse ul {
   margin-top: 0.5rem;
 }
+/* Мобильный гамбургер — правее логотипа */
+@media (max-width: 1199px) {
+  .offcanvas-toggle-btn {
+    order: 4;
+  }
+}
+
 /* Кнопки-иконки в шапке */
 .header-icon-btn {
   display: inline-flex;
