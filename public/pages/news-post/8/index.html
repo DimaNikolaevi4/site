@@ -21,12 +21,20 @@
   <header id="header" class="header d-flex align-items-center sticky-top">
   <div class="container-fluid container-xl position-relative d-flex align-items-center">
 
-    <a href="/" class="logo d-flex align-items-center me-auto">
-      <img src="/assets/images/logo.png" alt="ГБПОУ РО 'СИТ'" class="header-logo-img">
+    
+    <a href="/" class="logo d-flex align-items-center me-auto" title="Главная страница ГБПОУ РО «СИТ»">
+      <img src="/assets/images/logo.png" alt="ГБПОУ РО «Сальский индустриальный техникум»" class="header-logo-img">
     </a>
 
-    <nav id="navmenu" class="navmenu" role="navigation" aria-label="Основная навигация">
+    
+    <nav id="navmenu" class="navmenu d-none d-xl-block" role="navigation" aria-label="Основная навигация">
       <ul>
+        <li>
+          <a href="/abiturientam/"
+             class=""
+             
+             title="Информация для абитуриентов">Абитуриентам</a>
+        </li>
         <li>
           <a href="/svedenija/"
              class=""
@@ -35,34 +43,60 @@
         </li>
         <li>
           <a href="https://эос.сит-сальск.рф" target="_blank" rel="noopener"
-             title="Электронная образовательная среда">ЭОС</a>
+             title="Электронная образовательная система ГБПОУ РО «СИТ»">ЭОС</a>
         </li>
         <li>
           <a href="#footer" title="Контактная информация">Контакты</a>
         </li>
       </ul>
-      <i class="mobile-nav-toggle d-xl-none bi bi-list" aria-label="Открыть меню" title="Меню"></i>
     </nav>
 
-    <div class="header-icons">
-      <a href="/search/" class="me-2" title="Поиск" aria-label="Поиск">
-        <i class="bi bi-search"></i>
+    
+    <div class="header-icons d-none d-xl-flex align-items-center gap-1">
+      <a href="https://vk.com/sitsalsksit" target="_blank" rel="noopener"
+         class="header-icon-btn" title="Официальная группа ВКонтакте" aria-label="ВКонтакте">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M21.579 6.855c.17-.565 0-.98-.802-.98h-2.652c-.67 0-.979.357-1.146.752 0 0-1.34 3.283-3.237 5.414-.614.618-.893.814-1.228.814-.17 0-.42-.196-.42-.76V6.854c0-.671-.19-.98-.76-.98H9.389c-.42 0-.67.315-.67.615 0 .644.96.793 1.06 2.605v3.935c0 .864-.155 1.021-.492 1.021-.893 0-3.066-3.303-4.355-7.083C4.68 6.37 4.428 5.875 3.754 5.875H1.102c-.76 0-.913.357-.913.752 0 .704.893 4.197 4.155 8.817 2.175 3.144 5.239 4.848 8.026 4.848 1.674 0 1.88-.38 1.88-1.035v-2.385c0-.76.16-.912.694-.912.393 0 1.067.198 2.641 1.727 1.798 1.81 2.094 2.62 3.102 2.62h2.652c.76 0 1.14-.38.92-1.134-.237-.744-1.092-1.82-2.226-3.101-.614-.73-1.535-1.517-1.814-1.91-.393-.508-.28-.733 0-1.185 0 0 3.21-4.55 3.546-6.095z"/>
+        </svg>
       </a>
-      <button class="me-2" onclick="toggleA11y(); return false;" title="Версия для слабовидящих" aria-label="Версия для слабовидящих">
-        <i class="bi bi-eye"></i>
-      </button>
-      <button class="me-2" onclick="toggleDarkTheme(); return false;" title="Тёмная тема" aria-label="Тёмная тема">
-        <i class="bi bi-moon-stars"></i>
-      </button>
-      <a href="#" class="me-2" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRubrics" title="Все разделы" aria-label="Все разделы">
-        <i class="bi bi-grid-3x3-gap-fill"></i>
+      <a href="mailto:sitsalsk@mail.ru"
+         class="header-icon-btn" title="Написать на почту: sitsalsk@mail.ru" aria-label="Электронная почта">
+        <i class="bi bi-envelope-fill" aria-hidden="true"></i>
       </a>
+      <a href="/search/"
+         class="header-icon-btn" title="Поиск по сайту" aria-label="Поиск">
+        <i class="bi bi-search" aria-hidden="true"></i>
+      </a>
+      <button class="header-icon-btn" onclick="toggleA11y(); return false;"
+              title="Версия для слабовидящих" aria-label="Версия для слабовидящих">
+        <i class="bi bi-eye" aria-hidden="true"></i>
+      </button>
+      <button class="header-icon-btn" onclick="toggleDarkTheme(); return false;"
+              title="Тёмная тема" aria-label="Тёмная / светлая тема">
+        <i class="bi bi-moon-stars" aria-hidden="true"></i>
+      </button>
+      <button class="header-icon-btn"
+              data-bs-toggle="offcanvas" data-bs-target="#offcanvasRubrics"
+              aria-controls="offcanvasRubrics"
+              title="Все разделы сайта" aria-label="Все разделы">
+        <i class="bi bi-grid-3x3-gap-fill" aria-hidden="true"></i>
+      </button>
     </div>
+
+    
+    <button class="header-icon-btn d-xl-none ms-2 offcanvas-toggle-btn"
+            type="button"
+            data-bs-toggle="offcanvas" data-bs-target="#offcanvasRubrics"
+            aria-controls="offcanvasRubrics"
+            aria-label="Открыть меню разделов сайта"
+            title="Меню">
+      <i class="bi bi-list fs-4" aria-hidden="true"></i>
+    </button>
 
   </div>
 </header>
 
-<!-- Offcanvas панель с рубриками (простой аккордеон) -->
+
 <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasRubrics" aria-labelledby="offcanvasRubricsLabel">
   <div class="offcanvas-header">
     <h5 class="offcanvas-title" id="offcanvasRubricsLabel">Разделы сайта</h5>
@@ -72,1087 +106,788 @@
     
 
     
-      <ul class="list-unstyled ">
+      
+      <ul class="list-unstyled rubrics-list rubrics-list--level-1">
         
-          <li>
+          <li class="rubrics-list__item">
+            <a href="/abiturientam/"
+               class="rubrics-list__link rubrics-list__link--top"
+               data-bs-dismiss="offcanvas"
+               title="АБИТУРИЕНТАМ">АБИТУРИЕНТАМ</a>
             
-              <button class="btn btn-link w-100 text-start d-flex justify-content-between align-items-center"
-                      type="button"
-                      data-bs-toggle="collapse"
-                      data-bs-target="#collapse-abiturientam"
-                      aria-expanded="false"
-                      title="АБИТУРИЕНТАМ">
-                <span>АБИТУРИЕНТАМ</span>
-                <i class="bi bi-chevron-down transition"></i>
-              </button>
-              <div class="collapse" id="collapse-abiturientam">
-                
-      <ul class="list-unstyled ms-3">
+              
+      
+      <ul class="list-unstyled rubrics-list rubrics-list--level-2">
         
-          <li>
-            
-              <a href="/slovo-direktora/"
-                 class="d-block py-1 text-decoration-none"
-                 data-bs-dismiss="offcanvas"
-                 title="Слово директора">
-                Слово директора
-              </a>
+          <li class="rubrics-list__item">
+            <a href="/slovo-direktora/"
+               class="rubrics-list__link"
+               data-bs-dismiss="offcanvas"
+               title="Слово директора">Слово директора</a>
             
           </li>
         
-          <li>
-            
-              <a href="/specialnosti/"
-                 class="d-block py-1 text-decoration-none"
-                 data-bs-dismiss="offcanvas"
-                 title="Специальности и профессии">
-                Специальности и профессии
-              </a>
+          <li class="rubrics-list__item">
+            <a href="/specialnosti/"
+               class="rubrics-list__link"
+               data-bs-dismiss="offcanvas"
+               title="Специальности и профессии">Специальности и профессии</a>
             
           </li>
         
-          <li>
-            
-              <a href="/priemnaya-kampaniya-2025/"
-                 class="d-block py-1 text-decoration-none"
-                 data-bs-dismiss="offcanvas"
-                 title="Приемная кампания 2025">
-                Приемная кампания 2025
-              </a>
+          <li class="rubrics-list__item">
+            <a href="/priemnaya-kampaniya-2025/"
+               class="rubrics-list__link"
+               data-bs-dismiss="offcanvas"
+               title="Приемная кампания 2025">Приемная кампания 2025</a>
             
           </li>
         
-          <li>
-            
-              <a href="/den-otkrytyh-dverej/"
-                 class="d-block py-1 text-decoration-none"
-                 data-bs-dismiss="offcanvas"
-                 title="День открытых дверей">
-                День открытых дверей
-              </a>
+          <li class="rubrics-list__item">
+            <a href="/den-otkrytyh-dverej/"
+               class="rubrics-list__link"
+               data-bs-dismiss="offcanvas"
+               title="День открытых дверей">День открытых дверей</a>
             
           </li>
         
-          <li>
-            
-              <a href="/virtualnaya-ekskursiya/"
-                 class="d-block py-1 text-decoration-none"
-                 data-bs-dismiss="offcanvas"
-                 title="Виртуальная экскурсия">
-                Виртуальная экскурсия
-              </a>
+          <li class="rubrics-list__item">
+            <a href="/virtualnaya-ekskursiya/"
+               class="rubrics-list__link"
+               data-bs-dismiss="offcanvas"
+               title="Виртуальная экскурсия">Виртуальная экскурсия</a>
             
           </li>
         
-          <li>
-            
-              <a href="/podacha-elektronnaya/"
-                 class="d-block py-1 text-decoration-none"
-                 data-bs-dismiss="offcanvas"
-                 title="Подача документов по электронной почте">
-                Подача документов по электронной почте
-              </a>
+          <li class="rubrics-list__item">
+            <a href="/podacha-elektronnaya/"
+               class="rubrics-list__link"
+               data-bs-dismiss="offcanvas"
+               title="Подача документов по электронной почте">Подача документов по электронной почте</a>
             
           </li>
         
-          <li>
-            
-              <a href="/podacha-pochtovaya/"
-                 class="d-block py-1 text-decoration-none"
-                 data-bs-dismiss="offcanvas"
-                 title="Подача документов через средства почтовой связи">
-                Подача документов через средства почтовой связи
-              </a>
+          <li class="rubrics-list__item">
+            <a href="/podacha-pochtovaya/"
+               class="rubrics-list__link"
+               data-bs-dismiss="offcanvas"
+               title="Подача документов через средства почтовой связи">Подача документов через средства почтовой связи</a>
             
           </li>
         
-          <li>
-            
-              <a href="/platnaya-osnova/"
-                 class="d-block py-1 text-decoration-none"
-                 data-bs-dismiss="offcanvas"
-                 title="Платная основа обучения">
-                Платная основа обучения
-              </a>
+          <li class="rubrics-list__item">
+            <a href="/platnaya-osnova/"
+               class="rubrics-list__link"
+               data-bs-dismiss="offcanvas"
+               title="Платная основа обучения">Платная основа обучения</a>
             
           </li>
         
-          <li>
-            
-              <a href="/kontakty-grafik/"
-                 class="d-block py-1 text-decoration-none"
-                 data-bs-dismiss="offcanvas"
-                 title="Контакты и график работы">
-                Контакты и график работы
-              </a>
+          <li class="rubrics-list__item">
+            <a href="/kontakty-grafik/"
+               class="rubrics-list__link"
+               data-bs-dismiss="offcanvas"
+               title="Контакты и график работы">Контакты и график работы</a>
             
           </li>
         
       </ul>
     
-              </div>
             
           </li>
         
-          <li>
+          <li class="rubrics-list__item">
+            <a href="/svedenija/"
+               class="rubrics-list__link rubrics-list__link--top"
+               data-bs-dismiss="offcanvas"
+               title="СВЕДЕНИЯ ОБ ОБРАЗОВАТЕЛЬНОЙ ОРГАНИЗАЦИИ">СВЕДЕНИЯ ОБ ОБРАЗОВАТЕЛЬНОЙ ОРГАНИЗАЦИИ</a>
             
-              <button class="btn btn-link w-100 text-start d-flex justify-content-between align-items-center"
-                      type="button"
-                      data-bs-toggle="collapse"
-                      data-bs-target="#collapse-svedenija"
-                      aria-expanded="false"
-                      title="СВЕДЕНИЯ ОБ ОБРАЗОВАТЕЛЬНОЙ ОРГАНИЗАЦИИ">
-                <span>СВЕДЕНИЯ ОБ ОБРАЗОВАТЕЛЬНОЙ ОРГАНИЗАЦИИ</span>
-                <i class="bi bi-chevron-down transition"></i>
-              </button>
-              <div class="collapse" id="collapse-svedenija">
-                
-      <ul class="list-unstyled ms-3">
+              
+      
+      <ul class="list-unstyled rubrics-list rubrics-list--level-2">
         
-          <li>
-            
-              <a href="/osnovnye-svedenija/"
-                 class="d-block py-1 text-decoration-none"
-                 data-bs-dismiss="offcanvas"
-                 title="Основные сведения">
-                Основные сведения
-              </a>
+          <li class="rubrics-list__item">
+            <a href="/osnovnye-svedenija/"
+               class="rubrics-list__link"
+               data-bs-dismiss="offcanvas"
+               title="Основные сведения">Основные сведения</a>
             
           </li>
         
-          <li>
-            
-              <a href="/struktura-upravleniya/"
-                 class="d-block py-1 text-decoration-none"
-                 data-bs-dismiss="offcanvas"
-                 title="Структура и органы управления">
-                Структура и органы управления
-              </a>
+          <li class="rubrics-list__item">
+            <a href="/struktura-upravleniya/"
+               class="rubrics-list__link"
+               data-bs-dismiss="offcanvas"
+               title="Структура и органы управления">Структура и органы управления</a>
             
           </li>
         
-          <li>
+          <li class="rubrics-list__item">
+            <a href="/dokumenty/"
+               class="rubrics-list__link"
+               data-bs-dismiss="offcanvas"
+               title="Документы">Документы</a>
             
-              <button class="btn btn-link w-100 text-start d-flex justify-content-between align-items-center"
-                      type="button"
-                      data-bs-toggle="collapse"
-                      data-bs-target="#collapse-dokumenty"
-                      aria-expanded="false"
-                      title="Документы">
-                <span>Документы</span>
-                <i class="bi bi-chevron-down transition"></i>
-              </button>
-              <div class="collapse" id="collapse-dokumenty">
-                
-      <ul class="list-unstyled ms-3">
+              
+      
+      <ul class="list-unstyled rubrics-list rubrics-list--level-3">
         
-          <li>
-            
-              <a href="/vsoko/"
-                 class="d-block py-1 text-decoration-none"
-                 data-bs-dismiss="offcanvas"
-                 title="ВСОКО">
-                ВСОКО
-              </a>
+          <li class="rubrics-list__item">
+            <a href="/vsoko/"
+               class="rubrics-list__link"
+               data-bs-dismiss="offcanvas"
+               title="ВСОКО">ВСОКО</a>
             
           </li>
         
       </ul>
     
-              </div>
             
           </li>
         
-          <li>
+          <li class="rubrics-list__item">
+            <a href="/obrazovanie/"
+               class="rubrics-list__link"
+               data-bs-dismiss="offcanvas"
+               title="Образование">Образование</a>
             
-              <button class="btn btn-link w-100 text-start d-flex justify-content-between align-items-center"
-                      type="button"
-                      data-bs-toggle="collapse"
-                      data-bs-target="#collapse-obrazovanie"
-                      aria-expanded="false"
-                      title="Образование">
-                <span>Образование</span>
-                <i class="bi bi-chevron-down transition"></i>
-              </button>
-              <div class="collapse" id="collapse-obrazovanie">
-                
-      <ul class="list-unstyled ms-3">
+              
+      
+      <ul class="list-unstyled rubrics-list rubrics-list--level-3">
         
-          <li>
-            
-              <a href="/vakantnye-mesta/"
-                 class="d-block py-1 text-decoration-none"
-                 data-bs-dismiss="offcanvas"
-                 title="Вакантные места">
-                Вакантные места
-              </a>
+          <li class="rubrics-list__item">
+            <a href="/vakantnye-mesta/"
+               class="rubrics-list__link"
+               data-bs-dismiss="offcanvas"
+               title="Вакантные места">Вакантные места</a>
             
           </li>
         
-          <li>
-            
-              <a href="/mezhdunarodnoe/"
-                 class="d-block py-1 text-decoration-none"
-                 data-bs-dismiss="offcanvas"
-                 title="Международное сотрудничество">
-                Международное сотрудничество
-              </a>
+          <li class="rubrics-list__item">
+            <a href="/mezhdunarodnoe/"
+               class="rubrics-list__link"
+               data-bs-dismiss="offcanvas"
+               title="Международное сотрудничество">Международное сотрудничество</a>
             
           </li>
         
-          <li>
-            
-              <a href="/inklyuzivnoe/"
-                 class="d-block py-1 text-decoration-none"
-                 data-bs-dismiss="offcanvas"
-                 title="Инклюзивное образование">
-                Инклюзивное образование
-              </a>
+          <li class="rubrics-list__item">
+            <a href="/inklyuzivnoe/"
+               class="rubrics-list__link"
+               data-bs-dismiss="offcanvas"
+               title="Инклюзивное образование">Инклюзивное образование</a>
             
           </li>
         
-          <li>
-            
-              <a href="/trudoustrojstvo/"
-                 class="d-block py-1 text-decoration-none"
-                 data-bs-dismiss="offcanvas"
-                 title="Трудоустройство выпускников">
-                Трудоустройство выпускников
-              </a>
+          <li class="rubrics-list__item">
+            <a href="/trudoustrojstvo/"
+               class="rubrics-list__link"
+               data-bs-dismiss="offcanvas"
+               title="Трудоустройство выпускников">Трудоустройство выпускников</a>
             
           </li>
         
       </ul>
     
-              </div>
             
           </li>
         
-          <li>
+          <li class="rubrics-list__item">
+            <a href="/rukovodstvo/"
+               class="rubrics-list__link"
+               data-bs-dismiss="offcanvas"
+               title="Руководство">Руководство</a>
             
-              <button class="btn btn-link w-100 text-start d-flex justify-content-between align-items-center"
-                      type="button"
-                      data-bs-toggle="collapse"
-                      data-bs-target="#collapse-rukovodstvo"
-                      aria-expanded="false"
-                      title="Руководство">
-                <span>Руководство</span>
-                <i class="bi bi-chevron-down transition"></i>
-              </button>
-              <div class="collapse" id="collapse-rukovodstvo">
-                
-      <ul class="list-unstyled ms-3">
+              
+      
+      <ul class="list-unstyled rubrics-list rubrics-list--level-3">
         
-          <li>
-            
-              <a href="/pedagogicheskiy-sostav/"
-                 class="d-block py-1 text-decoration-none"
-                 data-bs-dismiss="offcanvas"
-                 title="Педагогический состав">
-                Педагогический состав
-              </a>
+          <li class="rubrics-list__item">
+            <a href="/pedagogicheskiy-sostav/"
+               class="rubrics-list__link"
+               data-bs-dismiss="offcanvas"
+               title="Педагогический состав">Педагогический состав</a>
             
           </li>
         
       </ul>
     
-              </div>
             
           </li>
         
-          <li>
-            
-              <a href="/standarty/"
-                 class="d-block py-1 text-decoration-none"
-                 data-bs-dismiss="offcanvas"
-                 title="Образовательные стандарты">
-                Образовательные стандарты
-              </a>
+          <li class="rubrics-list__item">
+            <a href="/standarty/"
+               class="rubrics-list__link"
+               data-bs-dismiss="offcanvas"
+               title="Образовательные стандарты">Образовательные стандарты</a>
             
           </li>
         
-          <li>
+          <li class="rubrics-list__item">
+            <a href="/materialno-tehnicheskoe/"
+               class="rubrics-list__link"
+               data-bs-dismiss="offcanvas"
+               title="Материально-техническое обеспечение">Материально-техническое обеспечение</a>
             
-              <button class="btn btn-link w-100 text-start d-flex justify-content-between align-items-center"
-                      type="button"
-                      data-bs-toggle="collapse"
-                      data-bs-target="#collapse-materialno-tehnicheskoe"
-                      aria-expanded="false"
-                      title="Материально-техническое обеспечение">
-                <span>Материально-техническое обеспечение</span>
-                <i class="bi bi-chevron-down transition"></i>
-              </button>
-              <div class="collapse" id="collapse-materialno-tehnicheskoe">
-                
-      <ul class="list-unstyled ms-3">
+              
+      
+      <ul class="list-unstyled rubrics-list rubrics-list--level-3">
         
-          <li>
-            
-              <a href="/elektronnoe-obrazovanie/"
-                 class="d-block py-1 text-decoration-none"
-                 data-bs-dismiss="offcanvas"
-                 title="Электронная информационно-образовательная среда">
-                Электронная информационно-образовательная среда
-              </a>
+          <li class="rubrics-list__item">
+            <a href="/elektronnoe-obrazovanie/"
+               class="rubrics-list__link"
+               data-bs-dismiss="offcanvas"
+               title="Электронная информационно-образовательная среда">Электронная информационно-образовательная среда</a>
             
           </li>
         
-          <li>
-            
-              <a href="/elektronnaya-biblioteka/"
-                 class="d-block py-1 text-decoration-none"
-                 data-bs-dismiss="offcanvas"
-                 title="Цифровая библиотека">
-                Цифровая библиотека
-              </a>
+          <li class="rubrics-list__item">
+            <a href="/elektronnaya-biblioteka/"
+               class="rubrics-list__link"
+               data-bs-dismiss="offcanvas"
+               title="Цифровая библиотека">Цифровая библиотека</a>
             
           </li>
         
-          <li>
-            
-              <a href="/elektronnye-resursy/"
-                 class="d-block py-1 text-decoration-none"
-                 data-bs-dismiss="offcanvas"
-                 title="Электронные образовательные ресурсы">
-                Электронные образовательные ресурсы
-              </a>
+          <li class="rubrics-list__item">
+            <a href="/elektronnye-resursy/"
+               class="rubrics-list__link"
+               data-bs-dismiss="offcanvas"
+               title="Электронные образовательные ресурсы">Электронные образовательные ресурсы</a>
             
           </li>
         
-          <li>
-            
-              <a href="/platforma/"
-                 class="d-block py-1 text-decoration-none"
-                 data-bs-dismiss="offcanvas"
-                 title="Образовательная платформа">
-                Образовательная платформа
-              </a>
+          <li class="rubrics-list__item">
+            <a href="/platforma/"
+               class="rubrics-list__link"
+               data-bs-dismiss="offcanvas"
+               title="Образовательная платформа">Образовательная платформа</a>
             
           </li>
         
-          <li>
-            
-              <a href="/elektronnoe-raspisanie/"
-                 class="d-block py-1 text-decoration-none"
-                 data-bs-dismiss="offcanvas"
-                 title="Электронное расписание">
-                Электронное расписание
-              </a>
+          <li class="rubrics-list__item">
+            <a href="/elektronnoe-raspisanie/"
+               class="rubrics-list__link"
+               data-bs-dismiss="offcanvas"
+               title="Электронное расписание">Электронное расписание</a>
             
           </li>
         
-          <li>
-            
-              <a href="/pitanie/"
-                 class="d-block py-1 text-decoration-none"
-                 data-bs-dismiss="offcanvas"
-                 title="Организация питания">
-                Организация питания
-              </a>
+          <li class="rubrics-list__item">
+            <a href="/pitanie/"
+               class="rubrics-list__link"
+               data-bs-dismiss="offcanvas"
+               title="Организация питания">Организация питания</a>
             
           </li>
         
       </ul>
     
-              </div>
             
           </li>
         
-          <li>
-            
-              <a href="/platnye-uslugi/"
-                 class="d-block py-1 text-decoration-none"
-                 data-bs-dismiss="offcanvas"
-                 title="Платные образовательные услуги">
-                Платные образовательные услуги
-              </a>
+          <li class="rubrics-list__item">
+            <a href="/platnye-uslugi/"
+               class="rubrics-list__link"
+               data-bs-dismiss="offcanvas"
+               title="Платные образовательные услуги">Платные образовательные услуги</a>
             
           </li>
         
-          <li>
+          <li class="rubrics-list__item">
+            <a href="/finansy/"
+               class="rubrics-list__link"
+               data-bs-dismiss="offcanvas"
+               title="Финансово-хозяйственная деятельность">Финансово-хозяйственная деятельность</a>
             
-              <button class="btn btn-link w-100 text-start d-flex justify-content-between align-items-center"
-                      type="button"
-                      data-bs-toggle="collapse"
-                      data-bs-target="#collapse-finansy"
-                      aria-expanded="false"
-                      title="Финансово-хозяйственная деятельность">
-                <span>Финансово-хозяйственная деятельность</span>
-                <i class="bi bi-chevron-down transition"></i>
-              </button>
-              <div class="collapse" id="collapse-finansy">
-                
-      <ul class="list-unstyled ms-3">
+              
+      
+      <ul class="list-unstyled rubrics-list rubrics-list--level-3">
         
-          <li>
-            
-              <a href="/stipendii/"
-                 class="d-block py-1 text-decoration-none"
-                 data-bs-dismiss="offcanvas"
-                 title="Стипендии и меры поддержки">
-                Стипендии и меры поддержки
-              </a>
+          <li class="rubrics-list__item">
+            <a href="/stipendii/"
+               class="rubrics-list__link"
+               data-bs-dismiss="offcanvas"
+               title="Стипендии и меры поддержки">Стипендии и меры поддержки</a>
             
           </li>
         
       </ul>
     
-              </div>
             
           </li>
         
       </ul>
     
-              </div>
             
           </li>
         
-          <li>
+          <li class="rubrics-list__item">
+            <a href="/uchebno-metodicheskaya/"
+               class="rubrics-list__link rubrics-list__link--top"
+               data-bs-dismiss="offcanvas"
+               title="УЧЕБНО-МЕТОДИЧЕСКАЯ РАБОТА">УЧЕБНО-МЕТОДИЧЕСКАЯ РАБОТА</a>
             
-              <button class="btn btn-link w-100 text-start d-flex justify-content-between align-items-center"
-                      type="button"
-                      data-bs-toggle="collapse"
-                      data-bs-target="#collapse-uchebno-metodicheskaya"
-                      aria-expanded="false"
-                      title="УЧЕБНО-МЕТОДИЧЕСКАЯ РАБОТА">
-                <span>УЧЕБНО-МЕТОДИЧЕСКАЯ РАБОТА</span>
-                <i class="bi bi-chevron-down transition"></i>
-              </button>
-              <div class="collapse" id="collapse-uchebno-metodicheskaya">
-                
-      <ul class="list-unstyled ms-3">
+              
+      
+      <ul class="list-unstyled rubrics-list rubrics-list--level-2">
         
-          <li>
-            
-              <a href="/elektronnoe-obuchenie/"
-                 class="d-block py-1 text-decoration-none"
-                 data-bs-dismiss="offcanvas"
-                 title="Электронное обучение и ДОТ">
-                Электронное обучение и ДОТ
-              </a>
+          <li class="rubrics-list__item">
+            <a href="/elektronnoe-obuchenie/"
+               class="rubrics-list__link"
+               data-bs-dismiss="offcanvas"
+               title="Электронное обучение и ДОТ">Электронное обучение и ДОТ</a>
             
           </li>
         
-          <li>
-            
-              <a href="/dopolnitelnoe-obrazovanie/"
-                 class="d-block py-1 text-decoration-none"
-                 data-bs-dismiss="offcanvas"
-                 title="Дополнительное образование">
-                Дополнительное образование
-              </a>
+          <li class="rubrics-list__item">
+            <a href="/dopolnitelnoe-obrazovanie/"
+               class="rubrics-list__link"
+               data-bs-dismiss="offcanvas"
+               title="Дополнительное образование">Дополнительное образование</a>
             
           </li>
         
-          <li>
-            
-              <a href="/praktika/"
-                 class="d-block py-1 text-decoration-none"
-                 data-bs-dismiss="offcanvas"
-                 title="Практика">
-                Практика
-              </a>
+          <li class="rubrics-list__item">
+            <a href="/praktika/"
+               class="rubrics-list__link"
+               data-bs-dismiss="offcanvas"
+               title="Практика">Практика</a>
             
           </li>
         
       </ul>
     
-              </div>
             
           </li>
         
-          <li>
+          <li class="rubrics-list__item">
+            <a href="/vospitanie/"
+               class="rubrics-list__link rubrics-list__link--top"
+               data-bs-dismiss="offcanvas"
+               title="ВОСПИТАТЕЛЬНАЯ РАБОТА">ВОСПИТАТЕЛЬНАЯ РАБОТА</a>
             
-              <button class="btn btn-link w-100 text-start d-flex justify-content-between align-items-center"
-                      type="button"
-                      data-bs-toggle="collapse"
-                      data-bs-target="#collapse-vospitanie"
-                      aria-expanded="false"
-                      title="ВОСПИТАТЕЛЬНАЯ РАБОТА">
-                <span>ВОСПИТАТЕЛЬНАЯ РАБОТА</span>
-                <i class="bi bi-chevron-down transition"></i>
-              </button>
-              <div class="collapse" id="collapse-vospitanie">
-                
-      <ul class="list-unstyled ms-3">
+              
+      
+      <ul class="list-unstyled rubrics-list rubrics-list--level-2">
         
-          <li>
-            
-              <a href="/shtab/"
-                 class="d-block py-1 text-decoration-none"
-                 data-bs-dismiss="offcanvas"
-                 title="Штаб воспитательной работы">
-                Штаб воспитательной работы
-              </a>
+          <li class="rubrics-list__item">
+            <a href="/shtab/"
+               class="rubrics-list__link"
+               data-bs-dismiss="offcanvas"
+               title="Штаб воспитательной работы">Штаб воспитательной работы</a>
             
           </li>
         
-          <li>
-            
-              <a href="/plan/"
-                 class="d-block py-1 text-decoration-none"
-                 data-bs-dismiss="offcanvas"
-                 title="План воспитательной работы">
-                План воспитательной работы
-              </a>
+          <li class="rubrics-list__item">
+            <a href="/plan/"
+               class="rubrics-list__link"
+               data-bs-dismiss="offcanvas"
+               title="План воспитательной работы">План воспитательной работы</a>
             
           </li>
         
-          <li>
-            
-              <a href="/mo-rukovoditelej/"
-                 class="d-block py-1 text-decoration-none"
-                 data-bs-dismiss="offcanvas"
-                 title="МО руководителей учебных групп">
-                МО руководителей учебных групп
-              </a>
+          <li class="rubrics-list__item">
+            <a href="/mo-rukovoditelej/"
+               class="rubrics-list__link"
+               data-bs-dismiss="offcanvas"
+               title="МО руководителей учебных групп">МО руководителей учебных групп</a>
             
           </li>
         
-          <li>
-            
-              <a href="/samoupravlenie/"
-                 class="d-block py-1 text-decoration-none"
-                 data-bs-dismiss="offcanvas"
-                 title="Студенческое самоуправление">
-                Студенческое самоуправление
-              </a>
+          <li class="rubrics-list__item">
+            <a href="/samoupravlenie/"
+               class="rubrics-list__link"
+               data-bs-dismiss="offcanvas"
+               title="Студенческое самоуправление">Студенческое самоуправление</a>
             
           </li>
         
-          <li>
+          <li class="rubrics-list__item">
+            <a href="/volonterstvo/"
+               class="rubrics-list__link"
+               data-bs-dismiss="offcanvas"
+               title="Волонтерское движение">Волонтерское движение</a>
             
-              <button class="btn btn-link w-100 text-start d-flex justify-content-between align-items-center"
-                      type="button"
-                      data-bs-toggle="collapse"
-                      data-bs-target="#collapse-volonterstvo"
-                      aria-expanded="false"
-                      title="Волонтерское движение">
-                <span>Волонтерское движение</span>
-                <i class="bi bi-chevron-down transition"></i>
-              </button>
-              <div class="collapse" id="collapse-volonterstvo">
-                
-      <ul class="list-unstyled ms-3">
+              
+      
+      <ul class="list-unstyled rubrics-list rubrics-list--level-3">
         
-          <li>
-            
-              <a href="/raduga-dobra/"
-                 class="d-block py-1 text-decoration-none"
-                 data-bs-dismiss="offcanvas"
-                 title="ВОЛОНТЁРСКИЙ ОТРЯД «РАДУГА ДОБРА»">
-                ВОЛОНТЁРСКИЙ ОТРЯД «РАДУГА ДОБРА»
-              </a>
+          <li class="rubrics-list__item">
+            <a href="/raduga-dobra/"
+               class="rubrics-list__link"
+               data-bs-dismiss="offcanvas"
+               title="ВОЛОНТЁРСКИЙ ОТРЯД «РАДУГА ДОБРА»">ВОЛОНТЁРСКИЙ ОТРЯД «РАДУГА ДОБРА»</a>
             
           </li>
         
       </ul>
     
-              </div>
             
           </li>
         
-          <li>
+          <li class="rubrics-list__item">
+            <a href="/patrioticheskoe/"
+               class="rubrics-list__link"
+               data-bs-dismiss="offcanvas"
+               title="Патриотическое воспитание">Патриотическое воспитание</a>
             
-              <button class="btn btn-link w-100 text-start d-flex justify-content-between align-items-center"
-                      type="button"
-                      data-bs-toggle="collapse"
-                      data-bs-target="#collapse-patrioticheskoe"
-                      aria-expanded="false"
-                      title="Патриотическое воспитание">
-                <span>Патриотическое воспитание</span>
-                <i class="bi bi-chevron-down transition"></i>
-              </button>
-              <div class="collapse" id="collapse-patrioticheskoe">
-                
-      <ul class="list-unstyled ms-3">
+              
+      
+      <ul class="list-unstyled rubrics-list rubrics-list--level-3">
         
-          <li>
-            
-              <a href="/velikaya-pobeda/"
-                 class="d-block py-1 text-decoration-none"
-                 data-bs-dismiss="offcanvas"
-                 title="Великая Победа">
-                Великая Победа
-              </a>
+          <li class="rubrics-list__item">
+            <a href="/velikaya-pobeda/"
+               class="rubrics-list__link"
+               data-bs-dismiss="offcanvas"
+               title="Великая Победа">Великая Победа</a>
             
           </li>
         
-          <li>
-            
-              <a href="/vitjaz/"
-                 class="d-block py-1 text-decoration-none"
-                 data-bs-dismiss="offcanvas"
-                 title="Клуб «ВИТЯЗЬ»">
-                Клуб «ВИТЯЗЬ»
-              </a>
+          <li class="rubrics-list__item">
+            <a href="/vitjaz/"
+               class="rubrics-list__link"
+               data-bs-dismiss="offcanvas"
+               title="Клуб «ВИТЯЗЬ»">Клуб «ВИТЯЗЬ»</a>
             
           </li>
         
       </ul>
     
-              </div>
             
           </li>
         
-          <li>
+          <li class="rubrics-list__item">
+            <a href="/kulturno-massovaya/"
+               class="rubrics-list__link"
+               data-bs-dismiss="offcanvas"
+               title="Культурно-массовая работа">Культурно-массовая работа</a>
             
-              <button class="btn btn-link w-100 text-start d-flex justify-content-between align-items-center"
-                      type="button"
-                      data-bs-toggle="collapse"
-                      data-bs-target="#collapse-kulturno-massovaya"
-                      aria-expanded="false"
-                      title="Культурно-массовая работа">
-                <span>Культурно-массовая работа</span>
-                <i class="bi bi-chevron-down transition"></i>
-              </button>
-              <div class="collapse" id="collapse-kulturno-massovaya">
-                
-      <ul class="list-unstyled ms-3">
+              
+      
+      <ul class="list-unstyled rubrics-list rubrics-list--level-3">
         
-          <li>
-            
-              <a href="/teatralnyj-klub/"
-                 class="d-block py-1 text-decoration-none"
-                 data-bs-dismiss="offcanvas"
-                 title="Театральный клуб &quot;Мираж&quot;">
-                Театральный клуб &quot;Мираж&quot;
-              </a>
+          <li class="rubrics-list__item">
+            <a href="/teatralnyj-klub/"
+               class="rubrics-list__link"
+               data-bs-dismiss="offcanvas"
+               title="Театральный клуб &quot;Мираж&quot;">Театральный клуб &quot;Мираж&quot;</a>
             
           </li>
         
-          <li>
-            
-              <a href="/mediacentr/"
-                 class="d-block py-1 text-decoration-none"
-                 data-bs-dismiss="offcanvas"
-                 title="Медиацентр «Новости СИТ»">
-                Медиацентр «Новости СИТ»
-              </a>
+          <li class="rubrics-list__item">
+            <a href="/mediacentr/"
+               class="rubrics-list__link"
+               data-bs-dismiss="offcanvas"
+               title="Медиацентр «Новости СИТ»">Медиацентр «Новости СИТ»</a>
             
           </li>
         
-          <li>
-            
-              <a href="/pozdravlenija/"
-                 class="d-block py-1 text-decoration-none"
-                 data-bs-dismiss="offcanvas"
-                 title="Поздравления">
-                Поздравления
-              </a>
+          <li class="rubrics-list__item">
+            <a href="/pozdravlenija/"
+               class="rubrics-list__link"
+               data-bs-dismiss="offcanvas"
+               title="Поздравления">Поздравления</a>
             
           </li>
         
-          <li>
-            
-              <a href="/dvizhenie-pervyh/"
-                 class="d-block py-1 text-decoration-none"
-                 data-bs-dismiss="offcanvas"
-                 title="«Движение Первых»">
-                «Движение Первых»
-              </a>
+          <li class="rubrics-list__item">
+            <a href="/dvizhenie-pervyh/"
+               class="rubrics-list__link"
+               data-bs-dismiss="offcanvas"
+               title="«Движение Первых»">«Движение Первых»</a>
             
           </li>
         
       </ul>
     
-              </div>
             
           </li>
         
-          <li>
+          <li class="rubrics-list__item">
+            <a href="/fizkultura-sport/"
+               class="rubrics-list__link"
+               data-bs-dismiss="offcanvas"
+               title="Физическая культура и спорт">Физическая культура и спорт</a>
             
-              <button class="btn btn-link w-100 text-start d-flex justify-content-between align-items-center"
-                      type="button"
-                      data-bs-toggle="collapse"
-                      data-bs-target="#collapse-fizkultura-sport"
-                      aria-expanded="false"
-                      title="Физическая культура и спорт">
-                <span>Физическая культура и спорт</span>
-                <i class="bi bi-chevron-down transition"></i>
-              </button>
-              <div class="collapse" id="collapse-fizkultura-sport">
-                
-      <ul class="list-unstyled ms-3">
+              
+      
+      <ul class="list-unstyled rubrics-list rubrics-list--level-3">
         
-          <li>
-            
-              <a href="/ssk-avangard/"
-                 class="d-block py-1 text-decoration-none"
-                 data-bs-dismiss="offcanvas"
-                 title="ССК &quot;Авангард&quot;">
-                ССК &quot;Авангард&quot;
-              </a>
+          <li class="rubrics-list__item">
+            <a href="/ssk-avangard/"
+               class="rubrics-list__link"
+               data-bs-dismiss="offcanvas"
+               title="ССК &quot;Авангард&quot;">ССК &quot;Авангард&quot;</a>
             
           </li>
         
       </ul>
     
-              </div>
             
           </li>
         
-          <li>
-            
-              <a href="/upolnomochennyj-prava/"
-                 class="d-block py-1 text-decoration-none"
-                 data-bs-dismiss="offcanvas"
-                 title="Уполномоченный по правам ребенка">
-                Уполномоченный по правам ребенка
-              </a>
+          <li class="rubrics-list__item">
+            <a href="/upolnomochennyj-prava/"
+               class="rubrics-list__link"
+               data-bs-dismiss="offcanvas"
+               title="Уполномоченный по правам ребенка">Уполномоченный по правам ребенка</a>
             
           </li>
         
       </ul>
     
-              </div>
             
           </li>
         
-          <li>
+          <li class="rubrics-list__item">
+            <a href="/partnerstvo/"
+               class="rubrics-list__link rubrics-list__link--top"
+               data-bs-dismiss="offcanvas"
+               title="СОЦИАЛЬНОЕ ПАРТНЕРСТВО И ПРОФОРИЕНТАЦИЯ">СОЦИАЛЬНОЕ ПАРТНЕРСТВО И ПРОФОРИЕНТАЦИЯ</a>
             
-              <button class="btn btn-link w-100 text-start d-flex justify-content-between align-items-center"
-                      type="button"
-                      data-bs-toggle="collapse"
-                      data-bs-target="#collapse-partnerstvo"
-                      aria-expanded="false"
-                      title="СОЦИАЛЬНОЕ ПАРТНЕРСТВО И ПРОФОРИЕНТАЦИЯ">
-                <span>СОЦИАЛЬНОЕ ПАРТНЕРСТВО И ПРОФОРИЕНТАЦИЯ</span>
-                <i class="bi bi-chevron-down transition"></i>
-              </button>
-              <div class="collapse" id="collapse-partnerstvo">
-                
-      <ul class="list-unstyled ms-3">
+              
+      
+      <ul class="list-unstyled rubrics-list rubrics-list--level-2">
         
-          <li>
-            
-              <a href="/vuzy/"
-                 class="d-block py-1 text-decoration-none"
-                 data-bs-dismiss="offcanvas"
-                 title="Сотрудничество с ВУЗами">
-                Сотрудничество с ВУЗами
-              </a>
+          <li class="rubrics-list__item">
+            <a href="/vuzy/"
+               class="rubrics-list__link"
+               data-bs-dismiss="offcanvas"
+               title="Сотрудничество с ВУЗами">Сотрудничество с ВУЗами</a>
             
           </li>
         
-          <li>
-            
-              <a href="/zanyatost/"
-                 class="d-block py-1 text-decoration-none"
-                 data-bs-dismiss="offcanvas"
-                 title="Сотрудничество с органами занятости">
-                Сотрудничество с органами занятости
-              </a>
+          <li class="rubrics-list__item">
+            <a href="/zanyatost/"
+               class="rubrics-list__link"
+               data-bs-dismiss="offcanvas"
+               title="Сотрудничество с органами занятости">Сотрудничество с органами занятости</a>
             
           </li>
         
-          <li>
-            
-              <a href="/predprijatija/"
-                 class="d-block py-1 text-decoration-none"
-                 data-bs-dismiss="offcanvas"
-                 title="Сотрудничество с предприятиями">
-                Сотрудничество с предприятиями
-              </a>
+          <li class="rubrics-list__item">
+            <a href="/predprijatija/"
+               class="rubrics-list__link"
+               data-bs-dismiss="offcanvas"
+               title="Сотрудничество с предприятиями">Сотрудничество с предприятиями</a>
             
           </li>
         
-          <li>
-            
-              <a href="/shkoly/"
-                 class="d-block py-1 text-decoration-none"
-                 data-bs-dismiss="offcanvas"
-                 title="Сотрудничество со школами">
-                Сотрудничество со школами
-              </a>
+          <li class="rubrics-list__item">
+            <a href="/shkoly/"
+               class="rubrics-list__link"
+               data-bs-dismiss="offcanvas"
+               title="Сотрудничество со школами">Сотрудничество со школами</a>
             
           </li>
         
       </ul>
     
-              </div>
             
           </li>
         
-          <li>
+          <li class="rubrics-list__item">
+            <a href="/psihologicheskoe/"
+               class="rubrics-list__link rubrics-list__link--top"
+               data-bs-dismiss="offcanvas"
+               title="ПСИХОЛОГИЧЕСКОЕ СОПРОВОЖДЕНИЕ">ПСИХОЛОГИЧЕСКОЕ СОПРОВОЖДЕНИЕ</a>
             
-              <button class="btn btn-link w-100 text-start d-flex justify-content-between align-items-center"
-                      type="button"
-                      data-bs-toggle="collapse"
-                      data-bs-target="#collapse-psihologicheskoe"
-                      aria-expanded="false"
-                      title="ПСИХОЛОГИЧЕСКОЕ СОПРОВОЖДЕНИЕ">
-                <span>ПСИХОЛОГИЧЕСКОЕ СОПРОВОЖДЕНИЕ</span>
-                <i class="bi bi-chevron-down transition"></i>
-              </button>
-              <div class="collapse" id="collapse-psihologicheskoe">
-                
-      <ul class="list-unstyled ms-3">
+              
+      
+      <ul class="list-unstyled rubrics-list rubrics-list--level-2">
         
-          <li>
-            
-              <a href="/organizacionno-metodicheskaya/"
-                 class="d-block py-1 text-decoration-none"
-                 data-bs-dismiss="offcanvas"
-                 title="Организационно-методическая основа">
-                Организационно-методическая основа
-              </a>
+          <li class="rubrics-list__item">
+            <a href="/organizacionno-metodicheskaya/"
+               class="rubrics-list__link"
+               data-bs-dismiss="offcanvas"
+               title="Организационно-методическая основа">Организационно-методическая основа</a>
             
           </li>
         
-          <li>
-            
-              <a href="/rezultaty-testirovanij/"
-                 class="d-block py-1 text-decoration-none"
-                 data-bs-dismiss="offcanvas"
-                 title="Результаты тестирований">
-                Результаты тестирований
-              </a>
+          <li class="rubrics-list__item">
+            <a href="/rezultaty-testirovanij/"
+               class="rubrics-list__link"
+               data-bs-dismiss="offcanvas"
+               title="Результаты тестирований">Результаты тестирований</a>
             
           </li>
         
-          <li>
-            
-              <a href="/sovety-prepodavatelyam/"
-                 class="d-block py-1 text-decoration-none"
-                 data-bs-dismiss="offcanvas"
-                 title="Советы преподавателям">
-                Советы преподавателям
-              </a>
+          <li class="rubrics-list__item">
+            <a href="/sovety-prepodavatelyam/"
+               class="rubrics-list__link"
+               data-bs-dismiss="offcanvas"
+               title="Советы преподавателям">Советы преподавателям</a>
             
           </li>
         
-          <li>
-            
-              <a href="/sovety-roditelyam/"
-                 class="d-block py-1 text-decoration-none"
-                 data-bs-dismiss="offcanvas"
-                 title="Советы родителям">
-                Советы родителям
-              </a>
+          <li class="rubrics-list__item">
+            <a href="/sovety-roditelyam/"
+               class="rubrics-list__link"
+               data-bs-dismiss="offcanvas"
+               title="Советы родителям">Советы родителям</a>
             
           </li>
         
-          <li>
-            
-              <a href="/sovety-studentam/"
-                 class="d-block py-1 text-decoration-none"
-                 data-bs-dismiss="offcanvas"
-                 title="Советы студентам">
-                Советы студентам
-              </a>
+          <li class="rubrics-list__item">
+            <a href="/sovety-studentam/"
+               class="rubrics-list__link"
+               data-bs-dismiss="offcanvas"
+               title="Советы студентам">Советы студентам</a>
             
           </li>
         
-          <li>
-            
-              <a href="/profilaktika-narkotikov/"
-                 class="d-block py-1 text-decoration-none"
-                 data-bs-dismiss="offcanvas"
-                 title="Профилактика наркотиков">
-                Профилактика наркотиков
-              </a>
+          <li class="rubrics-list__item">
+            <a href="/profilaktika-narkotikov/"
+               class="rubrics-list__link"
+               data-bs-dismiss="offcanvas"
+               title="Профилактика наркотиков">Профилактика наркотиков</a>
             
           </li>
         
-          <li>
-            
-              <a href="/podderzhka-ovz/"
-                 class="d-block py-1 text-decoration-none"
-                 data-bs-dismiss="offcanvas"
-                 title="Поддержка лиц с ОВЗ">
-                Поддержка лиц с ОВЗ
-              </a>
+          <li class="rubrics-list__item">
+            <a href="/podderzhka-ovz/"
+               class="rubrics-list__link"
+               data-bs-dismiss="offcanvas"
+               title="Поддержка лиц с ОВЗ">Поддержка лиц с ОВЗ</a>
             
           </li>
         
       </ul>
     
-              </div>
             
           </li>
         
-          <li>
+          <li class="rubrics-list__item">
+            <a href="/bezopasnost/"
+               class="rubrics-list__link rubrics-list__link--top"
+               data-bs-dismiss="offcanvas"
+               title="КОМПЛЕКСНАЯ БЕЗОПАСНОСТЬ">КОМПЛЕКСНАЯ БЕЗОПАСНОСТЬ</a>
             
-              <button class="btn btn-link w-100 text-start d-flex justify-content-between align-items-center"
-                      type="button"
-                      data-bs-toggle="collapse"
-                      data-bs-target="#collapse-bezopasnost"
-                      aria-expanded="false"
-                      title="КОМПЛЕКСНАЯ БЕЗОПАСНОСТЬ">
-                <span>КОМПЛЕКСНАЯ БЕЗОПАСНОСТЬ</span>
-                <i class="bi bi-chevron-down transition"></i>
-              </button>
-              <div class="collapse" id="collapse-bezopasnost">
-                
-      <ul class="list-unstyled ms-3">
+              
+      
+      <ul class="list-unstyled rubrics-list rubrics-list--level-2">
         
-          <li>
-            
-              <a href="/antiterror/"
-                 class="d-block py-1 text-decoration-none"
-                 data-bs-dismiss="offcanvas"
-                 title="Антитеррористическая защищенность">
-                Антитеррористическая защищенность
-              </a>
+          <li class="rubrics-list__item">
+            <a href="/antiterror/"
+               class="rubrics-list__link"
+               data-bs-dismiss="offcanvas"
+               title="Антитеррористическая защищенность">Антитеррористическая защищенность</a>
             
           </li>
         
-          <li>
-            
-              <a href="/ekstremizm/"
-                 class="d-block py-1 text-decoration-none"
-                 data-bs-dismiss="offcanvas"
-                 title="Профилактика экстремизма">
-                Профилактика экстремизма
-              </a>
+          <li class="rubrics-list__item">
+            <a href="/ekstremizm/"
+               class="rubrics-list__link"
+               data-bs-dismiss="offcanvas"
+               title="Профилактика экстремизма">Профилактика экстремизма</a>
             
           </li>
         
-          <li>
-            
-              <a href="/korrupcija/"
-                 class="d-block py-1 text-decoration-none"
-                 data-bs-dismiss="offcanvas"
-                 title="Противодействие коррупции">
-                Противодействие коррупции
-              </a>
+          <li class="rubrics-list__item">
+            <a href="/korrupcija/"
+               class="rubrics-list__link"
+               data-bs-dismiss="offcanvas"
+               title="Противодействие коррупции">Противодействие коррупции</a>
             
           </li>
         
-          <li>
-            
-              <a href="/pozharnaya/"
-                 class="d-block py-1 text-decoration-none"
-                 data-bs-dismiss="offcanvas"
-                 title="Пожарная безопасность">
-                Пожарная безопасность
-              </a>
+          <li class="rubrics-list__item">
+            <a href="/pozharnaya/"
+               class="rubrics-list__link"
+               data-bs-dismiss="offcanvas"
+               title="Пожарная безопасность">Пожарная безопасность</a>
             
           </li>
         
       </ul>
     
-              </div>
             
           </li>
         
-          <li>
+          <li class="rubrics-list__item">
+            <a href="/studentam-roditeljam/"
+               class="rubrics-list__link rubrics-list__link--top"
+               data-bs-dismiss="offcanvas"
+               title="СТУДЕНТАМ И ИХ РОДИТЕЛЯМ">СТУДЕНТАМ И ИХ РОДИТЕЛЯМ</a>
             
-              <button class="btn btn-link w-100 text-start d-flex justify-content-between align-items-center"
-                      type="button"
-                      data-bs-toggle="collapse"
-                      data-bs-target="#collapse-studentam-roditeljam"
-                      aria-expanded="false"
-                      title="СТУДЕНТАМ И ИХ РОДИТЕЛЯМ">
-                <span>СТУДЕНТАМ И ИХ РОДИТЕЛЯМ</span>
-                <i class="bi bi-chevron-down transition"></i>
-              </button>
-              <div class="collapse" id="collapse-studentam-roditeljam">
-                
-      <ul class="list-unstyled ms-3">
+              
+      
+      <ul class="list-unstyled rubrics-list rubrics-list--level-2">
         
-          <li>
+          <li class="rubrics-list__item">
+            <a href="/resursy/"
+               class="rubrics-list__link"
+               data-bs-dismiss="offcanvas"
+               title="Информационно-образовательные ресурсы">Информационно-образовательные ресурсы</a>
             
-              <button class="btn btn-link w-100 text-start d-flex justify-content-between align-items-center"
-                      type="button"
-                      data-bs-toggle="collapse"
-                      data-bs-target="#collapse-resursy"
-                      aria-expanded="false"
-                      title="Информационно-образовательные ресурсы">
-                <span>Информационно-образовательные ресурсы</span>
-                <i class="bi bi-chevron-down transition"></i>
-              </button>
-              <div class="collapse" id="collapse-resursy">
-                
-      <ul class="list-unstyled ms-3">
+              
+      
+      <ul class="list-unstyled rubrics-list rubrics-list--level-3">
         
-          <li>
-            
-              <a href="/novosti/"
-                 class="d-block py-1 text-decoration-none"
-                 data-bs-dismiss="offcanvas"
-                 title="Новости">
-                Новости
-              </a>
+          <li class="rubrics-list__item">
+            <a href="/novosti/"
+               class="rubrics-list__link"
+               data-bs-dismiss="offcanvas"
+               title="Новости">Новости</a>
             
           </li>
         
-          <li>
-            
-              <a href="/biblioteka/"
-                 class="d-block py-1 text-decoration-none"
-                 data-bs-dismiss="offcanvas"
-                 title="Библиотека техникума">
-                Библиотека техникума
-              </a>
+          <li class="rubrics-list__item">
+            <a href="/biblioteka/"
+               class="rubrics-list__link"
+               data-bs-dismiss="offcanvas"
+               title="Библиотека техникума">Библиотека техникума</a>
             
           </li>
         
       </ul>
     
-              </div>
             
           </li>
         
-          <li>
-            
-              <a href="/prikaz-zachislenie/"
-                 class="d-block py-1 text-decoration-none"
-                 data-bs-dismiss="offcanvas"
-                 title="Приказ о зачислении">
-                Приказ о зачислении
-              </a>
+          <li class="rubrics-list__item">
+            <a href="/prikaz-zachislenie/"
+               class="rubrics-list__link"
+               data-bs-dismiss="offcanvas"
+               title="Приказ о зачислении">Приказ о зачислении</a>
             
           </li>
         
-          <li>
-            
-              <a href="/raspisanie/"
-                 class="d-block py-1 text-decoration-none"
-                 data-bs-dismiss="offcanvas"
-                 title="Расписание занятий">
-                Расписание занятий
-              </a>
+          <li class="rubrics-list__item">
+            <a href="/raspisanie/"
+               class="rubrics-list__link"
+               data-bs-dismiss="offcanvas"
+               title="Расписание занятий">Расписание занятий</a>
             
           </li>
         
       </ul>
     
-              </div>
             
           </li>
         
-          <li>
-            
-              <a href="/obshestvennoe-mnenie/"
-                 class="d-block py-1 text-decoration-none"
-                 data-bs-dismiss="offcanvas"
-                 title="Результаты изучения общественного мнения">
-                Результаты изучения общественного мнения
-              </a>
+          <li class="rubrics-list__item">
+            <a href="/obshestvennoe-mnenie/"
+               class="rubrics-list__link rubrics-list__link--top"
+               data-bs-dismiss="offcanvas"
+               title="Результаты изучения общественного мнения">Результаты изучения общественного мнения</a>
             
           </li>
         
-          <li>
-            
-              <a href="/vypusknikam/"
-                 class="d-block py-1 text-decoration-none"
-                 data-bs-dismiss="offcanvas"
-                 title="Нашим выпускникам">
-                Нашим выпускникам
-              </a>
+          <li class="rubrics-list__item">
+            <a href="/vypusknikam/"
+               class="rubrics-list__link rubrics-list__link--top"
+               data-bs-dismiss="offcanvas"
+               title="Нашим выпускникам">Нашим выпускникам</a>
             
           </li>
         
-          <li>
-            
-              <a href="/uncategorized/"
-                 class="d-block py-1 text-decoration-none"
-                 data-bs-dismiss="offcanvas"
-                 title="Без рубрики">
-                Без рубрики
-              </a>
+          <li class="rubrics-list__item">
+            <a href="/uncategorized/"
+               class="rubrics-list__link rubrics-list__link--top"
+               data-bs-dismiss="offcanvas"
+               title="Без рубрики">Без рубрики</a>
             
           </li>
         
