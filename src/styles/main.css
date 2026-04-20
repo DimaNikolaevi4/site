@@ -1877,6 +1877,13 @@ section,
   flex-wrap: nowrap;
 }
 
+.header-logo-img {
+  width: auto;
+  height: clamp(32px, 5vw, 52px);
+  max-height: 52px;
+  display: block;
+}
+
 .header .header-icons {
   display: flex;
   align-items: center;
