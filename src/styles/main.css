@@ -1882,6 +1882,32 @@ section,
   height: clamp(32px, 5vw, 52px);
   max-height: 52px;
   display: block;
+  transition: height 0.25s ease;
+}
+
+.header-logo-text {
+  margin-left: 10px;
+  color: var(--heading-color);
+  font-family: var(--heading-font);
+  font-size: clamp(1.05rem, 2vw, 1.35rem);
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  line-height: 1;
+  white-space: nowrap;
+  transition: font-size 0.25s ease;
+}
+
+.header.header--compact {
+  min-height: 54px;
+  box-shadow: 0 2px 16px color-mix(in srgb, var(--default-color), transparent 90%);
+}
+
+.header.header--compact .header-logo-img {
+  height: 34px;
+}
+
+.header.header--compact .header-logo-text {
+  font-size: 1.05rem;
 }
 
 .header .header-icons {
@@ -1907,6 +1933,28 @@ section,
 .header .header-icons a:hover,
 .header .header-icons button:hover {
   color: var(--nav-hover-color);
+}
+
+.header-phone-link {
+  align-items: center;
+  gap: 6px;
+  width: auto;
+  min-width: max-content;
+  height: 36px;
+  padding: 0 10px;
+  border-radius: 999px;
+  color: var(--nav-color);
+  font-size: 0.9rem;
+  font-weight: 600;
+  line-height: 1;
+  text-decoration: none;
+  transition: color 0.2s, background 0.2s;
+}
+
+.header-phone-link:hover {
+  color: var(--accent-color);
+  background: color-mix(in srgb, var(--accent-color), transparent 92%);
+  text-decoration: none;
 }
 
 /* ============================================
@@ -2042,6 +2090,7 @@ section,
 .main-nav__link {
   display: flex;
   align-items: center;
+  position: relative;
   color: var(--nav-color);
   text-decoration: none;
   font-size: 15px;
@@ -2049,13 +2098,42 @@ section,
   font-weight: 400;
   padding: 18px 12px;
   white-space: nowrap;
-  transition: color 0.3s;
+  transition: color 0.3s, padding 0.25s ease;
 }
 
 .main-nav__link:hover,
 .main-nav__link.active {
   color: var(--nav-hover-color);
   text-decoration: none;
+}
+
+.main-nav__link::after {
+  content: "";
+  position: absolute;
+  left: 12px;
+  right: 12px;
+  bottom: 10px;
+  height: 3px;
+  border-radius: 999px;
+  background: var(--accent-color);
+  opacity: 0;
+  transform: scaleX(0.45);
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.main-nav__link:hover::after,
+.main-nav__link.active::after {
+  opacity: 1;
+  transform: scaleX(1);
+}
+
+.header.header--compact .main-nav__link {
+  padding-top: 13px;
+  padding-bottom: 13px;
+}
+
+.header.header--compact .main-nav__link::after {
+  bottom: 7px;
 }
 
 /* ═══════════════════════════════════════════════════════════

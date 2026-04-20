@@ -12,3 +12,15 @@ window.toggleDarkTheme = function() {
     document.body.classList.toggle('dark-theme');
   }
 };
+
+document.addEventListener('DOMContentLoaded', function() {
+  var header = document.getElementById('header');
+  if (!header) return;
+
+  var updateHeaderState = function() {
+    header.classList.toggle('header--compact', window.scrollY > 24);
+  };
+
+  updateHeaderState();
+  window.addEventListener('scroll', updateHeaderState, { passive: true });
+});
