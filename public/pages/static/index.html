@@ -18,1136 +18,1137 @@
 </head>
 <body class="page page--layouts/base.njk">
   <!-- Шапка -->
-  <nav id="navmenu" class="navmenu" role="navigation" aria-label="Основная навигация">
-  <a href="/" class="logo d-flex align-items-center me-auto me-xl-0">
-    <img src="/assets/images/logo.png" alt="ГБПОУ РО 'СИТ'" height="40">
-  </a>
-  <ul>
-REPLACE
- +++++++ REPLACE
-    <li><a href="/svedenija/" title="Официальные сведения об образовательной организации" aria-label="Сведения об образовательной организации">Сведения об образовательной организации</a></li>  
-    <li><a href="https://эос.сит-сальск.рф" target="_blank" rel="noopener" title="Электронная образовательная среда" aria-label="ЭОС">ЭОС</a></li>  
-    <li><a href="#footer" title="Контактная информация" aria-label="Контакты">Контакты</a></li>  
-REPLACE
- +++++++ REPLACE
-  </ul>  
-</nav>  
-<div class="header-icons">  
-REPLACE
- +++++++ REPLACE
-  <a href="/search/" class="me-2" title="Поиск" aria-label="Поиск">  
-    <i class="bi bi-search"></i>  
-  </a>  
-  <button class="me-2" onclick="toggleA11y(); return false;" title="Версия для слабовидящих" aria-label="Версия для слабовидящих">  
-    <i class="bi bi-eye"></i>  
-  </button>  
-  <button class="me-2" onclick="toggleDarkTheme(); return false;" title="Тёмная тема" aria-label="Тёмная тема">  
-    <i class="bi bi-moon-stars"></i>  
-  </button>  
-  <a href="#" class="me-2" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRubrics" title="Все разделы" aria-label="Все разделы">  
-    <i class="bi bi-grid-3x3-gap-fill"></i>  
-  </a>  
-</div>  
+  <header id="header" class="header d-flex align-items-center sticky-top">
+  <div class="container-fluid container-xl position-relative d-flex align-items-center">
 
-<!-- Offcanvas панель с рубриками (простой аккордеон) -->  
-<div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasRubrics" aria-labelledby="offcanvasRubricsLabel">  
-  <div class="offcanvas-header">  
-    <h5 class="offcanvas-title" id="offcanvasRubricsLabel">Разделы сайта</h5>  
-    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Закрыть"></button>  
-  </div>  
-  <div class="offcanvas-body">  
-      
+    <nav id="navmenu" class="navmenu" role="navigation" aria-label="Основная навигация">
+      <a href="/" class="logo d-flex align-items-center me-auto me-xl-0">
+        <img src="/assets/images/logo.png" alt="ГБПОУ РО 'СИТ'" height="40">
+      </a>
+      <ul>
+        <li><a href="/svedenija/" title="Официальные сведения об образовательной организации" aria-label="Сведения об образовательной организации">Сведения об образовательной организации</a></li>
+        <li><a href="https://эос.сит-сальск.рф" target="_blank" rel="noopener" title="Электронная образовательная среда" aria-label="ЭОС">ЭОС</a></li>
+        <li><a href="#footer" title="Контактная информация" aria-label="Контакты">Контакты</a></li>
+      </ul>
+      <i class="mobile-nav-toggle d-xl-none bi bi-list" aria-label="Открыть меню" title="Меню"></i>
+    </nav>
+
+    <div class="header-icons">
+      <a href="/search/" class="me-2" title="Поиск" aria-label="Поиск">
+        <i class="bi bi-search"></i>
+      </a>
+      <button class="me-2" onclick="toggleA11y(); return false;" title="Версия для слабовидящих" aria-label="Версия для слабовидящих">
+        <i class="bi bi-eye"></i>
+      </button>
+      <button class="me-2" onclick="toggleDarkTheme(); return false;" title="Тёмная тема" aria-label="Тёмная тема">
+        <i class="bi bi-moon-stars"></i>
+      </button>
+      <a href="#" class="me-2" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRubrics" title="Все разделы" aria-label="Все разделы">
+        <i class="bi bi-grid-3x3-gap-fill"></i>
+      </a>
+    </div>
+
+  </div>
+</header>
+
+<!-- Offcanvas панель с рубриками (простой аккордеон) -->
+<div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasRubrics" aria-labelledby="offcanvasRubricsLabel">
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title" id="offcanvasRubricsLabel">Разделы сайта</h5>
+    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Закрыть"></button>
+  </div>
+  <div class="offcanvas-body">
     
-      
-      <ul class="list-unstyled ">  
-          
-          <li>  
-              
-              <button class="btn btn-link w-100 text-start d-flex justify-content-between align-items-center"   
-                      type="button"   
-                      data-bs-toggle="collapse"   
-                      data-bs-target="#collapse-abiturientam"   
-                      aria-expanded="false"  
-                      title="АБИТУРИЕНТАМ">  
-                <span>АБИТУРИЕНТАМ</span>  
-                <i class="bi bi-chevron-down transition"></i>  
-              </button>  
-              <div class="collapse" id="collapse-abiturientam">  
-                  
-      <ul class="list-unstyled ms-3">  
-          
-          <li>  
-              
-              <a href="/slovo-direktora/"   
-                 class="d-block py-1 text-decoration-none"   
-                 data-bs-dismiss="offcanvas"  
-                 title="Слово директора">  
-                Слово директора  
-              </a>  
-              
-          </li>  
-          
-          <li>  
-              
-              <a href="/specialnosti/"   
-                 class="d-block py-1 text-decoration-none"   
-                 data-bs-dismiss="offcanvas"  
-                 title="Специальности и профессии">  
-                Специальности и профессии  
-              </a>  
-              
-          </li>  
-          
-          <li>  
-              
-              <a href="/priemnaya-kampaniya-2025/"   
-                 class="d-block py-1 text-decoration-none"   
-                 data-bs-dismiss="offcanvas"  
-                 title="Приемная кампания 2025">  
-                Приемная кампания 2025  
-              </a>  
-              
-          </li>  
-          
-          <li>  
-              
-              <a href="/den-otkrytyh-dverej/"   
-                 class="d-block py-1 text-decoration-none"   
-                 data-bs-dismiss="offcanvas"  
-                 title="День открытых дверей">  
-                День открытых дверей  
-              </a>  
-              
-          </li>  
-          
-          <li>  
-              
-              <a href="/virtualnaya-ekskursiya/"   
-                 class="d-block py-1 text-decoration-none"   
-                 data-bs-dismiss="offcanvas"  
-                 title="Виртуальная экскурсия">  
-                Виртуальная экскурсия  
-              </a>  
-              
-          </li>  
-          
-          <li>  
-              
-              <a href="/podacha-elektronnaya/"   
-                 class="d-block py-1 text-decoration-none"   
-                 data-bs-dismiss="offcanvas"  
-                 title="Подача документов по электронной почте">  
-                Подача документов по электронной почте  
-              </a>  
-              
-          </li>  
-          
-          <li>  
-              
-              <a href="/podacha-pochtovaya/"   
-                 class="d-block py-1 text-decoration-none"   
-                 data-bs-dismiss="offcanvas"  
-                 title="Подача документов через средства почтовой связи">  
-                Подача документов через средства почтовой связи  
-              </a>  
-              
-          </li>  
-          
-          <li>  
-              
-              <a href="/platnaya-osnova/"   
-                 class="d-block py-1 text-decoration-none"   
-                 data-bs-dismiss="offcanvas"  
-                 title="Платная основа обучения">  
-                Платная основа обучения  
-              </a>  
-              
-          </li>  
-          
-          <li>  
-              
-              <a href="/kontakty-grafik/"   
-                 class="d-block py-1 text-decoration-none"   
-                 data-bs-dismiss="offcanvas"  
-                 title="Контакты и график работы">  
-                Контакты и график работы  
-              </a>  
-              
-          </li>  
-          
-      </ul>  
-      
-              </div>  
-              
-          </li>  
-          
-          <li>  
-              
-              <button class="btn btn-link w-100 text-start d-flex justify-content-between align-items-center"   
-                      type="button"   
-                      data-bs-toggle="collapse"   
-                      data-bs-target="#collapse-svedenija"   
-                      aria-expanded="false"  
-                      title="СВЕДЕНИЯ ОБ ОБРАЗОВАТЕЛЬНОЙ ОРГАНИЗАЦИИ">  
-                <span>СВЕДЕНИЯ ОБ ОБРАЗОВАТЕЛЬНОЙ ОРГАНИЗАЦИИ</span>  
-                <i class="bi bi-chevron-down transition"></i>  
-              </button>  
-              <div class="collapse" id="collapse-svedenija">  
-                  
-      <ul class="list-unstyled ms-3">  
-          
-          <li>  
-              
-              <a href="/osnovnye-svedenija/"   
-                 class="d-block py-1 text-decoration-none"   
-                 data-bs-dismiss="offcanvas"  
-                 title="Основные сведения">  
-                Основные сведения  
-              </a>  
-              
-          </li>  
-          
-          <li>  
-              
-              <a href="/struktura-upravleniya/"   
-                 class="d-block py-1 text-decoration-none"   
-                 data-bs-dismiss="offcanvas"  
-                 title="Структура и органы управления">  
-                Структура и органы управления  
-              </a>  
-              
-          </li>  
-          
-          <li>  
-              
-              <button class="btn btn-link w-100 text-start d-flex justify-content-between align-items-center"   
-                      type="button"   
-                      data-bs-toggle="collapse"   
-                      data-bs-target="#collapse-dokumenty"   
-                      aria-expanded="false"  
-                      title="Документы">  
-                <span>Документы</span>  
-                <i class="bi bi-chevron-down transition"></i>  
-              </button>  
-              <div class="collapse" id="collapse-dokumenty">  
-                  
-      <ul class="list-unstyled ms-3">  
-          
-          <li>  
-              
-              <a href="/vsoko/"   
-                 class="d-block py-1 text-decoration-none"   
-                 data-bs-dismiss="offcanvas"  
-                 title="ВСОКО">  
-                ВСОКО  
-              </a>  
-              
-          </li>  
-          
-      </ul>  
-      
-              </div>  
-              
-          </li>  
-          
-          <li>  
-              
-              <button class="btn btn-link w-100 text-start d-flex justify-content-between align-items-center"   
-                      type="button"   
-                      data-bs-toggle="collapse"   
-                      data-bs-target="#collapse-obrazovanie"   
-                      aria-expanded="false"  
-                      title="Образование">  
-                <span>Образование</span>  
-                <i class="bi bi-chevron-down transition"></i>  
-              </button>  
-              <div class="collapse" id="collapse-obrazovanie">  
-                  
-      <ul class="list-unstyled ms-3">  
-          
-          <li>  
-              
-              <a href="/vakantnye-mesta/"   
-                 class="d-block py-1 text-decoration-none"   
-                 data-bs-dismiss="offcanvas"  
-                 title="Вакантные места">  
-                Вакантные места  
-              </a>  
-              
-          </li>  
-          
-          <li>  
-              
-              <a href="/mezhdunarodnoe/"   
-                 class="d-block py-1 text-decoration-none"   
-                 data-bs-dismiss="offcanvas"  
-                 title="Международное сотрудничество">  
-                Международное сотрудничество  
-              </a>  
-              
-          </li>  
-          
-          <li>  
-              
-              <a href="/inklyuzivnoe/"   
-                 class="d-block py-1 text-decoration-none"   
-                 data-bs-dismiss="offcanvas"  
-                 title="Инклюзивное образование">  
-                Инклюзивное образование  
-              </a>  
-              
-          </li>  
-          
-          <li>  
-              
-              <a href="/trudoustrojstvo/"   
-                 class="d-block py-1 text-decoration-none"   
-                 data-bs-dismiss="offcanvas"  
-                 title="Трудоустройство выпускников">  
-                Трудоустройство выпускников  
-              </a>  
-              
-          </li>  
-          
-      </ul>  
-      
-              </div>  
-              
-          </li>  
-          
-          <li>  
-              
-              <button class="btn btn-link w-100 text-start d-flex justify-content-between align-items-center"   
-                      type="button"   
-                      data-bs-toggle="collapse"   
-                      data-bs-target="#collapse-rukovodstvo"   
-                      aria-expanded="false"  
-                      title="Руководство">  
-                <span>Руководство</span>  
-                <i class="bi bi-chevron-down transition"></i>  
-              </button>  
-              <div class="collapse" id="collapse-rukovodstvo">  
-                  
-      <ul class="list-unstyled ms-3">  
-          
-          <li>  
-              
-              <a href="/pedagogicheskiy-sostav/"   
-                 class="d-block py-1 text-decoration-none"   
-                 data-bs-dismiss="offcanvas"  
-                 title="Педагогический состав">  
-                Педагогический состав  
-              </a>  
-              
-          </li>  
-          
-      </ul>  
-      
-              </div>  
-              
-          </li>  
-          
-          <li>  
-              
-              <a href="/standarty/"   
-                 class="d-block py-1 text-decoration-none"   
-                 data-bs-dismiss="offcanvas"  
-                 title="Образовательные стандарты">  
-                Образовательные стандарты  
-              </a>  
-              
-          </li>  
-          
-          <li>  
-              
-              <button class="btn btn-link w-100 text-start d-flex justify-content-between align-items-center"   
-                      type="button"   
-                      data-bs-toggle="collapse"   
-                      data-bs-target="#collapse-materialno-tehnicheskoe"   
-                      aria-expanded="false"  
-                      title="Материально-техническое обеспечение">  
-                <span>Материально-техническое обеспечение</span>  
-                <i class="bi bi-chevron-down transition"></i>  
-              </button>  
-              <div class="collapse" id="collapse-materialno-tehnicheskoe">  
-                  
-      <ul class="list-unstyled ms-3">  
-          
-          <li>  
-              
-              <a href="/elektronnoe-obrazovanie/"   
-                 class="d-block py-1 text-decoration-none"   
-                 data-bs-dismiss="offcanvas"  
-                 title="Электронная информационно-образовательная среда">  
-                Электронная информационно-образовательная среда  
-              </a>  
-              
-          </li>  
-          
-          <li>  
-              
-              <a href="/elektronnaya-biblioteka/"   
-                 class="d-block py-1 text-decoration-none"   
-                 data-bs-dismiss="offcanvas"  
-                 title="Цифровая библиотека">  
-                Цифровая библиотека  
-              </a>  
-              
-          </li>  
-          
-          <li>  
-              
-              <a href="/elektronnye-resursy/"   
-                 class="d-block py-1 text-decoration-none"   
-                 data-bs-dismiss="offcanvas"  
-                 title="Электронные образовательные ресурсы">  
-                Электронные образовательные ресурсы  
-              </a>  
-              
-          </li>  
-          
-          <li>  
-              
-              <a href="/platforma/"   
-                 class="d-block py-1 text-decoration-none"   
-                 data-bs-dismiss="offcanvas"  
-                 title="Образовательная платформа">  
-                Образовательная платформа  
-              </a>  
-              
-          </li>  
-          
-          <li>  
-              
-              <a href="/elektronnoe-raspisanie/"   
-                 class="d-block py-1 text-decoration-none"   
-                 data-bs-dismiss="offcanvas"  
-                 title="Электронное расписание">  
-                Электронное расписание  
-              </a>  
-              
-          </li>  
-          
-          <li>  
-              
-              <a href="/pitanie/"   
-                 class="d-block py-1 text-decoration-none"   
-                 data-bs-dismiss="offcanvas"  
-                 title="Организация питания">  
-                Организация питания  
-              </a>  
-              
-          </li>  
-          
-      </ul>  
-      
-              </div>  
-              
-          </li>  
-          
-          <li>  
-              
-              <a href="/platnye-uslugi/"   
-                 class="d-block py-1 text-decoration-none"   
-                 data-bs-dismiss="offcanvas"  
-                 title="Платные образовательные услуги">  
-                Платные образовательные услуги  
-              </a>  
-              
-          </li>  
-          
-          <li>  
-              
-              <button class="btn btn-link w-100 text-start d-flex justify-content-between align-items-center"   
-                      type="button"   
-                      data-bs-toggle="collapse"   
-                      data-bs-target="#collapse-finansy"   
-                      aria-expanded="false"  
-                      title="Финансово-хозяйственная деятельность">  
-                <span>Финансово-хозяйственная деятельность</span>  
-                <i class="bi bi-chevron-down transition"></i>  
-              </button>  
-              <div class="collapse" id="collapse-finansy">  
-                  
-      <ul class="list-unstyled ms-3">  
-          
-          <li>  
-              
-              <a href="/stipendii/"   
-                 class="d-block py-1 text-decoration-none"   
-                 data-bs-dismiss="offcanvas"  
-                 title="Стипендии и меры поддержки">  
-                Стипендии и меры поддержки  
-              </a>  
-              
-          </li>  
-          
-      </ul>  
-      
-              </div>  
-              
-          </li>  
-          
-      </ul>  
-      
-              </div>  
-              
-          </li>  
-          
-          <li>  
-              
-              <button class="btn btn-link w-100 text-start d-flex justify-content-between align-items-center"   
-                      type="button"   
-                      data-bs-toggle="collapse"   
-                      data-bs-target="#collapse-uchebno-metodicheskaya"   
-                      aria-expanded="false"  
-                      title="УЧЕБНО-МЕТОДИЧЕСКАЯ РАБОТА">  
-                <span>УЧЕБНО-МЕТОДИЧЕСКАЯ РАБОТА</span>  
-                <i class="bi bi-chevron-down transition"></i>  
-              </button>  
-              <div class="collapse" id="collapse-uchebno-metodicheskaya">  
-                  
-      <ul class="list-unstyled ms-3">  
-          
-          <li>  
-              
-              <a href="/elektronnoe-obuchenie/"   
-                 class="d-block py-1 text-decoration-none"   
-                 data-bs-dismiss="offcanvas"  
-                 title="Электронное обучение и ДОТ">  
-                Электронное обучение и ДОТ  
-              </a>  
-              
-          </li>  
-          
-          <li>  
-              
-              <a href="/dopolnitelnoe-obrazovanie/"   
-                 class="d-block py-1 text-decoration-none"   
-                 data-bs-dismiss="offcanvas"  
-                 title="Дополнительное образование">  
-                Дополнительное образование  
-              </a>  
-              
-          </li>  
-          
-          <li>  
-              
-              <a href="/praktika/"   
-                 class="d-block py-1 text-decoration-none"   
-                 data-bs-dismiss="offcanvas"  
-                 title="Практика">  
-                Практика  
-              </a>  
-              
-          </li>  
-          
-      </ul>  
-      
-              </div>  
-              
-          </li>  
-          
-          <li>  
-              
-              <button class="btn btn-link w-100 text-start d-flex justify-content-between align-items-center"   
-                      type="button"   
-                      data-bs-toggle="collapse"   
-                      data-bs-target="#collapse-vospitanie"   
-                      aria-expanded="false"  
-                      title="ВОСПИТАТЕЛЬНАЯ РАБОТА">  
-                <span>ВОСПИТАТЕЛЬНАЯ РАБОТА</span>  
-                <i class="bi bi-chevron-down transition"></i>  
-              </button>  
-              <div class="collapse" id="collapse-vospitanie">  
-                  
-      <ul class="list-unstyled ms-3">  
-          
-          <li>  
-              
-              <a href="/shtab/"   
-                 class="d-block py-1 text-decoration-none"   
-                 data-bs-dismiss="offcanvas"  
-                 title="Штаб воспитательной работы">  
-                Штаб воспитательной работы  
-              </a>  
-              
-          </li>  
-          
-          <li>  
-              
-              <a href="/plan/"   
-                 class="d-block py-1 text-decoration-none"   
-                 data-bs-dismiss="offcanvas"  
-                 title="План воспитательной работы">  
-                План воспитательной работы  
-              </a>  
-              
-          </li>  
-          
-          <li>  
-              
-              <a href="/mo-rukovoditelej/"   
-                 class="d-block py-1 text-decoration-none"   
-                 data-bs-dismiss="offcanvas"  
-                 title="МО руководителей учебных групп">  
-                МО руководителей учебных групп  
-              </a>  
-              
-          </li>  
-          
-          <li>  
-              
-              <a href="/samoupravlenie/"   
-                 class="d-block py-1 text-decoration-none"   
-                 data-bs-dismiss="offcanvas"  
-                 title="Студенческое самоуправление">  
-                Студенческое самоуправление  
-              </a>  
-              
-          </li>  
-          
-          <li>  
-              
-              <button class="btn btn-link w-100 text-start d-flex justify-content-between align-items-center"   
-                      type="button"   
-                      data-bs-toggle="collapse"   
-                      data-bs-target="#collapse-volonterstvo"   
-                      aria-expanded="false"  
-                      title="Волонтерское движение">  
-                <span>Волонтерское движение</span>  
-                <i class="bi bi-chevron-down transition"></i>  
-              </button>  
-              <div class="collapse" id="collapse-volonterstvo">  
-                  
-      <ul class="list-unstyled ms-3">  
-          
-          <li>  
-              
-              <a href="/raduga-dobra/"   
-                 class="d-block py-1 text-decoration-none"   
-                 data-bs-dismiss="offcanvas"  
-                 title="ВОЛОНТЁРСКИЙ ОТРЯД «РАДУГА ДОБРА»">  
-                ВОЛОНТЁРСКИЙ ОТРЯД «РАДУГА ДОБРА»  
-              </a>  
-              
-          </li>  
-          
-      </ul>  
-      
-              </div>  
-              
-          </li>  
-          
-          <li>  
-              
-              <button class="btn btn-link w-100 text-start d-flex justify-content-between align-items-center"   
-                      type="button"   
-                      data-bs-toggle="collapse"   
-                      data-bs-target="#collapse-patrioticheskoe"   
-                      aria-expanded="false"  
-                      title="Патриотическое воспитание">  
-                <span>Патриотическое воспитание</span>  
-                <i class="bi bi-chevron-down transition"></i>  
-              </button>  
-              <div class="collapse" id="collapse-patrioticheskoe">  
-                  
-      <ul class="list-unstyled ms-3">  
-          
-          <li>  
-              
-              <a href="/velikaya-pobeda/"   
-                 class="d-block py-1 text-decoration-none"   
-                 data-bs-dismiss="offcanvas"  
-                 title="Великая Победа">  
-                Великая Победа  
-              </a>  
-              
-          </li>  
-          
-          <li>  
-              
-              <a href="/vitjaz/"   
-                 class="d-block py-1 text-decoration-none"   
-                 data-bs-dismiss="offcanvas"  
-                 title="Клуб «ВИТЯЗЬ»">  
-                Клуб «ВИТЯЗЬ»  
-              </a>  
-              
-          </li>  
-          
-      </ul>  
-      
-              </div>  
-              
-          </li>  
-          
-          <li>  
-              
-              <button class="btn btn-link w-100 text-start d-flex justify-content-between align-items-center"   
-                      type="button"   
-                      data-bs-toggle="collapse"   
-                      data-bs-target="#collapse-kulturno-massovaya"   
-                      aria-expanded="false"  
-                      title="Культурно-массовая работа">  
-                <span>Культурно-массовая работа</span>  
-                <i class="bi bi-chevron-down transition"></i>  
-              </button>  
-              <div class="collapse" id="collapse-kulturno-massovaya">  
-                  
-      <ul class="list-unstyled ms-3">  
-          
-          <li>  
-              
-              <a href="/teatralnyj-klub/"   
-                 class="d-block py-1 text-decoration-none"   
-                 data-bs-dismiss="offcanvas"  
-                 title="Театральный клуб &quot;Мираж&quot;">  
-                Театральный клуб &quot;Мираж&quot;  
-              </a>  
-              
-          </li>  
-          
-          <li>  
-              
-              <a href="/mediacentr/"   
-                 class="d-block py-1 text-decoration-none"   
-                 data-bs-dismiss="offcanvas"  
-                 title="Медиацентр «Новости СИТ»">  
-                Медиацентр «Новости СИТ»  
-              </a>  
-              
-          </li>  
-          
-          <li>  
-              
-              <a href="/pozdravlenija/"   
-                 class="d-block py-1 text-decoration-none"   
-                 data-bs-dismiss="offcanvas"  
-                 title="Поздравления">  
-                Поздравления  
-              </a>  
-              
-          </li>  
-          
-          <li>  
-              
-              <a href="/dvizhenie-pervyh/"   
-                 class="d-block py-1 text-decoration-none"   
-                 data-bs-dismiss="offcanvas"  
-                 title="«Движение Первых»">  
-                «Движение Первых»  
-              </a>  
-              
-          </li>  
-          
-      </ul>  
-      
-              </div>  
-              
-          </li>  
-          
-          <li>  
-              
-              <button class="btn btn-link w-100 text-start d-flex justify-content-between align-items-center"   
-                      type="button"   
-                      data-bs-toggle="collapse"   
-                      data-bs-target="#collapse-fizkultura-sport"   
-                      aria-expanded="false"  
-                      title="Физическая культура и спорт">  
-                <span>Физическая культура и спорт</span>  
-                <i class="bi bi-chevron-down transition"></i>  
-              </button>  
-              <div class="collapse" id="collapse-fizkultura-sport">  
-                  
-      <ul class="list-unstyled ms-3">  
-          
-          <li>  
-              
-              <a href="/ssk-avangard/"   
-                 class="d-block py-1 text-decoration-none"   
-                 data-bs-dismiss="offcanvas"  
-                 title="ССК &quot;Авангард&quot;">  
-                ССК &quot;Авангард&quot;  
-              </a>  
-              
-          </li>  
-          
-      </ul>  
-      
-              </div>  
-              
-          </li>  
-          
-          <li>  
-              
-              <a href="/upolnomochennyj-prava/"   
-                 class="d-block py-1 text-decoration-none"   
-                 data-bs-dismiss="offcanvas"  
-                 title="Уполномоченный по правам ребенка">  
-                Уполномоченный по правам ребенка  
-              </a>  
-              
-          </li>  
-          
-      </ul>  
-      
-              </div>  
-              
-          </li>  
-          
-          <li>  
-              
-              <button class="btn btn-link w-100 text-start d-flex justify-content-between align-items-center"   
-                      type="button"   
-                      data-bs-toggle="collapse"   
-                      data-bs-target="#collapse-partnerstvo"   
-                      aria-expanded="false"  
-                      title="СОЦИАЛЬНОЕ ПАРТНЕРСТВО И ПРОФОРИЕНТАЦИЯ">  
-                <span>СОЦИАЛЬНОЕ ПАРТНЕРСТВО И ПРОФОРИЕНТАЦИЯ</span>  
-                <i class="bi bi-chevron-down transition"></i>  
-              </button>  
-              <div class="collapse" id="collapse-partnerstvo">  
-                  
-      <ul class="list-unstyled ms-3">  
-          
-          <li>  
-              
-              <a href="/vuzy/"   
-                 class="d-block py-1 text-decoration-none"   
-                 data-bs-dismiss="offcanvas"  
-                 title="Сотрудничество с ВУЗами">  
-                Сотрудничество с ВУЗами  
-              </a>  
-              
-          </li>  
-          
-          <li>  
-              
-              <a href="/zanyatost/"   
-                 class="d-block py-1 text-decoration-none"   
-                 data-bs-dismiss="offcanvas"  
-                 title="Сотрудничество с органами занятости">  
-                Сотрудничество с органами занятости  
-              </a>  
-              
-          </li>  
-          
-          <li>  
-              
-              <a href="/predprijatija/"   
-                 class="d-block py-1 text-decoration-none"   
-                 data-bs-dismiss="offcanvas"  
-                 title="Сотрудничество с предприятиями">  
-                Сотрудничество с предприятиями  
-              </a>  
-              
-          </li>  
-          
-          <li>  
-              
-              <a href="/shkoly/"   
-                 class="d-block py-1 text-decoration-none"   
-                 data-bs-dismiss="offcanvas"  
-                 title="Сотрудничество со школами">  
-                Сотрудничество со школами  
-              </a>  
-              
-          </li>  
-          
-      </ul>  
-      
-              </div>  
-              
-          </li>  
-          
-          <li>  
-              
-              <button class="btn btn-link w-100 text-start d-flex justify-content-between align-items-center"   
-                      type="button"   
-                      data-bs-toggle="collapse"   
-                      data-bs-target="#collapse-psihologicheskoe"   
-                      aria-expanded="false"  
-                      title="ПСИХОЛОГИЧЕСКОЕ СОПРОВОЖДЕНИЕ">  
-                <span>ПСИХОЛОГИЧЕСКОЕ СОПРОВОЖДЕНИЕ</span>  
-                <i class="bi bi-chevron-down transition"></i>  
-              </button>  
-              <div class="collapse" id="collapse-psihologicheskoe">  
-                  
-      <ul class="list-unstyled ms-3">  
-          
-          <li>  
-              
-              <a href="/organizacionno-metodicheskaya/"   
-                 class="d-block py-1 text-decoration-none"   
-                 data-bs-dismiss="offcanvas"  
-                 title="Организационно-методическая основа">  
-                Организационно-методическая основа  
-              </a>  
-              
-          </li>  
-          
-          <li>  
-              
-              <a href="/rezultaty-testirovanij/"   
-                 class="d-block py-1 text-decoration-none"   
-                 data-bs-dismiss="offcanvas"  
-                 title="Результаты тестирований">  
-                Результаты тестирований  
-              </a>  
-              
-          </li>  
-          
-          <li>  
-              
-              <a href="/sovety-prepodavatelyam/"   
-                 class="d-block py-1 text-decoration-none"   
-                 data-bs-dismiss="offcanvas"  
-                 title="Советы преподавателям">  
-                Советы преподавателям  
-              </a>  
-              
-          </li>  
-          
-          <li>  
-              
-              <a href="/sovety-roditelyam/"   
-                 class="d-block py-1 text-decoration-none"   
-                 data-bs-dismiss="offcanvas"  
-                 title="Советы родителям">  
-                Советы родителям  
-              </a>  
-              
-          </li>  
-          
-          <li>  
-              
-              <a href="/sovety-studentam/"   
-                 class="d-block py-1 text-decoration-none"   
-                 data-bs-dismiss="offcanvas"  
-                 title="Советы студентам">  
-                Советы студентам  
-              </a>  
-              
-          </li>  
-          
-          <li>  
-              
-              <a href="/profilaktika-narkotikov/"   
-                 class="d-block py-1 text-decoration-none"   
-                 data-bs-dismiss="offcanvas"  
-                 title="Профилактика наркотиков">  
-                Профилактика наркотиков  
-              </a>  
-              
-          </li>  
-          
-          <li>  
-              
-              <a href="/podderzhka-ovz/"   
-                 class="d-block py-1 text-decoration-none"   
-                 data-bs-dismiss="offcanvas"  
-                 title="Поддержка лиц с ОВЗ">  
-                Поддержка лиц с ОВЗ  
-              </a>  
-              
-          </li>  
-          
-      </ul>  
-      
-              </div>  
-              
-          </li>  
-          
-          <li>  
-              
-              <button class="btn btn-link w-100 text-start d-flex justify-content-between align-items-center"   
-                      type="button"   
-                      data-bs-toggle="collapse"   
-                      data-bs-target="#collapse-bezopasnost"   
-                      aria-expanded="false"  
-                      title="КОМПЛЕКСНАЯ БЕЗОПАСНОСТЬ">  
-                <span>КОМПЛЕКСНАЯ БЕЗОПАСНОСТЬ</span>  
-                <i class="bi bi-chevron-down transition"></i>  
-              </button>  
-              <div class="collapse" id="collapse-bezopasnost">  
-                  
-      <ul class="list-unstyled ms-3">  
-          
-          <li>  
-              
-              <a href="/antiterror/"   
-                 class="d-block py-1 text-decoration-none"   
-                 data-bs-dismiss="offcanvas"  
-                 title="Антитеррористическая защищенность">  
-                Антитеррористическая защищенность  
-              </a>  
-              
-          </li>  
-          
-          <li>  
-              
-              <a href="/ekstremizm/"   
-                 class="d-block py-1 text-decoration-none"   
-                 data-bs-dismiss="offcanvas"  
-                 title="Профилактика экстремизма">  
-                Профилактика экстремизма  
-              </a>  
-              
-          </li>  
-          
-          <li>  
-              
-              <a href="/korrupcija/"   
-                 class="d-block py-1 text-decoration-none"   
-                 data-bs-dismiss="offcanvas"  
-                 title="Противодействие коррупции">  
-                Противодействие коррупции  
-              </a>  
-              
-          </li>  
-          
-          <li>  
-              
-              <a href="/pozharnaya/"   
-                 class="d-block py-1 text-decoration-none"   
-                 data-bs-dismiss="offcanvas"  
-                 title="Пожарная безопасность">  
-                Пожарная безопасность  
-              </a>  
-              
-          </li>  
-          
-      </ul>  
-      
-              </div>  
-              
-          </li>  
-          
-          <li>  
-              
-              <button class="btn btn-link w-100 text-start d-flex justify-content-between align-items-center"   
-                      type="button"   
-                      data-bs-toggle="collapse"   
-                      data-bs-target="#collapse-studentam-roditeljam"   
-                      aria-expanded="false"  
-                      title="СТУДЕНТАМ И ИХ РОДИТЕЛЯМ">  
-                <span>СТУДЕНТАМ И ИХ РОДИТЕЛЯМ</span>  
-                <i class="bi bi-chevron-down transition"></i>  
-              </button>  
-              <div class="collapse" id="collapse-studentam-roditeljam">  
-                  
-      <ul class="list-unstyled ms-3">  
-          
-          <li>  
-              
-              <button class="btn btn-link w-100 text-start d-flex justify-content-between align-items-center"   
-                      type="button"   
-                      data-bs-toggle="collapse"   
-                      data-bs-target="#collapse-resursy"   
-                      aria-expanded="false"  
-                      title="Информационно-образовательные ресурсы">  
-                <span>Информационно-образовательные ресурсы</span>  
-                <i class="bi bi-chevron-down transition"></i>  
-              </button>  
-              <div class="collapse" id="collapse-resursy">  
-                  
-      <ul class="list-unstyled ms-3">  
-          
-          <li>  
-              
-              <a href="/novosti/"   
-                 class="d-block py-1 text-decoration-none"   
-                 data-bs-dismiss="offcanvas"  
-                 title="Новости">  
-                Новости  
-              </a>  
-              
-          </li>  
-          
-          <li>  
-              
-              <a href="/biblioteka/"   
-                 class="d-block py-1 text-decoration-none"   
-                 data-bs-dismiss="offcanvas"  
-                 title="Библиотека техникума">  
-                Библиотека техникума  
-              </a>  
-              
-          </li>  
-          
-      </ul>  
-      
-              </div>  
-              
-          </li>  
-          
-          <li>  
-              
-              <a href="/prikaz-zachislenie/"   
-                 class="d-block py-1 text-decoration-none"   
-                 data-bs-dismiss="offcanvas"  
-                 title="Приказ о зачислении">  
-                Приказ о зачислении  
-              </a>  
-              
-          </li>  
-          
-          <li>  
-              
-              <a href="/raspisanie/"   
-                 class="d-block py-1 text-decoration-none"   
-                 data-bs-dismiss="offcanvas"  
-                 title="Расписание занятий">  
-                Расписание занятий  
-              </a>  
-              
-          </li>  
-          
-      </ul>  
-      
-              </div>  
-              
-          </li>  
-          
-          <li>  
-              
-              <a href="/obshestvennoe-mnenie/"   
-                 class="d-block py-1 text-decoration-none"   
-                 data-bs-dismiss="offcanvas"  
-                 title="Результаты изучения общественного мнения">  
-                Результаты изучения общественного мнения  
-              </a>  
-              
-          </li>  
-          
-          <li>  
-              
-              <a href="/vypusknikam/"   
-                 class="d-block py-1 text-decoration-none"   
-                 data-bs-dismiss="offcanvas"  
-                 title="Нашим выпускникам">  
-                Нашим выпускникам  
-              </a>  
-              
-          </li>  
-          
-          <li>  
-              
-              <a href="/uncategorized/"   
-                 class="d-block py-1 text-decoration-none"   
-                 data-bs-dismiss="offcanvas"  
-                 title="Без рубрики">  
-                Без рубрики  
-              </a>  
-              
-          </li>  
-          
-      </ul>  
-      
-  </div>  
-</div>  
 
+    
+      <ul class="list-unstyled ">
+        
+          <li>
+            
+              <button class="btn btn-link w-100 text-start d-flex justify-content-between align-items-center"
+                      type="button"
+                      data-bs-toggle="collapse"
+                      data-bs-target="#collapse-abiturientam"
+                      aria-expanded="false"
+                      title="АБИТУРИЕНТАМ">
+                <span>АБИТУРИЕНТАМ</span>
+                <i class="bi bi-chevron-down transition"></i>
+              </button>
+              <div class="collapse" id="collapse-abiturientam">
+                
+      <ul class="list-unstyled ms-3">
+        
+          <li>
+            
+              <a href="/slovo-direktora/"
+                 class="d-block py-1 text-decoration-none"
+                 data-bs-dismiss="offcanvas"
+                 title="Слово директора">
+                Слово директора
+              </a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="/specialnosti/"
+                 class="d-block py-1 text-decoration-none"
+                 data-bs-dismiss="offcanvas"
+                 title="Специальности и профессии">
+                Специальности и профессии
+              </a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="/priemnaya-kampaniya-2025/"
+                 class="d-block py-1 text-decoration-none"
+                 data-bs-dismiss="offcanvas"
+                 title="Приемная кампания 2025">
+                Приемная кампания 2025
+              </a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="/den-otkrytyh-dverej/"
+                 class="d-block py-1 text-decoration-none"
+                 data-bs-dismiss="offcanvas"
+                 title="День открытых дверей">
+                День открытых дверей
+              </a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="/virtualnaya-ekskursiya/"
+                 class="d-block py-1 text-decoration-none"
+                 data-bs-dismiss="offcanvas"
+                 title="Виртуальная экскурсия">
+                Виртуальная экскурсия
+              </a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="/podacha-elektronnaya/"
+                 class="d-block py-1 text-decoration-none"
+                 data-bs-dismiss="offcanvas"
+                 title="Подача документов по электронной почте">
+                Подача документов по электронной почте
+              </a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="/podacha-pochtovaya/"
+                 class="d-block py-1 text-decoration-none"
+                 data-bs-dismiss="offcanvas"
+                 title="Подача документов через средства почтовой связи">
+                Подача документов через средства почтовой связи
+              </a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="/platnaya-osnova/"
+                 class="d-block py-1 text-decoration-none"
+                 data-bs-dismiss="offcanvas"
+                 title="Платная основа обучения">
+                Платная основа обучения
+              </a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="/kontakty-grafik/"
+                 class="d-block py-1 text-decoration-none"
+                 data-bs-dismiss="offcanvas"
+                 title="Контакты и график работы">
+                Контакты и график работы
+              </a>
+            
+          </li>
+        
+      </ul>
+    
+              </div>
+            
+          </li>
+        
+          <li>
+            
+              <button class="btn btn-link w-100 text-start d-flex justify-content-between align-items-center"
+                      type="button"
+                      data-bs-toggle="collapse"
+                      data-bs-target="#collapse-svedenija"
+                      aria-expanded="false"
+                      title="СВЕДЕНИЯ ОБ ОБРАЗОВАТЕЛЬНОЙ ОРГАНИЗАЦИИ">
+                <span>СВЕДЕНИЯ ОБ ОБРАЗОВАТЕЛЬНОЙ ОРГАНИЗАЦИИ</span>
+                <i class="bi bi-chevron-down transition"></i>
+              </button>
+              <div class="collapse" id="collapse-svedenija">
+                
+      <ul class="list-unstyled ms-3">
+        
+          <li>
+            
+              <a href="/osnovnye-svedenija/"
+                 class="d-block py-1 text-decoration-none"
+                 data-bs-dismiss="offcanvas"
+                 title="Основные сведения">
+                Основные сведения
+              </a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="/struktura-upravleniya/"
+                 class="d-block py-1 text-decoration-none"
+                 data-bs-dismiss="offcanvas"
+                 title="Структура и органы управления">
+                Структура и органы управления
+              </a>
+            
+          </li>
+        
+          <li>
+            
+              <button class="btn btn-link w-100 text-start d-flex justify-content-between align-items-center"
+                      type="button"
+                      data-bs-toggle="collapse"
+                      data-bs-target="#collapse-dokumenty"
+                      aria-expanded="false"
+                      title="Документы">
+                <span>Документы</span>
+                <i class="bi bi-chevron-down transition"></i>
+              </button>
+              <div class="collapse" id="collapse-dokumenty">
+                
+      <ul class="list-unstyled ms-3">
+        
+          <li>
+            
+              <a href="/vsoko/"
+                 class="d-block py-1 text-decoration-none"
+                 data-bs-dismiss="offcanvas"
+                 title="ВСОКО">
+                ВСОКО
+              </a>
+            
+          </li>
+        
+      </ul>
+    
+              </div>
+            
+          </li>
+        
+          <li>
+            
+              <button class="btn btn-link w-100 text-start d-flex justify-content-between align-items-center"
+                      type="button"
+                      data-bs-toggle="collapse"
+                      data-bs-target="#collapse-obrazovanie"
+                      aria-expanded="false"
+                      title="Образование">
+                <span>Образование</span>
+                <i class="bi bi-chevron-down transition"></i>
+              </button>
+              <div class="collapse" id="collapse-obrazovanie">
+                
+      <ul class="list-unstyled ms-3">
+        
+          <li>
+            
+              <a href="/vakantnye-mesta/"
+                 class="d-block py-1 text-decoration-none"
+                 data-bs-dismiss="offcanvas"
+                 title="Вакантные места">
+                Вакантные места
+              </a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="/mezhdunarodnoe/"
+                 class="d-block py-1 text-decoration-none"
+                 data-bs-dismiss="offcanvas"
+                 title="Международное сотрудничество">
+                Международное сотрудничество
+              </a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="/inklyuzivnoe/"
+                 class="d-block py-1 text-decoration-none"
+                 data-bs-dismiss="offcanvas"
+                 title="Инклюзивное образование">
+                Инклюзивное образование
+              </a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="/trudoustrojstvo/"
+                 class="d-block py-1 text-decoration-none"
+                 data-bs-dismiss="offcanvas"
+                 title="Трудоустройство выпускников">
+                Трудоустройство выпускников
+              </a>
+            
+          </li>
+        
+      </ul>
+    
+              </div>
+            
+          </li>
+        
+          <li>
+            
+              <button class="btn btn-link w-100 text-start d-flex justify-content-between align-items-center"
+                      type="button"
+                      data-bs-toggle="collapse"
+                      data-bs-target="#collapse-rukovodstvo"
+                      aria-expanded="false"
+                      title="Руководство">
+                <span>Руководство</span>
+                <i class="bi bi-chevron-down transition"></i>
+              </button>
+              <div class="collapse" id="collapse-rukovodstvo">
+                
+      <ul class="list-unstyled ms-3">
+        
+          <li>
+            
+              <a href="/pedagogicheskiy-sostav/"
+                 class="d-block py-1 text-decoration-none"
+                 data-bs-dismiss="offcanvas"
+                 title="Педагогический состав">
+                Педагогический состав
+              </a>
+            
+          </li>
+        
+      </ul>
+    
+              </div>
+            
+          </li>
+        
+          <li>
+            
+              <a href="/standarty/"
+                 class="d-block py-1 text-decoration-none"
+                 data-bs-dismiss="offcanvas"
+                 title="Образовательные стандарты">
+                Образовательные стандарты
+              </a>
+            
+          </li>
+        
+          <li>
+            
+              <button class="btn btn-link w-100 text-start d-flex justify-content-between align-items-center"
+                      type="button"
+                      data-bs-toggle="collapse"
+                      data-bs-target="#collapse-materialno-tehnicheskoe"
+                      aria-expanded="false"
+                      title="Материально-техническое обеспечение">
+                <span>Материально-техническое обеспечение</span>
+                <i class="bi bi-chevron-down transition"></i>
+              </button>
+              <div class="collapse" id="collapse-materialno-tehnicheskoe">
+                
+      <ul class="list-unstyled ms-3">
+        
+          <li>
+            
+              <a href="/elektronnoe-obrazovanie/"
+                 class="d-block py-1 text-decoration-none"
+                 data-bs-dismiss="offcanvas"
+                 title="Электронная информационно-образовательная среда">
+                Электронная информационно-образовательная среда
+              </a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="/elektronnaya-biblioteka/"
+                 class="d-block py-1 text-decoration-none"
+                 data-bs-dismiss="offcanvas"
+                 title="Цифровая библиотека">
+                Цифровая библиотека
+              </a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="/elektronnye-resursy/"
+                 class="d-block py-1 text-decoration-none"
+                 data-bs-dismiss="offcanvas"
+                 title="Электронные образовательные ресурсы">
+                Электронные образовательные ресурсы
+              </a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="/platforma/"
+                 class="d-block py-1 text-decoration-none"
+                 data-bs-dismiss="offcanvas"
+                 title="Образовательная платформа">
+                Образовательная платформа
+              </a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="/elektronnoe-raspisanie/"
+                 class="d-block py-1 text-decoration-none"
+                 data-bs-dismiss="offcanvas"
+                 title="Электронное расписание">
+                Электронное расписание
+              </a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="/pitanie/"
+                 class="d-block py-1 text-decoration-none"
+                 data-bs-dismiss="offcanvas"
+                 title="Организация питания">
+                Организация питания
+              </a>
+            
+          </li>
+        
+      </ul>
+    
+              </div>
+            
+          </li>
+        
+          <li>
+            
+              <a href="/platnye-uslugi/"
+                 class="d-block py-1 text-decoration-none"
+                 data-bs-dismiss="offcanvas"
+                 title="Платные образовательные услуги">
+                Платные образовательные услуги
+              </a>
+            
+          </li>
+        
+          <li>
+            
+              <button class="btn btn-link w-100 text-start d-flex justify-content-between align-items-center"
+                      type="button"
+                      data-bs-toggle="collapse"
+                      data-bs-target="#collapse-finansy"
+                      aria-expanded="false"
+                      title="Финансово-хозяйственная деятельность">
+                <span>Финансово-хозяйственная деятельность</span>
+                <i class="bi bi-chevron-down transition"></i>
+              </button>
+              <div class="collapse" id="collapse-finansy">
+                
+      <ul class="list-unstyled ms-3">
+        
+          <li>
+            
+              <a href="/stipendii/"
+                 class="d-block py-1 text-decoration-none"
+                 data-bs-dismiss="offcanvas"
+                 title="Стипендии и меры поддержки">
+                Стипендии и меры поддержки
+              </a>
+            
+          </li>
+        
+      </ul>
+    
+              </div>
+            
+          </li>
+        
+      </ul>
+    
+              </div>
+            
+          </li>
+        
+          <li>
+            
+              <button class="btn btn-link w-100 text-start d-flex justify-content-between align-items-center"
+                      type="button"
+                      data-bs-toggle="collapse"
+                      data-bs-target="#collapse-uchebno-metodicheskaya"
+                      aria-expanded="false"
+                      title="УЧЕБНО-МЕТОДИЧЕСКАЯ РАБОТА">
+                <span>УЧЕБНО-МЕТОДИЧЕСКАЯ РАБОТА</span>
+                <i class="bi bi-chevron-down transition"></i>
+              </button>
+              <div class="collapse" id="collapse-uchebno-metodicheskaya">
+                
+      <ul class="list-unstyled ms-3">
+        
+          <li>
+            
+              <a href="/elektronnoe-obuchenie/"
+                 class="d-block py-1 text-decoration-none"
+                 data-bs-dismiss="offcanvas"
+                 title="Электронное обучение и ДОТ">
+                Электронное обучение и ДОТ
+              </a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="/dopolnitelnoe-obrazovanie/"
+                 class="d-block py-1 text-decoration-none"
+                 data-bs-dismiss="offcanvas"
+                 title="Дополнительное образование">
+                Дополнительное образование
+              </a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="/praktika/"
+                 class="d-block py-1 text-decoration-none"
+                 data-bs-dismiss="offcanvas"
+                 title="Практика">
+                Практика
+              </a>
+            
+          </li>
+        
+      </ul>
+    
+              </div>
+            
+          </li>
+        
+          <li>
+            
+              <button class="btn btn-link w-100 text-start d-flex justify-content-between align-items-center"
+                      type="button"
+                      data-bs-toggle="collapse"
+                      data-bs-target="#collapse-vospitanie"
+                      aria-expanded="false"
+                      title="ВОСПИТАТЕЛЬНАЯ РАБОТА">
+                <span>ВОСПИТАТЕЛЬНАЯ РАБОТА</span>
+                <i class="bi bi-chevron-down transition"></i>
+              </button>
+              <div class="collapse" id="collapse-vospitanie">
+                
+      <ul class="list-unstyled ms-3">
+        
+          <li>
+            
+              <a href="/shtab/"
+                 class="d-block py-1 text-decoration-none"
+                 data-bs-dismiss="offcanvas"
+                 title="Штаб воспитательной работы">
+                Штаб воспитательной работы
+              </a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="/plan/"
+                 class="d-block py-1 text-decoration-none"
+                 data-bs-dismiss="offcanvas"
+                 title="План воспитательной работы">
+                План воспитательной работы
+              </a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="/mo-rukovoditelej/"
+                 class="d-block py-1 text-decoration-none"
+                 data-bs-dismiss="offcanvas"
+                 title="МО руководителей учебных групп">
+                МО руководителей учебных групп
+              </a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="/samoupravlenie/"
+                 class="d-block py-1 text-decoration-none"
+                 data-bs-dismiss="offcanvas"
+                 title="Студенческое самоуправление">
+                Студенческое самоуправление
+              </a>
+            
+          </li>
+        
+          <li>
+            
+              <button class="btn btn-link w-100 text-start d-flex justify-content-between align-items-center"
+                      type="button"
+                      data-bs-toggle="collapse"
+                      data-bs-target="#collapse-volonterstvo"
+                      aria-expanded="false"
+                      title="Волонтерское движение">
+                <span>Волонтерское движение</span>
+                <i class="bi bi-chevron-down transition"></i>
+              </button>
+              <div class="collapse" id="collapse-volonterstvo">
+                
+      <ul class="list-unstyled ms-3">
+        
+          <li>
+            
+              <a href="/raduga-dobra/"
+                 class="d-block py-1 text-decoration-none"
+                 data-bs-dismiss="offcanvas"
+                 title="ВОЛОНТЁРСКИЙ ОТРЯД «РАДУГА ДОБРА»">
+                ВОЛОНТЁРСКИЙ ОТРЯД «РАДУГА ДОБРА»
+              </a>
+            
+          </li>
+        
+      </ul>
+    
+              </div>
+            
+          </li>
+        
+          <li>
+            
+              <button class="btn btn-link w-100 text-start d-flex justify-content-between align-items-center"
+                      type="button"
+                      data-bs-toggle="collapse"
+                      data-bs-target="#collapse-patrioticheskoe"
+                      aria-expanded="false"
+                      title="Патриотическое воспитание">
+                <span>Патриотическое воспитание</span>
+                <i class="bi bi-chevron-down transition"></i>
+              </button>
+              <div class="collapse" id="collapse-patrioticheskoe">
+                
+      <ul class="list-unstyled ms-3">
+        
+          <li>
+            
+              <a href="/velikaya-pobeda/"
+                 class="d-block py-1 text-decoration-none"
+                 data-bs-dismiss="offcanvas"
+                 title="Великая Победа">
+                Великая Победа
+              </a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="/vitjaz/"
+                 class="d-block py-1 text-decoration-none"
+                 data-bs-dismiss="offcanvas"
+                 title="Клуб «ВИТЯЗЬ»">
+                Клуб «ВИТЯЗЬ»
+              </a>
+            
+          </li>
+        
+      </ul>
+    
+              </div>
+            
+          </li>
+        
+          <li>
+            
+              <button class="btn btn-link w-100 text-start d-flex justify-content-between align-items-center"
+                      type="button"
+                      data-bs-toggle="collapse"
+                      data-bs-target="#collapse-kulturno-massovaya"
+                      aria-expanded="false"
+                      title="Культурно-массовая работа">
+                <span>Культурно-массовая работа</span>
+                <i class="bi bi-chevron-down transition"></i>
+              </button>
+              <div class="collapse" id="collapse-kulturno-massovaya">
+                
+      <ul class="list-unstyled ms-3">
+        
+          <li>
+            
+              <a href="/teatralnyj-klub/"
+                 class="d-block py-1 text-decoration-none"
+                 data-bs-dismiss="offcanvas"
+                 title="Театральный клуб &quot;Мираж&quot;">
+                Театральный клуб &quot;Мираж&quot;
+              </a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="/mediacentr/"
+                 class="d-block py-1 text-decoration-none"
+                 data-bs-dismiss="offcanvas"
+                 title="Медиацентр «Новости СИТ»">
+                Медиацентр «Новости СИТ»
+              </a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="/pozdravlenija/"
+                 class="d-block py-1 text-decoration-none"
+                 data-bs-dismiss="offcanvas"
+                 title="Поздравления">
+                Поздравления
+              </a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="/dvizhenie-pervyh/"
+                 class="d-block py-1 text-decoration-none"
+                 data-bs-dismiss="offcanvas"
+                 title="«Движение Первых»">
+                «Движение Первых»
+              </a>
+            
+          </li>
+        
+      </ul>
+    
+              </div>
+            
+          </li>
+        
+          <li>
+            
+              <button class="btn btn-link w-100 text-start d-flex justify-content-between align-items-center"
+                      type="button"
+                      data-bs-toggle="collapse"
+                      data-bs-target="#collapse-fizkultura-sport"
+                      aria-expanded="false"
+                      title="Физическая культура и спорт">
+                <span>Физическая культура и спорт</span>
+                <i class="bi bi-chevron-down transition"></i>
+              </button>
+              <div class="collapse" id="collapse-fizkultura-sport">
+                
+      <ul class="list-unstyled ms-3">
+        
+          <li>
+            
+              <a href="/ssk-avangard/"
+                 class="d-block py-1 text-decoration-none"
+                 data-bs-dismiss="offcanvas"
+                 title="ССК &quot;Авангард&quot;">
+                ССК &quot;Авангард&quot;
+              </a>
+            
+          </li>
+        
+      </ul>
+    
+              </div>
+            
+          </li>
+        
+          <li>
+            
+              <a href="/upolnomochennyj-prava/"
+                 class="d-block py-1 text-decoration-none"
+                 data-bs-dismiss="offcanvas"
+                 title="Уполномоченный по правам ребенка">
+                Уполномоченный по правам ребенка
+              </a>
+            
+          </li>
+        
+      </ul>
+    
+              </div>
+            
+          </li>
+        
+          <li>
+            
+              <button class="btn btn-link w-100 text-start d-flex justify-content-between align-items-center"
+                      type="button"
+                      data-bs-toggle="collapse"
+                      data-bs-target="#collapse-partnerstvo"
+                      aria-expanded="false"
+                      title="СОЦИАЛЬНОЕ ПАРТНЕРСТВО И ПРОФОРИЕНТАЦИЯ">
+                <span>СОЦИАЛЬНОЕ ПАРТНЕРСТВО И ПРОФОРИЕНТАЦИЯ</span>
+                <i class="bi bi-chevron-down transition"></i>
+              </button>
+              <div class="collapse" id="collapse-partnerstvo">
+                
+      <ul class="list-unstyled ms-3">
+        
+          <li>
+            
+              <a href="/vuzy/"
+                 class="d-block py-1 text-decoration-none"
+                 data-bs-dismiss="offcanvas"
+                 title="Сотрудничество с ВУЗами">
+                Сотрудничество с ВУЗами
+              </a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="/zanyatost/"
+                 class="d-block py-1 text-decoration-none"
+                 data-bs-dismiss="offcanvas"
+                 title="Сотрудничество с органами занятости">
+                Сотрудничество с органами занятости
+              </a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="/predprijatija/"
+                 class="d-block py-1 text-decoration-none"
+                 data-bs-dismiss="offcanvas"
+                 title="Сотрудничество с предприятиями">
+                Сотрудничество с предприятиями
+              </a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="/shkoly/"
+                 class="d-block py-1 text-decoration-none"
+                 data-bs-dismiss="offcanvas"
+                 title="Сотрудничество со школами">
+                Сотрудничество со школами
+              </a>
+            
+          </li>
+        
+      </ul>
+    
+              </div>
+            
+          </li>
+        
+          <li>
+            
+              <button class="btn btn-link w-100 text-start d-flex justify-content-between align-items-center"
+                      type="button"
+                      data-bs-toggle="collapse"
+                      data-bs-target="#collapse-psihologicheskoe"
+                      aria-expanded="false"
+                      title="ПСИХОЛОГИЧЕСКОЕ СОПРОВОЖДЕНИЕ">
+                <span>ПСИХОЛОГИЧЕСКОЕ СОПРОВОЖДЕНИЕ</span>
+                <i class="bi bi-chevron-down transition"></i>
+              </button>
+              <div class="collapse" id="collapse-psihologicheskoe">
+                
+      <ul class="list-unstyled ms-3">
+        
+          <li>
+            
+              <a href="/organizacionno-metodicheskaya/"
+                 class="d-block py-1 text-decoration-none"
+                 data-bs-dismiss="offcanvas"
+                 title="Организационно-методическая основа">
+                Организационно-методическая основа
+              </a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="/rezultaty-testirovanij/"
+                 class="d-block py-1 text-decoration-none"
+                 data-bs-dismiss="offcanvas"
+                 title="Результаты тестирований">
+                Результаты тестирований
+              </a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="/sovety-prepodavatelyam/"
+                 class="d-block py-1 text-decoration-none"
+                 data-bs-dismiss="offcanvas"
+                 title="Советы преподавателям">
+                Советы преподавателям
+              </a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="/sovety-roditelyam/"
+                 class="d-block py-1 text-decoration-none"
+                 data-bs-dismiss="offcanvas"
+                 title="Советы родителям">
+                Советы родителям
+              </a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="/sovety-studentam/"
+                 class="d-block py-1 text-decoration-none"
+                 data-bs-dismiss="offcanvas"
+                 title="Советы студентам">
+                Советы студентам
+              </a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="/profilaktika-narkotikov/"
+                 class="d-block py-1 text-decoration-none"
+                 data-bs-dismiss="offcanvas"
+                 title="Профилактика наркотиков">
+                Профилактика наркотиков
+              </a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="/podderzhka-ovz/"
+                 class="d-block py-1 text-decoration-none"
+                 data-bs-dismiss="offcanvas"
+                 title="Поддержка лиц с ОВЗ">
+                Поддержка лиц с ОВЗ
+              </a>
+            
+          </li>
+        
+      </ul>
+    
+              </div>
+            
+          </li>
+        
+          <li>
+            
+              <button class="btn btn-link w-100 text-start d-flex justify-content-between align-items-center"
+                      type="button"
+                      data-bs-toggle="collapse"
+                      data-bs-target="#collapse-bezopasnost"
+                      aria-expanded="false"
+                      title="КОМПЛЕКСНАЯ БЕЗОПАСНОСТЬ">
+                <span>КОМПЛЕКСНАЯ БЕЗОПАСНОСТЬ</span>
+                <i class="bi bi-chevron-down transition"></i>
+              </button>
+              <div class="collapse" id="collapse-bezopasnost">
+                
+      <ul class="list-unstyled ms-3">
+        
+          <li>
+            
+              <a href="/antiterror/"
+                 class="d-block py-1 text-decoration-none"
+                 data-bs-dismiss="offcanvas"
+                 title="Антитеррористическая защищенность">
+                Антитеррористическая защищенность
+              </a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="/ekstremizm/"
+                 class="d-block py-1 text-decoration-none"
+                 data-bs-dismiss="offcanvas"
+                 title="Профилактика экстремизма">
+                Профилактика экстремизма
+              </a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="/korrupcija/"
+                 class="d-block py-1 text-decoration-none"
+                 data-bs-dismiss="offcanvas"
+                 title="Противодействие коррупции">
+                Противодействие коррупции
+              </a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="/pozharnaya/"
+                 class="d-block py-1 text-decoration-none"
+                 data-bs-dismiss="offcanvas"
+                 title="Пожарная безопасность">
+                Пожарная безопасность
+              </a>
+            
+          </li>
+        
+      </ul>
+    
+              </div>
+            
+          </li>
+        
+          <li>
+            
+              <button class="btn btn-link w-100 text-start d-flex justify-content-between align-items-center"
+                      type="button"
+                      data-bs-toggle="collapse"
+                      data-bs-target="#collapse-studentam-roditeljam"
+                      aria-expanded="false"
+                      title="СТУДЕНТАМ И ИХ РОДИТЕЛЯМ">
+                <span>СТУДЕНТАМ И ИХ РОДИТЕЛЯМ</span>
+                <i class="bi bi-chevron-down transition"></i>
+              </button>
+              <div class="collapse" id="collapse-studentam-roditeljam">
+                
+      <ul class="list-unstyled ms-3">
+        
+          <li>
+            
+              <button class="btn btn-link w-100 text-start d-flex justify-content-between align-items-center"
+                      type="button"
+                      data-bs-toggle="collapse"
+                      data-bs-target="#collapse-resursy"
+                      aria-expanded="false"
+                      title="Информационно-образовательные ресурсы">
+                <span>Информационно-образовательные ресурсы</span>
+                <i class="bi bi-chevron-down transition"></i>
+              </button>
+              <div class="collapse" id="collapse-resursy">
+                
+      <ul class="list-unstyled ms-3">
+        
+          <li>
+            
+              <a href="/novosti/"
+                 class="d-block py-1 text-decoration-none"
+                 data-bs-dismiss="offcanvas"
+                 title="Новости">
+                Новости
+              </a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="/biblioteka/"
+                 class="d-block py-1 text-decoration-none"
+                 data-bs-dismiss="offcanvas"
+                 title="Библиотека техникума">
+                Библиотека техникума
+              </a>
+            
+          </li>
+        
+      </ul>
+    
+              </div>
+            
+          </li>
+        
+          <li>
+            
+              <a href="/prikaz-zachislenie/"
+                 class="d-block py-1 text-decoration-none"
+                 data-bs-dismiss="offcanvas"
+                 title="Приказ о зачислении">
+                Приказ о зачислении
+              </a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="/raspisanie/"
+                 class="d-block py-1 text-decoration-none"
+                 data-bs-dismiss="offcanvas"
+                 title="Расписание занятий">
+                Расписание занятий
+              </a>
+            
+          </li>
+        
+      </ul>
+    
+              </div>
+            
+          </li>
+        
+          <li>
+            
+              <a href="/obshestvennoe-mnenie/"
+                 class="d-block py-1 text-decoration-none"
+                 data-bs-dismiss="offcanvas"
+                 title="Результаты изучения общественного мнения">
+                Результаты изучения общественного мнения
+              </a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="/vypusknikam/"
+                 class="d-block py-1 text-decoration-none"
+                 data-bs-dismiss="offcanvas"
+                 title="Нашим выпускникам">
+                Нашим выпускникам
+              </a>
+            
+          </li>
+        
+          <li>
+            
+              <a href="/uncategorized/"
+                 class="d-block py-1 text-decoration-none"
+                 data-bs-dismiss="offcanvas"
+                 title="Без рубрики">
+                Без рубрики
+              </a>
+            
+          </li>
+        
+      </ul>
+    
+  </div>
+</div>
 
 
   <main class="main-content">
@@ -1293,5 +1294,6 @@ REPLACE
   <script src="/assets/mentor/vendor/aos/aos.js"></script>
   <script src="/assets/mentor/vendor/glightbox/js/glightbox.min.js"></script>
   <script src="/assets/mentor/vendor/purecounter/purecounter_vanilla.js"></script>
+  <script src="/assets/js/mentor-main.js"></script>
   <script src="/assets/js/main.js"></script>
 </html>

@@ -1,72 +1,73 @@
-<nav id="navmenu" class="navmenu" role="navigation" aria-label="Основная навигация">
-  <a href="/" class="logo d-flex align-items-center me-auto me-xl-0">
-    <img src="/assets/images/logo.png" alt="ГБПОУ РО 'СИТ'" height="40">
-  </a>
-  <ul>
-REPLACE
- +++++++ REPLACE
-    <li><a href="/svedenija/" title="Официальные сведения об образовательной организации" aria-label="Сведения об образовательной организации">Сведения об образовательной организации</a></li>  
-    <li><a href="https://эос.сит-сальск.рф" target="_blank" rel="noopener" title="Электронная образовательная среда" aria-label="ЭОС">ЭОС</a></li>  
-    <li><a href="#footer" title="Контактная информация" aria-label="Контакты">Контакты</a></li>  
-REPLACE
- +++++++ REPLACE
-  </ul>  
-</nav>  
-<div class="header-icons">  
-REPLACE
- +++++++ REPLACE
-  <a href="/search/" class="me-2" title="Поиск" aria-label="Поиск">  
-    <i class="bi bi-search"></i>  
-  </a>  
-  <button class="me-2" onclick="toggleA11y(); return false;" title="Версия для слабовидящих" aria-label="Версия для слабовидящих">  
-    <i class="bi bi-eye"></i>  
-  </button>  
-  <button class="me-2" onclick="toggleDarkTheme(); return false;" title="Тёмная тема" aria-label="Тёмная тема">  
-    <i class="bi bi-moon-stars"></i>  
-  </button>  
-  <a href="#" class="me-2" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRubrics" title="Все разделы" aria-label="Все разделы">  
-    <i class="bi bi-grid-3x3-gap-fill"></i>  
-  </a>  
-</div>  
+<header id="header" class="header d-flex align-items-center sticky-top">
+  <div class="container-fluid container-xl position-relative d-flex align-items-center">
 
-<!-- Offcanvas панель с рубриками (простой аккордеон) -->  
-<div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasRubrics" aria-labelledby="offcanvasRubricsLabel">  
-  <div class="offcanvas-header">  
-    <h5 class="offcanvas-title" id="offcanvasRubricsLabel">Разделы сайта</h5>  
-    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Закрыть"></button>  
-  </div>  
-  <div class="offcanvas-body">  
-    {% macro renderRubrics(items, level=1) %}  
-      <ul class="list-unstyled {% if level > 1 %}ms-3{% endif %}">  
-        {% for item in items %}  
-          <li>  
-            {% if item.children %}  
-              <button class="btn btn-link w-100 text-start d-flex justify-content-between align-items-center"   
-                      type="button"   
-                      data-bs-toggle="collapse"   
-                      data-bs-target="#collapse-{{ item.slug }}"   
-                      aria-expanded="false"  
-                      title="{{ item.title }}">  
-                <span>{{ item.title }}</span>  
-                <i class="bi bi-chevron-down transition"></i>  
-              </button>  
-              <div class="collapse" id="collapse-{{ item.slug }}">  
-                {{ renderRubrics(item.children, level + 1) }}  
-              </div>  
-            {% else %}  
-              <a href="/{{ item.slug }}/"   
-                 class="d-block py-1 text-decoration-none"   
-                 data-bs-dismiss="offcanvas"  
-                 title="{{ item.title }}">  
-                {{ item.title }}  
-              </a>  
-            {% endif %}  
-          </li>  
-        {% endfor %}  
-      </ul>  
-    {% endmacro %}  
-    
-    {{ renderRubrics(rubrics.main_rubrics) }}  
-  </div>  
-</div>  
+    <nav id="navmenu" class="navmenu" role="navigation" aria-label="Основная навигация">
+      <a href="/" class="logo d-flex align-items-center me-auto me-xl-0">
+        <img src="/assets/images/logo.png" alt="ГБПОУ РО 'СИТ'" height="40">
+      </a>
+      <ul>
+        <li><a href="/svedenija/" title="Официальные сведения об образовательной организации" aria-label="Сведения об образовательной организации">Сведения об образовательной организации</a></li>
+        <li><a href="https://эос.сит-сальск.рф" target="_blank" rel="noopener" title="Электронная образовательная среда" aria-label="ЭОС">ЭОС</a></li>
+        <li><a href="#footer" title="Контактная информация" aria-label="Контакты">Контакты</a></li>
+      </ul>
+      <i class="mobile-nav-toggle d-xl-none bi bi-list" aria-label="Открыть меню" title="Меню"></i>
+    </nav>
 
+    <div class="header-icons">
+      <a href="/search/" class="me-2" title="Поиск" aria-label="Поиск">
+        <i class="bi bi-search"></i>
+      </a>
+      <button class="me-2" onclick="toggleA11y(); return false;" title="Версия для слабовидящих" aria-label="Версия для слабовидящих">
+        <i class="bi bi-eye"></i>
+      </button>
+      <button class="me-2" onclick="toggleDarkTheme(); return false;" title="Тёмная тема" aria-label="Тёмная тема">
+        <i class="bi bi-moon-stars"></i>
+      </button>
+      <a href="#" class="me-2" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRubrics" title="Все разделы" aria-label="Все разделы">
+        <i class="bi bi-grid-3x3-gap-fill"></i>
+      </a>
+    </div>
+
+  </div>
+</header>
+
+<!-- Offcanvas панель с рубриками (простой аккордеон) -->
+<div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasRubrics" aria-labelledby="offcanvasRubricsLabel">
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title" id="offcanvasRubricsLabel">Разделы сайта</h5>
+    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Закрыть"></button>
+  </div>
+  <div class="offcanvas-body">
+    {% macro renderRubrics(items, level=1) %}
+      <ul class="list-unstyled {% if level > 1 %}ms-3{% endif %}">
+        {% for item in items %}
+          <li>
+            {% if item.children %}
+              <button class="btn btn-link w-100 text-start d-flex justify-content-between align-items-center"
+                      type="button"
+                      data-bs-toggle="collapse"
+                      data-bs-target="#collapse-{{ item.slug }}"
+                      aria-expanded="false"
+                      title="{{ item.title }}">
+                <span>{{ item.title }}</span>
+                <i class="bi bi-chevron-down transition"></i>
+              </button>
+              <div class="collapse" id="collapse-{{ item.slug }}">
+                {{ renderRubrics(item.children, level + 1) }}
+              </div>
+            {% else %}
+              <a href="/{{ item.slug }}/"
+                 class="d-block py-1 text-decoration-none"
+                 data-bs-dismiss="offcanvas"
+                 title="{{ item.title }}">
+                {{ item.title }}
+              </a>
+            {% endif %}
+          </li>
+        {% endfor %}
+      </ul>
+    {% endmacro %}
+
+    {{ renderRubrics(rubrics.main_rubrics) }}
+  </div>
+</div>
