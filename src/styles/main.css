@@ -1885,18 +1885,6 @@ section,
   transition: height 0.25s ease;
 }
 
-.header-logo-text {
-  margin-left: 10px;
-  color: var(--heading-color);
-  font-family: var(--heading-font);
-  font-size: clamp(1.05rem, 2vw, 1.35rem);
-  font-weight: 800;
-  letter-spacing: 0.08em;
-  line-height: 1;
-  white-space: nowrap;
-  transition: font-size 0.25s ease;
-}
-
 .header.header--compact {
   min-height: 54px;
   box-shadow: 0 2px 16px color-mix(in srgb, var(--default-color), transparent 90%);
@@ -1904,10 +1892,6 @@ section,
 
 .header.header--compact .header-logo-img {
   height: 34px;
-}
-
-.header.header--compact .header-logo-text {
-  font-size: 1.05rem;
 }
 
 .header .header-icons {
