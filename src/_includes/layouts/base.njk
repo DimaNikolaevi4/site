@@ -37,7 +37,7 @@
   {% include "components/header.njk" %}
 
   <main class="main-content">
-    {{ content | safe }}
+    {% block content %}{{ content | safe }}{% endblock %}
   </main>
 
   <!-- Подвал -->

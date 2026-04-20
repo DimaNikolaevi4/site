@@ -1,6 +1,6 @@
 ---
 title: Поздравления
-layout: base.njk
+layout: layouts/page.njk
 category: vospitanie
 rubric: "4.7.3"
 permalink: /vospitanie/pozdravlenija/

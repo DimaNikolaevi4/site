@@ -1,6 +1,6 @@
 ---
 title: Без рубрики
-layout: base.njk
+layout: layouts/page.njk
 category: uncategorized
 rubric: "0"
 description: 'Материалы, не вошедшие в основную структуру рубрик'

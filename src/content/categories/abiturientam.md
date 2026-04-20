@@ -1,6 +1,6 @@
 ---
 title: Абитуриентам
-layout: base.njk
+layout: layouts/page.njk
 category: abiturientam
 description: 'Информация для абитуриентов: правила приема, специальности, день открытых дверей'
 ---

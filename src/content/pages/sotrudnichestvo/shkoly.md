@@ -1,6 +1,6 @@
 ---
 title: Сотрудничество со школами
-layout: base.njk
+layout: layouts/page.njk
 description: Партнёрство со школами и профориентационная работа ГБПОУ РО «СИТ»
 rubric: "5.4"
 permalink: /sotrudnichestvo/shkoly/
