@@ -64,19 +64,6 @@
   <!-- Skip to main content link for accessibility -->
   <a href="#main-content" class="skip-link">Перейти к основному содержанию</a>
   
-  <!-- Accessibility toggle button -->
-  <button 
-    type="button" 
-    class="a11y-toggle" 
-    id="a11yToggle" 
-    aria-label="Версия для слабовидящих"
-    aria-expanded="false"
-    aria-controls="a11yPanel"
-  >
-    <span class="a11y-toggle-icon">👁</span>
-    <span class="a11y-toggle-text">Версия для слабовидящих</span>
-  </button>
-  
   <!-- Accessibility settings panel -->
   <div class="a11y-panel" id="a11yPanel" role="region" aria-labelledby="a11yToggle" hidden>
     <div class="a11y-panel-content">
@@ -443,7 +430,7 @@
           <button class="btn-icon" data-bs-toggle="modal" data-bs-target="#searchModal" title="Поиск по сайту">
             <i class="bi bi-search"></i>
           </button>
-          <button class="btn-icon a11y-toggle-btn" id="a11yToggleHeader" title="Версия для слабовидящих">
+          <button class="btn-icon a11y-toggle-btn" id="a11yToggle" aria-label="Версия для слабовидящих" aria-expanded="false" aria-controls="a11yPanel" title="Версия для слабовидящих">
             <i class="bi bi-eye"></i>
           </button>
         </div>

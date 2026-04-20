@@ -63,9 +63,13 @@ document.addEventListener('DOMContentLoaded', function () {
   }
   syncCheckboxes();
 
+  var panelJustOpened = false;
+
   function openPanel() {
     panel.hidden = false;
     toggle.setAttribute('aria-expanded', 'true');
+    panelJustOpened = true;
+    setTimeout(function () { panelJustOpened = false; }, 150);
     // Фокус на первый чекбокс
     setTimeout(function () { if (cbLF) cbLF.focus(); }, 60);
   }
@@ -79,6 +83,19 @@ document.addEventListener('DOMContentLoaded', function () {
   toggle.addEventListener('click', function () {
     panel.hidden ? openPanel() : closePanel();
   });
+
+  // Мобильная кнопка в partials/header.njk
+  var toggleMobile = document.getElementById('a11yToggleMobile');
+  if (toggleMobile) {
+    toggleMobile.addEventListener('click', function () {
+      panel.hidden ? openPanel() : closePanel();
+    });
+  }
+
+  // Глобальная функция для onclick в components/header.njk
+  window.toggleA11y = function () {
+    panel.hidden ? openPanel() : closePanel();
+  };
 
   if (cbLF) cbLF.addEventListener('change', function () {
     prefs.lf = cbLF.checked;
@@ -115,7 +132,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
   // Клик вне панели закрывает её
   document.addEventListener('click', function (e) {
-    if (!panel.hidden && !panel.contains(e.target) && e.target !== toggle) {
+    if (!panel.hidden && !panelJustOpened && !panel.contains(e.target) &&
+        e.target !== toggle && (!toggleMobile || e.target !== toggleMobile)) {
       closePanel();
     }
   });
