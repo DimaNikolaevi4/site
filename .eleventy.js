@@ -66,6 +66,12 @@ module.exports = function(eleventyConfig) {
   
   console.log('✅ Конфигурация коллекций загружена');
   
+  // === Вспомогательные фильтры ===
+  eleventyConfig.addFilter('startsWith', function(str, prefix) {
+    if (typeof str !== 'string') return false;
+    return str.startsWith(prefix);
+  });
+
   // === Фильтры для работы с рубриками ===
   eleventyConfig.addFilter('getParentRubric', function(currentSlug) {
     const currentRubric = allSlugs.find(r => r.slug === currentSlug || r.fullPath === currentSlug);

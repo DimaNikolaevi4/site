@@ -7,9 +7,19 @@
 
     <nav id="navmenu" class="navmenu" role="navigation" aria-label="Основная навигация">
       <ul>
-        <li><a href="/svedenija/" title="Официальные сведения об образовательной организации">Сведения об образовательной организации</a></li>
-        <li><a href="https://эос.сит-сальск.рф" target="_blank" rel="noopener" title="Электронная образовательная среда">ЭОС</a></li>
-        <li><a href="#footer" title="Контактная информация">Контакты</a></li>
+        <li>
+          <a href="/svedenija/"
+             class="{% if page.url | startsWith('/svedenija/') %}active{% endif %}"
+             {% if page.url | startsWith('/svedenija/') %}aria-current="page"{% endif %}
+             title="Официальные сведения об образовательной организации">Сведения об образовательной организации</a>
+        </li>
+        <li>
+          <a href="https://эос.сит-сальск.рф" target="_blank" rel="noopener"
+             title="Электронная образовательная среда">ЭОС</a>
+        </li>
+        <li>
+          <a href="#footer" title="Контактная информация">Контакты</a>
+        </li>
       </ul>
       <i class="mobile-nav-toggle d-xl-none bi bi-list" aria-label="Открыть меню" title="Меню"></i>
     </nav>
