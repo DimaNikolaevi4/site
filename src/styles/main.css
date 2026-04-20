@@ -2552,9 +2552,11 @@ section,
   display: flex;
   flex-direction: column;
   transform: translateX(100%);
+  opacity: 0;
   visibility: hidden;
-  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
-              visibility 0s linear 0.3s;
+  transition: transform 0.35s cubic-bezier(0.34, 1.15, 0.64, 1),
+              opacity 0.28s ease,
+              visibility 0s linear 0.35s;
 }
 
 /* Десктоп (≥ 960px): все три панели рядом */
@@ -2563,9 +2565,16 @@ section,
 
 .oc-side-panel.is-open {
   transform: translateX(0);
+  opacity: 1;
   visibility: visible;
-  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+  transition: transform 0.35s cubic-bezier(0.34, 1.15, 0.64, 1),
+              opacity 0.28s ease,
               visibility 0s linear 0s;
+}
+
+/* Панель 3 открывается с небольшой задержкой — каскадный эффект */
+#ocPanel3.is-open {
+  transition-delay: 0.05s, 0.05s, 0s;
 }
 
 /* Планшет (640 – 959px): панель 3 наезжает на панель 2 */
@@ -2585,6 +2594,16 @@ section,
   #ocPanel3 {
     right: 0;
     z-index: 1047;
+  }
+}
+
+/* Уважаем prefers-reduced-motion — убираем анимацию для чувствительных пользователей */
+@media (prefers-reduced-motion: reduce) {
+  .oc-side-panel,
+  .oc-side-panel.is-open,
+  #ocPanel3.is-open {
+    transition: visibility 0s linear 0s;
+    transition-delay: 0s;
   }
 }
 
