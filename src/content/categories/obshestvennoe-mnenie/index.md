@@ -4,11 +4,7 @@ layout: layouts/page.njk
 category: obshestvennoe-mnenie
 rubric: "9.4"
 description: 'Результаты анкетирования, опросов и тестирования общественного мнения'
----
-
-# Результаты изучения общественного мнения
-
-<div class="category-description">
+---<div class="category-description">
   <p>Анкетирование, опросы, тестирование — результаты изучения общественного мнения в техникуме</p>
 </div>
 

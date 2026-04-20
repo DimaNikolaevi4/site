@@ -6,10 +6,7 @@ eleventyNavigation:
   key: documents
   parent: main
 rubric: "0"
----
-# Документы
-
-Здесь вы можете найти и скачать официальные документы техникума.
+---Здесь вы можете найти и скачать официальные документы техникума.
 
 {% if collections.documents %}
 <ul class="documents-list">
