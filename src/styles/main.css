@@ -2739,3 +2739,235 @@ section,
   background: color-mix(in srgb, var(--accent-color), transparent 92%);
   text-decoration: none;
 }
+
+/* ─── Аббревиатура логотипа ─── */
+.header-logo-abbr {
+  font-size: 1.05rem;
+  font-weight: 800;
+  font-family: var(--heading-font);
+  color: var(--accent-color);
+  letter-spacing: 0.04em;
+  margin-left: 6px;
+  line-height: 1;
+  white-space: nowrap;
+  flex-shrink: 0;
+  transition: opacity 0.25s ease;
+}
+
+.header.header--compact .header-logo-abbr {
+  font-size: 0.9rem;
+}
+
+/* ─── Инлайн-поиск в шапке ─── */
+.header-search-wrap {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  padding: 0 1rem;
+  background: var(--background-color);
+  z-index: 10;
+  opacity: 0;
+  pointer-events: none;
+  transform: scaleX(0.97);
+  transform-origin: right center;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.header-search-wrap.is-open {
+  opacity: 1;
+  pointer-events: auto;
+  transform: scaleX(1);
+}
+
+.header-search-form {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+  gap: 0.5rem;
+  background: color-mix(in srgb, var(--default-color), transparent 94%);
+  border-radius: 999px;
+  padding: 0 0.5rem 0 1rem;
+  border: 1.5px solid color-mix(in srgb, var(--accent-color), transparent 65%);
+  transition: border-color 0.2s;
+}
+
+.header-search-form:focus-within {
+  border-color: var(--accent-color);
+}
+
+.header-search-input {
+  flex: 1;
+  border: none;
+  background: transparent;
+  outline: none;
+  font-size: 0.95rem;
+  color: var(--default-color);
+  padding: 0.5rem 0;
+  font-family: var(--default-font);
+}
+
+.header-search-input::placeholder {
+  color: color-mix(in srgb, var(--default-color), transparent 55%);
+}
+
+.header-search-submit,
+.header-search-close {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border: none;
+  background: none;
+  color: color-mix(in srgb, var(--nav-color), transparent 30%);
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 1rem;
+  padding: 0;
+  flex-shrink: 0;
+  transition: color 0.2s, background 0.2s;
+}
+
+.header-search-submit:hover {
+  color: var(--accent-color);
+  background: color-mix(in srgb, var(--accent-color), transparent 88%);
+}
+
+.header-search-close:hover {
+  color: #c00;
+  background: color-mix(in srgb, #c00, transparent 90%);
+}
+
+/* ─── Поиск в offcanvas ─── */
+.oc-search-form {
+  width: 100%;
+}
+
+.oc-search-inner {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: color-mix(in srgb, var(--default-color), transparent 94%);
+  border-radius: 999px;
+  padding: 0 0.75rem;
+  border: 1.5px solid color-mix(in srgb, var(--default-color), transparent 85%);
+  transition: border-color 0.2s;
+}
+
+.oc-search-inner:focus-within {
+  border-color: var(--accent-color);
+}
+
+.oc-search-icon {
+  color: color-mix(in srgb, var(--default-color), transparent 50%);
+  font-size: 0.85rem;
+  flex-shrink: 0;
+}
+
+.oc-search-input {
+  flex: 1;
+  border: none;
+  background: transparent;
+  outline: none;
+  font-size: 0.88rem;
+  color: var(--default-color);
+  padding: 0.55rem 0;
+  font-family: var(--default-font);
+}
+
+.oc-search-input::placeholder {
+  color: color-mix(in srgb, var(--default-color), transparent 55%);
+}
+
+/* ─── Кнопка «Позвонить» в подвале offcanvas ─── */
+.oc-footer__call-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  width: 100%;
+  padding: 0.6rem 0.9rem;
+  border-radius: 999px;
+  background: var(--accent-color);
+  color: var(--contrast-color);
+  font-size: 0.88rem;
+  font-weight: 700;
+  text-decoration: none;
+  transition: background 0.2s, transform 0.15s;
+  justify-content: center;
+}
+
+.oc-footer__call-btn:hover {
+  background: color-mix(in srgb, var(--accent-color), #000 12%);
+  color: var(--contrast-color);
+  text-decoration: none;
+  transform: translateY(-1px);
+}
+
+.oc-footer__call-btn i {
+  font-size: 0.9rem;
+}
+
+/* ─── Заголовок панелей 2/3: хлебные крошки + счётчик + ссылка ─── */
+.oc-panel-header-main {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.oc-panel-breadcrumb-row {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  flex-wrap: wrap;
+}
+
+.oc-panel-breadcrumb {
+  font-size: 0.65rem;
+  color: color-mix(in srgb, var(--default-color), transparent 50%);
+  font-weight: 500;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.oc-panel-count {
+  font-size: 0.6rem;
+  font-weight: 700;
+  padding: 0.1em 0.5em;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--accent-color), transparent 80%);
+  color: color-mix(in srgb, var(--accent-color), #000 20%);
+  white-space: nowrap;
+}
+
+.oc-panel-open-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin: 0.6rem 1rem 0.2rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--accent-color);
+  text-decoration: none;
+  opacity: 0.85;
+  transition: opacity 0.2s, gap 0.2s;
+}
+
+.oc-panel-open-link:hover {
+  opacity: 1;
+  gap: 0.6rem;
+  text-decoration: none;
+  color: var(--accent-color);
+}
+
+.oc-panel-open-link i {
+  font-size: 0.7rem;
+}

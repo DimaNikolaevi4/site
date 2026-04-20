@@ -4,7 +4,25 @@
     {# Логотип — всегда виден #}
     <a href="/" class="logo d-flex align-items-center flex-shrink-0" title="Главная страница ГБПОУ РО «СИТ»">
       <img src="/assets/images/logo.png" alt="ГБПОУ РО «Сальский индустриальный техникум»" class="header-logo-img">
+      <span class="header-logo-abbr" aria-hidden="true">СИТ</span>
     </a>
+
+    {# Инлайн-поиск — разворачивается поверх навигации #}
+    <div class="header-search-wrap" id="headerSearchWrap" aria-hidden="true">
+      <form role="search" action="/search/" method="get" class="header-search-form">
+        <input type="search" name="q" class="header-search-input"
+               id="headerSearchInput"
+               placeholder="Поиск по сайту…"
+               aria-label="Поиск по сайту"
+               autocomplete="off">
+        <button type="submit" class="header-search-submit" aria-label="Найти">
+          <i class="bi bi-search" aria-hidden="true"></i>
+        </button>
+        <button type="button" class="header-search-close" id="headerSearchClose" aria-label="Закрыть поиск">
+          <i class="bi bi-x-lg" aria-hidden="true"></i>
+        </button>
+      </form>
+    </div>
 
     {# Центральная навигация — от lg (992px), по центру между лого и иконками #}
     {# Порядок скрытия (сужение экрана): Контакты → ЭОС → Абитуриентам → Сведения (последним) #}
@@ -59,10 +77,11 @@
          class="header-icon-btn" title="Написать на почту: {{ contacts.email }}" aria-label="Электронная почта">
         <i class="bi bi-envelope-fill" aria-hidden="true"></i>
       </a>
-      <a href="/search/"
-         class="header-icon-btn" title="Поиск по сайту" aria-label="Поиск">
+      <button class="header-icon-btn" id="headerSearchToggle"
+              type="button"
+              title="Поиск по сайту" aria-label="Поиск" aria-expanded="false" aria-controls="headerSearchWrap">
         <i class="bi bi-search" aria-hidden="true"></i>
-      </a>
+      </button>
       <a href="{{ contacts.phone_link }}"
          class="header-phone-link d-none d-xxl-inline-flex"
          title="Позвонить: {{ contacts.phone_formatted }}"
@@ -123,8 +142,21 @@
     <div class="oc-panel" id="ocPanel1">
       <div class="oc-panel__scroll">
 
+        {# Поле поиска вверху панели #}
+        <div class="oc-search px-3 pt-3 pb-1">
+          <form role="search" action="/search/" method="get" class="oc-search-form" data-bs-dismiss="offcanvas">
+            <div class="oc-search-inner">
+              <i class="bi bi-search oc-search-icon" aria-hidden="true"></i>
+              <input type="search" name="q" class="oc-search-input"
+                     placeholder="Поиск по сайту…"
+                     aria-label="Поиск по сайту"
+                     autocomplete="off">
+            </div>
+          </form>
+        </div>
+
         {# Быстрые ссылки — скрываются когда видны в шапке #}
-        <ul class="list-unstyled offcanvas-quicklinks px-3 pt-3 mb-0">
+        <ul class="list-unstyled offcanvas-quicklinks px-3 pt-2 mb-0">
           <li>
             <a href="/svedenija/" class="offcanvas-quicklinks__link d-lg-none{% if page.url | startsWith('/svedenija/') %} active{% endif %}"
                data-bs-dismiss="offcanvas"
@@ -224,6 +256,7 @@
                 <button class="oc-split-row__toggle"
                         type="button"
                         aria-label="Открыть подразделы: {{ item.title }}"
+                        aria-expanded="false"
                         data-rubric-index="{{ loop.index0 }}">
                   <i class="bi bi-chevron-right" aria-hidden="true"></i>
                 </button>
@@ -246,9 +279,9 @@
             <i class="bi bi-geo-alt" aria-hidden="true"></i>
             <span>{{ contacts.address }}</span>
           </a>
-          <a href="tel:{{ contacts.phone }}" class="oc-footer__link mt-1">
-            <i class="bi bi-telephone" aria-hidden="true"></i>
-            <span>{{ contacts.phone }}</span>
+          <a href="{{ contacts.phone_link }}" class="oc-footer__call-btn mt-2">
+            <i class="bi bi-telephone-fill" aria-hidden="true"></i>
+            <span>{{ contacts.phone_formatted }}</span>
           </a>
         </div>
 
@@ -264,12 +297,22 @@
 {# ═══ ПАНЕЛЬ 2 — 2-й уровень (заполняется через JS) ═══ #}
 <div class="oc-side-panel" id="ocPanel2" aria-hidden="true">
   <div class="oc-side-panel__header">
-    <span class="oc-side-panel__title" id="ocPanel2Title"></span>
+    <div class="oc-panel-header-main">
+      <div class="oc-panel-breadcrumb-row">
+        <span class="oc-panel-breadcrumb" id="ocPanel2Breadcrumb">Разделы сайта</span>
+        <span class="oc-panel-count" id="ocPanel2Count"></span>
+      </div>
+      <span class="oc-side-panel__title" id="ocPanel2Title"></span>
+    </div>
     <button class="oc-close-btn" id="ocCloseBtn2" type="button" aria-label="Закрыть">
       <i class="bi bi-x-lg" aria-hidden="true"></i>
     </button>
   </div>
   <div class="oc-panel__scroll" id="ocPanel2Scroll">
+    <a class="oc-panel-open-link" id="ocPanel2OpenLink" href="#">
+      <i class="bi bi-box-arrow-up-right" aria-hidden="true"></i>
+      Открыть весь раздел
+    </a>
     <nav aria-label="Подразделы">
       <ul class="list-unstyled oc-sub-list" id="ocSubList"></ul>
     </nav>
@@ -279,12 +322,22 @@
 {# ═══ ПАНЕЛЬ 3 — 3-й уровень (заполняется через JS) ═══ #}
 <div class="oc-side-panel" id="ocPanel3" aria-hidden="true">
   <div class="oc-side-panel__header">
-    <span class="oc-side-panel__title" id="ocPanel3Title"></span>
+    <div class="oc-panel-header-main">
+      <div class="oc-panel-breadcrumb-row">
+        <span class="oc-panel-breadcrumb" id="ocPanel3Breadcrumb"></span>
+        <span class="oc-panel-count" id="ocPanel3Count"></span>
+      </div>
+      <span class="oc-side-panel__title" id="ocPanel3Title"></span>
+    </div>
     <button class="oc-close-btn" id="ocCloseBtn3" type="button" aria-label="Закрыть">
       <i class="bi bi-x-lg" aria-hidden="true"></i>
     </button>
   </div>
   <div class="oc-panel__scroll" id="ocPanel3Scroll">
+    <a class="oc-panel-open-link" id="ocPanel3OpenLink" href="#">
+      <i class="bi bi-box-arrow-up-right" aria-hidden="true"></i>
+      Открыть весь раздел
+    </a>
     <nav aria-label="Под-подразделы">
       <ul class="list-unstyled oc-sub-list" id="ocSubSubList"></ul>
     </nav>
