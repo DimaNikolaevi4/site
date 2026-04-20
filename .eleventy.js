@@ -119,6 +119,7 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addPassthroughCopy({ "_mentor/assets": "assets/mentor" });
   eleventyConfig.addPassthroughCopy("src/admin");
   eleventyConfig.addPassthroughCopy("favicons");
+  eleventyConfig.addPassthroughCopy("src/styles");
   eleventyConfig.addPassthroughCopy({ "robots.njk": "robots.txt" });
   
   // === Расширения данных ===
