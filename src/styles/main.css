@@ -2094,11 +2094,11 @@ section,
   margin: 0 0 0.5rem;
 }
 
-/* Мобильный гамбургер — правее логотипа */
+/* Порядок элементов шапки на планшетах (Mentor CSS задаёт logo: order 1) */
 @media (max-width: 1199px) {
-  .offcanvas-toggle-btn {
-    order: 4;
-  }
+  .main-nav        { order: 2; }
+  .header-icons    { order: 3; }
+  .offcanvas-toggle-btn { order: 4; }
 }
 
 /* Кнопки-иконки в шапке */
