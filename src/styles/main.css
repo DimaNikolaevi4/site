@@ -212,7 +212,7 @@ h6 {
 --------------------------------------------------------------*/
 .header {
   color: var(--default-color);
-  background-color: var(--background-color);
+  background-color: color-mix(in srgb, var(--accent-color), var(--background-color) 92%);
   padding: 15px 0;
   transition: all 0.5s;
   z-index: 997;
@@ -2170,7 +2170,7 @@ section,
   min-height: 68px;
   padding: 0.75rem 0.75rem 0.75rem 1rem;
   border-bottom: 3px solid var(--accent-color);
-  background: var(--surface-color, #fff);
+  background: color-mix(in srgb, var(--accent-color), var(--surface-color, #fff) 92%);
 }
 
 .oc-header__brand {
@@ -2588,9 +2588,9 @@ section,
   gap: 0.5rem;
   padding: 0.75rem 0.75rem 0.75rem 1rem;
   min-height: 64px;
-  border-bottom: 3px solid color-mix(in srgb, var(--accent-color), transparent 50%);
+  border-bottom: 3px solid var(--accent-color);
   flex-shrink: 0;
-  background: color-mix(in srgb, var(--accent-color), var(--surface-color, #fff) 96%);
+  background: color-mix(in srgb, var(--accent-color), var(--surface-color, #fff) 92%);
 }
 
 #ocPanel2 .oc-side-panel__header {
