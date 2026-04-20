@@ -2709,6 +2709,22 @@ section,
   border-left-color: color-mix(in srgb, var(--accent-color), transparent 55%);
 }
 
+.oc-sub-item.is-active > .oc-split-row__link,
+.oc-sub-item.is-active > .oc-split-row .oc-split-row__link {
+  color: var(--accent-color);
+}
+
+.oc-sub-item.is-active > .oc-split-row__link--leaf {
+  background: color-mix(in srgb, var(--accent-color), transparent 90%);
+  border-left-color: var(--accent-color);
+  color: var(--accent-color);
+}
+
+.oc-sub-item.is-active > .oc-split-row {
+  background: color-mix(in srgb, var(--accent-color), transparent 90%);
+  border-left-color: var(--accent-color);
+}
+
 /* ─── Порядок элементов шапки на планшетах ─── */
 @media (max-width: 1199px) {
   .main-nav             { order: 2; }
