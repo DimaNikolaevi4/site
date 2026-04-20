@@ -11,12 +11,10 @@
   var ocPanel3     = document.getElementById('ocPanel3');
   var ocSubList    = document.getElementById('ocSubList');
   var ocSubSubList = document.getElementById('ocSubSubList');
-  var ocBackBtn2   = document.getElementById('ocBackBtn2');
-  var ocBackBtn3   = document.getElementById('ocBackBtn3');
-  var ocPanel2Title       = document.getElementById('ocPanel2Title');
-  var ocPanel3Title       = document.getElementById('ocPanel3Title');
-  var ocPanel2ParentLink  = document.getElementById('ocPanel2ParentLink');
-  var ocPanel3ParentLink  = document.getElementById('ocPanel3ParentLink');
+  var ocCloseBtn2  = document.getElementById('ocCloseBtn2');
+  var ocCloseBtn3  = document.getElementById('ocCloseBtn3');
+  var ocPanel2Title = document.getElementById('ocPanel2Title');
+  var ocPanel3Title = document.getElementById('ocPanel3Title');
 
   var hoverTimer = null;
 
@@ -61,7 +59,6 @@
     closePanel3();
 
     ocPanel2Title.textContent = rubric.title;
-    ocPanel2ParentLink.href   = '/' + rubric.slug + '/';
     ocSubList.innerHTML       = buildLevel2Items(rubric.children, rubric.slug);
 
     ocSubList.querySelectorAll('.oc-open-l3').forEach(function (btn) {
@@ -76,8 +73,6 @@
     ocSubList.querySelectorAll('.oc-dismiss-all').forEach(function (el) {
       el.addEventListener('click', closeAll);
     });
-
-    ocPanel2ParentLink.onclick = closeAll;
 
     var l2isPointer = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
     if (l2isPointer) {
@@ -108,14 +103,11 @@
 
   function openPanel3(child, parentHref) {
     ocPanel3Title.textContent = child.title;
-    ocPanel3ParentLink.href   = parentHref;
     ocSubSubList.innerHTML    = buildLevel3Items(child.children, parentHref);
 
     ocSubSubList.querySelectorAll('.oc-dismiss-all').forEach(function (el) {
       el.addEventListener('click', closeAll);
     });
-
-    ocPanel3ParentLink.onclick = closeAll;
 
     ocPanel3.classList.add('is-open');
     ocPanel3.setAttribute('aria-hidden', 'false');
@@ -148,8 +140,8 @@
     el.addEventListener('click', closeAll);
   });
 
-  if (ocBackBtn2) ocBackBtn2.addEventListener('click', closePanel2);
-  if (ocBackBtn3) ocBackBtn3.addEventListener('click', closePanel3);
+  if (ocCloseBtn2) ocCloseBtn2.addEventListener('click', closePanel2);
+  if (ocCloseBtn3) ocCloseBtn3.addEventListener('click', closePanel3);
 
   if (offcanvasEl) {
     offcanvasEl.addEventListener('hidden.bs.offcanvas', function () {

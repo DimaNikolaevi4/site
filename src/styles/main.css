@@ -2228,8 +2228,7 @@ section,
   color: var(--accent-color);
 }
 
-/* ─── Боковые панели 2-го и 3-го уровней ─── */
-
+/* ─── Боковые панели 2/3 ─── */
 .oc-side-panel {
   position: fixed;
   top: 0;
@@ -2246,13 +2245,9 @@ section,
               visibility 0s linear 0.3s;
 }
 
-#ocPanel2 {
-  right: var(--oc-panel-w);
-}
-
-#ocPanel3 {
-  right: calc(var(--oc-panel-w) * 2);
-}
+/* Десктоп (≥ 960px): все три панели рядом */
+#ocPanel2 { right: var(--oc-panel-w); }
+#ocPanel3 { right: calc(var(--oc-panel-w) * 2); }
 
 .oc-side-panel.is-open {
   transform: translateX(0);
@@ -2261,12 +2256,32 @@ section,
               visibility 0s linear 0s;
 }
 
+/* Планшет (640 – 959px): панель 3 наезжает на панель 2 */
+@media (max-width: 959px) {
+  #ocPanel3 {
+    right: var(--oc-panel-w);
+    z-index: 1046;
+  }
+}
+
+/* Мобильные (< 640px): панели 2 и 3 перекрывают панель 1 */
+@media (max-width: 639px) {
+  #ocPanel2 {
+    right: 0;
+    z-index: 1046;
+  }
+  #ocPanel3 {
+    right: 0;
+    z-index: 1047;
+  }
+}
+
 /* Шапка боковой панели */
 .oc-side-panel__header {
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  padding: 0 0.5rem 0 0.25rem;
+  padding: 0.75rem 0.75rem 0.75rem 1rem;
   min-height: 56px;
   border-bottom: 1px solid color-mix(in srgb, var(--default-color), transparent 88%);
   flex-shrink: 0;
@@ -2280,51 +2295,36 @@ section,
   text-transform: uppercase;
   letter-spacing: 0.04em;
   color: var(--heading-color);
-  white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  white-space: normal;
+  line-height: 1.3;
 }
 
-.oc-side-panel__go-btn {
+/* Кнопка × — закрыть панель */
+.oc-close-btn {
   flex-shrink: 0;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   width: 36px;
   height: 36px;
-  border-radius: 6px;
-  color: var(--accent-color);
-  font-size: 1.15rem;
-  text-decoration: none;
-  transition: background 0.2s, color 0.2s;
-}
-
-.oc-side-panel__go-btn:hover {
-  background: color-mix(in srgb, var(--accent-color), transparent 88%);
-  color: var(--accent-color);
-  text-decoration: none;
-}
-
-/* Кнопка «Назад» */
-.oc-back-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.3rem;
   background: none;
   border: none;
-  cursor: pointer;
-  color: var(--nav-color);
-  font-size: 0.92rem;
-  font-weight: 600;
-  padding: 0.35rem 0.5rem 0.35rem 0.25rem;
   border-radius: 6px;
-  flex-shrink: 0;
+  color: color-mix(in srgb, var(--nav-color), transparent 30%);
+  font-size: 1rem;
+  cursor: pointer;
+  padding: 0;
   transition: color 0.2s, background 0.2s;
 }
 
-.oc-back-btn:hover {
+.oc-close-btn:hover {
   color: var(--accent-color);
-  background: color-mix(in srgb, var(--accent-color), transparent 92%);
+  background: color-mix(in srgb, var(--accent-color), transparent 90%);
 }
 
 /* Область прокрутки внутри боковых панелей */
