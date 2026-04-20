@@ -2038,25 +2038,23 @@ section,
 .offcanvas-body .col-7 .collapse ul {
   margin-top: 0.5rem;
 }
-/* Компактное меню для планшетов (md–lg) */
-.compact-nav {
-  gap: 0.25rem;
-}
-
-.compact-nav__link {
+/* Центральная навигация (main-nav) */
+.main-nav__link {
+  display: flex;
+  align-items: center;
   color: var(--nav-color);
   text-decoration: none;
   font-size: 15px;
   font-family: var(--nav-font);
-  padding: 6px 10px;
-  border-radius: 4px;
-  transition: color 0.2s, background 0.2s;
+  font-weight: 400;
+  padding: 18px 12px;
   white-space: nowrap;
+  transition: color 0.3s;
 }
 
-.compact-nav__link:hover {
+.main-nav__link:hover,
+.main-nav__link.active {
   color: var(--nav-hover-color);
-  background: color-mix(in srgb, var(--accent-color), transparent 92%);
   text-decoration: none;
 }
 

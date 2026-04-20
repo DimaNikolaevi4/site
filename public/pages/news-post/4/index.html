@@ -22,53 +22,41 @@
   <div class="container-fluid container-xl position-relative d-flex align-items-center">
 
     
-    <a href="/" class="logo d-flex align-items-center me-auto" title="Главная страница ГБПОУ РО «СИТ»">
+    <a href="/" class="logo d-flex align-items-center flex-shrink-0" title="Главная страница ГБПОУ РО «СИТ»">
       <img src="/assets/images/logo.png" alt="ГБПОУ РО «Сальский индустриальный техникум»" class="header-logo-img">
     </a>
 
     
     
-    
-
-    
-    <nav class="d-none d-md-flex d-xl-none align-items-center compact-nav" aria-label="Краткое меню">
-      
-      <a href="https://эос.сит-сальск.рф" target="_blank" rel="noopener"
-         class="compact-nav__link d-none d-lg-flex"
-         title="Электронная образовательная система ГБПОУ РО «СИТ»">ЭОС</a>
-      
-      <a href="#footer"
-         class="compact-nav__link"
-         title="Контактная информация">Контакты</a>
-    </nav>
-
-    
-    <nav id="navmenu" class="navmenu d-none d-xl-block" role="navigation" aria-label="Основная навигация">
-      <ul>
-        <li>
-          <a href="/abiturientam/"
-             class=""
-             
-             title="Информация для абитуриентов">Абитуриентам</a>
-        </li>
+    <nav class="main-nav d-none d-lg-flex mx-auto" role="navigation" aria-label="Основная навигация">
+      <ul class="d-flex list-unstyled align-items-center m-0 p-0">
         <li>
           <a href="/svedenija/"
-             class=""
+             class="main-nav__link"
              
              title="Официальные сведения об образовательной организации">Сведения об образовательной организации</a>
         </li>
-        <li>
+        <li class="d-none d-xl-flex">
+          <a href="/abiturientam/"
+             class="main-nav__link"
+             
+             title="Информация для абитуриентов">Абитуриентам</a>
+        </li>
+        <li class="d-none d-xl-flex">
           <a href="https://эос.сит-сальск.рф" target="_blank" rel="noopener"
+             class="main-nav__link"
              title="Электронная образовательная система ГБПОУ РО «СИТ»">ЭОС</a>
         </li>
-        <li>
-          <a href="#footer" title="Контактная информация">Контакты</a>
+        <li class="d-none d-xxl-flex">
+          <a href="#footer"
+             class="main-nav__link"
+             title="Контактная информация">Контакты</a>
         </li>
       </ul>
     </nav>
 
     
-    <div class="header-icons d-none d-xl-flex align-items-center gap-1">
+    <div class="header-icons d-none d-lg-flex align-items-center gap-1 flex-shrink-0">
       <a href="https://vk.com/sitsalsksit" target="_blank" rel="noopener"
          class="header-icon-btn" title="Официальная группа ВКонтакте" aria-label="ВКонтакте">
         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
@@ -104,7 +92,7 @@
     </div>
 
     
-    <button class="header-icon-btn d-xl-none ms-auto offcanvas-toggle-btn"
+    <button class="header-icon-btn d-lg-none ms-auto offcanvas-toggle-btn"
             type="button"
             data-bs-toggle="offcanvas" data-bs-target="#offcanvasRubrics"
             aria-controls="offcanvasRubrics"
@@ -128,6 +116,13 @@
     <ul class="list-unstyled offcanvas-quicklinks">
       <li>
         
+        <a href="/svedenija/"
+           class="offcanvas-quicklinks__link d-lg-none"
+           data-bs-dismiss="offcanvas"
+           title="Официальные сведения об образовательной организации">Сведения об образовательной организации</a>
+      </li>
+      <li>
+        
         <a href="/abiturientam/"
            class="offcanvas-quicklinks__link d-xl-none"
            data-bs-dismiss="offcanvas"
@@ -135,21 +130,14 @@
       </li>
       <li>
         
-        <a href="/svedenija/"
-           class="offcanvas-quicklinks__link d-xl-none"
-           data-bs-dismiss="offcanvas"
-           title="Официальные сведения об образовательной организации">Сведения об образовательной организации</a>
-      </li>
-      <li>
-        
         <a href="https://эос.сит-сальск.рф" target="_blank" rel="noopener"
-           class="offcanvas-quicklinks__link d-lg-none"
+           class="offcanvas-quicklinks__link d-xl-none"
            title="Электронная образовательная система">ЭОС</a>
       </li>
       <li>
         
         <a href="#footer"
-           class="offcanvas-quicklinks__link d-md-none"
+           class="offcanvas-quicklinks__link d-xxl-none"
            data-bs-dismiss="offcanvas"
            title="Контактная информация">Контакты</a>
       </li>
