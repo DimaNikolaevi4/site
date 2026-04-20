@@ -57,8 +57,17 @@
           <a href="#footer"
              class="main-nav__link"
              title="Контактная информация">
-            <span class="main-nav__icon" aria-hidden="true">☎️</span>
+            <i class="bi bi-buildings main-nav__icon" aria-hidden="true"></i>
             <span>Контакты</span>
+          </a>
+        </li>
+        <li class="d-none d-xxl-flex">
+          <a href="{{ contacts.phone_link }}"
+             class="main-nav__link"
+             title="Позвонить: {{ contacts.phone_formatted }}"
+             aria-label="Позвонить: {{ contacts.phone_formatted }}">
+            <i class="bi bi-telephone-fill main-nav__icon" aria-hidden="true"></i>
+            <span>{{ contacts.phone_formatted }}</span>
           </a>
         </li>
       </ul>
@@ -81,13 +90,6 @@
               title="Поиск по сайту" aria-label="Поиск" aria-expanded="false" aria-controls="headerSearchWrap">
         <i class="bi bi-search" aria-hidden="true"></i>
       </button>
-      <a href="{{ contacts.phone_link }}"
-         class="header-phone-link d-none d-xxl-inline-flex"
-         title="Позвонить: {{ contacts.phone_formatted }}"
-         aria-label="Позвонить: {{ contacts.phone_formatted }}">
-        <i class="bi bi-telephone-fill" aria-hidden="true"></i>
-        <span>{{ contacts.phone_formatted }}</span>
-      </a>
       <div class="a11y-wrap">
         <button class="header-icon-btn" id="a11yToggle"
                 type="button"
