@@ -92,8 +92,21 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
-  // Глобальная функция для onclick в components/header.njk
+  // Глобальная функция для onclick в components/header.njk (мобильный offcanvas)
   window.toggleA11y = function () {
+    var ocEl = document.getElementById('offcanvasRubrics');
+    if (ocEl && ocEl.classList.contains('show')) {
+      var bsOc = typeof bootstrap !== 'undefined'
+        ? bootstrap.Offcanvas.getInstance(ocEl)
+        : null;
+      if (bsOc) {
+        bsOc.hide();
+        setTimeout(function () {
+          panel.hidden ? openPanel() : closePanel();
+        }, 320);
+        return;
+      }
+    }
     panel.hidden ? openPanel() : closePanel();
   };
 
