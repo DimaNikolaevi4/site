@@ -2155,6 +2155,13 @@ section,
 
 :root {
   --oc-panel-w: 320px;
+  --oc-header-h: 78px;
+}
+
+@media (max-width: 480px) {
+  :root {
+    --oc-header-h: 72px;
+  }
 }
 
 /* Ширина основного offcanvas */
@@ -2167,8 +2174,8 @@ section,
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  min-height: 68px;
-  padding: 0.75rem 0.75rem 0.75rem 1rem;
+  min-height: var(--oc-header-h, 78px);
+  padding: 0.9rem 0.75rem 0.9rem 1rem;
   border-bottom: 3px solid var(--accent-color);
   background: color-mix(in srgb, var(--accent-color), var(--surface-color, #fff) 92%);
 }
@@ -2586,8 +2593,8 @@ section,
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  padding: 0.75rem 0.75rem 0.75rem 1rem;
-  min-height: 64px;
+  padding: 0.9rem 0.75rem 0.9rem 1rem;
+  min-height: var(--oc-header-h, 78px);
   border-bottom: 3px solid var(--accent-color);
   flex-shrink: 0;
   background: color-mix(in srgb, var(--accent-color), var(--surface-color, #fff) 92%);
