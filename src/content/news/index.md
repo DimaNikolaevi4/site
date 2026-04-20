@@ -1,6 +1,7 @@
 ---
 title: Новости
 layout: base.njk
+eleventyExcludeFromCollections: true
 ---
 
 # Новости
