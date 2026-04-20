@@ -6,7 +6,23 @@
       <img src="/assets/images/logo.png" alt="ГБПОУ РО «Сальский индустриальный техникум»" class="header-logo-img">
     </a>
 
-    {# Горизонтальное меню — только на десктопе (≥ xl) #}
+    {# Планшет md (768px+): показываем «Контакты» #}
+    {# Планшет lg (992px+): добавляем «ЭОС» #}
+    {# Десктоп xl (1200px+): полное меню navmenu #}
+
+    {# Компактные ссылки для планшетов (md до xl) #}
+    <nav class="d-none d-md-flex d-xl-none align-items-center compact-nav" aria-label="Краткое меню">
+      {# ЭОС — от lg до xl #}
+      <a href="https://эос.сит-сальск.рф" target="_blank" rel="noopener"
+         class="compact-nav__link d-none d-lg-flex"
+         title="Электронная образовательная система ГБПОУ РО «СИТ»">ЭОС</a>
+      {# Контакты — от md до xl #}
+      <a href="#footer"
+         class="compact-nav__link"
+         title="Контактная информация">Контакты</a>
+    </nav>
+
+    {# Полное горизонтальное меню — десктоп (xl+) #}
     <nav id="navmenu" class="navmenu d-none d-xl-block" role="navigation" aria-label="Основная навигация">
       <ul>
         <li>
@@ -31,7 +47,7 @@
       </ul>
     </nav>
 
-    {# Иконки действий — только на десктопе (≥ xl) #}
+    {# Иконки действий — только на десктопе (xl+) #}
     <div class="header-icons d-none d-xl-flex align-items-center gap-1">
       <a href="{{ social.vk }}" target="_blank" rel="noopener"
          class="header-icon-btn" title="Официальная группа ВКонтакте" aria-label="ВКонтакте">
@@ -67,12 +83,12 @@
       </button>
     </div>
 
-    {# Кнопка-гамбургер — только на мобильных (< xl), открывает offcanvas #}
+    {# Кнопка-гамбургер — только на мобильных/планшетах (< xl) #}
     <button class="header-icon-btn d-xl-none ms-auto offcanvas-toggle-btn"
             type="button"
             data-bs-toggle="offcanvas" data-bs-target="#offcanvasRubrics"
             aria-controls="offcanvasRubrics"
-            aria-label="Открыть меню разделов сайта"
+            aria-label="Открыть меню"
             title="Меню">
       <i class="bi bi-list fs-4" aria-hidden="true"></i>
     </button>
@@ -80,13 +96,48 @@
   </div>
 </header>
 
-{# Offcanvas — иерархический рубрикатор (десктоп + мобильный) #}
+{# Offcanvas — полное мобильное меню (десктоп + мобильный) #}
 <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRubrics" aria-labelledby="offcanvasRubricsLabel">
   <div class="offcanvas-header">
-    <h5 class="offcanvas-title" id="offcanvasRubricsLabel">Разделы сайта</h5>
+    <h5 class="offcanvas-title" id="offcanvasRubricsLabel">Меню</h5>
     <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Закрыть"></button>
   </div>
   <div class="offcanvas-body">
+
+    {# Быстрые ссылки — скрываются, когда видны в шапке #}
+    <ul class="list-unstyled offcanvas-quicklinks">
+      <li>
+        {# Абитуриентам — скрыть на xl+ (там в navmenu) #}
+        <a href="/abiturientam/"
+           class="offcanvas-quicklinks__link d-xl-none"
+           data-bs-dismiss="offcanvas"
+           title="Информация для абитуриентов">Абитуриентам</a>
+      </li>
+      <li>
+        {# Сведения — скрыть на xl+ #}
+        <a href="/svedenija/"
+           class="offcanvas-quicklinks__link d-xl-none"
+           data-bs-dismiss="offcanvas"
+           title="Официальные сведения об образовательной организации">Сведения об образовательной организации</a>
+      </li>
+      <li>
+        {# ЭОС — скрыть на lg+ (там в compact-nav и navmenu) #}
+        <a href="https://эос.сит-сальск.рф" target="_blank" rel="noopener"
+           class="offcanvas-quicklinks__link d-lg-none"
+           title="Электронная образовательная система">ЭОС</a>
+      </li>
+      <li>
+        {# Контакты — скрыть на md+ (там в compact-nav и navmenu) #}
+        <a href="#footer"
+           class="offcanvas-quicklinks__link d-md-none"
+           data-bs-dismiss="offcanvas"
+           title="Контактная информация">Контакты</a>
+      </li>
+    </ul>
+
+    <hr class="offcanvas-divider">
+    <p class="offcanvas-section-label">Все разделы</p>
+
     {% macro renderRubrics(items, level) %}
       {% set level = level if level else 1 %}
       <ul class="list-unstyled rubrics-list rubrics-list--level-{{ level }}">
