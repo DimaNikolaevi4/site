@@ -2058,21 +2058,98 @@ section,
   text-decoration: none;
 }
 
-/* Быстрые ссылки в offcanvas */
+/* ═══════════════════════════════════════════════════════════
+   OFFCANVAS — двухпанельное меню
+   ═══════════════════════════════════════════════════════════ */
+
+/* Шапка offcanvas */
+.oc-header {
+  border-bottom: 1px solid color-mix(in srgb, var(--default-color), transparent 88%);
+  min-height: 56px;
+  padding: 0.75rem 1rem;
+}
+
+.oc-header__back {
+  display: flex;
+  align-items: center;
+}
+
+.oc-back-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--nav-color);
+  font-size: 0.92rem;
+  font-weight: 600;
+  padding: 0.35rem 0.5rem 0.35rem 0.25rem;
+  border-radius: 6px;
+  transition: color 0.2s, background 0.2s;
+}
+
+.oc-back-btn:hover {
+  color: var(--accent-color);
+  background: color-mix(in srgb, var(--accent-color), transparent 92%);
+}
+
+.oc-header__title {
+  font-size: 1rem;
+  font-weight: 700;
+  margin: 0;
+  color: var(--heading-color);
+}
+
+/* Двухпанельная обёртка */
+.offcanvas-body.p-0 {
+  overflow: hidden;
+}
+
+.oc-panels-wrapper {
+  display: flex;
+  width: 200%;
+  height: 100%;
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.oc-panels-wrapper.show-sub {
+  transform: translateX(-50%);
+}
+
+/* Одна панель */
+.oc-panel {
+  width: 50%;
+  flex-shrink: 0;
+  height: 100%;
+  overflow: hidden;
+}
+
+.oc-panel__scroll {
+  height: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+/* Быстрые ссылки */
 .offcanvas-quicklinks {
-  margin: 0 0 0.5rem;
+  margin: 0 0 0;
   padding: 0;
 }
 
 .offcanvas-quicklinks__link {
   display: block;
-  padding: 0.5rem 0;
+  padding: 0.55rem 0;
   color: var(--nav-color);
-  font-size: 0.95rem;
+  font-size: 0.92rem;
   font-weight: 600;
   text-decoration: none;
   border-bottom: 1px solid color-mix(in srgb, var(--default-color), transparent 90%);
   transition: color 0.2s;
+}
+
+.offcanvas-quicklinks__link:last-child {
+  border-bottom: none;
 }
 
 .offcanvas-quicklinks__link:hover {
@@ -2080,35 +2157,214 @@ section,
   text-decoration: none;
 }
 
+/* Иконки действий (мобильные) */
 .offcanvas-actions {
   border-top: 1px solid color-mix(in srgb, var(--default-color), transparent 88%);
   border-bottom: 1px solid color-mix(in srgb, var(--default-color), transparent 88%);
-  margin: 0.25rem 0 0.5rem;
-  padding: 0.5rem 0;
 }
 
-.offcanvas-divider {
-  margin: 0.75rem 0 0.5rem;
-  border-color: color-mix(in srgb, var(--default-color), transparent 85%);
-}
-
+/* Метка раздела */
 .offcanvas-section-label {
-  font-size: 0.7rem;
+  font-size: 0.68rem;
   font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.08em;
-  color: color-mix(in srgb, var(--default-color), transparent 50%);
-  margin: 0 0 0.5rem;
+  letter-spacing: 0.09em;
+  color: color-mix(in srgb, var(--default-color), transparent 52%);
+  padding-top: 0.75rem;
+  padding-bottom: 0.25rem;
 }
 
-/* Порядок элементов шапки на планшетах (Mentor CSS задаёт logo: order 1) */
+/* ─── Список верхнего уровня (panel 1) ─── */
+.oc-nav {
+  border-top: 1px solid color-mix(in srgb, var(--default-color), transparent 90%);
+}
+
+.oc-split-row {
+  display: flex;
+  align-items: stretch;
+  border-bottom: 1px solid color-mix(in srgb, var(--default-color), transparent 90%);
+  transition: background 0.15s;
+}
+
+.oc-split-row:hover {
+  background: color-mix(in srgb, var(--accent-color), transparent 96%);
+}
+
+.oc-split-row__link {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  padding: 0.7rem 0.5rem 0.7rem 1rem;
+  color: var(--nav-color);
+  font-size: 0.88rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  text-decoration: none;
+  line-height: 1.35;
+  transition: color 0.2s;
+}
+
+.oc-split-row__link:hover {
+  color: var(--accent-color);
+  text-decoration: none;
+}
+
+/* Одиночная ссылка без детей */
+.oc-split-row__link--leaf {
+  display: flex;
+  align-items: center;
+  padding: 0.7rem 1rem;
+  color: color-mix(in srgb, var(--nav-color), transparent 30%);
+  font-size: 0.88rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  text-decoration: none;
+  border-bottom: 1px solid color-mix(in srgb, var(--default-color), transparent 90%);
+  transition: color 0.2s, background 0.15s;
+}
+
+.oc-split-row__link--leaf:hover {
+  color: var(--accent-color);
+  background: color-mix(in srgb, var(--accent-color), transparent 96%);
+  text-decoration: none;
+}
+
+/* Кнопка-стрелка (открывает под-панель) */
+.oc-split-row__toggle {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  background: none;
+  border: none;
+  border-left: 1px solid color-mix(in srgb, var(--default-color), transparent 90%);
+  color: color-mix(in srgb, var(--nav-color), transparent 40%);
+  font-size: 1rem;
+  cursor: pointer;
+  padding: 0;
+  transition: color 0.2s, background 0.2s;
+}
+
+.oc-split-row__toggle:hover {
+  color: var(--accent-color);
+  background: color-mix(in srgb, var(--accent-color), transparent 90%);
+}
+
+/* Hover на рядке подсвечивает стрелку */
+.oc-split-row:hover .oc-split-row__toggle {
+  color: var(--accent-color);
+}
+
+/* ─── Панель 2 — подразделы ─── */
+.oc-sub-parent {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  padding: 0.9rem 1rem;
+  background: color-mix(in srgb, var(--accent-color), transparent 92%);
+  border-bottom: 2px solid var(--accent-color);
+  color: var(--accent-color);
+  font-size: 0.82rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  text-decoration: none;
+  transition: background 0.2s;
+}
+
+.oc-sub-parent:hover {
+  background: color-mix(in srgb, var(--accent-color), transparent 85%);
+  text-decoration: none;
+  color: var(--accent-color);
+}
+
+.oc-sub-parent i {
+  font-size: 1.1rem;
+  flex-shrink: 0;
+}
+
+/* Список подразделов */
+.oc-sub-list {
+  margin: 0;
+  padding: 0;
+}
+
+.oc-sub-item {
+  border-bottom: 1px solid color-mix(in srgb, var(--default-color), transparent 90%);
+}
+
+.oc-sub-item:last-child {
+  border-bottom: none;
+}
+
+.oc-sub-link {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.65rem 1rem;
+  color: var(--nav-color);
+  font-size: 0.9rem;
+  text-decoration: none;
+  transition: color 0.2s, background 0.15s;
+}
+
+.oc-sub-link:hover {
+  color: var(--accent-color);
+  background: color-mix(in srgb, var(--accent-color), transparent 95%);
+  text-decoration: none;
+}
+
+/* Родительская ссылка (имеет внуков) */
+.oc-sub-link--parent {
+  font-weight: 600;
+  background: color-mix(in srgb, var(--default-color), transparent 97%);
+}
+
+/* Бейдж — количество внуков */
+.oc-sub-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 20px;
+  height: 20px;
+  padding: 0 5px;
+  border-radius: 10px;
+  background: color-mix(in srgb, var(--accent-color), transparent 82%);
+  color: var(--accent-color);
+  font-size: 0.72rem;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+/* Список внуков */
+.oc-sub-grandlist {
+  margin: 0;
+  padding: 0;
+  border-top: 1px solid color-mix(in srgb, var(--default-color), transparent 90%);
+}
+
+.oc-sub-link--grand {
+  padding-left: 1.75rem;
+  font-size: 0.85rem;
+  color: color-mix(in srgb, var(--nav-color), transparent 25%);
+}
+
+.oc-sub-link--grand:hover {
+  color: var(--accent-color);
+}
+
+/* ─── Порядок элементов шапки на планшетах ─── */
 @media (max-width: 1199px) {
-  .main-nav        { order: 2; }
-  .header-icons    { order: 3; }
+  .main-nav             { order: 2; }
+  .header-icons         { order: 3; }
   .offcanvas-toggle-btn { order: 4; }
 }
 
-/* Кнопки-иконки в шапке */
+/* ─── Кнопки-иконки в шапке ─── */
 .header-icon-btn {
   display: inline-flex;
   align-items: center;
@@ -2130,49 +2386,4 @@ section,
   color: var(--accent-color);
   background: color-mix(in srgb, var(--accent-color), transparent 92%);
   text-decoration: none;
-}
-
-/* Offcanvas рубрикатор — иерархический список без аккордеона */
-.rubrics-list {
-  margin: 0;
-  padding: 0;
-}
-
-.rubrics-list--level-1 > .rubrics-list__item {
-  border-bottom: 1px solid color-mix(in srgb, var(--default-color), transparent 90%);
-}
-
-.rubrics-list--level-1 > .rubrics-list__item:last-child {
-  border-bottom: none;
-}
-
-.rubrics-list__link {
-  display: block;
-  padding: 0.35rem 0;
-  color: var(--nav-color);
-  text-decoration: none;
-  transition: color 0.2s;
-  font-size: 0.9rem;
-  line-height: 1.4;
-}
-
-.rubrics-list__link--top {
-  font-weight: 700;
-  font-size: 0.95rem;
-  padding: 0.5rem 0 0.25rem;
-  color: var(--heading-color);
-}
-
-.rubrics-list__link:hover {
-  color: var(--accent-color);
-  text-decoration: none;
-}
-
-.rubrics-list--level-2 {
-  padding-left: 1rem;
-  margin-bottom: 0.25rem;
-}
-
-.rubrics-list--level-3 {
-  padding-left: 1.5rem;
 }
