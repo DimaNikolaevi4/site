@@ -1,10 +1,14 @@
-// Existing content of main.js...
+// Основной JS файл сайта
 
-// Accessibility and theme toggle functions
+// Функции доступности и переключения темы с защитой от ошибок
 window.toggleA11y = function() {
-  document.body.classList.toggle('a11y-high-contrast');
+  if (document.body) {
+    document.body.classList.toggle('a11y-high-contrast');
+  }
 };
 
 window.toggleDarkTheme = function() {
-  document.body.classList.toggle('dark-theme');
+  if (document.body) {
+    document.body.classList.toggle('dark-theme');
+  }
 };

@@ -18,24 +18,24 @@
 </head>
 <body class="page page--layouts/base.njk">
   <!-- Шапка -->
-  <nav id="navmenu" class="navmenu" role="navigation" aria-label="Основная навигация">  
-  <ul>  
-    <li><a href="/" class="">Главная</a></li>  
-    <li><a href="/abiturientam/">Абитуриентам</a></li>  
-    <li><a href="/svedenija/">Сведения об образовательной организации</a></li>  
-    <li><a href="https://эос.сит-сальск.рф" target="_blank" rel="noopener">ЭОС</a></li>  
-    <li><a href="#footer">Контакты</a></li>  
-    <li><a href="/search/">Поиск</a></li>  
+  <nav id="navmenu" class="navmenu" role="navigation" aria-label="Основная навигация">
+  <a href="/" class="logo d-flex align-items-center me-auto me-xl-0">
+    <img src="/assets/images/logo.png" alt="ГБПОУ РО 'СИТ'" height="40">
+  </a>
+  <ul>
+REPLACE
+ +++++++ REPLACE
+    <li><a href="/svedenija/" title="Официальные сведения об образовательной организации" aria-label="Сведения об образовательной организации">Сведения об образовательной организации</a></li>  
+    <li><a href="https://эос.сит-сальск.рф" target="_blank" rel="noopener" title="Электронная образовательная среда" aria-label="ЭОС">ЭОС</a></li>  
+    <li><a href="#footer" title="Контактная информация" aria-label="Контакты">Контакты</a></li>  
+REPLACE
+ +++++++ REPLACE
   </ul>  
 </nav>  
 <div class="header-icons">  
-  <a href="mailto:sitsalsk@mail.ru" class="me-2" title="Написать письмо" aria-label="Написать письмо">  
-    <i class="bi bi-envelope"></i>  
-  </a>  
-  <a href="https://vk.com/sitsalsksit" class="me-2" target="_blank" rel="noopener" title="ВКонтакте" aria-label="ВКонтакте">  
-    <i class="bi bi-vk"></i>  
-  </a>  
-  <a href="/search/" class="me-2" title="Поиск по сайту" aria-label="Поиск">  
+REPLACE
+ +++++++ REPLACE
+  <a href="/search/" class="me-2" title="Поиск" aria-label="Поиск">  
     <i class="bi bi-search"></i>  
   </a>  
   <button class="me-2" onclick="toggleA11y(); return false;" title="Версия для слабовидящих" aria-label="Версия для слабовидящих">  
@@ -1148,7 +1148,7 @@
   </div>  
 </div>  
 
-<i class="mobile-nav-toggle d-xl-none bi bi-list" aria-hidden="true"></i>
+
 
   <main class="main-content">
     
@@ -1174,7 +1174,7 @@
   <div class="container">
     <h1 class="page-title">«Семеро»</h1>
     <div class="material-meta">
-      <time class="material-meta__date" datetime="Sat Apr 18 2026 03:00:00 GMT+0300 (Москва, стандартное время)">
+      <time class="material-meta__date" datetime="Sat Apr 18 2026 00:00:00 GMT+0000 (Coordinated Universal Time)">
         18 апреля 2026 г.
       </time>
       
@@ -1246,7 +1246,7 @@
         
           
           <article class="news-card">
-            <time class="news-card__date" datetime="Mon Mar 16 2026 03:00:00 GMT+0300 (Москва, стандартное время)">16 марта 2026 г.</time>
+            <time class="news-card__date" datetime="Mon Mar 16 2026 00:00:00 GMT+0000 (Coordinated Universal Time)">16 марта 2026 г.</time>
             <h3 class="news-card__title">
               <a href="/content/news/2026-03-16-razgovory-o-vazhnom/">Внеурочные занятия «Разговоры о важном» – Заводы России</a>
             </h3>
@@ -1259,7 +1259,7 @@
         
           
           <article class="news-card">
-            <time class="news-card__date" datetime="Mon Mar 23 2026 03:00:00 GMT+0300 (Москва, стандартное время)">23 марта 2026 г.</time>
+            <time class="news-card__date" datetime="Mon Mar 23 2026 00:00:00 GMT+0000 (Coordinated Universal Time)">23 марта 2026 г.</time>
             <h3 class="news-card__title">
               <a href="/content/news/2026-03-23-ix-chteniya/">IX Областные Сальские краеведческие чтения</a>
             </h3>
@@ -1272,7 +1272,7 @@
         
           
           <article class="news-card">
-            <time class="news-card__date" datetime="Fri Mar 27 2026 03:00:00 GMT+0300 (Москва, стандартное время)">27 марта 2026 г.</time>
+            <time class="news-card__date" datetime="Fri Mar 27 2026 00:00:00 GMT+0000 (Coordinated Universal Time)">27 марта 2026 г.</time>
             <h3 class="news-card__title">
               <a href="/content/news/2026-03-27-olimpiada-avtomatika/">Олимпиада профессионального мастерства по компетенции «Промышленная автоматика»</a>
             </h3>
@@ -1382,8 +1382,5 @@
   <script src="/assets/mentor/vendor/aos/aos.js"></script>
   <script src="/assets/mentor/vendor/glightbox/js/glightbox.min.js"></script>
   <script src="/assets/mentor/vendor/purecounter/purecounter_vanilla.js"></script>
-  <script src="/assets/mentor/vendor/swiper/swiper-bundle.min.js"></script>
-  <script src="/assets/mentor/js/main.js"></script>
   <script src="/assets/js/main.js"></script>
-</body>
 </html>
