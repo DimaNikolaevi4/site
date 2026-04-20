@@ -2,44 +2,26 @@
 {% extends "layouts/base.njk" %}
 
 {% block content %}
-<div class="page-layout">
-  {# Секция 2: Контекстная секция (хлебные крошки, заголовок) #}
-  {% if sectionContext or title %}
-  <section class="section-context" aria-label="Контекст страницы">
-    <div class="container">
-      {% include "partials/breadcrumbs.njk" %}
-      <h1 class="page-title">{{ title }}</h1>
-      
-      {% if sectionContext.banner %}
-      <div class="page-banner">
-        <img src="{{ sectionContext.banner }}" alt="" role="presentation">
-      </div>
-      {% endif %}
-    </div>
-  </section>
-  {% endif %}
-  
-  {# Секция 3: Основной контент #}
-  <section class="section-main">
-    <div class="container">
-      <div class="content-wrapper{% if sidebar and sidebar.show %} with-sidebar{% endif %}">
-        <article class="page-content" itemprop="mainContentOfPage">
-          {{ content | safe }}
-        </article>
-        
-        {# Секция 4: Дополнительные блоки #}
-        {% if additionalBlocks %}
-        <section class="section-extra" aria-label="Дополнительные материалы">
-          {{ additionalBlocks | safe }}
-        </section>
+<div class="page-hero">
+  <div class="container">
+    <nav class="page-hero__breadcrumbs" aria-label="Хлебные крошки">
+      <ol>
+        <li><a href="/">Главная</a></li>
+        {% if eleventyNavigation and eleventyNavigation.parent %}
+        <li><a href="/{{ eleventyNavigation.parent | lower }}/">{{ eleventyNavigation.parent }}</a></li>
         {% endif %}
-      </div>
-      
-      {# Секция 5: Сайдбар #}
-      {% if sidebar and sidebar.show %}
-      {% include "partials/sidebar.njk" %}
-      {% endif %}
-    </div>
-  </section>
+        <li>{{ title }}</li>
+      </ol>
+    </nav>
+    <h1 class="page-hero__title">{{ title }}</h1>
+  </div>
 </div>
+
+<section class="section">
+  <div class="container">
+    <article class="page-content">
+      {{ content | safe }}
+    </article>
+  </div>
+</section>
 {% endblock %}

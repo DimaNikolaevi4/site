@@ -2,95 +2,51 @@
 {% extends "layouts/base.njk" %}
 
 {% block content %}
-<article class="post-layout" itemscope itemtype="https://schema.org/Article">
-  {# Секция 2: Контекстная секция #}
-  <section class="section-context" aria-label="Информация о материале">
-    <div class="container">
-      {% include "partials/breadcrumbs.njk" %}
-      
-      <header class="post-header">
-        <h1 class="post-title" itemprop="headline">{{ title }}</h1>
-        
-        <div class="post-meta">
-          {% if date %}
-          <time class="post-date" datetime="{{ date | dateToISO }}" itemprop="datePublished">
-            <span class="visually-hidden">Дата публикации:</span>
-            {{ date | dateRu }}
-          </time>
-          {% endif %}
-          
-          {% if author %}
-          <span class="post-author" itemprop="author">
-            <span class="visually-hidden">Автор:</span>
-            {{ author }}
-          </span>
-          {% endif %}
-          
-          {% if category %}
-          <span class="post-category">
-            <a href="/{{ category }}/">{{ category }}</a>
-          </span>
-          {% endif %}
-        </div>
-      </header>
-    </div>
-  </section>
-  
-  {# Секция 3: Основной контент #}
-  <section class="section-main">
-    <div class="container">
-      <div class="content-wrapper{% if sidebar and sidebar.show %} with-sidebar{% endif %}">
-        <div class="post-content" itemprop="articleBody">
-          {{ content | safe }}
-        </div>
-        
-        {# Теги #}
-        {% if tags and tags.length > 0 %}
-        <footer class="post-footer">
-          <div class="post-tags">
-            <span class="tags-label">Теги:</span>
-            {% for tag in tags %}
-              {% if tag != 'nav' %}
-              <a href="/tags/{{ tag | slugify }}/" class="tag" itemprop="keywords">{{ tag }}</a>
-              {% endif %}
-            {% endfor %}
-          </div>
-        </footer>
+<div class="page-hero">
+  <div class="container">
+    <nav class="page-hero__breadcrumbs" aria-label="Хлебные крошки">
+      <ol>
+        <li><a href="/">Главная</a></li>
+        {% if category %}
+        <li><a href="/{{ category | lower }}/">{{ category }}</a></li>
         {% endif %}
-        
-        {# Секция 4: Дополнительные блоки (читайте также) #}
-        {% if additionalBlocks %}
-        <section class="section-extra" aria-label="Читайте также">
-          {{ additionalBlocks | safe }}
-        </section>
-        {% endif %}
-        
-        {# Вложения #}
-        {% if attachments %}
-        <section class="post-attachments" aria-label="Вложения">
-          <h2 class="attachments-title">Вложения</h2>
-          <ul class="attachments-list">
-            {% for attachment in attachments %}
-            <li class="attachment-item">
-              <a href="{{ attachment.url }}" class="attachment-link" download>
-                <span class="attachment-icon">📎</span>
-                <span class="attachment-name">{{ attachment.name }}</span>
-                {% if attachment.size %}
-                <span class="attachment-size">({{ attachment.size }})</span>
-                {% endif %}
-              </a>
-            </li>
-            {% endfor %}
-          </ul>
-        </section>
-        {% endif %}
-      </div>
-      
-      {# Секция 5: Сайдбар #}
-      {% if sidebar and sidebar.show %}
-      {% include "partials/sidebar.njk" %}
+        <li>{{ title }}</li>
+      </ol>
+    </nav>
+    <h1 class="page-hero__title">{{ title }}</h1>
+    {% if date or author %}
+    <div class="page-hero__meta">
+      {% if date %}
+      <time datetime="{{ date | dateToISO }}">{{ date | dateRu }}</time>
+      {% endif %}
+      {% if author %}
+      <span>{{ author }}</span>
       {% endif %}
     </div>
-  </section>
-</article>
+    {% endif %}
+  </div>
+</div>
+
+<section class="section">
+  <div class="container">
+    <article class="post-content" itemprop="articleBody">
+      {{ content | safe }}
+    </article>
+
+    {% if attachments %}
+    <section class="post-attachments" aria-label="Вложения">
+      <h2>Вложения</h2>
+      <ul>
+        {% for attachment in attachments %}
+        <li>
+          <a href="{{ attachment.url }}" download>
+            {{ attachment.name }}{% if attachment.size %} ({{ attachment.size }}){% endif %}
+          </a>
+        </li>
+        {% endfor %}
+      </ul>
+    </section>
+    {% endif %}
+  </div>
+</section>
 {% endblock %}
