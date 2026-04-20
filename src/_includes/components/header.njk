@@ -84,125 +84,132 @@
   </div>
 </header>
 
-{# Offcanvas — полное мобильное меню #}
+{# Offcanvas — меню 1-го уровня (справа) #}
 <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRubrics" aria-labelledby="offcanvasRubricsLabel">
 
-  {# Шапка offcanvas — переключается между заголовком и кнопкой «Назад» #}
   <div class="offcanvas-header oc-header">
-    <div class="oc-header__back d-none" id="ocBackArea">
-      <button class="oc-back-btn" id="ocBackBtn" type="button" aria-label="Вернуться к списку разделов">
-        <i class="bi bi-chevron-left" aria-hidden="true"></i>
-        <span>Назад</span>
-      </button>
-    </div>
     <h5 class="offcanvas-title oc-header__title" id="offcanvasRubricsLabel">Разделы сайта</h5>
     <button type="button" class="btn-close ms-auto" data-bs-dismiss="offcanvas" aria-label="Закрыть"></button>
   </div>
 
   <div class="offcanvas-body p-0">
-    <div class="oc-panels-wrapper" id="ocPanelsWrapper">
+    <div class="oc-panel" id="ocPanel1">
+      <div class="oc-panel__scroll">
 
-      {# ═══ ПАНЕЛЬ 1 — верхний уровень ═══ #}
-      <div class="oc-panel" id="ocPanel1">
-        <div class="oc-panel__scroll">
+        {# Быстрые ссылки — скрываются когда видны в шапке #}
+        <ul class="list-unstyled offcanvas-quicklinks px-3 pt-3 mb-0">
+          <li>
+            <a href="/svedenija/" class="offcanvas-quicklinks__link d-lg-none"
+               data-bs-dismiss="offcanvas">Сведения об образовательной организации</a>
+          </li>
+          <li>
+            <a href="/abiturientam/" class="offcanvas-quicklinks__link d-xl-none"
+               data-bs-dismiss="offcanvas">Абитуриентам</a>
+          </li>
+          <li>
+            <a href="https://эос.сит-сальск.рф" target="_blank" rel="noopener"
+               class="offcanvas-quicklinks__link d-xl-none">ЭОС</a>
+          </li>
+          <li>
+            <a href="#footer" class="offcanvas-quicklinks__link d-xxl-none"
+               data-bs-dismiss="offcanvas">Контакты</a>
+          </li>
+        </ul>
 
-          {# Быстрые ссылки — скрываются когда видны в шапке #}
-          <ul class="list-unstyled offcanvas-quicklinks px-3 pt-3 mb-0">
-            <li>
-              <a href="/svedenija/" class="offcanvas-quicklinks__link d-lg-none"
-                 data-bs-dismiss="offcanvas">Сведения об образовательной организации</a>
-            </li>
-            <li>
-              <a href="/abiturientam/" class="offcanvas-quicklinks__link d-xl-none"
-                 data-bs-dismiss="offcanvas">Абитуриентам</a>
-            </li>
-            <li>
-              <a href="https://эос.сит-сальск.рф" target="_blank" rel="noopener"
-                 class="offcanvas-quicklinks__link d-xl-none">ЭОС</a>
-            </li>
-            <li>
-              <a href="#footer" class="offcanvas-quicklinks__link d-xxl-none"
-                 data-bs-dismiss="offcanvas">Контакты</a>
-            </li>
-          </ul>
-
-          {# Иконки действий — только на мобильных (< 992px) #}
-          <div class="offcanvas-actions d-flex d-lg-none align-items-center gap-2 flex-wrap px-3 py-2">
-            <a href="{{ social.vk }}" target="_blank" rel="noopener"
-               class="header-icon-btn" title="ВКонтакте" aria-label="ВКонтакте">
-              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                <path d="M21.579 6.855c.17-.565 0-.98-.802-.98h-2.652c-.67 0-.979.357-1.146.752 0 0-1.34 3.283-3.237 5.414-.614.618-.893.814-1.228.814-.17 0-.42-.196-.42-.76V6.854c0-.671-.19-.98-.76-.98H9.389c-.42 0-.67.315-.67.615 0 .644.96.793 1.06 2.605v3.935c0 .864-.155 1.021-.492 1.021-.893 0-3.066-3.303-4.355-7.083C4.68 6.37 4.428 5.875 3.754 5.875H1.102c-.76 0-.913.357-.913.752 0 .704.893 4.197 4.155 8.817 2.175 3.144 5.239 4.848 8.026 4.848 1.674 0 1.88-.38 1.88-1.035v-2.385c0-.76.16-.912.694-.912.393 0 1.067.198 2.641 1.727 1.798 1.81 2.094 2.62 3.102 2.62h2.652c.76 0 1.14-.38.92-1.134-.237-.744-1.092-1.82-2.226-3.101-.614-.73-1.535-1.517-1.814-1.91-.393-.508-.28-.733 0-1.185 0 0 3.21-4.55 3.546-6.095z"/>
-              </svg>
-            </a>
-            <a href="mailto:{{ contacts.email }}"
-               class="header-icon-btn" title="Написать на почту: {{ contacts.email }}" aria-label="Электронная почта">
-              <i class="bi bi-envelope-fill" aria-hidden="true"></i>
-            </a>
-            <a href="/search/" class="header-icon-btn" data-bs-dismiss="offcanvas"
-               title="Поиск по сайту" aria-label="Поиск">
-              <i class="bi bi-search" aria-hidden="true"></i>
-            </a>
-            <button class="header-icon-btn" onclick="toggleA11y(); return false;"
-                    title="Версия для слабовидящих" aria-label="Версия для слабовидящих">
-              <i class="bi bi-eye" aria-hidden="true"></i>
-            </button>
-            <button class="header-icon-btn" onclick="toggleDarkTheme(); return false;"
-                    title="Тёмная тема" aria-label="Тёмная / светлая тема">
-              <i class="bi bi-moon-stars" aria-hidden="true"></i>
-            </button>
-          </div>
-
-          <p class="offcanvas-section-label px-3 mt-1 mb-0">Все разделы</p>
-
-          {# Список разделов верхнего уровня — split-row для тех у кого есть дети #}
-          <nav class="oc-nav" aria-label="Разделы сайта">
-            {% for item in rubrics.main_rubrics %}
-              {% if item.children %}
-                <div class="oc-split-row" data-rubric-index="{{ loop.index0 }}">
-                  <a href="/{{ item.slug }}/"
-                     class="oc-split-row__link"
-                     data-bs-dismiss="offcanvas"
-                     title="{{ item.title }}">{{ item.title }}</a>
-                  <button class="oc-split-row__toggle"
-                          type="button"
-                          aria-label="Открыть подразделы: {{ item.title }}"
-                          data-rubric-index="{{ loop.index0 }}">
-                    <i class="bi bi-chevron-right" aria-hidden="true"></i>
-                  </button>
-                </div>
-              {% else %}
-                <a href="/{{ item.slug }}/"
-                   class="oc-split-row__link oc-split-row__link--leaf"
-                   data-bs-dismiss="offcanvas"
-                   title="{{ item.title }}">{{ item.title }}</a>
-              {% endif %}
-            {% endfor %}
-          </nav>
-
-        </div>
-      </div>
-
-      {# ═══ ПАНЕЛЬ 2 — подразделы (заполняется через JS) ═══ #}
-      <div class="oc-panel" id="ocPanel2" aria-hidden="true">
-        <div class="oc-panel__scroll">
-
-          {# Ссылка на страницу родительского раздела #}
-          <a href="#" id="ocSubParentLink" class="oc-sub-parent" data-bs-dismiss="offcanvas">
-            <span id="ocSubParentTitle"></span>
-            <i class="bi bi-arrow-right-circle" aria-hidden="true"></i>
+        {# Иконки действий — только на мобильных (< 992px) #}
+        <div class="offcanvas-actions d-flex d-lg-none align-items-center gap-2 flex-wrap px-3 py-2">
+          <a href="{{ social.vk }}" target="_blank" rel="noopener"
+             class="header-icon-btn" title="ВКонтакте" aria-label="ВКонтакте">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M21.579 6.855c.17-.565 0-.98-.802-.98h-2.652c-.67 0-.979.357-1.146.752 0 0-1.34 3.283-3.237 5.414-.614.618-.893.814-1.228.814-.17 0-.42-.196-.42-.76V6.854c0-.671-.19-.98-.76-.98H9.389c-.42 0-.67.315-.67.615 0 .644.96.793 1.06 2.605v3.935c0 .864-.155 1.021-.492 1.021-.893 0-3.066-3.303-4.355-7.083C4.68 6.37 4.428 5.875 3.754 5.875H1.102c-.76 0-.913.357-.913.752 0 .704.893 4.197 4.155 8.817 2.175 3.144 5.239 4.848 8.026 4.848 1.674 0 1.88-.38 1.88-1.035v-2.385c0-.76.16-.912.694-.912.393 0 1.067.198 2.641 1.727 1.798 1.81 2.094 2.62 3.102 2.62h2.652c.76 0 1.14-.38.92-1.134-.237-.744-1.092-1.82-2.226-3.101-.614-.73-1.535-1.517-1.814-1.91-.393-.508-.28-.733 0-1.185 0 0 3.21-4.55 3.546-6.095z"/>
+            </svg>
           </a>
-
-          <nav aria-label="Подразделы">
-            <ul class="list-unstyled oc-sub-list" id="ocSubList"></ul>
-          </nav>
-
+          <a href="mailto:{{ contacts.email }}"
+             class="header-icon-btn" title="Написать на почту: {{ contacts.email }}" aria-label="Электронная почта">
+            <i class="bi bi-envelope-fill" aria-hidden="true"></i>
+          </a>
+          <a href="/search/" class="header-icon-btn" data-bs-dismiss="offcanvas"
+             title="Поиск по сайту" aria-label="Поиск">
+            <i class="bi bi-search" aria-hidden="true"></i>
+          </a>
+          <button class="header-icon-btn" onclick="toggleA11y(); return false;"
+                  title="Версия для слабовидящих" aria-label="Версия для слабовидящих">
+            <i class="bi bi-eye" aria-hidden="true"></i>
+          </button>
+          <button class="header-icon-btn" onclick="toggleDarkTheme(); return false;"
+                  title="Тёмная тема" aria-label="Тёмная / светлая тема">
+            <i class="bi bi-moon-stars" aria-hidden="true"></i>
+          </button>
         </div>
-      </div>
 
+        <p class="offcanvas-section-label px-3 mt-1 mb-0">Все разделы</p>
+
+        {# Список разделов 1-го уровня #}
+        <nav class="oc-nav" aria-label="Разделы сайта">
+          {% for item in rubrics.main_rubrics %}
+            {% if item.children %}
+              <div class="oc-split-row" data-rubric-index="{{ loop.index0 }}">
+                <a href="/{{ item.slug }}/"
+                   class="oc-split-row__link oc-dismiss-all"
+                   title="{{ item.title }}">{{ item.title }}</a>
+                <button class="oc-split-row__toggle"
+                        type="button"
+                        aria-label="Открыть подразделы: {{ item.title }}"
+                        data-rubric-index="{{ loop.index0 }}">
+                  <i class="bi bi-chevron-right" aria-hidden="true"></i>
+                </button>
+              </div>
+            {% else %}
+              <a href="/{{ item.slug }}/"
+                 class="oc-split-row__link oc-split-row__link--leaf oc-dismiss-all"
+                 title="{{ item.title }}">{{ item.title }}</a>
+            {% endif %}
+          {% endfor %}
+        </nav>
+
+      </div>
     </div>
   </div>
 
   {# Данные рубрик для offcanvas-nav.js #}
   <script id="rubricsData" type="application/json">{{ rubrics.main_rubrics | dump | safe }}</script>
 
+</div>
+
+{# ═══ ПАНЕЛЬ 2 — 2-й уровень, слева от панели 1 (заполняется через JS) ═══ #}
+<div class="oc-side-panel" id="ocPanel2" aria-hidden="true">
+  <div class="oc-side-panel__header">
+    <button class="oc-back-btn" id="ocBackBtn2" type="button" aria-label="Назад">
+      <i class="bi bi-chevron-left" aria-hidden="true"></i>
+      <span>Назад</span>
+    </button>
+    <span class="oc-side-panel__title" id="ocPanel2Title"></span>
+    <a href="#" id="ocPanel2ParentLink" class="oc-side-panel__go-btn oc-dismiss-all" title="Перейти в раздел" aria-label="Перейти в раздел">
+      <i class="bi bi-arrow-right-circle" aria-hidden="true"></i>
+    </a>
+  </div>
+  <div class="oc-panel__scroll" id="ocPanel2Scroll">
+    <nav aria-label="Подразделы">
+      <ul class="list-unstyled oc-sub-list" id="ocSubList"></ul>
+    </nav>
+  </div>
+</div>
+
+{# ═══ ПАНЕЛЬ 3 — 3-й уровень, слева от панели 2 (заполняется через JS) ═══ #}
+<div class="oc-side-panel" id="ocPanel3" aria-hidden="true">
+  <div class="oc-side-panel__header">
+    <button class="oc-back-btn" id="ocBackBtn3" type="button" aria-label="Назад">
+      <i class="bi bi-chevron-left" aria-hidden="true"></i>
+      <span>Назад</span>
+    </button>
+    <span class="oc-side-panel__title" id="ocPanel3Title"></span>
+    <a href="#" id="ocPanel3ParentLink" class="oc-side-panel__go-btn oc-dismiss-all" title="Перейти в раздел" aria-label="Перейти в раздел">
+      <i class="bi bi-arrow-right-circle" aria-hidden="true"></i>
+    </a>
+  </div>
+  <div class="oc-panel__scroll" id="ocPanel3Scroll">
+    <nav aria-label="Под-подразделы">
+      <ul class="list-unstyled oc-sub-list" id="ocSubSubList"></ul>
+    </nav>
+  </div>
 </div>

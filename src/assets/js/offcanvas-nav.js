@@ -1,92 +1,152 @@
 (function () {
   'use strict';
 
-  const wrapper = document.getElementById('ocPanelsWrapper');
-  if (!wrapper) return;
-
-  const rubricsEl = document.getElementById('rubricsData');
+  var rubricsEl = document.getElementById('rubricsData');
   if (!rubricsEl) return;
 
-  const RUBRICS = JSON.parse(rubricsEl.textContent);
+  var RUBRICS = JSON.parse(rubricsEl.textContent);
 
-  const ocPanel1        = document.getElementById('ocPanel1');
-  const ocPanel2        = document.getElementById('ocPanel2');
-  const ocBackArea      = document.getElementById('ocBackArea');
-  const ocBackBtn       = document.getElementById('ocBackBtn');
-  const ocHeaderTitle   = document.querySelector('.oc-header__title');
-  const ocSubParentLink = document.getElementById('ocSubParentLink');
-  const ocSubParentTitle= document.getElementById('ocSubParentTitle');
-  const ocSubList       = document.getElementById('ocSubList');
-  const offcanvasEl     = document.getElementById('offcanvasRubrics');
+  var offcanvasEl  = document.getElementById('offcanvasRubrics');
+  var ocPanel2     = document.getElementById('ocPanel2');
+  var ocPanel3     = document.getElementById('ocPanel3');
+  var ocSubList    = document.getElementById('ocSubList');
+  var ocSubSubList = document.getElementById('ocSubSubList');
+  var ocBackBtn2   = document.getElementById('ocBackBtn2');
+  var ocBackBtn3   = document.getElementById('ocBackBtn3');
+  var ocPanel2Title       = document.getElementById('ocPanel2Title');
+  var ocPanel3Title       = document.getElementById('ocPanel3Title');
+  var ocPanel2ParentLink  = document.getElementById('ocPanel2ParentLink');
+  var ocPanel3ParentLink  = document.getElementById('ocPanel3ParentLink');
 
-  let hoverTimer = null;
+  var hoverTimer = null;
 
-  function buildSubList(children) {
+  function esc(str) {
+    return String(str)
+      .replace(/&/g, '&amp;')
+      .replace(/"/g, '&quot;')
+      .replace(/'/g, '&#39;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;');
+  }
+
+  function buildLevel2Items(children, parentSlug) {
     return children.map(function (child) {
+      var href = '/' + parentSlug + '/' + child.slug + '/';
       if (child.children && child.children.length) {
-        var grandItems = child.children.map(function (gc) {
-          return '<li><a href="/' + gc.slug + '/" class="oc-sub-link oc-sub-link--grand" data-bs-dismiss="offcanvas">'
-            + gc.title + '</a></li>';
-        }).join('');
-        return '<li class="oc-sub-item oc-sub-item--has-children">'
-          + '<a href="/' + child.slug + '/" class="oc-sub-link oc-sub-link--parent" data-bs-dismiss="offcanvas">'
-          + '<span>' + child.title + '</span>'
-          + '<span class="oc-sub-badge">' + child.children.length + '</span>'
-          + '</a>'
-          + '<ul class="list-unstyled oc-sub-grandlist">' + grandItems + '</ul>'
+        return '<li class="oc-sub-item">'
+          + '<div class="oc-split-row" data-l3-href="' + esc(href) + '" data-l3-json="' + esc(JSON.stringify(child)) + '">'
+          + '<a href="' + esc(href) + '" class="oc-split-row__link oc-dismiss-all">' + esc(child.title) + '</a>'
+          + '<button class="oc-split-row__toggle oc-open-l3" type="button" aria-label="Открыть подразделы: ' + esc(child.title) + '">'
+          + '<i class="bi bi-chevron-right" aria-hidden="true"></i>'
+          + '</button>'
+          + '</div>'
           + '</li>';
       }
       return '<li class="oc-sub-item">'
-        + '<a href="/' + child.slug + '/" class="oc-sub-link" data-bs-dismiss="offcanvas">' + child.title + '</a>'
+        + '<a href="' + esc(href) + '" class="oc-split-row__link oc-split-row__link--leaf oc-dismiss-all">' + esc(child.title) + '</a>'
         + '</li>';
     }).join('');
   }
 
-  function openSubPanel(idx) {
-    var rubric = RUBRICS[idx];
-    if (!rubric || !rubric.children) return;
+  function buildLevel3Items(children, parentHref) {
+    return children.map(function (gc) {
+      var href = parentHref + gc.slug + '/';
+      return '<li class="oc-sub-item">'
+        + '<a href="' + esc(href) + '" class="oc-split-row__link oc-split-row__link--leaf oc-dismiss-all">' + esc(gc.title) + '</a>'
+        + '</li>';
+    }).join('');
+  }
 
-    ocSubParentLink.href        = '/' + rubric.slug + '/';
-    ocSubParentTitle.textContent = rubric.title;
-    ocSubList.innerHTML          = buildSubList(rubric.children);
+  function openPanel2(rubric) {
+    closePanel3();
 
-    wrapper.classList.add('show-sub');
-    ocPanel1.setAttribute('aria-hidden', 'true');
+    ocPanel2Title.textContent       = rubric.title;
+    ocPanel2ParentLink.href         = '/' + rubric.slug + '/';
+    ocSubList.innerHTML             = buildLevel2Items(rubric.children, rubric.slug);
+
+    ocSubList.querySelectorAll('.oc-open-l3').forEach(function (btn) {
+      btn.addEventListener('click', function () {
+        var row  = btn.closest('.oc-split-row');
+        var child = JSON.parse(row.dataset.l3Json);
+        var href  = row.dataset.l3Href;
+        openPanel3(child, href);
+      });
+    });
+
+    ocSubList.querySelectorAll('.oc-dismiss-all').forEach(function (el) {
+      el.addEventListener('click', closeAll);
+    });
+
+    ocPanel2.classList.add('is-open');
     ocPanel2.setAttribute('aria-hidden', 'false');
-    ocBackArea.classList.remove('d-none');
-    if (ocHeaderTitle) ocHeaderTitle.classList.add('d-none');
-
     ocPanel2.querySelector('.oc-panel__scroll').scrollTop = 0;
   }
 
-  function closeSubPanel() {
-    wrapper.classList.remove('show-sub');
-    ocPanel1.setAttribute('aria-hidden', 'false');
+  function closePanel2() {
+    closePanel3();
+    ocPanel2.classList.remove('is-open');
     ocPanel2.setAttribute('aria-hidden', 'true');
-    ocBackArea.classList.add('d-none');
-    if (ocHeaderTitle) ocHeaderTitle.classList.remove('d-none');
   }
 
-  document.querySelectorAll('.oc-split-row__toggle').forEach(function (btn) {
+  function openPanel3(child, parentHref) {
+    ocPanel3Title.textContent      = child.title;
+    ocPanel3ParentLink.href        = parentHref;
+    ocSubSubList.innerHTML         = buildLevel3Items(child.children, parentHref);
+
+    ocSubSubList.querySelectorAll('.oc-dismiss-all').forEach(function (el) {
+      el.addEventListener('click', closeAll);
+    });
+
+    ocPanel3.classList.add('is-open');
+    ocPanel3.setAttribute('aria-hidden', 'false');
+    ocPanel3.querySelector('.oc-panel__scroll').scrollTop = 0;
+  }
+
+  function closePanel3() {
+    ocPanel3.classList.remove('is-open');
+    ocPanel3.setAttribute('aria-hidden', 'true');
+  }
+
+  function closeAll() {
+    closePanel3();
+    closePanel2();
+    if (offcanvasEl) {
+      var bsOc = bootstrap.Offcanvas.getInstance(offcanvasEl);
+      if (bsOc) bsOc.hide();
+    }
+  }
+
+  document.querySelectorAll('.oc-split-row__toggle[data-rubric-index]').forEach(function (btn) {
     btn.addEventListener('click', function () {
-      openSubPanel(parseInt(this.dataset.rubricIndex, 10));
+      var idx    = parseInt(this.dataset.rubricIndex, 10);
+      var rubric = RUBRICS[idx];
+      if (rubric && rubric.children) openPanel2(rubric);
     });
   });
 
-  if (ocBackBtn) {
-    ocBackBtn.addEventListener('click', closeSubPanel);
-  }
+  document.querySelectorAll('#ocPanel1 .oc-dismiss-all').forEach(function (el) {
+    el.addEventListener('click', closeAll);
+  });
+
+  if (ocBackBtn2) ocBackBtn2.addEventListener('click', closePanel2);
+  if (ocBackBtn3) ocBackBtn3.addEventListener('click', closePanel3);
 
   if (offcanvasEl) {
-    offcanvasEl.addEventListener('hidden.bs.offcanvas', closeSubPanel);
+    offcanvasEl.addEventListener('hidden.bs.offcanvas', function () {
+      closePanel3();
+      closePanel2();
+    });
   }
 
   var isPointer = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
   if (isPointer) {
-    document.querySelectorAll('.oc-split-row').forEach(function (row) {
+    document.querySelectorAll('.oc-split-row[data-rubric-index]').forEach(function (row) {
       row.addEventListener('mouseenter', function () {
-        var idx = parseInt(this.dataset.rubricIndex, 10);
-        hoverTimer = setTimeout(function () { openSubPanel(idx); }, 220);
+        var idx    = parseInt(this.dataset.rubricIndex, 10);
+        var rubric = RUBRICS[idx];
+        if (rubric && rubric.children) {
+          hoverTimer = setTimeout(function () { openPanel2(rubric); }, 220);
+        }
       });
       row.addEventListener('mouseleave', function () {
         clearTimeout(hoverTimer);

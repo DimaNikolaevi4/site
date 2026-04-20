@@ -107,245 +107,243 @@
 
 <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRubrics" aria-labelledby="offcanvasRubricsLabel">
 
-  
   <div class="offcanvas-header oc-header">
-    <div class="oc-header__back d-none" id="ocBackArea">
-      <button class="oc-back-btn" id="ocBackBtn" type="button" aria-label="Вернуться к списку разделов">
-        <i class="bi bi-chevron-left" aria-hidden="true"></i>
-        <span>Назад</span>
-      </button>
-    </div>
     <h5 class="offcanvas-title oc-header__title" id="offcanvasRubricsLabel">Разделы сайта</h5>
     <button type="button" class="btn-close ms-auto" data-bs-dismiss="offcanvas" aria-label="Закрыть"></button>
   </div>
 
   <div class="offcanvas-body p-0">
-    <div class="oc-panels-wrapper" id="ocPanelsWrapper">
+    <div class="oc-panel" id="ocPanel1">
+      <div class="oc-panel__scroll">
 
-      
-      <div class="oc-panel" id="ocPanel1">
-        <div class="oc-panel__scroll">
+        
+        <ul class="list-unstyled offcanvas-quicklinks px-3 pt-3 mb-0">
+          <li>
+            <a href="/svedenija/" class="offcanvas-quicklinks__link d-lg-none"
+               data-bs-dismiss="offcanvas">Сведения об образовательной организации</a>
+          </li>
+          <li>
+            <a href="/abiturientam/" class="offcanvas-quicklinks__link d-xl-none"
+               data-bs-dismiss="offcanvas">Абитуриентам</a>
+          </li>
+          <li>
+            <a href="https://эос.сит-сальск.рф" target="_blank" rel="noopener"
+               class="offcanvas-quicklinks__link d-xl-none">ЭОС</a>
+          </li>
+          <li>
+            <a href="#footer" class="offcanvas-quicklinks__link d-xxl-none"
+               data-bs-dismiss="offcanvas">Контакты</a>
+          </li>
+        </ul>
 
-          
-          <ul class="list-unstyled offcanvas-quicklinks px-3 pt-3 mb-0">
-            <li>
-              <a href="/svedenija/" class="offcanvas-quicklinks__link d-lg-none"
-                 data-bs-dismiss="offcanvas">Сведения об образовательной организации</a>
-            </li>
-            <li>
-              <a href="/abiturientam/" class="offcanvas-quicklinks__link d-xl-none"
-                 data-bs-dismiss="offcanvas">Абитуриентам</a>
-            </li>
-            <li>
-              <a href="https://эос.сит-сальск.рф" target="_blank" rel="noopener"
-                 class="offcanvas-quicklinks__link d-xl-none">ЭОС</a>
-            </li>
-            <li>
-              <a href="#footer" class="offcanvas-quicklinks__link d-xxl-none"
-                 data-bs-dismiss="offcanvas">Контакты</a>
-            </li>
-          </ul>
-
-          
-          <div class="offcanvas-actions d-flex d-lg-none align-items-center gap-2 flex-wrap px-3 py-2">
-            <a href="https://vk.com/sitsalsksit" target="_blank" rel="noopener"
-               class="header-icon-btn" title="ВКонтакте" aria-label="ВКонтакте">
-              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                <path d="M21.579 6.855c.17-.565 0-.98-.802-.98h-2.652c-.67 0-.979.357-1.146.752 0 0-1.34 3.283-3.237 5.414-.614.618-.893.814-1.228.814-.17 0-.42-.196-.42-.76V6.854c0-.671-.19-.98-.76-.98H9.389c-.42 0-.67.315-.67.615 0 .644.96.793 1.06 2.605v3.935c0 .864-.155 1.021-.492 1.021-.893 0-3.066-3.303-4.355-7.083C4.68 6.37 4.428 5.875 3.754 5.875H1.102c-.76 0-.913.357-.913.752 0 .704.893 4.197 4.155 8.817 2.175 3.144 5.239 4.848 8.026 4.848 1.674 0 1.88-.38 1.88-1.035v-2.385c0-.76.16-.912.694-.912.393 0 1.067.198 2.641 1.727 1.798 1.81 2.094 2.62 3.102 2.62h2.652c.76 0 1.14-.38.92-1.134-.237-.744-1.092-1.82-2.226-3.101-.614-.73-1.535-1.517-1.814-1.91-.393-.508-.28-.733 0-1.185 0 0 3.21-4.55 3.546-6.095z"/>
-              </svg>
-            </a>
-            <a href="mailto:sitsalsk@mail.ru"
-               class="header-icon-btn" title="Написать на почту: sitsalsk@mail.ru" aria-label="Электронная почта">
-              <i class="bi bi-envelope-fill" aria-hidden="true"></i>
-            </a>
-            <a href="/search/" class="header-icon-btn" data-bs-dismiss="offcanvas"
-               title="Поиск по сайту" aria-label="Поиск">
-              <i class="bi bi-search" aria-hidden="true"></i>
-            </a>
-            <button class="header-icon-btn" onclick="toggleA11y(); return false;"
-                    title="Версия для слабовидящих" aria-label="Версия для слабовидящих">
-              <i class="bi bi-eye" aria-hidden="true"></i>
-            </button>
-            <button class="header-icon-btn" onclick="toggleDarkTheme(); return false;"
-                    title="Тёмная тема" aria-label="Тёмная / светлая тема">
-              <i class="bi bi-moon-stars" aria-hidden="true"></i>
-            </button>
-          </div>
-
-          <p class="offcanvas-section-label px-3 mt-1 mb-0">Все разделы</p>
-
-          
-          <nav class="oc-nav" aria-label="Разделы сайта">
-            
-              
-                <div class="oc-split-row" data-rubric-index="0">
-                  <a href="/abiturientam/"
-                     class="oc-split-row__link"
-                     data-bs-dismiss="offcanvas"
-                     title="АБИТУРИЕНТАМ">АБИТУРИЕНТАМ</a>
-                  <button class="oc-split-row__toggle"
-                          type="button"
-                          aria-label="Открыть подразделы: АБИТУРИЕНТАМ"
-                          data-rubric-index="0">
-                    <i class="bi bi-chevron-right" aria-hidden="true"></i>
-                  </button>
-                </div>
-              
-            
-              
-                <div class="oc-split-row" data-rubric-index="1">
-                  <a href="/svedenija/"
-                     class="oc-split-row__link"
-                     data-bs-dismiss="offcanvas"
-                     title="СВЕДЕНИЯ ОБ ОБРАЗОВАТЕЛЬНОЙ ОРГАНИЗАЦИИ">СВЕДЕНИЯ ОБ ОБРАЗОВАТЕЛЬНОЙ ОРГАНИЗАЦИИ</a>
-                  <button class="oc-split-row__toggle"
-                          type="button"
-                          aria-label="Открыть подразделы: СВЕДЕНИЯ ОБ ОБРАЗОВАТЕЛЬНОЙ ОРГАНИЗАЦИИ"
-                          data-rubric-index="1">
-                    <i class="bi bi-chevron-right" aria-hidden="true"></i>
-                  </button>
-                </div>
-              
-            
-              
-                <div class="oc-split-row" data-rubric-index="2">
-                  <a href="/uchebno-metodicheskaya/"
-                     class="oc-split-row__link"
-                     data-bs-dismiss="offcanvas"
-                     title="УЧЕБНО-МЕТОДИЧЕСКАЯ РАБОТА">УЧЕБНО-МЕТОДИЧЕСКАЯ РАБОТА</a>
-                  <button class="oc-split-row__toggle"
-                          type="button"
-                          aria-label="Открыть подразделы: УЧЕБНО-МЕТОДИЧЕСКАЯ РАБОТА"
-                          data-rubric-index="2">
-                    <i class="bi bi-chevron-right" aria-hidden="true"></i>
-                  </button>
-                </div>
-              
-            
-              
-                <div class="oc-split-row" data-rubric-index="3">
-                  <a href="/vospitanie/"
-                     class="oc-split-row__link"
-                     data-bs-dismiss="offcanvas"
-                     title="ВОСПИТАТЕЛЬНАЯ РАБОТА">ВОСПИТАТЕЛЬНАЯ РАБОТА</a>
-                  <button class="oc-split-row__toggle"
-                          type="button"
-                          aria-label="Открыть подразделы: ВОСПИТАТЕЛЬНАЯ РАБОТА"
-                          data-rubric-index="3">
-                    <i class="bi bi-chevron-right" aria-hidden="true"></i>
-                  </button>
-                </div>
-              
-            
-              
-                <div class="oc-split-row" data-rubric-index="4">
-                  <a href="/partnerstvo/"
-                     class="oc-split-row__link"
-                     data-bs-dismiss="offcanvas"
-                     title="СОЦИАЛЬНОЕ ПАРТНЕРСТВО И ПРОФОРИЕНТАЦИЯ">СОЦИАЛЬНОЕ ПАРТНЕРСТВО И ПРОФОРИЕНТАЦИЯ</a>
-                  <button class="oc-split-row__toggle"
-                          type="button"
-                          aria-label="Открыть подразделы: СОЦИАЛЬНОЕ ПАРТНЕРСТВО И ПРОФОРИЕНТАЦИЯ"
-                          data-rubric-index="4">
-                    <i class="bi bi-chevron-right" aria-hidden="true"></i>
-                  </button>
-                </div>
-              
-            
-              
-                <div class="oc-split-row" data-rubric-index="5">
-                  <a href="/psihologicheskoe/"
-                     class="oc-split-row__link"
-                     data-bs-dismiss="offcanvas"
-                     title="ПСИХОЛОГИЧЕСКОЕ СОПРОВОЖДЕНИЕ">ПСИХОЛОГИЧЕСКОЕ СОПРОВОЖДЕНИЕ</a>
-                  <button class="oc-split-row__toggle"
-                          type="button"
-                          aria-label="Открыть подразделы: ПСИХОЛОГИЧЕСКОЕ СОПРОВОЖДЕНИЕ"
-                          data-rubric-index="5">
-                    <i class="bi bi-chevron-right" aria-hidden="true"></i>
-                  </button>
-                </div>
-              
-            
-              
-                <div class="oc-split-row" data-rubric-index="6">
-                  <a href="/bezopasnost/"
-                     class="oc-split-row__link"
-                     data-bs-dismiss="offcanvas"
-                     title="КОМПЛЕКСНАЯ БЕЗОПАСНОСТЬ">КОМПЛЕКСНАЯ БЕЗОПАСНОСТЬ</a>
-                  <button class="oc-split-row__toggle"
-                          type="button"
-                          aria-label="Открыть подразделы: КОМПЛЕКСНАЯ БЕЗОПАСНОСТЬ"
-                          data-rubric-index="6">
-                    <i class="bi bi-chevron-right" aria-hidden="true"></i>
-                  </button>
-                </div>
-              
-            
-              
-                <div class="oc-split-row" data-rubric-index="7">
-                  <a href="/studentam-roditeljam/"
-                     class="oc-split-row__link"
-                     data-bs-dismiss="offcanvas"
-                     title="СТУДЕНТАМ И ИХ РОДИТЕЛЯМ">СТУДЕНТАМ И ИХ РОДИТЕЛЯМ</a>
-                  <button class="oc-split-row__toggle"
-                          type="button"
-                          aria-label="Открыть подразделы: СТУДЕНТАМ И ИХ РОДИТЕЛЯМ"
-                          data-rubric-index="7">
-                    <i class="bi bi-chevron-right" aria-hidden="true"></i>
-                  </button>
-                </div>
-              
-            
-              
-                <a href="/obshestvennoe-mnenie/"
-                   class="oc-split-row__link oc-split-row__link--leaf"
-                   data-bs-dismiss="offcanvas"
-                   title="Результаты изучения общественного мнения">Результаты изучения общественного мнения</a>
-              
-            
-              
-                <a href="/vypusknikam/"
-                   class="oc-split-row__link oc-split-row__link--leaf"
-                   data-bs-dismiss="offcanvas"
-                   title="Нашим выпускникам">Нашим выпускникам</a>
-              
-            
-              
-                <a href="/uncategorized/"
-                   class="oc-split-row__link oc-split-row__link--leaf"
-                   data-bs-dismiss="offcanvas"
-                   title="Без рубрики">Без рубрики</a>
-              
-            
-          </nav>
-
-        </div>
-      </div>
-
-      
-      <div class="oc-panel" id="ocPanel2" aria-hidden="true">
-        <div class="oc-panel__scroll">
-
-          
-          <a href="#" id="ocSubParentLink" class="oc-sub-parent" data-bs-dismiss="offcanvas">
-            <span id="ocSubParentTitle"></span>
-            <i class="bi bi-arrow-right-circle" aria-hidden="true"></i>
+        
+        <div class="offcanvas-actions d-flex d-lg-none align-items-center gap-2 flex-wrap px-3 py-2">
+          <a href="https://vk.com/sitsalsksit" target="_blank" rel="noopener"
+             class="header-icon-btn" title="ВКонтакте" aria-label="ВКонтакте">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M21.579 6.855c.17-.565 0-.98-.802-.98h-2.652c-.67 0-.979.357-1.146.752 0 0-1.34 3.283-3.237 5.414-.614.618-.893.814-1.228.814-.17 0-.42-.196-.42-.76V6.854c0-.671-.19-.98-.76-.98H9.389c-.42 0-.67.315-.67.615 0 .644.96.793 1.06 2.605v3.935c0 .864-.155 1.021-.492 1.021-.893 0-3.066-3.303-4.355-7.083C4.68 6.37 4.428 5.875 3.754 5.875H1.102c-.76 0-.913.357-.913.752 0 .704.893 4.197 4.155 8.817 2.175 3.144 5.239 4.848 8.026 4.848 1.674 0 1.88-.38 1.88-1.035v-2.385c0-.76.16-.912.694-.912.393 0 1.067.198 2.641 1.727 1.798 1.81 2.094 2.62 3.102 2.62h2.652c.76 0 1.14-.38.92-1.134-.237-.744-1.092-1.82-2.226-3.101-.614-.73-1.535-1.517-1.814-1.91-.393-.508-.28-.733 0-1.185 0 0 3.21-4.55 3.546-6.095z"/>
+            </svg>
           </a>
-
-          <nav aria-label="Подразделы">
-            <ul class="list-unstyled oc-sub-list" id="ocSubList"></ul>
-          </nav>
-
+          <a href="mailto:sitsalsk@mail.ru"
+             class="header-icon-btn" title="Написать на почту: sitsalsk@mail.ru" aria-label="Электронная почта">
+            <i class="bi bi-envelope-fill" aria-hidden="true"></i>
+          </a>
+          <a href="/search/" class="header-icon-btn" data-bs-dismiss="offcanvas"
+             title="Поиск по сайту" aria-label="Поиск">
+            <i class="bi bi-search" aria-hidden="true"></i>
+          </a>
+          <button class="header-icon-btn" onclick="toggleA11y(); return false;"
+                  title="Версия для слабовидящих" aria-label="Версия для слабовидящих">
+            <i class="bi bi-eye" aria-hidden="true"></i>
+          </button>
+          <button class="header-icon-btn" onclick="toggleDarkTheme(); return false;"
+                  title="Тёмная тема" aria-label="Тёмная / светлая тема">
+            <i class="bi bi-moon-stars" aria-hidden="true"></i>
+          </button>
         </div>
-      </div>
 
+        <p class="offcanvas-section-label px-3 mt-1 mb-0">Все разделы</p>
+
+        
+        <nav class="oc-nav" aria-label="Разделы сайта">
+          
+            
+              <div class="oc-split-row" data-rubric-index="0">
+                <a href="/abiturientam/"
+                   class="oc-split-row__link oc-dismiss-all"
+                   title="АБИТУРИЕНТАМ">АБИТУРИЕНТАМ</a>
+                <button class="oc-split-row__toggle"
+                        type="button"
+                        aria-label="Открыть подразделы: АБИТУРИЕНТАМ"
+                        data-rubric-index="0">
+                  <i class="bi bi-chevron-right" aria-hidden="true"></i>
+                </button>
+              </div>
+            
+          
+            
+              <div class="oc-split-row" data-rubric-index="1">
+                <a href="/svedenija/"
+                   class="oc-split-row__link oc-dismiss-all"
+                   title="СВЕДЕНИЯ ОБ ОБРАЗОВАТЕЛЬНОЙ ОРГАНИЗАЦИИ">СВЕДЕНИЯ ОБ ОБРАЗОВАТЕЛЬНОЙ ОРГАНИЗАЦИИ</a>
+                <button class="oc-split-row__toggle"
+                        type="button"
+                        aria-label="Открыть подразделы: СВЕДЕНИЯ ОБ ОБРАЗОВАТЕЛЬНОЙ ОРГАНИЗАЦИИ"
+                        data-rubric-index="1">
+                  <i class="bi bi-chevron-right" aria-hidden="true"></i>
+                </button>
+              </div>
+            
+          
+            
+              <div class="oc-split-row" data-rubric-index="2">
+                <a href="/uchebno-metodicheskaya/"
+                   class="oc-split-row__link oc-dismiss-all"
+                   title="УЧЕБНО-МЕТОДИЧЕСКАЯ РАБОТА">УЧЕБНО-МЕТОДИЧЕСКАЯ РАБОТА</a>
+                <button class="oc-split-row__toggle"
+                        type="button"
+                        aria-label="Открыть подразделы: УЧЕБНО-МЕТОДИЧЕСКАЯ РАБОТА"
+                        data-rubric-index="2">
+                  <i class="bi bi-chevron-right" aria-hidden="true"></i>
+                </button>
+              </div>
+            
+          
+            
+              <div class="oc-split-row" data-rubric-index="3">
+                <a href="/vospitanie/"
+                   class="oc-split-row__link oc-dismiss-all"
+                   title="ВОСПИТАТЕЛЬНАЯ РАБОТА">ВОСПИТАТЕЛЬНАЯ РАБОТА</a>
+                <button class="oc-split-row__toggle"
+                        type="button"
+                        aria-label="Открыть подразделы: ВОСПИТАТЕЛЬНАЯ РАБОТА"
+                        data-rubric-index="3">
+                  <i class="bi bi-chevron-right" aria-hidden="true"></i>
+                </button>
+              </div>
+            
+          
+            
+              <div class="oc-split-row" data-rubric-index="4">
+                <a href="/partnerstvo/"
+                   class="oc-split-row__link oc-dismiss-all"
+                   title="СОЦИАЛЬНОЕ ПАРТНЕРСТВО И ПРОФОРИЕНТАЦИЯ">СОЦИАЛЬНОЕ ПАРТНЕРСТВО И ПРОФОРИЕНТАЦИЯ</a>
+                <button class="oc-split-row__toggle"
+                        type="button"
+                        aria-label="Открыть подразделы: СОЦИАЛЬНОЕ ПАРТНЕРСТВО И ПРОФОРИЕНТАЦИЯ"
+                        data-rubric-index="4">
+                  <i class="bi bi-chevron-right" aria-hidden="true"></i>
+                </button>
+              </div>
+            
+          
+            
+              <div class="oc-split-row" data-rubric-index="5">
+                <a href="/psihologicheskoe/"
+                   class="oc-split-row__link oc-dismiss-all"
+                   title="ПСИХОЛОГИЧЕСКОЕ СОПРОВОЖДЕНИЕ">ПСИХОЛОГИЧЕСКОЕ СОПРОВОЖДЕНИЕ</a>
+                <button class="oc-split-row__toggle"
+                        type="button"
+                        aria-label="Открыть подразделы: ПСИХОЛОГИЧЕСКОЕ СОПРОВОЖДЕНИЕ"
+                        data-rubric-index="5">
+                  <i class="bi bi-chevron-right" aria-hidden="true"></i>
+                </button>
+              </div>
+            
+          
+            
+              <div class="oc-split-row" data-rubric-index="6">
+                <a href="/bezopasnost/"
+                   class="oc-split-row__link oc-dismiss-all"
+                   title="КОМПЛЕКСНАЯ БЕЗОПАСНОСТЬ">КОМПЛЕКСНАЯ БЕЗОПАСНОСТЬ</a>
+                <button class="oc-split-row__toggle"
+                        type="button"
+                        aria-label="Открыть подразделы: КОМПЛЕКСНАЯ БЕЗОПАСНОСТЬ"
+                        data-rubric-index="6">
+                  <i class="bi bi-chevron-right" aria-hidden="true"></i>
+                </button>
+              </div>
+            
+          
+            
+              <div class="oc-split-row" data-rubric-index="7">
+                <a href="/studentam-roditeljam/"
+                   class="oc-split-row__link oc-dismiss-all"
+                   title="СТУДЕНТАМ И ИХ РОДИТЕЛЯМ">СТУДЕНТАМ И ИХ РОДИТЕЛЯМ</a>
+                <button class="oc-split-row__toggle"
+                        type="button"
+                        aria-label="Открыть подразделы: СТУДЕНТАМ И ИХ РОДИТЕЛЯМ"
+                        data-rubric-index="7">
+                  <i class="bi bi-chevron-right" aria-hidden="true"></i>
+                </button>
+              </div>
+            
+          
+            
+              <a href="/obshestvennoe-mnenie/"
+                 class="oc-split-row__link oc-split-row__link--leaf oc-dismiss-all"
+                 title="Результаты изучения общественного мнения">Результаты изучения общественного мнения</a>
+            
+          
+            
+              <a href="/vypusknikam/"
+                 class="oc-split-row__link oc-split-row__link--leaf oc-dismiss-all"
+                 title="Нашим выпускникам">Нашим выпускникам</a>
+            
+          
+            
+              <a href="/uncategorized/"
+                 class="oc-split-row__link oc-split-row__link--leaf oc-dismiss-all"
+                 title="Без рубрики">Без рубрики</a>
+            
+          
+        </nav>
+
+      </div>
     </div>
   </div>
 
   
   <script id="rubricsData" type="application/json">[{"code":"1","title":"АБИТУРИЕНТАМ","slug":"abiturientam","level":0,"children":[{"code":"1.1","title":"Слово директора","slug":"slovo-direktora"},{"code":"1.2","title":"Специальности и профессии","slug":"specialnosti"},{"code":"1.3","title":"Приемная кампания 2025","slug":"priemnaya-kampaniya-2025"},{"code":"1.4","title":"День открытых дверей","slug":"den-otkrytyh-dverej"},{"code":"1.5","title":"Виртуальная экскурсия","slug":"virtualnaya-ekskursiya"},{"code":"1.6","title":"Подача документов по электронной почте","slug":"podacha-elektronnaya"},{"code":"1.7","title":"Подача документов через средства почтовой связи","slug":"podacha-pochtovaya"},{"code":"1.8","title":"Платная основа обучения","slug":"platnaya-osnova"},{"code":"1.9","title":"Контакты и график работы","slug":"kontakty-grafik"}]},{"code":"2","title":"СВЕДЕНИЯ ОБ ОБРАЗОВАТЕЛЬНОЙ ОРГАНИЗАЦИИ","slug":"svedenija","level":0,"children":[{"code":"2.1","title":"Основные сведения","slug":"osnovnye-svedenija"},{"code":"2.2","title":"Структура и органы управления","slug":"struktura-upravleniya"},{"code":"2.3","title":"Документы","slug":"dokumenty","children":[{"code":"2.3.1","title":"ВСОКО","slug":"vsoko"}]},{"code":"2.4","title":"Образование","slug":"obrazovanie","children":[{"code":"2.4.1","title":"Вакантные места","slug":"vakantnye-mesta"},{"code":"2.4.2","title":"Международное сотрудничество","slug":"mezhdunarodnoe"},{"code":"2.4.3","title":"Инклюзивное образование","slug":"inklyuzivnoe"},{"code":"2.4.4","title":"Трудоустройство выпускников","slug":"trudoustrojstvo"}]},{"code":"2.5","title":"Руководство","slug":"rukovodstvo","children":[{"code":"2.5.1","title":"Педагогический состав","slug":"pedagogicheskiy-sostav"}]},{"code":"2.6","title":"Образовательные стандарты","slug":"standarty"},{"code":"2.7","title":"Материально-техническое обеспечение","slug":"materialno-tehnicheskoe","children":[{"code":"2.7.1","title":"Электронная информационно-образовательная среда","slug":"elektronnoe-obrazovanie"},{"code":"2.7.2","title":"Цифровая библиотека","slug":"elektronnaya-biblioteka"},{"code":"2.7.3","title":"Электронные образовательные ресурсы","slug":"elektronnye-resursy"},{"code":"2.7.4","title":"Образовательная платформа","slug":"platforma"},{"code":"2.7.5","title":"Электронное расписание","slug":"elektronnoe-raspisanie"},{"code":"2.7.6","title":"Организация питания","slug":"pitanie"}]},{"code":"2.8","title":"Платные образовательные услуги","slug":"platnye-uslugi"},{"code":"2.9","title":"Финансово-хозяйственная деятельность","slug":"finansy","children":[{"code":"2.9.1","title":"Стипендии и меры поддержки","slug":"stipendii"}]}]},{"code":"3","title":"УЧЕБНО-МЕТОДИЧЕСКАЯ РАБОТА","slug":"uchebno-metodicheskaya","level":0,"children":[{"code":"3.1","title":"Электронное обучение и ДОТ","slug":"elektronnoe-obuchenie"},{"code":"3.2","title":"Дополнительное образование","slug":"dopolnitelnoe-obrazovanie"},{"code":"3.4","title":"Практика","slug":"praktika"}]},{"code":"4","title":"ВОСПИТАТЕЛЬНАЯ РАБОТА","slug":"vospitanie","level":0,"children":[{"code":"4.1","title":"Штаб воспитательной работы","slug":"shtab"},{"code":"4.2","title":"План воспитательной работы","slug":"plan"},{"code":"4.3","title":"МО руководителей учебных групп","slug":"mo-rukovoditelej"},{"code":"4.4","title":"Студенческое самоуправление","slug":"samoupravlenie"},{"code":"4.5","title":"Волонтерское движение","slug":"volonterstvo","children":[{"code":"4.5.1","title":"ВОЛОНТЁРСКИЙ ОТРЯД «РАДУГА ДОБРА»","slug":"raduga-dobra"}]},{"code":"4.6","title":"Патриотическое воспитание","slug":"patrioticheskoe","children":[{"code":"4.6.1","title":"Великая Победа","slug":"velikaya-pobeda"},{"code":"4.6.2","title":"Клуб «ВИТЯЗЬ»","slug":"vitjaz"}]},{"code":"4.7","title":"Культурно-массовая работа","slug":"kulturno-massovaya","children":[{"code":"4.7.1","title":"Театральный клуб \"Мираж\"","slug":"teatralnyj-klub"},{"code":"4.7.2","title":"Медиацентр «Новости СИТ»","slug":"mediacentr"},{"code":"4.7.3","title":"Поздравления","slug":"pozdravlenija"},{"code":"4.7.4","title":"«Движение Первых»","slug":"dvizhenie-pervyh"}]},{"code":"4.8","title":"Физическая культура и спорт","slug":"fizkultura-sport","children":[{"code":"4.8.1","title":"ССК \"Авангард\"","slug":"ssk-avangard"}]},{"code":"4.9","title":"Уполномоченный по правам ребенка","slug":"upolnomochennyj-prava"}]},{"code":"5","title":"СОЦИАЛЬНОЕ ПАРТНЕРСТВО И ПРОФОРИЕНТАЦИЯ","slug":"partnerstvo","level":0,"children":[{"code":"5.1","title":"Сотрудничество с ВУЗами","slug":"vuzy"},{"code":"5.2","title":"Сотрудничество с органами занятости","slug":"zanyatost"},{"code":"5.3","title":"Сотрудничество с предприятиями","slug":"predprijatija"},{"code":"5.4","title":"Сотрудничество со школами","slug":"shkoly"}]},{"code":"6","title":"ПСИХОЛОГИЧЕСКОЕ СОПРОВОЖДЕНИЕ","slug":"psihologicheskoe","level":0,"children":[{"code":"6.1","title":"Организационно-методическая основа","slug":"organizacionno-metodicheskaya"},{"code":"6.2","title":"Результаты тестирований","slug":"rezultaty-testirovanij"},{"code":"6.3","title":"Советы преподавателям","slug":"sovety-prepodavatelyam"},{"code":"6.4","title":"Советы родителям","slug":"sovety-roditelyam"},{"code":"6.5","title":"Советы студентам","slug":"sovety-studentam"},{"code":"6.6","title":"Профилактика наркотиков","slug":"profilaktika-narkotikov"},{"code":"6.7","title":"Поддержка лиц с ОВЗ","slug":"podderzhka-ovz"}]},{"code":"7","title":"КОМПЛЕКСНАЯ БЕЗОПАСНОСТЬ","slug":"bezopasnost","level":0,"children":[{"code":"7.1","title":"Антитеррористическая защищенность","slug":"antiterror"},{"code":"7.2","title":"Профилактика экстремизма","slug":"ekstremizm"},{"code":"7.3","title":"Противодействие коррупции","slug":"korrupcija"},{"code":"7.4","title":"Пожарная безопасность","slug":"pozharnaya"}]},{"code":"8","title":"СТУДЕНТАМ И ИХ РОДИТЕЛЯМ","slug":"studentam-roditeljam","level":0,"children":[{"code":"8.1","title":"Информационно-образовательные ресурсы","slug":"resursy","children":[{"code":"8.1.1","title":"Новости","slug":"novosti"},{"code":"8.1.2","title":"Библиотека техникума","slug":"biblioteka"}]},{"code":"8.2","title":"Приказ о зачислении","slug":"prikaz-zachislenie"},{"code":"8.3","title":"Расписание занятий","slug":"raspisanie"}]},{"code":"9.4","title":"Результаты изучения общественного мнения","slug":"obshestvennoe-mnenie","level":0},{"code":"9.5","title":"Нашим выпускникам","slug":"vypusknikam","level":0},{"code":"0","title":"Без рубрики","slug":"uncategorized","level":0}]</script>
 
+</div>
+
+
+<div class="oc-side-panel" id="ocPanel2" aria-hidden="true">
+  <div class="oc-side-panel__header">
+    <button class="oc-back-btn" id="ocBackBtn2" type="button" aria-label="Назад">
+      <i class="bi bi-chevron-left" aria-hidden="true"></i>
+      <span>Назад</span>
+    </button>
+    <span class="oc-side-panel__title" id="ocPanel2Title"></span>
+    <a href="#" id="ocPanel2ParentLink" class="oc-side-panel__go-btn oc-dismiss-all" title="Перейти в раздел" aria-label="Перейти в раздел">
+      <i class="bi bi-arrow-right-circle" aria-hidden="true"></i>
+    </a>
+  </div>
+  <div class="oc-panel__scroll" id="ocPanel2Scroll">
+    <nav aria-label="Подразделы">
+      <ul class="list-unstyled oc-sub-list" id="ocSubList"></ul>
+    </nav>
+  </div>
+</div>
+
+
+<div class="oc-side-panel" id="ocPanel3" aria-hidden="true">
+  <div class="oc-side-panel__header">
+    <button class="oc-back-btn" id="ocBackBtn3" type="button" aria-label="Назад">
+      <i class="bi bi-chevron-left" aria-hidden="true"></i>
+      <span>Назад</span>
+    </button>
+    <span class="oc-side-panel__title" id="ocPanel3Title"></span>
+    <a href="#" id="ocPanel3ParentLink" class="oc-side-panel__go-btn oc-dismiss-all" title="Перейти в раздел" aria-label="Перейти в раздел">
+      <i class="bi bi-arrow-right-circle" aria-hidden="true"></i>
+    </a>
+  </div>
+  <div class="oc-panel__scroll" id="ocPanel3Scroll">
+    <nav aria-label="Под-подразделы">
+      <ul class="list-unstyled oc-sub-list" id="ocSubSubList"></ul>
+    </nav>
+  </div>
 </div>
 
 

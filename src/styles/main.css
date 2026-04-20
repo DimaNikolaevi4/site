@@ -2059,39 +2059,23 @@ section,
 }
 
 /* ═══════════════════════════════════════════════════════════
-   OFFCANVAS — двухпанельное меню
+   OFFCANVAS — многоуровневое меню (панели влево)
    ═══════════════════════════════════════════════════════════ */
+
+:root {
+  --oc-panel-w: 320px;
+}
+
+/* Ширина основного offcanvas */
+#offcanvasRubrics {
+  --bs-offcanvas-width: var(--oc-panel-w);
+}
 
 /* Шапка offcanvas */
 .oc-header {
   border-bottom: 1px solid color-mix(in srgb, var(--default-color), transparent 88%);
   min-height: 56px;
   padding: 0.75rem 1rem;
-}
-
-.oc-header__back {
-  display: flex;
-  align-items: center;
-}
-
-.oc-back-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.3rem;
-  background: none;
-  border: none;
-  cursor: pointer;
-  color: var(--nav-color);
-  font-size: 0.92rem;
-  font-weight: 600;
-  padding: 0.35rem 0.5rem 0.35rem 0.25rem;
-  border-radius: 6px;
-  transition: color 0.2s, background 0.2s;
-}
-
-.oc-back-btn:hover {
-  color: var(--accent-color);
-  background: color-mix(in srgb, var(--accent-color), transparent 92%);
 }
 
 .oc-header__title {
@@ -2101,26 +2085,13 @@ section,
   color: var(--heading-color);
 }
 
-/* Двухпанельная обёртка */
+/* Панель 1 (внутри offcanvas) */
 .offcanvas-body.p-0 {
   overflow: hidden;
 }
 
-.oc-panels-wrapper {
-  display: flex;
-  width: 200%;
-  height: 100%;
-  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.oc-panels-wrapper.show-sub {
-  transform: translateX(-50%);
-}
-
-/* Одна панель */
 .oc-panel {
-  width: 50%;
-  flex-shrink: 0;
+  width: 100%;
   height: 100%;
   overflow: hidden;
 }
@@ -2133,7 +2104,7 @@ section,
 
 /* Быстрые ссылки */
 .offcanvas-quicklinks {
-  margin: 0 0 0;
+  margin: 0;
   padding: 0;
 }
 
@@ -2174,7 +2145,7 @@ section,
   padding-bottom: 0.25rem;
 }
 
-/* ─── Список верхнего уровня (panel 1) ─── */
+/* ─── Список 1-го уровня ─── */
 .oc-nav {
   border-top: 1px solid color-mix(in srgb, var(--default-color), transparent 90%);
 }
@@ -2231,7 +2202,7 @@ section,
   text-decoration: none;
 }
 
-/* Кнопка-стрелка (открывает под-панель) */
+/* Кнопка-стрелка */
 .oc-split-row__toggle {
   flex-shrink: 0;
   display: flex;
@@ -2253,41 +2224,117 @@ section,
   background: color-mix(in srgb, var(--accent-color), transparent 90%);
 }
 
-/* Hover на рядке подсвечивает стрелку */
 .oc-split-row:hover .oc-split-row__toggle {
   color: var(--accent-color);
 }
 
-/* ─── Панель 2 — подразделы ─── */
-.oc-sub-parent {
+/* ─── Боковые панели 2-го и 3-го уровней ─── */
+
+.oc-side-panel {
+  position: fixed;
+  top: 0;
+  height: 100%;
+  width: var(--oc-panel-w);
+  z-index: 1044;
+  background: var(--surface-color, #ffffff);
+  box-shadow: -6px 0 24px rgba(0, 0, 0, 0.14);
+  display: flex;
+  flex-direction: column;
+  transform: translateX(100%);
+  visibility: hidden;
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+              visibility 0s linear 0.3s;
+}
+
+#ocPanel2 {
+  right: var(--oc-panel-w);
+}
+
+#ocPanel3 {
+  right: calc(var(--oc-panel-w) * 2);
+}
+
+.oc-side-panel.is-open {
+  transform: translateX(0);
+  visibility: visible;
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+              visibility 0s linear 0s;
+}
+
+/* Шапка боковой панели */
+.oc-side-panel__header {
   display: flex;
   align-items: center;
-  justify-content: space-between;
   gap: 0.5rem;
-  padding: 0.9rem 1rem;
-  background: color-mix(in srgb, var(--accent-color), transparent 92%);
-  border-bottom: 2px solid var(--accent-color);
-  color: var(--accent-color);
+  padding: 0 0.5rem 0 0.25rem;
+  min-height: 56px;
+  border-bottom: 1px solid color-mix(in srgb, var(--default-color), transparent 88%);
+  flex-shrink: 0;
+  background: var(--surface-color, #ffffff);
+}
+
+.oc-side-panel__title {
+  flex: 1;
   font-size: 0.82rem;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.04em;
-  text-decoration: none;
-  transition: background 0.2s;
+  color: var(--heading-color);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
-.oc-sub-parent:hover {
-  background: color-mix(in srgb, var(--accent-color), transparent 85%);
-  text-decoration: none;
-  color: var(--accent-color);
-}
-
-.oc-sub-parent i {
-  font-size: 1.1rem;
+.oc-side-panel__go-btn {
   flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 6px;
+  color: var(--accent-color);
+  font-size: 1.15rem;
+  text-decoration: none;
+  transition: background 0.2s, color 0.2s;
 }
 
-/* Список подразделов */
+.oc-side-panel__go-btn:hover {
+  background: color-mix(in srgb, var(--accent-color), transparent 88%);
+  color: var(--accent-color);
+  text-decoration: none;
+}
+
+/* Кнопка «Назад» */
+.oc-back-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--nav-color);
+  font-size: 0.92rem;
+  font-weight: 600;
+  padding: 0.35rem 0.5rem 0.35rem 0.25rem;
+  border-radius: 6px;
+  flex-shrink: 0;
+  transition: color 0.2s, background 0.2s;
+}
+
+.oc-back-btn:hover {
+  color: var(--accent-color);
+  background: color-mix(in srgb, var(--accent-color), transparent 92%);
+}
+
+/* Область прокрутки внутри боковых панелей */
+.oc-side-panel .oc-panel__scroll {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
 .oc-sub-list {
   margin: 0;
   padding: 0;
@@ -2299,62 +2346,6 @@ section,
 
 .oc-sub-item:last-child {
   border-bottom: none;
-}
-
-.oc-sub-link {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0.65rem 1rem;
-  color: var(--nav-color);
-  font-size: 0.9rem;
-  text-decoration: none;
-  transition: color 0.2s, background 0.15s;
-}
-
-.oc-sub-link:hover {
-  color: var(--accent-color);
-  background: color-mix(in srgb, var(--accent-color), transparent 95%);
-  text-decoration: none;
-}
-
-/* Родительская ссылка (имеет внуков) */
-.oc-sub-link--parent {
-  font-weight: 600;
-  background: color-mix(in srgb, var(--default-color), transparent 97%);
-}
-
-/* Бейдж — количество внуков */
-.oc-sub-badge {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  min-width: 20px;
-  height: 20px;
-  padding: 0 5px;
-  border-radius: 10px;
-  background: color-mix(in srgb, var(--accent-color), transparent 82%);
-  color: var(--accent-color);
-  font-size: 0.72rem;
-  font-weight: 700;
-  flex-shrink: 0;
-}
-
-/* Список внуков */
-.oc-sub-grandlist {
-  margin: 0;
-  padding: 0;
-  border-top: 1px solid color-mix(in srgb, var(--default-color), transparent 90%);
-}
-
-.oc-sub-link--grand {
-  padding-left: 1.75rem;
-  font-size: 0.85rem;
-  color: color-mix(in srgb, var(--nav-color), transparent 25%);
-}
-
-.oc-sub-link--grand:hover {
-  color: var(--accent-color);
 }
 
 /* ─── Порядок элементов шапки на планшетах ─── */
