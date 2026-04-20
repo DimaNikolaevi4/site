@@ -1871,32 +1871,35 @@ section,
 }
 
 /* ============================================
-   Шапка: иконки в одну строку с меню (десктоп)
+   Шапка: иконки в одну строку с меню
    ============================================ */
-@media (min-width: 1200px) {
-  .header .container-fluid {
-    flex-wrap: nowrap;
-  }
-  .header .header-icons {
-    display: flex;
-    align-items: center;
-    margin-left: auto;
-    margin-right: 15px;
-  }
-  .header .header-icons a,
-  .header .header-icons button {
-    margin: 0 5px;
-    color: var(--nav-color);
-    font-size: 1.2rem;
-    transition: color 0.3s;
-    background: none;
-    border: none;
-    padding: 0;
-  }
-  .header .header-icons a:hover,
-  .header .header-icons button:hover {
-    color: var(--nav-hover-color);
-  }
+.header .container-fluid {
+  flex-wrap: nowrap;
+}
+
+.header .header-icons {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  gap: 6px;
+  padding-left: 10px;
+}
+
+.header .header-icons a,
+.header .header-icons button {
+  color: var(--nav-color);
+  font-size: 1.2rem;
+  transition: color 0.3s;
+  background: none;
+  border: none;
+  padding: 0;
+  line-height: 1;
+  margin: 0;
+}
+
+.header .header-icons a:hover,
+.header .header-icons button:hover {
+  color: var(--nav-hover-color);
 }
 
 /* ============================================
