@@ -6,17 +6,26 @@
 
 ```
 src/
-├── _data/              # Глобальные данные (site.yaml)
-├── _filters/           # Пользовательские фильтры Nunjucks
+├── _data/              # Глобальные данные: site, menu, svedenijaMenu, contacts,
+│                       # rubrics, social, sectionLabels.js (агрегатор меток)
+├── _filters/           # Пользовательские фильтры Nunjucks (dateRu, slugify, truncate, lunr-index)
 ├── _includes/          # Шаблоны и компоненты
-│   ├── components/     # Header, Footer, Hero, About, News, Popular, Sidebar, Breadcrumbs
-│   ├── layouts/        # base.njk, page.njk (Тип B), post.njk (Тип C)
-│   └── sections/       # Секции страниц (опционально)
-├── assets/             # Статические файлы (изображения, JS)
-├── content/            # Контент (новости, материалы по рубрикам)
-│   ├── categories/     # Категории материалов (8 основных разделов)
-│   └── news/           # Новости
-├── styles/             # SCSS стили (Bootstrap 5 + кастомные)
+│   ├── base.njk        # Базовый макет (head, header, main, footer)
+│   ├── components/     # 8 компонентов секций: header, footer, hero, about,
+│   │                   # news, popular, sidebar, breadcrumbs (+ card, anti-corruption-content)
+│   ├── layouts/        # base.njk, page.njk (Тип B), page-full.njk (Type B расширенный),
+│   │                   # post.njk (Тип C), listing.njk
+│   └── svedenija-page.njk  # Шаблон раздела «Сведения» (подключается через include)
+├── admin/              # Decap CMS: index.html + config.yml
+├── assets/             # Статические файлы (JS, SCSS-исходники, изображения)
+├── styles/             # Скомпилированный main.css (используется на страницах)
+├── content/            # Контент сайта
+│   ├── abiturientam/   # Раздел «Абитуриентам» (отдельные .md)
+│   ├── categories/     # Индексные страницы рубрик
+│   ├── documents/      # Документы (устав и др.)
+│   ├── news/           # Новости
+│   └── pages/          # Статические страницы и разделы (svedenija/, vospitanie/ и др.)
+├── pages/              # Шаблонные страницы (search, news-list, news-post, materials, ...)
 └── index.njk           # Главная страница (Тип A)
 ```
 
@@ -105,23 +114,38 @@ tags: [Новости]
 4. Создайте реальные новости в `src/content/news/` и материалы в `src/content/categories/`
 5. Настройте мобильное меню (JavaScript)
 6. Добавьте интерактивность (поиск, фильтры)
-7. При необходимости настройте Decap CMS для редакторов (см. `docs/DECAP_CMS_SETUP.md`)
+7. При необходимости настройте Decap CMS для редакторов (конфиг в `src/admin/config.yml`)
 
 ## 📦 Зависимости
 
 | Пакет | Версия | Назначение |
 |-------|--------|------------|
-| `@11ty/eleventy` | 2.0.1+ | Генератор статических сайтов |
-| `bootstrap` | 5.3.x | Адаптивная сетка и компоненты |
-| `sass` | 1.x | Компиляция SCSS в CSS |
+| `@11ty/eleventy` | 3.1.5 | Генератор статических сайтов |
+| `@11ty/eleventy-navigation` | 0.3.x | Навигация и иерархия страниц |
 | `js-yaml` | 4.x | Парсинг YAML файлов данных |
 | `lunr` | 2.3.x | Клиентский полнотекстовый поиск |
-| `decap-cms-app` | 3.0.x | CMS для редакторов контента (опционально) |
+
+> ℹ️ Bootstrap 5 и SCSS-исходники присутствуют в `src/assets/scss/`, но в продакшен-сборке используется готовый `src/styles/main.css`. Decap CMS подключается из CDN в `src/admin/index.html`.
 
 Установка:
 ```bash
 npm install
 ```
+
+## 📁 Дополнительные директории
+
+- `mirror/` — оригинальное зеркало сайта sit-salsk.ru (источник контента для миграции, **не загружается** на хостинг). См. `mirror/MIRROR_README.md` и `mirror/SITE_RUBRICS_STRUCTURE.md`.
+- `_mentor/` — справочный шаблон BootstrapMade «Mentor» (референс дизайна, **в сборку не входит**).
+
+## 📚 Документация проекта
+
+- [`STRUCTURE_AND_PRINCIPLES.md`](STRUCTURE_AND_PRINCIPLES.md) — архитектура, принципы, дерево проекта
+- [`ROADMAP.md`](ROADMAP.md) — план разработки
+- [`CHECKLIST.md`](CHECKLIST.md) — статус задач
+- [`docs/FRONTMATTER_SPEC.md`](docs/FRONTMATTER_SPEC.md) — спецификация front matter
+- [`docs/COLLECTIONS_SETUP.md`](docs/COLLECTIONS_SETUP.md) — настройка коллекций
+- [`docs/DEPLOY.md`](docs/DEPLOY.md) — инструкция по деплою
+- [`docs/MIGRATION_PLAN.md`](docs/MIGRATION_PLAN.md) — план миграции контента
 
 ## 📞 Контакты
 

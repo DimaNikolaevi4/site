@@ -1,5 +1,15 @@
 # План миграции контента: HTML → Markdown
 
+> 📊 **Текущий статус миграции:** ~30% выполнено. См. ROADMAP.md (раздел «Метрики успеха») и CHECKLIST.md (раздел 7 «Контент — наполнение разделов»).
+> 
+> **Что уже сделано:**
+> - 9 новостей за март–апрель 2026 (в `src/content/news/`)
+> - Базовые страницы разделов: `svedenija/*` (11 подразделов), `vospitanie/*` (5 файлов), `bezopasnost/*` (2 файла), `sotrudnichestvo/*` (2 файла), `studentam-i-roditeljam/*` (2 файла), `abiturientam/*`, `professionaly-2026/`, `uchebno-metodicheskaja-rabota/`
+> - Документы (`src/content/documents/ustav.md`)
+> - Категории-индексы (`src/content/categories/*`)
+>
+> **Что осталось:** наполнение существующих файлов реальным контентом из `/mirror/` (см. CHECKLIST раздел 7), создание недостающих подразделов, обработка вложений (PDF, DOC, изображения).
+
 ## 🎯 Цель
 Перенести контент из статических HTML-файлов в `/mirror` в формат Markdown для использования в сборке Eleventy в `/src/content`.
 
@@ -26,7 +36,7 @@
 ## 🔍 Текущее состояние
 
 ### В директории `/mirror`:
-- 82 HTML-файла с полным контентом сайта
+- **87 файлов `index.html`** в **183 директориях** (10 основных разделов: `0_BEZ_RUBRIKI` … `9_DOPOLNITELNYE`)
 - Каждый файл содержит:
   - `<head>` с мета-тегами
   - `<header>` с навигацией
@@ -73,7 +83,7 @@
 - ❌ Удалить: `<header>`, `<footer>`, `<nav>`, `<script>`, `<style>`
 - ⚠️ Преобразовать: инлайн-стили → классы или удалить
 
-**Примечание:** Миграция ещё не начата (ROADMAP.md строка 310: "Миграция контента | 0%"). Этот документ описывает план будущих действий.
+**Примечание:** Миграция выполняется поэтапно вручную, без массового скрипта. Текущий прогресс ~30% (см. блок «Текущий статус миграции» в начале документа).
 
 ### Шаг 3: Создание Markdown-файла
 Формат файла `.md`:
@@ -251,25 +261,31 @@ const markdown = turndown.turndown(htmlString);
     └── service-1.html
 ```
 
-### После (актуальная структура для Eleventy):
+### Фактическая структура `src/content/` (после частичной миграции):
 ```
-/src/
-├── content/
-│   └── categories/              # Корневая папка для всех рубрик
-│       ├── abiturientam/        # Рубрика 1-го уровня (код "1")
-│       │   ├── index.md         # Страница раздела
-│       │   └── slovo-direktora/ # Рубрика 2-го уровня (код "1.1")
-│       │       └── index.md     # Материал
-│       ├── svedenija/           # Другая рубрика 1-го уровня (код "2")
-│       │   ├── osnovnye-svedenija/
-│       │   └── dokumenty/
-│       └── news/                # Новости (отдельная коллекция)
-│           └── post-1.md
-├── images/ (перенесённые из /mirror/images)
-└── ...
+/src/content/
+├── abiturientam/         # Материалы раздела «Абитуриентам»
+│   └── slovo-direktora.md
+├── categories/           # Индексные страницы рубрик
+│   ├── abiturientam.md
+│   ├── obshestvennoe-mnenie/
+│   ├── psihologicheskoe/
+│   ├── uncategorized/
+│   └── vypusknikam/
+├── documents/            # Документы (устав и др.)
+│   └── ustav.md
+├── news/                 # Новости (отдельная коллекция)
+│   └── 2026-*-*.md
+└── pages/                # Статические страницы и разделы сайта
+    ├── about.md, contacts.md, documents.md, thank-you.md
+    ├── abiturientam/, bezopasnost/, professionaly-2026/
+    ├── sotrudnichestvo/, studentam-i-roditeljam/
+    ├── svedenija/        # 11 обязательных подразделов по Приказу №1493
+    ├── uchebno-metodicheskaja-rabota/
+    └── vospitanie/
 ```
 
-> ⚠️ **Важно:** Структура `src/content/pages/` из примера выше устарела. Актуальный путь: `src/content/categories/{rubric-slug}/`.
+> ℹ️ Структура исторически распределена между `categories/`, `pages/`, `abiturientam/`, `documents/` и `news/`. Для **новых** рубрик рекомендуется использовать `src/content/categories/{rubric-slug}/`.
 
 ---
 
@@ -321,7 +337,7 @@ const markdown = turndown.turndown(htmlString);
 
 ## 🎯 Критерии успеха
 
-✅ Все 82 файла сконвертированы в Markdown  
+✅ Все 87 файлов сконвертированы в Markdown  
 ✅ Frontmatter заполнен корректно для каждого файла  
 ✅ Сборка Eleventy проходит без ошибок  
 ✅ Все ссылки работают (нет битых путей)  
@@ -368,8 +384,8 @@ const markdown = turndown.turndown(htmlString);
 - [ ] Внести правки в скрипт при необходимости
 
 ### Этап 3: Массовая конвертация (2 дня)
-- [ ] Запустить пакетную обработку всех 82 файлов
-- [ ] Разложить файлы по папкам `src/content/categories/{rubric}/`
+- [ ] Запустить пакетную обработку всех 87 файлов
+- [ ] Разложить файлы по папкам `src/content/categories/{rubric}/` (для новых рубрик) или в существующие папки `src/content/pages/{section}/`
 - [ ] Перенести изображения в `src/assets/images/`
 
 ### Этап 4: Валидация и доработка (2 дня)

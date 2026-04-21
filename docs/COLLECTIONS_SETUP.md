@@ -30,13 +30,15 @@ main_rubrics:
 При запуске сборки Eleventy:
 1. Загружает `rubrics.yaml`
 2. Рекурсивно обходит все рубрики (включая вложенные)
-3. Для каждой рубрики создает коллекцию с именем `slug` (дефисы **сохраняются** для корректной работы навигации)
-4. Коллекция включает все `.md` файлы из соответствующей папки в `src/content/categories/`
+3. Для каждой рубрики создаёт коллекцию. **Дефисы в имени коллекции удаляются** (`slovo-direktora` → `slovodirektora`), но в `slug` и URL дефисы сохраняются
+4. Коллекция включает `.md` файлы из соответствующих папок в `src/content/`
 
 **Пример:**
-- Рубрика: `abiturientam` → Коллекция: `abiturientam`
-- Рубрика: `slovo-direktora` → Коллекция: `slovo-direktora`
-- Путь к файлам: `src/content/categories/abiturientam/slovo-direktora/*.md`
+- Рубрика slug: `abiturientam` → Коллекция: `abiturientam`
+- Рубрика slug: `slovo-direktora` → Коллекция: `slovodirektora` (без дефиса)
+- Путь к файлам: `src/content/abiturientam/slovo-direktora.md` или `src/content/categories/abiturientam/...`
+
+> ℹ️ Контент рубрик в проекте размещён в нескольких местах: `src/content/abiturientam/`, `src/content/categories/`, `src/content/pages/svedenija/` и др. Это исторически сложившаяся структура — см. ROADMAP.md (Этап 1.3).
 
 ### 3. Специальные коллекции
 
@@ -126,7 +128,13 @@ src/
             └── post-1.md
 ```
 
-> ⚠️ **Важно:** Все материалы рубрик должны находиться в `src/content/categories/`, а не в корне `src/content/`. Это обеспечивает корректную работу автоматической генерации коллекций.
+> ℹ️ **Примечание:** Рекомендуемая структура — размещать материалы новых рубрик в `src/content/categories/{rubric-slug}/`. Однако в текущем проекте есть исторические исключения:
+> - Раздел «Абитуриентам» — в `src/content/abiturientam/`
+> - Раздел «Сведения» — в `src/content/pages/svedenija/`
+> - Документы — в `src/content/documents/`
+> - Новости — в `src/content/news/`
+>
+> При добавлении новых рубрик придерживайтесь схемы `src/content/categories/`.
 
 ## Front Matter
 
@@ -195,9 +203,10 @@ permalink: "/abiturientam/priemnaya-kampaniya/"
 
 ## Примечания
 
-- Имена коллекций приводятся к нижнему регистру, дефисы **сохраняются** (например, `slovo-direktora`)
-- Для доступа к коллекциям с дефисами в шаблонах используйте синтаксис `collections['slug-name']`
+- Имена коллекций приводятся к нижнему регистру, **дефисы удаляются** (например, `slovo-direktora` → `slovodirektora`)
+- В `slug` рубрики и URL страниц дефисы сохраняются
 - Если в рубрике нет файлов, коллекция будет пустой
 - Материалы без `category` не попадают в `allRubricated`
 - Для новостей используется отдельная коллекция `news`, которая регистрируется вручную в конфиге Eleventy (файл `.eleventy.js`)
-- Актуальный путь для всех рубрик: `src/content/categories/{rubric-slug}/`
+- Рекомендуемый путь для новых рубрик: `src/content/categories/{rubric-slug}/`. Существующие исключения см. выше.
+- Метки рубрик для хлебных крошек агрегируются в `src/_data/sectionLabels.js` (объединяет `menu.yaml`, `svedenijaMenu.yaml`, `rubrics.yaml`)
