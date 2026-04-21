@@ -1,8 +1,0 @@
-{# Тонкая обёртка-партиал. Канонический источник — components/breadcrumbs.njk #}
-{# Поддерживает старый интерфейс через переменную `breadcrumbs` (если задана как список) #}
-{% from "components/breadcrumbs.njk" import breadcrumbs as _breadcrumbsMacro %}
-{{ _breadcrumbsMacro({
-  url: page.url,
-  leafTitle: title,
-  items: breadcrumbs if (breadcrumbs and breadcrumbs.length) else null
-}) }}

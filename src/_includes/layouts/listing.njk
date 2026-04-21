@@ -106,7 +106,7 @@
             {% if collections[collectionName] and collections[collectionName].length > 0 %}
             <div class="cards-grid">
               {% for item in collections[collectionName] %}
-                {% include "partials/card.njk" with { card: {
+                {% include "components/card.njk" with { card: {
                   title: item.data.title,
                   url: item.url,
                   image: item.data.image,

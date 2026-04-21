@@ -1,6 +1,6 @@
 ---
 title: Учебно-методическая работа
-layout: base.njk
+layout: layouts/page-full.njk
 description: Учебно-методическая работа в Сальском индустриальном техникуме
 rubric: "3"
 permalink: /uchebno-metodicheskaja-rabota/

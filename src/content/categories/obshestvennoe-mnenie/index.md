@@ -1,6 +1,6 @@
 ---
 title: Результаты изучения общественного мнения
-layout: base.njk
+layout: layouts/page-full.njk
 category: obshestvennoe-mnenie
 rubric: "9.4"
 description: 'Результаты анкетирования, опросов и тестирования общественного мнения'

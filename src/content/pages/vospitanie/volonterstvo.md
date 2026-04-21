@@ -1,6 +1,6 @@
 ---
 title: Волонтерское движение
-layout: base.njk
+layout: layouts/page-full.njk
 category: vospitanie
 rubric: "4.5"
 permalink: /vospitanie/volonterstvo/

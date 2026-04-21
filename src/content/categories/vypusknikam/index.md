@@ -1,6 +1,6 @@
 ---
 title: Нашим выпускникам
-layout: base.njk
+layout: layouts/page-full.njk
 category: vypusknikam
 rubric: "9.5"
 description: 'Информация для выпускников техникума'

@@ -1,6 +1,6 @@
 ---
 title: Противодействие коррупции
-layout: base.njk
+layout: layouts/page-full.njk
 category: bezopasnost
 rubric: "7.3"
 permalink: /bezopasnost/antikorrupcija/

@@ -1,6 +1,6 @@
 ---
 title: Сотрудничество с предприятиями
-layout: base.njk
+layout: layouts/page-full.njk
 category: sotrudnichestvo
 rubric: "5.3"
 permalink: /sotrudnichestvo/predprijatija/

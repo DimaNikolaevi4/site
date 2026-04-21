@@ -1,6 +1,6 @@
 ---
 title: Медиацентр «Новости СИТ»
-layout: base.njk
+layout: layouts/page-full.njk
 category: vospitanie
 rubric: "4.7.2"
 permalink: /vospitanie/mediacentr/

@@ -1,6 +1,6 @@
 ---
 title: Великая Победа
-layout: base.njk
+layout: layouts/page-full.njk
 category: vospitanie
 rubric: "4.6.1"
 permalink: /vospitanie/velikaja-pobeda/

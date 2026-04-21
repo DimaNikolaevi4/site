@@ -1,5 +1,5 @@
 ---
-layout: base.njk
+layout: layouts/page-full.njk
 title: Контакты
 permalink: /contacts/
 eleventyNavigation:

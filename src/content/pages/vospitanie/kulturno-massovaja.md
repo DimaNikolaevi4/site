@@ -1,6 +1,6 @@
 ---
 title: Культурно-массовая работа
-layout: base.njk
+layout: layouts/page-full.njk
 category: vospitanie
 rubric: "4.7"
 permalink: /vospitanie/kulturno-massovaja/

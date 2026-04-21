@@ -1,6 +1,6 @@
 ---
 title: Профилактика экстремизма и терроризма
-layout: base.njk
+layout: layouts/page-full.njk
 category: bezopasnost
 rubric: "7.2"
 permalink: /bezopasnost/extremizm/

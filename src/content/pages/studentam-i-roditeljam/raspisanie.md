@@ -1,6 +1,6 @@
 ---
 title: Расписание занятий
-layout: base.njk
+layout: layouts/page-full.njk
 description: Расписание занятий для студентов Сальского индустриального техникума
 rubric: "8.3"
 permalink: /studentam-i-roditeljam/raspisanie/

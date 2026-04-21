@@ -1,6 +1,6 @@
 ---
 title: День открытых дверей
-layout: base.njk
+layout: layouts/page-full.njk
 category: abiturientam
 rubric: "1.4"
 permalink: /abiturientam/den-otkrytyh-dverej/
