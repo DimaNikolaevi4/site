@@ -73,6 +73,8 @@
 - ❌ Удалить: `<header>`, `<footer>`, `<nav>`, `<script>`, `<style>`
 - ⚠️ Преобразовать: инлайн-стили → классы или удалить
 
+**Примечание:** Миграция ещё не начата (ROADMAP.md строка 310: "Миграция контента | 0%"). Этот документ описывает план будущих действий.
+
 ### Шаг 3: Создание Markdown-файла
 Формат файла `.md`:
 
@@ -160,23 +162,71 @@ eleventyNavigation:
 ## 🛠️ Инструменты для миграции
 
 ### Автоматическая конвертация (рекомендуется):
-1. **Pandoc** - универсальный конвертер
-   ```bash
-   pandoc input.html -f html -t markdown -o output.md
-   ```
 
-2. **Custom Node.js скрипт** (будет создан):
-   - Парсинг HTML через `cheerio` или `jsdom`
-   - Извлечение `<main>` контента
-   - Генерация frontmatter из мета-тегов
-   - Конвертация в Markdown через `turndown`
+#### 1. Pandoc - универсальный конвертер
+```bash
+pandoc input.html -f html -t markdown -o output.md
+```
 
-3. **Turndown Service** - онлайн или локально
-   ```javascript
-   const TurndownService = require('turndown');
-   const turndown = new TurndownService();
-   const markdown = turndown.turndown(htmlString);
-   ```
+#### 2. Custom Node.js скрипт (будет создан):
+Скрипт будет использовать следующие библиотеки:
+- `cheerio` или `jsdom` - для парсинга HTML
+- `turndown` - для конвертации в Markdown
+- `js-yaml` - для генерации frontmatter
+
+**Пример структуры скрипта:**
+```javascript
+const cheerio = require('cheerio');
+const TurndownService = require('turndown');
+const fs = require('fs');
+const path = require('path');
+
+// Конфигурация
+const MIRROR_DIR = './mirror';
+const OUTPUT_DIR = './src/content/categories';
+
+// Функция конвертации одного файла
+function convertFile(htmlPath, outputPath) {
+  const html = fs.readFileSync(htmlPath, 'utf8');
+  const $ = cheerio.load(html);
+  
+  // Извлечение контента из <main>
+  const mainContent = $('main').html();
+  
+  // Конвертация в Markdown
+  const turndown = new TurndownService();
+  const markdown = turndown.turndown(mainContent);
+  
+  // Генерация frontmatter
+  const title = $('h1').text() || $('title').text();
+  const description = $('meta[name="description"]').attr('content') || '';
+  
+  const frontmatter = `---
+layout: layouts/post.njk
+title: "${title}"
+description: "${description}"
+date: ${new Date().toISOString().split('T')[0]}
+---
+
+`;
+  
+  // Запись файла
+  fs.writeFileSync(outputPath, frontmatter + markdown);
+}
+
+// Пакетная обработка всех файлов
+// ... код обхода директории mirror/
+```
+
+#### 3. Turndown Service - онлайн или локально
+```javascript
+const TurndownService = require('turndown');
+const turndown = new TurndownService({
+  headingStyle: 'atx',
+  codeBlockStyle: 'fenced'
+});
+const markdown = turndown.turndown(htmlString);
+```
 
 ### Ручная доработка:
 После автоматической конвертации потребуется:
@@ -201,21 +251,25 @@ eleventyNavigation:
     └── service-1.html
 ```
 
-### После:
+### После (актуальная структура для Eleventy):
 ```
 /src/
 ├── content/
-│   ├── pages/
-│   │   ├── index.md
-│   │   └── about.md
-│   ├── catalog/
-│   │   ├── index.md
-│   │   └── item-1.md
-│   └── services/
-│       └── service-1.md
+│   └── categories/              # Корневая папка для всех рубрик
+│       ├── abiturientam/        # Рубрика 1-го уровня (код "1")
+│       │   ├── index.md         # Страница раздела
+│       │   └── slovo-direktora/ # Рубрика 2-го уровня (код "1.1")
+│       │       └── index.md     # Материал
+│       ├── svedenija/           # Другая рубрика 1-го уровня (код "2")
+│       │   ├── osnovnye-svedenija/
+│       │   └── dokumenty/
+│       └── news/                # Новости (отдельная коллекция)
+│           └── post-1.md
 ├── images/ (перенесённые из /mirror/images)
 └── ...
 ```
+
+> ⚠️ **Важно:** Структура `src/content/pages/` из примера выше устарела. Актуальный путь: `src/content/categories/{rubric-slug}/`.
 
 ---
 
@@ -294,3 +348,50 @@ eleventyNavigation:
 3. **Использовать Git** для отслеживания изменений в каждом файле
 4. **Создать бэкап** перед началом массовой конвертации
 5. **Документировать** найденные проблемы и их решения
+6. **Начать с приоритетных разделов**: Главная, Абитуриентам, Сведения об ОО
+7. **Проверять каждую сконвертированную страницу** визуально на соответствие оригиналу
+
+---
+
+## 📅 План работ по миграции (детализированный)
+
+### Этап 1: Подготовка (1 день)
+- [ ] Установить необходимые зависимости: `npm install cheerio turndown js-yaml --save-dev`
+- [ ] Создать скрипт конвертации `scripts/migrate.js`
+- [ ] Протестировать на 3-5 файлах
+- [ ] Отладить обработку таблиц и изображений
+
+### Этап 2: Пилотная миграция (1 день)
+- [ ] Мигрировать раздел "1. АБИТУРИЕНТАМ" полностью (~9 подразделов)
+- [ ] Проверить корректность frontmatter
+- [ ] Проверить работу коллекций Eleventy
+- [ ] Внести правки в скрипт при необходимости
+
+### Этап 3: Массовая конвертация (2 дня)
+- [ ] Запустить пакетную обработку всех 82 файлов
+- [ ] Разложить файлы по папкам `src/content/categories/{rubric}/`
+- [ ] Перенести изображения в `src/assets/images/`
+
+### Этап 4: Валидация и доработка (2 дня)
+- [ ] Проверить каждый файл на наличие ошибок YAML
+- [ ] Добавить теги и категории где они не проставлены автоматически
+- [ ] Исправить битые ссылки
+- [ ] Проверить отображение таблиц и списков
+
+### Этап 5: Финальное тестирование (1 день)
+- [ ] Запустить сборку `npm run build`
+- [ ] Проверить все страницы в браузере
+- [ ] Протестировать навигацию и хлебные крошки
+- [ ] Убедиться что поиск индексирует новые материалы
+
+**Итого:** 7 рабочих дней при гибридном подходе
+
+---
+
+## 🔗 Полезные ссылки
+
+- [Документация Eleventy по коллекциям](https://www.11ty.dev/docs/collections/)
+- [Руководство Turndown](https://github.com/mixmark-io/turndown)
+- [Pandoc User's Guide](https://pandoc.org/MANUAL.html)
+- [Внутренний документ: docs/COLLECTIONS_SETUP.md](./COLLECTIONS_SETUP.md)
+- [Внутренний документ: docs/FRONTMATTER_SPEC.md](./FRONTMATTER_SPEC.md)
