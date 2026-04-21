@@ -114,6 +114,32 @@ module.exports = function(eleventyConfig) {
              r.fullPath.split('/').length === parentSlug.split('/').length + 1;
     });
   });
+
+  // Поиск рубрики по коду (например "4.5") — возвращает объект из allSlugs
+  eleventyConfig.addFilter('getRubricByCode', function(code) {
+    if (!code) return null;
+    return allSlugs.find(r => r.code === code) || null;
+  });
+
+  // Возвращает прямых детей рубрики, упакованных как карточки для news.njk (subrubrics mode)
+  // На вход — код рубрики ("3", "4.5", "2.7" и т.п.)
+  eleventyConfig.addFilter('getSubrubricCards', function(code) {
+    if (!code) return [];
+    const parent = allSlugs.find(r => r.code === code);
+    if (!parent) return [];
+    const children = allSlugs.filter(r => {
+      return r.fullPath.startsWith(parent.fullPath + '/') &&
+             r.fullPath.split('/').length === parent.fullPath.split('/').length + 1;
+    });
+    return children.map(c => ({
+      url: '/' + c.fullPath + '/',
+      data: {
+        title: c.title,
+        description: '',
+        image: ''
+      }
+    }));
+  });
   
   // === Резолвер меток URL → человеческое название (для хлебных крошек) ===
   // Источники: rubrics.yaml (allSlugs) + menu.yaml + статические страницы
