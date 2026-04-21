@@ -12,11 +12,12 @@
 Этот документ содержит поэтапный план разработки современного зеркала сайта `https://sit-salsk.ru/` на базе Eleventy (11ty) в соответствии с `STRUCTURE_AND_PRINCIPLES.md`.
 
 **Текущий статус проекта:**
-- ✅ Структура `/mirror` готова на 100% (82 из 82 подразделов)
-- ✅ Базовые компоненты Eleventy настроены (шаблоны, partials, layouts)
+- ✅ Структура `/mirror` готова: 10 основных разделов, ~70 подразделов уровня 1, ~109 total директорий, 87 файлов `index.html`
+- ✅ Базовые компоненты Eleventy настроены (шаблоны, components/, layouts)
 - ✅ Данные рубрик импортированы (`rubrics.yaml`)
 - ⚠️ Контент не мигрирован из `/mirror` в `/src/content`
-- ⚠️ Дизайн секций 1 и 6 требует доработки
+- ⚠️ Header: требуется доработать адаптивное меню (бургер для мобильных), поиск в модальном окне, переключатель версии для слабовидящих
+- ⚠️ Footer: требуется доработать многоколоночную структуру (4-5 колонок), социальные сети, реквизиты
 - ⚠️ Поиск Lunr.js требует настройки русской локализации
 
 ---
@@ -44,7 +45,7 @@
 - [ ] **1.1.4** Документировать структуру вложений (PDF, DOC, изображения) для каждой рубрики
 
 **Критерии готовности:**
-- Все 82+ подраздела имеют актуальные `index.html`
+- Все подразделы (~95 рубрик) имеют актуальные `index.html`
 - Известен полный список вложений для миграции
 - Автоматическая проверка обновлений работает
 
@@ -90,20 +91,28 @@
 **Структура после миграции:**
 ```
 src/content/
-├── categories/           # Страницы списков категорий
-│   ├── abiturientam/
-│   ├── svedenija/
-│   └── ...
-├── posts/                # Материалы (~10,000 файлов)
-│   ├── news/
-│   ├── documents/
-│   ├── education/
-│   └── ...
+├── categories/           # Страницы списков категорий (listing.njk)
+│   ├── abiturientam/    # Раздел 1: Абитуриентам
+│   ├── svedenija/       # Раздел 2: Сведения об образовательной организации
+│   ├── uchebno-metodicheskaya/  # Раздел 3
+│   ├── vospitanie/      # Раздел 4
+│   ├── partnerstvo/     # Раздел 5
+│   ├── psihologicheskoe/ # Раздел 6
+│   ├── bezopasnost/     # Раздел 7
+│   ├── studentam-roditeljam/ # Раздел 8
+│   └── ...              # Остальные разделы (~95 рубрик total)
+├── posts/                # Материалы (~10,000+ файлов из /mirror)
+│   ├── news/            # Новости
+│   ├── documents/       # Документы
+│   ├── education/       # Образовательные материалы
+│   └── ...              # По категориям из STRUCTURE_AND_PRINCIPLES.md
 └── pages/                # Статические страницы
-    ├── about/
-    ├── contacts/
-    └── ...
+    ├── about/           # О техникуме
+    ├── contacts/        # Контакты
+    └── svedenija/       # Сведения (10 обязательных подразделов по Приказу №1493)
 ```
+
+**Примечание:** Структура `categories/`, `posts/`, `pages/` соответствует описанию в STRUCTURE_AND_PRINCIPLES.md (строки 649-661). Миграция из `/mirror` должна учитывать иерархию ~95 рубрик, описанную в `mirror/SITE_RUBRICS_STRUCTURE.md`.
 
 **Критерии готовности:**
 - Все материалы из `/mirror` доступны в `/src/content`
@@ -155,11 +164,13 @@ src/content/
 - Lighthouse Accessibility ≥95
 
 **Файлы:**
-- `/src/_includes/partials/header.njk`
-- `/src/_includes/partials/footer.njk`
+- `/src/_includes/components/header.njk`
+- `/src/_includes/components/footer.njk`
 - `/src/assets/scss/components/_header.scss`
 - `/src/assets/scss/components/_footer.scss`
 - `/src/assets/js/a11y-toggle.js`
+
+**Примечание:** Согласно STRUCTURE_AND_PRINCIPLES.md (строки 289-306), компоненты расположены в `components/`, а не в `partials/`. Директория `partials/` не используется.
 
 ---
 
@@ -184,8 +195,10 @@ src/content/
 **Файлы:**
 - `/src/assets/js/lunr.ru.js` (скачать)
 - `/src/assets/js/search.js`
-- `/src/_includes/partials/search-modal.njk`
+- `/src/_includes/components/search-modal.njk`
 - `eleventy.config.js` (настройка плагина lunr)
+
+**Примечание:** Компонент поиска должен быть расположен в `components/`, а не в `partials/`.
 
 ---
 
@@ -334,8 +347,10 @@ src/content/
 - [STRUCTURE_AND_PRINCIPLES.md](./STRUCTURE_AND_PRINCIPLES.md) — основной документ
 - [README.md](./README.md) — общее описание проекта
 - [docs/DEPLOY.md](./docs/DEPLOY.md) — инструкция по деплою
-- [docs/FRONTMATTER_SPEC.md](./docs/FRONTMATTER_SPEC.md) — спецификация Front Matter
+- [docs/FRONTMATTER_SPEC.md](./docs/FRONTMATTER_SPEC.md) — спецификация Front Matter (✅ существует)
 - [/mirror/MIRROR_README.md](./mirror/MIRROR_README.md) — описание зеркала
+- [/mirror/SITE_RUBRICS_STRUCTURE.md](./mirror/SITE_RUBRICS_STRUCTURE.md) — полная структура рубрик (~95 рубрик)
+- [CHECKLIST.md](./CHECKLIST.md) — чеклист разработки
 - [Eleventy Documentation](https://www.11ty.dev/docs/)
 - [Bootstrap 5 Documentation](https://getbootstrap.com/docs/5.3/)
 - [Lunr.js Documentation](https://lunrjs.com/docs/)
@@ -352,6 +367,13 @@ src/content/
 
 **История изменений:**
 - **v1.0** (Апрель 2026) — первоначальная версия
+- **v1.1** (Апрель 2026) — исправлены противоречия с STRUCTURE_AND_PRINCIPLES.md:
+  - Уточнена структура `/mirror`: ~109 директорий, 87 файлов `index.html`, ~95 рубрик total
+  - Заменены ссылки на `partials/` → `components/` (согласно STRUCTURE_AND_PRINCIPLES.md v3.2)
+  - Конкретизированы задачи по доработке Header и Footer
+  - Актуализирована структура миграции контента (`categories/`, `posts/`, `pages/`)
+  - Добавлена ссылка на `SITE_RUBRICS_STRUCTURE.md`
+  - Подтверждено существование `docs/FRONTMATTER_SPEC.md`
 
 ---
 
