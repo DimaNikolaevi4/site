@@ -24,138 +24,65 @@ description: Официальный сайт Сальского индустри
   {% set aboutMode = 'director' %}
   {% include "components/about.njk" %}
 
-  <!-- News Section (based on Courses) -->
+  <!-- Секции 5 + 7: Новости (70%) + Сайдбар с баннерами (30% слева) -->
   <section id="news" class="courses section">
 
-    <!-- Section Title -->
     <div class="container section-title" data-aos="fade-up">
       <h2>Новости</h2>
       <p>Последние события техникума</p>
-    </div><!-- End Section Title -->
+    </div>
 
     <div class="container">
+      <div class="content-sidebar-grid">
 
-      <div class="row">
+        <!-- Секция 7: Сайдбар (30% слева, единые баннеры) -->
+        <div class="sidebar-col">
+          {% include "components/sidebar.njk" %}
+        </div>
 
-        {% for post in collections.news | reverse %}
-        {% if loop.index <= 3 %}
-        <div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="{{ loop.index * 100 }}">
-          <div class="course-item">
-            <img src="{{ post.data.image or '/assets/mentor/img/course-' ~ (loop.index) ~ '.jpg' }}" class="img-fluid" alt="{{ post.data.title }}">
-            <div class="course-content">
-              <div class="d-flex justify-content-between align-items-center mb-3">
-                <p class="category">{{ post.data.category or 'Новости' }}</p>
-                <p class="date">{{ post.date | dateRu }}</p>
-              </div>
+        <!-- Лента новостей (70% справа) -->
+        <div class="content-col">
+          <div class="row">
+            {% for post in collections.news | reverse %}
+            {% if loop.index <= 3 %}
+            <div class="col-md-6 col-xl-4 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="{{ loop.index * 100 }}">
+              <div class="course-item">
+                <img src="{{ post.data.image or '/assets/mentor/img/course-' ~ (loop.index) ~ '.jpg' }}" class="img-fluid" alt="{{ post.data.title }}">
+                <div class="course-content">
+                  <div class="d-flex justify-content-between align-items-center mb-3">
+                    <p class="category">{{ post.data.category or 'Новости' }}</p>
+                    <p class="date">{{ post.date | dateRu }}</p>
+                  </div>
 
-              <h3><a href="{{ post.url }}">{{ post.data.title }}</a></h3>
-              <p class="description">{{ post.data.excerpt or post.templateContent | truncate(120) }}</p>
-              <div class="trainer d-flex justify-content-between align-items-center">
-                <div class="trainer-profile d-flex align-items-center">
-                  <a href="{{ post.url }}" class="trainer-link">Читать далее →</a>
+                  <h3><a href="{{ post.url }}">{{ post.data.title }}</a></h3>
+                  <p class="description">{{ post.data.excerpt or post.templateContent | truncate(120) }}</p>
+                  <div class="trainer d-flex justify-content-between align-items-center">
+                    <div class="trainer-profile d-flex align-items-center">
+                      <a href="{{ post.url }}" class="trainer-link">Читать далее →</a>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
+            {% endif %}
+            {% else %}
+            <div class="col-12 text-center">
+              <p>Новости пока не добавлены.</p>
+            </div>
+            {% endfor %}
           </div>
-        </div> <!-- End News Item -->
-        {% endif %}
-        {% else %}
-        <div class="col-12 text-center">
-          <p>Новости пока не добавлены.</p>
+
+          <div class="text-center mt-4" data-aos="fade-up" data-aos-delay="500">
+            <a href="/news/" class="btn-get-started">Все новости</a>
+          </div>
         </div>
-        {% endfor %}
 
       </div>
-
-      <div class="text-center mt-4" data-aos="fade-up" data-aos-delay="500">
-        <a href="/news/" class="btn-get-started">Все новости</a>
-      </div>
-
     </div>
 
-  </section><!-- /News Section -->
+  </section><!-- /News + Sidebar -->
 
-  <!-- Popular Sections (based on Trainers) -->
-  <section id="popular-sections" class="section trainers-index">
-
-    <div class="container">
-
-      <!-- Section Title -->
-      <div class="container section-title" data-aos="fade-up">
-        <h2>Популярные разделы</h2>
-        <p>Важная информация для посетителей сайта</p>
-      </div><!-- End Section Title -->
-
-      <div class="row">
-
-        <div class="col-lg-3 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="100">
-          <div class="member">
-            <img src="/assets/mentor/img/trainers/trainer-1.jpg" class="img-fluid" alt="Абитуриентам">
-            <div class="member-content">
-              <h4>Абитуриентам</h4>
-              <span>Прием документов</span>
-              <p>
-                Информация о правилах приема, необходимых документах и сроках подачи заявлений в техникум.
-              </p>
-              <div class="social">
-                <a href="/abiturientam/"><i class="bi bi-arrow-right-circle"></i></a>
-              </div>
-            </div>
-          </div>
-        </div><!-- End Member -->
-
-        <div class="col-lg-3 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="200">
-          <div class="member">
-            <img src="/assets/mentor/img/trainers/trainer-2.jpg" class="img-fluid" alt="Студентам">
-            <div class="member-content">
-              <h4>Студентам</h4>
-              <span>Учебный процесс</span>
-              <p>
-                Расписание занятий, информация о сессиях, стипендиях и студенческой жизни техникума.
-              </p>
-              <div class="social">
-                <a href="/studentam/"><i class="bi bi-arrow-right-circle"></i></a>
-              </div>
-            </div>
-          </div>
-        </div><!-- End Member -->
-
-        <div class="col-lg-3 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="300">
-          <div class="member">
-            <img src="/assets/mentor/img/trainers/trainer-3.jpg" class="img-fluid" alt="Расписание">
-            <div class="member-content">
-              <h4>Расписание</h4>
-              <span>График занятий</span>
-              <p>
-                Актуальное расписание занятий для всех групп и курсов техникума на текущий семестр.
-              </p>
-              <div class="social">
-                <a href="/raspisanie/"><i class="bi bi-arrow-right-circle"></i></a>
-              </div>
-            </div>
-          </div>
-        </div><!-- End Member -->
-
-        <div class="col-lg-3 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="400">
-          <div class="member">
-            <img src="/assets/mentor/img/trainers/trainer-1-2.jpg" class="img-fluid" alt="Контакты">
-            <div class="member-content">
-              <h4>Контакты</h4>
-              <span>Свяжитесь с нами</span>
-              <p>
-                Адреса, телефоны, электронная почта и другие способы связи с администрацией техникума.
-              </p>
-              <div class="social">
-                <a href="/contacts/"><i class="bi bi-arrow-right-circle"></i></a>
-              </div>
-            </div>
-          </div>
-        </div><!-- End Member -->
-
-      </div>
-
-    </div>
-
-  </section><!-- /Popular Sections -->
+  <!-- Секция 6: Популярные разделы (единый компонент) -->
+  {% include "components/popular.njk" %}
 
 </main>
