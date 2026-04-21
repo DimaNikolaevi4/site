@@ -513,14 +513,21 @@ h6 {
 # Site Footer (новый дизайн в фирменной палитре)
 --------------------------------------------------------------*/
 .site-footer {
-  --footer-bg-1: #1b2620;
-  --footer-bg-2: #243029;
-  --footer-text: rgba(255, 255, 255, 0.78);
-  --footer-text-strong: #ffffff;
-  --footer-muted: rgba(255, 255, 255, 0.55);
-  --footer-border: rgba(255, 255, 255, 0.08);
-  --footer-card-bg: rgba(255, 255, 255, 0.04);
-  --footer-card-bg-hover: rgba(95, 207, 128, 0.08);
+  /* Светлая тема (по умолчанию) — в тон зелёной шапке */
+  --footer-bg-1: color-mix(in srgb, var(--accent-color), #ffffff 92%);
+  --footer-bg-2: color-mix(in srgb, var(--accent-color), #ffffff 96%);
+  --footer-glow-1: rgba(95, 207, 128, 0.18);
+  --footer-glow-2: rgba(95, 207, 128, 0.10);
+  --footer-text: #455048;
+  --footer-text-strong: #1f2a23;
+  --footer-muted: #6b7a72;
+  --footer-border: rgba(31, 42, 35, 0.10);
+  --footer-card-bg: #ffffff;
+  --footer-card-bg-hover: color-mix(in srgb, var(--accent-color), #ffffff 88%);
+  --footer-card-shadow: 0 4px 14px rgba(31, 42, 35, 0.06);
+  --footer-card-shadow-hover: 0 10px 24px rgba(95, 207, 128, 0.18);
+  --footer-icon-bg: color-mix(in srgb, var(--accent-color), #ffffff 80%);
+  --footer-mark-fg: #ffffff;
   --footer-accent: var(--accent-color);
 
   position: relative;
@@ -528,11 +535,29 @@ h6 {
   padding: 70px 0 0;
   color: var(--footer-text);
   background:
-    radial-gradient(ellipse at top left, rgba(95, 207, 128, 0.10), transparent 55%),
-    radial-gradient(ellipse at bottom right, rgba(95, 207, 128, 0.06), transparent 60%),
+    radial-gradient(ellipse at top left, var(--footer-glow-1), transparent 55%),
+    radial-gradient(ellipse at bottom right, var(--footer-glow-2), transparent 60%),
     linear-gradient(180deg, var(--footer-bg-2) 0%, var(--footer-bg-1) 100%);
   font-size: 14px;
   line-height: 1.55;
+}
+
+/* Тёмная тема — глубокий тёмно-зелёный графит */
+body.dark-theme .site-footer {
+  --footer-bg-1: #1b2620;
+  --footer-bg-2: #243029;
+  --footer-glow-1: rgba(95, 207, 128, 0.10);
+  --footer-glow-2: rgba(95, 207, 128, 0.06);
+  --footer-text: rgba(255, 255, 255, 0.78);
+  --footer-text-strong: #ffffff;
+  --footer-muted: rgba(255, 255, 255, 0.55);
+  --footer-border: rgba(255, 255, 255, 0.08);
+  --footer-card-bg: rgba(255, 255, 255, 0.04);
+  --footer-card-bg-hover: rgba(95, 207, 128, 0.08);
+  --footer-card-shadow: none;
+  --footer-card-shadow-hover: none;
+  --footer-icon-bg: rgba(95, 207, 128, 0.15);
+  --footer-mark-fg: #0d1612;
 }
 
 .site-footer .footer-decoration {
@@ -625,7 +650,7 @@ h6 {
   height: 52px;
   border-radius: 12px;
   background: linear-gradient(135deg, var(--footer-accent), #2fa55a);
-  color: #0d1612;
+  color: var(--footer-mark-fg);
   font-family: var(--heading-font);
   font-weight: 800;
   font-size: 16px;
@@ -699,13 +724,14 @@ h6 {
   background: var(--footer-card-bg);
   border: 1px solid var(--footer-border);
   color: var(--footer-text);
+  box-shadow: var(--footer-card-shadow);
   transition: all 0.25s ease;
 }
 
 .site-footer .footer-social-link:hover {
   background: var(--footer-accent);
   border-color: var(--footer-accent);
-  color: #0d1612;
+  color: #ffffff;
   transform: translateY(-2px);
   box-shadow: 0 8px 18px rgba(95, 207, 128, 0.30);
 }
@@ -725,13 +751,15 @@ h6 {
   border-radius: 14px;
   background: var(--footer-card-bg);
   border: 1px solid var(--footer-border);
-  transition: background 0.25s ease, border-color 0.25s ease, transform 0.25s ease;
+  box-shadow: var(--footer-card-shadow);
+  transition: background 0.25s ease, border-color 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
 }
 
 .site-footer .footer-corp-card:hover {
   background: var(--footer-card-bg-hover);
   border-color: rgba(95, 207, 128, 0.30);
   transform: translateY(-2px);
+  box-shadow: var(--footer-card-shadow-hover);
 }
 
 .site-footer .footer-corp-header {
@@ -750,7 +778,7 @@ h6 {
   width: 28px;
   height: 28px;
   border-radius: 8px;
-  background: rgba(95, 207, 128, 0.15);
+  background: var(--footer-icon-bg);
   color: var(--footer-accent);
   font-size: 14px;
 }
@@ -876,7 +904,7 @@ h6 {
   width: 24px;
   height: 24px;
   border-radius: 6px;
-  background: rgba(95, 207, 128, 0.15);
+  background: var(--footer-icon-bg);
   color: var(--footer-accent);
   font-size: 12px;
 }
@@ -906,6 +934,7 @@ h6 {
   border-radius: 12px;
   background: var(--footer-card-bg);
   border: 1px solid var(--footer-border);
+  box-shadow: var(--footer-card-shadow);
   font-size: 12.5px;
   color: var(--footer-muted);
 }
@@ -952,7 +981,7 @@ h6 {
 }
 
 .site-footer .footer-bottom-links span {
-  color: rgba(255, 255, 255, 0.20);
+  color: var(--footer-border);
 }
 
 @media (max-width: 575px) {
