@@ -30,13 +30,13 @@ main_rubrics:
 При запуске сборки Eleventy:
 1. Загружает `rubrics.yaml`
 2. Рекурсивно обходит все рубрики (включая вложенные)
-3. Для каждой рубрики создает коллекцию с именем `slug` (дефисы удаляются)
-4. Коллекция включает все `.md` файлы из соответствующей папки в `src/content/`
+3. Для каждой рубрики создает коллекцию с именем `slug` (дефисы **сохраняются** для корректной работы навигации)
+4. Коллекция включает все `.md` файлы из соответствующей папки в `src/content/categories/`
 
 **Пример:**
 - Рубрика: `abiturientam` → Коллекция: `abiturientam`
-- Рубрика: `slovo-direktora` → Коллекция: `slovodirektora`
-- Путь к файлам: `src/content/abiturientam/slovo-direktora/*.md`
+- Рубрика: `slovo-direktora` → Коллекция: `slovo-direktora`
+- Путь к файлам: `src/content/categories/abiturientam/slovo-direktora/*.md`
 
 ### 3. Специальные коллекции
 
@@ -66,7 +66,7 @@ main_rubrics:
 
 ```njk
 {# Вывод материалов вложенной рубрики #}
-{% for item in collections.slovodirektora %}
+{% for item in collections['slovo-direktora'] %}
   {{ item.data.title }}
 {% endfor %}
 ```
@@ -113,17 +113,20 @@ main_rubrics:
 ```
 src/
 └── content/
-    ├── abiturientam/              # Рубрика 1-го уровня
-    │   ├── slovo-direktora/       # Рубрика 2-го уровня
-    │   │   └── index.md           # Материал
-    │   └── specialnosti/
-    │       └── index.md
-    ├── svedenija/                 # Другая рубрика
-    │   ├── osnovnye-svedenija/
-    │   └── dokumenty/
-    └── news/                      # Новости (отдельная коллекция)
-        └── post-1.md
+    └── categories/                # Корневая папка для всех рубрик
+        ├── abiturientam/          # Рубрика 1-го уровня (код "1")
+        │   ├── slovo-direktora/   # Рубрика 2-го уровня (код "1.1")
+        │   │   └── index.md       # Материал
+        │   └── specialnosti/      # Рубрика 2-го уровня (код "1.2")
+        │       └── index.md
+        ├── svedenija/             # Другая рубрика 1-го уровня (код "2")
+        │   ├── osnovnye-svedenija/
+        │   └── dokumenty/
+        └── news/                  # Новости (отдельная коллекция, жестко задана)
+            └── post-1.md
 ```
+
+> ⚠️ **Важно:** Все материалы рубрик должны находиться в `src/content/categories/`, а не в корне `src/content/`. Это обеспечивает корректную работу автоматической генерации коллекций.
 
 ## Front Matter
 
@@ -174,9 +177,11 @@ permalink: "/abiturientam/priemnaya-kampaniya/"
      title: "Новый раздел"
      slug: novyj-razdel
    ```
-3. Создайте папку `src/content/abiturientam/novyj-razdel/`
+3. Создайте папку `src/content/categories/abiturientam/novyj-razdel/`
 4. Добавьте материалы в формате `.md`
 5. Запустите сборку — коллекция создастся автоматически
+
+> ⚠️ **Важно:** Путь должен включать `categories/`: `src/content/categories/{parent-slug}/{new-slug}/`
 
 ## Отладка
 
@@ -190,7 +195,9 @@ permalink: "/abiturientam/priemnaya-kampaniya/"
 
 ## Примечания
 
-- Имена коллекций приводятся к нижнему регистру, дефисы удаляются
+- Имена коллекций приводятся к нижнему регистру, дефисы **сохраняются** (например, `slovo-direktora`)
+- Для доступа к коллекциям с дефисами в шаблонах используйте синтаксис `collections['slug-name']`
 - Если в рубрике нет файлов, коллекция будет пустой
 - Материалы без `category` не попадают в `allRubricated`
-- Для новостей используется отдельная коллекция `news` (жестко задана)
+- Для новостей используется отдельная коллекция `news`, которая регистрируется вручную в конфиге Eleventy (файл `.eleventy.js`)
+- Актуальный путь для всех рубрик: `src/content/categories/{rubric-slug}/`
