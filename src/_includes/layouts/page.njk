@@ -1,66 +1,149 @@
-{# Макет для статических страниц (Тип B) #}
-{# Секции: 2-контекст, 3-контент, 4-доп.блоки, 5-сайдбар, 6-возврат, 7-связанные #}
+{#
+  ШАБЛОН ТИП B — layouts/page.njk
+  Все 8 секций для страниц разделов (любой уровень)
+
+  Секция 1: Header          — глобальная, в base.njk
+  Секция 2: Hero + Контекст — hero-баннер (опц.), хлебные крошки, заголовок, описание
+  Секция 3+7: Контент + Сайдбар — сетка 70/30 (контент | сайдбар с баннерами)
+  Секция 4: About           — слово директора / заглушка (опц., управляется aboutMode)
+  Секция 5: Materials       — список подрубрик / последние материалы (опц., newsMode)
+  Секция 6: Popular         — популярные разделы (опц., showPopular: true)
+  Секция 8: Нижняя навигация + Footer — глобальная base.njk + возврат к разделу
+
+  Управление секциями через frontmatter:
+    hero:              { image, title, subtitle, alt, cta } — включает Hero-баннер
+    rubricTitle:       строка — название рубрики под чертой в Hero
+    showSidebar:       true/false (по умолчанию true) — 30% левая колонка с баннерами
+    sidebarBanners:    массив — переопределить стандартные баннеры сайдбара
+    showAbout:         true/false (по умолчанию false) — секция 4
+    aboutMode:         'director' | 'section' | 'stub'
+    aboutTitle:        строка (для aboutMode='section')
+    aboutText:         HTML (для aboutMode='section')
+    aboutImage:        URL (для aboutMode='section')
+    aboutUrl:          URL (для aboutMode='section')
+    showNews:          true/false (по умолчанию false) — секция 5
+    newsMode:          'latest' | 'subrubrics'
+    newsTitle:         строка
+    newsCollection:    имя коллекции (для newsMode='subrubrics')
+    newsCount:         число (для newsMode='latest', по умолчанию 3)
+    showPopular:       true/false (по умолчанию false) — секция 6
+    popularTitle:      строка
+    popularLinks:      массив { title, subtitle, description, url, icon }
+    additionalBlocks:  HTML-строка — доп. блоки после контента
+    parentSection:     { url, title } — для нижней навигации
+    prevPage:          { url, title }
+    nextPage:          { url, title }
+    relatedPages:      массив { url, title, image, excerpt, date }
+#}
 {% extends "layouts/base.njk" %}
 
 {% block content %}
+{% set _showSidebar = showSidebar if showSidebar is defined else true %}
+
 <div class="page-layout page-type-b">
 
-  {# Секция 2: Контекстная (хлебные крошки + заголовок + описание + баннер) #}
+  {# ═══════════════════════════════════════════════
+     СЕКЦИЯ 2: Hero (опциональный) + Контекст
+  ═══════════════════════════════════════════════ #}
+
+  {# Hero-баннер — если задан hero.image #}
+  {% include "components/hero.njk" %}
+
+  {# Контекстная полоса: хлебные крошки + заголовок + описание + баннер раздела #}
   <section class="section-context" aria-label="Контекст страницы">
     <div class="container">
+
       {% include "components/breadcrumbs.njk" %}
 
       <div class="context-header">
+        {% if not (hero and hero.image) %}
         <h1 class="page-title">{{ title }}</h1>
+        {% endif %}
         {% if description %}
         <p class="page-description lead text-muted">{{ description }}</p>
         {% endif %}
       </div>
 
-      {% if sectionContext and sectionContext.banner %}
-      <div class="page-banner">
-        <img src="{{ sectionContext.banner }}" alt="{{ title }}" loading="lazy" class="img-fluid rounded">
+      {# Баннер раздела (если нет full-hero) #}
+      {% if (not (hero and hero.image)) and sectionContext and sectionContext.banner %}
+      <div class="page-banner mt-3">
+        <img src="{{ sectionContext.banner }}"
+             alt="{{ title }}"
+             loading="lazy"
+             class="img-fluid rounded">
       </div>
       {% endif %}
+
     </div>
   </section>
 
-  {# Секции 3+5: Основной контент + Сайдбар (grid-layout) #}
+  {# ═══════════════════════════════════════════════
+     СЕКЦИИ 3 + 7: Контент (70%) + Сайдбар (30%)
+     Сайдбар — слева, контент — справа
+  ═══════════════════════════════════════════════ #}
   <section class="section-main">
     <div class="container">
-      <div class="main-grid{% if not (sidebar and sidebar.show) %} main-grid--full{% endif %}">
+      <div class="content-sidebar-grid{% if not _showSidebar %} content-sidebar-grid--full{% endif %}">
 
-        {# Секция 3: Основной контент #}
-        <article class="page-content" itemprop="mainContentOfPage">
-          {{ content | safe }}
-        </article>
-
-        {# Секция 5: Сайдбар (правая колонка, sticky на десктопе) #}
-        {% if sidebar and sidebar.show %}
-        {% include "partials/sidebar.njk" %}
+        {# ── Секция 7: Сайдбар (30% левая колонка) ── #}
+        {% if _showSidebar %}
+        <div class="sidebar-col">
+          {% include "components/sidebar.njk" %}
+        </div>
         {% endif %}
 
+        {# ── Секция 3: Основной контент ── #}
+        <div class="content-col">
+          <article class="page-content" itemprop="mainContentOfPage">
+            {{ content | safe }}
+          </article>
+
+          {# Дополнительные блоки (документы, уведомления, произвольный HTML) #}
+          {% if additionalBlocks %}
+          <div class="section-extra mt-4">
+            <div class="extra-inner">
+              {{ additionalBlocks | safe }}
+            </div>
+          </div>
+          {% endif %}
+        </div>
+
       </div>
     </div>
   </section>
 
-  {# Секция 4: Дополнительные блоки (документы, уведомления, произвольный HTML) #}
-  {% if additionalBlocks %}
-  <section class="section-extra" aria-label="Дополнительные материалы">
-    <div class="container">
-      <div class="extra-inner">
-        {{ additionalBlocks | safe }}
-      </div>
-    </div>
-  </section>
+  {# ═══════════════════════════════════════════════
+     СЕКЦИЯ 4: About (заглушка или слово директора)
+     Показывается только если showAbout: true
+  ═══════════════════════════════════════════════ #}
+  {% if showAbout %}
+  {% include "components/about.njk" %}
   {% endif %}
 
-  {# Секция 7: Связанные материалы / «Читайте также» #}
+  {# ═══════════════════════════════════════════════
+     СЕКЦИЯ 5: Материалы (подрубрики или последние новости)
+     Показывается только если showNews: true
+  ═══════════════════════════════════════════════ #}
+  {% if showNews %}
+  {% include "components/news.njk" %}
+  {% endif %}
+
+  {# ═══════════════════════════════════════════════
+     СЕКЦИЯ 6: Популярные разделы
+     Показывается только если showPopular: true
+  ═══════════════════════════════════════════════ #}
+  {% if showPopular %}
+  {% include "components/popular.njk" %}
+  {% endif %}
+
+  {# ═══════════════════════════════════════════════
+     Связанные материалы / «Читайте также»
+  ═══════════════════════════════════════════════ #}
   {% if relatedPages and relatedPages.length > 0 %}
   <section class="section-related" aria-label="Связанные материалы">
     <div class="container">
       <h2 class="section-related__title">
-        <i class="bi bi-link-45deg"></i> Читайте также
+        <i class="bi bi-journals" aria-hidden="true"></i> Читайте также
       </h2>
       <div class="related-grid">
         {% for item in relatedPages %}
@@ -90,28 +173,43 @@
   </section>
   {% endif %}
 
-  {# Секция 6: Нижняя навигация (возврат к разделу, пред/след) #}
-  {% if parentSection or prevPage or nextPage %}
+  {# ═══════════════════════════════════════════════
+     Нижняя навигация (возврат к разделу, пред/след)
+  ═══════════════════════════════════════════════ #}
+  {% if parentSection or prevPage or nextPage or category or section %}
   <nav class="section-backnav" aria-label="Навигация по разделу">
     <div class="container">
+
       {% if parentSection %}
       <a href="{{ parentSection.url }}" class="backnav-link backnav-link--parent">
-        <i class="bi bi-arrow-left-circle"></i>
+        <i class="bi bi-arrow-left-circle" aria-hidden="true"></i>
         {{ parentSection.title }}
       </a>
+      {% elif category %}
+      <a href="/{{ category }}/" class="backnav-link backnav-link--parent">
+        <i class="bi bi-arrow-left-circle" aria-hidden="true"></i>
+        {{ categoryTitle or category }}
+      </a>
+      {% elif section %}
+      <a href="/{{ section }}/" class="backnav-link backnav-link--parent">
+        <i class="bi bi-arrow-left-circle" aria-hidden="true"></i>
+        {{ sectionTitle or section }}
+      </a>
       {% endif %}
+
       <div class="backnav-prevnext">
         {% if prevPage %}
         <a href="{{ prevPage.url }}" class="backnav-link backnav-link--prev" title="{{ prevPage.title }}">
-          <i class="bi bi-chevron-left"></i> Предыдущая
+          <i class="bi bi-chevron-left" aria-hidden="true"></i> Предыдущая
         </a>
         {% endif %}
         {% if nextPage %}
         <a href="{{ nextPage.url }}" class="backnav-link backnav-link--next" title="{{ nextPage.title }}">
-          Следующая <i class="bi bi-chevron-right"></i>
+          Следующая <i class="bi bi-chevron-right" aria-hidden="true"></i>
         </a>
         {% endif %}
       </div>
+
     </div>
   </nav>
   {% endif %}

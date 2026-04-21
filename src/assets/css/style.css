@@ -4127,6 +4127,46 @@ html {
 }
 
 /* ============================================
+   LAYOUT: TYPE B — Content + Sidebar Grid (3.1.2)
+   Sidebar 30% LEFT | Content 70% RIGHT
+   ============================================ */
+
+.content-sidebar-grid {
+  display: grid;
+  grid-template-columns: 30% 1fr;
+  gap: 2rem;
+  align-items: start;
+}
+
+.content-sidebar-grid--full {
+  grid-template-columns: 1fr;
+}
+
+.sidebar-col {
+  position: sticky;
+  top: 80px;
+}
+
+.content-col {
+  min-width: 0;
+}
+
+@media (max-width: 991px) {
+  .content-sidebar-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .sidebar-col {
+    position: static;
+    order: 2;
+  }
+
+  .content-col {
+    order: 1;
+  }
+}
+
+/* ============================================
    COMPONENT: NEWS (3.2.6)
    ============================================ */
 
