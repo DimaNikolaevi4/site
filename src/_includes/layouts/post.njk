@@ -1,24 +1,87 @@
-{# Макет для материалов: новости, документы (Тип C) #}
-{# Секции: 2-контекст+хлебные крошки, 3-контент+вложения, 4-читайте также, 5-сайдбар, 6-навигация #}
+{#
+  ШАБЛОН ТИП C — layouts/post.njk
+  Материалы: новости, документы, события, страницы подразделов
+
+  Секция 1: Header          — глобальная, в base.njk
+  Секция 2: Hero + Контекст — hero-баннер (опц.), хлебные крошки, заголовок, мета
+  Секция 3+7: Контент + Сайдбар — сетка 70/30 (контент | сайдбар с баннерами)
+     Контент: обложка, текст материала, вложения, теги
+     Сайдбар: components/sidebar.njk (30% левая колонка, единые баннеры)
+  Секция 4: «Читайте также» — связанные материалы (опц.)
+  Секция 6: Нижняя навигация — возврат к ленте, пред/след материал
+  Секция 8: Footer           — глобальная, в base.njk
+
+  Управление через frontmatter:
+    hero:           { image, title, subtitle, alt, cta } — Hero-баннер
+    coverImage:     URL строка — обложка внутри контентной зоны
+    coverAlt:       строка — alt текста обложки
+    date:           дата публикации
+    author:         строка — автор
+    category:       slug раздела (для хлебных крошек и мета)
+    categoryTitle:  строка — человеческое название категории
+    section:        slug раздела (альтернатива category)
+    sectionTitle:   строка — человеческое название раздела
+    readingTime:    число (минут) — время чтения (автоматом или вручную)
+    attachments:    массив { url, name, size } — вложения
+    tags:           массив строк — теги
+    showSidebar:    true/false (по умолчанию true)
+    sidebarBanners: массив — переопределить стандартные баннеры
+    relatedPages:   массив { url, title, image, excerpt, date }
+    parentSection:  { url, title } — явная ссылка «назад»
+    prevPost:       { url, title }
+    nextPost:       { url, title }
+#}
 {% extends "layouts/base.njk" %}
 
 {% block content %}
+{% set _showSidebar = showSidebar if showSidebar is defined else true %}
+
 <article class="post-layout" itemscope itemtype="https://schema.org/Article">
 
-  {# Секция 2: Контекстная — развёрнутые хлебные крошки + мета #}
-  <section class="section-context" aria-label="Информация о материале">
+  {# ═══════════════════════════════════════════════
+     СЕКЦИЯ 2: Hero (опц.) + Контекст + Мета
+  ═══════════════════════════════════════════════ #}
+
+  {# Hero-баннер — если задан hero.image #}
+  {% include "components/hero.njk" %}
+
+  {# Контекстная полоса: хлебные крошки + заголовок + мета #}
+  <section class="section-context section-context--post" aria-label="Информация о материале">
     <div class="container">
 
       {# Хлебные крошки: Главная → Раздел → (Подраздел) → Заголовок #}
       {% include "components/breadcrumbs.njk" %}
 
-      {# Заголовок + мета-информация #}
       <header class="post-header">
-        <h1 class="post-title" itemprop="headline">{{ title }}</h1>
 
+        {# Метка категории над заголовком #}
+        {% if category or section %}
+        <div class="post-header__rubric">
+          {% if category %}
+          <a href="/{{ category | slugify }}/" class="post-rubric-badge">
+            <i class="bi bi-folder2-open" aria-hidden="true"></i>
+            {{ categoryTitle or category }}
+          </a>
+          {% elif section %}
+          <a href="/{{ section | slugify }}/" class="post-rubric-badge">
+            <i class="bi bi-folder2-open" aria-hidden="true"></i>
+            {{ sectionTitle or section }}
+          </a>
+          {% endif %}
+        </div>
+        {% endif %}
+
+        {# Заголовок #}
+        {% if not (hero and hero.image) %}
+        <h1 class="post-title" itemprop="headline">{{ title }}</h1>
+        {% endif %}
+
+        {# Мета-строка: дата, автор, время чтения #}
         <div class="post-meta">
           {% if date %}
-          <time class="post-meta__item post-date" datetime="{{ date | dateToISO }}" itemprop="datePublished">
+          <time class="post-meta__item post-date"
+                datetime="{{ date | dateToISO }}"
+                itemprop="datePublished">
             <i class="bi bi-calendar3" aria-hidden="true"></i>
             <span class="visually-hidden">Дата публикации:</span>
             {{ date | dateRu }}
@@ -26,38 +89,55 @@
           {% endif %}
 
           {% if author %}
-          <span class="post-meta__item post-author" itemprop="author">
+          <span class="post-meta__item post-author" itemprop="author" itemscope itemtype="https://schema.org/Person">
             <i class="bi bi-person" aria-hidden="true"></i>
             <span class="visually-hidden">Автор:</span>
-            {{ author }}
+            <span itemprop="name">{{ author }}</span>
           </span>
           {% endif %}
 
-          {% if category %}
-          <span class="post-meta__item post-category">
-            <i class="bi bi-folder" aria-hidden="true"></i>
-            <a href="/{{ category | slugify }}/">{{ categoryTitle or category }}</a>
-          </span>
-          {% elif section %}
-          <span class="post-meta__item post-category">
-            <i class="bi bi-folder" aria-hidden="true"></i>
-            <a href="/{{ section | slugify }}/">{{ sectionTitle or section }}</a>
+          {% if readingTime %}
+          <span class="post-meta__item post-reading-time">
+            <i class="bi bi-clock" aria-hidden="true"></i>
+            {{ readingTime }} мин
           </span>
           {% endif %}
         </div>
-      </header>
 
+      </header>
     </div>
   </section>
 
-  {# Секции 3+5: Основной контент + Сайдбар #}
+  {# ═══════════════════════════════════════════════
+     СЕКЦИИ 3 + 7: Контент (70%) + Сайдбар (30%)
+     Сайдбар — слева, контент — справа
+  ═══════════════════════════════════════════════ #}
   <section class="section-main">
     <div class="container">
-      <div class="main-grid{% if not (sidebar and sidebar.show) %} main-grid--full{% endif %}">
+      <div class="content-sidebar-grid{% if not _showSidebar %} content-sidebar-grid--full{% endif %}">
 
-        {# Секция 3: Основной текст + вложения + теги #}
-        <div class="post-content-area">
+        {# ── Секция 7: Сайдбар (30% левая колонка) ── #}
+        {% if _showSidebar %}
+        <div class="sidebar-col">
+          {% include "components/sidebar.njk" %}
+        </div>
+        {% endif %}
 
+        {# ── Секция 3: Контент материала ── #}
+        <div class="content-col">
+
+          {# Обложка материала (если есть и нет полноэкранного hero) #}
+          {% if coverImage and not (hero and hero.image) %}
+          <figure class="post-cover">
+            <img src="{{ coverImage }}"
+                 alt="{{ coverAlt or title }}"
+                 loading="eager"
+                 class="post-cover__img img-fluid rounded"
+                 itemprop="image">
+          </figure>
+          {% endif %}
+
+          {# Основной текст #}
           <div class="post-content" itemprop="articleBody">
             {{ content | safe }}
           </div>
@@ -68,10 +148,12 @@
             <h2 class="attachments-title">
               <i class="bi bi-paperclip" aria-hidden="true"></i> Вложения
             </h2>
-            <ul class="attachments-list">
+            <ul class="attachments-list" role="list">
               {% for attachment in attachments %}
-              <li class="attachment-item">
-                <a href="{{ attachment.url }}" class="attachment-link" download
+              <li class="attachment-item" role="listitem">
+                <a href="{{ attachment.url }}"
+                   class="attachment-link"
+                   download
                    {% if attachment.size %}title="Скачать ({{ attachment.size }})"{% endif %}>
 
                   {# Иконка по типу файла #}
@@ -86,7 +168,7 @@
                     <i class="bi bi-file-earmark-ppt attachment-icon attachment-icon--ppt" aria-hidden="true"></i>
                   {% elif '.zip' in _ext or '.rar' in _ext %}
                     <i class="bi bi-file-earmark-zip attachment-icon" aria-hidden="true"></i>
-                  {% elif '.jpg' in _ext or '.png' in _ext or '.gif' in _ext %}
+                  {% elif '.jpg' in _ext or '.png' in _ext or '.gif' in _ext or '.webp' in _ext %}
                     <i class="bi bi-file-earmark-image attachment-icon" aria-hidden="true"></i>
                   {% else %}
                     <i class="bi bi-file-earmark attachment-icon" aria-hidden="true"></i>
@@ -111,7 +193,7 @@
                 <i class="bi bi-tags" aria-hidden="true"></i> Теги:
               </span>
               {% for tag in tags %}
-                {% if tag != 'nav' and tag != 'all' %}
+                {% if tag != 'nav' and tag != 'all' and tag != 'post' and tag != 'news' %}
                 <a href="/tags/{{ tag | slugify }}/" class="tag" itemprop="keywords">{{ tag }}</a>
                 {% endif %}
               {% endfor %}
@@ -119,18 +201,24 @@
           </footer>
           {% endif %}
 
-        </div>
+          {# Кнопка поделиться (нативный Web Share API) #}
+          <div class="post-share" aria-label="Поделиться материалом">
+            <button class="post-share__btn btn btn-outline-secondary btn-sm"
+                    onclick="if(navigator.share){navigator.share({title:document.title,url:location.href})}else{navigator.clipboard.writeText(location.href).then(()=>alert('Ссылка скопирована'))}"
+                    type="button">
+              <i class="bi bi-share" aria-hidden="true"></i> Поделиться
+            </button>
+          </div>
 
-        {# Секция 5: Сайдбар #}
-        {% if sidebar and sidebar.show %}
-        {% include "partials/sidebar.njk" %}
-        {% endif %}
+        </div>{# /.content-col #}
 
-      </div>
+      </div>{# /.content-sidebar-grid #}
     </div>
   </section>
 
-  {# Секция 4: «Читайте также» / Связанные материалы #}
+  {# ═══════════════════════════════════════════════
+     СЕКЦИЯ 4: «Читайте также» / Связанные материалы
+  ═══════════════════════════════════════════════ #}
   {% if relatedPages and relatedPages.length > 0 %}
   <section class="section-related" aria-label="Читайте также">
     <div class="container">
@@ -165,9 +253,14 @@
   </section>
   {% endif %}
 
-  {# Секция 6: Нижняя навигация (возврат к ленте, пред./след. материал) #}
+  {# ═══════════════════════════════════════════════
+     СЕКЦИЯ 6: Нижняя навигация
+     Возврат к ленте / пред. / след. материал
+  ═══════════════════════════════════════════════ #}
   <nav class="section-backnav" aria-label="Навигация по материалам">
     <div class="container">
+
+      {# Ссылка «назад в раздел» #}
       {% if parentSection %}
       <a href="{{ parentSection.url }}" class="backnav-link backnav-link--parent">
         <i class="bi bi-arrow-left-circle" aria-hidden="true"></i>
@@ -183,20 +276,31 @@
         <i class="bi bi-arrow-left-circle" aria-hidden="true"></i>
         {{ sectionTitle or section }}
       </a>
+      {% else %}
+      <a href="/" class="backnav-link backnav-link--parent">
+        <i class="bi bi-house" aria-hidden="true"></i>
+        Главная
+      </a>
       {% endif %}
 
+      {# Пред/след материал #}
       <div class="backnav-prevnext">
         {% if prevPost %}
-        <a href="{{ prevPost.url }}" class="backnav-link backnav-link--prev" title="{{ prevPost.title }}">
+        <a href="{{ prevPost.url }}"
+           class="backnav-link backnav-link--prev"
+           title="{{ prevPost.title }}">
           <i class="bi bi-chevron-left" aria-hidden="true"></i> Предыдущий
         </a>
         {% endif %}
         {% if nextPost %}
-        <a href="{{ nextPost.url }}" class="backnav-link backnav-link--next" title="{{ nextPost.title }}">
+        <a href="{{ nextPost.url }}"
+           class="backnav-link backnav-link--next"
+           title="{{ nextPost.title }}">
           Следующий <i class="bi bi-chevron-right" aria-hidden="true"></i>
         </a>
         {% endif %}
       </div>
+
     </div>
   </nav>
 

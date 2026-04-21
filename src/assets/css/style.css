@@ -4441,3 +4441,309 @@ html {
     font-size: 1.5rem;
   }
 }
+
+/* ============================================
+   LAYOUT: TYPE C — POST / MATERIAL (3.1.3)
+   Шаблон для новостей, документов, материалов
+   ============================================ */
+
+/* --- Контекстная полоса поста --- */
+.section-context--post {
+  padding-top: 1rem;
+  padding-bottom: 0;
+}
+
+/* --- Метка-рубрика над заголовком --- */
+.post-header__rubric {
+  margin-bottom: 0.6rem;
+}
+
+.post-rubric-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--color-primary);
+  text-decoration: none;
+  background: color-mix(in srgb, var(--color-primary) 10%, transparent);
+  border: 1px solid color-mix(in srgb, var(--color-primary) 25%, transparent);
+  padding: 0.2rem 0.65rem;
+  border-radius: 20px;
+  transition: background 0.2s, color 0.2s;
+}
+
+.post-rubric-badge:hover {
+  background: var(--color-primary);
+  color: #fff;
+}
+
+/* --- Заголовок поста --- */
+.post-title {
+  font-size: clamp(1.4rem, 4vw, 2.2rem);
+  font-weight: 700;
+  line-height: 1.25;
+  margin: 0.5rem 0 0.75rem;
+  color: var(--text-primary);
+}
+
+/* --- Мета-строка --- */
+.post-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.25rem;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin-bottom: 0.25rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.post-meta__item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.post-meta__item i {
+  font-size: 0.9rem;
+  opacity: 0.7;
+}
+
+.post-date { color: var(--text-muted); }
+.post-author { color: var(--text-secondary); font-weight: 500; }
+.post-reading-time { color: var(--text-muted); font-style: italic; }
+
+/* --- Обложка материала --- */
+.post-cover {
+  margin: 0 0 1.75rem;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+
+.post-cover__img {
+  width: 100%;
+  max-height: 420px;
+  object-fit: cover;
+  display: block;
+  border-radius: var(--radius-lg);
+}
+
+/* --- Текст материала --- */
+.post-content {
+  font-size: 1rem;
+  line-height: 1.75;
+  color: var(--text-primary);
+}
+
+.post-content h2,
+.post-content h3,
+.post-content h4 {
+  margin-top: 2rem;
+  margin-bottom: 0.75rem;
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+.post-content p { margin-bottom: 1.1rem; }
+
+.post-content img {
+  max-width: 100%;
+  height: auto;
+  border-radius: var(--radius-md);
+  margin: 0.5rem 0;
+}
+
+.post-content a {
+  color: var(--color-primary);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.post-content a:hover {
+  text-decoration: none;
+}
+
+.post-content blockquote {
+  border-left: 4px solid var(--color-primary);
+  margin: 1.5rem 0;
+  padding: 0.75rem 1.25rem;
+  background: color-mix(in srgb, var(--color-primary) 6%, transparent);
+  border-radius: 0 var(--radius-md) var(--radius-md) 0;
+  font-style: italic;
+  color: var(--text-secondary);
+}
+
+.post-content table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1.5rem 0;
+  font-size: 0.9rem;
+}
+
+.post-content th,
+.post-content td {
+  padding: 0.55rem 0.85rem;
+  border: 1px solid var(--border-color);
+  text-align: left;
+}
+
+.post-content th {
+  background: var(--bg-card);
+  font-weight: 600;
+}
+
+.post-content tr:nth-child(even) td {
+  background: color-mix(in srgb, var(--bg-card) 50%, transparent);
+}
+
+/* --- Вложения --- */
+.post-attachments {
+  margin-top: 2rem;
+  padding: 1.25rem 1.5rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+}
+
+.attachments-title {
+  font-size: 1rem;
+  font-weight: 700;
+  margin-bottom: 0.85rem;
+  color: var(--text-primary);
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.attachments-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.attachment-item {}
+
+.attachment-link {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 0.5rem 0.75rem;
+  border-radius: var(--radius-md);
+  text-decoration: none;
+  color: var(--text-primary);
+  transition: background 0.15s;
+  font-size: 0.9rem;
+}
+
+.attachment-link:hover {
+  background: color-mix(in srgb, var(--color-primary) 8%, transparent);
+  color: var(--color-primary);
+}
+
+.attachment-icon {
+  font-size: 1.4rem;
+  flex-shrink: 0;
+}
+
+.attachment-icon--pdf  { color: #e74c3c; }
+.attachment-icon--doc  { color: #2980b9; }
+.attachment-icon--xls  { color: #27ae60; }
+.attachment-icon--ppt  { color: #e67e22; }
+
+.attachment-name {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.attachment-size {
+  flex-shrink: 0;
+  font-size: 0.78rem;
+  color: var(--text-muted);
+}
+
+/* --- Теги --- */
+.post-footer {
+  margin-top: 2rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border-color);
+}
+
+.post-tags {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.tags-label {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.tag {
+  display: inline-block;
+  padding: 0.2rem 0.7rem;
+  font-size: 0.78rem;
+  border-radius: 20px;
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  color: var(--text-secondary);
+  text-decoration: none;
+  transition: background 0.15s, color 0.15s, border-color 0.15s;
+}
+
+.tag:hover {
+  background: var(--color-primary);
+  color: #fff;
+  border-color: var(--color-primary);
+}
+
+/* --- Кнопка «Поделиться» --- */
+.post-share {
+  margin-top: 1.5rem;
+  padding-top: 1rem;
+}
+
+.post-share__btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.85rem;
+}
+
+/* --- Мобильная адаптация --- */
+@media (max-width: 767px) {
+  .post-title {
+    font-size: 1.35rem;
+  }
+
+  .post-meta {
+    gap: 0.4rem 0.85rem;
+    font-size: 0.8rem;
+  }
+
+  .post-cover__img {
+    max-height: 220px;
+  }
+
+  .post-attachments {
+    padding: 1rem;
+  }
+
+  .attachment-link {
+    font-size: 0.85rem;
+  }
+}
