@@ -1,0 +1,53 @@
+{#
+  Компонент: Hero
+  Использование:
+    {% from "components/hero.njk" import hero %}
+    {{ hero({
+      title: 'ГБПОУ РО',
+      subtitle: '«Сальский индустриальный техникум»',
+      rubric: 'Абитуриентам',
+      bgImage: '/assets/mentor/img/hero-bg.jpg',
+      id: 'hero'
+    }) }}
+
+  Параметры (все опциональные):
+    title     — основной заголовок (по умолчанию: «ГБПОУ РО»)
+    subtitle  — подзаголовок под title (по умолчанию: «Сальский индустриальный техникум»)
+    rubric    — название рубрики, выводится под горизонтальной чертой
+    bgImage   — путь к фоновому изображению
+    bgAlt     — alt для фона (по умолчанию пустой — декоративное)
+    id        — id секции (по умолчанию: «hero»)
+    modifier  — доп. CSS-класс к .hero (например, «hero--compact»)
+#}
+
+{% macro hero(opts = {}) %}
+  {% set _title    = opts.title    or 'ГБПОУ РО' %}
+  {% set _subtitle = opts.subtitle or '«Сальский индустриальный техникум»' %}
+  {% set _rubric   = opts.rubric %}
+  {% set _bgImage  = opts.bgImage  or '/assets/mentor/img/hero-bg.jpg' %}
+  {% set _bgAlt    = opts.bgAlt    or '' %}
+  {% set _id       = opts.id       or 'hero' %}
+  {% set _modifier = opts.modifier %}
+
+  <section id="{{ _id }}" class="hero section dark-background{% if _modifier %} {{ _modifier }}{% endif %}{% if _rubric %} hero--with-rubric{% endif %}" aria-label="{{ _title }}{% if _rubric %} — {{ _rubric }}{% endif %}">
+
+    {% if _bgImage %}
+    <img src="{{ _bgImage }}" alt="{{ _bgAlt }}" data-aos="fade-in">
+    {% endif %}
+
+    <div class="container">
+      <div class="site-title" data-aos="fade-up" data-aos-delay="100">
+        {{ _title }}<br>
+        <small>{{ _subtitle | safe }}</small>
+      </div>
+
+      {% if _rubric %}
+      <div class="hero-rubric" data-aos="fade-up" data-aos-delay="200">
+        <span class="hero-rubric__divider" aria-hidden="true"></span>
+        <span class="hero-rubric__label">{{ _rubric }}</span>
+      </div>
+      {% endif %}
+    </div>
+
+  </section>
+{% endmacro %}

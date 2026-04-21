@@ -70,7 +70,7 @@
 |------|--------|-------------|
 | 3.2.1 components/header.njk | ✅ | Шапка: логотип, навигация, поиск, бургер-меню, мобильный вид |
 | 3.2.2 components/footer.njk | ✅ | Подвал: реквизиты, ссылки, соцсети |
-| 3.2.3 components/hero.njk | ❌ | Нет отдельного файла. Встроен в page.njk. Нужен отдельный компонент с поддержкой названия рубрики |
+| 3.2.3 components/hero.njk | ✅ | Отдельный макрос `hero(opts)` в `src/_includes/components/hero.njk`. Параметры: title, subtitle, rubric, bgImage, bgAlt, id, modifier. Подключён на главной. Стили `.hero-rubric` добавлены в `src/styles/main.css` |
 | 3.2.4 components/breadcrumbs.njk | ❌ | Нет отдельного файла. Хлебные крошки встроены в page.njk и post.njk. Показывают технические ключи вместо меток |
 | 3.2.5 components/about.njk | ❌ | Секция 4: слово директора (главная) / заглушка (разделы) |
 | 3.2.6 components/news.njk | ❌ | Секция 5: 3 новости (главная) / список подрубрик (разделы) |
