@@ -1,631 +1,800 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="" class="no-js">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Контакты | ГБПОУ РО &quot;Сальский индустриальный техникум&quot;</title>
+  <title> | Контакты</title>
   <meta name="description" content="Официальный сайт Сальского индустриального техникума">
-  <link rel="stylesheet" href="/assets/mentor/vendor/bootstrap/css/bootstrap.min.css">
-  <link rel="stylesheet" href="/assets/mentor/vendor/bootstrap-icons/bootstrap-icons.css">
-  <link rel="stylesheet" href="/assets/mentor/vendor/aos/aos.css">
-  <link rel="stylesheet" href="/assets/mentor/vendor/glightbox/css/glightbox.min.css">
-  <link rel="stylesheet" href="/assets/mentor/vendor/swiper/swiper-bundle.min.css">
-  <link rel="stylesheet" href="/assets/mentor/css/main.css">
-  <link rel="stylesheet" href="/styles/main.css">
-  <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicons/favicon.png">
-  <link rel="icon" type="image/png" sizes="192x192" href="/assets/favicons/favicon.png">
-  <link rel="apple-touch-icon" href="/assets/favicons/favicon.png">
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicons/favicon-16x16.png">
+  <link rel="shortcut icon" href="/favicons/favicon.png" type="image/png">
+  <link rel="apple-touch-icon" href="/favicons/favicon.png">
+  
+  <!-- Canonical URL -->
+  <link rel="canonical" href="https://сит-сальск.рф/contacts/">
+  
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://сит-сальск.рф/contacts/">
+  <meta property="og:title" content=" | Контакты">
+  <meta property="og:description" content="Официальный сайт Сальского индустриального техникума">
+  <meta property="og:image" content="https://сит-сальск.рф/assets/images/og-image.jpg">
+  
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:url" content="https://сит-сальск.рф/contacts/">
+  <meta name="twitter:title" content=" | Контакты">
+  <meta name="twitter:description" content="Официальный сайт Сальского индустриального техникума">
+  <meta name="twitter:image" content="https://сит-сальск.рф/assets/images/og-image.jpg">
+  
+  <!-- Bootstrap 5 CSS + Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.0/font/bootstrap-icons.min.css">
+  
+  <link rel="stylesheet" href="/assets/css/style.css">
   <script>
-    (function(){
-      try {
-        if (localStorage.getItem('sit-dark-theme') === '1') document.documentElement.classList.add('dark-theme');
-        var _p = localStorage.getItem('sit-a11y-prefs');
-        if (_p) {
-          _p = JSON.parse(_p);
-          if (_p.hc) document.documentElement.classList.add('a11y-high-contrast');
-          if (_p.lf) document.documentElement.classList.add('a11y-large-font');
-          if (_p.na) document.documentElement.classList.add('a11y-no-animations');
-        } else if (localStorage.getItem('sit-a11y') === '1') {
-          document.documentElement.classList.add('a11y-high-contrast');
-        }
-      } catch(e){}
+    // Prevent FOUC by applying accessibility settings immediately
+    (function() {
+      var savedSettings = localStorage.getItem('a11y-settings');
+      if (savedSettings) {
+        try {
+          var settings = JSON.parse(savedSettings);
+          if (settings.enabled) {
+            document.documentElement.classList.add('a11y-enabled');
+            if (settings.largeFont) document.documentElement.classList.add('a11y-large-font');
+            if (settings.highContrast) document.documentElement.classList.add('a11y-high-contrast');
+            if (settings.noAnimations) document.documentElement.classList.add('a11y-no-animations');
+          }
+        } catch(e) {}
+      }
     })();
   </script>
 </head>
-<body class="page page--layouts/page.njk">
-  <!-- Шапка -->
-  <header id="header" class="header d-flex align-items-center sticky-top">
-  <div class="container-fluid container-xl position-relative d-flex align-items-center">
-
-    
-    <a href="/" class="logo d-flex align-items-center flex-shrink-0" title="Главная страница ГБПОУ РО «СИТ»">
-      <img src="/assets/images/logo.png" alt="ГБПОУ РО «Сальский индустриальный техникум»" class="header-logo-img">
-    </a>
-
-    
-    <div class="header-search-wrap" id="headerSearchWrap" aria-hidden="true">
-      <form role="search" action="/search/" method="get" class="header-search-form">
-        <input type="search" name="q" class="header-search-input"
-               id="headerSearchInput"
-               placeholder="Поиск по сайту…"
-               aria-label="Поиск по сайту"
-               autocomplete="off">
-        <button type="submit" class="header-search-submit" aria-label="Найти">
-          <i class="bi bi-search" aria-hidden="true"></i>
-        </button>
-        <button type="button" class="header-search-close" id="headerSearchClose" aria-label="Закрыть поиск">
-          <i class="bi bi-x-lg" aria-hidden="true"></i>
-        </button>
-      </form>
+<body>
+  <!-- Баннер разработки -->
+  <div class="dev-banner">
+    <div class="container dev-banner-content">
+      <span class="dev-banner-text">⚠️ Сайт находится в режиме тестирования и разработки.</span>
+      <a href="https://sit-salsk.ru/ " target="_blank" rel="noopener" class="dev-banner-link">Перейти на основной сайт →</a>
     </div>
-
-    
-    
-    <nav class="main-nav d-none d-lg-flex mx-auto" role="navigation" aria-label="Основная навигация">
-      <ul class="d-flex list-unstyled align-items-center m-0 p-0">
-        <li>
-          <a href="/svedenija/"
-             class="main-nav__link"
-             
-             title="Официальные сведения об образовательной организации">
-            <span class="main-nav__icon" aria-hidden="true">📋</span>
-            <span>Сведения об образовательной организации</span>
-          </a>
-        </li>
-        <li class="d-none d-xl-flex">
-          <a href="/abiturientam/"
-             class="main-nav__link"
-             
-             title="Информация для абитуриентов">
-            <span class="main-nav__icon" aria-hidden="true">🎓</span>
-            <span>Абитуриентам</span>
-          </a>
-        </li>
-        <li class="d-none d-xl-flex">
-          <a href="https://эос.сит-сальск.рф" target="_blank" rel="noopener"
-             class="main-nav__link"
-             title="Электронная образовательная система ГБПОУ РО «СИТ»">
-            <span class="main-nav__icon" aria-hidden="true">💻</span>
-            <span>ЭОС</span>
-          </a>
-        </li>
-        <li class="d-none d-xxl-flex">
-          <a href="#footer"
-             class="main-nav__link"
-             title="Контактная информация">
-            <i class="bi bi-buildings main-nav__icon" aria-hidden="true"></i>
-            <span>Контакты</span>
-          </a>
-        </li>
-        <li class="d-none d-xxl-flex">
-          <a href="tel:+78637220000"
-             class="main-nav__link"
-             title="Позвонить: +7 (86372) 2-00-00"
-             aria-label="Позвонить: +7 (86372) 2-00-00">
-            <i class="bi bi-telephone-fill main-nav__icon" aria-hidden="true"></i>
-            <span>+7 (86372) 2-00-00</span>
-          </a>
-        </li>
-      </ul>
-    </nav>
-
-    
-    <div class="header-icons d-none d-lg-flex align-items-center gap-1 flex-shrink-0">
-      <a href="https://vk.com/sitsalsksit" target="_blank" rel="noopener"
-         class="header-icon-btn" title="Официальная группа ВКонтакте" aria-label="ВКонтакте">
-        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-          <path d="M21.579 6.855c.17-.565 0-.98-.802-.98h-2.652c-.67 0-.979.357-1.146.752 0 0-1.34 3.283-3.237 5.414-.614.618-.893.814-1.228.814-.17 0-.42-.196-.42-.76V6.854c0-.671-.19-.98-.76-.98H9.389c-.42 0-.67.315-.67.615 0 .644.96.793 1.06 2.605v3.935c0 .864-.155 1.021-.492 1.021-.893 0-3.066-3.303-4.355-7.083C4.68 6.37 4.428 5.875 3.754 5.875H1.102c-.76 0-.913.357-.913.752 0 .704.893 4.197 4.155 8.817 2.175 3.144 5.239 4.848 8.026 4.848 1.674 0 1.88-.38 1.88-1.035v-2.385c0-.76.16-.912.694-.912.393 0 1.067.198 2.641 1.727 1.798 1.81 2.094 2.62 3.102 2.62h2.652c.76 0 1.14-.38.92-1.134-.237-.744-1.092-1.82-2.226-3.101-.614-.73-1.535-1.517-1.814-1.91-.393-.508-.28-.733 0-1.185 0 0 3.21-4.55 3.546-6.095z"/>
-        </svg>
-      </a>
-      <a href="mailto:sitsalsk@mail.ru"
-         class="header-icon-btn" title="Написать на почту: sitsalsk@mail.ru" aria-label="Электронная почта">
-        <i class="bi bi-envelope-fill" aria-hidden="true"></i>
-      </a>
-      <button class="header-icon-btn" id="headerSearchToggle"
-              type="button"
-              title="Поиск по сайту" aria-label="Поиск" aria-expanded="false" aria-controls="headerSearchWrap">
-        <i class="bi bi-search" aria-hidden="true"></i>
-      </button>
-      <div class="a11y-wrap">
-        <button class="header-icon-btn" id="a11yToggle"
-                type="button"
-                title="Версия для слабовидящих"
-                aria-label="Версия для слабовидящих"
-                aria-expanded="false"
-                aria-controls="a11yPanel">
-          <i class="bi bi-eye" aria-hidden="true"></i>
-        </button>
-      </div>
-      <button class="header-icon-btn" id="darkThemeToggle"
-              onclick="toggleDarkTheme(); return false;"
-              title="Тёмная тема" aria-label="Тёмная / светлая тема">
-        <i class="bi bi-moon-stars" aria-hidden="true"></i>
-      </button>
-      <button class="header-icon-btn"
-              data-bs-toggle="offcanvas" data-bs-target="#offcanvasRubrics"
-              aria-controls="offcanvasRubrics"
-              title="Все разделы сайта" aria-label="Все разделы">
-        <svg width="20" height="16" viewBox="0 0 20 16" fill="currentColor" aria-hidden="true">
-          <rect x="3" y="0"  width="14" height="2" rx="1"/>
-          <rect x="0" y="7"  width="20" height="2" rx="1"/>
-          <rect x="3" y="14" width="14" height="2" rx="1"/>
-        </svg>
-      </button>
-    </div>
-
-    
-    <button class="header-icon-btn d-flex d-lg-none ms-auto offcanvas-toggle-btn"
-            type="button"
-            data-bs-toggle="offcanvas" data-bs-target="#offcanvasRubrics"
-            aria-controls="offcanvasRubrics"
-            aria-label="Открыть меню"
-            title="Меню">
-      <i class="bi bi-list fs-4" aria-hidden="true"></i>
-    </button>
-
-  </div>
-</header>
-
-
-<div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRubrics" aria-labelledby="offcanvasRubricsLabel">
-
-  <div class="offcanvas-header oc-header">
-    <a href="/" class="oc-header__brand" data-bs-dismiss="offcanvas" title="На главную">
-      <img src="/assets/images/logo.png" alt="" class="oc-header__logo" aria-hidden="true">
-      <div class="oc-header__text">
-        <span class="oc-header__title" id="offcanvasRubricsLabel">Разделы сайта</span>
-        <span class="oc-header__sub">ГБПОУ РО «СИТ»</span>
-      </div>
-    </a>
-    <button type="button" class="oc-dismiss-btn" data-bs-dismiss="offcanvas" aria-label="Закрыть">
-      <i class="bi bi-x-lg" aria-hidden="true"></i>
-    </button>
   </div>
 
-  <div class="offcanvas-body p-0">
-    <div class="oc-panel" id="ocPanel1">
-      <div class="oc-panel__scroll">
-
+  <!-- Skip to main content link for accessibility -->
+  <a href="#main-content" class="skip-link">Перейти к основному содержанию</a>
+  
+  <!-- Accessibility settings panel -->
+  <div class="a11y-panel" id="a11yPanel" role="region" aria-labelledby="a11yToggle" hidden>
+    <div class="a11y-panel-content">
+      <h3 id="a11y-panel-title">Настройки доступности</h3>
+      <div class="a11y-options">
+        <label class="a11y-option">
+          <input type="checkbox" id="a11yLargeFont" aria-describedby="a11y-large-font-desc">
+          <span>Крупный шрифт</span>
+        </label>
+        <span id="a11y-large-font-desc" class="visually-hidden">Увеличивает размер шрифта на странице</span>
         
-        <div class="oc-search px-3 pt-3 pb-1">
-          <form role="search" action="/search/" method="get" class="oc-search-form" data-bs-dismiss="offcanvas">
-            <div class="oc-search-inner">
-              <i class="bi bi-search oc-search-icon" aria-hidden="true"></i>
-              <input type="search" name="q" class="oc-search-input"
-                     placeholder="Поиск по сайту…"
-                     aria-label="Поиск по сайту"
-                     autocomplete="off">
-            </div>
-          </form>
+        <label class="a11y-option">
+          <input type="checkbox" id="a11yHighContrast" aria-describedby="a11y-high-contrast-desc">
+          <span>Высокая контрастность</span>
+        </label>
+        <span id="a11y-high-contrast-desc" class="visually-hidden">Включает режим высокой контрастности цветов</span>
+        
+        <label class="a11y-option">
+          <input type="checkbox" id="a11yNoAnimations" aria-describedby="a11y-no-animations-desc">
+          <span>Отключить анимации</span>
+        </label>
+        <span id="a11y-no-animations-desc" class="visually-hidden">Отключает все анимации и переходы</span>
+      </div>
+      <button type="button" class="a11y-reset" id="a11yReset">Сбросить настройки</button>
+      <button type="button" class="a11y-close" id="a11yClose">Закрыть</button>
+    </div>
+  </div>
+  
+  
+
+<header class="site-header">
+  <div class="container">
+    
+    <!-- ВЕРХНЯЯ СТРОКА: логотип, название, герб -->
+    <div class="header-top">
+      <div class="header-brand-row">
+        <a href="/" class="logo-link" title="Главная страница ГБПОУ РО «Сальский индустриальный техникум»">
+          <img src="/assets/images/logo.png" alt="Логотип ГБПОУ РО «Сальский индустриальный техникум»" onerror="this.style.display='none'">
+        </a>
+        
+        <div class="site-title">
+          ГБПОУ РО<br>
+          <small>«Сальский индустриальный техникум»</small>
         </div>
-
         
-        <ul class="list-unstyled offcanvas-quicklinks px-3 pt-2 mb-0">
-          <li>
-            <a href="/svedenija/" class="offcanvas-quicklinks__link d-lg-none"
-               data-bs-dismiss="offcanvas"
-               >
-              <span class="offcanvas-quicklinks__icon" aria-hidden="true">📋</span>
-              Сведения об образовательной организации
-            </a>
-          </li>
-          <li>
-            <a href="/abiturientam/" class="offcanvas-quicklinks__link offcanvas-quicklinks__link--pill d-xl-none"
-               data-bs-dismiss="offcanvas"
-               >
-              <span class="offcanvas-quicklinks__icon" aria-hidden="true">🎓</span>
-              Абитуриентам
-            </a>
-          </li>
-          <li>
-            <a href="https://эос.сит-сальск.рф" target="_blank" rel="noopener"
-               class="offcanvas-quicklinks__link offcanvas-quicklinks__link--pill offcanvas-quicklinks__link--pill-alt d-xl-none">
-              <span class="offcanvas-quicklinks__icon" aria-hidden="true">💻</span>
-              ЭОС
-            </a>
-          </li>
-          <li>
-            <a href="#footer" class="offcanvas-quicklinks__link d-xxl-none"
-               data-bs-dismiss="offcanvas">
-              <i class="bi bi-chevron-right offcanvas-quicklinks__icon" aria-hidden="true"></i>
-              Контакты
-            </a>
-          </li>
-        </ul>
-
+        <a href="/" class="gerb-link" title="Герб Ростовской области — официальный сайт техникума">
+          <img src="/assets/images/gerb-red1.png" alt="Герб Ростовской области" onerror="this.style.display='none'">
+        </a>
+      </div>
+    </div>
+    
+    <!-- НАВИГАЦИЯ (как на sit-salsk.ru) -->
+    <div class="header-nav">
+      <nav class="navbar navbar-expand-lg" aria-label="Основное меню">
+        <div class="container-fluid px-0">
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMain" 
+                  aria-controls="navbarMain" aria-expanded="false" aria-label="Меню навигации">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          
+          <div class="collapse navbar-collapse" id="navbarMain">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              
+                
+                  
+                  
+                    
+                  
+                  
+                  
+                    
+                  
+                  
+                  <li class="nav-item">
+                    <a class="nav-link" href="/" title="Главная" >
+                      <span class="nav-section-icon" aria-hidden="true">🏠</span>
+                      <span>Главная</span>
+                    </a>
+                  </li>
+                  
+                
+              
+                
+              
+                
+                  
+                  
+                    
+                  
+                  
+                  
+                    
+                  
+                  
+                  <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="/svedenija/" role="button" data-bs-toggle="dropdown" 
+                       aria-expanded="false" title="Сведения об образовательной организации" >
+                      <span class="nav-section-icon" aria-hidden="true">📋</span>
+                      <span>Сведения об образовательной организации</span>
+                    </a>
+                    <ul class="dropdown-menu">
+                      
+                      
+                      <li><a class="dropdown-item" href="/svedenija/documents/" title="Документы" >Документы</a></li>
+                      
+                      
+                      <li><a class="dropdown-item" href="/svedenija/structure/" title="Структура и органы управления" >Структура и органы управления</a></li>
+                      
+                      
+                      <li><a class="dropdown-item" href="/svedenija/education/" title="Образование" >Образование</a></li>
+                      
+                      
+                      <li><a class="dropdown-item" href="/svedenija/employees/" title="Руководство и ППС" >Руководство и ППС</a></li>
+                      
+                      
+                      <li><a class="dropdown-item" href="/svedenija/objects/" title="Материально-техническое обеспечение" >Материально-техническое обеспечение</a></li>
+                      
+                      
+                      <li><a class="dropdown-item" href="/svedenija/stipend/" title="Стипендии и поддержка" >Стипендии и поддержка</a></li>
+                      
+                      
+                      <li><a class="dropdown-item" href="/svedenija/finance/" title="Финансово-хозяйственная деятельность" >Финансово-хозяйственная деятельность</a></li>
+                      
+                      
+                      <li><a class="dropdown-item" href="/svedenija/vacancies/" title="Вакантные места" >Вакантные места</a></li>
+                      
+                      
+                      <li><a class="dropdown-item" href="/svedenija/access/" title="Доступная среда" >Доступная среда</a></li>
+                      
+                      
+                      <li><a class="dropdown-item" href="/svedenija/international/" title="Международное сотрудничество" >Международное сотрудничество</a></li>
+                      
+                    </ul>
+                  </li>
+                  
+                
+              
+                
+                  
+                  
+                    
+                  
+                  
+                  
+                    
+                  
+                  
+                  <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle nav-link--quick-pill" href="/abiturientam/" role="button" data-bs-toggle="dropdown" 
+                       aria-expanded="false" title="Абитуриентам" >
+                      <span class="nav-section-icon" aria-hidden="true">🎓</span>
+                      <span>Абитуриентам</span>
+                    </a>
+                    <ul class="dropdown-menu">
+                      
+                      
+                      <li><a class="dropdown-item" href="/abiturientam/slovo-direktora/" title="Слово директора" >Слово директора</a></li>
+                      
+                      
+                      <li><a class="dropdown-item" href="/abiturientam/#rules" title="Правила приема" >Правила приема</a></li>
+                      
+                      
+                      <li><a class="dropdown-item" href="/abiturientam/#specialties" title="Специальности" >Специальности</a></li>
+                      
+                      
+                      <li><a class="dropdown-item" href="/abiturientam/#commission" title="Приемная комиссия" >Приемная комиссия</a></li>
+                      
+                      
+                      <li><a class="dropdown-item" href="/abiturientam/den-otkrytyh-dverej/" title="День открытых дверей" >День открытых дверей</a></li>
+                      
+                    </ul>
+                  </li>
+                  
+                
+              
+                
+                  
+                  
+                    
+                  
+                  
+                  
+                    
+                  
+                  
+                  <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="/uchebno-metodicheskaja-rabota/" role="button" data-bs-toggle="dropdown" 
+                       aria-expanded="false" title="Учебно-методическая работа" >
+                      <span class="nav-section-icon" aria-hidden="true">📚</span>
+                      <span>Учебно-методическая работа</span>
+                    </a>
+                    <ul class="dropdown-menu">
+                      
+                      
+                      <li><a class="dropdown-item" href="/uchebno-metodicheskaja-rabota/#materials" title="Материалы УМР" >Материалы УМР</a></li>
+                      
+                    </ul>
+                  </li>
+                  
+                
+              
+                
+                  
+                  
+                    
+                  
+                  
+                  
+                    
+                  
+                  
+                  <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="/vospitanie/" role="button" data-bs-toggle="dropdown" 
+                       aria-expanded="false" title="Воспитание" >
+                      <span class="nav-section-icon" aria-hidden="true">🏋️</span>
+                      <span>Воспитание</span>
+                    </a>
+                    <ul class="dropdown-menu">
+                      
+                      
+                      <li><a class="dropdown-item" href="/vospitanie/#directions" title="Направления воспитания" >Направления воспитания</a></li>
+                      
+                      
+                      <li><a class="dropdown-item" href="/vospitanie/velikaja-pobeda/" title="Великая Победа" >Великая Победа</a></li>
+                      
+                      
+                      <li><a class="dropdown-item" href="/vospitanie/volonterstvo/" title="Волонтерское движение" >Волонтерское движение</a></li>
+                      
+                      
+                      <li><a class="dropdown-item" href="/vospitanie/kulturno-massovaja/" title="Культурно-массовая работа" >Культурно-массовая работа</a></li>
+                      
+                      
+                      <li><a class="dropdown-item" href="/vospitanie/mediacentr/" title="Медиацентр «Новости СИТ»" >Медиацентр «Новости СИТ»</a></li>
+                      
+                      
+                      <li><a class="dropdown-item" href="/vospitanie/pozdravlenija/" title="Поздравления" >Поздравления</a></li>
+                      
+                    </ul>
+                  </li>
+                  
+                
+              
+                
+              
+                
+                  
+                  
+                    
+                  
+                  
+                  
+                    
+                  
+                  
+                  <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="/bezopasnost/" role="button" data-bs-toggle="dropdown" 
+                       aria-expanded="false" title="Безопасность" >
+                      <span class="nav-section-icon" aria-hidden="true">🛡️</span>
+                      <span>Безопасность</span>
+                    </a>
+                    <ul class="dropdown-menu">
+                      
+                      
+                      <li><a class="dropdown-item" href="/bezopasnost/#complex" title="Комплексная безопасность" >Комплексная безопасность</a></li>
+                      
+                      
+                      <li><a class="dropdown-item" href="/bezopasnost/extremizm/" title="Профилактика экстремизма" >Профилактика экстремизма</a></li>
+                      
+                      
+                      <li><a class="dropdown-item" href="/bezopasnost/antikorrupcija/" title="Противодействие коррупции" >Противодействие коррупции</a></li>
+                      
+                    </ul>
+                  </li>
+                  
+                
+              
+                
+                  
+                  
+                    
+                  
+                  
+                  
+                    
+                  
+                  
+                  <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="/studentam-i-roditeljam/" role="button" data-bs-toggle="dropdown" 
+                       aria-expanded="false" title="Студентам и родителям" >
+                      <span class="nav-section-icon" aria-hidden="true">👨‍👩‍👧‍👦</span>
+                      <span>Студентам и родителям</span>
+                    </a>
+                    <ul class="dropdown-menu">
+                      
+                      
+                      <li><a class="dropdown-item" href="/news/" title="Новости" >Новости</a></li>
+                      
+                      
+                      <li><a class="dropdown-item" href="/studentam-i-roditeljam/raspisanie/" title="Расписание занятий" >Расписание занятий</a></li>
+                      
+                      
+                      <li><a class="dropdown-item" href="/studentam-i-roditeljam/roditeljam/" title="Родителям" >Родителям</a></li>
+                      
+                    </ul>
+                  </li>
+                  
+                
+              
+                
+              
+                
+              
+                
+              
+                
+              
+              
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </div>
+    
+    <!-- ИНФОРМАЦИОННАЯ ПАНЕЛЬ: график, телефоны, ЭОС, иконки действий -->
+    <!-- Десктопная версия (видна на md и выше) -->
+    <div class="header-info-bar d-none d-md-block">
+      <div class="d-flex flex-wrap align-items-center justify-content-between">
+        <!-- Левая группа: график -->
+        <div class="info-item">
+          <i class="bi bi-clock" title="Режим работы"></i>
+          <span><strong>Пн–Пт:</strong> 8:00–17:00 &nbsp;|&nbsp; <strong>Сб, Вс:</strong> выходной</span>
+        </div>
         
-        <div class="offcanvas-actions d-flex d-lg-none align-items-center gap-1 px-3 py-2">
-          <a href="https://vk.com/sitsalsksit" target="_blank" rel="noopener"
-             class="header-icon-btn" title="ВКонтакте" aria-label="ВКонтакте">
-            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+        <!-- Центральная группа: корпуса и ЭОС -->
+        <div class="d-flex gap-4 align-items-center">
+          
+          <div class="info-item">
+            <i class="bi bi-building" title="Корпус №1 (приёмная)"></i>
+            <span>Корпус №1: <a href="tel:+78637250571" title="Позвонить в Корпус №1 (приёмная)">5-05-71</a> (приёмная)</span>
+          </div>
+          
+          <div class="info-item">
+            <i class="bi bi-building" title="Корпус №2 (приёмная)"></i>
+            <span>Корпус №2: <a href="tel:+78637256041" title="Позвонить в Корпус №2 (приёмная)">5-60-41</a> (приёмная)</span>
+          </div>
+          
+          
+          <!-- Ссылка на ЭОС -->
+          <a href="https://эос.сит-сальск.рф/" class="eos-link" target="_blank" rel="noopener" title="Электронная образовательная система ГБПОУ РО «СИТ»">
+            <i class="bi bi-laptop"></i> ЭОС
+          </a>
+        </div>
+        
+        <!-- Правая группа: иконки (ВК, почта, поиск, доступность) -->
+        <div class="header-actions">
+          <a href="https://vk.com/sitsalsksit" class="btn-icon" target="_blank" rel="noopener" title="Официальная группа ВКонтакте">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24" style="display:block;">
               <path d="M21.579 6.855c.17-.565 0-.98-.802-.98h-2.652c-.67 0-.979.357-1.146.752 0 0-1.34 3.283-3.237 5.414-.614.618-.893.814-1.228.814-.17 0-.42-.196-.42-.76V6.854c0-.671-.19-.98-.76-.98H9.389c-.42 0-.67.315-.67.615 0 .644.96.793 1.06 2.605v3.935c0 .864-.155 1.021-.492 1.021-.893 0-3.066-3.303-4.355-7.083C4.68 6.37 4.428 5.875 3.754 5.875H1.102c-.76 0-.913.357-.913.752 0 .704.893 4.197 4.155 8.817 2.175 3.144 5.239 4.848 8.026 4.848 1.674 0 1.88-.38 1.88-1.035v-2.385c0-.76.16-.912.694-.912.393 0 1.067.198 2.641 1.727 1.798 1.81 2.094 2.62 3.102 2.62h2.652c.76 0 1.14-.38.92-1.134-.237-.744-1.092-1.82-2.226-3.101-.614-.73-1.535-1.517-1.814-1.91-.393-.508-.28-.733 0-1.185 0 0 3.21-4.55 3.546-6.095z"/>
             </svg>
           </a>
-          <a href="mailto:sitsalsk@mail.ru"
-             class="header-icon-btn" title="Написать на почту: sitsalsk@mail.ru" aria-label="Электронная почта">
-            <i class="bi bi-envelope-fill" aria-hidden="true"></i>
+          <a href="mailto:sitsalsk@mail.ru" class="btn-icon" title="Написать на почту администрации">
+            <i class="bi bi-envelope-fill"></i>
           </a>
-          <a href="/search/" class="header-icon-btn" data-bs-dismiss="offcanvas"
-             title="Поиск по сайту" aria-label="Поиск">
-            <i class="bi bi-search" aria-hidden="true"></i>
-          </a>
-          <button class="header-icon-btn" onclick="toggleA11y(); return false;"
-                  title="Версия для слабовидящих" aria-label="Версия для слабовидящих">
-            <i class="bi bi-eye" aria-hidden="true"></i>
+          <button class="btn-icon" data-bs-toggle="modal" data-bs-target="#searchModal" title="Поиск по сайту">
+            <i class="bi bi-search"></i>
           </button>
-          <button class="header-icon-btn" onclick="toggleDarkTheme(); return false;"
-                  title="Тёмная тема" aria-label="Тёмная / светлая тема">
-            <i class="bi bi-moon-stars" aria-hidden="true"></i>
+          <button class="btn-icon a11y-toggle-btn" id="a11yToggle" aria-label="Версия для слабовидящих" aria-expanded="false" aria-controls="a11yPanel" title="Версия для слабовидящих">
+            <i class="bi bi-eye"></i>
           </button>
         </div>
-
-        <div class="offcanvas-section-label px-3">
-          <span>Все разделы</span>
-        </div>
-
-        
-        <nav class="oc-nav" aria-label="Разделы сайта">
-          
-            
-            
-            
-            
-              
-            
-            
-              <div class="oc-split-row" data-rubric-index="0">
-                <a href="/abiturientam/"
-                   class="oc-split-row__link oc-dismiss-all"
-                   title="АБИТУРИЕНТАМ"
-                   >
-                  <span class="oc-section-icon" aria-hidden="true">🎓</span>
-                  <span>АБИТУРИЕНТАМ</span>
-                </a>
-                <button class="oc-split-row__toggle"
-                        type="button"
-                        aria-label="Открыть подразделы: АБИТУРИЕНТАМ"
-                        aria-expanded="false"
-                        data-rubric-index="0">
-                  <i class="bi bi-chevron-right" aria-hidden="true"></i>
-                </button>
-              </div>
-            
-          
-            
-            
-            
-            
-              
-            
-            
-              <div class="oc-split-row" data-rubric-index="1">
-                <a href="/svedenija/"
-                   class="oc-split-row__link oc-dismiss-all"
-                   title="СВЕДЕНИЯ ОБ ОБРАЗОВАТЕЛЬНОЙ ОРГАНИЗАЦИИ"
-                   >
-                  <span class="oc-section-icon" aria-hidden="true">📋</span>
-                  <span>СВЕДЕНИЯ ОБ ОБРАЗОВАТЕЛЬНОЙ ОРГАНИЗАЦИИ</span>
-                </a>
-                <button class="oc-split-row__toggle"
-                        type="button"
-                        aria-label="Открыть подразделы: СВЕДЕНИЯ ОБ ОБРАЗОВАТЕЛЬНОЙ ОРГАНИЗАЦИИ"
-                        aria-expanded="false"
-                        data-rubric-index="1">
-                  <i class="bi bi-chevron-right" aria-hidden="true"></i>
-                </button>
-              </div>
-            
-          
-            
-            
-            
-            
-            
-              <div class="oc-split-row" data-rubric-index="2">
-                <a href="/uchebno-metodicheskaya/"
-                   class="oc-split-row__link oc-dismiss-all"
-                   title="УЧЕБНО-МЕТОДИЧЕСКАЯ РАБОТА"
-                   >
-                  <span class="oc-section-icon" aria-hidden="true">📁</span>
-                  <span>УЧЕБНО-МЕТОДИЧЕСКАЯ РАБОТА</span>
-                </a>
-                <button class="oc-split-row__toggle"
-                        type="button"
-                        aria-label="Открыть подразделы: УЧЕБНО-МЕТОДИЧЕСКАЯ РАБОТА"
-                        aria-expanded="false"
-                        data-rubric-index="2">
-                  <i class="bi bi-chevron-right" aria-hidden="true"></i>
-                </button>
-              </div>
-            
-          
-            
-            
-            
-            
-              
-            
-            
-              <div class="oc-split-row" data-rubric-index="3">
-                <a href="/vospitanie/"
-                   class="oc-split-row__link oc-dismiss-all"
-                   title="ВОСПИТАТЕЛЬНАЯ РАБОТА"
-                   >
-                  <span class="oc-section-icon" aria-hidden="true">🏋️</span>
-                  <span>ВОСПИТАТЕЛЬНАЯ РАБОТА</span>
-                </a>
-                <button class="oc-split-row__toggle"
-                        type="button"
-                        aria-label="Открыть подразделы: ВОСПИТАТЕЛЬНАЯ РАБОТА"
-                        aria-expanded="false"
-                        data-rubric-index="3">
-                  <i class="bi bi-chevron-right" aria-hidden="true"></i>
-                </button>
-              </div>
-            
-          
-            
-            
-            
-            
-            
-              <div class="oc-split-row" data-rubric-index="4">
-                <a href="/partnerstvo/"
-                   class="oc-split-row__link oc-dismiss-all"
-                   title="СОЦИАЛЬНОЕ ПАРТНЕРСТВО И ПРОФОРИЕНТАЦИЯ"
-                   >
-                  <span class="oc-section-icon" aria-hidden="true">📁</span>
-                  <span>СОЦИАЛЬНОЕ ПАРТНЕРСТВО И ПРОФОРИЕНТАЦИЯ</span>
-                </a>
-                <button class="oc-split-row__toggle"
-                        type="button"
-                        aria-label="Открыть подразделы: СОЦИАЛЬНОЕ ПАРТНЕРСТВО И ПРОФОРИЕНТАЦИЯ"
-                        aria-expanded="false"
-                        data-rubric-index="4">
-                  <i class="bi bi-chevron-right" aria-hidden="true"></i>
-                </button>
-              </div>
-            
-          
-            
-            
-            
-            
-              
-            
-            
-              <div class="oc-split-row" data-rubric-index="5">
-                <a href="/psihologicheskoe/"
-                   class="oc-split-row__link oc-dismiss-all"
-                   title="ПСИХОЛОГИЧЕСКОЕ СОПРОВОЖДЕНИЕ"
-                   >
-                  <span class="oc-section-icon" aria-hidden="true">🤝</span>
-                  <span>ПСИХОЛОГИЧЕСКОЕ СОПРОВОЖДЕНИЕ</span>
-                </a>
-                <button class="oc-split-row__toggle"
-                        type="button"
-                        aria-label="Открыть подразделы: ПСИХОЛОГИЧЕСКОЕ СОПРОВОЖДЕНИЕ"
-                        aria-expanded="false"
-                        data-rubric-index="5">
-                  <i class="bi bi-chevron-right" aria-hidden="true"></i>
-                </button>
-              </div>
-            
-          
-            
-            
-            
-            
-              
-            
-            
-              <div class="oc-split-row" data-rubric-index="6">
-                <a href="/bezopasnost/"
-                   class="oc-split-row__link oc-dismiss-all"
-                   title="КОМПЛЕКСНАЯ БЕЗОПАСНОСТЬ"
-                   >
-                  <span class="oc-section-icon" aria-hidden="true">🛡️</span>
-                  <span>КОМПЛЕКСНАЯ БЕЗОПАСНОСТЬ</span>
-                </a>
-                <button class="oc-split-row__toggle"
-                        type="button"
-                        aria-label="Открыть подразделы: КОМПЛЕКСНАЯ БЕЗОПАСНОСТЬ"
-                        aria-expanded="false"
-                        data-rubric-index="6">
-                  <i class="bi bi-chevron-right" aria-hidden="true"></i>
-                </button>
-              </div>
-            
-          
-            
-            
-            
-            
-              
-            
-            
-              <div class="oc-split-row" data-rubric-index="7">
-                <a href="/studentam-roditeljam/"
-                   class="oc-split-row__link oc-dismiss-all"
-                   title="СТУДЕНТАМ И ИХ РОДИТЕЛЯМ"
-                   >
-                  <span class="oc-section-icon" aria-hidden="true">👨‍👩‍👧‍👦</span>
-                  <span>СТУДЕНТАМ И ИХ РОДИТЕЛЯМ</span>
-                </a>
-                <button class="oc-split-row__toggle"
-                        type="button"
-                        aria-label="Открыть подразделы: СТУДЕНТАМ И ИХ РОДИТЕЛЯМ"
-                        aria-expanded="false"
-                        data-rubric-index="7">
-                  <i class="bi bi-chevron-right" aria-hidden="true"></i>
-                </button>
-              </div>
-            
-          
-            
-            
-            
-            
-              
-            
-            
-              <a href="/obshestvennoe-mnenie/"
-                 class="oc-split-row__link oc-split-row__link--leaf oc-dismiss-all"
-                 title="Результаты изучения общественного мнения"
-                 >
-                <span class="oc-section-icon" aria-hidden="true">💬</span>
-                <span>Результаты изучения общественного мнения</span>
-              </a>
-            
-          
-            
-            
-            
-            
-              
-            
-            
-              <a href="/vypusknikam/"
-                 class="oc-split-row__link oc-split-row__link--leaf oc-dismiss-all"
-                 title="Нашим выпускникам"
-                 >
-                <span class="oc-section-icon" aria-hidden="true">🎯</span>
-                <span>Нашим выпускникам</span>
-              </a>
-            
-          
-            
-            
-            
-            
-            
-              <a href="/uncategorized/"
-                 class="oc-split-row__link oc-split-row__link--leaf oc-dismiss-all"
-                 title="Без рубрики"
-                 >
-                <span class="oc-section-icon" aria-hidden="true">📁</span>
-                <span>Без рубрики</span>
-              </a>
-            
-          
-        </nav>
-
-        
-        <div class="oc-footer px-3 py-3">
-          <a href="#footer" class="oc-footer__link" data-bs-dismiss="offcanvas">
-            <i class="bi bi-geo-alt" aria-hidden="true"></i>
-            <span>344000, Ростовская область, г. Сальск, ул. Ленина, д. 1</span>
-          </a>
-          <a href="tel:+78637220000" class="oc-footer__call-btn mt-2">
-            <i class="bi bi-telephone-fill" aria-hidden="true"></i>
-            <span>+7 (86372) 2-00-00</span>
-          </a>
-        </div>
-
       </div>
     </div>
-  </div>
-
-  
-  <script id="rubricsData" type="application/json">[{"code":"1","title":"АБИТУРИЕНТАМ","slug":"abiturientam","level":0,"children":[{"code":"1.1","title":"Слово директора","slug":"slovo-direktora"},{"code":"1.2","title":"Специальности и профессии","slug":"specialnosti"},{"code":"1.3","title":"Приемная кампания 2025","slug":"priemnaya-kampaniya-2025"},{"code":"1.4","title":"День открытых дверей","slug":"den-otkrytyh-dverej"},{"code":"1.5","title":"Виртуальная экскурсия","slug":"virtualnaya-ekskursiya"},{"code":"1.6","title":"Подача документов по электронной почте","slug":"podacha-elektronnaya"},{"code":"1.7","title":"Подача документов через средства почтовой связи","slug":"podacha-pochtovaya"},{"code":"1.8","title":"Платная основа обучения","slug":"platnaya-osnova"},{"code":"1.9","title":"Контакты и график работы","slug":"kontakty-grafik"}]},{"code":"2","title":"СВЕДЕНИЯ ОБ ОБРАЗОВАТЕЛЬНОЙ ОРГАНИЗАЦИИ","slug":"svedenija","level":0,"children":[{"code":"2.1","title":"Основные сведения","slug":"osnovnye-svedenija"},{"code":"2.2","title":"Структура и органы управления","slug":"struktura-upravleniya"},{"code":"2.3","title":"Документы","slug":"dokumenty","children":[{"code":"2.3.1","title":"ВСОКО","slug":"vsoko"}]},{"code":"2.4","title":"Образование","slug":"obrazovanie","children":[{"code":"2.4.1","title":"Вакантные места","slug":"vakantnye-mesta"},{"code":"2.4.2","title":"Международное сотрудничество","slug":"mezhdunarodnoe"},{"code":"2.4.3","title":"Инклюзивное образование","slug":"inklyuzivnoe"},{"code":"2.4.4","title":"Трудоустройство выпускников","slug":"trudoustrojstvo"}]},{"code":"2.5","title":"Руководство","slug":"rukovodstvo","children":[{"code":"2.5.1","title":"Педагогический состав","slug":"pedagogicheskiy-sostav"}]},{"code":"2.6","title":"Образовательные стандарты","slug":"standarty"},{"code":"2.7","title":"Материально-техническое обеспечение","slug":"materialno-tehnicheskoe","children":[{"code":"2.7.1","title":"Электронная информационно-образовательная среда","slug":"elektronnoe-obrazovanie"},{"code":"2.7.2","title":"Цифровая библиотека","slug":"elektronnaya-biblioteka"},{"code":"2.7.3","title":"Электронные образовательные ресурсы","slug":"elektronnye-resursy"},{"code":"2.7.4","title":"Образовательная платформа","slug":"platforma"},{"code":"2.7.5","title":"Электронное расписание","slug":"elektronnoe-raspisanie"},{"code":"2.7.6","title":"Организация питания","slug":"pitanie"}]},{"code":"2.8","title":"Платные образовательные услуги","slug":"platnye-uslugi"},{"code":"2.9","title":"Финансово-хозяйственная деятельность","slug":"finansy","children":[{"code":"2.9.1","title":"Стипендии и меры поддержки","slug":"stipendii"}]}]},{"code":"3","title":"УЧЕБНО-МЕТОДИЧЕСКАЯ РАБОТА","slug":"uchebno-metodicheskaya","level":0,"children":[{"code":"3.1","title":"Электронное обучение и ДОТ","slug":"elektronnoe-obuchenie"},{"code":"3.2","title":"Дополнительное образование","slug":"dopolnitelnoe-obrazovanie"},{"code":"3.4","title":"Практика","slug":"praktika"}]},{"code":"4","title":"ВОСПИТАТЕЛЬНАЯ РАБОТА","slug":"vospitanie","level":0,"children":[{"code":"4.1","title":"Штаб воспитательной работы","slug":"shtab"},{"code":"4.2","title":"План воспитательной работы","slug":"plan"},{"code":"4.3","title":"МО руководителей учебных групп","slug":"mo-rukovoditelej"},{"code":"4.4","title":"Студенческое самоуправление","slug":"samoupravlenie"},{"code":"4.5","title":"Волонтерское движение","slug":"volonterstvo","children":[{"code":"4.5.1","title":"ВОЛОНТЁРСКИЙ ОТРЯД «РАДУГА ДОБРА»","slug":"raduga-dobra"}]},{"code":"4.6","title":"Патриотическое воспитание","slug":"patrioticheskoe","children":[{"code":"4.6.1","title":"Великая Победа","slug":"velikaya-pobeda"},{"code":"4.6.2","title":"Клуб «ВИТЯЗЬ»","slug":"vitjaz"}]},{"code":"4.7","title":"Культурно-массовая работа","slug":"kulturno-massovaya","children":[{"code":"4.7.1","title":"Театральный клуб \"Мираж\"","slug":"teatralnyj-klub"},{"code":"4.7.2","title":"Медиацентр «Новости СИТ»","slug":"mediacentr"},{"code":"4.7.3","title":"Поздравления","slug":"pozdravlenija"},{"code":"4.7.4","title":"«Движение Первых»","slug":"dvizhenie-pervyh"}]},{"code":"4.8","title":"Физическая культура и спорт","slug":"fizkultura-sport","children":[{"code":"4.8.1","title":"ССК \"Авангард\"","slug":"ssk-avangard"}]},{"code":"4.9","title":"Уполномоченный по правам ребенка","slug":"upolnomochennyj-prava"}]},{"code":"5","title":"СОЦИАЛЬНОЕ ПАРТНЕРСТВО И ПРОФОРИЕНТАЦИЯ","slug":"partnerstvo","level":0,"children":[{"code":"5.1","title":"Сотрудничество с ВУЗами","slug":"vuzy"},{"code":"5.2","title":"Сотрудничество с органами занятости","slug":"zanyatost"},{"code":"5.3","title":"Сотрудничество с предприятиями","slug":"predprijatija"},{"code":"5.4","title":"Сотрудничество со школами","slug":"shkoly"}]},{"code":"6","title":"ПСИХОЛОГИЧЕСКОЕ СОПРОВОЖДЕНИЕ","slug":"psihologicheskoe","level":0,"children":[{"code":"6.1","title":"Организационно-методическая основа","slug":"organizacionno-metodicheskaya"},{"code":"6.2","title":"Результаты тестирований","slug":"rezultaty-testirovanij"},{"code":"6.3","title":"Советы преподавателям","slug":"sovety-prepodavatelyam"},{"code":"6.4","title":"Советы родителям","slug":"sovety-roditelyam"},{"code":"6.5","title":"Советы студентам","slug":"sovety-studentam"},{"code":"6.6","title":"Профилактика наркотиков","slug":"profilaktika-narkotikov"},{"code":"6.7","title":"Поддержка лиц с ОВЗ","slug":"podderzhka-ovz"}]},{"code":"7","title":"КОМПЛЕКСНАЯ БЕЗОПАСНОСТЬ","slug":"bezopasnost","level":0,"children":[{"code":"7.1","title":"Антитеррористическая защищенность","slug":"antiterror"},{"code":"7.2","title":"Профилактика экстремизма","slug":"ekstremizm"},{"code":"7.3","title":"Противодействие коррупции","slug":"korrupcija"},{"code":"7.4","title":"Пожарная безопасность","slug":"pozharnaya"}]},{"code":"8","title":"СТУДЕНТАМ И ИХ РОДИТЕЛЯМ","slug":"studentam-roditeljam","level":0,"children":[{"code":"8.1","title":"Информационно-образовательные ресурсы","slug":"resursy","children":[{"code":"8.1.1","title":"Новости","slug":"novosti"},{"code":"8.1.2","title":"Библиотека техникума","slug":"biblioteka"}]},{"code":"8.2","title":"Приказ о зачислении","slug":"prikaz-zachislenie"},{"code":"8.3","title":"Расписание занятий","slug":"raspisanie"}]},{"code":"9.4","title":"Результаты изучения общественного мнения","slug":"obshestvennoe-mnenie","level":0},{"code":"9.5","title":"Нашим выпускникам","slug":"vypusknikam","level":0},{"code":"0","title":"Без рубрики","slug":"uncategorized","level":0}]</script>
-
-</div>
-
-
-<div class="oc-side-panel" id="ocPanel2" aria-hidden="true">
-  <div class="oc-side-panel__header">
-    <div class="oc-panel-header-main">
-      <div class="oc-panel-breadcrumb-row">
-        <span class="oc-panel-breadcrumb" id="ocPanel2Breadcrumb">Разделы сайта</span>
-        <span class="oc-panel-count" id="ocPanel2Count"></span>
-      </div>
-      <span class="oc-side-panel__title" id="ocPanel2Title"></span>
-    </div>
-    <button class="oc-close-btn" id="ocCloseBtn2" type="button" aria-label="Закрыть">
-      <i class="bi bi-x-lg" aria-hidden="true"></i>
-    </button>
-  </div>
-  <div class="oc-panel__scroll" id="ocPanel2Scroll">
-    <a class="oc-panel-open-link" id="ocPanel2OpenLink" href="#">
-      <i class="bi bi-box-arrow-up-right" aria-hidden="true"></i>
-      Открыть весь раздел
-    </a>
-    <nav aria-label="Подразделы">
-      <ul class="list-unstyled oc-sub-list" id="ocSubList"></ul>
-    </nav>
-  </div>
-</div>
-
-
-<div class="oc-side-panel" id="ocPanel3" aria-hidden="true">
-  <div class="oc-side-panel__header">
-    <div class="oc-panel-header-main">
-      <div class="oc-panel-breadcrumb-row">
-        <span class="oc-panel-breadcrumb" id="ocPanel3Breadcrumb"></span>
-        <span class="oc-panel-count" id="ocPanel3Count"></span>
-      </div>
-      <span class="oc-side-panel__title" id="ocPanel3Title"></span>
-    </div>
-    <button class="oc-close-btn" id="ocCloseBtn3" type="button" aria-label="Закрыть">
-      <i class="bi bi-x-lg" aria-hidden="true"></i>
-    </button>
-  </div>
-  <div class="oc-panel__scroll" id="ocPanel3Scroll">
-    <a class="oc-panel-open-link" id="ocPanel3OpenLink" href="#">
-      <i class="bi bi-box-arrow-up-right" aria-hidden="true"></i>
-      Открыть весь раздел
-    </a>
-    <nav aria-label="Под-подразделы">
-      <ul class="list-unstyled oc-sub-list" id="ocSubSubList"></ul>
-    </nav>
-  </div>
-</div>
-
-
-<div class="a11y-panel a11y-panel--fixed" id="a11yPanel" role="dialog" aria-label="Настройки доступности" hidden>
-  <p class="a11y-panel__title">Версия для слабовидящих</p>
-  <div class="a11y-options">
-    <label class="a11y-option">
-      <input type="checkbox" id="a11yLargeFont">
-      <span>Крупный шрифт</span>
-    </label>
-    <label class="a11y-option">
-      <input type="checkbox" id="a11yHighContrast">
-      <span>Высокий контраст</span>
-    </label>
-    <label class="a11y-option">
-      <input type="checkbox" id="a11yNoAnimations">
-      <span>Без анимаций</span>
-    </label>
-  </div>
-  <div class="a11y-panel__footer">
-    <button type="button" class="a11y-reset" id="a11yReset">↩ Сбросить</button>
-    <button type="button" class="a11y-close" id="a11yClose">✕ Закрыть</button>
-  </div>
-</div>
-
-
-  <main class="main-content">
     
-<div class="page-hero">
-  <div class="container">
-    <nav class="page-hero__breadcrumbs" aria-label="Хлебные крошки">
-      <ol>
-        <li><a href="/">Главная</a></li>
+    <!-- Упрощённая версия для мобильных (видна на <md) -->
+    <div class="header-info-bar d-md-none">
+      <div class="d-flex flex-wrap align-items-center justify-content-between">
+        <div class="d-flex flex-wrap gap-2">
+          <span><i class="bi bi-clock" title="Режим работы"></i> Пн–Пт 8–17, Сб-Вс вых.</span>
+          <span><i class="bi bi-telephone" title="Телефоны"></i> К1: 5-05-71, К2: 5-60-41</span>
+          <a href="https://эос.сит-сальск.рф/" class="eos-link header-mobile-pill header-mobile-pill--eos" target="_blank" rel="noopener" title="Электронная образовательная система">
+            <span aria-hidden="true">💻</span> ЭОС
+          </a>
+        </div>
+        <div class="header-actions">
+          <a href="https://vk.com/sitsalsksit" class="btn-icon" target="_blank" rel="noopener" title="ВКонтакте">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24" style="display:block;">
+              <path d="M21.579 6.855c.17-.565 0-.98-.802-.98h-2.652c-.67 0-.979.357-1.146.752 0 0-1.34 3.283-3.237 5.414-.614.618-.893.814-1.228.814-.17 0-.42-.196-.42-.76V6.854c0-.671-.19-.98-.76-.98H9.389c-.42 0-.67.315-.67.615 0 .644.96.793 1.06 2.605v3.935c0 .864-.155 1.021-.492 1.021-.893 0-3.066-3.303-4.355-7.083C4.68 6.37 4.428 5.875 3.754 5.875H1.102c-.76 0-.913.357-.913.752 0 .704.893 4.197 4.155 8.817 2.175 3.144 5.239 4.848 8.026 4.848 1.674 0 1.88-.38 1.88-1.035v-2.385c0-.76.16-.912.694-.912.393 0 1.067.198 2.641 1.727 1.798 1.81 2.094 2.62 3.102 2.62h2.652c.76 0 1.14-.38.92-1.134-.237-.744-1.092-1.82-2.226-3.101-.614-.73-1.535-1.517-1.814-1.91-.393-.508-.28-.733 0-1.185 0 0 3.21-4.55 3.546-6.095z"/>
+            </svg>
+          </a>
+          <a href="mailto:sitsalsk@mail.ru" class="btn-icon" title="Почта">
+            <i class="bi bi-envelope-fill"></i>
+          </a>
+          <button class="btn-icon" data-bs-toggle="modal" data-bs-target="#searchModal" title="Поиск">
+            <i class="bi bi-search"></i>
+          </button>
+          <button class="btn-icon a11y-toggle-btn" id="a11yToggleMobile" title="Версия для слабовидящих">
+            <i class="bi bi-eye"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+    
+    <!-- ПАНЕЛЬ С РУБРИКАТОРОМ (2/3) И ССЫЛКОЙ "Контакты" (1/3) -->
+    <div class="header-actions-panel">
+      <div class="row align-items-center g-3">
+        <!-- Рубрикатор (2/3) -->
+        <div class="col-md-8">
+          <select class="form-select rubric-select" id="rubricSelect" aria-label="Выберите рубрику" title="Навигация по разделам сайта">
+            <option selected disabled>Выберите рубрику</option>
+            
+              
+            <option class="level-0" value="/abiturientam/">1. АБИТУРИЕНТАМ</option>
+                
+                  
+            <option class="level-1" value="/abiturientam/slovo-direktora/">&nbsp;&nbsp;&nbsp;1..1 Слово директора</option>
+                    
+                  
+            <option class="level-1" value="/abiturientam/specialnosti/">&nbsp;&nbsp;&nbsp;1..2 Специальности и профессии</option>
+                    
+                  
+            <option class="level-1" value="/abiturientam/priemnaya-kampaniya-2025/">&nbsp;&nbsp;&nbsp;1..3 Приемная кампания 2025</option>
+                    
+                  
+            <option class="level-1" value="/abiturientam/den-otkrytyh-dverej/">&nbsp;&nbsp;&nbsp;1..4 День открытых дверей</option>
+                    
+                  
+            <option class="level-1" value="/abiturientam/virtualnaya-ekskursiya/">&nbsp;&nbsp;&nbsp;1..5 Виртуальная экскурсия</option>
+                    
+                  
+            <option class="level-1" value="/abiturientam/podacha-elektronnaya/">&nbsp;&nbsp;&nbsp;1..6 Подача документов по электронной почте</option>
+                    
+                  
+            <option class="level-1" value="/abiturientam/podacha-pochtovaya/">&nbsp;&nbsp;&nbsp;1..7 Подача документов через средства почтовой связи</option>
+                    
+                  
+            <option class="level-1" value="/abiturientam/platnaya-osnova/">&nbsp;&nbsp;&nbsp;1..8 Платная основа обучения</option>
+                    
+                  
+            <option class="level-1" value="/abiturientam/kontakty-grafik/">&nbsp;&nbsp;&nbsp;1..9 Контакты и график работы</option>
+                    
+                  
+                
+              
+            
+              
+            <option class="level-0" value="/svedenija/">2. СВЕДЕНИЯ ОБ ОБРАЗОВАТЕЛЬНОЙ ОРГАНИЗАЦИИ</option>
+                
+                  
+            <option class="level-1" value="/svedenija/osnovnye-svedenija/">&nbsp;&nbsp;&nbsp;2..1 Основные сведения</option>
+                    
+                  
+            <option class="level-1" value="/svedenija/struktura-upravleniya/">&nbsp;&nbsp;&nbsp;2..2 Структура и органы управления</option>
+                    
+                  
+            <option class="level-1" value="/svedenija/dokumenty/">&nbsp;&nbsp;&nbsp;2..3 Документы</option>
+                    
+                      
+            <option class="level-2" value="/svedenija/dokumenty/vsoko/">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2...1 ВСОКО</option>
+                      
+                    
+                  
+            <option class="level-1" value="/svedenija/obrazovanie/">&nbsp;&nbsp;&nbsp;2..4 Образование</option>
+                    
+                      
+            <option class="level-2" value="/svedenija/obrazovanie/vakantnye-mesta/">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2...1 Вакантные места</option>
+                      
+            <option class="level-2" value="/svedenija/obrazovanie/mezhdunarodnoe/">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2...2 Международное сотрудничество</option>
+                      
+            <option class="level-2" value="/svedenija/obrazovanie/inklyuzivnoe/">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2...3 Инклюзивное образование</option>
+                      
+            <option class="level-2" value="/svedenija/obrazovanie/trudoustrojstvo/">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2...4 Трудоустройство выпускников</option>
+                      
+                    
+                  
+            <option class="level-1" value="/svedenija/rukovodstvo/">&nbsp;&nbsp;&nbsp;2..5 Руководство</option>
+                    
+                      
+            <option class="level-2" value="/svedenija/rukovodstvo/pedagogicheskiy-sostav/">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2...1 Педагогический состав</option>
+                      
+                    
+                  
+            <option class="level-1" value="/svedenija/standarty/">&nbsp;&nbsp;&nbsp;2..6 Образовательные стандарты</option>
+                    
+                  
+            <option class="level-1" value="/svedenija/materialno-tehnicheskoe/">&nbsp;&nbsp;&nbsp;2..7 Материально-техническое обеспечение</option>
+                    
+                      
+            <option class="level-2" value="/svedenija/materialno-tehnicheskoe/elektronnoe-obrazovanie/">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2...1 Электронная информационно-образовательная среда</option>
+                      
+            <option class="level-2" value="/svedenija/materialno-tehnicheskoe/elektronnaya-biblioteka/">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2...2 Цифровая библиотека</option>
+                      
+            <option class="level-2" value="/svedenija/materialno-tehnicheskoe/elektronnye-resursy/">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2...3 Электронные образовательные ресурсы</option>
+                      
+            <option class="level-2" value="/svedenija/materialno-tehnicheskoe/platforma/">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2...4 Образовательная платформа</option>
+                      
+            <option class="level-2" value="/svedenija/materialno-tehnicheskoe/elektronnoe-raspisanie/">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2...5 Электронное расписание</option>
+                      
+            <option class="level-2" value="/svedenija/materialno-tehnicheskoe/pitanie/">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2...6 Организация питания</option>
+                      
+                    
+                  
+            <option class="level-1" value="/svedenija/platnye-uslugi/">&nbsp;&nbsp;&nbsp;2..8 Платные образовательные услуги</option>
+                    
+                  
+            <option class="level-1" value="/svedenija/finansy/">&nbsp;&nbsp;&nbsp;2..9 Финансово-хозяйственная деятельность</option>
+                    
+                      
+            <option class="level-2" value="/svedenija/finansy/stipendii/">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2...1 Стипендии и меры поддержки</option>
+                      
+                    
+                  
+                
+              
+            
+              
+            <option class="level-0" value="/uchebno-metodicheskaya/">3. УЧЕБНО-МЕТОДИЧЕСКАЯ РАБОТА</option>
+                
+                  
+            <option class="level-1" value="/uchebno-metodicheskaya/elektronnoe-obuchenie/">&nbsp;&nbsp;&nbsp;3..1 Электронное обучение и ДОТ</option>
+                    
+                  
+            <option class="level-1" value="/uchebno-metodicheskaya/dopolnitelnoe-obrazovanie/">&nbsp;&nbsp;&nbsp;3..2 Дополнительное образование</option>
+                    
+                  
+            <option class="level-1" value="/uchebno-metodicheskaya/praktika/">&nbsp;&nbsp;&nbsp;3..3 Практика</option>
+                    
+                  
+                
+              
+            
+              
+            <option class="level-0" value="/vospitanie/">4. ВОСПИТАТЕЛЬНАЯ РАБОТА</option>
+                
+                  
+            <option class="level-1" value="/vospitanie/shtab/">&nbsp;&nbsp;&nbsp;4..1 Штаб воспитательной работы</option>
+                    
+                  
+            <option class="level-1" value="/vospitanie/plan/">&nbsp;&nbsp;&nbsp;4..2 План воспитательной работы</option>
+                    
+                  
+            <option class="level-1" value="/vospitanie/mo-rukovoditelej/">&nbsp;&nbsp;&nbsp;4..3 МО руководителей учебных групп</option>
+                    
+                  
+            <option class="level-1" value="/vospitanie/samoupravlenie/">&nbsp;&nbsp;&nbsp;4..4 Студенческое самоуправление</option>
+                    
+                  
+            <option class="level-1" value="/vospitanie/volonterstvo/">&nbsp;&nbsp;&nbsp;4..5 Волонтерское движение</option>
+                    
+                      
+            <option class="level-2" value="/vospitanie/volonterstvo/raduga-dobra/">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4...1 ВОЛОНТЁРСКИЙ ОТРЯД «РАДУГА ДОБРА»</option>
+                      
+                    
+                  
+            <option class="level-1" value="/vospitanie/patrioticheskoe/">&nbsp;&nbsp;&nbsp;4..6 Патриотическое воспитание</option>
+                    
+                      
+            <option class="level-2" value="/vospitanie/patrioticheskoe/velikaya-pobeda/">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4...1 Великая Победа</option>
+                      
+            <option class="level-2" value="/vospitanie/patrioticheskoe/vitjaz/">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4...2 Клуб «ВИТЯЗЬ»</option>
+                      
+                    
+                  
+            <option class="level-1" value="/vospitanie/kulturno-massovaya/">&nbsp;&nbsp;&nbsp;4..7 Культурно-массовая работа</option>
+                    
+                      
+            <option class="level-2" value="/vospitanie/kulturno-massovaya/teatralnyj-klub/">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4...1 Театральный клуб &quot;Мираж&quot;</option>
+                      
+            <option class="level-2" value="/vospitanie/kulturno-massovaya/mediacentr/">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4...2 Медиацентр «Новости СИТ»</option>
+                      
+            <option class="level-2" value="/vospitanie/kulturno-massovaya/pozdravlenija/">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4...3 Поздравления</option>
+                      
+            <option class="level-2" value="/vospitanie/kulturno-massovaya/dvizhenie-pervyh/">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4...4 «Движение Первых»</option>
+                      
+                    
+                  
+            <option class="level-1" value="/vospitanie/fizkultura-sport/">&nbsp;&nbsp;&nbsp;4..8 Физическая культура и спорт</option>
+                    
+                      
+            <option class="level-2" value="/vospitanie/fizkultura-sport/ssk-avangard/">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4...1 ССК &quot;Авангард&quot;</option>
+                      
+                    
+                  
+            <option class="level-1" value="/vospitanie/upolnomochennyj-prava/">&nbsp;&nbsp;&nbsp;4..9 Уполномоченный по правам ребенка</option>
+                    
+                  
+                
+              
+            
+              
+            <option class="level-0" value="/partnerstvo/">5. СОЦИАЛЬНОЕ ПАРТНЕРСТВО И ПРОФОРИЕНТАЦИЯ</option>
+                
+                  
+            <option class="level-1" value="/partnerstvo/vuzy/">&nbsp;&nbsp;&nbsp;5..1 Сотрудничество с ВУЗами</option>
+                    
+                  
+            <option class="level-1" value="/partnerstvo/zanyatost/">&nbsp;&nbsp;&nbsp;5..2 Сотрудничество с органами занятости</option>
+                    
+                  
+            <option class="level-1" value="/partnerstvo/predprijatija/">&nbsp;&nbsp;&nbsp;5..3 Сотрудничество с предприятиями</option>
+                    
+                  
+            <option class="level-1" value="/partnerstvo/shkoly/">&nbsp;&nbsp;&nbsp;5..4 Сотрудничество со школами</option>
+                    
+                  
+                
+              
+            
+              
+            <option class="level-0" value="/psihologicheskoe/">6. ПСИХОЛОГИЧЕСКОЕ СОПРОВОЖДЕНИЕ</option>
+                
+                  
+            <option class="level-1" value="/psihologicheskoe/organizacionno-metodicheskaya/">&nbsp;&nbsp;&nbsp;6..1 Организационно-методическая основа</option>
+                    
+                  
+            <option class="level-1" value="/psihologicheskoe/rezultaty-testirovanij/">&nbsp;&nbsp;&nbsp;6..2 Результаты тестирований</option>
+                    
+                  
+            <option class="level-1" value="/psihologicheskoe/sovety-prepodavatelyam/">&nbsp;&nbsp;&nbsp;6..3 Советы преподавателям</option>
+                    
+                  
+            <option class="level-1" value="/psihologicheskoe/sovety-roditelyam/">&nbsp;&nbsp;&nbsp;6..4 Советы родителям</option>
+                    
+                  
+            <option class="level-1" value="/psihologicheskoe/sovety-studentam/">&nbsp;&nbsp;&nbsp;6..5 Советы студентам</option>
+                    
+                  
+            <option class="level-1" value="/psihologicheskoe/profilaktika-narkotikov/">&nbsp;&nbsp;&nbsp;6..6 Профилактика наркотиков</option>
+                    
+                  
+            <option class="level-1" value="/psihologicheskoe/podderzhka-ovz/">&nbsp;&nbsp;&nbsp;6..7 Поддержка лиц с ОВЗ</option>
+                    
+                  
+                
+              
+            
+              
+            <option class="level-0" value="/bezopasnost/">7. КОМПЛЕКСНАЯ БЕЗОПАСНОСТЬ</option>
+                
+                  
+            <option class="level-1" value="/bezopasnost/antiterror/">&nbsp;&nbsp;&nbsp;7..1 Антитеррористическая защищенность</option>
+                    
+                  
+            <option class="level-1" value="/bezopasnost/ekstremizm/">&nbsp;&nbsp;&nbsp;7..2 Профилактика экстремизма</option>
+                    
+                  
+            <option class="level-1" value="/bezopasnost/korrupcija/">&nbsp;&nbsp;&nbsp;7..3 Противодействие коррупции</option>
+                    
+                  
+            <option class="level-1" value="/bezopasnost/pozharnaya/">&nbsp;&nbsp;&nbsp;7..4 Пожарная безопасность</option>
+                    
+                  
+                
+              
+            
+              
+            <option class="level-0" value="/studentam-roditeljam/">8. СТУДЕНТАМ И ИХ РОДИТЕЛЯМ</option>
+                
+                  
+            <option class="level-1" value="/studentam-roditeljam/resursy/">&nbsp;&nbsp;&nbsp;8..1 Информационно-образовательные ресурсы</option>
+                    
+                      
+            <option class="level-2" value="/studentam-roditeljam/resursy/novosti/">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;8...1 Новости</option>
+                      
+            <option class="level-2" value="/studentam-roditeljam/resursy/biblioteka/">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;8...2 Библиотека техникума</option>
+                      
+                    
+                  
+            <option class="level-1" value="/studentam-roditeljam/prikaz-zachislenie/">&nbsp;&nbsp;&nbsp;8..2 Приказ о зачислении</option>
+                    
+                  
+            <option class="level-1" value="/studentam-roditeljam/raspisanie/">&nbsp;&nbsp;&nbsp;8..3 Расписание занятий</option>
+                    
+                  
+                
+              
+            
+              
+            <option class="level-0" value="/obshestvennoe-mnenie/">9.4. Результаты изучения общественного мнения</option>
+                
+              
+            
+              
+            <option class="level-0" value="/vypusknikam/">9.5. Нашим выпускникам</option>
+                
+              
+            
+              
+            <option class="level-0" value="/uncategorized/">0. Без рубрики</option>
+                
+              
+            
+          </select>
+        </div>
         
-        <li><a href="/main/">main</a></li>
+        <!-- Правая часть (1/3): ссылка "Контакты техникума" -->
+        <div class="col-md-4 svedeniya-block">
+          <a class="nav-link" href="/contacts/" title="Контакты техникума">Контакты</a>
+        </div>
+      </div>
+    </div>
+    
+  </div>
+</header>
+
+<!-- МОДАЛЬНОЕ ОКНО ПОИСКА (Bootstrap Modal) -->
+<div class="modal fade" id="searchModal" tabindex="-1" aria-labelledby="searchModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="searchModalLabel">Поиск по сайту</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
+      </div>
+      <div class="modal-body">
         
-        <li>Контакты</li>
-      </ol>
-    </nav>
-    <h1 class="page-hero__title">Контакты</h1>
+        <form role="search" action="/search/" method="get">
+          <div class="input-group">
+            <input type="search" class="form-control" name="q" placeholder="Введите запрос..." aria-label="Поисковый запрос">
+            <button class="btn btn-primary" type="submit"><i class="bi bi-search"></i> Найти</button>
+          </div>
+        </form>
+      </div>
+    </div>
   </div>
 </div>
 
-<section class="section">
-  <div class="container">
-    <article class="page-content">
-      <h2>Адрес</h2>
+  <main class="site-main" id="main-content" tabindex="-1">
+    
+    
+      <div class="page-body">
+        <h1>Контакты</h1>
+<h2>Адрес</h2>
 <p>347900, Ростовская область, г. Сальск, ул. Ленина, 1</p>
 <h2>Режим работы</h2>
 <p>Пн–Пт: 08:00–17:00<br>
@@ -693,84 +862,85 @@
   <div class="form-status" id="formStatus" role="status" aria-live="polite"></div>
 </form>
 
-    </article>
-  </div>
-</section>
-
+      </div>
+    
+    
   </main>
+  <footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
 
-  <!-- Подвал -->
-  <footer id="footer" class="footer position-relative light-background" role="contentinfo">
-  <div class="container footer-top">
-    <div class="row gy-4">
-      <div class="col-lg-4 col-md-6 footer-about">
-        <a href="/" class="logo d-flex align-items-center">
-          <span class="sitename">СИТ</span>
-        </a>
-        <div class="footer-contact pt-3">
-          <p>г. Сальск, ул. Примерная, д. 1</p>
-          <p class="mt-3"><strong>Телефон:</strong> <span>+7 (XXX) XXX-XX-XX</span></p>
-          <p><strong>Email:</strong> <span>info@sit-salsk.ru</span></p>
-        </div>
-        <div class="social-links d-flex mt-4">
-          <a href="https://vk.com/sit_salsk" aria-label="ВКонтакте"><i class="bi bi-vk"></i></a>
-          <a href="https://t.me/sit_salsk" aria-label="Telegram"><i class="bi bi-telegram"></i></a>
+      <div class="footer-col footer-brand">
+        <div class="footer-logo-text">ГБПОУ РО<br><span>«Сальский индустриальный техникум»</span></div>
+        <p class="footer-tagline">Официальный сайт Сальского индустриального техникума</p>
+        <div class="footer-social">
+          <a href="https://vk.com/sitsalsksit" target="_blank" rel="noopener" class="footer-social-link" title="ВКонтакте">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M21.579 6.855c.17-.565 0-.98-.802-.98h-2.652c-.67 0-.979.357-1.146.752 0 0-1.34 3.283-3.237 5.414-.614.618-.893.814-1.228.814-.17 0-.42-.196-.42-.76V6.854c0-.671-.19-.98-.76-.98H9.389c-.42 0-.67.315-.67.615 0 .644.96.793 1.06 2.605v3.935c0 .864-.155 1.021-.492 1.021-.893 0-3.066-3.303-4.355-7.083C4.68 6.37 4.428 5.875 3.754 5.875H1.102c-.76 0-.913.357-.913.752 0 .704.893 4.197 4.155 8.817 2.175 3.144 5.239 4.848 8.026 4.848 1.674 0 1.88-.38 1.88-1.035v-2.385c0-.76.16-.912.694-.912.393 0 1.067.198 2.641 1.727 1.798 1.81 2.094 2.62 3.102 2.62h2.652c.76 0 1.14-.38.92-1.134-.237-.744-1.092-1.82-2.226-3.101-.614-.73-1.535-1.517-1.814-1.91-.393-.508-.28-.733 0-1.185 0 0 3.21-4.55 3.546-6.095z"/></svg>
+          </a>
+          <a href="https://rutube.ru/channel/24197012/" target="_blank" rel="noopener" class="footer-social-link" title="RuTube">
+            <i class="bi bi-play-circle-fill"></i>
+          </a>
+          <a href="mailto:sitsalsk@mail.ru" class="footer-social-link" title="Электронная почта">
+            <i class="bi bi-envelope-fill"></i>
+          </a>
         </div>
       </div>
 
-      <div class="col-lg-2 col-md-3 footer-links">
-        <h4>Разделы</h4>
-        <ul>
+      <div class="footer-col">
+        <h4 class="footer-heading">Разделы сайта</h4>
+        <ul class="footer-links">
           <li><a href="/">Главная</a></li>
-          <li><a href="/about/">О техникуме</a></li>
-          <li><a href="/news/">Новости</a></li>
-          <li><a href="/search/">Поиск</a></li>
-        </ul>
-      </div>
-
-      <div class="col-lg-2 col-md-3 footer-links">
-        <h4>Информация</h4>
-        <ul>
-          <li><a href="/svedenija/">Сведения</a></li>
+          <li><a href="/svedenija/">Сведения об организации</a></li>
           <li><a href="/abiturientam/">Абитуриентам</a></li>
-          <li><a href="/studentam-roditeljam/">Студентам и родителям</a></li>
+          <li><a href="/studentam-i-roditeljam/">Студентам и родителям</a></li>
+          <li><a href="/vospitanie/">Воспитание</a></li>
           <li><a href="/bezopasnost/">Безопасность</a></li>
         </ul>
       </div>
 
-      <div class="col-lg-4 col-md-12 footer-newsletter">
-        <h4>Подписка на новости</h4>
-        <p>Подпишитесь, чтобы получать обновления о событиях и жизни техникума.</p>
-        <form action="/forms/newsletter.php" method="post" class="php-email-form">
-          <div class="newsletter-form"><input type="email" name="email" placeholder="Ваш e-mail"><input type="submit" value="Подписаться"></div>
-          <div class="loading">Отправка...</div>
-          <div class="error-message"></div>
-          <div class="sent-message">Заявка успешно отправлена.</div>
-        </form>
+      <div class="footer-col">
+        <h4 class="footer-heading">Контакты</h4>
+        <ul class="footer-contacts">
+          <li>
+            <i class="bi bi-geo-alt-fill"></i>
+            <span>344000, Ростовская область, г. Сальск, ул. Ленина, д. 1</span>
+          </li>
+          
+          <li>
+            <i class="bi bi-telephone-fill"></i>
+            <span>Корпус №1: <a href="tel:+78637250571">5-05-71</a></span>
+          </li>
+          
+          <li>
+            <i class="bi bi-telephone-fill"></i>
+            <span>Корпус №2: <a href="tel:+78637256041">5-60-41</a></span>
+          </li>
+          
+          <li>
+            <i class="bi bi-envelope-fill"></i>
+            <a href="mailto:sitsalsk@mail.ru">sitsalsk@mail.ru</a>
+          </li>
+          <li>
+            <i class="bi bi-clock-fill"></i>
+            <span>Пн–Пт: 8:00–17:00 | Сб, Вс: выходной</span>
+          </li>
+        </ul>
       </div>
+
+    </div>
+
+    <div class="footer-bottom">
+      <p>&copy; 2026 ГБПОУ РО «Сальский индустриальный техникум». Все права защищены.</p>
+      <a href="https://эос.сит-сальск.рф/" target="_blank" rel="noopener" class="footer-eos-link">
+        <i class="bi bi-laptop"></i> ЭОС — Электронная образовательная система
+      </a>
     </div>
   </div>
-
-  <div class="container copyright text-center mt-4">
-    <p>&copy; <span>2024</span> <strong class="px-1 sitename">СИТ</strong> <span>Все права защищены</span></p>
-  </div>
-
-  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center" aria-label="Наверх">
-    <i class="bi bi-arrow-up-short"></i>
-  </a>
-  <div id="preloader"></div>
 </footer>
 
-
-  <script src="/assets/mentor/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="/assets/mentor/vendor/php-email-form/validate.js"></script>
-  <script src="/assets/mentor/vendor/aos/aos.js"></script>
-  <script src="/assets/mentor/vendor/glightbox/js/glightbox.min.js"></script>
-  <script src="/assets/mentor/vendor/purecounter/purecounter_vanilla.js"></script>
-  <script src="/assets/js/mentor-main.js"></script>
   <script src="/assets/js/main.js"></script>
-  <a href="#" class="scroll-top d-flex align-items-center justify-content-center" id="scrollTop" aria-label="Наверх" title="Наверх">
-    <i class="bi bi-arrow-up-short" style="font-size:1.5rem;color:#fff;line-height:1;"></i>
-  </a>
-  <script src="/assets/js/offcanvas-nav.js"></script>
+  <script src="/assets/js/slider.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="/assets/js/header.js"></script>
+</body>
 </html>

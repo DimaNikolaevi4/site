@@ -1,20 +1,21 @@
 ---
-title: Абитуриентам
+title: Без рубрики
 layout: base.njk
-category: abiturientam
-description: 'Информация для абитуриентов: правила приема, специальности, день открытых дверей'
+category: uncategorized
+rubric: "0"
+description: 'Материалы, не вошедшие в основную структуру рубрик'
 ---
 
-# Абитуриентам
+# Без рубрики
 
 <div class="category-description">
-  <p>Информация для поступающих в Сальский индустриальный техникум</p>
+  <p>Материалы, которые пока не распределены по основным рубрикам сайта</p>
 </div>
 
 <div class="materials-list">
   {% for page in collections.all %}
-    {% if page.data.category == 'abiturientam' or page.data.tags and page.data.tags.includes("Абитуриентам") %}
-      {% if page.url != '/abiturientam/' %}
+    {% if page.data.category == 'uncategorized' or (not page.data.category and not page.data.rubric) %}
+      {% if page.url != '/uncategorized/' %}
         <article class="material-preview">
           <header class="material-preview-header">
             <h2>
@@ -35,3 +36,4 @@ description: 'Информация для абитуриентов: правил
     {% endif %}
   {% endfor %}
 </div>
+

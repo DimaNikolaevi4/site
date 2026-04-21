@@ -1,6 +1,6 @@
 ---
 title: Профессионалы-2026
-layout: layouts/page.njk
+layout: base.njk
 description: Участие ГБПОУ РО «СИТ» в чемпионате профессионального мастерства «Профессионалы-2026»
 rubric: "6"
 permalink: /professionaly-2026/

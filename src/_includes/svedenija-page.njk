@@ -2,24 +2,177 @@
 layout: layouts/base.njk
 templateEngineOverride: njk,md
 ---
-<div class="svedenija-container">
-  <aside class="svedenija-sidebar" aria-label="Разделы сведений">
-    <nav>
-      <ul>
-        {% for item in svedenijaMenu %}
-        <li>
-          <a href="{{ item.url }}"
-             {% if page.url == item.url %}class="active" aria-current="page"{% endif %}>
-            {{ item.title }}
-          </a>
-        </li>
-        {% endfor %}
-      </ul>
-    </nav>
-  </aside>
+{#
+  Макет для раздела «Сведения об образовательной организации»
+  Архитектура: базовые секции 2-5 с боковым меню подразделов
+  Соответствует Приказу Рособрнадзора №1493
+#}
+<div class="svedenija-layout">
 
-  <main class="svedenija-content" role="main">
-    <h1>{{ title }}</h1>
-    {{ content | safe }}
-  </main>
+  {# Секция 2: Контекстная — хлебные крошки + заголовок раздела #}
+  <section class="section-context section-context--svedenija" aria-label="Раздел Сведения">
+    <div class="container">
+
+      {# Хлебные крошки #}
+      <nav class="breadcrumbs" aria-label="Хлебные крошки">
+        <ol class="breadcrumb-list" itemscope itemtype="https://schema.org/BreadcrumbList">
+          <li class="breadcrumb-item" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+            <a href="/" itemprop="item"><span itemprop="name">Главная</span></a>
+            <meta itemprop="position" content="1"/>
+          </li>
+          {% if page.url != '/svedenija/' %}
+          <li class="breadcrumb-item" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+            <a href="/svedenija/" itemprop="item">
+              <span itemprop="name">Сведения об организации</span>
+            </a>
+            <meta itemprop="position" content="2"/>
+          </li>
+          <li class="breadcrumb-item breadcrumb-item--current"
+              itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+            <span itemprop="name">{{ title }}</span>
+            <meta itemprop="position" content="3"/>
+          </li>
+          {% else %}
+          <li class="breadcrumb-item breadcrumb-item--current"
+              itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+            <span itemprop="name">Сведения об организации</span>
+            <meta itemprop="position" content="2"/>
+          </li>
+          {% endif %}
+        </ol>
+      </nav>
+
+      {# Шапка раздела: заголовок и подзаголовок #}
+      <div class="svedenija-header">
+        <div class="svedenija-header__icon">
+          <i class="bi bi-building" aria-hidden="true"></i>
+        </div>
+        <div class="svedenija-header__text">
+          <span class="svedenija-header__super">Сведения об образовательной организации</span>
+          <h1 class="svedenija-header__title">{{ title }}</h1>
+          {% if description %}
+          <p class="svedenija-header__desc text-muted">{{ description }}</p>
+          {% endif %}
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  {# Секции 3+5: Основной контент + Боковое меню подразделов #}
+  <section class="section-main">
+    <div class="container">
+      <div class="main-grid main-grid--svedenija">
+
+        {# Секция 3: Основной контент #}
+        <main class="svedenija-content" role="main" itemprop="mainContentOfPage">
+          {{ content | safe }}
+        </main>
+
+        {# Секция 5: Боковая навигация по подразделам «Сведений» #}
+        <aside class="sidebar svedenija-sidebar" role="complementary"
+               aria-label="Подразделы раздела Сведения">
+
+          <div class="sidebar-widget svedenija-nav-widget">
+            <h2 class="sidebar-widget-title svedenija-nav-title">
+              <i class="bi bi-list-check" aria-hidden="true"></i>
+              Подразделы
+            </h2>
+            <nav aria-label="Навигация по сведениям">
+              <ul class="svedenija-nav-list list-unstyled">
+                {% for item in svedenijaMenu %}
+                <li class="svedenija-nav-item{% if item.children %} svedenija-nav-item--has-children{% endif %}">
+                  <a href="{{ item.url }}"
+                     class="svedenija-nav-link{% if page.url == item.url %} svedenija-nav-link--active{% endif %}"
+                     {% if page.url == item.url %}aria-current="page"{% endif %}>
+                    {% if item.icon %}
+                    <i class="bi bi-{{ item.icon }}" aria-hidden="true"></i>
+                    {% else %}
+                    <i class="bi bi-chevron-right svedenija-nav-arrow" aria-hidden="true"></i>
+                    {% endif %}
+                    {{ item.title }}
+                  </a>
+
+                  {# Подпункты #}
+                  {% if item.children %}
+                  <ul class="svedenija-nav-sub list-unstyled">
+                    {% for child in item.children %}
+                    <li>
+                      <a href="{{ child.url }}"
+                         class="svedenija-nav-link svedenija-nav-link--sub{% if page.url == child.url %} svedenija-nav-link--active{% endif %}"
+                         {% if page.url == child.url %}aria-current="page"{% endif %}>
+                        <i class="bi bi-dot" aria-hidden="true"></i>
+                        {{ child.title }}
+                      </a>
+                    </li>
+                    {% endfor %}
+                  </ul>
+                  {% endif %}
+
+                </li>
+                {% endfor %}
+              </ul>
+            </nav>
+          </div>
+
+          {# Контактный блок в сайдбаре #}
+          <div class="sidebar-widget svedenija-contact-widget">
+            <h3 class="sidebar-widget-title">
+              <i class="bi bi-telephone" aria-hidden="true"></i> Приёмная комиссия
+            </h3>
+            <ul class="list-unstyled small">
+              {% for corps in contacts.corps %}
+              <li class="mb-1">
+                <a href="tel:{{ corps.phone }}" class="svedenija-contact-link">
+                  <i class="bi bi-telephone-fill text-success" aria-hidden="true"></i>
+                  {{ corps.phone_formatted }}
+                </a>
+              </li>
+              {% endfor %}
+              <li class="mt-2">
+                <a href="mailto:{{ contacts.email }}" class="svedenija-contact-link">
+                  <i class="bi bi-envelope-fill text-success" aria-hidden="true"></i>
+                  {{ contacts.email }}
+                </a>
+              </li>
+            </ul>
+          </div>
+
+        </aside>
+
+      </div>
+    </div>
+  </section>
+
+  {# Секция 4: Ссылки на связанные подразделы (если есть данные) #}
+  {% if relatedSections and relatedSections.length > 0 %}
+  <section class="section-extra" aria-label="Связанные подразделы">
+    <div class="container">
+      <h2 class="section-related__title">
+        <i class="bi bi-grid" aria-hidden="true"></i> Связанные подразделы
+      </h2>
+      <div class="related-grid related-grid--compact">
+        {% for rs in relatedSections %}
+        <a href="{{ rs.url }}" class="related-section-card">
+          <i class="bi bi-{{ rs.icon or 'chevron-right' }}" aria-hidden="true"></i>
+          <span>{{ rs.title }}</span>
+        </a>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+  {% endif %}
+
+  {# Нижняя навигация — возврат к главной странице раздела #}
+  {% if page.url != '/svedenija/' %}
+  <nav class="section-backnav" aria-label="Навигация">
+    <div class="container">
+      <a href="/svedenija/" class="backnav-link backnav-link--parent">
+        <i class="bi bi-arrow-left-circle" aria-hidden="true"></i>
+        Сведения об образовательной организации
+      </a>
+    </div>
+  </nav>
+  {% endif %}
+
 </div>

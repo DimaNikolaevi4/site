@@ -1,12 +1,15 @@
 ---
-layout: layouts/page.njk
+layout: base.njk
 title: Документы
 permalink: /documents/
 eleventyNavigation:
   key: documents
   parent: main
 rubric: "0"
----Здесь вы можете найти и скачать официальные документы техникума.
+---
+# Документы
+
+Здесь вы можете найти и скачать официальные документы техникума.
 
 {% if collections.documents %}
 <ul class="documents-list">

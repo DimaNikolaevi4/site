@@ -1,6 +1,6 @@
 ---
 title: Родителям
-layout: layouts/page.njk
+layout: base.njk
 description: Информация для родителей студентов Сальского индустриального техникума
 rubric: "8"
 permalink: /studentam-i-roditeljam/roditeljam/

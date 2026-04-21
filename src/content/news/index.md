@@ -1,8 +1,12 @@
 ---
 title: Новости
-layout: layouts/page.njk
+layout: base.njk
 eleventyExcludeFromCollections: true
----<div class="news-list">
+---
+
+# Новости
+
+<div class="news-list">
   {% for newsItem in collections.news | reverse %}
     {% include "news-item.njk" %}
   {% endfor %}

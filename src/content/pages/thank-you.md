@@ -1,5 +1,5 @@
 ---
-layout: layouts/page.njk
+layout: base.njk
 title: Спасибо за обращение
 permalink: /thank-you/
 eleventyExcludeFromCollections: true

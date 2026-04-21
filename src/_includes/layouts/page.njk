@@ -1,27 +1,120 @@
-{# Макет для статических страниц #}
+{# Макет для статических страниц (Тип B) #}
+{# Секции: 2-контекст, 3-контент, 4-доп.блоки, 5-сайдбар, 6-возврат, 7-связанные #}
 {% extends "layouts/base.njk" %}
 
 {% block content %}
-<div class="page-hero">
-  <div class="container">
-    <nav class="page-hero__breadcrumbs" aria-label="Хлебные крошки">
-      <ol>
-        <li><a href="/">Главная</a></li>
-        {% if eleventyNavigation and eleventyNavigation.parent %}
-        <li><a href="/{{ eleventyNavigation.parent | lower }}/">{{ eleventyNavigation.parent }}</a></li>
-        {% endif %}
-        <li>{{ title }}</li>
-      </ol>
-    </nav>
-    <h1 class="page-hero__title">{{ title }}</h1>
-  </div>
-</div>
+<div class="page-layout page-type-b">
 
-<section class="section">
-  <div class="container">
-    <article class="page-content">
-      {{ content | safe }}
-    </article>
-  </div>
-</section>
+  {# Секция 2: Контекстная (хлебные крошки + заголовок + описание + баннер) #}
+  <section class="section-context" aria-label="Контекст страницы">
+    <div class="container">
+      {% include "partials/breadcrumbs.njk" %}
+
+      <div class="context-header">
+        <h1 class="page-title">{{ title }}</h1>
+        {% if description %}
+        <p class="page-description lead text-muted">{{ description }}</p>
+        {% endif %}
+      </div>
+
+      {% if sectionContext and sectionContext.banner %}
+      <div class="page-banner">
+        <img src="{{ sectionContext.banner }}" alt="{{ title }}" loading="lazy" class="img-fluid rounded">
+      </div>
+      {% endif %}
+    </div>
+  </section>
+
+  {# Секции 3+5: Основной контент + Сайдбар (grid-layout) #}
+  <section class="section-main">
+    <div class="container">
+      <div class="main-grid{% if not (sidebar and sidebar.show) %} main-grid--full{% endif %}">
+
+        {# Секция 3: Основной контент #}
+        <article class="page-content" itemprop="mainContentOfPage">
+          {{ content | safe }}
+        </article>
+
+        {# Секция 5: Сайдбар (правая колонка, sticky на десктопе) #}
+        {% if sidebar and sidebar.show %}
+        {% include "partials/sidebar.njk" %}
+        {% endif %}
+
+      </div>
+    </div>
+  </section>
+
+  {# Секция 4: Дополнительные блоки (документы, уведомления, произвольный HTML) #}
+  {% if additionalBlocks %}
+  <section class="section-extra" aria-label="Дополнительные материалы">
+    <div class="container">
+      <div class="extra-inner">
+        {{ additionalBlocks | safe }}
+      </div>
+    </div>
+  </section>
+  {% endif %}
+
+  {# Секция 7: Связанные материалы / «Читайте также» #}
+  {% if relatedPages and relatedPages.length > 0 %}
+  <section class="section-related" aria-label="Связанные материалы">
+    <div class="container">
+      <h2 class="section-related__title">
+        <i class="bi bi-link-45deg"></i> Читайте также
+      </h2>
+      <div class="related-grid">
+        {% for item in relatedPages %}
+        <article class="related-card">
+          {% if item.image %}
+          <div class="related-card__img">
+            <a href="{{ item.url }}">
+              <img src="{{ item.image }}" alt="{{ item.title }}" loading="lazy">
+            </a>
+          </div>
+          {% endif %}
+          <div class="related-card__body">
+            {% if item.date %}
+            <time class="related-card__date">{{ item.date | dateRu }}</time>
+            {% endif %}
+            <h3 class="related-card__title">
+              <a href="{{ item.url }}">{{ item.title }}</a>
+            </h3>
+            {% if item.excerpt %}
+            <p class="related-card__excerpt">{{ item.excerpt }}</p>
+            {% endif %}
+          </div>
+        </article>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+  {% endif %}
+
+  {# Секция 6: Нижняя навигация (возврат к разделу, пред/след) #}
+  {% if parentSection or prevPage or nextPage %}
+  <nav class="section-backnav" aria-label="Навигация по разделу">
+    <div class="container">
+      {% if parentSection %}
+      <a href="{{ parentSection.url }}" class="backnav-link backnav-link--parent">
+        <i class="bi bi-arrow-left-circle"></i>
+        {{ parentSection.title }}
+      </a>
+      {% endif %}
+      <div class="backnav-prevnext">
+        {% if prevPage %}
+        <a href="{{ prevPage.url }}" class="backnav-link backnav-link--prev" title="{{ prevPage.title }}">
+          <i class="bi bi-chevron-left"></i> Предыдущая
+        </a>
+        {% endif %}
+        {% if nextPage %}
+        <a href="{{ nextPage.url }}" class="backnav-link backnav-link--next" title="{{ nextPage.title }}">
+          Следующая <i class="bi bi-chevron-right"></i>
+        </a>
+        {% endif %}
+      </div>
+    </div>
+  </nav>
+  {% endif %}
+
+</div>
 {% endblock %}

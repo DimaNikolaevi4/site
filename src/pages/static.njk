@@ -4,17 +4,26 @@ title: Статическая страница
 description: Информация о техникуме
 ---
 
-<div class="page-hero">
+<!-- Хлебные крошки -->
+<nav class="breadcrumbs" aria-label="Хлебные крошки">
   <div class="container">
-    <nav class="page-hero__breadcrumbs" aria-label="Хлебные крошки">
-      <ol>
-        <li><a href="/">Главная</a></li>
-        <li>{{ title }}</li>
-      </ol>
-    </nav>
-    <h1 class="page-hero__title">{{ title }}</h1>
+    <ol class="breadcrumbs__list">
+      <li class="breadcrumbs__item">
+        <a href="/" class="breadcrumbs__link">Главная</a>
+      </li>
+      <li class="breadcrumbs__item breadcrumbs__item--active" aria-current="page">
+        {{ title }}
+      </li>
+    </ol>
   </div>
-</div>
+</nav>
+
+<!-- Заголовок страницы -->
+<section class="section section--header">
+  <div class="container">
+    <h1 class="page-title">{{ title }}</h1>
+  </div>
+</section>
 
 <!-- Основной контент -->
 <div class="container layout">
