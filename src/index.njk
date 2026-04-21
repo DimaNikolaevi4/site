@@ -6,19 +6,9 @@ description: Официальный сайт Сальского индустри
 
 <main class="main">
 
-  <!-- Hero Section -->
-  <section id="hero" class="hero section dark-background">
-
-    <img src="/assets/mentor/img/hero-bg.jpg" alt="" data-aos="fade-in">
-
-    <div class="container">
-      <div class="site-title" data-aos="fade-up" data-aos-delay="100">
-        ГБПОУ РО<br>
-        <small>«Сальский индустриальный техникум»</small>
-      </div>
-    </div>
-
-  </section><!-- /Hero Section -->
+  <!-- Hero Section (Секция 3) — единый компонент, без названия рубрики на главной -->
+  {% set hideRubric = true %}
+  {% include "components/hero.njk" %}
 
   <!-- About Section (Секция 4) -->
   {% set aboutMode = 'director' %}

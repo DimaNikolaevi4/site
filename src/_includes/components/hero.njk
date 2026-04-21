@@ -17,6 +17,7 @@
                       hero.cta      — { url, label } для кнопки (опционально)
     rubricTitle   — название рубрики под чертой (приоритет над hero.title и title)
     title         — заголовок страницы (fallback для рубрики, если ничего не задано)
+    hideRubric    — true, чтобы скрыть черту и название рубрики (используется на главной)
 #}
 
 {% if showHero != false %}
@@ -47,7 +48,7 @@
       </div>
 
       {# Название рубрики под горизонтальной чертой #}
-      {% if _heroRubric %}
+      {% if _heroRubric and not hideRubric %}
       <hr class="page-hero__divider" aria-hidden="true">
       <p class="page-hero__rubric">{{ _heroRubric }}</p>
       {% endif %}
