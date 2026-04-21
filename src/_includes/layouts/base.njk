@@ -33,14 +33,18 @@
   </script>
 </head>
 <body class="page page--{{ layout or 'default' }}">
-  <!-- Шапка -->
+  <!-- ═══════════════════════════════════════════════ -->
+  <!-- Секция 1 — Header (Шапка)                       -->
+  <!-- ═══════════════════════════════════════════════ -->
   {% include "components/header.njk" %}
 
   <main class="main-content">
     {% block content %}{{ content | safe }}{% endblock %}
   </main>
 
-  <!-- Подвал -->
+  <!-- ═══════════════════════════════════════════════ -->
+  <!-- Секция 7 — Footer (Подвал)                      -->
+  <!-- ═══════════════════════════════════════════════ -->
   {% include "components/footer.njk" %}
 
   <script src="/assets/mentor/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
