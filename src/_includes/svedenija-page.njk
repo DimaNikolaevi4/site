@@ -55,7 +55,7 @@ showSidebar: true
         </div>
         <div class="svedenija-header__text">
           <span class="svedenija-header__super">Сведения об образовательной организации</span>
-          {% if not (hero and hero.image) %}
+          {% if showHero == false %}
           <h1 class="svedenija-header__title">{{ title }}</h1>
           {% endif %}
           {% if description %}

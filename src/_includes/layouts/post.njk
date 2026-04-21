@@ -72,7 +72,7 @@
         {% endif %}
 
         {# Заголовок #}
-        {% if not (hero and hero.image) %}
+        {% if showHero == false %}
         <h1 class="post-title" itemprop="headline">{{ title }}</h1>
         {% endif %}
 
@@ -127,7 +127,7 @@
         <div class="content-col">
 
           {# Обложка материала (если есть и нет полноэкранного hero) #}
-          {% if coverImage and not (hero and hero.image) %}
+          {% if coverImage and showHero == false %}
           <figure class="post-cover">
             <img src="{{ coverImage }}"
                  alt="{{ coverAlt or title }}"

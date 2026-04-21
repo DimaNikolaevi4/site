@@ -27,7 +27,7 @@
       {% include "components/breadcrumbs.njk" %}
 
       <div class="context-header">
-        {% if not (hero and hero.image) %}
+        {% if showHero == false %}
         <h1 class="page-title">{{ title }}</h1>
         {% endif %}
 
@@ -89,7 +89,7 @@
       {% endif %}
 
       {# Баннер раздела (без full-hero) #}
-      {% if (not (hero and hero.image)) and sectionContext and sectionContext.banner %}
+      {% if showHero == false and sectionContext and sectionContext.banner %}
       <div class="page-banner">
         <img src="{{ sectionContext.banner }}" alt="{{ title }}" loading="lazy" class="img-fluid rounded">
       </div>
@@ -110,20 +110,45 @@
         <div class="page-content-area">
 
           {# Лента карточек для listing-страниц #}
-          {% if collectionName and collections[collectionName] %}
-            {% if collections[collectionName].length > 0 %}
+          {% set _listItems = pagination.items if (pagination and pagination.items) else (collections[collectionName] if collectionName else null) %}
+          {% if _listItems %}
+            {% if _listItems.length > 0 %}
             <div class="cards-grid">
-              {% for item in collections[collectionName] %}
-                {% include "partials/card.njk" with { card: {
-                  title: item.data.title,
-                  url: item.url,
-                  image: item.data.image,
-                  imageAlt: item.data.imageAlt,
-                  category: item.data.category or item.data.section,
-                  date: item.data.date,
-                  excerpt: item.data.excerpt,
-                  tags: item.data.tags
-                }} %}
+              {% for item in _listItems %}
+              <article class="card" itemscope itemtype="https://schema.org/Article">
+                {% if item.data.image %}
+                <div class="card-image">
+                  <a href="{{ item.url }}">
+                    <img src="{{ item.data.image }}"
+                         alt="{{ item.data.imageAlt or item.data.title }}"
+                         loading="lazy" itemprop="image">
+                  </a>
+                </div>
+                {% endif %}
+                <div class="card-content">
+                  <header class="card-header">
+                    {% set _cat = item.data.category or item.data.section %}
+                    {% if _cat %}
+                    <span class="card-category">{{ sectionLabels.bySlug[_cat] or _cat }}</span>
+                    {% endif %}
+                    <h3 class="card-title">
+                      <a href="{{ item.url }}" itemprop="url">
+                        <span itemprop="headline">{{ item.data.title }}</span>
+                      </a>
+                    </h3>
+                    {% if item.data.date %}
+                    <time class="card-date" datetime="{{ item.data.date | dateToISO }}" itemprop="datePublished">
+                      {{ item.data.date | dateRu }}
+                    </time>
+                    {% endif %}
+                  </header>
+                  {% set _excerpt = item.data.excerpt or item.data.description %}
+                  {% if _excerpt %}
+                  <div class="card-excerpt" itemprop="description">{{ _excerpt }}</div>
+                  {% endif %}
+                  <a href="{{ item.url }}" class="card-readmore">Читать далее →</a>
+                </div>
+              </article>
               {% endfor %}
             </div>
 

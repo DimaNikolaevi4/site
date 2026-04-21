@@ -4401,9 +4401,59 @@ ol.breadcrumb-list { list-style-type: none !important; }
   font-weight: 600;
 }
 
+/* ─── Внутренний центрированный блок «как на главной» ─── */
+.page-hero--banner {
+  text-align: center;
+}
+
+.page-hero__inner {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.page-hero__org {
+  color: #fff;
+  font-family: var(--heading-font);
+  font-weight: 800;
+  font-size: clamp(1.6rem, 3.6vw, 2.4rem);
+  line-height: 1.15;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.35);
+  letter-spacing: 0.5px;
+}
+
+.page-hero__org small {
+  display: inline-block;
+  margin-top: 6px;
+  font-size: clamp(1rem, 2vw, 1.35rem);
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.95);
+  letter-spacing: 0;
+}
+
+.page-hero__divider {
+  width: 120px;
+  max-width: 60%;
+  height: 0;
+  margin: 18px auto 14px;
+  border: 0;
+  border-top: 2px solid rgba(255, 255, 255, 0.85);
+  opacity: 1;
+}
+
+.page-hero__rubric {
+  color: #fff;
+  font-family: var(--heading-font);
+  font-weight: 700;
+  font-size: clamp(1.15rem, 2.4vw, 1.75rem);
+  margin: 0;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.35);
+  line-height: 1.3;
+}
+
 @media (max-width: 767px) {
   .page-hero { min-height: 200px; }
   .page-hero__title { font-size: 1.5rem; }
+  .page-hero__divider { width: 80px; margin: 12px auto 10px; }
 }
 
 /* ─── Раздел «Сведения»: специальные стили ─── */

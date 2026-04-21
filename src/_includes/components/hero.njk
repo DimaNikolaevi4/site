@@ -1,29 +1,37 @@
 {#
   Компонент Секция 2 — Hero-баннер для страниц разделов (Тип B)
 
-  Переменные:
-    hero          — объект из frontmatter (обязателен для отображения):
-                    hero.image    — URL фонового изображения
-                    hero.title    — заголовок (по умолчанию: title страницы)
-                    hero.subtitle — подзаголовок (опционально)
-                    hero.alt      — alt-текст фона (опционально)
-                    hero.cta      — объект { url, label } для кнопки (опционально)
-    title         — заголовок страницы (fallback для hero.title)
-    rubricTitle   — название рубрики под горизонтальной чертой (опционально).
-                    Если не задан — используется hero.title или title.
+  Рендерится на любой странице, где явно подключён, и показывает:
+    1) название организации «ГБПОУ РО / Сальский индустриальный техникум» (как на главной),
+    2) горизонтальную черту,
+    3) название рубрики (раздела/подраздела) под чертой.
 
-  Если hero.image не задан — компонент не рендерится.
-  Вместо него page-full.njk показывает обычный .page-title в секции-context.
+  Управление через frontmatter:
+    showHero      — false, чтобы выключить блок (по умолчанию — показываем)
+    hero          — объект для тонкой настройки:
+                      hero.image    — URL фонового изображения
+                                       (по умолчанию /assets/mentor/img/hero-bg.jpg)
+                      hero.title    — переопределяет рубрику под чертой
+                      hero.subtitle — подзаголовок (опционально)
+                      hero.alt      — alt-текст фона (опционально)
+                      hero.cta      — { url, label } для кнопки (опционально)
+    rubricTitle   — название рубрики под чертой (приоритет над hero.title и title)
+    title         — заголовок страницы (fallback для рубрики, если ничего не задано)
 #}
 
-{% if hero and hero.image %}
-<section class="section-hero page-hero component-hero" aria-label="Баннер раздела">
+{% if showHero != false %}
+
+{% set _heroImage = (hero.image if hero else null) or "/assets/mentor/img/hero-bg.jpg" %}
+{% set _heroAlt = (hero.alt if hero else null) or title or "Сальский индустриальный техникум" %}
+{% set _heroRubric = rubricTitle or (hero.title if hero else null) or title %}
+
+<section class="section-hero page-hero page-hero--banner component-hero" aria-label="Баннер раздела">
 
   <div
     class="page-hero__bg"
-    style="background-image: url('{{ hero.image }}');"
+    style="background-image: url('{{ _heroImage }}');"
     role="img"
-    aria-label="{{ hero.alt or title }}"
+    aria-label="{{ _heroAlt }}"
   ></div>
 
   <div class="page-hero__overlay" aria-hidden="true"></div>
@@ -38,20 +46,19 @@
         <small>«Сальский индустриальный техникум»</small>
       </div>
 
-      {# Название рубрики под чертой #}
-      {% set _heroHeading = rubricTitle or hero.title or title %}
-      {% if _heroHeading %}
+      {# Название рубрики под горизонтальной чертой #}
+      {% if _heroRubric %}
       <hr class="page-hero__divider" aria-hidden="true">
-      <h1 class="page-hero__title">{{ _heroHeading }}</h1>
+      <p class="page-hero__rubric">{{ _heroRubric }}</p>
       {% endif %}
 
-      {# Подзаголовок #}
-      {% if hero.subtitle %}
+      {# Подзаголовок (опционально) #}
+      {% if hero and hero.subtitle %}
       <p class="page-hero__subtitle">{{ hero.subtitle }}</p>
       {% endif %}
 
-      {# CTA-кнопка #}
-      {% if hero.cta and hero.cta.url and hero.cta.label %}
+      {# CTA-кнопка (опционально) #}
+      {% if hero and hero.cta and hero.cta.url and hero.cta.label %}
       <a href="{{ hero.cta.url }}" class="btn btn-primary btn-lg page-hero__cta">
         {{ hero.cta.label }}
       </a>
