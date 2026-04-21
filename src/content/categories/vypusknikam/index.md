@@ -1,14 +1,10 @@
 ---
 title: Нашим выпускникам
-layout: base.njk
+layout: layouts/page.njk
 category: vypusknikam
 rubric: "9.5"
 description: 'Информация для выпускников техникума'
----
-
-# Нашим выпускникам
-
-<div class="category-description">
+---<div class="category-description">
   <p>Раздел для выпускников Сальского индустриального техникума</p>
 </div>
 

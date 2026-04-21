@@ -1,14 +1,10 @@
 ---
 title: Психологическое сопровождение образовательного процесса
-layout: base.njk
+layout: layouts/page.njk
 category: psihologicheskoe
 rubric: "6"
 description: 'Психологическое сопровождение: тестирования, советы преподавателям, родителям, студентам, профилактика'
----
-
-# Психологическое сопровождение образовательного процесса
-
-<div class="category-description">
+---<div class="category-description">
   <p>Раздел посвящен работе педагога-психолога в техникуме</p>
 </div>
 

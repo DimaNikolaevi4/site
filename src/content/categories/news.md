@@ -1,15 +1,11 @@
 ---
 title: Новости
-layout: base.njk
+layout: layouts/page.njk
 category: news
 tags:
   - Новости
 description: Все новости Сальского индустриального техникума
----
-
-# Новости
-
-<div class="category-description">
+---<div class="category-description">
   <p>Последние события и новости нашего техникума</p>
 </div>
 

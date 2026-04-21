@@ -212,7 +212,7 @@ h6 {
 --------------------------------------------------------------*/
 .header {
   color: var(--default-color);
-  background-color: var(--background-color);
+  background-color: color-mix(in srgb, var(--accent-color), var(--background-color) 92%);
   padding: 15px 0;
   transition: all 0.5s;
   z-index: 997;
@@ -749,7 +749,72 @@ h6 {
 }
 
 /*--------------------------------------------------------------
-# Global Page Titles & Breadcrumbs
+# Inner Page Hero / Page Header
+--------------------------------------------------------------*/
+.page-hero {
+  padding: 28px 0 22px;
+  background-color: var(--background-color);
+  border-bottom: 1px solid color-mix(in srgb, var(--default-color), transparent 88%);
+}
+
+.page-hero__breadcrumbs {
+  margin-bottom: 10px;
+}
+
+.page-hero__breadcrumbs ol {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0 4px;
+  font-size: 0.83rem;
+}
+
+.page-hero__breadcrumbs li {
+  color: color-mix(in srgb, var(--default-color), transparent 35%);
+}
+
+.page-hero__breadcrumbs li + li::before {
+  content: "›";
+  margin-right: 4px;
+  color: var(--accent-color);
+}
+
+.page-hero__breadcrumbs a {
+  color: color-mix(in srgb, var(--default-color), transparent 35%);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.page-hero__breadcrumbs a:hover {
+  color: var(--accent-color);
+}
+
+.page-hero__title {
+  font-size: clamp(1.4rem, 3.5vw, 2.2rem);
+  font-weight: 700;
+  color: var(--heading-color);
+  margin: 0;
+  font-family: var(--heading-font);
+  line-height: 1.25;
+}
+
+.page-hero__meta {
+  margin-top: 8px;
+  font-size: 0.875rem;
+  color: color-mix(in srgb, var(--default-color), transparent 35%);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 14px;
+}
+
+.page-hero__meta a {
+  color: var(--accent-color);
+}
+
+/*--------------------------------------------------------------
+# Global Page Titles & Breadcrumbs (legacy Mentor section wrapper)
 --------------------------------------------------------------*/
 .page-title {
   --default-color: var(--contrast-color);
@@ -892,45 +957,45 @@ section,
 .hero .container {
   position: relative;
   z-index: 3;
+  text-align: center;
 }
 
-.hero h2 {
-  margin: 0;
-  font-size: 48px;
-  font-weight: 700;
-}
-
-.hero p {
-  color: color-mix(in srgb, var(--default-color), transparent 20%);
-  margin: 10px 0 0 0;
-  font-size: 24px;
-}
-
-.hero .btn-get-started {
-  font-weight: 500;
-  font-size: 15px;
-  letter-spacing: 1px;
+/* ─── Название учреждения в Hero ─── */
+.hero .site-title {
   display: inline-block;
-  padding: 8px 35px 10px 35px;
-  border-radius: 50px;
-  transition: 0.4s;
-  margin-top: 30px;
-  border: 2px solid var(--default-color);
-  color: var(--default-color);
+  font-size: clamp(2rem, 5.5vw, 4rem);
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #ffffff;
+  line-height: 1.15;
+  padding-bottom: 0.5em;
+  position: relative;
 }
 
-.hero .btn-get-started:hover {
+.hero .site-title::after {
+  content: '';
+  display: block;
+  height: 4px;
+  width: 55%;
   background: var(--accent-color);
-  border: 2px solid var(--accent-color);
+  border-radius: 2px;
+  margin: 0.35em auto 0;
+}
+
+.hero .site-title small {
+  display: block;
+  font-size: clamp(0.95rem, 2.4vw, 1.45rem);
+  font-weight: 400;
+  letter-spacing: 0.03em;
+  text-transform: none;
+  color: color-mix(in srgb, #ffffff, transparent 12%);
+  margin-top: 0.3em;
 }
 
 @media (max-width: 768px) {
-  .hero h2 {
-    font-size: 32px;
-  }
-
-  .hero p {
-    font-size: 18px;
+  .hero .site-title {
+    letter-spacing: 0.04em;
   }
 }
 
@@ -1882,6 +1947,16 @@ section,
   height: clamp(32px, 5vw, 52px);
   max-height: 52px;
   display: block;
+  transition: height 0.25s ease;
+}
+
+.header.header--compact {
+  min-height: 54px;
+  box-shadow: 0 2px 16px color-mix(in srgb, var(--default-color), transparent 90%);
+}
+
+.header.header--compact .header-logo-img {
+  height: 34px;
 }
 
 .header .header-icons {
@@ -1907,6 +1982,28 @@ section,
 .header .header-icons a:hover,
 .header .header-icons button:hover {
   color: var(--nav-hover-color);
+}
+
+.header-phone-link {
+  align-items: center;
+  gap: 6px;
+  width: auto;
+  min-width: max-content;
+  height: 36px;
+  padding: 0 10px;
+  border-radius: 999px;
+  color: var(--nav-color);
+  font-size: 0.9rem;
+  font-weight: 600;
+  line-height: 1;
+  text-decoration: none;
+  transition: color 0.2s, background 0.2s;
+}
+
+.header-phone-link:hover {
+  color: var(--accent-color);
+  background: color-mix(in srgb, var(--accent-color), transparent 92%);
+  text-decoration: none;
 }
 
 /* ============================================
@@ -2038,35 +2135,1583 @@ section,
 .offcanvas-body .col-7 .collapse ul {
   margin-top: 0.5rem;
 }
-/* Offcanvas аккордеон */
-.offcanvas-body .btn-link {
+/* Центральная навигация (main-nav) */
+.main-nav__link {
+  display: flex;
+  align-items: center;
+  position: relative;
+  gap: 0.45rem;
   color: var(--nav-color);
   text-decoration: none;
-  font-weight: 500;
-  padding: 0.5rem 0;
-  border-bottom: 1px solid rgba(0,0,0,0.05);
-  border-radius: 0;
-  width: 100%;
+  font-size: 15px;
+  font-family: var(--nav-font);
+  font-weight: 400;
+  padding: 18px 12px;
+  white-space: nowrap;
+  transition: color 0.3s, padding 0.25s ease;
 }
 
-.offcanvas-body .btn-link:hover {
+.main-nav__link:hover,
+.main-nav__link.active {
+  color: var(--nav-hover-color);
+  text-decoration: none;
+}
+
+.main-nav__link.active {
+  background: color-mix(in srgb, var(--accent-color), transparent 92%);
+}
+
+.main-nav__link.active::before {
+  content: "";
+  position: absolute;
+  left: 4px;
+  top: 13px;
+  bottom: 13px;
+  width: 3px;
+  border-radius: 999px;
+  background: var(--accent-color);
+}
+
+.main-nav__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.35rem;
+  min-width: 1.35rem;
+  height: 1.35rem;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--accent-color), transparent 91%);
+  font-size: 0.82rem;
+  line-height: 1;
+}
+
+.main-nav__link::after {
+  content: "";
+  position: absolute;
+  left: 12px;
+  right: 12px;
+  bottom: 10px;
+  height: 3px;
+  border-radius: 999px;
+  background: var(--accent-color);
+  opacity: 0;
+  transform: scaleX(0.45);
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.main-nav__link:hover::after,
+.main-nav__link.active::after {
+  opacity: 1;
+  transform: scaleX(1);
+}
+
+.header.header--compact .main-nav__link {
+  padding-top: 13px;
+  padding-bottom: 13px;
+}
+
+.header.header--compact .main-nav__link::after {
+  bottom: 7px;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   OFFCANVAS — многоуровневое меню (панели влево)
+   ═══════════════════════════════════════════════════════════ */
+
+:root {
+  --oc-panel-w: 320px;
+  --oc-header-h: 78px;
+}
+
+@media (max-width: 480px) {
+  :root {
+    --oc-header-h: 72px;
+  }
+}
+
+/* Ширина основного offcanvas */
+#offcanvasRubrics {
+  --bs-offcanvas-width: var(--oc-panel-w);
+}
+
+/* ─── Шапка offcanvas ─── */
+.oc-header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  height: var(--oc-header-h, 78px);
+  flex-shrink: 0;
+  overflow: hidden;
+  padding: 0 0.75rem 0 1rem;
+  border-bottom: 3px solid var(--accent-color);
+  background: color-mix(in srgb, var(--accent-color), var(--surface-color, #fff) 92%);
+}
+
+.oc-header__brand {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  flex: 1;
+  min-width: 0;
+  text-decoration: none;
+}
+
+.oc-header__brand:hover .oc-header__title {
   color: var(--accent-color);
 }
 
-.offcanvas-body .btn-link i {
-  transition: transform 0.2s;
+.oc-header__logo {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+  flex-shrink: 0;
+  border-radius: 6px;
+}
+
+.oc-header__text {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.oc-header__title {
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: var(--heading-color);
+  line-height: 1.25;
+  transition: color 0.2s;
+}
+
+.oc-header__sub {
+  font-size: 0.72rem;
+  color: color-mix(in srgb, var(--default-color), transparent 45%);
+  line-height: 1.3;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Кнопка закрытия в шапке */
+.oc-dismiss-btn {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  background: none;
+  border: none;
+  border-radius: 8px;
+  color: color-mix(in srgb, var(--nav-color), transparent 30%);
+  font-size: 1rem;
+  cursor: pointer;
+  padding: 0;
+  transition: color 0.2s, background 0.2s;
+}
+
+.oc-dismiss-btn:hover {
+  color: var(--accent-color);
+  background: color-mix(in srgb, var(--accent-color), transparent 90%);
+}
+
+/* ─── Панель 1 (внутри offcanvas) ─── */
+.offcanvas-body.p-0 {
+  overflow: hidden;
+}
+
+.oc-panel {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.oc-panel__scroll {
+  height: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
+  scrollbar-width: thin;
+  scrollbar-color: color-mix(in srgb, var(--accent-color), transparent 60%) transparent;
+}
+
+.oc-panel__scroll::-webkit-scrollbar {
+  width: 4px;
+}
+
+.oc-panel__scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.oc-panel__scroll::-webkit-scrollbar-thumb {
+  background: color-mix(in srgb, var(--accent-color), transparent 60%);
+  border-radius: 2px;
+}
+
+/* ─── Быстрые ссылки ─── */
+.offcanvas-quicklinks {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  margin: 0;
+  padding: 0;
+}
+
+.offcanvas-quicklinks__link {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.5rem 0.25rem;
+  color: var(--nav-color);
+  font-size: 0.88rem;
+  font-weight: 600;
+  text-decoration: none;
+  border-bottom: 1px solid color-mix(in srgb, var(--default-color), transparent 92%);
+  border-left: 2px solid transparent;
+  padding-left: 0;
+  transition: color 0.2s, border-color 0.2s, background 0.2s, padding-left 0.2s;
+}
+
+.offcanvas-quicklinks__link:last-child {
+  border-bottom: none;
+}
+
+.offcanvas-quicklinks__link:hover,
+.offcanvas-quicklinks__link.active {
+  color: var(--accent-color);
+  border-left-color: var(--accent-color);
+  padding-left: 4px;
+  text-decoration: none;
+}
+
+.offcanvas-quicklinks__link--pill {
+  justify-content: center;
+  gap: 0.45rem;
+  padding: 0.62rem 0.9rem;
+  border: 1px solid color-mix(in srgb, var(--accent-color), transparent 64%);
+  border-left: 1px solid color-mix(in srgb, var(--accent-color), transparent 64%);
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--accent-color), transparent 90%);
+  color: var(--accent-color);
+  font-weight: 800;
+}
+
+.offcanvas-quicklinks__link--pill:hover,
+.offcanvas-quicklinks__link--pill.active {
+  padding-left: 0.9rem;
+  background: var(--accent-color);
+  border-color: var(--accent-color);
+  color: var(--contrast-color);
+}
+
+.offcanvas-quicklinks__link--pill-alt {
+  background: color-mix(in srgb, var(--heading-color), transparent 92%);
+  border-color: color-mix(in srgb, var(--heading-color), transparent 70%);
+  color: var(--heading-color);
+}
+
+.offcanvas-quicklinks__link--pill-alt:hover {
+  background: var(--heading-color);
+  border-color: var(--heading-color);
+  color: var(--contrast-color);
+}
+
+.offcanvas-quicklinks__icon {
+  font-size: 1rem;
+  line-height: 1;
+  flex-shrink: 0;
+  opacity: 0.85;
+  transition: opacity 0.2s, transform 0.2s;
+}
+
+.offcanvas-quicklinks__link:hover .offcanvas-quicklinks__icon {
+  opacity: 1;
+  transform: translateX(2px);
+}
+
+/* ─── Иконки действий (мобильные) ─── */
+.offcanvas-actions {
+  background: color-mix(in srgb, var(--default-color), transparent 96%);
+  border-radius: 8px;
+  margin: 0.5rem 0;
+}
+
+/* ─── Метка раздела ─── */
+.offcanvas-section-label {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding-top: 0.9rem;
+  padding-bottom: 0.5rem;
+}
+
+.offcanvas-section-label span {
+  font-size: 0.65rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: color-mix(in srgb, var(--default-color), transparent 50%);
+  white-space: nowrap;
+}
+
+.offcanvas-section-label::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: color-mix(in srgb, var(--default-color), transparent 88%);
+}
+
+/* ─── Список 1-го уровня ─── */
+.oc-nav {
+  padding-bottom: 0.5rem;
+}
+
+.oc-split-row {
+  display: flex;
+  align-items: stretch;
+  border-bottom: 1px solid color-mix(in srgb, var(--default-color), transparent 92%);
+  border-left: 3px solid transparent;
+  transition: background 0.15s, border-left-color 0.15s;
+}
+
+.oc-split-row:hover {
+  background: color-mix(in srgb, var(--accent-color), transparent 95%);
+  border-left-color: var(--accent-color);
+}
+
+.oc-split-row.is-active {
+  background: color-mix(in srgb, var(--accent-color), transparent 92%);
+  border-left-color: var(--accent-color);
+}
+
+.oc-split-row__link {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 0.8rem 0.5rem 0.8rem 0.85rem;
+  color: var(--nav-color);
+  font-size: 0.82rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  text-decoration: none;
+  line-height: 1.35;
+  transition: color 0.2s;
+}
+
+.oc-split-row__link:hover,
+.oc-split-row__link.active {
+  color: var(--accent-color);
+  text-decoration: none;
+}
+
+.oc-section-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.45rem;
+  min-width: 1.45rem;
+  height: 1.45rem;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--accent-color), transparent 90%);
+  font-size: 0.86rem;
+  line-height: 1;
+}
+
+/* Одиночная ссылка без детей */
+.oc-split-row__link--leaf {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 0.8rem 1rem 0.8rem calc(0.85rem + 3px);
+  color: color-mix(in srgb, var(--nav-color), transparent 25%);
+  font-size: 0.82rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  text-decoration: none;
+  border-bottom: 1px solid color-mix(in srgb, var(--default-color), transparent 92%);
+  border-left: 3px solid transparent;
+  transition: color 0.2s, background 0.15s, border-left-color 0.15s;
+}
+
+.oc-split-row__link--leaf:hover,
+.oc-split-row__link--leaf.active {
+  color: var(--accent-color);
+  background: color-mix(in srgb, var(--accent-color), transparent 95%);
+  border-left-color: var(--accent-color);
+  text-decoration: none;
+}
+
+.oc-split-row__link--leaf.active {
+  background: color-mix(in srgb, var(--accent-color), transparent 92%);
+}
+
+/* Кнопка-стрелка › */
+.oc-split-row__toggle {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  background: none;
+  border: none;
+  border-left: 1px solid color-mix(in srgb, var(--default-color), transparent 92%);
+  color: color-mix(in srgb, var(--nav-color), transparent 55%);
+  font-size: 0.85rem;
+  cursor: pointer;
+  padding: 0;
+  transition: color 0.2s, background 0.2s;
+}
+
+.oc-split-row__toggle:hover {
+  color: var(--accent-color);
+  background: color-mix(in srgb, var(--accent-color), transparent 88%);
+}
+
+.oc-split-row:hover .oc-split-row__toggle {
+  color: var(--accent-color);
+}
+
+.oc-split-row.is-active .oc-split-row__toggle {
+  color: var(--accent-color);
+  background: color-mix(in srgb, var(--accent-color), transparent 90%);
+}
+
+/* ─── Подвал offcanvas ─── */
+.oc-footer {
+  border-top: 1px solid color-mix(in srgb, var(--default-color), transparent 90%);
+  margin-top: 0.5rem;
+}
+
+.oc-footer__link {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  color: color-mix(in srgb, var(--default-color), transparent 40%);
+  font-size: 0.75rem;
+  line-height: 1.4;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.oc-footer__link:hover {
+  color: var(--accent-color);
+  text-decoration: none;
+}
+
+.oc-footer__link i {
+  flex-shrink: 0;
+  margin-top: 0.15em;
+  font-size: 0.8rem;
+  color: var(--accent-color);
+  opacity: 0.7;
+}
+
+/* ─── Боковые панели 2/3 ─── */
+.oc-side-panel {
+  position: fixed;
+  top: 0;
+  height: 100%;
+  width: var(--oc-panel-w);
+  z-index: 1044;
+  background: var(--surface-color, #ffffff);
+  box-shadow: -6px 0 24px rgba(0, 0, 0, 0.14);
+  display: flex;
+  flex-direction: column;
+  transform: translateX(100%);
+  opacity: 0;
+  visibility: hidden;
+  transition: transform 0.35s cubic-bezier(0.34, 1.15, 0.64, 1),
+              opacity 0.28s ease,
+              visibility 0s linear 0.35s;
+}
+
+/* Десктоп (≥ 960px): все три панели рядом */
+#ocPanel2 { right: var(--oc-panel-w); }
+#ocPanel3 { right: calc(var(--oc-panel-w) * 2); }
+
+.oc-side-panel.is-open {
+  transform: translateX(0);
+  opacity: 1;
+  visibility: visible;
+  transition: transform 0.35s cubic-bezier(0.34, 1.15, 0.64, 1),
+              opacity 0.28s ease,
+              visibility 0s linear 0s;
+}
+
+/* Панель 3 открывается с небольшой задержкой — каскадный эффект */
+#ocPanel3.is-open {
+  transition-delay: 0.05s, 0.05s, 0s;
+}
+
+/* Планшет (640 – 959px): панель 3 наезжает на панель 2 */
+@media (max-width: 959px) {
+  #ocPanel3 {
+    right: var(--oc-panel-w);
+    z-index: 1046;
+  }
+}
+
+/* Мобильные (< 640px): панели 2 и 3 перекрывают панель 1 */
+@media (max-width: 639px) {
+  #ocPanel2 {
+    right: 0;
+    z-index: 1046;
+  }
+  #ocPanel3 {
+    right: 0;
+    z-index: 1047;
+  }
+}
+
+/* Уважаем prefers-reduced-motion — убираем анимацию для чувствительных пользователей */
+@media (prefers-reduced-motion: reduce) {
+  .oc-side-panel,
+  .oc-side-panel.is-open,
+  #ocPanel3.is-open {
+    transition: visibility 0s linear 0s;
+    transition-delay: 0s;
+  }
+}
+
+/* Шапка боковой панели — с цветным индикатором уровня */
+.oc-side-panel__header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0 0.75rem 0 1rem;
+  height: var(--oc-header-h, 78px);
+  flex-shrink: 0;
+  overflow: hidden;
+  border-bottom: 3px solid var(--accent-color);
+  background: color-mix(in srgb, var(--accent-color), var(--surface-color, #fff) 92%);
+}
+
+#ocPanel2 .oc-side-panel__header {
+  border-bottom-color: var(--accent-color);
+}
+
+#ocPanel3 .oc-side-panel__header {
+  border-bottom-color: color-mix(in srgb, var(--accent-color), #000 20%);
+  background: color-mix(in srgb, var(--accent-color), var(--surface-color, #fff) 92%);
+}
+
+.oc-side-panel__title {
+  flex: 1;
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--heading-color);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  line-height: 1.3;
+}
+
+/* Кнопка × — закрыть панель */
+.oc-close-btn {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  background: none;
+  border: none;
+  border-radius: 8px;
+  color: color-mix(in srgb, var(--nav-color), transparent 30%);
+  font-size: 0.9rem;
+  cursor: pointer;
+  padding: 0;
+  transition: color 0.2s, background 0.2s;
+}
+
+.oc-close-btn:hover {
+  color: var(--accent-color);
+  background: color-mix(in srgb, var(--accent-color), transparent 88%);
+}
+
+/* Область прокрутки внутри боковых панелей */
+.oc-side-panel .oc-panel__scroll {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+  scrollbar-width: thin;
+  scrollbar-color: color-mix(in srgb, var(--accent-color), transparent 65%) transparent;
+}
+
+.oc-side-panel .oc-panel__scroll::-webkit-scrollbar {
+  width: 3px;
+}
+
+.oc-side-panel .oc-panel__scroll::-webkit-scrollbar-thumb {
+  background: color-mix(in srgb, var(--accent-color), transparent 65%);
+  border-radius: 2px;
+}
+
+.oc-sub-list {
+  margin: 0;
+  padding: 0.25rem 0;
+}
+
+/* Пункты 2-го и 3-го уровней */
+.oc-sub-item {
+  border-bottom: 1px solid color-mix(in srgb, var(--default-color), transparent 93%);
+}
+
+.oc-sub-item:last-child {
+  border-bottom: none;
+}
+
+.oc-sub-item .oc-split-row__link {
+  font-size: 0.86rem;
+  font-weight: 600;
+  text-transform: none;
+  letter-spacing: 0;
+  padding: 0.75rem 0.5rem 0.75rem 1rem;
+  color: var(--nav-color);
+}
+
+.oc-sub-item .oc-split-row__link--leaf {
+  font-size: 0.86rem;
+  font-weight: 500;
+  text-transform: none;
+  letter-spacing: 0;
+  padding: 0.75rem 1rem;
+  color: var(--nav-color);
+  border-bottom: none;
+  border-left: 2px solid transparent;
+}
+
+.oc-sub-item .oc-split-row__link--leaf:hover {
+  border-left-color: color-mix(in srgb, var(--accent-color), transparent 55%);
+  background: color-mix(in srgb, var(--accent-color), transparent 95%);
+  color: var(--accent-color);
+}
+
+.oc-sub-item .oc-split-row {
+  border-left: 2px solid transparent;
+  border-bottom: none;
+}
+
+.oc-sub-item .oc-split-row:hover {
+  border-left-color: color-mix(in srgb, var(--accent-color), transparent 55%);
+}
+
+.oc-sub-item.is-active > .oc-split-row__link,
+.oc-sub-item.is-active > .oc-split-row .oc-split-row__link {
+  color: var(--accent-color);
+}
+
+.oc-sub-item.is-active > .oc-split-row__link--leaf {
+  background: color-mix(in srgb, var(--accent-color), transparent 90%);
+  border-left-color: var(--accent-color);
+  color: var(--accent-color);
+}
+
+.oc-sub-item.is-active > .oc-split-row {
+  background: color-mix(in srgb, var(--accent-color), transparent 90%);
+  border-left-color: var(--accent-color);
+}
+
+/* ─── Порядок элементов шапки на планшетах ─── */
+@media (max-width: 1199px) {
+  .main-nav             { order: 2; }
+  .header-icons         { order: 3; }
+  .offcanvas-toggle-btn { order: 4; }
+}
+
+/* ─── Кнопки-иконки в шапке ─── */
+.header-icon-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  background: none;
+  border: none;
+  border-radius: 6px;
+  color: var(--nav-color);
+  font-size: 1.1rem;
+  cursor: pointer;
+  padding: 0;
+  transition: color 0.2s, background 0.2s;
+  text-decoration: none;
+}
+
+.header-icon-btn:hover {
+  color: var(--accent-color);
+  background: color-mix(in srgb, var(--accent-color), transparent 92%);
+  text-decoration: none;
+}
+
+/* ─── Аббревиатура логотипа ─── */
+.header-logo-abbr {
+  font-size: 1.05rem;
+  font-weight: 800;
+  font-family: var(--heading-font);
+  color: var(--accent-color);
+  letter-spacing: 0.04em;
+  margin-left: 6px;
+  line-height: 1;
+  white-space: nowrap;
+  flex-shrink: 0;
+  transition: opacity 0.25s ease;
+}
+
+.header.header--compact .header-logo-abbr {
   font-size: 0.9rem;
 }
 
-.offcanvas-body .btn-link[aria-expanded="true"] i {
-  transform: rotate(180deg);
+/* ─── Инлайн-поиск в шапке ─── */
+.header-search-wrap {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  padding: 0 1rem;
+  background: var(--background-color);
+  z-index: 10;
+  opacity: 0;
+  pointer-events: none;
+  transform: scaleX(0.97);
+  transform-origin: right center;
+  transition: opacity 0.2s ease, transform 0.2s ease;
 }
 
-.offcanvas-body a {
-  color: var(--nav-color);
-  text-decoration: none;
+.header-search-wrap.is-open {
+  opacity: 1;
+  pointer-events: auto;
+  transform: scaleX(1);
 }
 
-.offcanvas-body a:hover {
+.header-search-form {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+  gap: 0.5rem;
+  background: color-mix(in srgb, var(--default-color), transparent 94%);
+  border-radius: 999px;
+  padding: 0 0.5rem 0 1rem;
+  border: 1.5px solid color-mix(in srgb, var(--accent-color), transparent 65%);
+  transition: border-color 0.2s;
+}
+
+.header-search-form:focus-within {
+  border-color: var(--accent-color);
+}
+
+.header-search-input {
+  flex: 1;
+  border: none;
+  background: transparent;
+  outline: none;
+  font-size: 0.95rem;
+  color: var(--default-color);
+  padding: 0.5rem 0;
+  font-family: var(--default-font);
+}
+
+.header-search-input::placeholder {
+  color: color-mix(in srgb, var(--default-color), transparent 55%);
+}
+
+.header-search-submit,
+.header-search-close {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border: none;
+  background: none;
+  color: color-mix(in srgb, var(--nav-color), transparent 30%);
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 1rem;
+  padding: 0;
+  flex-shrink: 0;
+  transition: color 0.2s, background 0.2s;
+}
+
+.header-search-submit:hover {
   color: var(--accent-color);
+  background: color-mix(in srgb, var(--accent-color), transparent 88%);
+}
+
+.header-search-close:hover {
+  color: #c00;
+  background: color-mix(in srgb, #c00, transparent 90%);
+}
+
+/* ─── Поиск в offcanvas ─── */
+.oc-search-form {
+  width: 100%;
+}
+
+.oc-search-inner {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: color-mix(in srgb, var(--default-color), transparent 94%);
+  border-radius: 999px;
+  padding: 0 0.75rem;
+  border: 1.5px solid color-mix(in srgb, var(--default-color), transparent 85%);
+  transition: border-color 0.2s;
+}
+
+.oc-search-inner:focus-within {
+  border-color: var(--accent-color);
+}
+
+.oc-search-icon {
+  color: color-mix(in srgb, var(--default-color), transparent 50%);
+  font-size: 0.85rem;
+  flex-shrink: 0;
+}
+
+.oc-search-input {
+  flex: 1;
+  border: none;
+  background: transparent;
+  outline: none;
+  font-size: 0.88rem;
+  color: var(--default-color);
+  padding: 0.55rem 0;
+  font-family: var(--default-font);
+}
+
+.oc-search-input::placeholder {
+  color: color-mix(in srgb, var(--default-color), transparent 55%);
+}
+
+/* ─── Кнопка «Позвонить» в подвале offcanvas ─── */
+.oc-footer__call-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  width: 100%;
+  padding: 0.6rem 0.9rem;
+  border-radius: 999px;
+  background: var(--accent-color);
+  color: var(--contrast-color);
+  font-size: 0.88rem;
+  font-weight: 700;
+  text-decoration: none;
+  transition: background 0.2s, transform 0.15s;
+  justify-content: center;
+}
+
+.oc-footer__call-btn:hover {
+  background: color-mix(in srgb, var(--accent-color), #000 12%);
+  color: var(--contrast-color);
+  text-decoration: none;
+  transform: translateY(-1px);
+}
+
+.oc-footer__call-btn i {
+  font-size: 0.9rem;
+}
+
+/* ─── Заголовок панелей 2/3: хлебные крошки + счётчик + ссылка ─── */
+.oc-panel-header-main {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.oc-panel-breadcrumb-row {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  flex-wrap: nowrap;
+  overflow: hidden;
+}
+
+.oc-panel-breadcrumb {
+  font-size: 0.65rem;
+  color: color-mix(in srgb, var(--default-color), transparent 50%);
+  font-weight: 500;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.oc-panel-count {
+  font-size: 0.6rem;
+  font-weight: 700;
+  padding: 0.1em 0.5em;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--accent-color), transparent 80%);
+  color: color-mix(in srgb, var(--accent-color), #000 20%);
+  white-space: nowrap;
+}
+
+.oc-panel-open-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  margin: 0.6rem 1rem 0.2rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--accent-color);
+  text-decoration: none;
+  opacity: 0.85;
+  transition: opacity 0.2s, gap 0.2s;
+}
+
+.oc-panel-open-link:hover {
+  opacity: 1;
+  gap: 0.6rem;
+  text-decoration: none;
+  color: var(--accent-color);
+}
+
+.oc-panel-open-link i {
+  font-size: 0.7rem;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   ПАНЕЛЬ «ВЕРСИЯ ДЛЯ СЛАБОВИДЯЩИХ»
+   ═══════════════════════════════════════════════════════════ */
+
+/* Обёртка — нужна для абсолютного позиционирования панели */
+.a11y-wrap {
+  position: relative;
+}
+
+/* Базовые стили панели */
+.a11y-panel {
+  z-index: 1060;
+  min-width: 220px;
+  background: var(--surface-color, #fff);
+  border: 1.5px solid color-mix(in srgb, var(--accent-color), transparent 60%);
+  border-radius: 12px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.14);
+  padding: 1rem;
+  animation: a11yFadeIn 0.18s ease;
+}
+
+/* Встроенная панель (внутри .a11y-wrap) */
+.a11y-wrap .a11y-panel {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+}
+
+/* Фиксированная панель (на уровне body, выше offcanvas) */
+.a11y-panel--fixed {
+  position: fixed;
+  top: 70px;
+  right: 16px;
+  z-index: 1100;
+}
+
+@keyframes a11yFadeIn {
+  from { opacity: 0; transform: translateY(-6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.a11y-panel[hidden] {
+  display: none;
+}
+
+.a11y-panel__title {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--heading-color);
+  margin: 0 0 0.75rem 0;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid color-mix(in srgb, var(--accent-color), transparent 65%);
+}
+
+.a11y-options {
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+  margin-bottom: 0.85rem;
+}
+
+.a11y-option {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  cursor: pointer;
+  font-size: 0.85rem;
+  color: var(--default-color);
+  padding: 0.3rem 0.4rem;
+  border-radius: 6px;
+  transition: background 0.15s;
+}
+
+.a11y-option:hover {
+  background: color-mix(in srgb, var(--accent-color), transparent 88%);
+}
+
+.a11y-option input[type="checkbox"] {
+  width: 16px;
+  height: 16px;
+  accent-color: var(--accent-color);
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.a11y-panel__footer {
+  display: flex;
+  gap: 0.4rem;
+}
+
+.a11y-reset,
+.a11y-close {
+  flex: 1;
+  font-size: 0.75rem;
+  padding: 0.35rem 0.5rem;
+  border-radius: 6px;
+  border: 1.5px solid color-mix(in srgb, var(--default-color), transparent 75%);
+  background: transparent;
+  color: var(--default-color);
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s;
+}
+
+.a11y-reset:hover,
+.a11y-close:hover {
+  background: color-mix(in srgb, var(--accent-color), transparent 88%);
+  border-color: var(--accent-color);
+}
+
+/* Кнопка-глаз подсвечивается когда режим активен */
+body.a11y-high-contrast #a11yToggle,
+body.a11y-large-font    #a11yToggle,
+body.a11y-no-animations #a11yToggle {
+  color: var(--accent-color);
+}
+
+/* Мобильные: панель выравнивается по правому краю экрана */
+@media (max-width: 480px) {
+  .a11y-panel {
+    right: -0.5rem;
+    min-width: 200px;
+  }
+}
+
+/* ═══ РЕЖИМ: КРУПНЫЙ ШРИФТ ═══ */
+body.a11y-large-font {
+  font-size: 1.15rem;
+}
+
+body.a11y-large-font h1 { font-size: 2.2rem; }
+body.a11y-large-font h2 { font-size: 1.9rem; }
+body.a11y-large-font h3 { font-size: 1.6rem; }
+body.a11y-large-font h4 { font-size: 1.35rem; }
+
+body.a11y-large-font .main-nav__link,
+body.a11y-large-font .oc-main-item__link,
+body.a11y-large-font .oc-sub-item a {
+  font-size: 1.05rem;
+}
+
+body.a11y-large-font .header-icon-btn {
+  font-size: 1.3rem;
+  width: 42px;
+  height: 42px;
+}
+
+/* ═══ РЕЖИМ: ВЫСОКИЙ КОНТРАСТ ═══ */
+body.a11y-high-contrast,
+html.a11y-high-contrast body {
+  background-color: #000 !important;
+  color: #fff !important;
+}
+
+body.a11y-high-contrast .header {
+  background-color: #111 !important;
+  border-bottom: 2px solid #ff0 !important;
+}
+
+body.a11y-high-contrast .main-nav__link,
+body.a11y-high-contrast .header-icon-btn,
+body.a11y-high-contrast a {
+  color: #ff0 !important;
+}
+
+body.a11y-high-contrast .main-nav__link:hover,
+body.a11y-high-contrast .header-icon-btn:hover,
+body.a11y-high-contrast a:hover {
+  color: #fff !important;
+  background: #333 !important;
+}
+
+body.a11y-high-contrast .a11y-panel {
+  background: #111 !important;
+  border-color: #ff0 !important;
+  color: #fff !important;
+}
+
+body.a11y-high-contrast .a11y-option,
+body.a11y-high-contrast .a11y-panel__title {
+  color: #fff !important;
+}
+
+body.a11y-high-contrast .a11y-reset,
+body.a11y-high-contrast .a11y-close {
+  color: #ff0 !important;
+  border-color: #ff0 !important;
+  background: #222 !important;
+}
+
+body.a11y-high-contrast .card,
+body.a11y-high-contrast .news-card,
+body.a11y-high-contrast .content-section {
+  background: #111 !important;
+  border-color: #555 !important;
+  color: #fff !important;
+}
+
+body.a11y-high-contrast .oc-header,
+body.a11y-high-contrast .oc-side-panel__header,
+body.a11y-high-contrast #offcanvasRubrics {
+  background: #111 !important;
+  color: #fff !important;
+  border-color: #ff0 !important;
+}
+
+body.a11y-high-contrast .oc-main-item__link,
+body.a11y-high-contrast .oc-sub-item a,
+body.a11y-high-contrast .oc-panel-open-link {
+  color: #ff0 !important;
+}
+
+/* ═══ РЕЖИМ: БЕЗ АНИМАЦИЙ ═══ */
+body.a11y-no-animations *,
+body.a11y-no-animations *::before,
+body.a11y-no-animations *::after {
+  transition: none !important;
+  animation: none !important;
+}
+
+
+/* ╔═══════════════════════════════════════════════════════════╗
+   ║                    ТЁМНАЯ ТЕМА                            ║
+   ╚═══════════════════════════════════════════════════════════╝ */
+
+/* ── Переопределение глобальных CSS-переменных ── */
+body.dark-theme {
+  --background-color:           #111816;
+  --default-color:              #c5d5c8;
+  --heading-color:              #e4efe6;
+  --surface-color:              #1a2720;
+  --contrast-color:             #ffffff;
+  --nav-color:                  #c5d5c8;
+  --nav-hover-color:            #5fcf80;
+  --nav-mobile-background-color:#1a2720;
+  --nav-dropdown-background-color: #1a2720;
+  --nav-dropdown-color:         #c5d5c8;
+  --nav-dropdown-hover-color:   #5fcf80;
+}
+
+/* ── Основа ── */
+html.dark-theme,
+body.dark-theme {
+  color-scheme: dark;
+  background-color: #111816;
+  color: #c5d5c8;
+}
+
+/* ── Шапка ── */
+body.dark-theme .header {
+  background-color: #0d1712;
+  border-bottom: 1px solid rgba(95, 207, 128, 0.15);
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.4);
+}
+
+body.dark-theme .header.header--compact {
+  background-color: rgba(13, 23, 18, 0.97);
+}
+
+body.dark-theme .header-icon-btn {
+  color: #b0c8b5;
+}
+
+body.dark-theme .header-icon-btn:hover {
+  color: #5fcf80;
+  background: rgba(95, 207, 128, 0.12);
+}
+
+body.dark-theme .main-nav__link {
+  color: #c5d5c8;
+}
+
+body.dark-theme .main-nav__link:hover,
+body.dark-theme .main-nav__link.active {
+  color: #5fcf80;
+}
+
+body.dark-theme .main-nav__icon {
+  background: rgba(95, 207, 128, 0.1);
+}
+
+body.dark-theme .header-phone-link {
+  color: #b0c8b5;
+}
+
+body.dark-theme .header-search-input {
+  background: #1a2720;
+  color: #e4efe6;
+  border-color: rgba(95, 207, 128, 0.3);
+}
+
+body.dark-theme .header-search-wrap {
+  background: #0d1712;
+  border-bottom-color: rgba(95, 207, 128, 0.2);
+}
+
+/* ── Кнопка тёмной темы — подсветка когда активна ── */
+body.dark-theme #darkThemeToggle {
+  color: #f0d060;
+}
+
+/* ── Offcanvas ── */
+body.dark-theme .offcanvas {
+  --bs-offcanvas-bg: #131f18;
+  --bs-offcanvas-color: #c5d5c8;
+  background-color: #131f18;
+  color: #c5d5c8;
+}
+
+body.dark-theme .oc-header {
+  background: #0d1712;
+  border-bottom-color: rgba(95, 207, 128, 0.25);
+}
+
+body.dark-theme .oc-header__title {
+  color: #e4efe6;
+}
+
+body.dark-theme .oc-dismiss-btn {
+  color: #8ab094;
+}
+
+body.dark-theme .oc-dismiss-btn:hover {
+  color: #5fcf80;
+  background: rgba(95, 207, 128, 0.1);
+}
+
+body.dark-theme .oc-panel__scroll::-webkit-scrollbar-thumb {
+  background-color: rgba(95, 207, 128, 0.3);
+}
+
+body.dark-theme .offcanvas-section-label span {
+  color: #6a8f72;
+  background: #0d1712;
+}
+
+body.dark-theme .offcanvas-section-label::after {
+  border-color: rgba(95, 207, 128, 0.15);
+}
+
+body.dark-theme .offcanvas-quicklinks__link {
+  color: #c5d5c8;
+}
+
+body.dark-theme .offcanvas-quicklinks__link:hover,
+body.dark-theme .offcanvas-quicklinks__link.active {
+  color: #5fcf80;
+  background: rgba(95, 207, 128, 0.08);
+}
+
+body.dark-theme .offcanvas-actions .header-icon-btn {
+  color: #b0c8b5;
+}
+
+/* ── Боковые панели offcanvas (2 и 3 уровень) ── */
+body.dark-theme .oc-side-panel {
+  background: #131f18;
+  border-left-color: rgba(95, 207, 128, 0.15);
+}
+
+body.dark-theme .oc-side-panel__header {
+  background: #0d1712;
+  border-bottom-color: rgba(95, 207, 128, 0.2);
+}
+
+body.dark-theme .oc-side-panel__title,
+body.dark-theme .oc-panel-breadcrumb {
+  color: #e4efe6;
+}
+
+body.dark-theme .oc-panel-count {
+  background: rgba(95, 207, 128, 0.15);
+  color: #5fcf80;
+}
+
+body.dark-theme .oc-close-btn {
+  color: #8ab094;
+}
+
+body.dark-theme .oc-close-btn:hover {
+  color: #5fcf80;
+}
+
+body.dark-theme .oc-split-row {
+  border-bottom-color: rgba(95, 207, 128, 0.08);
+}
+
+body.dark-theme .oc-split-row__link {
+  color: #c5d5c8;
+}
+
+body.dark-theme .oc-split-row__link:hover,
+body.dark-theme .oc-split-row__link.active {
+  color: #5fcf80;
+  background: rgba(95, 207, 128, 0.07);
+}
+
+body.dark-theme .oc-split-row__toggle {
+  color: #6a8f72;
+  border-left-color: rgba(95, 207, 128, 0.12);
+}
+
+body.dark-theme .oc-split-row__toggle:hover {
+  color: #5fcf80;
+  background: rgba(95, 207, 128, 0.08);
+}
+
+body.dark-theme .oc-panel-open-link {
+  color: #5fcf80;
+  border-bottom-color: rgba(95, 207, 128, 0.12);
+}
+
+body.dark-theme .oc-sub-list li {
+  border-bottom-color: rgba(95, 207, 128, 0.08);
+}
+
+body.dark-theme .oc-sub-list a {
+  color: #c5d5c8;
+}
+
+body.dark-theme .oc-sub-list a:hover {
+  color: #5fcf80;
+  background: rgba(95, 207, 128, 0.07);
+}
+
+body.dark-theme .oc-footer {
+  border-top-color: rgba(95, 207, 128, 0.12);
+}
+
+body.dark-theme .oc-footer__link,
+body.dark-theme .oc-footer__call-btn {
+  color: #8ab094;
+}
+
+body.dark-theme .oc-footer__call-btn:hover {
+  color: #5fcf80;
+}
+
+/* ── Поиск ── */
+body.dark-theme .oc-search-input {
+  background: #1a2720;
+  color: #e4efe6;
+  border-color: rgba(95, 207, 128, 0.2);
+}
+
+body.dark-theme .oc-search-input::placeholder {
+  color: #6a8f72;
+}
+
+body.dark-theme .oc-search-icon {
+  color: #6a8f72;
+}
+
+/* ── Баннер разработки ── */
+body.dark-theme .dev-banner {
+  background: #1a2e20;
+  border-bottom-color: rgba(95, 207, 128, 0.2);
+}
+
+body.dark-theme .dev-banner-text {
+  color: #a0bfa8;
+}
+
+/* ── Контент, карточки, секции ── */
+body.dark-theme .section-title h2 {
+  color: #e4efe6;
+}
+
+body.dark-theme .card,
+body.dark-theme .news-card,
+body.dark-theme .post-card {
+  background: #1a2720;
+  border-color: rgba(95, 207, 128, 0.12);
+  color: #c5d5c8;
+}
+
+body.dark-theme .card-title,
+body.dark-theme .news-card__title {
+  color: #e4efe6;
+}
+
+body.dark-theme .breadcrumb-item,
+body.dark-theme .breadcrumb-item a {
+  color: #8ab094;
+}
+
+body.dark-theme .breadcrumb-item.active {
+  color: #c5d5c8;
+}
+
+body.dark-theme .breadcrumb-item + .breadcrumb-item::before {
+  color: #6a8f72;
+}
+
+/* ── Панель доступности в тёмной теме ── */
+body.dark-theme .a11y-panel {
+  background: #1a2720 !important;
+  border-color: rgba(95, 207, 128, 0.3) !important;
+  color: #c5d5c8 !important;
+}
+
+body.dark-theme .a11y-panel__title {
+  color: #e4efe6 !important;
+  border-bottom-color: rgba(95, 207, 128, 0.2) !important;
+}
+
+body.dark-theme .a11y-option {
+  color: #c5d5c8 !important;
+}
+
+body.dark-theme .a11y-option:hover {
+  background: rgba(95, 207, 128, 0.08) !important;
+}
+
+body.dark-theme .a11y-reset,
+body.dark-theme .a11y-close {
+  color: #c5d5c8 !important;
+  border-color: rgba(95, 207, 128, 0.25) !important;
+  background: transparent !important;
+}
+
+body.dark-theme .a11y-reset:hover,
+body.dark-theme .a11y-close:hover {
+  background: rgba(95, 207, 128, 0.1) !important;
+  border-color: #5fcf80 !important;
+  color: #5fcf80 !important;
+}
+
+/* ── Футер ── */
+body.dark-theme .footer {
+  background-color: #0a1410;
+  border-top: 1px solid rgba(95, 207, 128, 0.12);
+}
+
+body.dark-theme .footer h4,
+body.dark-theme .footer .footer-about .logo span {
+  color: #e4efe6;
+}
+
+body.dark-theme .footer p,
+body.dark-theme .footer .footer-links ul a,
+body.dark-theme .footer .footer-contact p {
+  color: #8ab094;
+}
+
+body.dark-theme .footer .footer-links ul a:hover,
+body.dark-theme .footer .footer-links ul i {
+  color: #5fcf80;
+}
+
+body.dark-theme .footer .social-links a {
+  border-color: rgba(95, 207, 128, 0.2);
+  color: #8ab094;
+}
+
+body.dark-theme .footer .social-links a:hover {
+  color: #5fcf80;
+  border-color: #5fcf80;
+  background: rgba(95, 207, 128, 0.08);
+}
+
+body.dark-theme .footer .copyright {
+  background: #080f0b;
+  border-top-color: rgba(95, 207, 128, 0.1);
+}
+
+/* ── Формы и инпуты ── */
+body.dark-theme input,
+body.dark-theme textarea,
+body.dark-theme select {
+  background-color: #1a2720;
+  color: #c5d5c8;
+  border-color: rgba(95, 207, 128, 0.2);
+}
+
+body.dark-theme input::placeholder,
+body.dark-theme textarea::placeholder {
+  color: #6a8f72;
+}
+
+body.dark-theme input:focus,
+body.dark-theme textarea:focus,
+body.dark-theme select:focus {
+  border-color: #5fcf80;
+  box-shadow: 0 0 0 3px rgba(95, 207, 128, 0.15);
+  background-color: #1e2d24;
+}
+
+/* ── Bootstrap компоненты ── */
+body.dark-theme .modal-content {
+  background-color: #1a2720;
+  color: #c5d5c8;
+  border-color: rgba(95, 207, 128, 0.2);
+}
+
+body.dark-theme .modal-header {
+  border-bottom-color: rgba(95, 207, 128, 0.15);
+}
+
+body.dark-theme .btn-close {
+  filter: invert(1) brightness(0.7);
+}
+
+body.dark-theme .dropdown-menu {
+  background-color: #1a2720;
+  border-color: rgba(95, 207, 128, 0.2);
+}
+
+body.dark-theme .dropdown-item {
+  color: #c5d5c8;
+}
+
+body.dark-theme .dropdown-item:hover {
+  background-color: rgba(95, 207, 128, 0.1);
+  color: #5fcf80;
+}
+
+/* ── Кнопка "Наверх" ── */
+body.dark-theme .scroll-top {
+  background-color: rgba(95, 207, 128, 0.8);
+}
+
+/* ── Разделитель ── */
+body.dark-theme hr {
+  border-color: rgba(95, 207, 128, 0.12);
+}
+
+/* ── Плавный переход ── */
+body,
+body.dark-theme,
+body .header,
+body.dark-theme .header {
+  transition: background-color 0.3s ease, color 0.2s ease;
 }

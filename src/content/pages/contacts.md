@@ -1,15 +1,12 @@
 ---
-layout: base.njk
+layout: layouts/page.njk
 title: Контакты
 permalink: /contacts/
 eleventyNavigation:
   key: contacts
   parent: main
 rubric: "0"
----
-# Контакты
-
-## Адрес
+---## Адрес
 347900, Ростовская область, г. Сальск, ул. Ленина, 1
 
 ## Режим работы

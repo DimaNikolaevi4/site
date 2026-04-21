@@ -1,13 +1,9 @@
 ---
 title: Абитуриентам
-layout: base.njk
+layout: layouts/page.njk
 category: abiturientam
 description: 'Информация для абитуриентов: правила приема, специальности, день открытых дверей'
----
-
-# Абитуриентам
-
-<div class="category-description">
+---<div class="category-description">
   <p>Информация для поступающих в Сальский индустриальный техникум</p>
 </div>
 

@@ -6,37 +6,24 @@ pagination:
   alias: post
 ---
 
-<!-- Хлебные крошки -->
-<nav class="breadcrumbs" aria-label="Хлебные крошки">
+<div class="page-hero">
   <div class="container">
-    <ol class="breadcrumbs__list">
-      <li class="breadcrumbs__item">
-        <a href="/" class="breadcrumbs__link">Главная</a>
-      </li>
-      <li class="breadcrumbs__item">
-        <a href="/news/" class="breadcrumbs__link">Новости</a>
-      </li>
-      <li class="breadcrumbs__item breadcrumbs__item--active" aria-current="page">
-        {{ post.data.title }}
-      </li>
-    </ol>
-  </div>
-</nav>
-
-<!-- Заголовок новости -->
-<section class="section section--header">
-  <div class="container">
-    <h1 class="page-title">{{ post.data.title }}</h1>
-    <div class="material-meta">
-      <time class="material-meta__date" datetime="{{ post.date }}">
-        {{ post.date | dateRu }}
-      </time>
+    <nav class="page-hero__breadcrumbs" aria-label="Хлебные крошки">
+      <ol>
+        <li><a href="/">Главная</a></li>
+        <li><a href="/news/">Новости</a></li>
+        <li>{{ post.data.title }}</li>
+      </ol>
+    </nav>
+    <h1 class="page-hero__title">{{ post.data.title }}</h1>
+    <div class="page-hero__meta">
+      <time datetime="{{ post.date }}">{{ post.date | dateRu }}</time>
       {% if post.data.category %}
-      <span class="material-meta__category">{{ post.data.category }}</span>
+      <span>{{ post.data.category }}</span>
       {% endif %}
     </div>
   </div>
-</section>
+</div>
 
 <!-- Основной контент -->
 <div class="container layout">
