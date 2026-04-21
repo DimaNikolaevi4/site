@@ -10,36 +10,10 @@
 {% set _popularTitle = popularTitle if popularTitle else "Популярные разделы" %}
 {% set _popularSubtitle = popularSubtitle if popularSubtitle else "Важная информация для посетителей сайта" %}
 
-{% set _defaultLinks = [
-  {
-    title: "Абитуриентам",
-    subtitle: "Приём документов",
-    description: "Информация о правилах приёма, необходимых документах и сроках подачи заявлений.",
-    url: "/abiturientam/",
-    icon: "bi-mortarboard"
-  },
-  {
-    title: "Студентам",
-    subtitle: "Учебный процесс",
-    description: "Расписание занятий, информация о сессиях, стипендиях и студенческой жизни техникума.",
-    url: "/studentam-i-roditeljam/",
-    icon: "bi-journal-text"
-  },
-  {
-    title: "Расписание",
-    subtitle: "График занятий",
-    description: "Актуальное расписание занятий для всех групп и курсов на текущий семестр.",
-    url: "/studentam-i-roditeljam/raspisanie/",
-    icon: "bi-calendar3"
-  },
-  {
-    title: "Контакты",
-    subtitle: "Свяжитесь с нами",
-    description: "Адреса, телефоны, электронная почта и способы связи с администрацией техникума.",
-    url: "/contacts/",
-    icon: "bi-telephone"
-  }
-] %}
+{# Заглушка — блок популярных/важных ссылок физически присутствует на всех
+   страницах, но по умолчанию пуст. Наполняется позже через popularLinks
+   или редактируя массив ниже. #}
+{% set _defaultLinks = [] %}
 
 {% set _links = popularLinks if popularLinks else _defaultLinks %}
 

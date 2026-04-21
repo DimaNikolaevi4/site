@@ -8,40 +8,10 @@
                      Если не передан — используется набор по умолчанию
 #}
 
-{% set _defaultBanners = [
-  {
-    title: "Приёмная кампания",
-    text: "Подайте документы на поступление онлайн или лично. Приём заявлений открыт.",
-    url: "/abiturientam/",
-    linkText: "Подробнее",
-    icon: "bi-mortarboard-fill",
-    modifier: "banner--primary"
-  },
-  {
-    title: "День открытых дверей",
-    text: "Познакомьтесь с техникумом лично. Следите за расписанием мероприятий.",
-    url: "/abiturientam/den-otkrytyh-dverej/",
-    linkText: "Узнать дату",
-    icon: "bi-door-open-fill",
-    modifier: "banner--accent"
-  },
-  {
-    title: "Расписание занятий",
-    text: "Актуальное расписание для всех групп на текущий семестр.",
-    url: "/studentam-i-roditeljam/raspisanie/",
-    linkText: "Открыть расписание",
-    icon: "bi-calendar3",
-    modifier: "banner--info"
-  },
-  {
-    title: "Горячая линия",
-    text: "Вопросы по учёбе, документам, приёму? Звоните или пишите нам.",
-    url: "/contacts/",
-    linkText: "Контакты",
-    icon: "bi-telephone-fill",
-    modifier: "banner--success"
-  }
-] %}
+{# Заглушка — единые баннеры (НЕ навигация), одинаковые на всём сайте.
+   Сейчас пусто, наполняется позже через переменную sidebarBanners
+   или редактируя массив ниже. #}
+{% set _defaultBanners = [] %}
 
 {% set _banners = sidebarBanners if sidebarBanners else _defaultBanners %}
 
