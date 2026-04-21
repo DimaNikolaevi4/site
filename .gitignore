@@ -1,66 +1,59 @@
-```markdown
-# Compiled and build artifacts
-*.pyc
-__pycache__/
-*.o
-*.obj
-*.class
-*.exe
-*.dll
-*.so
-*.a
-*.out
-
-# Dependencies
-.venv/
-venv/
-node_modules/
-dist/
-build/
-target/
-.gradle/
-.mypy_cache/
-.pytest_cache/
-.julia/
-zig*/
-
-# Logs and temp files
-*.log
-*.tmp
-*.swp
-*.swo
+# Documentation
+CHECKLIST.md.bak
+*.backup
 *.bak
-*.~*
+*.tmp
+*.temp
+
+# Logs
+*.log
 
 # Environment
 .env
 .env.local
-.env.*
+*.env.*
 
-# Editors
-.vscode/
-.idea/
+# Dependencies
+node_modules/
+__pycache__/
+*.egg-info/
+.eggs/
+build/
+dist/
+*.pyc
+*.pyo
+*.pyd
+*.so
+*.dylib
+*.dll
+*.exe
+*.out
+*.class
+*.o
+*.obj
+*.a
+*.lib
 *.swp
 *.swo
-
-# System
 .DS_Store
 Thumbs.db
-
-# Coverage
+.vscode/
+.idea/
+.target/
+target/
+.gradle/
+.mypy_cache/
+.pytest_cache/
 coverage/
 htmlcov/
 .coverage
-
-# Compressed files
+*.tar*
 *.zip
 *.gz
-*.tar
-*.tgz
+*.rar
+*.7z
 *.bz2
 *.xz
-*.7z
-*.rar
 *.zst
 *.lz4
 *.lzh
@@ -71,8 +64,7 @@ htmlcov/
 *.Z
 *.lz
 *.lzo
-*.tar.gz
-*.tar.bz2
-*.tar.xz
-*.tar.zst
-```
+*.tar
+*.tgz
+*.txz
+*.tzst
