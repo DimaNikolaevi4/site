@@ -1,0 +1,50 @@
+{#
+  Компонент: Хлебные крошки
+  Использование (макрос):
+    {% from "components/breadcrumbs.njk" import breadcrumbs %}
+    {{ breadcrumbs({
+      url: page.url,
+      leafTitle: title,
+      items: breadcrumbsOverride
+    }) }}
+    (items — опционально: явный список вида [{text, url}])
+
+  Поведение:
+    - Если передан `items` — используется как есть.
+    - Иначе url разбирается посегментно, метки берутся из:
+        1) menu.yaml (вкл. children),
+        2) rubrics.yaml (полные пути),
+        3) статических известных страниц,
+        4) humanized slug (fallback).
+    - Если указан `leafTitle` — он используется как метка последнего элемента
+      (это обычно `title` страницы, чтобы не показывать «Slovo-direktora»).
+#}
+
+{% macro breadcrumbs(opts = {}) %}
+  {% set _items = opts.items %}
+  {% set _url = opts.url or page.url %}
+  {% set _leafTitle = opts.leafTitle %}
+
+  {% if not _items %}
+    {% set _items = _url | breadcrumbsFromUrl(_leafTitle) %}
+  {% endif %}
+
+  <nav class="breadcrumbs" aria-label="Хлебные крошки">
+    <ol class="breadcrumb-list" itemscope itemtype="https://schema.org/BreadcrumbList">
+      {% for crumb in _items %}
+        {% set _isLast = loop.last or crumb.isLast %}
+        <li class="breadcrumb-item{% if _isLast %} breadcrumb-item--current{% endif %}"
+            itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          {% if _isLast %}
+            <span itemprop="name" aria-current="page">{{ crumb.text or crumb.title }}</span>
+          {% else %}
+            <a href="{{ crumb.url }}" itemprop="item">
+              <span itemprop="name">{{ crumb.text or crumb.title }}</span>
+            </a>
+          {% endif %}
+          <meta itemprop="position" content="{{ loop.index }}" />
+        </li>
+      {% endfor %}
+    </ol>
+  </nav>
+{% endmacro %}

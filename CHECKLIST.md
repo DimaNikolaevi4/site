@@ -71,7 +71,7 @@
 | 3.2.1 components/header.njk | ✅ | Шапка: логотип, навигация, поиск, бургер-меню, мобильный вид |
 | 3.2.2 components/footer.njk | ✅ | Подвал: реквизиты, ссылки, соцсети |
 | 3.2.3 components/hero.njk | ✅ | Отдельный макрос `hero(opts)` в `src/_includes/components/hero.njk`. Параметры: title, subtitle, rubric, bgImage, bgAlt, id, modifier. Подключён на главной. Стили `.hero-rubric` добавлены в `src/styles/main.css` |
-| 3.2.4 components/breadcrumbs.njk | ❌ | Нет отдельного файла. Хлебные крошки встроены в page.njk и post.njk. Показывают технические ключи вместо меток |
+| 3.2.4 components/breadcrumbs.njk | ✅ | Макрос `breadcrumbs(opts)` в `src/_includes/components/breadcrumbs.njk`. Метки берутся из menu.yaml + rubrics.yaml + статической карты через фильтр `breadcrumbsFromUrl` (в `.eleventy.js`). Партиал `partials/breadcrumbs.njk` стал тонкой обёрткой над макросом — обратная совместимость сохранена. Schema.org BreadcrumbList. Примечание: `svedenija-page.njk` (3.1.5) использует свои захардкоженные крошки и подлежит миграции в рамках своего пункта |
 | 3.2.5 components/about.njk | ❌ | Секция 4: слово директора (главная) / заглушка (разделы) |
 | 3.2.6 components/news.njk | ❌ | Секция 5: 3 новости (главная) / список подрубрик (разделы) |
 | 3.2.7 components/popular.njk | ❌ | Секция 6: блок популярных ссылок — заглушка |

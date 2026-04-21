@@ -115,6 +115,88 @@ module.exports = function(eleventyConfig) {
     });
   });
   
+  // === Резолвер меток URL → человеческое название (для хлебных крошек) ===
+  // Источники: rubrics.yaml (allSlugs) + menu.yaml + статические страницы
+  function loadMenu() {
+    try {
+      const menuPath = path.join(__dirname, 'src/_data/menu.yaml');
+      return yaml.load(fs.readFileSync(menuPath, 'utf8'));
+    } catch (e) {
+      return { main: [] };
+    }
+  }
+  const menuData = loadMenu();
+
+  function normalizeUrl(u) {
+    if (!u) return '';
+    if (!u.startsWith('/')) u = '/' + u;
+    if (!u.endsWith('/')) u = u + '/';
+    return u;
+  }
+
+  // Карта URL → человеческая метка
+  const urlLabelMap = new Map();
+  // Из меню (вкл. children)
+  function walkMenu(items) {
+    if (!Array.isArray(items)) return;
+    items.forEach(it => {
+      if (it.url && it.url.indexOf('#') === -1) {
+        urlLabelMap.set(normalizeUrl(it.url), it.title);
+      }
+      if (it.children) walkMenu(it.children);
+    });
+  }
+  walkMenu(menuData.main || []);
+  // Из rubrics.yaml (по fullPath)
+  allSlugs.forEach(r => {
+    const url = '/' + r.fullPath + '/';
+    if (!urlLabelMap.has(url)) urlLabelMap.set(url, r.title);
+  });
+  // Статические известные страницы
+  const staticLabels = {
+    '/': 'Главная',
+    '/news/': 'Новости',
+    '/contacts/': 'Контакты',
+    '/about/': 'О техникуме',
+    '/documents/': 'Документы',
+    '/search/': 'Поиск',
+    '/thank-you/': 'Спасибо за обращение',
+    '/admin/': 'Администрирование',
+    '/professionaly-2026/': 'Профессионалы-2026',
+  };
+  Object.entries(staticLabels).forEach(([u, t]) => {
+    if (!urlLabelMap.has(u)) urlLabelMap.set(u, t);
+  });
+
+  // Преобразование slug в человекочитаемый fallback (если метка не нашлась)
+  function humanizeSlug(slug) {
+    if (!slug) return '';
+    const s = slug.replace(/[-_]+/g, ' ').trim();
+    return s.charAt(0).toUpperCase() + s.slice(1);
+  }
+
+  eleventyConfig.addFilter('breadcrumbsFromUrl', function(url, leafTitle) {
+    if (!url || url === '/') {
+      return [{ text: 'Главная', url: '/', isLast: true }];
+    }
+    const parts = url.split('/').filter(p => p && p.length > 0);
+    const crumbs = [{ text: 'Главная', url: '/', isLast: false }];
+    let acc = '';
+    parts.forEach((part, i) => {
+      acc += '/' + part;
+      const accUrl = acc + '/';
+      const isLast = i === parts.length - 1;
+      let text;
+      if (isLast && leafTitle) {
+        text = leafTitle;
+      } else {
+        text = urlLabelMap.get(accUrl) || humanizeSlug(part);
+      }
+      crumbs.push({ text: text, url: accUrl, isLast: isLast });
+    });
+    return crumbs;
+  });
+
   console.log('✅ Фильтры рубрик зарегистрированы');
   
   // === Плагины ===
