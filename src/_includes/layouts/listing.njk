@@ -1,17 +1,48 @@
-{# Макет для страниц-списков (категории, рубрики, теги) #}
-{# Секции: 2-контекст+фильтры, 3-карточки+пагинация, 4-доп.блоки, 5-сайдбар #}
+{#
+  ШАБЛОН — layouts/listing.njk
+  Листинг новостей / категорий / тегов в новой архитектуре
+
+  Секция 1: Header                — глобальная (base.njk)
+  Секция 2: Hero (опц.) + Контекст — хлебные крошки, заголовок, фильтры, баннер раздела
+  Секции 3+7: Контент 70% (карточки + пагинация) + Сайдбар 30% (единые баннеры)
+  Секция 4: Дополнительные блоки   — опц.
+  Секция 8: Footer                 — глобальная (base.njk)
+
+  Управление через frontmatter:
+    title, description
+    collectionName     — имя коллекции для перебора
+    pagination         — стандартный объект Eleventy pagination
+    hero               — { image, title, subtitle, alt, cta } (опц.) — Hero-баннер
+    rubricTitle        — название рубрики под чертой в Hero
+    showSidebar        — true/false (по умолчанию true) — единые баннеры слева
+    sidebarBanners     — массив баннеров (переопределить набор по умолчанию)
+    sectionContext     — { filters, sortOptions, banner } — фильтры/сортировка/баннер
+    additionalBlocks   — HTML после ленты карточек
+#}
 {% extends "layouts/base.njk" %}
 
 {% block content %}
-<div class="listing-layout">
+{% set _showSidebar = showSidebar if showSidebar is defined else true %}
 
-  {# Секция 2: Контекстная (хлебные крошки + заголовок + фильтры + баннер) #}
+<div class="page-layout listing-layout">
+
+  {# ═══════════════════════════════════════════════
+     СЕКЦИЯ 2: Hero (опционально) + Контекст
+  ═══════════════════════════════════════════════ #}
+
+  {# Hero-баннер — если задан hero.image #}
+  {% include "components/hero.njk" %}
+
   <section class="section-context" aria-label="Фильтры и сортировка">
     <div class="container">
-      {% include "partials/breadcrumbs.njk" %}
+
+      {# Единые хлебные крошки #}
+      {% include "components/breadcrumbs.njk" %}
 
       <div class="context-header">
+        {% if not (hero and hero.image) %}
         <h1 class="page-title">{{ title }}</h1>
+        {% endif %}
         {% if description %}
         <p class="page-description lead text-muted">{{ description }}</p>
         {% endif %}
@@ -46,200 +77,105 @@
       </div>
       {% endif %}
 
-      {% if sectionContext and sectionContext.banner %}
-      <div class="page-banner">
+      {% if (not (hero and hero.image)) and sectionContext and sectionContext.banner %}
+      <div class="page-banner mt-3">
         <img src="{{ sectionContext.banner }}" alt="{{ title }}" loading="lazy" class="img-fluid rounded">
       </div>
       {% endif %}
     </div>
   </section>
 
-  {# Секции 3+5: Лента карточек + Сайдбар #}
+  {# ═══════════════════════════════════════════════
+     СЕКЦИИ 3 + 7: Контент 70% + Сайдбар 30% (слева)
+  ═══════════════════════════════════════════════ #}
   <section class="section-main">
     <div class="container">
+      <div class="content-sidebar-grid{% if not _showSidebar %} content-sidebar-grid--full{% endif %}">
 
-      {# Сайдбар показывается по умолчанию для всех listing-страниц #}
-      {% set _showSidebar = sidebar.show if (sidebar and sidebar.show is defined) else true %}
-
-      <div class="main-grid{% if not _showSidebar %} main-grid--full{% endif %}">
-
-        {# Секция 3: Лента карточек #}
-        <div class="listing-content">
-
-          {% if collections[collectionName] and collections[collectionName].length > 0 %}
-          <div class="cards-grid">
-            {% for item in collections[collectionName] %}
-              {% include "partials/card.njk" with { card: {
-                title: item.data.title,
-                url: item.url,
-                image: item.data.image,
-                imageAlt: item.data.imageAlt,
-                category: item.data.category or item.data.section,
-                date: item.data.date,
-                excerpt: item.data.excerpt,
-                tags: item.data.tags
-              }} %}
-            {% endfor %}
-          </div>
-
-          {# Пагинация #}
-          {% if pagination %}
-          <nav class="pagination-nav" aria-label="Навигация по страницам">
-            <ul class="pagination">
-              {% if pagination.href.previous %}
-              <li class="page-item">
-                <a href="{{ pagination.href.previous }}" class="page-link" rel="prev">
-                  <i class="bi bi-chevron-left" aria-hidden="true"></i> Назад
-                </a>
-              </li>
-              {% endif %}
-
-              {% for pageLink in pagination.hrefs %}
-              <li class="page-item {% if loop.index0 == pagination.pageNumber %}active{% endif %}">
-                <a href="{{ pageLink }}" class="page-link"
-                   {% if loop.index0 == pagination.pageNumber %}aria-current="page"{% endif %}>
-                  {{ loop.index }}
-                </a>
-              </li>
-              {% endfor %}
-
-              {% if pagination.href.next %}
-              <li class="page-item">
-                <a href="{{ pagination.href.next }}" class="page-link" rel="next">
-                  Вперёд <i class="bi bi-chevron-right" aria-hidden="true"></i>
-                </a>
-              </li>
-              {% endif %}
-            </ul>
-
-            <p class="pagination-info text-muted small">
-              Страница {{ pagination.pageNumber + 1 }} из {{ pagination.pages.length }}
-            </p>
-          </nav>
-          {% endif %}
-
-          {% else %}
-          <div class="no-results">
-            <div class="no-results__icon">
-              <i class="bi bi-inbox" aria-hidden="true"></i>
-            </div>
-            <p class="no-results__text">В этом разделе пока нет материалов.</p>
-            <a href="/" class="btn btn-outline-primary btn-sm">На главную</a>
-          </div>
-          {% endif %}
-
-          {# Секция 4: Дополнительные блоки #}
-          {% if additionalBlocks %}
-          <section class="section-extra" aria-label="Дополнительно">
-            <div class="extra-inner">
-              {{ additionalBlocks | safe }}
-            </div>
-          </section>
-          {% endif %}
-
-        </div>
-
-        {# Секция 5: Сайдбар (по умолчанию всегда отображается) #}
+        {# ── Секция 7: Сайдбар (единые баннеры, 30% слева) ── #}
         {% if _showSidebar %}
-        <aside class="sidebar" role="complementary" aria-label="Дополнительная информация">
-
-          {# Виджет: Поиск по сайту #}
-          <div class="sidebar-widget sidebar-search">
-            <h3 class="sidebar-widget-title">
-              <i class="bi bi-search" aria-hidden="true"></i> Поиск
-            </h3>
-            <form class="sidebar-search-form" role="search"
-                  onsubmit="event.preventDefault(); document.querySelector('.search-modal').classList.add('show');">
-              <div class="input-group input-group-sm">
-                <input type="search" class="form-control"
-                       placeholder="Поиск по сайту…"
-                       aria-label="Поиск по сайту">
-                <button class="btn btn-outline-secondary" type="submit" aria-label="Найти">
-                  <i class="bi bi-search" aria-hidden="true"></i>
-                </button>
-              </div>
-            </form>
-          </div>
-
-          {# Виджет: Разделы сайта #}
-          {% if sidebar and sidebar.widgets %}
-            {% for widget in sidebar.widgets %}
-              {% if widget == 'tags' %}
-              <div class="sidebar-widget sidebar-tags">
-                <h3 class="sidebar-widget-title">
-                  <i class="bi bi-tags" aria-hidden="true"></i> Теги
-                </h3>
-                <div class="tag-cloud">
-                  {% for tag in collections.all | getAllTags | sort %}
-                    {% if tag != 'all' and tag != 'nav' %}
-                    <a href="/tags/{{ tag | slugify }}/" class="tag-cloud-item">{{ tag }}</a>
-                    {% endif %}
-                  {% endfor %}
-                </div>
-              </div>
-              {% endif %}
-
-              {% if widget == 'menu' %}
-              <div class="sidebar-widget sidebar-menu">
-                <h3 class="sidebar-widget-title">
-                  <i class="bi bi-list-ul" aria-hidden="true"></i> Разделы
-                </h3>
-                {{ sidebar.menuContent | safe }}
-              </div>
-              {% endif %}
-
-              {% if widget == 'archive' %}
-              <div class="sidebar-widget sidebar-archive">
-                <h3 class="sidebar-widget-title">
-                  <i class="bi bi-clock-history" aria-hidden="true"></i> Архив
-                </h3>
-                <ul class="archive-list list-unstyled">
-                  {# Архив по годам #}
-                </ul>
-              </div>
-              {% endif %}
-            {% endfor %}
-          {% else %}
-          {# Виджет по умолчанию: ссылки на разделы сайта #}
-          <div class="sidebar-widget sidebar-sections">
-            <h3 class="sidebar-widget-title">
-              <i class="bi bi-layout-text-sidebar" aria-hidden="true"></i> Разделы сайта
-            </h3>
-            <ul class="sidebar-nav-list list-unstyled">
-              <li><a href="/news/" class="sidebar-nav-link"><i class="bi bi-newspaper"></i> Новости</a></li>
-              <li><a href="/svedenija/" class="sidebar-nav-link"><i class="bi bi-info-circle"></i> Сведения об организации</a></li>
-              <li><a href="/abiturientam/" class="sidebar-nav-link"><i class="bi bi-mortarboard"></i> Абитуриентам</a></li>
-              <li><a href="/studentam-i-roditeljam/" class="sidebar-nav-link"><i class="bi bi-people"></i> Студентам и родителям</a></li>
-              <li><a href="/vospitanie/" class="sidebar-nav-link"><i class="bi bi-star"></i> Воспитание</a></li>
-              <li><a href="/bezopasnost/" class="sidebar-nav-link"><i class="bi bi-shield-check"></i> Безопасность</a></li>
-            </ul>
-          </div>
-
-          {# Виджет: последние новости #}
-          <div class="sidebar-widget sidebar-latest-news">
-            <h3 class="sidebar-widget-title">
-              <i class="bi bi-rss" aria-hidden="true"></i> Последние новости
-            </h3>
-            <ul class="latest-news-list list-unstyled">
-              {% set _newsItems = collections.news | reverse if collections.news else [] %}
-              {% for newsItem in _newsItems | slice(0, 5) %}
-              <li class="latest-news-item">
-                <a href="{{ newsItem.url }}" class="latest-news-link">
-                  {% if newsItem.data.date %}
-                  <time class="latest-news-date">{{ newsItem.data.date | dateRu }}</time>
-                  {% endif %}
-                  <span class="latest-news-title">{{ newsItem.data.title }}</span>
-                </a>
-              </li>
-              {% else %}
-              <li class="text-muted small">Нет новостей</li>
-              {% endfor %}
-            </ul>
-          </div>
-          {% endif %}
-
-        </aside>
+        <div class="sidebar-col">
+          {% include "components/sidebar.njk" %}
+        </div>
         {% endif %}
+
+        {# ── Секция 3: Лента карточек ── #}
+        <div class="content-col">
+          <div class="listing-content">
+
+            {% if collections[collectionName] and collections[collectionName].length > 0 %}
+            <div class="cards-grid">
+              {% for item in collections[collectionName] %}
+                {% include "partials/card.njk" with { card: {
+                  title: item.data.title,
+                  url: item.url,
+                  image: item.data.image,
+                  imageAlt: item.data.imageAlt,
+                  category: item.data.category or item.data.section,
+                  date: item.data.date,
+                  excerpt: item.data.excerpt,
+                  tags: item.data.tags
+                }} %}
+              {% endfor %}
+            </div>
+
+            {# Пагинация #}
+            {% if pagination %}
+            <nav class="pagination-nav" aria-label="Навигация по страницам">
+              <ul class="pagination">
+                {% if pagination.href.previous %}
+                <li class="page-item">
+                  <a href="{{ pagination.href.previous }}" class="page-link" rel="prev">
+                    <i class="bi bi-chevron-left" aria-hidden="true"></i> Назад
+                  </a>
+                </li>
+                {% endif %}
+
+                {% for pageLink in pagination.hrefs %}
+                <li class="page-item {% if loop.index0 == pagination.pageNumber %}active{% endif %}">
+                  <a href="{{ pageLink }}" class="page-link"
+                     {% if loop.index0 == pagination.pageNumber %}aria-current="page"{% endif %}>
+                    {{ loop.index }}
+                  </a>
+                </li>
+                {% endfor %}
+
+                {% if pagination.href.next %}
+                <li class="page-item">
+                  <a href="{{ pagination.href.next }}" class="page-link" rel="next">
+                    Вперёд <i class="bi bi-chevron-right" aria-hidden="true"></i>
+                  </a>
+                </li>
+                {% endif %}
+              </ul>
+
+              <p class="pagination-info text-muted small">
+                Страница {{ pagination.pageNumber + 1 }} из {{ pagination.pages.length }}
+              </p>
+            </nav>
+            {% endif %}
+
+            {% else %}
+            <div class="no-results">
+              <div class="no-results__icon">
+                <i class="bi bi-inbox" aria-hidden="true"></i>
+              </div>
+              <p class="no-results__text">В этом разделе пока нет материалов.</p>
+              <a href="/" class="btn btn-outline-primary btn-sm">На главную</a>
+            </div>
+            {% endif %}
+
+            {# Секция 4: Дополнительные блоки #}
+            {% if additionalBlocks %}
+            <section class="section-extra mt-4" aria-label="Дополнительно">
+              <div class="extra-inner">
+                {{ additionalBlocks | safe }}
+              </div>
+            </section>
+            {% endif %}
+
+          </div>
+        </div>
 
       </div>
     </div>

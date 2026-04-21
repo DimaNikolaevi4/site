@@ -60,8 +60,8 @@
 | 3.1.1 layouts/base.njk | ✅ | HTML-обёртка: head, header.njk, main, footer.njk |
 | 3.1.2 layouts/page.njk (Тип B) | ✅ | Все 8 секций. Hero, хлебные крошки, сетка 70/30 с сайдбаром, about/news/popular (opt-in), nav |
 | 3.1.3 layouts/post.njk (Тип C) | ✅ | Hero (опц.), сетка 70/30 с сайдбаром, обложка, вложения, теги, шаринг, читайте также, нав |
-| 3.1.4 layouts/listing.njk | 🔶 | Листинг новостей — работает, но без боковой колонки |
-| 3.1.5 svedenija-page.njk | 🔶 | Устаревший шаблон для раздела «Сведения» — нужно привести к новой архитектуре |
+| 3.1.4 layouts/listing.njk | ✅ | Приведён к новой архитектуре: единые `components/breadcrumbs.njk` и `components/sidebar.njk` (баннеры), сетка `content-sidebar-grid` 70/30 |
+| 3.1.5 svedenija-page.njk | ✅ | Приведён к новой архитектуре: hero, единые крошки, `content-sidebar-grid` с `components/sidebar.njk` (баннеры). Подменю «Сведений» вынесено в шапку контента (требование Приказа №1493) |
 | 3.1.6 Единый шаблон для Type B (разделы всех уровней) | ✅ | page.njk — теперь полный шаблон со всеми 8 секциями |
 
 ### 3.2 Компоненты (components)

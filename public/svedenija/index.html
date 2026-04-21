@@ -607,37 +607,72 @@
 
   <main class="main-content">
     
-<div class="svedenija-layout">
+<div class="page-layout svedenija-layout">
 
   
+
+  
+
+
+
+
   <section class="section-context section-context--svedenija" aria-label="Раздел Сведения">
     <div class="container">
 
       
-      <nav class="breadcrumbs" aria-label="Хлебные крошки">
-        <ol class="breadcrumb-list" itemscope itemtype="https://schema.org/BreadcrumbList">
-          <li class="breadcrumb-item" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-            <a href="/" itemprop="item"><span itemprop="name">Главная</span></a>
-            <meta itemprop="position" content="1"/>
-          </li>
-          
-          <li class="breadcrumb-item breadcrumb-item--current"
-              itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-            <span itemprop="name">Сведения об организации</span>
-            <meta itemprop="position" content="2"/>
-          </li>
-          
-        </ol>
-      </nav>
+      
+        
+      
+      
+
+<nav class="breadcrumbs component-breadcrumbs" aria-label="Хлебные крошки">
+  <ol class="breadcrumb-list"
+      itemscope
+      itemtype="https://schema.org/BreadcrumbList">
+
+    
+    
 
       
+      <li class="breadcrumb-item"
+          itemprop="itemListElement"
+          itemscope
+          itemtype="https://schema.org/ListItem">
+        
+          <a href="/" itemprop="item">
+            <span itemprop="name">Главная</span>
+          </a>
+        
+        <meta itemprop="position" content="1"/>
+      </li>
+      
+      <li class="breadcrumb-item breadcrumb-item--current"
+          itemprop="itemListElement"
+          itemscope
+          itemtype="https://schema.org/ListItem">
+        
+          <span itemprop="name">Сведения об образовательной организации</span>
+        
+        <meta itemprop="position" content="2"/>
+      </li>
+      
+
+    
+    
+
+  </ol>
+</nav>
+
+
       <div class="svedenija-header">
         <div class="svedenija-header__icon">
           <i class="bi bi-building" aria-hidden="true"></i>
         </div>
         <div class="svedenija-header__text">
           <span class="svedenija-header__super">Сведения об образовательной организации</span>
+          
           <h1 class="svedenija-header__title">Сведения об образовательной организации</h1>
+          
           
           <p class="svedenija-header__desc text-muted">Информация об организации в соответствии с Приказом Рособрнадзора №1493</p>
           
@@ -648,214 +683,217 @@
   </section>
 
   
+  
+
   <section class="section-main">
     <div class="container">
-      <div class="main-grid main-grid--svedenija">
+      <div class="content-sidebar-grid">
 
         
-        <main class="svedenija-content" role="main" itemprop="mainContentOfPage">
-          <p>Данный раздел содержит обязательную информацию об образовательной организации согласно требованиям Приказа Федеральной службы по надзору в сфере образования и науки №1493.</p>
-<p>Для перехода в нужный подраздел воспользуйтесь боковым меню.</p>
+        
+        <div class="sidebar-col">
+          
 
-        </main>
+
+
+
+
+<aside class="component-sidebar" role="complementary" aria-label="Дополнительная информация">
+
+  <div class="sidebar-banners">
+    
+    <div class="sidebar-banner banner--primary" data-aos="fade-left" data-aos-delay="80">
+      <div class="sidebar-banner__icon">
+        <i class="bi bi-mortarboard-fill" aria-hidden="true"></i>
+      </div>
+      <div class="sidebar-banner__body">
+        <h3 class="sidebar-banner__title">Приёмная кампания</h3>
+        <p class="sidebar-banner__text">Подайте документы на поступление онлайн или лично. Приём заявлений открыт.</p>
+        <a href="/abiturientam/" class="sidebar-banner__link">
+          Подробнее <i class="bi bi-arrow-right" aria-hidden="true"></i>
+        </a>
+      </div>
+    </div>
+    
+    <div class="sidebar-banner banner--accent" data-aos="fade-left" data-aos-delay="160">
+      <div class="sidebar-banner__icon">
+        <i class="bi bi-door-open-fill" aria-hidden="true"></i>
+      </div>
+      <div class="sidebar-banner__body">
+        <h3 class="sidebar-banner__title">День открытых дверей</h3>
+        <p class="sidebar-banner__text">Познакомьтесь с техникумом лично. Следите за расписанием мероприятий.</p>
+        <a href="/abiturientam/den-otkrytyh-dverej/" class="sidebar-banner__link">
+          Узнать дату <i class="bi bi-arrow-right" aria-hidden="true"></i>
+        </a>
+      </div>
+    </div>
+    
+    <div class="sidebar-banner banner--info" data-aos="fade-left" data-aos-delay="240">
+      <div class="sidebar-banner__icon">
+        <i class="bi bi-calendar3" aria-hidden="true"></i>
+      </div>
+      <div class="sidebar-banner__body">
+        <h3 class="sidebar-banner__title">Расписание занятий</h3>
+        <p class="sidebar-banner__text">Актуальное расписание для всех групп на текущий семестр.</p>
+        <a href="/studentam-i-roditeljam/raspisanie/" class="sidebar-banner__link">
+          Открыть расписание <i class="bi bi-arrow-right" aria-hidden="true"></i>
+        </a>
+      </div>
+    </div>
+    
+    <div class="sidebar-banner banner--success" data-aos="fade-left" data-aos-delay="320">
+      <div class="sidebar-banner__icon">
+        <i class="bi bi-telephone-fill" aria-hidden="true"></i>
+      </div>
+      <div class="sidebar-banner__body">
+        <h3 class="sidebar-banner__title">Горячая линия</h3>
+        <p class="sidebar-banner__text">Вопросы по учёбе, документам, приёму? Звоните или пишите нам.</p>
+        <a href="/contacts/" class="sidebar-banner__link">
+          Контакты <i class="bi bi-arrow-right" aria-hidden="true"></i>
+        </a>
+      </div>
+    </div>
+    
+  </div>
+
+  
+  
+  <div class="sidebar-social">
+    <h3 class="sidebar-social__title">Мы в соцсетях</h3>
+    <div class="sidebar-social__links">
+      
+      <a href="https://vk.com/sit_salsk" class="sidebar-social__link sidebar-social__link--vk" target="_blank" rel="noopener noreferrer" aria-label="ВКонтакте">
+        <i class="bi bi-vk" aria-hidden="true"></i>
+        <span>ВКонтакте</span>
+      </a>
+      
+      
+      <a href="https://t.me/sit_salsk" class="sidebar-social__link sidebar-social__link--tg" target="_blank" rel="noopener noreferrer" aria-label="Telegram">
+        <i class="bi bi-telegram" aria-hidden="true"></i>
+        <span>Telegram</span>
+      </a>
+      
+      
+    </div>
+  </div>
+  
+
+</aside>
+
+        </div>
+        
 
         
-        <aside class="sidebar svedenija-sidebar" role="complementary"
-               aria-label="Подразделы раздела Сведения">
-
-          <div class="sidebar-widget svedenija-nav-widget">
-            <h2 class="sidebar-widget-title svedenija-nav-title">
-              <i class="bi bi-list-check" aria-hidden="true"></i>
-              Подразделы
-            </h2>
-            <nav aria-label="Навигация по сведениям">
-              <ul class="svedenija-nav-list list-unstyled">
-                
-                <li class="svedenija-nav-item">
-                  <a href="/svedenija/documents/"
-                     class="svedenija-nav-link"
-                     >
-                    
-                    <i class="bi bi-chevron-right svedenija-nav-arrow" aria-hidden="true"></i>
-                    
-                    Документы
-                  </a>
-
-                  
-                  
-
-                </li>
-                
-                <li class="svedenija-nav-item">
-                  <a href="/svedenija/structure/"
-                     class="svedenija-nav-link"
-                     >
-                    
-                    <i class="bi bi-chevron-right svedenija-nav-arrow" aria-hidden="true"></i>
-                    
-                    Структура управления
-                  </a>
-
-                  
-                  
-
-                </li>
-                
-                <li class="svedenija-nav-item">
-                  <a href="/svedenija/education/"
-                     class="svedenija-nav-link"
-                     >
-                    
-                    <i class="bi bi-chevron-right svedenija-nav-arrow" aria-hidden="true"></i>
-                    
-                    Образование
-                  </a>
-
-                  
-                  
-
-                </li>
-                
-                <li class="svedenija-nav-item">
-                  <a href="/svedenija/employees/"
-                     class="svedenija-nav-link"
-                     >
-                    
-                    <i class="bi bi-chevron-right svedenija-nav-arrow" aria-hidden="true"></i>
-                    
-                    Руководство и ППС
-                  </a>
-
-                  
-                  
-
-                </li>
-                
-                <li class="svedenija-nav-item">
-                  <a href="/svedenija/objects/"
-                     class="svedenija-nav-link"
-                     >
-                    
-                    <i class="bi bi-chevron-right svedenija-nav-arrow" aria-hidden="true"></i>
-                    
-                    Материально-техническое обеспечение
-                  </a>
-
-                  
-                  
-
-                </li>
-                
-                <li class="svedenija-nav-item">
-                  <a href="/svedenija/stipend/"
-                     class="svedenija-nav-link"
-                     >
-                    
-                    <i class="bi bi-chevron-right svedenija-nav-arrow" aria-hidden="true"></i>
-                    
-                    Стипендии и поддержка
-                  </a>
-
-                  
-                  
-
-                </li>
-                
-                <li class="svedenija-nav-item">
-                  <a href="/svedenija/finance/"
-                     class="svedenija-nav-link"
-                     >
-                    
-                    <i class="bi bi-chevron-right svedenija-nav-arrow" aria-hidden="true"></i>
-                    
-                    Финансово-хозяйственная деятельность
-                  </a>
-
-                  
-                  
-
-                </li>
-                
-                <li class="svedenija-nav-item">
-                  <a href="/svedenija/vacancies/"
-                     class="svedenija-nav-link"
-                     >
-                    
-                    <i class="bi bi-chevron-right svedenija-nav-arrow" aria-hidden="true"></i>
-                    
-                    Вакантные места
-                  </a>
-
-                  
-                  
-
-                </li>
-                
-                <li class="svedenija-nav-item">
-                  <a href="/svedenija/access/"
-                     class="svedenija-nav-link"
-                     >
-                    
-                    <i class="bi bi-chevron-right svedenija-nav-arrow" aria-hidden="true"></i>
-                    
-                    Доступная среда
-                  </a>
-
-                  
-                  
-
-                </li>
-                
-                <li class="svedenija-nav-item">
-                  <a href="/svedenija/international/"
-                     class="svedenija-nav-link"
-                     >
-                    
-                    <i class="bi bi-chevron-right svedenija-nav-arrow" aria-hidden="true"></i>
-                    
-                    Международное сотрудничество
-                  </a>
-
-                  
-                  
-
-                </li>
-                
-              </ul>
-            </nav>
-          </div>
+        <div class="content-col">
 
           
-          <div class="sidebar-widget svedenija-contact-widget">
-            <h3 class="sidebar-widget-title">
-              <i class="bi bi-telephone" aria-hidden="true"></i> Приёмная комиссия
-            </h3>
-            <ul class="list-unstyled small">
+          
+          <nav class="svedenija-submenu" aria-label="Навигация по разделу Сведения">
+            <ul class="svedenija-submenu__list list-unstyled">
               
-              <li class="mb-1">
-                <a href="tel:+78637250571" class="svedenija-contact-link">
-                  <i class="bi bi-telephone-fill text-success" aria-hidden="true"></i>
-                  5-05-71
+              <li class="svedenija-submenu__item">
+                <a href="/svedenija/documents/"
+                   class="svedenija-submenu__link"
+                   >
+                  
+                  Документы
                 </a>
               </li>
               
-              <li class="mb-1">
-                <a href="tel:+78637256041" class="svedenija-contact-link">
-                  <i class="bi bi-telephone-fill text-success" aria-hidden="true"></i>
-                  5-60-41
+              <li class="svedenija-submenu__item">
+                <a href="/svedenija/structure/"
+                   class="svedenija-submenu__link"
+                   >
+                  
+                  Структура управления
                 </a>
               </li>
               
-              <li class="mt-2">
-                <a href="mailto:sitsalsk@mail.ru" class="svedenija-contact-link">
-                  <i class="bi bi-envelope-fill text-success" aria-hidden="true"></i>
-                  sitsalsk@mail.ru
+              <li class="svedenija-submenu__item">
+                <a href="/svedenija/education/"
+                   class="svedenija-submenu__link"
+                   >
+                  
+                  Образование
                 </a>
               </li>
+              
+              <li class="svedenija-submenu__item">
+                <a href="/svedenija/employees/"
+                   class="svedenija-submenu__link"
+                   >
+                  
+                  Руководство и ППС
+                </a>
+              </li>
+              
+              <li class="svedenija-submenu__item">
+                <a href="/svedenija/objects/"
+                   class="svedenija-submenu__link"
+                   >
+                  
+                  Материально-техническое обеспечение
+                </a>
+              </li>
+              
+              <li class="svedenija-submenu__item">
+                <a href="/svedenija/stipend/"
+                   class="svedenija-submenu__link"
+                   >
+                  
+                  Стипендии и поддержка
+                </a>
+              </li>
+              
+              <li class="svedenija-submenu__item">
+                <a href="/svedenija/finance/"
+                   class="svedenija-submenu__link"
+                   >
+                  
+                  Финансово-хозяйственная деятельность
+                </a>
+              </li>
+              
+              <li class="svedenija-submenu__item">
+                <a href="/svedenija/vacancies/"
+                   class="svedenija-submenu__link"
+                   >
+                  
+                  Вакантные места
+                </a>
+              </li>
+              
+              <li class="svedenija-submenu__item">
+                <a href="/svedenija/access/"
+                   class="svedenija-submenu__link"
+                   >
+                  
+                  Доступная среда
+                </a>
+              </li>
+              
+              <li class="svedenija-submenu__item">
+                <a href="/svedenija/international/"
+                   class="svedenija-submenu__link"
+                   >
+                  
+                  Международное сотрудничество
+                </a>
+              </li>
+              
             </ul>
-          </div>
+          </nav>
+          
 
-        </aside>
+          <article class="page-content svedenija-content" itemprop="mainContentOfPage">
+            <p>Данный раздел содержит обязательную информацию об образовательной организации согласно требованиям Приказа Федеральной службы по надзору в сфере образования и науки №1493.</p>
+<p>Для перехода в нужный подраздел воспользуйтесь боковым меню.</p>
+
+          </article>
+
+          
+
+        </div>
 
       </div>
     </div>

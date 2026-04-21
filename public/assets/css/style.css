@@ -4747,3 +4747,36 @@ html {
     font-size: 0.85rem;
   }
 }
+
+/* ─── Подменю раздела «Сведения» (новая архитектура) ─── */
+.svedenija-submenu {
+  margin-bottom: 1.5rem;
+  padding: 0.75rem 1rem;
+  background: #f6f9fc;
+  border: 1px solid #e3ebf2;
+  border-radius: 8px;
+}
+.svedenija-submenu__list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem 0.8rem;
+  margin: 0;
+}
+.svedenija-submenu__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.3rem 0.7rem;
+  font-size: 0.9rem;
+  color: #0d4a6b;
+  text-decoration: none;
+  border-radius: 6px;
+  transition: background-color .15s ease, color .15s ease;
+}
+.svedenija-submenu__link:hover { background: #e3ebf2; color: #0a3a55; }
+.svedenija-submenu__link--active {
+  background: #0d4a6b;
+  color: #fff;
+  font-weight: 500;
+}
+.svedenija-submenu__link--active:hover { background: #0a3a55; color: #fff; }
