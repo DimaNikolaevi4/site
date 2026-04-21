@@ -4126,6 +4126,260 @@ html {
   font-weight: 500;
 }
 
+/* ============================================
+   COMPONENT: NEWS (3.2.6)
+   ============================================ */
+
+.component-news--subrubrics .subrubric-card {
+  background: var(--bg-card);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.component-news--subrubrics .subrubric-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+}
+
+.component-news--subrubrics .subrubric-card__img-wrap img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+.component-news--subrubrics .subrubric-card__body {
+  padding: 1.25rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.component-news--subrubrics .subrubric-card__title {
+  font-size: var(--font-size-lg);
+  font-weight: 600;
+  margin: 0;
+}
+
+.component-news--subrubrics .subrubric-card__title a {
+  color: var(--text-primary);
+  text-decoration: none;
+}
+
+.component-news--subrubrics .subrubric-card__title a:hover {
+  color: var(--color-primary);
+}
+
+.component-news--subrubrics .subrubric-card__desc {
+  font-size: var(--font-size-sm);
+  color: var(--text-secondary);
+  flex: 1;
+  margin: 0;
+}
+
+.component-news--subrubrics .subrubric-card__link {
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  color: var(--color-primary);
+  text-decoration: none;
+  margin-top: auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.component-news--subrubrics .subrubric-card__link:hover {
+  color: var(--color-primary-light);
+}
+
+/* ============================================
+   COMPONENT: POPULAR (3.2.7)
+   ============================================ */
+
+.component-popular .member {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.component-popular .member-icon-wrap {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  background: var(--color-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 1.5rem auto 1rem;
+  transition: background 0.25s ease;
+}
+
+.component-popular .member:hover .member-icon-wrap {
+  background: var(--color-accent);
+}
+
+.component-popular .member-icon {
+  font-size: 2rem;
+  color: #fff;
+}
+
+/* ============================================
+   COMPONENT: SIDEBAR (3.2.8)
+   ============================================ */
+
+.component-sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 100%;
+}
+
+/* Баннер */
+.sidebar-banner {
+  border-radius: var(--radius-lg);
+  padding: 1.25rem;
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.sidebar-banner:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.sidebar-banner--primary {
+  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-light) 100%);
+  color: #fff;
+}
+
+.sidebar-banner--accent {
+  background: linear-gradient(135deg, #5c6bc0 0%, #7986cb 100%);
+  color: #fff;
+}
+
+.sidebar-banner--info {
+  background: linear-gradient(135deg, #0288d1 0%, #29b6f6 100%);
+  color: #fff;
+}
+
+.sidebar-banner--success {
+  background: linear-gradient(135deg, #2e7d32 0%, #43a047 100%);
+  color: #fff;
+}
+
+.sidebar-banner__icon {
+  flex-shrink: 0;
+  font-size: 1.75rem;
+  opacity: 0.9;
+  padding-top: 0.1rem;
+}
+
+.sidebar-banner__body {
+  flex: 1;
+}
+
+.sidebar-banner__title {
+  font-size: var(--font-size-base);
+  font-weight: 700;
+  margin: 0 0 0.35rem;
+  color: inherit;
+}
+
+.sidebar-banner__text {
+  font-size: var(--font-size-xs);
+  opacity: 0.9;
+  margin: 0 0 0.6rem;
+  line-height: 1.5;
+}
+
+.sidebar-banner__link {
+  font-size: var(--font-size-xs);
+  font-weight: 600;
+  color: #fff;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.2rem;
+}
+
+.sidebar-banner__link:hover {
+  opacity: 0.85;
+  color: #fff;
+}
+
+/* Соцсети в сайдбаре */
+.sidebar-social {
+  background: var(--bg-card);
+  border-radius: var(--radius-lg);
+  padding: 1.25rem;
+  box-shadow: var(--shadow-sm);
+}
+
+.sidebar-social__title {
+  font-size: var(--font-size-sm);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-secondary);
+  margin: 0 0 0.75rem;
+}
+
+.sidebar-social__links {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.sidebar-social__link {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 0.75rem;
+  border-radius: var(--radius-sm);
+  font-size: var(--font-size-sm);
+  font-weight: 500;
+  text-decoration: none;
+  transition: background 0.2s ease, color 0.2s ease;
+  color: var(--text-primary);
+}
+
+.sidebar-social__link--vk  { background: #f0f5ff; }
+.sidebar-social__link--tg  { background: #e8f7ff; }
+.sidebar-social__link--yt  { background: #fff0f0; }
+
+.sidebar-social__link--vk:hover  { background: #4a76a8; color: #fff; }
+.sidebar-social__link--tg:hover  { background: #0088cc; color: #fff; }
+.sidebar-social__link--yt:hover  { background: #ff0000; color: #fff; }
+
+/* ── Responsive ── */
+@media (min-width: 992px) {
+  .page-with-sidebar {
+    display: grid;
+    grid-template-columns: 30% 1fr;
+    gap: 2rem;
+    align-items: start;
+  }
+
+  .component-sidebar {
+    position: sticky;
+    top: 80px;
+  }
+}
+
+@media (max-width: 991px) {
+  .component-sidebar {
+    margin-top: 2rem;
+  }
+}
+
 /* Responsive adjustments */
 @media (max-width: 768px) {
   .hero-slider {

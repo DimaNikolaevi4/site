@@ -10,51 +10,7 @@
     <div class="container">
 
       {# Хлебные крошки: Главная → Раздел → (Подраздел) → Заголовок #}
-      {% if breadcrumbs %}
-        {% include "partials/breadcrumbs.njk" %}
-      {% else %}
-        <nav class="breadcrumbs" aria-label="Хлебные крошки">
-          <ol class="breadcrumb-list" itemscope itemtype="https://schema.org/BreadcrumbList">
-
-            <li class="breadcrumb-item" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-              <a href="/" itemprop="item"><span itemprop="name">Главная</span></a>
-              <meta itemprop="position" content="1"/>
-            </li>
-
-            {% if section %}
-            <li class="breadcrumb-item" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-              <a href="/{{ section | slugify }}/" itemprop="item">
-                <span itemprop="name">{{ sectionTitle or section }}</span>
-              </a>
-              <meta itemprop="position" content="2"/>
-            </li>
-            {% elif category %}
-            <li class="breadcrumb-item" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-              <a href="/{{ category | slugify }}/" itemprop="item">
-                <span itemprop="name">{{ categoryTitle or category }}</span>
-              </a>
-              <meta itemprop="position" content="2"/>
-            </li>
-            {% endif %}
-
-            {% if subsection %}
-            <li class="breadcrumb-item" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-              <a href="/{{ section | slugify }}/{{ subsection | slugify }}/" itemprop="item">
-                <span itemprop="name">{{ subsectionTitle or subsection }}</span>
-              </a>
-              <meta itemprop="position" content="3"/>
-            </li>
-            {% endif %}
-
-            <li class="breadcrumb-item breadcrumb-item--current"
-                itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-              <span itemprop="name">{{ title }}</span>
-              <meta itemprop="position" content="{{ 4 if subsection else (3 if (section or category) else 2) }}"/>
-            </li>
-
-          </ol>
-        </nav>
-      {% endif %}
+      {% include "components/breadcrumbs.njk" %}
 
       {# Заголовок + мета-информация #}
       <header class="post-header">

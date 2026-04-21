@@ -17,34 +17,14 @@
 <div class="page-layout page-type-b page-type-b--full">
 
   {# === СЕКЦИЯ 2: Hero-баннер === #}
-  {% if hero and hero.image %}
-  <section class="section-hero page-hero" aria-label="Баннер раздела">
-    <div class="page-hero__bg"
-         style="background-image: url('{{ hero.image }}');"
-         role="img"
-         aria-label="{{ hero.alt or title }}">
-    </div>
-    <div class="page-hero__overlay"></div>
-    <div class="container page-hero__content">
-      <h1 class="page-hero__title">{{ hero.title or title }}</h1>
-      {% if hero.subtitle %}
-      <p class="page-hero__subtitle">{{ hero.subtitle }}</p>
-      {% endif %}
-      {% if hero.cta %}
-      <a href="{{ hero.cta.url }}" class="btn btn-primary btn-lg page-hero__cta">
-        {{ hero.cta.label }}
-      </a>
-      {% endif %}
-    </div>
-  </section>
-  {% endif %}
+  {% include "components/hero.njk" %}
 
   {# === СЕКЦИЯ 3: Контекстная (хлебные крошки + заголовок + описание + фильтры) === #}
   <section class="section-context" aria-label="Контекст страницы">
     <div class="container">
 
-      {# Хлебные крошки (поддержка ручного массива и авто-генерации) #}
-      {% include "partials/breadcrumbs.njk" %}
+      {# Хлебные крошки #}
+      {% include "components/breadcrumbs.njk" %}
 
       <div class="context-header">
         {% if not (hero and hero.image) %}

@@ -70,12 +70,12 @@
 |------|--------|-------------|
 | 3.2.1 components/header.njk | ✅ | Шапка: логотип, навигация, поиск, бургер-меню, мобильный вид |
 | 3.2.2 components/footer.njk | ✅ | Подвал: реквизиты, ссылки, соцсети |
-| 3.2.3 components/hero.njk | ✅ | Отдельный макрос `hero(opts)` в `src/_includes/components/hero.njk`. Параметры: title, subtitle, rubric, bgImage, bgAlt, id, modifier. Подключён на главной. Стили `.hero-rubric` добавлены в `src/styles/main.css` |
-| 3.2.4 components/breadcrumbs.njk | ✅ | Макрос `breadcrumbs(opts)` в `src/_includes/components/breadcrumbs.njk`. Метки берутся из menu.yaml + rubrics.yaml + статической карты через фильтр `breadcrumbsFromUrl` (в `.eleventy.js`). Партиал `partials/breadcrumbs.njk` стал тонкой обёрткой над макросом — обратная совместимость сохранена. Schema.org BreadcrumbList. Примечание: `svedenija-page.njk` (3.1.5) использует свои захардкоженные крошки и подлежит миграции в рамках своего пункта |
-| 3.2.5 components/about.njk | ❌ | Секция 4: слово директора (главная) / заглушка (разделы) |
-| 3.2.6 components/news.njk | ❌ | Секция 5: 3 новости (главная) / список подрубрик (разделы) |
-| 3.2.7 components/popular.njk | ❌ | Секция 6: блок популярных ссылок — заглушка |
-| 3.2.8 components/sidebar.njk | ❌ | Секция 7: 30% левая колонка с едиными баннерами |
+| 3.2.3 components/hero.njk | ✅ | Вынесен из page-full.njk. Поддержка rubricTitle под чертой, CTA, фон |
+| 3.2.4 components/breadcrumbs.njk | ✅ | Единый компонент. Исправлен показ меток вместо технических ключей. Подключён в page.njk, page-full.njk, post.njk |
+| 3.2.5 components/about.njk | ✅ | Секция 4: слово директора (главная) / заглушка (разделы) |
+| 3.2.6 components/news.njk | ✅ | Секция 5: 3 новости (главная) / список подрубрик (разделы) |
+| 3.2.7 components/popular.njk | ✅ | Секция 6: блок популярных ссылок — заглушка |
+| 3.2.8 components/sidebar.njk | ✅ | Секция 7: 30% левая колонка с едиными баннерами |
 | 3.2.9 .page-hero стили в styles/main.css | ✅ | Стили для блока hero на внутренних страницах |
 
 ---
@@ -377,8 +377,9 @@
 
 - Исправить хлебные крошки (показывают технические ключи)
 - Создать components/hero.njk — отдельный компонент hero с рубрикой
-- Создать components/sidebar.njk — левая колонка с баннерами
-- Создать компоненты about.njk, news.njk, popular.njk
+- ~~Создать components/sidebar.njk — левая колонка с баннерами~~ ✅
+- ~~Создать component about.njk~~ ✅
+- ~~Создать компоненты news.njk, popular.njk, sidebar.njk~~ ✅
 - Наполнить раздел «Сведения» реальным контентом (Рособрнадзор)
 - Наполнить раздел «Абитуриентам» (все 9 подрубрик)
 

@@ -1,50 +1,114 @@
 {#
-  Компонент: Хлебные крошки
-  Использование (макрос):
-    {% from "components/breadcrumbs.njk" import breadcrumbs %}
-    {{ breadcrumbs({
-      url: page.url,
-      leafTitle: title,
-      items: breadcrumbsOverride
-    }) }}
-    (items — опционально: явный список вида [{text, url}])
+  Компонент — Хлебные крошки (Schema.org BreadcrumbList)
+  Единая точка рендеринга: заменяет partials/breadcrumbs.njk и инлайн-код в post.njk
 
-  Поведение:
-    - Если передан `items` — используется как есть.
-    - Иначе url разбирается посегментно, метки берутся из:
-        1) menu.yaml (вкл. children),
-        2) rubrics.yaml (полные пути),
-        3) статических известных страниц,
-        4) humanized slug (fallback).
-    - Если указан `leafTitle` — он используется как метка последнего элемента
-      (это обычно `title` страницы, чтобы не показывать «Slovo-direktora»).
+  Приоритеты построения цепочки:
+    1. Ручной массив `breadcrumbs` — полный контроль. Каждый элемент: { text, url }.
+       Последний элемент считается текущей страницей (без ссылки).
+    2. Авто-режим через frontmatter — section/sectionTitle, category/categoryTitle,
+       subsection/subsectionTitle, title.
+       Корректно показывает метки, а не технические ключи.
+
+  Переменные для ручного режима:
+    breadcrumbs  — массив [{ text, url }, …]. Последний элемент — без url (текущая страница).
+
+  Переменные для авто-режима (из frontmatter страницы):
+    section        — slug родительского раздела (напр. "abiturientam")
+    sectionTitle   — метка раздела (напр. "Абитуриентам"). Если нет — используется section.
+    category       — альтернатива section (для материалов)
+    categoryTitle  — метка категории. Если нет — используется category.
+    subsection     — slug подраздела (уровень 2, опционально)
+    subsectionTitle— метка подраздела. Если нет — используется subsection.
+    title          — заголовок текущей страницы (последний элемент, без ссылки)
 #}
 
-{% macro breadcrumbs(opts = {}) %}
-  {% set _items = opts.items %}
-  {% set _url = opts.url or page.url %}
-  {% set _leafTitle = opts.leafTitle %}
+<nav class="breadcrumbs component-breadcrumbs" aria-label="Хлебные крошки">
+  <ol class="breadcrumb-list"
+      itemscope
+      itemtype="https://schema.org/BreadcrumbList">
 
-  {% if not _items %}
-    {% set _items = _url | breadcrumbsFromUrl(_leafTitle) %}
-  {% endif %}
+    {# ── Режим 1: ручной массив ── #}
+    {% if breadcrumbs and breadcrumbs.length > 0 %}
 
-  <nav class="breadcrumbs" aria-label="Хлебные крошки">
-    <ol class="breadcrumb-list" itemscope itemtype="https://schema.org/BreadcrumbList">
-      {% for crumb in _items %}
-        {% set _isLast = loop.last or crumb.isLast %}
-        <li class="breadcrumb-item{% if _isLast %} breadcrumb-item--current{% endif %}"
-            itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-          {% if _isLast %}
-            <span itemprop="name" aria-current="page">{{ crumb.text or crumb.title }}</span>
-          {% else %}
-            <a href="{{ crumb.url }}" itemprop="item">
-              <span itemprop="name">{{ crumb.text or crumb.title }}</span>
-            </a>
-          {% endif %}
-          <meta itemprop="position" content="{{ loop.index }}" />
-        </li>
+      {% for crumb in breadcrumbs %}
+      <li class="breadcrumb-item{% if loop.last %} breadcrumb-item--current{% endif %}"
+          itemprop="itemListElement"
+          itemscope
+          itemtype="https://schema.org/ListItem">
+        {% if not loop.last and crumb.url %}
+          <a href="{{ crumb.url }}" itemprop="item">
+            <span itemprop="name">{{ crumb.text }}</span>
+          </a>
+        {% else %}
+          <span itemprop="name">{{ crumb.text }}</span>
+        {% endif %}
+        <meta itemprop="position" content="{{ loop.index }}"/>
+      </li>
       {% endfor %}
-    </ol>
-  </nav>
-{% endmacro %}
+
+    {# ── Режим 2: авто через frontmatter ── #}
+    {% else %}
+
+      {# Главная — всегда первая #}
+      <li class="breadcrumb-item"
+          itemprop="itemListElement"
+          itemscope
+          itemtype="https://schema.org/ListItem">
+        <a href="/" itemprop="item">
+          <span itemprop="name">Главная</span>
+        </a>
+        <meta itemprop="position" content="1"/>
+      </li>
+
+      {# Уровень 1: раздел (section) или категория (category) #}
+      {% if section %}
+      <li class="breadcrumb-item"
+          itemprop="itemListElement"
+          itemscope
+          itemtype="https://schema.org/ListItem">
+        <a href="/{{ section }}/" itemprop="item">
+          <span itemprop="name">{{ sectionTitle or section }}</span>
+        </a>
+        <meta itemprop="position" content="2"/>
+      </li>
+      {% elif category %}
+      <li class="breadcrumb-item"
+          itemprop="itemListElement"
+          itemscope
+          itemtype="https://schema.org/ListItem">
+        <a href="/{{ category }}/" itemprop="item">
+          <span itemprop="name">{{ categoryTitle or category }}</span>
+        </a>
+        <meta itemprop="position" content="2"/>
+      </li>
+      {% endif %}
+
+      {# Уровень 2: подраздел (subsection) — опциональный #}
+      {% if subsection %}
+      <li class="breadcrumb-item"
+          itemprop="itemListElement"
+          itemscope
+          itemtype="https://schema.org/ListItem">
+        <a href="/{{ section or category }}/{{ subsection }}/" itemprop="item">
+          <span itemprop="name">{{ subsectionTitle or subsection }}</span>
+        </a>
+        <meta itemprop="position" content="3"/>
+      </li>
+      {% endif %}
+
+      {# Текущая страница (без ссылки) #}
+      {% if title %}
+      <li class="breadcrumb-item breadcrumb-item--current"
+          itemprop="itemListElement"
+          itemscope
+          itemtype="https://schema.org/ListItem">
+        <span itemprop="name">{{ title }}</span>
+        <meta itemprop="position"
+              content="{{ 4 if subsection else (3 if (section or category) else 2) }}"/>
+      </li>
+      {% endif %}
+
+    {% endif %}
+
+  </ol>
+</nav>

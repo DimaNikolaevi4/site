@@ -1,0 +1,79 @@
+{#
+  Компонент Секция 6 — Популярные разделы (заглушка)
+  Переменные:
+    popularTitle    — заголовок (по умолчанию «Популярные разделы»)
+    popularSubtitle — подзаголовок (опционально)
+    popularLinks    — массив объектов { title, subtitle, description, url, icon }
+                      Если не передан — используется список по умолчанию
+#}
+
+{% set _popularTitle = popularTitle if popularTitle else "Популярные разделы" %}
+{% set _popularSubtitle = popularSubtitle if popularSubtitle else "Важная информация для посетителей сайта" %}
+
+{% set _defaultLinks = [
+  {
+    title: "Абитуриентам",
+    subtitle: "Приём документов",
+    description: "Информация о правилах приёма, необходимых документах и сроках подачи заявлений.",
+    url: "/abiturientam/",
+    icon: "bi-mortarboard"
+  },
+  {
+    title: "Студентам",
+    subtitle: "Учебный процесс",
+    description: "Расписание занятий, информация о сессиях, стипендиях и студенческой жизни техникума.",
+    url: "/studentam-i-roditeljam/",
+    icon: "bi-journal-text"
+  },
+  {
+    title: "Расписание",
+    subtitle: "График занятий",
+    description: "Актуальное расписание занятий для всех групп и курсов на текущий семестр.",
+    url: "/studentam-i-roditeljam/raspisanie/",
+    icon: "bi-calendar3"
+  },
+  {
+    title: "Контакты",
+    subtitle: "Свяжитесь с нами",
+    description: "Адреса, телефоны, электронная почта и способы связи с администрацией техникума.",
+    url: "/contacts/",
+    icon: "bi-telephone"
+  }
+] %}
+
+{% set _links = popularLinks if popularLinks else _defaultLinks %}
+
+<section id="popular-sections" class="section component-popular trainers-index">
+
+  <div class="container">
+
+    <div class="container section-title" data-aos="fade-up">
+      <h2>{{ _popularTitle }}</h2>
+      <p>{{ _popularSubtitle }}</p>
+    </div>
+
+    <div class="row">
+      {% for item in _links %}
+      <div class="col-lg-3 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="{{ loop.index * 100 }}">
+        <div class="member w-100">
+          <div class="member-icon-wrap">
+            <i class="bi {{ item.icon or 'bi-arrow-right-circle' }} member-icon" aria-hidden="true"></i>
+          </div>
+          <div class="member-content">
+            <h4>{{ item.title }}</h4>
+            <span>{{ item.subtitle }}</span>
+            <p>{{ item.description }}</p>
+            <div class="social">
+              <a href="{{ item.url }}" aria-label="Перейти в раздел {{ item.title }}">
+                <i class="bi bi-arrow-right-circle" aria-hidden="true"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+
+  </div>
+
+</section>

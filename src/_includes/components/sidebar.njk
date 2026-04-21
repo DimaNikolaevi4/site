@@ -1,0 +1,94 @@
+{#
+  Компонент Секция 7 — Сайдбар (30% левая колонка с едиными баннерами)
+  Принцип: единые баннеры на всех страницах, НЕ навигация
+  Использование:
+    {% include "components/sidebar.njk" %}
+  Переменные (все опциональны — по умолчанию показывается стандартный набор баннеров):
+    sidebarBanners — массив объектов { title, text, url, linkText, icon, modifier }
+                     Если не передан — используется набор по умолчанию
+#}
+
+{% set _defaultBanners = [
+  {
+    title: "Приёмная кампания",
+    text: "Подайте документы на поступление онлайн или лично. Приём заявлений открыт.",
+    url: "/abiturientam/",
+    linkText: "Подробнее",
+    icon: "bi-mortarboard-fill",
+    modifier: "banner--primary"
+  },
+  {
+    title: "День открытых дверей",
+    text: "Познакомьтесь с техникумом лично. Следите за расписанием мероприятий.",
+    url: "/abiturientam/den-otkrytyh-dverej/",
+    linkText: "Узнать дату",
+    icon: "bi-door-open-fill",
+    modifier: "banner--accent"
+  },
+  {
+    title: "Расписание занятий",
+    text: "Актуальное расписание для всех групп на текущий семестр.",
+    url: "/studentam-i-roditeljam/raspisanie/",
+    linkText: "Открыть расписание",
+    icon: "bi-calendar3",
+    modifier: "banner--info"
+  },
+  {
+    title: "Горячая линия",
+    text: "Вопросы по учёбе, документам, приёму? Звоните или пишите нам.",
+    url: "/contacts/",
+    linkText: "Контакты",
+    icon: "bi-telephone-fill",
+    modifier: "banner--success"
+  }
+] %}
+
+{% set _banners = sidebarBanners if sidebarBanners else _defaultBanners %}
+
+<aside class="component-sidebar" role="complementary" aria-label="Дополнительная информация">
+
+  <div class="sidebar-banners">
+    {% for banner in _banners %}
+    <div class="sidebar-banner {{ banner.modifier }}" data-aos="fade-left" data-aos-delay="{{ loop.index * 80 }}">
+      <div class="sidebar-banner__icon">
+        <i class="bi {{ banner.icon }}" aria-hidden="true"></i>
+      </div>
+      <div class="sidebar-banner__body">
+        <h3 class="sidebar-banner__title">{{ banner.title }}</h3>
+        <p class="sidebar-banner__text">{{ banner.text }}</p>
+        <a href="{{ banner.url }}" class="sidebar-banner__link">
+          {{ banner.linkText }} <i class="bi bi-arrow-right" aria-hidden="true"></i>
+        </a>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+
+  {# Блок соцсетей #}
+  {% if site.social %}
+  <div class="sidebar-social">
+    <h3 class="sidebar-social__title">Мы в соцсетях</h3>
+    <div class="sidebar-social__links">
+      {% if site.social.vk %}
+      <a href="{{ site.social.vk }}" class="sidebar-social__link sidebar-social__link--vk" target="_blank" rel="noopener noreferrer" aria-label="ВКонтакте">
+        <i class="bi bi-vk" aria-hidden="true"></i>
+        <span>ВКонтакте</span>
+      </a>
+      {% endif %}
+      {% if site.social.telegram %}
+      <a href="{{ site.social.telegram }}" class="sidebar-social__link sidebar-social__link--tg" target="_blank" rel="noopener noreferrer" aria-label="Telegram">
+        <i class="bi bi-telegram" aria-hidden="true"></i>
+        <span>Telegram</span>
+      </a>
+      {% endif %}
+      {% if site.social.youtube %}
+      <a href="{{ site.social.youtube }}" class="sidebar-social__link sidebar-social__link--yt" target="_blank" rel="noopener noreferrer" aria-label="YouTube">
+        <i class="bi bi-youtube" aria-hidden="true"></i>
+        <span>YouTube</span>
+      </a>
+      {% endif %}
+    </div>
+  </div>
+  {% endif %}
+
+</aside>
