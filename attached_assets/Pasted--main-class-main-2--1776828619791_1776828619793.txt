@@ -1,0 +1,297 @@
+<main class="main">
+
+  <!-- ═══════════════════════════════════════════════ -->
+  <!-- Секция 2 — Hero                                 -->
+  <!-- ═══════════════════════════════════════════════ -->
+  
+  
+
+
+
+
+
+
+
+<section class="section-hero page-hero page-hero--banner component-hero" aria-label="Баннер раздела">
+
+  <div class="page-hero__bg" style="background-image: url('/assets/mentor/img/hero-bg.jpg');" role="img" aria-label="Главная страница"></div>
+
+  <div class="page-hero__overlay" aria-hidden="true"></div>
+
+  <div class="container page-hero__content">
+    <div class="page-hero__inner">
+
+      
+      <div class="page-hero__org" aria-label="ГБПОУ РО Сальский индустриальный техникум">
+        ГБПОУ РО
+        <br>
+        <small>«Сальский индустриальный техникум»</small>
+      </div>
+
+      
+      
+
+      
+      
+
+      
+      
+
+    </div>
+  </div>
+
+</section>
+
+
+
+  
+  <div class="home-bg">
+
+    <!-- ═══════════════════════════════════════════════ -->
+    <!-- Секция 3 — About (слово директора)              -->
+    <!-- ═══════════════════════════════════════════════ -->
+    
+    
+
+
+
+
+  
+
+  
+  <section id="about" class="about section component-about component-about--director">
+    <div class="container">
+      <div class="row gy-4 align-items-center">
+
+        
+        <div class="col-lg-6 order-1 order-lg-2 aos-init aos-animate" data-aos="fade-left" data-aos-delay="100">
+          <div class="about-img-wrap">
+            <img src="/assets/images/director-photo.jpg" class="img-fluid rounded shadow-sm" alt="Директор ГБПОУ РО «СИТ»" loading="lazy">
+          </div>
+        </div>
+
+        
+        <div class="col-lg-6 order-2 order-lg-1 content aos-init aos-animate" data-aos="fade-right" data-aos-delay="200">
+          <h2 class="about-title">Слово директора</h2>
+
+          
+          <div class="about-excerpt fst-italic text-muted mb-3">
+            <p>Государственное бюджетное профессиональное образовательное учреждение Ростовской области «Сальский индустриальный техникум» является современным образовательным учреждением, успешно готовящим кадры среднего звена для развивающейся экономики Донского края.</p>
+          </div>
+          
+
+          
+          <ul class="about-highlights list-unstyled mb-4">
+            
+            <li class="d-flex align-items-start gap-2 mb-2">
+              <i class="bi bi-check-circle-fill text-primary flex-shrink-0 mt-1" aria-hidden="true"></i>
+              <span>Современное образовательное учреждение с 48-летней историей</span>
+            </li>
+            
+            <li class="d-flex align-items-start gap-2 mb-2">
+              <i class="bi bi-check-circle-fill text-primary flex-shrink-0 mt-1" aria-hidden="true"></i>
+              <span>50% преподавателей имеют высшую квалификационную категорию</span>
+            </li>
+            
+            <li class="d-flex align-items-start gap-2 mb-2">
+              <i class="bi bi-check-circle-fill text-primary flex-shrink-0 mt-1" aria-hidden="true"></i>
+              <span>Качественное образование и интересная студенческая жизнь</span>
+            </li>
+            
+          </ul>
+          
+
+          <a href="/abiturientam/slovo-direktora/" class="read-more" aria-label="Читать полностью — Слово директора">
+            <span>Читать полностью</span>
+            <i class="bi bi-arrow-right" aria-hidden="true"></i>
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+  
+
+
+
+
+
+    <!-- ═══════════════════════════════════════════════ -->
+    <!-- Секция 4 — Контент + Сайдбар (70% / 30%)        -->
+    <!-- Лента новостей + сайдбар с едиными баннерами    -->
+    <!-- ═══════════════════════════════════════════════ -->
+    <section id="news" class="courses section">
+
+      <div class="container section-title aos-init aos-animate" data-aos="fade-up">
+        <h2>Новости</h2>
+        <p>Последние события техникума</p>
+      </div>
+
+      <div class="container">
+        <div class="content-sidebar-grid">
+
+          <!-- Сайдбар (30% слева) — единые баннеры, заглушка -->
+          <div class="sidebar-col">
+            
+
+
+
+
+
+
+<aside class="component-sidebar" role="complementary" aria-label="Дополнительная информация">
+
+  <div class="sidebar-banners">
+    
+  </div>
+
+</aside>
+
+          </div>
+
+          <!-- Лента новостей (70% справа) — 3 последние через news.njk -->
+          
+          
+          
+          
+
+
+
+
+
+
+
+
+
+
+
+  
+    
+    
+<div class="content-col">
+  <div class="row">
+    
+    
+    
+    <div class="col-md-6 col-xl-4 d-flex align-items-stretch aos-init aos-animate" data-aos="zoom-in" data-aos-delay="100">
+      <div class="course-item">
+        <img src="/assets/images/news/razgovory-o-vazhnom.jpg" class="img-fluid" alt="Внеурочные занятия «Разговоры о важном» – Заводы России" loading="lazy">
+        <div class="course-content">
+          <p class="date mb-3">16 марта 2026 г.</p>
+          <h3><a href="/content/news/2026-03-16-razgovory-o-vazhnom/">Внеурочные занятия «Разговоры о важном» – Заводы России</a></h3>
+          <p class="description">На внеурочном занятии «Разговоры о важном» для студентов СПО обсудили тему «Заводы России». Наша цель — расширить представления о роли современной промышленности страны.</p>
+          <div class="trainer d-flex justify-content-between align-items-center">
+            <div class="trainer-profile d-flex align-items-center">
+              <a href="/content/news/2026-03-16-razgovory-o-vazhnom/" class="trainer-link">Читать далее →</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+    <div class="col-md-6 col-xl-4 d-flex align-items-stretch aos-init aos-animate" data-aos="zoom-in" data-aos-delay="200">
+      <div class="course-item">
+        <img src="/assets/images/news/ix-chteniya.jpg" class="img-fluid" alt="IX Областные Сальские краеведческие чтения" loading="lazy">
+        <div class="course-content">
+          <p class="date mb-3">23 марта 2026 г.</p>
+          <h3><a href="/content/news/2026-03-23-ix-chteniya/">IX Областные Сальские краеведческие чтения</a></h3>
+          <p class="description">23 марта 2026 года в техникуме состоялись IX Областные Сальские краеведческие Чтения с международным участием, посвященные Году единства народов России.</p>
+          <div class="trainer d-flex justify-content-between align-items-center">
+            <div class="trainer-profile d-flex align-items-center">
+              <a href="/content/news/2026-03-23-ix-chteniya/" class="trainer-link">Читать далее →</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+    <div class="col-md-6 col-xl-4 d-flex align-items-stretch aos-init aos-animate" data-aos="zoom-in" data-aos-delay="300">
+      <div class="course-item">
+        <img src="/assets/images/news/olimpiada-avtomatika.jpg" class="img-fluid" alt="Олимпиада профессионального мастерства по компетенции «Промышленная автоматика»" loading="lazy">
+        <div class="course-content">
+          <p class="date mb-3">27 марта 2026 г.</p>
+          <h3><a href="/content/news/2026-03-27-olimpiada-avtomatika/">Олимпиада профессионального мастерства по компетенции «Промышленная автоматика»</a></h3>
+          <p class="description">27 марта 2026 года на базе мастерской по компетенции «Промышленная автоматика» состоялся территориальный этап областной олимпиады профессионального мастерства.</p>
+          <div class="trainer d-flex justify-content-between align-items-center">
+            <div class="trainer-profile d-flex align-items-center">
+              <a href="/content/news/2026-03-27-olimpiada-avtomatika/" class="trainer-link">Читать далее →</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+  </div>
+
+  <div class="text-center mt-4 aos-init aos-animate" data-aos="fade-up" data-aos-delay="500">
+    <a href="/news/" class="btn-get-started">Все новости</a>
+  </div>
+</div>
+
+  
+
+
+
+
+
+        </div>
+      </div>
+
+    </section>
+
+    <!-- ═══════════════════════════════════════════════ -->
+    <!-- Секция 5 — Популярные разделы (заглушка)        -->
+    <!-- ═══════════════════════════════════════════════ -->
+    
+
+
+
+
+
+
+
+
+
+<section id="popular-sections" class="section component-popular trainers-index">
+
+  <div class="container">
+
+    <div class="container section-title aos-init aos-animate" data-aos="fade-up">
+      <h2>Популярные разделы</h2>
+      <p>Важная информация для посетителей сайта</p>
+    </div>
+
+    <div class="row">
+      
+    </div>
+
+  </div>
+
+</section>
+
+
+    <!-- ═══════════════════════════════════════════════ -->
+    <!-- Секция 6 — Резерв (место под будущий блок)      -->
+    <!-- ═══════════════════════════════════════════════ -->
+    
+
+  </div>
+
+</main>
