@@ -10,14 +10,17 @@
 
 // ─── Переключение тёмной темы ───
 function updateDarkThemeBtn(enabled) {
-  var btn = document.getElementById('darkThemeToggle');
-  if (!btn) return;
-  var icon = btn.querySelector('i');
-  if (icon) {
-    icon.className = enabled ? 'bi bi-sun-fill' : 'bi bi-moon-stars';
-  }
-  btn.setAttribute('aria-label', enabled ? 'Светлая тема' : 'Тёмная / светлая тема');
-  btn.setAttribute('title', enabled ? 'Светлая тема' : 'Тёмная тема');
+  var ids = ['darkThemeToggle', 'darkThemeToggleMobile'];
+  ids.forEach(function (id) {
+    var btn = document.getElementById(id);
+    if (!btn) return;
+    var icon = btn.querySelector('i');
+    if (icon) {
+      icon.className = enabled ? 'bi bi-sun-fill' : 'bi bi-moon-stars';
+    }
+    btn.setAttribute('aria-label', enabled ? 'Светлая тема' : 'Тёмная / светлая тема');
+    btn.setAttribute('title', enabled ? 'Светлая тема' : 'Тёмная тема');
+  });
 }
 
 window.toggleDarkTheme = function () {
