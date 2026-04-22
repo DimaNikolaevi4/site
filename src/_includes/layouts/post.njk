@@ -1,32 +1,38 @@
 {#
   ШАБЛОН ТИП C — layouts/post.njk
-  Материалы: новости, документы, события, страницы подразделов
+  Материалы: новости, документы, события, страницы материалов
 
-  Секция 1: Header          — глобальная, в base.njk
-  Секция 2: Hero + Контекст — hero-баннер (опц.), хлебные крошки, заголовок, мета
-  Секция 3+7: Контент + Сайдбар — сетка 70/30 (контент | сайдбар с баннерами)
-     Контент: обложка, текст материала, вложения, теги
-     Сайдбар: components/sidebar.njk (30% левая колонка, единые баннеры)
-  Секция 4: «Читайте также» — связанные материалы (опц.)
-  Секция 6: Нижняя навигация — возврат к ленте, пред/след материал
-  Секция 8: Footer           — глобальная, в base.njk
+  Согласно STRUCTURE_AND_PRINCIPLES.md (раздел 3.3, Тип C):
+    [1 Шапка] → [2 Хлебные крошки] → [3 Контент] → [4 Читайте также] → [8 Подвал]
+
+  Секции:
+    1 Header        — глобальная (base.njk)
+    2 Breadcrumbs   — хлебные крошки + заголовок + мета
+    3 Content       — обложка, текст материала, вложения, теги, шаринг (полная ширина)
+    4 Related       — «Читайте также» (авто из коллекции, если не задано вручную)
+    8 Footer        — глобальная (base.njk)
+
+  Отсутствуют (по схеме Тип C):
+    — Hero  (включается только если явно задан frontmatter `hero.image`)
+    — Sidebar (Тип C идёт во всю ширину)
+    — About / Popular / News-блоки
 
   Управление через frontmatter:
-    hero:           { image, title, subtitle, alt, cta } — Hero-баннер
-    coverImage:     URL строка — обложка внутри контентной зоны
+    hero:           { image, title, subtitle, alt, cta } — опц. Hero-баннер
+    coverImage:     URL — обложка внутри контентной зоны
     coverAlt:       строка — alt текста обложки
-    date:           дата публикации
+    date:           дата публикации (YYYY-MM-DD)
     author:         строка — автор
-    category:       slug раздела (для хлебных крошек и мета)
+    category:       slug раздела (для хлебных крошек, мета, ссылки «назад»)
     categoryTitle:  строка — человеческое название категории
     section:        slug раздела (альтернатива category)
     sectionTitle:   строка — человеческое название раздела
-    readingTime:    число (минут) — время чтения (автоматом или вручную)
-    attachments:    массив { url, name, size } — вложения
+    readingTime:    число (минут)
+    attachments:    массив { url, name, size } — вложения (PDF, DOCX, …)
     tags:           массив строк — теги
-    showSidebar:    true/false (по умолчанию true)
-    sidebarBanners: массив — переопределить стандартные баннеры
-    relatedPages:   массив { url, title, image, excerpt, date }
+    relatedPages:   массив { url, title, image, excerpt, date } — переопределить «Читайте также»
+    relatedCollection: имя коллекции для авто-подбора (по умолчанию category/section)
+    relatedCount:   число (по умолчанию 3)
     parentSection:  { url, title } — явная ссылка «назад»
     prevPost:       { url, title }
     nextPost:       { url, title }
@@ -34,27 +40,25 @@
 {% extends "layouts/base.njk" %}
 
 {% block content %}
-{% set _showSidebar = showSidebar if showSidebar is defined else true %}
-
-<article class="post-layout" itemscope itemtype="https://schema.org/Article">
+<article class="post-layout post-layout--full" itemscope itemtype="https://schema.org/Article">
 
   {# ═══════════════════════════════════════════════
-     СЕКЦИЯ 2: Hero (опц.) + Контекст + Мета
+     Hero (опционально, только если задан hero.image)
   ═══════════════════════════════════════════════ #}
+  {% if hero and hero.image %}
+    {% include "components/hero.njk" %}
+  {% endif %}
 
-  {# Hero-баннер — если задан hero.image #}
-  {% include "components/hero.njk" %}
-
-  {# Контекстная полоса: хлебные крошки + заголовок + мета #}
+  {# ═══════════════════════════════════════════════
+     СЕКЦИЯ 2: Хлебные крошки + Заголовок + Мета
+  ═══════════════════════════════════════════════ #}
   <section class="section-context section-context--post" aria-label="Информация о материале">
     <div class="container">
 
-      {# Хлебные крошки: Главная → Раздел → (Подраздел) → Заголовок #}
       {% include "components/breadcrumbs.njk" %}
 
       <header class="post-header">
 
-        {# Метка категории над заголовком #}
         {% if category or section %}
         <div class="post-header__rubric">
           {% if category %}
@@ -71,12 +75,10 @@
         </div>
         {% endif %}
 
-        {# Заголовок #}
-        {% if showHero == false %}
+        {% if not (hero and hero.image) %}
         <h1 class="post-title" itemprop="headline">{{ title }}</h1>
         {% endif %}
 
-        {# Мета-строка: дата, автор, время чтения #}
         <div class="post-meta">
           {% if date %}
           <time class="post-meta__item post-date"
@@ -109,124 +111,131 @@
   </section>
 
   {# ═══════════════════════════════════════════════
-     СЕКЦИИ 3 + 7: Контент (70%) + Сайдбар (30%)
-     Сайдбар — слева, контент — справа
+     СЕКЦИЯ 3: Контент материала (полная ширина)
   ═══════════════════════════════════════════════ #}
   <section class="section-main">
     <div class="container">
-      <div class="content-sidebar-grid{% if not _showSidebar %} content-sidebar-grid--full{% endif %}">
+      <div class="post-content-wrap">
 
-        {# ── Секция 7: Сайдбар (30% левая колонка) ── #}
-        {% if _showSidebar %}
-        <div class="sidebar-col">
-          {% include "components/sidebar.njk" %}
-        </div>
+        {# Обложка внутри контентной зоны (если нет Hero) #}
+        {% if coverImage and not (hero and hero.image) %}
+        <figure class="post-cover">
+          <img src="{{ coverImage }}"
+               alt="{{ coverAlt or title }}"
+               loading="eager"
+               class="post-cover__img img-fluid rounded"
+               itemprop="image">
+        </figure>
         {% endif %}
 
-        {# ── Секция 3: Контент материала ── #}
-        <div class="content-col">
+        {# Основной текст материала #}
+        <div class="post-content" itemprop="articleBody">
+          {{ content | safe }}
+        </div>
 
-          {# Обложка материала (если есть и нет полноэкранного hero) #}
-          {% if coverImage and showHero == false %}
-          <figure class="post-cover">
-            <img src="{{ coverImage }}"
-                 alt="{{ coverAlt or title }}"
-                 loading="eager"
-                 class="post-cover__img img-fluid rounded"
-                 itemprop="image">
-          </figure>
-          {% endif %}
-
-          {# Основной текст #}
-          <div class="post-content" itemprop="articleBody">
-            {{ content | safe }}
-          </div>
-
-          {# Вложения: PDF, DOC, XLS и другие файлы #}
-          {% if attachments and attachments.length > 0 %}
-          <section class="post-attachments" aria-label="Вложения к материалу">
-            <h2 class="attachments-title">
-              <i class="bi bi-paperclip" aria-hidden="true"></i> Вложения
-            </h2>
-            <ul class="attachments-list" role="list">
-              {% for attachment in attachments %}
-              <li class="attachment-item" role="listitem">
-                <a href="{{ attachment.url }}"
-                   class="attachment-link"
-                   download
-                   {% if attachment.size %}title="Скачать ({{ attachment.size }})"{% endif %}>
-
-                  {# Иконка по типу файла #}
-                  {% set _ext = attachment.url | lower %}
-                  {% if '.pdf' in _ext %}
-                    <i class="bi bi-file-earmark-pdf attachment-icon attachment-icon--pdf" aria-hidden="true"></i>
-                  {% elif '.doc' in _ext %}
-                    <i class="bi bi-file-earmark-word attachment-icon attachment-icon--doc" aria-hidden="true"></i>
-                  {% elif '.xls' in _ext %}
-                    <i class="bi bi-file-earmark-excel attachment-icon attachment-icon--xls" aria-hidden="true"></i>
-                  {% elif '.ppt' in _ext %}
-                    <i class="bi bi-file-earmark-ppt attachment-icon attachment-icon--ppt" aria-hidden="true"></i>
-                  {% elif '.zip' in _ext or '.rar' in _ext %}
-                    <i class="bi bi-file-earmark-zip attachment-icon" aria-hidden="true"></i>
-                  {% elif '.jpg' in _ext or '.png' in _ext or '.gif' in _ext or '.webp' in _ext %}
-                    <i class="bi bi-file-earmark-image attachment-icon" aria-hidden="true"></i>
-                  {% else %}
-                    <i class="bi bi-file-earmark attachment-icon" aria-hidden="true"></i>
-                  {% endif %}
-
-                  <span class="attachment-name">{{ attachment.name }}</span>
-                  {% if attachment.size %}
-                  <span class="attachment-size">({{ attachment.size }})</span>
-                  {% endif %}
-                </a>
-              </li>
-              {% endfor %}
-            </ul>
-          </section>
-          {% endif %}
-
-          {# Теги #}
-          {% if tags and tags.length > 0 %}
-          <footer class="post-footer">
-            <div class="post-tags">
-              <span class="tags-label">
-                <i class="bi bi-tags" aria-hidden="true"></i> Теги:
-              </span>
-              {% for tag in tags %}
-                {% if tag != 'nav' and tag != 'all' and tag != 'post' and tag != 'news' %}
-                <a href="/tags/{{ tag | slugify }}/" class="tag" itemprop="keywords">{{ tag }}</a>
+        {# Вложения: PDF, DOCX, XLS, … #}
+        {% if attachments and attachments.length > 0 %}
+        <section class="post-attachments" aria-label="Вложения к материалу">
+          <h2 class="attachments-title">
+            <i class="bi bi-paperclip" aria-hidden="true"></i> Вложения
+          </h2>
+          <ul class="attachments-list" role="list">
+            {% for attachment in attachments %}
+            <li class="attachment-item" role="listitem">
+              <a href="{{ attachment.url }}"
+                 class="attachment-link"
+                 download
+                 {% if attachment.size %}title="Скачать ({{ attachment.size }})"{% endif %}>
+                {% set _ext = attachment.url | lower %}
+                {% if '.pdf' in _ext %}
+                  <i class="bi bi-file-earmark-pdf attachment-icon attachment-icon--pdf" aria-hidden="true"></i>
+                {% elif '.doc' in _ext %}
+                  <i class="bi bi-file-earmark-word attachment-icon attachment-icon--doc" aria-hidden="true"></i>
+                {% elif '.xls' in _ext %}
+                  <i class="bi bi-file-earmark-excel attachment-icon attachment-icon--xls" aria-hidden="true"></i>
+                {% elif '.ppt' in _ext %}
+                  <i class="bi bi-file-earmark-ppt attachment-icon attachment-icon--ppt" aria-hidden="true"></i>
+                {% elif '.zip' in _ext or '.rar' in _ext %}
+                  <i class="bi bi-file-earmark-zip attachment-icon" aria-hidden="true"></i>
+                {% elif '.jpg' in _ext or '.png' in _ext or '.gif' in _ext or '.webp' in _ext %}
+                  <i class="bi bi-file-earmark-image attachment-icon" aria-hidden="true"></i>
+                {% else %}
+                  <i class="bi bi-file-earmark attachment-icon" aria-hidden="true"></i>
                 {% endif %}
-              {% endfor %}
-            </div>
-          </footer>
-          {% endif %}
+                <span class="attachment-name">{{ attachment.name }}</span>
+                {% if attachment.size %}
+                <span class="attachment-size">({{ attachment.size }})</span>
+                {% endif %}
+              </a>
+            </li>
+            {% endfor %}
+          </ul>
+        </section>
+        {% endif %}
 
-          {# Кнопка поделиться (нативный Web Share API) #}
-          <div class="post-share" aria-label="Поделиться материалом">
-            <button class="post-share__btn btn btn-outline-secondary btn-sm"
-                    onclick="if(navigator.share){navigator.share({title:document.title,url:location.href})}else{navigator.clipboard.writeText(location.href).then(()=>alert('Ссылка скопирована'))}"
-                    type="button">
-              <i class="bi bi-share" aria-hidden="true"></i> Поделиться
-            </button>
+        {# Теги #}
+        {% if tags and tags.length > 0 %}
+        <footer class="post-footer">
+          <div class="post-tags">
+            <span class="tags-label">
+              <i class="bi bi-tags" aria-hidden="true"></i> Теги:
+            </span>
+            {% for tag in tags %}
+              {% if tag != 'nav' and tag != 'all' and tag != 'post' and tag != 'news' %}
+              <a href="/tags/{{ tag | slugify }}/" class="tag" itemprop="keywords">{{ tag }}</a>
+              {% endif %}
+            {% endfor %}
           </div>
+        </footer>
+        {% endif %}
 
-        </div>{# /.content-col #}
+        {# Кнопка «Поделиться» #}
+        <div class="post-share" aria-label="Поделиться материалом">
+          <button class="post-share__btn btn btn-outline-secondary btn-sm"
+                  onclick="if(navigator.share){navigator.share({title:document.title,url:location.href})}else{navigator.clipboard.writeText(location.href).then(()=>alert('Ссылка скопирована'))}"
+                  type="button">
+            <i class="bi bi-share" aria-hidden="true"></i> Поделиться
+          </button>
+        </div>
 
-      </div>{# /.content-sidebar-grid #}
+      </div>
     </div>
   </section>
 
   {# ═══════════════════════════════════════════════
-     СЕКЦИЯ 4: «Читайте также» / Связанные материалы
+     СЕКЦИЯ 4: «Читайте также»
+     Используем переопределённый relatedPages, иначе авто-подбор
+     из коллекции (category/section/relatedCollection), исключая текущий материал
   ═══════════════════════════════════════════════ #}
-  {% if relatedPages and relatedPages.length > 0 %}
+  {% set _relatedItems = relatedPages %}
+  {% if not _relatedItems %}
+    {% set _relCollection = relatedCollection or category or section %}
+    {% set _relCount = relatedCount or 3 %}
+    {% if _relCollection and collections[_relCollection] %}
+      {% set _auto = [] %}
+      {% for item in collections[_relCollection] | reverse %}
+        {% if item.url != page.url and _auto.length < _relCount %}
+          {% set _auto = (_auto.push({
+            url: item.url,
+            title: item.data.title,
+            image: item.data.coverImage or (item.data.hero and item.data.hero.image),
+            excerpt: item.data.excerpt or item.data.description,
+            date: item.data.date
+          }), _auto) %}
+        {% endif %}
+      {% endfor %}
+      {% set _relatedItems = _auto %}
+    {% endif %}
+  {% endif %}
+
+  {% if _relatedItems and _relatedItems.length > 0 %}
   <section class="section-related" aria-label="Читайте также">
     <div class="container">
       <h2 class="section-related__title">
         <i class="bi bi-journals" aria-hidden="true"></i> Читайте также
       </h2>
       <div class="related-grid">
-        {% for item in relatedPages %}
+        {% for item in _relatedItems %}
         <article class="related-card">
           {% if item.image %}
           <div class="related-card__img">
@@ -254,13 +263,11 @@
   {% endif %}
 
   {# ═══════════════════════════════════════════════
-     СЕКЦИЯ 6: Нижняя навигация
-     Возврат к ленте / пред. / след. материал
+     Нижняя навигация: возврат к разделу + пред/след
   ═══════════════════════════════════════════════ #}
   <nav class="section-backnav" aria-label="Навигация по материалам">
     <div class="container">
 
-      {# Ссылка «назад в раздел» #}
       {% if parentSection %}
       <a href="{{ parentSection.url }}" class="backnav-link backnav-link--parent">
         <i class="bi bi-arrow-left-circle" aria-hidden="true"></i>
@@ -283,7 +290,6 @@
       </a>
       {% endif %}
 
-      {# Пред/след материал #}
       <div class="backnav-prevnext">
         {% if prevPost %}
         <a href="{{ prevPost.url }}"
