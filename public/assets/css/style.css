@@ -5045,3 +5045,43 @@ html {
   font-weight: 500;
 }
 .svedenija-submenu__link--active:hover { background: #0a3a55; color: #fff; }
+
+/* ============================================
+   Leadership cards (Руководство)
+   ============================================ */
+.leader-card {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  align-items: flex-start;
+  padding: 1.25rem;
+  margin: 1.25rem 0;
+  background: #f8faf7;
+  border-left: 4px solid #2d8a47;
+  border-radius: 8px;
+}
+.leader-card img.leader-photo,
+.leader-card img {
+  flex: 0 0 auto;
+  width: 200px;
+  max-width: 100%;
+  height: auto;
+  border-radius: 6px;
+  object-fit: cover;
+}
+.leader-card p,
+.leader-card ul {
+  flex: 1 1 320px;
+  margin: 0.25rem 0;
+}
+.leader-card ul {
+  list-style: none;
+  padding-left: 0;
+}
+.leader-card ul li {
+  padding: 0.15rem 0;
+}
+@media (max-width: 600px) {
+  .leader-card { flex-direction: column; }
+  .leader-card img { width: 100%; max-width: 240px; margin: 0 auto; }
+}
