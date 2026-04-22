@@ -78,6 +78,59 @@
 | 3.2.9 .page-hero стили в styles/main.css | ✅ | Стили для блока hero на внутренних страницах |
 | 3.2.10 assets/js/offcanvas-nav.js — мобильное offcanvas-меню | ✅ | Отдельный модуль `src/assets/js/offcanvas-nav.js`, подключён в `base.njk`. Управляет открытием/закрытием бокового меню, аккордеоном разделов 1-го уровня, фокусом и закрытием по Escape. |
 
+### 3.3 Замечания строгого аудита (апрель 2026)
+
+> Сводка расхождений между фактическим состоянием проекта и `STRUCTURE_AND_PRINCIPLES.md` v3.4 + найденные баги/уязвимости. Сборка чистая (80 файлов, 0 ошибок), но требуются доработки.
+
+#### 3.3.1 Критические дефекты (видны пользователю / нарушают спецификацию)
+
+| Пункт | Статус | Описание |
+|-------|--------|----------|
+| 3.3.1.1 robots.txt не публикуется | ❌ | В `.eleventy.js`: `addPassthroughCopy({ "robots.njk": "robots.txt" })` ссылается на несуществующий `robots.njk` в корне проекта. Файл `src/robots.txt` существует, но `.txt` не входит в `templateFormats` и явно тоже не копируется → `public/robots.txt` отсутствует. Поисковые системы не получат правил индексации. |
+| 3.3.1.2 Технические URL-артефакты в публикации | ❌ | Eleventy генерирует реально доступные служебные страницы: `/pages/news-post/1..9/`, `/pages/rubric-lists/default/1..6/`, `/pages/static/`, `/pages/materials/detail/`. Источники — `src/pages/news-post.njk`, `src/pages/static.njk`, `src/pages/materials/detail.njk`, `src/pages/rubric-lists/default.njk` (артефакты скаффолда). Они индексируются поисковиками и попадают в `sitemap.xml`. **Решение:** установить `permalink: false` + `eleventyExcludeFromCollections: true` или удалить файлы. |
+| 3.3.1.3 Незакрытый тег `</body>` в base.njk | ❌ | В `src/_includes/layouts/base.njk` после `<script src="/assets/js/offcanvas-nav.js"></script>` сразу `</html>` — закрывающего `</body>` нет. Нарушение HTML-валидации (W3C). |
+| 3.3.1.4 Дублирование контента раздела «Абитуриентам» | ❌ | Контент раздела лежит в **двух** местах одновременно: `src/content/abiturientam/` (7 файлов: slovo-direktora, kontakty-grafik, virtualnaya-ekskursiya, platnaya-osnova, podacha-elektronnaya-pochta, podacha-pochtovaya-svyaz, priemnaya-kampaniya-2026) и `src/content/pages/abiturientam/` (1 файл: den-otkrytyh-dverej.md). Редакторы запутаются, ссылки могут пересекаться. **Решение:** свести в один путь (`src/content/abiturientam/`), перенести `den-otkrytyh-dverej.md`. |
+| 3.3.1.5 PHP-файл в статическом проекте | ❌ | `src/content/pages/submit-form.php` — PHP не выполнится на статическом хостинге (Eleventy → public/). Форму обратной связи нужно перевести на сторонний обработчик (FormSubmit, Web3Forms, Telegram-бот) или Netlify Forms. Иначе `/thank-you/` ведёт в никуда. |
+| 3.3.1.6 Случайная папка `src/documents/` | ❌ | В корне `src/` лежат 4 PDF (kodeks-etiki-140.pdf, polozhenie-antikorrupcia-143.pdf, polozhenie-antikorrupcia-143-full.pdf, pravila-obmena-delovymi-podarkami-144.pdf). По конвенции все вложения должны быть в `src/assets/uploads/{раздел}/`. Сейчас они либо дублируются, либо ссылаются по неустойчивому пути. |
+
+#### 3.3.2 Расхождения со STRUCTURE_AND_PRINCIPLES.md
+
+| Пункт | Статус | Описание |
+|-------|--------|----------|
+| 3.3.2.1 base.njk не в корне `_includes/` | 🔶 | STRUCTURE п. 3.5 (v3.3) явно указывает: `base.njk` находится в корне `src/_includes/`. Фактически — в `src/_includes/layouts/base.njk`. Все шаблоны ссылаются на `layout: layouts/base.njk` — работает, но описание в документации устарело. **Решение:** либо переместить файл, либо обновить STRUCTURE_AND_PRINCIPLES.md до v3.5. |
+| 3.3.2.2 svedenija-page.njk вне layouts/ | 🔶 | Лежит в корне `src/_includes/svedenija-page.njk`, хотя по логике это макет — место в `layouts/`. Уже отмечено в 3.1.5, но фактически не исправлено. |
+| 3.3.2.3 Главная: 7 секций вместо 8 | 🔶 | В `src/index.njk` комментарий говорит «Главная страница — 7 секций» и нумерация 1–7. STRUCTURE 3.2 / 3.3 жёстко требует 8 секций (Header → Hero → About → Материалы → Популярное → Сайдбар → Footer + Хлебные крошки=skip). На главной де-факто отсутствует **отдельная секция 5 «Материалы» как самостоятельный блок** — она слита в одну секцию с сайдбаром. |
+| 3.3.2.4 Сайдбар на главной не сквозной | 🔶 | STRUCTURE 3.1 (секция 7): «~30% от 3, 4, 5, 6 секции, между 2 и 8 на всю высоту». В `src/index.njk` сайдбар обёрнут **только вокруг блока новостей**, а не идёт сквозной колонкой от About до Популярного. Существенное визуальное расхождение. |
+| 3.3.2.5 Несоответствие количества рубрик | 🔶 | STRUCTURE 4.1.1 декларирует «~95 рубрик», а `src/_data/rubrics.yaml` даёт **82 коллекции** (видно в логах сборки `📁 Регистрация коллекций для 82 рубрик…`). Либо пропущено 13 разделов, либо документ нужно править. |
+
+#### 3.3.3 SEO / производительность / доступность
+
+| Пункт | Статус | Описание |
+|-------|--------|----------|
+| 3.3.3.1 Отсутствуют ключевые `<meta>` в base.njk | ❌ | В `<head>` нет: `<link rel="canonical">`, Open Graph (`og:title`, `og:description`, `og:image`, `og:type`, `og:url`), Twitter Card, JSON-LD `EducationalOrganization` (схема для Рособрнадзора и Яндекса), `<meta name="theme-color">`, `<link rel="manifest">` (хотя в `favicons/` обычно есть `site.webmanifest`). Критично для SEO и шаринга в соцсетях. |
+| 3.3.3.2 8 скриптов без defer/async | ❌ | В `base.njk` все `<script>` блокируют рендер: Bootstrap, validate.js, AOS, GLightbox, PureCounter, mentor-main.js, main.js, offcanvas-nav.js. Уже зафиксировано в 9.4.5, но это и реальное узкое место Lighthouse Performance. **Решение:** добавить `defer` ко всем скриптам, перенести `<script>` в конец `<body>` или использовать `async` где возможно. |
+| 3.3.3.3 Отсутствует skip-link | ❌ | Дублирует 9.1.8: `<a href="#main-content" class="skip-link">Перейти к основному содержимому</a>` отсутствует в `base.njk`. Обязательное требование WCAG 2.1 AA / ГОСТ Р 52872-2019 для навигации с клавиатуры. |
+| 3.3.3.4 Двойные CSS-стеки | 🔶 | Подключаются и `assets/mentor/css/main.css`, и `/styles/main.css`. Возможна каскадная борьба и лишний вес (~2 полных Bootstrap-наследия). **Решение:** либо инлайнить только нужный Mentor, либо собирать всё в один итоговый CSS через PostCSS/Sass. |
+
+#### 3.3.4 Что работает корректно
+
+| Пункт | Статус | Описание |
+|-------|--------|----------|
+| 3.3.4.1 Стабильность сборки | ✅ | 80 файлов, 0 ошибок, 1.65 с. Eleventy 3.1.5. |
+| 3.3.4.2 Полный набор компонентов | ✅ | 12 компонентов в `components/` (header, footer, sidebar, hero, about, news, popular, breadcrumbs + бонусные: card, pagination, share, related, anti-corruption-content). |
+| 3.3.4.3 4 макета | ✅ | base, page, page-full, post, listing — все на месте. |
+| 3.3.4.4 Favicons + anti-FOUC | ✅ | Favicons подключены, inline-скрипт в `<head>` предотвращает мерцание тёмной темы и a11y-настроек при загрузке. |
+| 3.3.4.5 sitemap.xml генерируется | ✅ | `public/sitemap.xml` присутствует, ~12 КБ. |
+| 3.3.4.6 Универсальные хлебные крошки | ✅ | Строятся из URL + `_data/sectionLabels.js` (агрегирует menu.yaml, svedenijaMenu.yaml, rubrics.yaml). |
+| 3.3.4.7 Lazy-loading изображений | ✅ | `loading="lazy"` уже в ~46 местах в шаблонах. |
+
+#### 3.3.5 Рекомендованный порядок устранения
+
+1. **Срочно:** 3.3.1.1 (robots.txt), 3.3.1.2 (служебные URL), 3.3.1.3 (закрыть `</body>`).
+2. **Важно:** 3.3.1.4 (дубль abiturientam), 3.3.1.5 (PHP), 3.3.1.6 (src/documents/), 3.3.3.3 (skip-link), 3.3.3.1 (OG/canonical/JSON-LD).
+3. **Доработать:** 3.3.2.3 + 3.3.2.4 (главная: сквозная сетка 30/70 от About до Популярного), синхронизация STRUCTURE_AND_PRINCIPLES (3.3.2.1, 3.3.2.5).
+4. **Оптимизация:** 3.3.3.2 (defer для скриптов), 3.3.3.4 (объединение CSS), минификация HTML/CSS (9.4.1, 9.4.2).
+
 ---
 
 ## 4. ГЛАВНАЯ СТРАНИЦА (src/index.njk)
