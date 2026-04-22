@@ -510,6 +510,32 @@ h6 {
 }
 
 /*--------------------------------------------------------------
+# Home Background Wrap (объединённое пространство секций 3–6)
+--------------------------------------------------------------*/
+.home-bg {
+  position: relative;
+  background-image: url("/images/fon/bg-02.svg");
+  background-repeat: no-repeat;
+  background-position: top center;
+  background-size: 100% auto;
+  background-attachment: scroll;
+  background-color: var(--background-color);
+}
+
+body.dark-theme .home-bg {
+  background-image: url("/images/fon/bg-03.svg");
+}
+
+/* Внутренние секции — прозрачные, чтобы фон был сквозным */
+.home-bg > .section,
+.home-bg > section,
+.home-bg .courses,
+.home-bg .about,
+.home-bg .popular {
+  background-color: transparent;
+}
+
+/*--------------------------------------------------------------
 # Site Footer (новый дизайн в фирменной палитре)
 --------------------------------------------------------------*/
 .site-footer {

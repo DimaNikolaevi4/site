@@ -230,6 +230,7 @@ module.exports = function(eleventyConfig) {
   
   // === Копирование статики ===
   eleventyConfig.addPassthroughCopy("src/assets");
+  eleventyConfig.addPassthroughCopy("src/images");
   eleventyConfig.addPassthroughCopy({ "_mentor/assets": "assets/mentor" });
   eleventyConfig.addPassthroughCopy("src/admin");
   eleventyConfig.addPassthroughCopy("favicons");
