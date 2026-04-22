@@ -24,10 +24,10 @@ main_rubrics:
         slug: virtualnaya-ekskursiya
       - code: "1.6"
         title: "Подача документов по электронной почте"
-        slug: podacha-elektronnaya
+        slug: podacha-elektronnaya-pochta
       - code: "1.7"
         title: "Подача документов через средства почтовой связи"
-        slug: podacha-pochtovaya
+        slug: podacha-pochtovaya-svyaz
       - code: "1.8"
         title: "Платная основа обучения"
         slug: platnaya-osnova
