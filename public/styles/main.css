@@ -980,8 +980,14 @@ body.dark-theme .site-footer {
 /* === Официальные ресурсы === */
 .site-footer .footer-resources {
   margin-top: 40px;
-  padding-top: 32px;
-  border-top: 1px solid var(--footer-border);
+  padding: 36px 32px 40px;
+  border-radius: 16px;
+  background: color-mix(in srgb, #5fcf80, #ffffff 78%);
+  border: 1px solid color-mix(in srgb, #5fcf80, transparent 70%);
+}
+body.dark-theme .site-footer .footer-resources {
+  background: color-mix(in srgb, #5fcf80, var(--footer-bg-1) 80%);
+  border-color: color-mix(in srgb, #5fcf80, transparent 65%);
 }
 .site-footer .footer-resources-title {
   margin-bottom: 22px;
