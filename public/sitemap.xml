@@ -289,12 +289,6 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://сит-сальск.рф/news/</loc>
-    <lastmod>2026-04-22</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
     <loc>https://сит-сальск.рф/pages/news-post/</loc>
     <lastmod>2026-04-22</lastmod>
     <changefreq>monthly</changefreq>
@@ -314,6 +308,12 @@
   </url>
   <url>
     <loc>https://сит-сальск.рф/pages/static/</loc>
+    <lastmod>2026-04-22</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://сит-сальск.рф/news/</loc>
     <lastmod>2026-04-22</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>

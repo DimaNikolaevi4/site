@@ -119,41 +119,8 @@
               {% endfor %}
             </div>
 
-            {# Пагинация #}
-            {% if pagination %}
-            <nav class="pagination-nav" aria-label="Навигация по страницам">
-              <ul class="pagination">
-                {% if pagination.href.previous %}
-                <li class="page-item">
-                  <a href="{{ pagination.href.previous }}" class="page-link" rel="prev">
-                    <i class="bi bi-chevron-left" aria-hidden="true"></i> Назад
-                  </a>
-                </li>
-                {% endif %}
-
-                {% for pageLink in pagination.hrefs %}
-                <li class="page-item {% if loop.index0 == pagination.pageNumber %}active{% endif %}">
-                  <a href="{{ pageLink }}" class="page-link"
-                     {% if loop.index0 == pagination.pageNumber %}aria-current="page"{% endif %}>
-                    {{ loop.index }}
-                  </a>
-                </li>
-                {% endfor %}
-
-                {% if pagination.href.next %}
-                <li class="page-item">
-                  <a href="{{ pagination.href.next }}" class="page-link" rel="next">
-                    Вперёд <i class="bi bi-chevron-right" aria-hidden="true"></i>
-                  </a>
-                </li>
-                {% endif %}
-              </ul>
-
-              <p class="pagination-info text-muted small">
-                Страница {{ pagination.pageNumber + 1 }} из {{ pagination.pages.length }}
-              </p>
-            </nav>
-            {% endif %}
+            {# Пагинация — единый компонент #}
+            {% include "components/pagination.njk" %}
 
             {% else %}
             <div class="no-results">

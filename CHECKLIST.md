@@ -130,7 +130,7 @@
 | 6.3 Мета: дата + автор под заголовком | ✅ | В post.njk |
 | 6.4 «Читайте также» — связанные материалы | ✅ | Вынесено в `components/related.njk` (используется в post.njk и page.njk). Источник: `relatedPages` (явно), либо автоподбор из `collections[relatedCollection / category / section]`, последние N (по умолчанию 3), текущий материал исключается. Параметры frontmatter: `relatedPages`, `relatedCollection`, `relatedCount`, `relatedTitle` |
 | 6.5 Кнопки «Поделиться» (ВКонтакте) | ✅ | Создан `components/share.njk` и подключён в post.njk. Соцсети: ВКонтакте, Одноклассники, Telegram, WhatsApp, Viber, Email + копирование ссылки + нативный Web Share API (показывается на мобильных). Параметры frontmatter: `share: false` для скрытия, `shareTitle` для своего заголовка |
-| 6.6 Paginация для листинга новостей | 🔶 | Технически есть через pagination в listing.njk, нужно проверить. **Рекомендация:** контент брать в папке /mirror/ сверять с соответствующей рубрикой https://sit-salsk.ru/ если материалов несколько импортировать все + все вложения и + изображения + документы |
+| 6.6 Paginация для листинга новостей | ✅ | Вынесена в `components/pagination.njk` и подключена в listing.njk и page-full.njk. Особенности: «умная» нумерация (первая, …, current ±2, …, последняя), кнопки «В начало/В конец/Назад/Вперёд», скрывается при одной странице, корректные `rel="prev/next/first/last"` и `aria-current`. Размер страницы новостей снижен до 6 (см. `src/pages/news-list.njk`) — пагинация видна на текущих 9 материалах |
 
 ---
 
