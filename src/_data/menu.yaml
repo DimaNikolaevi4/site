@@ -19,7 +19,7 @@ main:
     key: svedenija
     children:
       - title: Документы
-        url: /svedenija/documents/
+        url: /svedenija/dokumenty/
       - title: Структура и органы управления
         url: /svedenija/structure/
       - title: Образование

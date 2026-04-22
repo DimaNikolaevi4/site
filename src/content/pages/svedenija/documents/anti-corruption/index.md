@@ -1,7 +1,7 @@
 ---
 layout: svedenija-page.njk
 title: Противодействие коррупции
-permalink: /svedenija/documents/anti-corruption/
+permalink: /svedenija/dokumenty/anti-corruption/
 eleventyNavigation:
   key: anti-corruption
   parent: documents
@@ -9,7 +9,7 @@ breadcrumb:
   - title: Сведения
     url: /svedenija/
   - title: Документы
-    url: /svedenija/documents/
+    url: /svedenija/dokumenty/
   - title: Противодействие коррупции
 rubric: "0"
 ---
