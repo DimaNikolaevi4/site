@@ -1,0 +1,90 @@
+<div class="g-grid">                        
+
+        <div class="g-block size-25">
+             <div id="custom-4830-particle" class="g-content g-particle">            <a href="http://government.ru/" target="_blank" title="Правительство РФ">
+    <img src="/../images/ikonccilki/government.svg" alt="Правительство РФ" style="width: auto; height: 5vh; min-height: 10px; float: left; margin-right: 10px;">
+    <p>Официальный сайт <br> Правительства России</p>
+</a>
+<br style="clear: both;">
+<hr>
+<a href="https://epp.genproc.gov.ru/" target="_blank" title="Генеральная прокуратура">
+    <img src="/../images/ikonccilki/prok-rf.webp" alt="Генеральная прокуратура" style="width: auto; height: 5vh; min-height: 10px; float: left; margin-right: 10px;">
+    <p>Генеральная прокуратура <br> Российской Федерации</p>
+</a>
+<br style="clear: both;">
+<hr>
+<a href="https://mintrud.gov.ru/" target="_blank" title="Минестерство труда">
+    <img src="/../images/ikonccilki/min-tr.webp" alt="Минестерство труда" style="width: auto; height: 5vh; min-height: 10px; float: left; margin-right: 10px;">
+    <p>Министерство труда <br>и социальной защиты</p>
+</a>
+<br style="clear: both;">
+<hr>
+            </div>
+        </div>
+                    
+
+        <div class="g-block size-25">
+             <div id="custom-2804-particle" class="g-content g-particle">            <a href="https://mintrud.gov.ru/" target="_blank" title="Официальный сайт Рособрнадзора">
+    <img src="/../images/ikonccilki/cropped-logo_rosobrnadzor-2.png" alt="Официальный сайт Рособрнадзора" style="width: auto; height: 5vh; min-height: 10px; float: left; margin-right: 10px;">
+    <p>Федеральная служба по надзору<br>в сфере образования и науки</p>
+</a>
+<br style="clear: both;">
+<hr style="margin-top:2px;" <hr="">
+<a href="https://www.kremlin.ru/" target="_blank" title="Сайт президента Российской Федерации">
+    <img src="/../images/ikonccilki/pr-rf.webp" alt="Сайт президента Российской Федерации" style="width: auto; height: 5vh; min-height: 15px; float: left; margin-right: 10px;">
+    <p>Сайт президента Российской Федерации</p>
+</a>
+<br style="clear: both;">
+<hr>
+<a href="https://gosnadzor.ru/" target="_blank" title="Ростехнадзор">
+    <img src="/../images/ikonccilki/rtn.webp" alt="Ростехнадзор" style="width: auto; height: 5vh; min-height: 10px; float: left; margin-right: 10px;">
+    <p>Федеральная служба по экологическому,<br> технологическому и атомному надзору</p>
+</a>
+<br style="clear: both;">
+<hr style="margin-top:0px;" <hr="">
+            </div>
+        </div>
+                    
+
+        <div class="g-block size-25">
+             <div id="custom-2394-particle" class="g-content g-particle">            <a href="https://edu.gov.ru/" target="_blank" title="Министерство просвещения">
+    <img src="/../images/ikonccilki/min-pr.webp" alt="Министерство просвещения" style="width: auto; height: 5vh; min-height: 10px; float: left; margin-right: 10px;">
+    <p>Министерство просвещения <br> Российской Федерации</p>
+</a>
+<br style="clear: both;">
+<hr>
+<a href="https://rostrud.gov.ru/" target="_blank" title="Федеральная служба
+по труду и занятости">
+    <img src="/../images/ikonccilki/rostrud.gov.svg" alt="Федеральная служба
+по труду и занятости" style="width: auto; height: 5vh; min-height: 10px; float: left; margin-right: 10px;">
+    <p>Федеральная служба
+<br>по труду и занятости</p>
+</a>
+<br style="clear: both;">
+<hr>
+<a href="https://www.mchs.gov.ru/" target="_blank" title="МЧС">
+    <img src="/../images/ikonccilki/MCHS.webp" alt="МЧС" style="width: auto; height: 5vh; min-height: 10px; float: left; margin-right: 10px;">
+    <p>Официальный сайт <br>МЧС России</p>
+</a>
+<br style="clear: both;">
+<hr>
+            </div>
+        </div>
+                    
+
+        <div class="g-block size-25">
+             <div id="custom-3347-particle" class="g-content g-particle">            <a href="https://www.minobrnauki.gov.ru/" target="_blank" title="Министерство науки">
+    <img src="/../images/ikonccilki/MNVO.webp" alt="Министерство науки" style="width: auto; height: 5vh; min-height: 10px; float: left; margin-right: 10px;">
+    <p>Министерство науки <br>и высшего образования РФ</p>
+</a>
+<br style="clear: both;">
+<hr>
+<a href="https://www.donland.ru/" target="_blank" title="Правительство Ростовской области">
+    <img src="/../images/ikonccilki/don-logo.svg" alt="Правительство Ростовской области" style="width: auto; height: 5vh; min-height: 10px; float: left; margin-right: 10px;">
+    <p>Официальный портал<br>
+Правительства Ростовской области</p>
+</a>
+<br style="clear: both;">
+            </div>
+        </div>
+            </div>
