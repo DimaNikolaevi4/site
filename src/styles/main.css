@@ -980,6 +980,7 @@ body.dark-theme .site-footer {
 /* === Официальные ресурсы === */
 .site-footer .footer-resources {
   margin-top: 40px;
+ agent/footer-resources-v2
   padding: 28px 24px 32px;
   border-radius: 16px;
   background: color-mix(in srgb, #5fcf80, #ffffff 78%);
@@ -988,6 +989,10 @@ body.dark-theme .site-footer {
 body.dark-theme .site-footer .footer-resources {
   background: color-mix(in srgb, #5fcf80, var(--footer-bg-1) 80%);
   border-color: color-mix(in srgb, #5fcf80, transparent 65%);
+=======
+  padding-top: 32px;
+  border-top: 1px solid var(--footer-border);
+ main
 }
 .site-footer .footer-resources-title {
   margin-bottom: 22px;
@@ -1034,9 +1039,15 @@ body.dark-theme .site-footer .footer-resources {
   display: inline-flex;
   align-items: center;
   justify-content: center;
+
   background: #5fcf80;
   border-radius: 10px;
   border: 1px solid color-mix(in srgb, #5fcf80, #1f2a23 25%);
+=======
+  background: #fff;
+  border-radius: 10px;
+  border: 1px solid var(--footer-border);
+
   overflow: hidden;
 }
 .site-footer .footer-resource-icon img {
