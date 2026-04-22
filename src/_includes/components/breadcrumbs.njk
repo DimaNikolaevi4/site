@@ -117,8 +117,8 @@
         {% set _isLast = loop.last %}
         {% set _label = _labels.byUrl[_accUrl] or _labels.bySlug[seg] %}
         {% if _isLast %}
-          {# Для текущей страницы предпочитаем явный title #}
-          {% set _label = title or _label or seg %}
+          {# Для текущей страницы: breadcrumbTitle (если задан) > title > карта меток > slug #}
+          {% set _label = breadcrumbTitle or title or _label or seg %}
         {% else %}
           {% set _label = _label or seg %}
         {% endif %}

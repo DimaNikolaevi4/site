@@ -1,5 +1,6 @@
 ---
 title: Внутренняя система оценки качества образования (ВСОКО)
+breadcrumbTitle: ВСОКО
 layout: svedenija-page.njk
 section: documents
 rubric: '2.3.1'

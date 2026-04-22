@@ -44,7 +44,7 @@ showSidebar: true
         {% set breadcrumbs = [
           { text: "Главная", url: "/" },
           { text: "Сведения об образовательной организации", url: "/svedenija/" },
-          { text: title }
+          { text: breadcrumbTitle or title }
         ] %}
       {% endif %}
       {% include "components/breadcrumbs.njk" %}
