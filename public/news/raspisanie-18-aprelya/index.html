@@ -751,13 +751,135 @@
         
 
         
-        <div class="post-share" aria-label="Поделиться материалом">
-          <button class="post-share__btn btn btn-outline-secondary btn-sm"
-                  onclick="if(navigator.share){navigator.share({title:document.title,url:location.href})}else{navigator.clipboard.writeText(location.href).then(()=>alert('Ссылка скопирована'))}"
-                  type="button">
-            <i class="bi bi-share" aria-hidden="true"></i> Поделиться
-          </button>
-        </div>
+        
+
+
+
+
+
+
+
+<aside class="post-share post-share--social" aria-label="Поделиться материалом">
+  <span class="post-share__label">
+    <i class="bi bi-share-fill" aria-hidden="true"></i>
+    Поделиться:
+  </span>
+
+  <ul class="post-share__list" role="list">
+
+    
+    <li class="post-share__item">
+      <a class="post-share__btn post-share__btn--vk"
+         href="https://vk.com/share.php?url=https%3A%2F%2F%D1%81%D0%B8%D1%82-%D1%81%D0%B0%D0%BB%D1%8C%D1%81%D0%BA.%D1%80%D1%84%2Fnews%2Fraspisanie-18-aprelya%2F&title=%D0%A0%D0%B0%D1%81%D0%BF%D0%B8%D1%81%D0%B0%D0%BD%D0%B8%D0%B5%20%D0%B7%D0%B0%D0%BD%D1%8F%D1%82%D0%B8%D0%B9%2018%20%D0%B0%D0%BF%D1%80%D0%B5%D0%BB%D1%8F&description=%D0%92%D0%BD%D0%B8%D0%BC%D0%B0%D0%BD%D0%B8%D0%B5!%20%D0%98%D0%B7%D0%BC%D0%B5%D0%BD%D0%B5%D0%BD%D0%B8%D1%8F%20%D0%B2%20%D1%80%D0%B0%D1%81%D0%BF%D0%B8%D1%81%D0%B0%D0%BD%D0%B8%D0%B8%20%D0%B7%D0%B0%D0%BD%D1%8F%D1%82%D0%B8%D0%B9%20%D0%B4%D0%BB%D1%8F%201%20%D0%B8%202%20%D0%BA%D0%BE%D1%80%D0%BF%D1%83%D1%81%D0%B0%20%D0%BD%D0%B0%2018%20%D0%B0%D0%BF%D1%80%D0%B5%D0%BB%D1%8F%202026%20%D0%B3%D0%BE%D0%B4%D0%B0...&noparse=true"
+         target="_blank"
+         rel="noopener noreferrer"
+         title="Поделиться ВКонтакте"
+         aria-label="Поделиться ВКонтакте">
+        <i class="bi bi-vimeo" aria-hidden="true"></i>
+        <span class="post-share__btn-text">ВКонтакте</span>
+      </a>
+    </li>
+
+    
+    <li class="post-share__item">
+      <a class="post-share__btn post-share__btn--ok"
+         href="https://connect.ok.ru/offer?url=https%3A%2F%2F%D1%81%D0%B8%D1%82-%D1%81%D0%B0%D0%BB%D1%8C%D1%81%D0%BA.%D1%80%D1%84%2Fnews%2Fraspisanie-18-aprelya%2F&title=%D0%A0%D0%B0%D1%81%D0%BF%D0%B8%D1%81%D0%B0%D0%BD%D0%B8%D0%B5%20%D0%B7%D0%B0%D0%BD%D1%8F%D1%82%D0%B8%D0%B9%2018%20%D0%B0%D0%BF%D1%80%D0%B5%D0%BB%D1%8F&description=%D0%92%D0%BD%D0%B8%D0%BC%D0%B0%D0%BD%D0%B8%D0%B5!%20%D0%98%D0%B7%D0%BC%D0%B5%D0%BD%D0%B5%D0%BD%D0%B8%D1%8F%20%D0%B2%20%D1%80%D0%B0%D1%81%D0%BF%D0%B8%D1%81%D0%B0%D0%BD%D0%B8%D0%B8%20%D0%B7%D0%B0%D0%BD%D1%8F%D1%82%D0%B8%D0%B9%20%D0%B4%D0%BB%D1%8F%201%20%D0%B8%202%20%D0%BA%D0%BE%D1%80%D0%BF%D1%83%D1%81%D0%B0%20%D0%BD%D0%B0%2018%20%D0%B0%D0%BF%D1%80%D0%B5%D0%BB%D1%8F%202026%20%D0%B3%D0%BE%D0%B4%D0%B0..."
+         target="_blank"
+         rel="noopener noreferrer"
+         title="Поделиться в Одноклассниках"
+         aria-label="Поделиться в Одноклассниках">
+        <i class="bi bi-circle-square" aria-hidden="true"></i>
+        <span class="post-share__btn-text">Одноклассники</span>
+      </a>
+    </li>
+
+    
+    <li class="post-share__item">
+      <a class="post-share__btn post-share__btn--tg"
+         href="https://t.me/share/url?url=https%3A%2F%2F%D1%81%D0%B8%D1%82-%D1%81%D0%B0%D0%BB%D1%8C%D1%81%D0%BA.%D1%80%D1%84%2Fnews%2Fraspisanie-18-aprelya%2F&text=%D0%A0%D0%B0%D1%81%D0%BF%D0%B8%D1%81%D0%B0%D0%BD%D0%B8%D0%B5%20%D0%B7%D0%B0%D0%BD%D1%8F%D1%82%D0%B8%D0%B9%2018%20%D0%B0%D0%BF%D1%80%D0%B5%D0%BB%D1%8F"
+         target="_blank"
+         rel="noopener noreferrer"
+         title="Поделиться в Telegram"
+         aria-label="Поделиться в Telegram">
+        <i class="bi bi-telegram" aria-hidden="true"></i>
+        <span class="post-share__btn-text">Telegram</span>
+      </a>
+    </li>
+
+    
+    <li class="post-share__item">
+      <a class="post-share__btn post-share__btn--wa"
+         href="https://api.whatsapp.com/send?text=%D0%A0%D0%B0%D1%81%D0%BF%D0%B8%D1%81%D0%B0%D0%BD%D0%B8%D0%B5%20%D0%B7%D0%B0%D0%BD%D1%8F%D1%82%D0%B8%D0%B9%2018%20%D0%B0%D0%BF%D1%80%D0%B5%D0%BB%D1%8F%20https%3A%2F%2F%D1%81%D0%B8%D1%82-%D1%81%D0%B0%D0%BB%D1%8C%D1%81%D0%BA.%D1%80%D1%84%2Fnews%2Fraspisanie-18-aprelya%2F"
+         target="_blank"
+         rel="noopener noreferrer"
+         title="Поделиться в WhatsApp"
+         aria-label="Поделиться в WhatsApp">
+        <i class="bi bi-whatsapp" aria-hidden="true"></i>
+        <span class="post-share__btn-text">WhatsApp</span>
+      </a>
+    </li>
+
+    
+    <li class="post-share__item">
+      <a class="post-share__btn post-share__btn--vb"
+         href="viber://forward?text=%D0%A0%D0%B0%D1%81%D0%BF%D0%B8%D1%81%D0%B0%D0%BD%D0%B8%D0%B5%20%D0%B7%D0%B0%D0%BD%D1%8F%D1%82%D0%B8%D0%B9%2018%20%D0%B0%D0%BF%D1%80%D0%B5%D0%BB%D1%8F%20https%3A%2F%2F%D1%81%D0%B8%D1%82-%D1%81%D0%B0%D0%BB%D1%8C%D1%81%D0%BA.%D1%80%D1%84%2Fnews%2Fraspisanie-18-aprelya%2F"
+         target="_blank"
+         rel="noopener noreferrer"
+         title="Поделиться в Viber"
+         aria-label="Поделиться в Viber">
+        <i class="bi bi-chat-dots" aria-hidden="true"></i>
+        <span class="post-share__btn-text">Viber</span>
+      </a>
+    </li>
+
+    
+    <li class="post-share__item">
+      <a class="post-share__btn post-share__btn--mail"
+         href="mailto:?subject=%D0%A0%D0%B0%D1%81%D0%BF%D0%B8%D1%81%D0%B0%D0%BD%D0%B8%D0%B5%20%D0%B7%D0%B0%D0%BD%D1%8F%D1%82%D0%B8%D0%B9%2018%20%D0%B0%D0%BF%D1%80%D0%B5%D0%BB%D1%8F&body=%D0%92%D0%BD%D0%B8%D0%BC%D0%B0%D0%BD%D0%B8%D0%B5!%20%D0%98%D0%B7%D0%BC%D0%B5%D0%BD%D0%B5%D0%BD%D0%B8%D1%8F%20%D0%B2%20%D1%80%D0%B0%D1%81%D0%BF%D0%B8%D1%81%D0%B0%D0%BD%D0%B8%D0%B8%20%D0%B7%D0%B0%D0%BD%D1%8F%D1%82%D0%B8%D0%B9%20%D0%B4%D0%BB%D1%8F%201%20%D0%B8%202%20%D0%BA%D0%BE%D1%80%D0%BF%D1%83%D1%81%D0%B0%20%D0%BD%D0%B0%2018%20%D0%B0%D0%BF%D1%80%D0%B5%D0%BB%D1%8F%202026%20%D0%B3%D0%BE%D0%B4%D0%B0...%250A%250Ahttps%3A%2F%2F%D1%81%D0%B8%D1%82-%D1%81%D0%B0%D0%BB%D1%8C%D1%81%D0%BA.%D1%80%D1%84%2Fnews%2Fraspisanie-18-aprelya%2F"
+         title="Отправить по почте"
+         aria-label="Отправить по почте">
+        <i class="bi bi-envelope" aria-hidden="true"></i>
+        <span class="post-share__btn-text">Почта</span>
+      </a>
+    </li>
+
+    
+    <li class="post-share__item">
+      <button class="post-share__btn post-share__btn--copy"
+              type="button"
+              title="Копировать ссылку"
+              aria-label="Копировать ссылку"
+              onclick="(function(b){navigator.clipboard.writeText('https://сит-сальск.рф/news/raspisanie-18-aprelya/').then(function(){var t=b.querySelector('.post-share__btn-text');var o=t.textContent;t.textContent='Скопировано';setTimeout(function(){t.textContent=o;},1500);});})(this)">
+        <i class="bi bi-link-45deg" aria-hidden="true"></i>
+        <span class="post-share__btn-text">Копировать</span>
+      </button>
+    </li>
+
+    
+    <li class="post-share__item post-share__item--native" hidden>
+      <button class="post-share__btn post-share__btn--native"
+              type="button"
+              title="Поделиться через систему"
+              aria-label="Поделиться через систему"
+              onclick="navigator.share({title:document.title,url:'https://сит-сальск.рф/news/raspisanie-18-aprelya/'}).catch(function(){});">
+        <i class="bi bi-three-dots" aria-hidden="true"></i>
+        <span class="post-share__btn-text">Ещё</span>
+      </button>
+    </li>
+
+  </ul>
+
+  <script>
+    (function(){
+      if (navigator.share) {
+        var el = document.currentScript.parentNode.querySelector('.post-share__item--native');
+        if (el) el.hidden = false;
+      }
+    })();
+  </script>
+</aside>
+
+
 
       </div>
     </div>

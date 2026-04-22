@@ -1,0 +1,143 @@
+{#
+  Компонент: Кнопки «Поделиться»
+  Соцсети: ВКонтакте, Одноклассники, Telegram, WhatsApp, Viber, Email
+  + копирование ссылки и нативный Web Share API на мобильных
+
+  Параметры (из контекста страницы):
+    site.url   — базовый URL сайта (для построения абсолютной ссылки)
+    page.url   — относительный путь страницы
+    title      — заголовок материала (для текста шаринга)
+    excerpt    — краткое описание (опц., добавляется к ВК и Telegram)
+    coverImage — обложка (опц., передаётся в image для ВК)
+
+  Параметры через frontmatter (опц.):
+    share: false           — полностью скрыть блок
+    shareTitle: "..."      — свой заголовок секции
+#}
+
+{% if share != false %}
+{% set _shareUrl = (site.url or '') + page.url %}
+{% set _shareTitle = title or (site.name or '') %}
+{% set _shareText = excerpt or description or _shareTitle %}
+{% set _shareImage = coverImage or (hero and hero.image) %}
+
+<aside class="post-share post-share--social" aria-label="Поделиться материалом">
+  <span class="post-share__label">
+    <i class="bi bi-share-fill" aria-hidden="true"></i>
+    {{ shareTitle or 'Поделиться:' }}
+  </span>
+
+  <ul class="post-share__list" role="list">
+
+    {# ВКонтакте #}
+    <li class="post-share__item">
+      <a class="post-share__btn post-share__btn--vk"
+         href="https://vk.com/share.php?url={{ _shareUrl | urlencode }}&title={{ _shareTitle | urlencode }}&description={{ _shareText | urlencode }}{% if _shareImage %}&image={{ (site.url or '') + _shareImage | urlencode }}{% endif %}&noparse=true"
+         target="_blank"
+         rel="noopener noreferrer"
+         title="Поделиться ВКонтакте"
+         aria-label="Поделиться ВКонтакте">
+        <i class="bi bi-vimeo" aria-hidden="true"></i>
+        <span class="post-share__btn-text">ВКонтакте</span>
+      </a>
+    </li>
+
+    {# Одноклассники #}
+    <li class="post-share__item">
+      <a class="post-share__btn post-share__btn--ok"
+         href="https://connect.ok.ru/offer?url={{ _shareUrl | urlencode }}&title={{ _shareTitle | urlencode }}&description={{ _shareText | urlencode }}"
+         target="_blank"
+         rel="noopener noreferrer"
+         title="Поделиться в Одноклассниках"
+         aria-label="Поделиться в Одноклассниках">
+        <i class="bi bi-circle-square" aria-hidden="true"></i>
+        <span class="post-share__btn-text">Одноклассники</span>
+      </a>
+    </li>
+
+    {# Telegram #}
+    <li class="post-share__item">
+      <a class="post-share__btn post-share__btn--tg"
+         href="https://t.me/share/url?url={{ _shareUrl | urlencode }}&text={{ _shareTitle | urlencode }}"
+         target="_blank"
+         rel="noopener noreferrer"
+         title="Поделиться в Telegram"
+         aria-label="Поделиться в Telegram">
+        <i class="bi bi-telegram" aria-hidden="true"></i>
+        <span class="post-share__btn-text">Telegram</span>
+      </a>
+    </li>
+
+    {# WhatsApp #}
+    <li class="post-share__item">
+      <a class="post-share__btn post-share__btn--wa"
+         href="https://api.whatsapp.com/send?text={{ (_shareTitle + ' ' + _shareUrl) | urlencode }}"
+         target="_blank"
+         rel="noopener noreferrer"
+         title="Поделиться в WhatsApp"
+         aria-label="Поделиться в WhatsApp">
+        <i class="bi bi-whatsapp" aria-hidden="true"></i>
+        <span class="post-share__btn-text">WhatsApp</span>
+      </a>
+    </li>
+
+    {# Viber #}
+    <li class="post-share__item">
+      <a class="post-share__btn post-share__btn--vb"
+         href="viber://forward?text={{ (_shareTitle + ' ' + _shareUrl) | urlencode }}"
+         target="_blank"
+         rel="noopener noreferrer"
+         title="Поделиться в Viber"
+         aria-label="Поделиться в Viber">
+        <i class="bi bi-chat-dots" aria-hidden="true"></i>
+        <span class="post-share__btn-text">Viber</span>
+      </a>
+    </li>
+
+    {# Email #}
+    <li class="post-share__item">
+      <a class="post-share__btn post-share__btn--mail"
+         href="mailto:?subject={{ _shareTitle | urlencode }}&body={{ (_shareText + '%0A%0A' + _shareUrl) | urlencode }}"
+         title="Отправить по почте"
+         aria-label="Отправить по почте">
+        <i class="bi bi-envelope" aria-hidden="true"></i>
+        <span class="post-share__btn-text">Почта</span>
+      </a>
+    </li>
+
+    {# Копировать ссылку #}
+    <li class="post-share__item">
+      <button class="post-share__btn post-share__btn--copy"
+              type="button"
+              title="Копировать ссылку"
+              aria-label="Копировать ссылку"
+              onclick="(function(b){navigator.clipboard.writeText('{{ _shareUrl }}').then(function(){var t=b.querySelector('.post-share__btn-text');var o=t.textContent;t.textContent='Скопировано';setTimeout(function(){t.textContent=o;},1500);});})(this)">
+        <i class="bi bi-link-45deg" aria-hidden="true"></i>
+        <span class="post-share__btn-text">Копировать</span>
+      </button>
+    </li>
+
+    {# Системное «Поделиться» (мобильные браузеры с Web Share API) #}
+    <li class="post-share__item post-share__item--native" hidden>
+      <button class="post-share__btn post-share__btn--native"
+              type="button"
+              title="Поделиться через систему"
+              aria-label="Поделиться через систему"
+              onclick="navigator.share({title:document.title,url:'{{ _shareUrl }}'}).catch(function(){});">
+        <i class="bi bi-three-dots" aria-hidden="true"></i>
+        <span class="post-share__btn-text">Ещё</span>
+      </button>
+    </li>
+
+  </ul>
+
+  <script>
+    (function(){
+      if (navigator.share) {
+        var el = document.currentScript.parentNode.querySelector('.post-share__item--native');
+        if (el) el.hidden = false;
+      }
+    })();
+  </script>
+</aside>
+{% endif %}

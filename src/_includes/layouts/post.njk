@@ -189,14 +189,8 @@
         </footer>
         {% endif %}
 
-        {# Кнопка «Поделиться» #}
-        <div class="post-share" aria-label="Поделиться материалом">
-          <button class="post-share__btn btn btn-outline-secondary btn-sm"
-                  onclick="if(navigator.share){navigator.share({title:document.title,url:location.href})}else{navigator.clipboard.writeText(location.href).then(()=>alert('Ссылка скопирована'))}"
-                  type="button">
-            <i class="bi bi-share" aria-hidden="true"></i> Поделиться
-          </button>
-        </div>
+        {# Кнопки «Поделиться» (ВКонтакте, ОК, Telegram, WhatsApp, Viber, Email, копировать) #}
+        {% include "components/share.njk" %}
 
       </div>
     </div>
