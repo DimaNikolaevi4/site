@@ -7,13 +7,13 @@
 
   Секции:
     1 Header        — глобальная (base.njk)
-    2 Breadcrumbs   — хлебные крошки + заголовок + мета
-    3 Content       — обложка, текст материала, вложения, теги, шаринг (полная ширина)
-    4 Related       — «Читайте также» (авто из коллекции, если не задано вручную)
+    2 Hero          — единая (base.njk); под чертой — title материала
+    3 Breadcrumbs   — хлебные крошки + мета (h1 уже выведен в hero)
+    4 Content       — обложка, текст материала, вложения, теги, шаринг (полная ширина)
+    5 Related       — «Читайте также» (авто из коллекции, если не задано вручную)
     8 Footer        — глобальная (base.njk)
 
   Отсутствуют (по схеме Тип C):
-    — Hero  (включается только если явно задан frontmatter `hero.image`)
     — Sidebar (Тип C идёт во всю ширину)
     — About / Popular / News-блоки
 
@@ -43,11 +43,9 @@
 <article class="post-layout post-layout--full" itemscope itemtype="https://schema.org/Article">
 
   {# ═══════════════════════════════════════════════
-     Hero (опционально, только если задан hero.image)
+     Hero — единый, рендерится в base.njk.
+     Под чертой — title материала (это <h1>).
   ═══════════════════════════════════════════════ #}
-  {% if hero and hero.image %}
-    {% include "components/hero.njk" %}
-  {% endif %}
 
   {# ═══════════════════════════════════════════════
      СЕКЦИЯ 2: Хлебные крошки + Заголовок + Мета
@@ -75,8 +73,11 @@
         </div>
         {% endif %}
 
-        {% if not (hero and hero.image) %}
+        {% if showHero == false %}
         <h1 class="post-title" itemprop="headline">{{ title }}</h1>
+        {% else %}
+        {# h1 материала уже выводится в едином hero.njk (под чертой). #}
+        <meta itemprop="headline" content="{{ title }}">
         {% endif %}
 
         <div class="post-meta">
@@ -118,7 +119,7 @@
       <div class="post-content-wrap">
 
         {# Обложка внутри контентной зоны (если нет Hero) #}
-        {% if coverImage and not (hero and hero.image) %}
+        {% if coverImage and showHero == false %}
         <figure class="post-cover">
           <img src="{{ coverImage }}"
                alt="{{ coverAlt or title }}"

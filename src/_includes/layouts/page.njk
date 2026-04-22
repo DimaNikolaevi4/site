@@ -43,11 +43,10 @@
 <div class="page-layout page-type-b">
 
   {# ═══════════════════════════════════════════════
-     СЕКЦИЯ 2: Hero (опциональный) + Контекст
+     СЕКЦИЯ 2: Hero — единый, рендерится в base.njk
+     (см. components/hero.njk; управляется frontmatter:
+      showHero / rubricTitle / hero.*)
   ═══════════════════════════════════════════════ #}
-
-  {# Hero-баннер — если задан hero.image #}
-  {% include "components/hero.njk" %}
 
   {# Контекстная полоса: хлебные крошки + заголовок + описание + баннер раздела #}
   <section class="section-context" aria-label="Контекст страницы">
