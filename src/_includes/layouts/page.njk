@@ -138,40 +138,9 @@
 
   {# ═══════════════════════════════════════════════
      Связанные материалы / «Читайте также»
+     Разметка и логика автоподбора — в components/related.njk
   ═══════════════════════════════════════════════ #}
-  {% if relatedPages and relatedPages.length > 0 %}
-  <section class="section-related" aria-label="Связанные материалы">
-    <div class="container">
-      <h2 class="section-related__title">
-        <i class="bi bi-journals" aria-hidden="true"></i> Читайте также
-      </h2>
-      <div class="related-grid">
-        {% for item in relatedPages %}
-        <article class="related-card">
-          {% if item.image %}
-          <div class="related-card__img">
-            <a href="{{ item.url }}">
-              <img src="{{ item.image }}" alt="{{ item.title }}" loading="lazy">
-            </a>
-          </div>
-          {% endif %}
-          <div class="related-card__body">
-            {% if item.date %}
-            <time class="related-card__date">{{ item.date | dateRu }}</time>
-            {% endif %}
-            <h3 class="related-card__title">
-              <a href="{{ item.url }}">{{ item.title }}</a>
-            </h3>
-            {% if item.excerpt %}
-            <p class="related-card__excerpt">{{ item.excerpt }}</p>
-            {% endif %}
-          </div>
-        </article>
-        {% endfor %}
-      </div>
-    </div>
-  </section>
-  {% endif %}
+  {% include "components/related.njk" %}
 
   {# ═══════════════════════════════════════════════
      Нижняя навигация (возврат к разделу, пред/след)

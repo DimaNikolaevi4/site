@@ -204,63 +204,9 @@
 
   {# ═══════════════════════════════════════════════
      СЕКЦИЯ 4: «Читайте также»
-     Используем переопределённый relatedPages, иначе авто-подбор
-     из коллекции (category/section/relatedCollection), исключая текущий материал
+     Логика и разметка вынесены в components/related.njk
   ═══════════════════════════════════════════════ #}
-  {% set _relatedItems = relatedPages %}
-  {% if not _relatedItems %}
-    {% set _relCollection = relatedCollection or category or section %}
-    {% set _relCount = relatedCount or 3 %}
-    {% if _relCollection and collections[_relCollection] %}
-      {% set _auto = [] %}
-      {% for item in collections[_relCollection] | reverse %}
-        {% if item.url != page.url and _auto.length < _relCount %}
-          {% set _auto = (_auto.push({
-            url: item.url,
-            title: item.data.title,
-            image: item.data.coverImage or (item.data.hero and item.data.hero.image),
-            excerpt: item.data.excerpt or item.data.description,
-            date: item.data.date
-          }), _auto) %}
-        {% endif %}
-      {% endfor %}
-      {% set _relatedItems = _auto %}
-    {% endif %}
-  {% endif %}
-
-  {% if _relatedItems and _relatedItems.length > 0 %}
-  <section class="section-related" aria-label="Читайте также">
-    <div class="container">
-      <h2 class="section-related__title">
-        <i class="bi bi-journals" aria-hidden="true"></i> Читайте также
-      </h2>
-      <div class="related-grid">
-        {% for item in _relatedItems %}
-        <article class="related-card">
-          {% if item.image %}
-          <div class="related-card__img">
-            <a href="{{ item.url }}">
-              <img src="{{ item.image }}" alt="{{ item.title }}" loading="lazy">
-            </a>
-          </div>
-          {% endif %}
-          <div class="related-card__body">
-            {% if item.date %}
-            <time class="related-card__date">{{ item.date | dateRu }}</time>
-            {% endif %}
-            <h3 class="related-card__title">
-              <a href="{{ item.url }}">{{ item.title }}</a>
-            </h3>
-            {% if item.excerpt %}
-            <p class="related-card__excerpt">{{ item.excerpt }}</p>
-            {% endif %}
-          </div>
-        </article>
-        {% endfor %}
-      </div>
-    </div>
-  </section>
-  {% endif %}
+  {% include "components/related.njk" %}
 
   {# ═══════════════════════════════════════════════
      Нижняя навигация: возврат к разделу + пред/след
