@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Список материалов | ГБПОУ РО &quot;Сальский индустриальный техникум&quot;</title>
-  <meta name="description" content="Материалы по специальности">
+  <title>Международное сотрудничество | ГБПОУ РО &quot;Сальский индустриальный техникум&quot;</title>
+  <meta name="description" content="Международное сотрудничество ГБПОУ РО «Сальский индустриальный техникум» — партнёрство с Республикой Беларусь, международные стажировки студентов, совместные научно-практические конференции">
   <link rel="stylesheet" href="/assets/mentor/vendor/bootstrap/css/bootstrap.min.css">
   <link rel="stylesheet" href="/assets/mentor/vendor/bootstrap-icons/bootstrap-icons.css">
   <link rel="stylesheet" href="/assets/mentor/vendor/aos/aos.css">
@@ -32,7 +32,7 @@
     })();
   </script>
 </head>
-<body class="page page--layouts/base.njk">
+<body class="page page--svedenija-page.njk">
   <!-- ═══════════════════════════════════════════════ -->
   <!-- Секция 1 — Header (Шапка)                       -->
   <!-- ═══════════════════════════════════════════════ -->
@@ -67,8 +67,8 @@
       <ul class="d-flex list-unstyled align-items-center m-0 p-0">
         <li>
           <a href="/svedenija/"
-             class="main-nav__link"
-             
+             class="main-nav__link active"
+             aria-current="page"
              title="Официальные сведения об образовательной организации">
             <span class="main-nav__icon" aria-hidden="true">📋</span>
             <span>Сведения об образовательной организации</span>
@@ -204,9 +204,9 @@
         
         <ul class="list-unstyled offcanvas-quicklinks px-3 pt-2 mb-0">
           <li>
-            <a href="/svedenija/" class="offcanvas-quicklinks__link d-lg-none"
+            <a href="/svedenija/" class="offcanvas-quicklinks__link d-lg-none active"
                data-bs-dismiss="offcanvas"
-               >
+               aria-current="page">
               <span class="offcanvas-quicklinks__icon" aria-hidden="true">📋</span>
               Сведения об образовательной организации
             </a>
@@ -300,11 +300,11 @@
               
             
             
-              <div class="oc-split-row" data-rubric-index="1">
+              <div class="oc-split-row is-active" data-rubric-index="1">
                 <a href="/svedenija/"
-                   class="oc-split-row__link oc-dismiss-all"
+                   class="oc-split-row__link oc-dismiss-all active"
                    title="СВЕДЕНИЯ ОБ ОБРАЗОВАТЕЛЬНОЙ ОРГАНИЗАЦИИ"
-                   >
+                   aria-current="page">
                   <span class="oc-section-icon" aria-hidden="true">📋</span>
                   <span>СВЕДЕНИЯ ОБ ОБРАЗОВАТЕЛЬНОЙ ОРГАНИЗАЦИИ</span>
                 </a>
@@ -609,188 +609,339 @@
 
   <main class="main-content">
     
-<nav class="breadcrumbs" aria-label="Хлебные крошки">
-  <div class="container">
-    <ol class="breadcrumbs__list">
-      <li class="breadcrumbs__item">
-        <a href="/" class="breadcrumbs__link">Главная</a>
-      </li>
-      <li class="breadcrumbs__item">
-        <a href="/specialties/" class="breadcrumbs__link">Специальности</a>
-      </li>
-      <li class="breadcrumbs__item breadcrumbs__item--active" aria-current="page">
-        Список материалов
-      </li>
-    </ol>
-  </div>
-</nav>
+<div class="page-layout svedenija-layout">
 
-<section class="section section--header">
-  <div class="container">
-    <h1 class="page-title">Информационные системы и программирование</h1>
-    <p class="page-subtitle">Код специальности: 09.02.07</p>
+  
+
+  
+
+
+
+
+
+
+
+<section class="section-hero page-hero page-hero--banner component-hero" aria-label="Баннер раздела">
+
+  <div
+    class="page-hero__bg"
+    style="background-image: url('/assets/mentor/img/hero-bg.jpg');"
+    role="img"
+    aria-label="Международное сотрудничество"
+  ></div>
+
+  <div class="page-hero__overlay" aria-hidden="true"></div>
+
+  <div class="container page-hero__content">
+    <div class="page-hero__inner">
+
+      
+      
+      <div class="page-hero__org" aria-label="ГБПОУ РО Сальский индустриальный техникум">
+        ГБПОУ РО
+        <br>
+        <small>«Сальский индустриальный техникум»</small>
+      </div>
+      
+
+      
+      
+      <hr class="page-hero__divider" aria-hidden="true">
+      <h1 class="page-hero__rubric">Международное сотрудничество</h1>
+      
+
+      
+      
+
+      
+      
+
+    </div>
   </div>
+
 </section>
 
-<div class="container layout layout--with-sidebar">
-  <main class="layout__content">
-    <div class="filters">
-      <form class="filters__form" role="search">
-        <input type="search" class="filters__input" placeholder="Поиск материалов..." aria-label="Поиск">
-        <button type="submit" class="btn btn--primary">Найти</button>
-      </form>
+
+
+  <section class="section-context section-context--svedenija" aria-label="Раздел Сведения">
+    <div class="container">
+
+      
+      
+        
+      
+      
+
+
+
+
+
+
+
+<nav class="breadcrumbs component-breadcrumbs" aria-label="Хлебные крошки">
+  <ol class="breadcrumb-list"
+      itemscope
+      itemtype="https://schema.org/BreadcrumbList">
+
+    
+    
+
+      
+      <li class="breadcrumb-item"
+          itemprop="itemListElement"
+          itemscope
+          itemtype="https://schema.org/ListItem">
+        
+          <a href="/" itemprop="item">
+            <span itemprop="name">Главная</span>
+          </a>
+        
+        <meta itemprop="position" content="1"/>
+      </li>
+      
+      <li class="breadcrumb-item"
+          itemprop="itemListElement"
+          itemscope
+          itemtype="https://schema.org/ListItem">
+        
+          <a href="/svedenija/" itemprop="item">
+            <span itemprop="name">Сведения об образовательной организации</span>
+          </a>
+        
+        <meta itemprop="position" content="2"/>
+      </li>
+      
+      <li class="breadcrumb-item breadcrumb-item--current"
+          itemprop="itemListElement"
+          itemscope
+          itemtype="https://schema.org/ListItem">
+        
+          <span itemprop="name">Международное сотрудничество</span>
+        
+        <meta itemprop="position" content="3"/>
+      </li>
+      
+
+    
+    
+
+  </ol>
+</nav>
+
+
+      <div class="svedenija-header">
+        <div class="svedenija-header__icon">
+          <i class="bi bi-building" aria-hidden="true"></i>
+        </div>
+        <div class="svedenija-header__text">
+          <span class="svedenija-header__super">Сведения об образовательной организации</span>
+          
+          
+          <p class="svedenija-header__desc text-muted">Международное сотрудничество ГБПОУ РО «Сальский индустриальный техникум» — партнёрство с Республикой Беларусь, международные стажировки студентов, совместные научно-практические конференции</p>
+          
+        </div>
+      </div>
+
     </div>
+  </section>
 
-    <div class="materials-list">
-      
-      <article class="material-card">
-        <h2 class="material-card__title">
-          <a href="/sotrudnichestvo/predprijatija/">Сотрудничество с предприятиями</a>
-        </h2>
+  
+  
+
+  <section class="section-main">
+    <div class="container">
+      <div class="content-sidebar-grid">
+
         
-      </article>
-      
-      <article class="material-card">
-        <h2 class="material-card__title">
-          <a href="/sotrudnichestvo/shkoly/">Сотрудничество со школами</a>
-        </h2>
         
-      </article>
-      
-      <article class="material-card">
-        <h2 class="material-card__title">
-          <a href="/studentam-i-roditeljam/raspisanie/">Расписание занятий</a>
-        </h2>
+        <div class="sidebar-col">
+          
+
+
+
+
+
+
+<aside class="component-sidebar" role="complementary" aria-label="Дополнительная информация">
+
+  <div class="sidebar-banners">
+    
+  </div>
+
+</aside>
+
+        </div>
         
-      </article>
-      
-      <article class="material-card">
-        <h2 class="material-card__title">
-          <a href="/studentam-i-roditeljam/roditeljam/">Родителям</a>
-        </h2>
+
         
-      </article>
-      
-      <article class="material-card">
-        <h2 class="material-card__title">
-          <a href="/svedenija/access/">Доступная среда</a>
-        </h2>
-        
-      </article>
-      
-      <article class="material-card">
-        <h2 class="material-card__title">
-          <a href="/svedenija/basic/">Основные сведения</a>
-        </h2>
-        
-      </article>
-      
-      <article class="material-card">
-        <h2 class="material-card__title">
-          <a href="/svedenija/documents/anti-corruption/">Противодействие коррупции</a>
-        </h2>
-        
-      </article>
-      
-      <article class="material-card">
-        <h2 class="material-card__title">
-          <a href="/svedenija/documents/">Документы</a>
-        </h2>
-        
-      </article>
-      
-      <article class="material-card">
-        <h2 class="material-card__title">
-          <a href="/svedenija/finance/">Финансово-хозяйственная деятельность</a>
-        </h2>
-        
-      </article>
-      
-      <article class="material-card">
-        <h2 class="material-card__title">
-          <a href="/svedenija/">Сведения об образовательной организации</a>
-        </h2>
-        
-      </article>
-      
+        <div class="content-col">
+
+          
+          
+          <nav class="svedenija-submenu" aria-label="Навигация по разделу Сведения">
+            <ul class="svedenija-submenu__list list-unstyled">
+              
+              <li class="svedenija-submenu__item">
+                <a href="/svedenija/basic/"
+                   class="svedenija-submenu__link"
+                   >
+                  
+                  Основные сведения
+                </a>
+              </li>
+              
+              <li class="svedenija-submenu__item">
+                <a href="/svedenija/documents/"
+                   class="svedenija-submenu__link"
+                   >
+                  
+                  Документы
+                </a>
+              </li>
+              
+              <li class="svedenija-submenu__item">
+                <a href="/svedenija/structure/"
+                   class="svedenija-submenu__link"
+                   >
+                  
+                  Структура управления
+                </a>
+              </li>
+              
+              <li class="svedenija-submenu__item">
+                <a href="/svedenija/education/"
+                   class="svedenija-submenu__link"
+                   >
+                  
+                  Образование
+                </a>
+              </li>
+              
+              <li class="svedenija-submenu__item">
+                <a href="/svedenija/employees/"
+                   class="svedenija-submenu__link"
+                   >
+                  
+                  Руководство и ППС
+                </a>
+              </li>
+              
+              <li class="svedenija-submenu__item">
+                <a href="/svedenija/objects/"
+                   class="svedenija-submenu__link"
+                   >
+                  
+                  Материально-техническое обеспечение
+                </a>
+              </li>
+              
+              <li class="svedenija-submenu__item">
+                <a href="/svedenija/stipend/"
+                   class="svedenija-submenu__link"
+                   >
+                  
+                  Стипендии и поддержка
+                </a>
+              </li>
+              
+              <li class="svedenija-submenu__item">
+                <a href="/svedenija/finance/"
+                   class="svedenija-submenu__link"
+                   >
+                  
+                  Финансово-хозяйственная деятельность
+                </a>
+              </li>
+              
+              <li class="svedenija-submenu__item">
+                <a href="/svedenija/vacancies/"
+                   class="svedenija-submenu__link"
+                   >
+                  
+                  Вакантные места
+                </a>
+              </li>
+              
+              <li class="svedenija-submenu__item">
+                <a href="/svedenija/access/"
+                   class="svedenija-submenu__link"
+                   >
+                  
+                  Доступная среда
+                </a>
+              </li>
+              
+              <li class="svedenija-submenu__item">
+                <a href="/svedenija/obrazovanie/mezhdunarodnoe/"
+                   class="svedenija-submenu__link svedenija-submenu__link--active"
+                   aria-current="page">
+                  
+                  Международное сотрудничество
+                </a>
+              </li>
+              
+            </ul>
+          </nav>
+          
+
+          <article class="page-content svedenija-content" itemprop="mainContentOfPage">
+            <h2>Международное и межрегиональное сотрудничество</h2>
+<p>Важнейшим перспективным направлением деятельности образовательных учреждений, обозначенным в концепции Федеральной целевой программы развития образования на государственном уровне и в рамках национального проекта <strong>«Образование»</strong>, является международное и межрегиональное сотрудничество.</p>
+<p>Целью Сальского индустриального техникума в рамках международного сотрудничества в области профессионального образования является вклад в развитие общества, основанное на взаимном сотрудничестве и обмене участниками образовательного процесса с помощью укрепления системы среднего профессионального образования, воспитание высококвалифицированных кадров, отвечающих требованиям международным стандартам и современности.</p>
+<p>Международное сотрудничество Сальского индустриального техникума развивается в области реализации совместных образовательных и общественно-значимых мероприятий.</p>
+<hr>
+<h2>Участие в научно-практических конференциях</h2>
+<p>Работы наших студентов и преподавателей опубликованы в сборниках трудов по итогам таких научно-практических конференций как:</p>
+<ul>
+<li><strong>«Механизм реализации развития региональной экономики»</strong> (2016)</li>
+<li><strong>«Инновационные технологии строительного производства»</strong> (2019)</li>
+<li><strong>«Развитие предпринимательства на юге Ростовской области»</strong> (2019)</li>
+</ul>
+<p>и др.</p>
+<hr>
+<h2>Партнёрство с Республикой Беларусь</h2>
+<p>Стабильно развиваются партнерские отношения с <strong>Республикой Беларусь</strong>. Такие аспекты, как организация международных стажировок преподавателей и студентов, являются целенаправленным вектором международного сотрудничества с <strong>Представительством ООО «Югэлектромонтаж»</strong> (г. Островец, Республика Беларусь).</p>
+<p>Ежегодно студенты Сальского индустриального техникума получают возможность приобрести практические навыки освоения своей будущей профессии.</p>
+<p>Активная работа по развитию, укреплению и расширению международных отношений способствует повышению профессионального уровня преподавателей, положительно влияет на статус и имидж техникума.</p>
+<hr>
+<h2>Фотогалерея</h2>
+<div class="gallery">
+<p><img src="/assets/uploads/mezhdunarodnoe/%D0%BC%D0%B5%D0%B6%D0%B4%D1%83%D0%BD%D0%B0%D1%80%D0%BE%D0%B4%D0%BD%D0%BE%D0%B5-%D0%B8-%D0%BC%D0%B5%D0%B6%D1%80%D0%B5%D0%B3%D0%B8%D0%BE%D0%BD%D0%B0%D0%BB%D1%8C%D0%BD%D0%BE%D0%B5-%D1%81%D0%BE%D1%82%D1%80%D1%83%D0%B4%D0%BD%D0%B8%D1%87%D0%B5%D1%81%D1%82%D0%B2%D0%BE-3-02-21-1.jpg" alt="Международное и межрегиональное сотрудничество"></p>
+<p><img src="/assets/uploads/mezhdunarodnoe/%D0%BC%D0%B5%D0%B6%D0%B4%D1%83%D0%BD%D0%B0%D1%80%D0%BE%D0%B4%D0%BD%D0%BE%D0%B5-%D0%B8-%D0%BC%D0%B5%D0%B6%D1%80%D0%B5%D0%B3%D0%B8%D0%BE%D0%BD%D0%B0%D0%BB%D1%8C%D0%BD%D0%BE%D0%B5-%D1%81%D0%BE%D1%82%D1%80%D1%83%D0%B4%D0%BD%D0%B8%D1%87%D0%B5%D1%81%D1%82%D0%B2%D0%BE-3-02-21-2.jpg" alt="Международное и межрегиональное сотрудничество"></p>
+<p><img src="/assets/uploads/mezhdunarodnoe/%D0%BC%D0%B5%D0%B6%D0%B4%D1%83%D0%BD%D0%B0%D1%80%D0%BE%D0%B4%D0%BD%D0%BE%D0%B5-%D0%B8-%D0%BC%D0%B5%D0%B6%D1%80%D0%B5%D0%B3%D0%B8%D0%BE%D0%BD%D0%B0%D0%BB%D1%8C%D0%BD%D0%BE%D0%B5-%D1%81%D0%BE%D1%82%D1%80%D1%83%D0%B4%D0%BD%D0%B8%D1%87%D0%B5%D1%81%D1%82%D0%B2%D0%BE-3-02-21-3.jpg" alt="Международное и межрегиональное сотрудничество"></p>
+<p><img src="/assets/uploads/mezhdunarodnoe/%D0%BC%D0%B5%D0%B6%D0%B4%D1%83%D0%BD%D0%B0%D1%80%D0%BE%D0%B4%D0%BD%D0%BE%D0%B5-%D0%B8-%D0%BC%D0%B5%D0%B6%D1%80%D0%B5%D0%B3%D0%B8%D0%BE%D0%BD%D0%B0%D0%BB%D1%8C%D0%BD%D0%BE%D0%B5-%D1%81%D0%BE%D1%82%D1%80%D1%83%D0%B4%D0%BD%D0%B8%D1%87%D0%B5%D1%81%D1%82%D0%B2%D0%BE-3-02-21-4.jpg" alt="Международное и межрегиональное сотрудничество"></p>
+<p><img src="/assets/uploads/mezhdunarodnoe/%D0%BC%D0%B5%D0%B6%D0%B4%D1%83%D0%BD%D0%B0%D1%80%D0%BE%D0%B4%D0%BD%D0%BE%D0%B5-%D0%B8-%D0%BC%D0%B5%D0%B6%D1%80%D0%B5%D0%B3%D0%B8%D0%BE%D0%BD%D0%B0%D0%BB%D1%8C%D0%BD%D0%BE%D0%B5-%D1%81%D0%BE%D1%82%D1%80%D1%83%D0%B4%D0%BD%D0%B8%D1%87%D0%B5%D1%81%D1%82%D0%B2%D0%BE-3-02-21-5.jpg" alt="Международное и межрегиональное сотрудничество"></p>
+<p><img src="/assets/uploads/mezhdunarodnoe/%D0%BC%D0%B5%D0%B6%D0%B4%D1%83%D0%BD%D0%B0%D1%80%D0%BE%D0%B4%D0%BD%D0%BE%D0%B5-%D0%B8-%D0%BC%D0%B5%D0%B6%D1%80%D0%B5%D0%B3%D0%B8%D0%BE%D0%BD%D0%B0%D0%BB%D1%8C%D0%BD%D0%BE%D0%B5-%D1%81%D0%BE%D1%82%D1%80%D1%83%D0%B4%D0%BD%D0%B8%D1%87%D0%B5%D1%81%D1%82%D0%B2%D0%BE-3-02-21-6.jpg" alt="Международное и межрегиональное сотрудничество"></p>
+<p><img src="/assets/uploads/mezhdunarodnoe/%D0%BC%D0%B5%D0%B6%D0%B4%D1%83%D0%BD%D0%B0%D1%80%D0%BE%D0%B4%D0%BD%D0%BE%D0%B5-%D0%B8-%D0%BC%D0%B5%D0%B6%D1%80%D0%B5%D0%B3%D0%B8%D0%BE%D0%BD%D0%B0%D0%BB%D1%8C%D0%BD%D0%BE%D0%B5-%D1%81%D0%BE%D1%82%D1%80%D1%83%D0%B4%D0%BD%D0%B8%D1%87%D0%B5%D1%81%D1%82%D0%B2%D0%BE-3-02-21-7.jpg" alt="Международное и межрегиональное сотрудничество"></p>
+<p><img src="/assets/uploads/mezhdunarodnoe/%D0%BC%D0%B5%D0%B6%D0%B4%D1%83%D0%BD%D0%B0%D1%80%D0%BE%D0%B4%D0%BD%D0%BE%D0%B5-%D0%B8-%D0%BC%D0%B5%D0%B6%D1%80%D0%B5%D0%B3%D0%B8%D0%BE%D0%BD%D0%B0%D0%BB%D1%8C%D0%BD%D0%BE%D0%B5-%D1%81%D0%BE%D1%82%D1%80%D1%83%D0%B4%D0%BD%D0%B8%D1%87%D0%B5%D1%81%D1%82%D0%B2%D0%BE-3-02-21-8.jpg" alt="Международное и межрегиональное сотрудничество"></p>
+<p><img src="/assets/uploads/mezhdunarodnoe/%D0%BC%D0%B5%D0%B6%D0%B4%D1%83%D0%BD%D0%B0%D1%80%D0%BE%D0%B4%D0%BD%D0%BE%D0%B5-%D0%B8-%D0%BC%D0%B5%D0%B6%D1%80%D0%B5%D0%B3%D0%B8%D0%BE%D0%BD%D0%B0%D0%BB%D1%8C%D0%BD%D0%BE%D0%B5-%D1%81%D0%BE%D1%82%D1%80%D1%83%D0%B4%D0%BD%D0%B8%D1%87%D0%B5%D1%81%D1%82%D0%B2%D0%BE-3-02-21-9.jpg" alt="Международное и межрегиональное сотрудничество"></p>
+</div>
+
+          </article>
+
+          
+
+        </div>
+
+      </div>
     </div>
+  </section>
 
-    <nav class="pagination" aria-label="Пагинация">
-      <ul class="pagination__list">
-        
-        <li class="pagination__item pagination__item--prev">
-          <a href="/pages/rubric-lists/default/2/" class="pagination__link">← Назад</a>
-        </li>
-        
+  
+  
 
-        
-        <li class="pagination__item">
-          <a href="/pages/rubric-lists/default/" class="pagination__link ">
-            1
-          </a>
-        </li>
-        
-        <li class="pagination__item">
-          <a href="/pages/rubric-lists/default/1/" class="pagination__link ">
-            2
-          </a>
-        </li>
-        
-        <li class="pagination__item">
-          <a href="/pages/rubric-lists/default/2/" class="pagination__link ">
-            3
-          </a>
-        </li>
-        
-        <li class="pagination__item">
-          <a href="/pages/rubric-lists/default/3/" class="pagination__link ">
-            4
-          </a>
-        </li>
-        
-        <li class="pagination__item">
-          <a href="/pages/rubric-lists/default/4/" class="pagination__link ">
-            5
-          </a>
-        </li>
-        
-        <li class="pagination__item">
-          <a href="/pages/rubric-lists/default/5/" class="pagination__link ">
-            6
-          </a>
-        </li>
-        
-
-        
-        <li class="pagination__item pagination__item--next">
-          <a href="/pages/rubric-lists/default/4/" class="pagination__link">Вперед →</a>
-        </li>
-        
-      </ul>
-    </nav>
-  </main>
-
-  <aside class="layout__sidebar" role="complementary">
-    <nav class="sidebar-nav">
-      <h3 class="sidebar-nav__title">Разделы</h3>
-      <ul class="sidebar-nav__list">
-        <li><a href="#" class="sidebar-nav__link sidebar-nav__link--active">Все материалы</a></li>
-        <li><a href="#" class="sidebar-nav__link">Методические указания</a></li>
-        <li><a href="#" class="sidebar-nav__link">Лабораторные работы</a></li>
-        <li><a href="#" class="sidebar-nav__link">Курсовые проекты</a></li>
-        <li><a href="#" class="sidebar-nav__link">Экзаменационные материалы</a></li>
-      </ul>
-    </nav>
-
-    <div class="sidebar-block">
-      <h3 class="sidebar-block__title">Полезные ссылки</h3>
-      <ul class="sidebar-block__list">
-        <li><a href="#">Расписание</a></li>
-        <li><a href="#">Электронный журнал</a></li>
-        <li><a href="#">Библиотека</a></li>
-      </ul>
+  
+  
+  <nav class="section-backnav" aria-label="Навигация">
+    <div class="container">
+      <a href="/svedenija/" class="backnav-link backnav-link--parent">
+        <i class="bi bi-arrow-left-circle" aria-hidden="true"></i>
+        Сведения об образовательной организации
+      </a>
     </div>
-  </aside>
+  </nav>
+  
+
 </div>
 
   </main>

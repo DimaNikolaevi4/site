@@ -78,5 +78,5 @@ description: Образовательные программы ГБПОУ РО �
 ## Дополнительные разделы
 
 - [Вакантные места для приёма (перевода) обучающихся](/svedenija/vacancies/)
-- [Международное сотрудничество](/svedenija/international/)
+- [Международное сотрудничество](/svedenija/obrazovanie/mezhdunarodnoe/)
 - [Доступная среда](/svedenija/access/)
