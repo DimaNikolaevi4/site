@@ -13,7 +13,7 @@ main:
       - title: Руководство
         url: /about/#leadership
       - title: Контакты
-        url: /contacts/
+        url: /#footer
   - title: Сведения об образовательной организации
     url: /svedenija/
     key: svedenija
@@ -119,5 +119,5 @@ main:
     url: /news/
     key: news
   - title: Контакты
-    url: /contacts/
+    url: /#footer
     key: contacts
