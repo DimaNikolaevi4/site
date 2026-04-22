@@ -526,6 +526,33 @@ body.dark-theme .home-bg {
   background-image: url("/images/fon/bg-03.svg");
 }
 
+/*--------------------------------------------------------------
+# Dark theme — повышение контраста для приглушённых текстов
+# (Bootstrap text-muted и text-body-secondary на тёмном фоне
+#  становятся нечитаемыми — переопределяем на светлый тон)
+--------------------------------------------------------------*/
+body.dark-theme {
+  --bs-secondary-color: #b8ccbc;
+  --bs-tertiary-color:  #9bb3a0;
+  --text-muted:         #b8ccbc;
+}
+
+body.dark-theme .text-muted,
+body.dark-theme .text-body-secondary,
+body.dark-theme .text-body-tertiary {
+  color: #b8ccbc !important;
+}
+
+body.dark-theme .about-excerpt,
+body.dark-theme .about-text,
+body.dark-theme .about-highlights {
+  color: #d4e2d7;
+}
+
+body.dark-theme .about-title {
+  color: var(--heading-color);
+}
+
 /* Внутренние секции — прозрачные, чтобы фон был сквозным */
 .home-bg > .section,
 .home-bg > section,

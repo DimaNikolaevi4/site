@@ -40,17 +40,27 @@
   <div class="container page-hero__content">
     <div class="page-hero__inner">
 
-      {# Название организации — как на главной странице #}
+      {# Название организации — как на главной странице.
+         На главной (hideRubric=true) — это <h1> страницы.
+         На внутренних страницах <h1> — это рубрика, а название организации — <div>. #}
+      {% if hideRubric %}
+      <h1 class="page-hero__org" aria-label="ГБПОУ РО Сальский индустриальный техникум">
+        ГБПОУ РО
+        <br>
+        <small>«Сальский индустриальный техникум»</small>
+      </h1>
+      {% else %}
       <div class="page-hero__org" aria-label="ГБПОУ РО Сальский индустриальный техникум">
         ГБПОУ РО
         <br>
         <small>«Сальский индустриальный техникум»</small>
       </div>
+      {% endif %}
 
-      {# Название рубрики под горизонтальной чертой #}
+      {# Название рубрики под горизонтальной чертой — на внутренних страницах это <h1> #}
       {% if _heroRubric and not hideRubric %}
       <hr class="page-hero__divider" aria-hidden="true">
-      <p class="page-hero__rubric">{{ _heroRubric }}</p>
+      <h1 class="page-hero__rubric">{{ _heroRubric }}</h1>
       {% endif %}
 
       {# Подзаголовок (опционально) #}
