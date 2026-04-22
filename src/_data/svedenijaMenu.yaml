@@ -1,0 +1,33 @@
+- title: Основные сведения
+  url: /svedenija/basic/
+  key: basic
+- title: Документы
+  url: /svedenija/dokumenty/
+  key: documents
+- title: Структура управления
+  url: /svedenija/structure/
+  key: structure
+- title: Образование
+  url: /svedenija/education/
+  key: education
+- title: Руководство и ППС
+  url: /svedenija/employees/
+  key: employees
+- title: Материально-техническое обеспечение
+  url: /svedenija/objects/
+  key: objects
+- title: Стипендии и поддержка
+  url: /svedenija/stipend/
+  key: stipend
+- title: Финансово-хозяйственная деятельность
+  url: /svedenija/finance/
+  key: finance
+- title: Вакантные места
+  url: /svedenija/vacancies/
+  key: vacancies
+- title: Доступная среда
+  url: /svedenija/access/
+  key: access
+- title: Международное сотрудничество
+  url: /svedenija/obrazovanie/mezhdunarodnoe/
+  key: international

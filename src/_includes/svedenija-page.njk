@@ -1,0 +1,158 @@
+---
+layout: layouts/base.njk
+templateEngineOverride: njk,md
+showSidebar: true
+---
+{#
+  ШАБЛОН — svedenija-page.njk (новая архитектура)
+  Раздел «Сведения об образовательной организации» (Приказ Рособрнадзора №1493)
+
+  Унифицирован со схемой layouts/page.njk:
+    Секция 1: Header                — глобальная (base.njk)
+    Секция 2: Hero (опц.) + Контекст — хлебные крошки + заголовок + описание
+    Секции 3+7: Контент 70% + Сайдбар 30% — единые баннеры слева (components/sidebar.njk)
+    Подсекция: подменю «Сведений» — обязательный набор подразделов по №1493
+    Секция 4: Связанные подразделы (опц.)
+    Нижняя навигация: возврат к /svedenija/
+    Секция 8: Footer                — глобальная (base.njk)
+
+  Управление через frontmatter страницы:
+    title, description
+    hero            — { image, title, subtitle, alt } (опц.)
+    showSidebar     — true/false (по умолч. true)
+    sidebarBanners  — переопределить единые баннеры
+    relatedSections — массив { url, title, icon } для секции 4
+#}
+<div class="page-layout svedenija-layout">
+
+  {# ═══════════════════════════════════════════════
+     СЕКЦИЯ 2: Hero (опц.) + Контекст
+  ═══════════════════════════════════════════════ #}
+
+  {% include "components/hero.njk" %}
+
+  <section class="section-context section-context--svedenija" aria-label="Раздел Сведения">
+    <div class="container">
+
+      {# Единые хлебные крошки — ручной режим, чтобы не дублировать заголовок на корне #}
+      {% if page.url == '/svedenija/' %}
+        {% set breadcrumbs = [
+          { text: "Главная", url: "/" },
+          { text: "Сведения об образовательной организации" }
+        ] %}
+      {% else %}
+        {% set breadcrumbs = [
+          { text: "Главная", url: "/" },
+          { text: "Сведения об образовательной организации", url: "/svedenija/" },
+          { text: breadcrumbTitle or title }
+        ] %}
+      {% endif %}
+      {% include "components/breadcrumbs.njk" %}
+
+      <div class="svedenija-header">
+        <div class="svedenija-header__icon">
+          <i class="bi bi-building" aria-hidden="true"></i>
+        </div>
+        <div class="svedenija-header__text">
+          <span class="svedenija-header__super">Сведения об образовательной организации</span>
+          {% if showHero == false %}
+          <h1 class="svedenija-header__title">{{ title }}</h1>
+          {% endif %}
+          {% if description %}
+          <p class="svedenija-header__desc text-muted">{{ description }}</p>
+          {% endif %}
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  {# ═══════════════════════════════════════════════
+     СЕКЦИИ 3 + 7: Контент 70% + Сайдбар 30% (слева)
+  ═══════════════════════════════════════════════ #}
+  {% set _showSidebar = showSidebar if showSidebar is defined else true %}
+
+  <section class="section-main">
+    <div class="container">
+      <div class="content-sidebar-grid{% if not _showSidebar %} content-sidebar-grid--full{% endif %}">
+
+        {# ── Секция 7: Сайдбар — единые баннеры (НЕ навигация) ── #}
+        {% if _showSidebar %}
+        <div class="sidebar-col">
+          {% include "components/sidebar.njk" %}
+        </div>
+        {% endif %}
+
+        {# ── Секция 3: Основной контент + подменю «Сведений» ── #}
+        <div class="content-col">
+
+          {# Подменю раздела (требование №1493 — все 11 подразделов доступны) #}
+          {% if svedenijaMenu %}
+          <nav class="svedenija-submenu" aria-label="Навигация по разделу Сведения">
+            <ul class="svedenija-submenu__list list-unstyled">
+              {% for item in svedenijaMenu %}
+              <li class="svedenija-submenu__item">
+                <a href="{{ item.url }}"
+                   class="svedenija-submenu__link{% if page.url == item.url %} svedenija-submenu__link--active{% endif %}"
+                   {% if page.url == item.url %}aria-current="page"{% endif %}>
+                  {% if item.icon %}<i class="bi bi-{{ item.icon }}" aria-hidden="true"></i>{% endif %}
+                  {{ item.title }}
+                </a>
+              </li>
+              {% endfor %}
+            </ul>
+          </nav>
+          {% endif %}
+
+          <article class="page-content svedenija-content" itemprop="mainContentOfPage">
+            {{ content | safe }}
+          </article>
+
+          {% if additionalBlocks %}
+          <div class="section-extra mt-4">
+            <div class="extra-inner">{{ additionalBlocks | safe }}</div>
+          </div>
+          {% endif %}
+
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  {# ═══════════════════════════════════════════════
+     СЕКЦИЯ 4: Связанные подразделы (опц.)
+  ═══════════════════════════════════════════════ #}
+  {% if relatedSections and relatedSections.length > 0 %}
+  <section class="section-related" aria-label="Связанные подразделы">
+    <div class="container">
+      <h2 class="section-related__title">
+        <i class="bi bi-grid" aria-hidden="true"></i> Связанные подразделы
+      </h2>
+      <div class="related-grid related-grid--compact">
+        {% for rs in relatedSections %}
+        <a href="{{ rs.url }}" class="related-section-card">
+          <i class="bi bi-{{ rs.icon or 'chevron-right' }}" aria-hidden="true"></i>
+          <span>{{ rs.title }}</span>
+        </a>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+  {% endif %}
+
+  {# ═══════════════════════════════════════════════
+     Нижняя навигация — возврат к разделу
+  ═══════════════════════════════════════════════ #}
+  {% if page.url != '/svedenija/' %}
+  <nav class="section-backnav" aria-label="Навигация">
+    <div class="container">
+      <a href="/svedenija/" class="backnav-link backnav-link--parent">
+        <i class="bi bi-arrow-left-circle" aria-hidden="true"></i>
+        Сведения об образовательной организации
+      </a>
+    </div>
+  </nav>
+  {% endif %}
+
+</div>

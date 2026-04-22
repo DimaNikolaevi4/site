@@ -1,0 +1,376 @@
+<header id="header" class="header d-flex align-items-center sticky-top">
+  <div class="container-fluid container-xl position-relative d-flex align-items-center">
+
+    {# Логотип — всегда виден #}
+    <a href="/" class="logo d-flex align-items-center flex-shrink-0" title="Главная страница ГБПОУ РО «СИТ»">
+      <img src="/assets/images/logo.png" alt="ГБПОУ РО «Сальский индустриальный техникум»" class="header-logo-img">
+    </a>
+
+    {# Инлайн-поиск — разворачивается поверх навигации #}
+    <div class="header-search-wrap" id="headerSearchWrap" aria-hidden="true">
+      <form role="search" action="/search/" method="get" class="header-search-form">
+        <input type="search" name="q" class="header-search-input"
+               id="headerSearchInput"
+               placeholder="Поиск по сайту…"
+               aria-label="Поиск по сайту"
+               autocomplete="off">
+        <button type="submit" class="header-search-submit" aria-label="Найти">
+          <i class="bi bi-search" aria-hidden="true"></i>
+        </button>
+        <button type="button" class="header-search-close" id="headerSearchClose" aria-label="Закрыть поиск">
+          <i class="bi bi-x-lg" aria-hidden="true"></i>
+        </button>
+      </form>
+    </div>
+
+    {# Центральная навигация — от lg (992px), по центру между лого и иконками #}
+    {# Порядок скрытия (сужение экрана): Контакты → ЭОС → Абитуриентам → Сведения (последним) #}
+    <nav class="main-nav d-none d-lg-flex mx-auto" role="navigation" aria-label="Основная навигация">
+      <ul class="d-flex list-unstyled align-items-center m-0 p-0">
+        <li>
+          <a href="/svedenija/"
+             class="main-nav__link{% if page.url | startsWith('/svedenija/') %} active{% endif %}"
+             {% if page.url | startsWith('/svedenija/') %}aria-current="page"{% endif %}
+             title="Официальные сведения об образовательной организации">
+            <span class="main-nav__icon" aria-hidden="true">📋</span>
+            <span>Сведения об образовательной организации</span>
+          </a>
+        </li>
+        <li class="d-none d-xl-flex">
+          <a href="/abiturientam/"
+             class="main-nav__link{% if page.url | startsWith('/abiturientam/') %} active{% endif %}"
+             {% if page.url | startsWith('/abiturientam/') %}aria-current="page"{% endif %}
+             title="Информация для абитуриентов">
+            <span class="main-nav__icon" aria-hidden="true">🎓</span>
+            <span>Абитуриентам</span>
+          </a>
+        </li>
+        <li class="d-none d-xl-flex">
+          <a href="https://эос.сит-сальск.рф" target="_blank" rel="noopener"
+             class="main-nav__link"
+             title="Электронная образовательная система ГБПОУ РО «СИТ»">
+            <span class="main-nav__icon" aria-hidden="true">💻</span>
+            <span>ЭОС</span>
+          </a>
+        </li>
+        <li class="d-none d-xxl-flex">
+          <a href="#footer"
+             class="main-nav__link"
+             title="Контактная информация">
+            <i class="bi bi-buildings main-nav__icon" aria-hidden="true"></i>
+            <span>Контакты</span>
+          </a>
+        </li>
+        <li class="d-none d-xxl-flex">
+          <a href="{{ contacts.phone_link }}"
+             class="main-nav__link"
+             title="Позвонить: {{ contacts.phone_formatted }}"
+             aria-label="Позвонить: {{ contacts.phone_formatted }}">
+            <i class="bi bi-telephone-fill main-nav__icon" aria-hidden="true"></i>
+            <span>{{ contacts.phone_formatted }}</span>
+          </a>
+        </li>
+      </ul>
+    </nav>
+
+    {# Иконки действий — от lg (992px) #}
+    <div class="header-icons d-none d-lg-flex align-items-center gap-1 flex-shrink-0">
+      <a href="{{ social.vk }}" target="_blank" rel="noopener"
+         class="header-icon-btn" title="Официальная группа ВКонтакте" aria-label="ВКонтакте">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M21.579 6.855c.17-.565 0-.98-.802-.98h-2.652c-.67 0-.979.357-1.146.752 0 0-1.34 3.283-3.237 5.414-.614.618-.893.814-1.228.814-.17 0-.42-.196-.42-.76V6.854c0-.671-.19-.98-.76-.98H9.389c-.42 0-.67.315-.67.615 0 .644.96.793 1.06 2.605v3.935c0 .864-.155 1.021-.492 1.021-.893 0-3.066-3.303-4.355-7.083C4.68 6.37 4.428 5.875 3.754 5.875H1.102c-.76 0-.913.357-.913.752 0 .704.893 4.197 4.155 8.817 2.175 3.144 5.239 4.848 8.026 4.848 1.674 0 1.88-.38 1.88-1.035v-2.385c0-.76.16-.912.694-.912.393 0 1.067.198 2.641 1.727 1.798 1.81 2.094 2.62 3.102 2.62h2.652c.76 0 1.14-.38.92-1.134-.237-.744-1.092-1.82-2.226-3.101-.614-.73-1.535-1.517-1.814-1.91-.393-.508-.28-.733 0-1.185 0 0 3.21-4.55 3.546-6.095z"/>
+        </svg>
+      </a>
+      <a href="mailto:{{ contacts.email }}"
+         class="header-icon-btn" title="Написать на почту: {{ contacts.email }}" aria-label="Электронная почта">
+        <i class="bi bi-envelope-fill" aria-hidden="true"></i>
+      </a>
+      <button class="header-icon-btn" id="headerSearchToggle"
+              type="button"
+              title="Поиск по сайту" aria-label="Поиск" aria-expanded="false" aria-controls="headerSearchWrap">
+        <i class="bi bi-search" aria-hidden="true"></i>
+      </button>
+      <div class="a11y-wrap">
+        <button class="header-icon-btn" id="a11yToggle"
+                type="button"
+                title="Версия для слабовидящих"
+                aria-label="Версия для слабовидящих"
+                aria-expanded="false"
+                aria-controls="a11yPanel">
+          <i class="bi bi-eye" aria-hidden="true"></i>
+        </button>
+      </div>
+      <button class="header-icon-btn" id="darkThemeToggle"
+              onclick="toggleDarkTheme(); return false;"
+              title="Тёмная тема" aria-label="Тёмная / светлая тема">
+        <i class="bi bi-moon-stars" aria-hidden="true"></i>
+      </button>
+      <button class="header-icon-btn"
+              data-bs-toggle="offcanvas" data-bs-target="#offcanvasRubrics"
+              aria-controls="offcanvasRubrics"
+              title="Все разделы сайта" aria-label="Все разделы">
+        <svg width="20" height="16" viewBox="0 0 20 16" fill="currentColor" aria-hidden="true">
+          <rect x="3" y="0"  width="14" height="2" rx="1"/>
+          <rect x="0" y="7"  width="20" height="2" rx="1"/>
+          <rect x="3" y="14" width="14" height="2" rx="1"/>
+        </svg>
+      </button>
+    </div>
+
+    {# Кнопка-гамбургер — мобильные и малые планшеты (< lg = < 992px) #}
+    <button class="header-icon-btn d-flex d-lg-none ms-auto offcanvas-toggle-btn"
+            type="button"
+            data-bs-toggle="offcanvas" data-bs-target="#offcanvasRubrics"
+            aria-controls="offcanvasRubrics"
+            aria-label="Открыть меню"
+            title="Меню">
+      <i class="bi bi-list fs-4" aria-hidden="true"></i>
+    </button>
+
+  </div>
+</header>
+
+{# Offcanvas — меню 1-го уровня (справа) #}
+<div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRubrics" aria-labelledby="offcanvasRubricsLabel">
+
+  <div class="offcanvas-header oc-header">
+    <a href="/" class="oc-header__brand" data-bs-dismiss="offcanvas" title="На главную">
+      <img src="/assets/images/logo.png" alt="" class="oc-header__logo" aria-hidden="true">
+      <div class="oc-header__text">
+        <span class="oc-header__title" id="offcanvasRubricsLabel">Разделы сайта</span>
+        <span class="oc-header__sub">ГБПОУ РО «СИТ»</span>
+      </div>
+    </a>
+    <button type="button" class="oc-dismiss-btn" data-bs-dismiss="offcanvas" aria-label="Закрыть">
+      <i class="bi bi-x-lg" aria-hidden="true"></i>
+    </button>
+  </div>
+
+  <div class="offcanvas-body p-0">
+    <div class="oc-panel" id="ocPanel1">
+      <div class="oc-panel__scroll">
+
+        {# Поле поиска вверху панели #}
+        <div class="oc-search px-3 pt-3 pb-1">
+          <form role="search" action="/search/" method="get" class="oc-search-form" data-bs-dismiss="offcanvas">
+            <div class="oc-search-inner">
+              <i class="bi bi-search oc-search-icon" aria-hidden="true"></i>
+              <input type="search" name="q" class="oc-search-input"
+                     placeholder="Поиск по сайту…"
+                     aria-label="Поиск по сайту"
+                     autocomplete="off">
+            </div>
+          </form>
+        </div>
+
+        {# Быстрые ссылки — скрываются когда видны в шапке #}
+        <ul class="list-unstyled offcanvas-quicklinks px-3 pt-2 mb-0">
+          <li>
+            <a href="/svedenija/" class="offcanvas-quicklinks__link d-lg-none{% if page.url | startsWith('/svedenija/') %} active{% endif %}"
+               data-bs-dismiss="offcanvas"
+               {% if page.url | startsWith('/svedenija/') %}aria-current="page"{% endif %}>
+              <span class="offcanvas-quicklinks__icon" aria-hidden="true">📋</span>
+              Сведения об образовательной организации
+            </a>
+          </li>
+          <li>
+            <a href="/abiturientam/" class="offcanvas-quicklinks__link offcanvas-quicklinks__link--pill d-xl-none{% if page.url | startsWith('/abiturientam/') %} active{% endif %}"
+               data-bs-dismiss="offcanvas"
+               {% if page.url | startsWith('/abiturientam/') %}aria-current="page"{% endif %}>
+              <span class="offcanvas-quicklinks__icon" aria-hidden="true">🎓</span>
+              Абитуриентам
+            </a>
+          </li>
+          <li>
+            <a href="https://эос.сит-сальск.рф" target="_blank" rel="noopener"
+               class="offcanvas-quicklinks__link offcanvas-quicklinks__link--pill offcanvas-quicklinks__link--pill-alt d-xl-none">
+              <span class="offcanvas-quicklinks__icon" aria-hidden="true">💻</span>
+              ЭОС
+            </a>
+          </li>
+          <li>
+            <a href="#footer" class="offcanvas-quicklinks__link d-xxl-none"
+               data-bs-dismiss="offcanvas">
+              <i class="bi bi-chevron-right offcanvas-quicklinks__icon" aria-hidden="true"></i>
+              Контакты
+            </a>
+          </li>
+        </ul>
+
+        {# Иконки действий — только на мобильных (< 992px) #}
+        <div class="offcanvas-actions d-flex d-lg-none align-items-center gap-1 px-3 py-2">
+          <a href="{{ social.vk }}" target="_blank" rel="noopener"
+             class="header-icon-btn" title="ВКонтакте" aria-label="ВКонтакте">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M21.579 6.855c.17-.565 0-.98-.802-.98h-2.652c-.67 0-.979.357-1.146.752 0 0-1.34 3.283-3.237 5.414-.614.618-.893.814-1.228.814-.17 0-.42-.196-.42-.76V6.854c0-.671-.19-.98-.76-.98H9.389c-.42 0-.67.315-.67.615 0 .644.96.793 1.06 2.605v3.935c0 .864-.155 1.021-.492 1.021-.893 0-3.066-3.303-4.355-7.083C4.68 6.37 4.428 5.875 3.754 5.875H1.102c-.76 0-.913.357-.913.752 0 .704.893 4.197 4.155 8.817 2.175 3.144 5.239 4.848 8.026 4.848 1.674 0 1.88-.38 1.88-1.035v-2.385c0-.76.16-.912.694-.912.393 0 1.067.198 2.641 1.727 1.798 1.81 2.094 2.62 3.102 2.62h2.652c.76 0 1.14-.38.92-1.134-.237-.744-1.092-1.82-2.226-3.101-.614-.73-1.535-1.517-1.814-1.91-.393-.508-.28-.733 0-1.185 0 0 3.21-4.55 3.546-6.095z"/>
+            </svg>
+          </a>
+          <a href="mailto:{{ contacts.email }}"
+             class="header-icon-btn" title="Написать на почту: {{ contacts.email }}" aria-label="Электронная почта">
+            <i class="bi bi-envelope-fill" aria-hidden="true"></i>
+          </a>
+          <a href="/search/" class="header-icon-btn" data-bs-dismiss="offcanvas"
+             title="Поиск по сайту" aria-label="Поиск">
+            <i class="bi bi-search" aria-hidden="true"></i>
+          </a>
+          <button class="header-icon-btn" onclick="toggleA11y(); return false;"
+                  title="Версия для слабовидящих" aria-label="Версия для слабовидящих">
+            <i class="bi bi-eye" aria-hidden="true"></i>
+          </button>
+          <button class="header-icon-btn" id="darkThemeToggleMobile" onclick="toggleDarkTheme(); return false;"
+                  title="Тёмная тема" aria-label="Тёмная / светлая тема">
+            <i class="bi bi-moon-stars" aria-hidden="true"></i>
+          </button>
+        </div>
+
+        <div class="offcanvas-section-label px-3">
+          <span>Все разделы</span>
+        </div>
+
+        {# Список разделов 1-го уровня #}
+        <nav class="oc-nav" aria-label="Разделы сайта">
+          {% for item in rubrics.main_rubrics %}
+            {% set sectionUrl = '/' + item.slug + '/' %}
+            {% set isActiveSection = page.url | startsWith(sectionUrl) %}
+            {% set sectionIcon = '📁' %}
+            {% if item.slug == 'svedenija' %}
+              {% set sectionIcon = '📋' %}
+            {% elif item.slug == 'abiturientam' %}
+              {% set sectionIcon = '🎓' %}
+            {% elif item.slug == 'vospitanie' %}
+              {% set sectionIcon = '🏋️' %}
+            {% elif item.slug == 'uchebno-metodicheskaja-rabota' %}
+              {% set sectionIcon = '📚' %}
+            {% elif item.slug == 'bezopasnost' %}
+              {% set sectionIcon = '🛡️' %}
+            {% elif item.slug == 'psihologicheskoe' %}
+              {% set sectionIcon = '🤝' %}
+            {% elif item.slug == 'studentam-roditeljam' %}
+              {% set sectionIcon = '👨‍👩‍👧‍👦' %}
+            {% elif item.slug == 'vypusknikam' %}
+              {% set sectionIcon = '🎯' %}
+            {% elif item.slug == 'obshestvennoe-mnenie' %}
+              {% set sectionIcon = '💬' %}
+            {% endif %}
+            {% if item.children %}
+              <div class="oc-split-row{% if isActiveSection %} is-active{% endif %}" data-rubric-index="{{ loop.index0 }}">
+                <a href="/{{ item.slug }}/"
+                   class="oc-split-row__link oc-dismiss-all{% if isActiveSection %} active{% endif %}"
+                   title="{{ item.title }}"
+                   {% if isActiveSection %}aria-current="page"{% endif %}>
+                  <span class="oc-section-icon" aria-hidden="true">{{ sectionIcon }}</span>
+                  <span>{{ item.title }}</span>
+                </a>
+                <button class="oc-split-row__toggle"
+                        type="button"
+                        aria-label="Открыть подразделы: {{ item.title }}"
+                        aria-expanded="false"
+                        data-rubric-index="{{ loop.index0 }}">
+                  <i class="bi bi-chevron-right" aria-hidden="true"></i>
+                </button>
+              </div>
+            {% else %}
+              <a href="/{{ item.slug }}/"
+                 class="oc-split-row__link oc-split-row__link--leaf oc-dismiss-all{% if isActiveSection %} active{% endif %}"
+                 title="{{ item.title }}"
+                 {% if isActiveSection %}aria-current="page"{% endif %}>
+                <span class="oc-section-icon" aria-hidden="true">{{ sectionIcon }}</span>
+                <span>{{ item.title }}</span>
+              </a>
+            {% endif %}
+          {% endfor %}
+        </nav>
+
+        {# Подвал offcanvas #}
+        <div class="oc-footer px-3 py-3">
+          <a href="#footer" class="oc-footer__link" data-bs-dismiss="offcanvas">
+            <i class="bi bi-geo-alt" aria-hidden="true"></i>
+            <span>{{ contacts.address }}</span>
+          </a>
+          <a href="{{ contacts.phone_link }}" class="oc-footer__call-btn mt-2">
+            <i class="bi bi-telephone-fill" aria-hidden="true"></i>
+            <span>{{ contacts.phone_formatted }}</span>
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  {# Данные рубрик для offcanvas-nav.js #}
+  <script id="rubricsData" type="application/json">{{ rubrics.main_rubrics | dump | safe }}</script>
+
+</div>
+
+{# ═══ ПАНЕЛЬ 2 — 2-й уровень (заполняется через JS) ═══ #}
+<div class="oc-side-panel" id="ocPanel2" aria-hidden="true">
+  <div class="oc-side-panel__header">
+    <div class="oc-panel-header-main">
+      <div class="oc-panel-breadcrumb-row">
+        <span class="oc-panel-breadcrumb" id="ocPanel2Breadcrumb">Разделы сайта</span>
+        <span class="oc-panel-count" id="ocPanel2Count"></span>
+      </div>
+      <span class="oc-side-panel__title" id="ocPanel2Title"></span>
+    </div>
+    <button class="oc-close-btn" id="ocCloseBtn2" type="button" aria-label="Закрыть">
+      <i class="bi bi-x-lg" aria-hidden="true"></i>
+    </button>
+  </div>
+  <div class="oc-panel__scroll" id="ocPanel2Scroll">
+    <a class="oc-panel-open-link" id="ocPanel2OpenLink" href="#">
+      <i class="bi bi-box-arrow-up-right" aria-hidden="true"></i>
+      Открыть весь раздел
+    </a>
+    <nav aria-label="Подразделы">
+      <ul class="list-unstyled oc-sub-list" id="ocSubList"></ul>
+    </nav>
+  </div>
+</div>
+
+{# ═══ ПАНЕЛЬ 3 — 3-й уровень (заполняется через JS) ═══ #}
+<div class="oc-side-panel" id="ocPanel3" aria-hidden="true">
+  <div class="oc-side-panel__header">
+    <div class="oc-panel-header-main">
+      <div class="oc-panel-breadcrumb-row">
+        <span class="oc-panel-breadcrumb" id="ocPanel3Breadcrumb"></span>
+        <span class="oc-panel-count" id="ocPanel3Count"></span>
+      </div>
+      <span class="oc-side-panel__title" id="ocPanel3Title"></span>
+    </div>
+    <button class="oc-close-btn" id="ocCloseBtn3" type="button" aria-label="Закрыть">
+      <i class="bi bi-x-lg" aria-hidden="true"></i>
+    </button>
+  </div>
+  <div class="oc-panel__scroll" id="ocPanel3Scroll">
+    <a class="oc-panel-open-link" id="ocPanel3OpenLink" href="#">
+      <i class="bi bi-box-arrow-up-right" aria-hidden="true"></i>
+      Открыть весь раздел
+    </a>
+    <nav aria-label="Под-подразделы">
+      <ul class="list-unstyled oc-sub-list" id="ocSubSubList"></ul>
+    </nav>
+  </div>
+</div>
+
+{# Панель доступности — вынесена на уровень body, чтобы z-index работал выше offcanvas #}
+<div class="a11y-panel a11y-panel--fixed" id="a11yPanel" role="dialog" aria-label="Настройки доступности" hidden>
+  <p class="a11y-panel__title">Версия для слабовидящих</p>
+  <div class="a11y-options">
+    <label class="a11y-option">
+      <input type="checkbox" id="a11yLargeFont">
+      <span>Крупный шрифт</span>
+    </label>
+    <label class="a11y-option">
+      <input type="checkbox" id="a11yHighContrast">
+      <span>Высокий контраст</span>
+    </label>
+    <label class="a11y-option">
+      <input type="checkbox" id="a11yNoAnimations">
+      <span>Без анимаций</span>
+    </label>
+  </div>
+  <div class="a11y-panel__footer">
+    <button type="button" class="a11y-reset" id="a11yReset">↩ Сбросить</button>
+    <button type="button" class="a11y-close" id="a11yClose">✕ Закрыть</button>
+  </div>
+</div>

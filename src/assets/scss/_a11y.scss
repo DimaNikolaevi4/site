@@ -1,0 +1,318 @@
+// === Стили доступности (ГОСТ Р 52872-2019) ===
+
+// Skip link для навигации с клавиатуры
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  background: var(--color-primary);
+  color: #fff;
+  padding: var(--spacing-sm) var(--spacing-md);
+  z-index: 9999;
+  transition: top var(--transition-fast);
+  
+  &:focus {
+    top: 0;
+  }
+}
+
+// Визуально скрытый текст (доступен скринридерам)
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+// Фокус индикатор для навигации с клавиатуры
+:focus {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+:focus:not(:focus-visible) {
+  outline: none;
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+// Минимальная область нажатия для мобильных (44x44px)
+@media (max-width: 767px) {
+  a, button, input, label, [role="button"] {
+    min-height: 44px;
+    min-width: 44px;
+    padding: var(--spacing-sm) var(--spacing-md);
+  }
+}
+
+// Переключатель версии для слабовидящих
+.a11y-toggle {
+  position: fixed;
+  bottom: var(--spacing-lg);
+  right: var(--spacing-lg);
+  background: var(--color-primary);
+  color: #fff;
+  border: none;
+  border-radius: var(--radius-full);
+  padding: var(--spacing-md) var(--spacing-lg);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  z-index: 1000;
+  box-shadow: var(--shadow-lg);
+  transition: transform var(--transition-base), background var(--transition-base);
+  
+  &:hover {
+    transform: scale(1.05);
+    background: var(--color-secondary);
+  }
+  
+  &:focus {
+    outline: 2px solid #fff;
+    outline-offset: 2px;
+  }
+}
+
+// Панель настроек доступности
+.a11y-panel {
+  position: fixed;
+  bottom: calc(var(--spacing-lg) + 60px);
+  right: var(--spacing-lg);
+  background: var(--color-background);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+  z-index: 1000;
+  max-width: 300px;
+  
+  &[hidden] {
+    display: none;
+  }
+}
+
+.a11y-panel-content {
+  padding: var(--spacing-lg);
+  
+  h3 {
+    margin-top: 0;
+    margin-bottom: var(--spacing-md);
+    font-size: var(--font-size-lg);
+  }
+}
+
+.a11y-options {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+  margin-bottom: var(--spacing-md);
+}
+
+.a11y-option {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  cursor: pointer;
+  
+  input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+  }
+}
+
+.a11y-reset,
+.a11y-close {
+  width: 100%;
+  padding: var(--spacing-sm) var(--spacing-md);
+  margin-top: var(--spacing-sm);
+  border: 1px solid var(--color-border);
+  background: var(--color-background-alt);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: background var(--transition-fast);
+  
+  &:hover {
+    background: var(--color-border);
+  }
+}
+
+// ========== ВЕРСИЯ ДЛЯ СЛАБОВИДЯЩИХ (body-level классы для header.js) ==========
+
+// Высокая контрастность
+body.a11y-high-contrast {
+  background: #000 !important;
+  color: #fff !important;
+  
+  .site-header {
+    background: #1a1a1a !important;
+  }
+  
+  a,
+  .nav-link,
+  .btn-icon,
+  .eos-link,
+  .svedeniya-block .nav-link {
+    color: #ffd700 !important;
+  }
+  
+  .eos-link,
+  .svedeniya-block .nav-link {
+    background-color: #333 !important;
+    
+    &:hover,
+    &:focus {
+      background-color: #444 !important;
+    }
+  }
+  
+  .dropdown-menu {
+    background: #1a1a1a !important;
+    border-color: #444 !important;
+    
+    .dropdown-item {
+      color: #ffd700 !important;
+      
+      &:hover,
+      &:focus {
+        background-color: #333 !important;
+      }
+    }
+  }
+  
+  .navbar-toggler {
+    background-color: #333 !important;
+  }
+  
+  .header-info-bar {
+    background: #1a1a1a !important;
+    border-bottom-color: #444 !important;
+  }
+  
+  .header-actions-panel {
+    background: #000 !important;
+  }
+  
+  .rubric-select {
+    background-color: #1a1a1a !important;
+    border-color: #444 !important;
+    color: #ffd700 !important;
+  }
+}
+
+// Крупный шрифт
+body.a11y-large-font {
+  font-size: 1.2rem;
+  
+  .site-title {
+    font-size: 1.8rem;
+    
+    small {
+      font-size: 1.4rem;
+    }
+  }
+  
+  .nav-link,
+  .dropdown-item,
+  .info-item,
+  .eos-link,
+  .rubric-select {
+    font-size: 1.2rem;
+  }
+  
+  .btn-icon {
+    width: 3rem;
+    height: 3rem;
+    font-size: 1.8rem;
+  }
+}
+
+// Отключение анимаций
+body.a11y-no-animation *,
+body.a11y-no-animation *::before,
+body.a11y-no-animation *::after {
+  transition: none !important;
+  animation: none !important;
+}
+
+// Режим высокой контрастности (для совместимости со старыми классами)
+.a11y-high-contrast {
+  body {
+    background: #000 !important;
+    color: #fff !important;
+  }
+  
+  a {
+    color: #ffd700 !important;
+    
+    &:hover,
+    &:focus {
+      color: #ffff00 !important;
+    }
+  }
+  
+  .no-animation,
+  * {
+    transition: none !important;
+    animation: none !important;
+  }
+}
+
+// Отключение анимаций (для совместимости)
+.a11y-no-animations {
+  *,
+  *::before,
+  *::after {
+    transition: none !important;
+    animation: none !important;
+  }
+}
+
+// Увеличенный шрифт (для совместимости)
+.a11y-large-font {
+  html {
+    font-size: 125%;
+  }
+  
+  body {
+    font-size: clamp(1.25rem, 3vw, 1.5rem);
+  }
+}
+
+// Баннер разработки (доступность)
+.dev-banner {
+  background: #fef3c7;
+  border-bottom: 1px solid #f59e0b;
+  padding: var(--spacing-sm) 0;
+  
+  &-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: var(--spacing-sm);
+  }
+  
+  &-text {
+    color: #92400e;
+    font-weight: 500;
+  }
+  
+  &-link {
+    color: #92400e;
+    text-decoration: underline;
+    
+    &:hover,
+    &:focus {
+      color: #78350f;
+    }
+  }
+}

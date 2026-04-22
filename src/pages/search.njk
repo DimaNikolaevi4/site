@@ -1,0 +1,96 @@
+---
+layout: layouts/base.njk
+title: Поиск
+description: Поиск по сайту
+permalink: /search/
+search_query: ""
+search_results: []
+---
+
+<!-- Заголовок страницы -->
+<section class="section section--header">
+  <div class="container">
+    <h1 class="page-title">{{ title }}</h1>
+  </div>
+</section>
+
+<!-- Основной контент -->
+<div class="container layout">
+  <main class="layout__content layout__content--full search-page">
+    <!-- Форма поиска -->
+    <form class="search-form" role="search" action="/search/" method="get">
+      <div class="search-form__group">
+        <input 
+          type="search" 
+          class="search-form__input" 
+          name="q" 
+          value="{{ search_query }}"
+          placeholder="Введите запрос для поиска..." 
+          aria-label="Поисковый запрос"
+          required
+        >
+        <button type="submit" class="btn btn--primary btn--large">Найти</button>
+      </div>
+    </form>
+
+    <!-- Результаты поиска -->
+    {% if search_query %}
+    <div class="search-results">
+      <p class="search-results__info">
+        {% if search_results.length > 0 %}
+          Найдено материалов: {{ search_results.length }}
+        {% else %}
+          По запросу "{{ search_query }}" ничего не найдено
+        {% endif %}
+      </p>
+
+      {% if search_results.length > 0 %}
+      <ul class="search-results__list">
+        {% for result in search_results %}
+        <li class="search-result-card">
+          <h2 class="search-result-card__title">
+            <a href="{{ result.url }}">{{ result.title | safe }}</a>
+          </h2>
+          <p class="search-result-card__meta">
+            {% if result.date %}
+            <time datetime="{{ result.date }}">{{ result.date | dateRu }}</time>
+            {% endif %}
+            {% if result.category %}
+            <span class="search-result-card__category">{{ result.category }}</span>
+            {% endif %}
+          </p>
+          <p class="search-result-card__excerpt">{{ result.excerpt | safe }}</p>
+        </li>
+        {% endfor %}
+      </ul>
+
+      <!-- Пагинация результатов -->
+      <nav class="pagination" aria-label="Пагинация результатов поиска">
+        <ul class="pagination__list">
+          <li class="pagination__item">
+            <a href="?q={{ search_query }}&page=1" class="pagination__link">1</a>
+          </li>
+          <li class="pagination__item">
+            <a href="?q={{ search_query }}&page=2" class="pagination__link">2</a>
+          </li>
+          <li class="pagination__item">
+            <a href="?q={{ search_query }}&page=3" class="pagination__link">3</a>
+          </li>
+        </ul>
+      </nav>
+      {% endif %}
+    </div>
+    {% else %}
+    <!-- Подсказки для поиска -->
+    <div class="search-tips">
+      <h2 class="search-tips__title">Советы по поиску</h2>
+      <ul class="search-tips__list">
+        <li>Используйте ключевые слова для более точного поиска</li>
+        <li>Можно искать по названию, содержанию или тегам</li>
+        <li>Для поиска точной фразы используйте кавычки: "профессиональное образование"</li>
+        <li>Используйте фильтры для уточнения результатов</li>
+      </ul>
+    </div>
+    {% endif %}
+  </main>
+</div>

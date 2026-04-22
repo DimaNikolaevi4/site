@@ -1,0 +1,132 @@
+---
+layout: layouts/base.njk
+permalink: false
+eleventyExcludeFromCollections: true
+title: Страница материала
+description: Подробное описание материала
+material:
+  title: Введение в программирование на Python
+  date: 2024-01-15
+  author: Иванов И.И.
+  category: Учебные материалы
+  tags: [программирование, python, основы]
+---
+
+<!-- Хлебные крошки -->
+<nav class="breadcrumbs" aria-label="Хлебные крошки">
+  <div class="container">
+    <ol class="breadcrumbs__list">
+      <li class="breadcrumbs__item">
+        <a href="/" class="breadcrumbs__link">Главная</a>
+      </li>
+      <li class="breadcrumbs__item">
+        <a href="/specialties/" class="breadcrumbs__link">Специальности</a>
+      </li>
+      <li class="breadcrumbs__item">
+        <a href="/programming/" class="breadcrumbs__link">Программирование</a>
+      </li>
+      <li class="breadcrumbs__item breadcrumbs__item--active" aria-current="page">
+        {{ material.title }}
+      </li>
+    </ol>
+  </div>
+</nav>
+
+<!-- Заголовок материала -->
+<section class="section section--header">
+  <div class="container">
+    <h1 class="page-title">{{ material.title }}</h1>
+    <div class="material-meta">
+      <time class="material-meta__date" datetime="{{ material.date }}">
+        {{ material.date | dateRu }}
+      </time>
+      <span class="material-meta__author">{{ material.author }}</span>
+      <span class="material-meta__category">{{ material.category }}</span>
+    </div>
+  </div>
+</section>
+
+<!-- Основной контент с сайдбаром -->
+<div class="container layout layout--with-sidebar">
+  <!-- Основной контент -->
+  <main class="layout__content material-content">
+    {{ content | safe }}
+
+    <!-- Теги -->
+    <div class="material-tags">
+      <span class="material-tags__label">Теги:</span>
+      <ul class="material-tags__list">
+        {% for tag in material.tags %}
+        <li><a href="/tags/{{ tag | slugify }}/" class="material-tags__link">{{ tag }}</a></li>
+        {% endfor %}
+      </ul>
+    </div>
+
+    <!-- Навигация по материалу -->
+    <nav class="material-navigation">
+      <a href="/previous-material/" class="material-navigation__link material-navigation__link--prev">
+        ← Предыдущий материал
+      </a>
+      <a href="/next-material/" class="material-navigation__link material-navigation__link--next">
+        Следующий материал →
+      </a>
+    </nav>
+  </main>
+
+  <!-- Сайдбар -->
+  <aside class="layout__sidebar" role="complementary">
+    <nav class="sidebar-nav">
+      <h3 class="sidebar-nav__title">Содержание</h3>
+      <ul class="sidebar-nav__list sidebar-nav__list--toc">
+        <li><a href="#introduction" class="sidebar-nav__link">Введение</a></li>
+        <li><a href="#basics" class="sidebar-nav__link">Основы синтаксиса</a></li>
+        <li><a href="#variables" class="sidebar-nav__link">Переменные и типы данных</a></li>
+        <li><a href="#operators" class="sidebar-nav__link">Операторы</a></li>
+        <li><a href="#conclusion" class="sidebar-nav__link">Заключение</a></li>
+      </ul>
+    </nav>
+
+    <div class="sidebar-block">
+      <h3 class="sidebar-block__title">По теме</h3>
+      <ul class="sidebar-block__list">
+        <li><a href="#">Установка Python</a></li>
+        <li><a href="#">Первые программы</a></li>
+        <li><a href="#">Работа с файлами</a></li>
+      </ul>
+    </div>
+
+    <div class="sidebar-block">
+      <h3 class="sidebar-block__title">Поделиться</h3>
+      <div class="share-buttons">
+        <a href="#" class="share-button share-button--vk" aria-label="Поделиться ВКонтакте">VK</a>
+        <a href="#" class="share-button share-button--tg" aria-label="Поделиться в Telegram">TG</a>
+      </div>
+    </div>
+  </aside>
+</div>
+
+<!-- Пример контента (для демонстрации) -->
+<section id="introduction" class="content-section">
+  <h2>Введение</h2>
+  <p>Python — это высокоуровневый язык программирования общего назначения...</p>
+</section>
+
+<section id="basics" class="content-section">
+  <h2>Основы синтаксиса</h2>
+  <p>Синтаксис Python отличается простотой и читаемостью...</p>
+</section>
+
+<section id="variables" class="content-section">
+  <h2>Переменные и типы данных</h2>
+  <p>В Python переменные не требуют объявления типа...</p>
+</section>
+
+<section id="operators" class="content-section">
+  <h2>Операторы</h2>
+  <p>Python поддерживает различные типы операторов...</p>
+</section>
+
+<section id="conclusion" class="content-section">
+  <h2>Заключение</h2>
+  <p>Изучение основ Python открывает двери в мир программирования...</p>
+</section>

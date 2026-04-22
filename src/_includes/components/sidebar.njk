@@ -1,0 +1,37 @@
+{#
+  Компонент Секция 7 — Сайдбар (30% левая колонка с едиными баннерами)
+  Принцип: единые баннеры на всех страницах, НЕ навигация
+  Использование:
+    {% include "components/sidebar.njk" %}
+  Переменные (все опциональны — по умолчанию показывается стандартный набор баннеров):
+    sidebarBanners — массив объектов { title, text, url, linkText, icon, modifier }
+                     Если не передан — используется набор по умолчанию
+#}
+
+{# Заглушка — единые баннеры (НЕ навигация), одинаковые на всём сайте.
+   Сейчас пусто, наполняется позже через переменную sidebarBanners
+   или редактируя массив ниже. #}
+{% set _defaultBanners = [] %}
+
+{% set _banners = sidebarBanners if sidebarBanners else _defaultBanners %}
+
+<aside class="component-sidebar" role="complementary" aria-label="Дополнительная информация">
+
+  <div class="sidebar-banners">
+    {% for banner in _banners %}
+    <div class="sidebar-banner {{ banner.modifier }}" data-aos="fade-left" data-aos-delay="{{ loop.index * 80 }}">
+      <div class="sidebar-banner__icon">
+        <i class="bi {{ banner.icon }}" aria-hidden="true"></i>
+      </div>
+      <div class="sidebar-banner__body">
+        <h3 class="sidebar-banner__title">{{ banner.title }}</h3>
+        <p class="sidebar-banner__text">{{ banner.text }}</p>
+        <a href="{{ banner.url }}" class="sidebar-banner__link">
+          {{ banner.linkText }} <i class="bi bi-arrow-right" aria-hidden="true"></i>
+        </a>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+
+</aside>

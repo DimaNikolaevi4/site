@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ title }} | {{ site.name }}</title>
+  <meta name="description" content="{{ description or site.description }}">
+  <link rel="stylesheet" href="/assets/mentor/vendor/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/assets/mentor/vendor/bootstrap-icons/bootstrap-icons.css">
+  <link rel="stylesheet" href="/assets/mentor/vendor/aos/aos.css">
+  <link rel="stylesheet" href="/assets/mentor/vendor/glightbox/css/glightbox.min.css">
+  <link rel="stylesheet" href="/assets/mentor/vendor/swiper/swiper-bundle.min.css">
+  <link rel="stylesheet" href="/assets/mentor/css/main.css">
+  <link rel="stylesheet" href="/styles/main.css">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicons/favicon.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="/assets/favicons/favicon.png">
+  <link rel="apple-touch-icon" href="/assets/favicons/favicon.png">
+  <script>
+    (function(){
+      try {
+        if (localStorage.getItem('sit-dark-theme') === '1') document.documentElement.classList.add('dark-theme');
+        var _p = localStorage.getItem('sit-a11y-prefs');
+        if (_p) {
+          _p = JSON.parse(_p);
+          if (_p.hc) document.documentElement.classList.add('a11y-high-contrast');
+          if (_p.lf) document.documentElement.classList.add('a11y-large-font');
+          if (_p.na) document.documentElement.classList.add('a11y-no-animations');
+        } else if (localStorage.getItem('sit-a11y') === '1') {
+          document.documentElement.classList.add('a11y-high-contrast');
+        }
+      } catch(e){}
+    })();
+  </script>
+</head>
+<body class="page page--{{ layout or 'default' }}">
+  <!-- ═══════════════════════════════════════════════ -->
+  <!-- Секция 1 — Header (Шапка)                       -->
+  <!-- ═══════════════════════════════════════════════ -->
+  {% include "components/header.njk" %}
+
+  <main class="main-content">
+    {% block content %}{{ content | safe }}{% endblock %}
+  </main>
+
+  <!-- ═══════════════════════════════════════════════ -->
+  <!-- Секция 7 — Footer (Подвал)                      -->
+  <!-- ═══════════════════════════════════════════════ -->
+  {% include "components/footer.njk" %}
+
+  <script src="/assets/mentor/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="/assets/mentor/vendor/php-email-form/validate.js"></script>
+  <script src="/assets/mentor/vendor/aos/aos.js"></script>
+  <script src="/assets/mentor/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="/assets/mentor/vendor/purecounter/purecounter_vanilla.js"></script>
+  <script src="/assets/js/mentor-main.js"></script>
+  <script src="/assets/js/main.js"></script>
+  <a href="#" class="scroll-top d-flex align-items-center justify-content-center" id="scrollTop" aria-label="Наверх" title="Наверх">
+    <i class="bi bi-arrow-up-short" style="font-size:1.5rem;color:#fff;line-height:1;"></i>
+  </a>
+  <script src="/assets/js/offcanvas-nav.js"></script>
+</html>

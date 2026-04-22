@@ -1,0 +1,254 @@
+{#
+  ШАБЛОН ТИП C — layouts/post.njk
+  Материалы: новости, документы, события, страницы материалов
+
+  Согласно STRUCTURE_AND_PRINCIPLES.md (раздел 3.3, Тип C):
+    [1 Шапка] → [2 Хлебные крошки] → [3 Контент] → [4 Читайте также] → [8 Подвал]
+
+  Секции:
+    1 Header        — глобальная (base.njk)
+    2 Breadcrumbs   — хлебные крошки + заголовок + мета
+    3 Content       — обложка, текст материала, вложения, теги, шаринг (полная ширина)
+    4 Related       — «Читайте также» (авто из коллекции, если не задано вручную)
+    8 Footer        — глобальная (base.njk)
+
+  Отсутствуют (по схеме Тип C):
+    — Hero  (включается только если явно задан frontmatter `hero.image`)
+    — Sidebar (Тип C идёт во всю ширину)
+    — About / Popular / News-блоки
+
+  Управление через frontmatter:
+    hero:           { image, title, subtitle, alt, cta } — опц. Hero-баннер
+    coverImage:     URL — обложка внутри контентной зоны
+    coverAlt:       строка — alt текста обложки
+    date:           дата публикации (YYYY-MM-DD)
+    author:         строка — автор
+    category:       slug раздела (для хлебных крошек, мета, ссылки «назад»)
+    categoryTitle:  строка — человеческое название категории
+    section:        slug раздела (альтернатива category)
+    sectionTitle:   строка — человеческое название раздела
+    readingTime:    число (минут)
+    attachments:    массив { url, name, size } — вложения (PDF, DOCX, …)
+    tags:           массив строк — теги
+    relatedPages:   массив { url, title, image, excerpt, date } — переопределить «Читайте также»
+    relatedCollection: имя коллекции для авто-подбора (по умолчанию category/section)
+    relatedCount:   число (по умолчанию 3)
+    parentSection:  { url, title } — явная ссылка «назад»
+    prevPost:       { url, title }
+    nextPost:       { url, title }
+#}
+{% extends "layouts/base.njk" %}
+
+{% block content %}
+<article class="post-layout post-layout--full" itemscope itemtype="https://schema.org/Article">
+
+  {# ═══════════════════════════════════════════════
+     Hero (опционально, только если задан hero.image)
+  ═══════════════════════════════════════════════ #}
+  {% if hero and hero.image %}
+    {% include "components/hero.njk" %}
+  {% endif %}
+
+  {# ═══════════════════════════════════════════════
+     СЕКЦИЯ 2: Хлебные крошки + Заголовок + Мета
+  ═══════════════════════════════════════════════ #}
+  <section class="section-context section-context--post" aria-label="Информация о материале">
+    <div class="container">
+
+      {% include "components/breadcrumbs.njk" %}
+
+      <header class="post-header">
+
+        {% if category or section %}
+        <div class="post-header__rubric">
+          {% if category %}
+          <a href="/{{ category | slugify }}/" class="post-rubric-badge">
+            <i class="bi bi-folder2-open" aria-hidden="true"></i>
+            {{ categoryTitle or category }}
+          </a>
+          {% elif section %}
+          <a href="/{{ section | slugify }}/" class="post-rubric-badge">
+            <i class="bi bi-folder2-open" aria-hidden="true"></i>
+            {{ sectionTitle or section }}
+          </a>
+          {% endif %}
+        </div>
+        {% endif %}
+
+        {% if not (hero and hero.image) %}
+        <h1 class="post-title" itemprop="headline">{{ title }}</h1>
+        {% endif %}
+
+        <div class="post-meta">
+          {% if date %}
+          <time class="post-meta__item post-date"
+                datetime="{{ date | dateToISO }}"
+                itemprop="datePublished">
+            <i class="bi bi-calendar3" aria-hidden="true"></i>
+            <span class="visually-hidden">Дата публикации:</span>
+            {{ date | dateRu }}
+          </time>
+          {% endif %}
+
+          {% if author %}
+          <span class="post-meta__item post-author" itemprop="author" itemscope itemtype="https://schema.org/Person">
+            <i class="bi bi-person" aria-hidden="true"></i>
+            <span class="visually-hidden">Автор:</span>
+            <span itemprop="name">{{ author }}</span>
+          </span>
+          {% endif %}
+
+          {% if readingTime %}
+          <span class="post-meta__item post-reading-time">
+            <i class="bi bi-clock" aria-hidden="true"></i>
+            {{ readingTime }} мин
+          </span>
+          {% endif %}
+        </div>
+
+      </header>
+    </div>
+  </section>
+
+  {# ═══════════════════════════════════════════════
+     СЕКЦИЯ 3: Контент материала (полная ширина)
+  ═══════════════════════════════════════════════ #}
+  <section class="section-main">
+    <div class="container">
+      <div class="post-content-wrap">
+
+        {# Обложка внутри контентной зоны (если нет Hero) #}
+        {% if coverImage and not (hero and hero.image) %}
+        <figure class="post-cover">
+          <img src="{{ coverImage }}"
+               alt="{{ coverAlt or title }}"
+               loading="eager"
+               class="post-cover__img img-fluid rounded"
+               itemprop="image">
+        </figure>
+        {% endif %}
+
+        {# Основной текст материала #}
+        <div class="post-content" itemprop="articleBody">
+          {{ content | safe }}
+        </div>
+
+        {# Вложения: PDF, DOCX, XLS, … #}
+        {% if attachments and attachments.length > 0 %}
+        <section class="post-attachments" aria-label="Вложения к материалу">
+          <h2 class="attachments-title">
+            <i class="bi bi-paperclip" aria-hidden="true"></i> Вложения
+          </h2>
+          <ul class="attachments-list" role="list">
+            {% for attachment in attachments %}
+            <li class="attachment-item" role="listitem">
+              <a href="{{ attachment.url }}"
+                 class="attachment-link"
+                 download
+                 {% if attachment.size %}title="Скачать ({{ attachment.size }})"{% endif %}>
+                {% set _ext = attachment.url | lower %}
+                {% if '.pdf' in _ext %}
+                  <i class="bi bi-file-earmark-pdf attachment-icon attachment-icon--pdf" aria-hidden="true"></i>
+                {% elif '.doc' in _ext %}
+                  <i class="bi bi-file-earmark-word attachment-icon attachment-icon--doc" aria-hidden="true"></i>
+                {% elif '.xls' in _ext %}
+                  <i class="bi bi-file-earmark-excel attachment-icon attachment-icon--xls" aria-hidden="true"></i>
+                {% elif '.ppt' in _ext %}
+                  <i class="bi bi-file-earmark-ppt attachment-icon attachment-icon--ppt" aria-hidden="true"></i>
+                {% elif '.zip' in _ext or '.rar' in _ext %}
+                  <i class="bi bi-file-earmark-zip attachment-icon" aria-hidden="true"></i>
+                {% elif '.jpg' in _ext or '.png' in _ext or '.gif' in _ext or '.webp' in _ext %}
+                  <i class="bi bi-file-earmark-image attachment-icon" aria-hidden="true"></i>
+                {% else %}
+                  <i class="bi bi-file-earmark attachment-icon" aria-hidden="true"></i>
+                {% endif %}
+                <span class="attachment-name">{{ attachment.name }}</span>
+                {% if attachment.size %}
+                <span class="attachment-size">({{ attachment.size }})</span>
+                {% endif %}
+              </a>
+            </li>
+            {% endfor %}
+          </ul>
+        </section>
+        {% endif %}
+
+        {# Теги #}
+        {% if tags and tags.length > 0 %}
+        <footer class="post-footer">
+          <div class="post-tags">
+            <span class="tags-label">
+              <i class="bi bi-tags" aria-hidden="true"></i> Теги:
+            </span>
+            {% for tag in tags %}
+              {% if tag != 'nav' and tag != 'all' and tag != 'post' and tag != 'news' %}
+              <a href="/tags/{{ tag | slugify }}/" class="tag" itemprop="keywords">{{ tag }}</a>
+              {% endif %}
+            {% endfor %}
+          </div>
+        </footer>
+        {% endif %}
+
+        {# Кнопки «Поделиться» (ВКонтакте, ОК, Telegram, WhatsApp, Viber, Email, копировать) #}
+        {% include "components/share.njk" %}
+
+      </div>
+    </div>
+  </section>
+
+  {# ═══════════════════════════════════════════════
+     СЕКЦИЯ 4: «Читайте также»
+     Логика и разметка вынесены в components/related.njk
+  ═══════════════════════════════════════════════ #}
+  {% include "components/related.njk" %}
+
+  {# ═══════════════════════════════════════════════
+     Нижняя навигация: возврат к разделу + пред/след
+  ═══════════════════════════════════════════════ #}
+  <nav class="section-backnav" aria-label="Навигация по материалам">
+    <div class="container">
+
+      {% if parentSection %}
+      <a href="{{ parentSection.url }}" class="backnav-link backnav-link--parent">
+        <i class="bi bi-arrow-left-circle" aria-hidden="true"></i>
+        {{ parentSection.title }}
+      </a>
+      {% elif category %}
+      <a href="/{{ category | slugify }}/" class="backnav-link backnav-link--parent">
+        <i class="bi bi-arrow-left-circle" aria-hidden="true"></i>
+        {{ categoryTitle or category }}
+      </a>
+      {% elif section %}
+      <a href="/{{ section | slugify }}/" class="backnav-link backnav-link--parent">
+        <i class="bi bi-arrow-left-circle" aria-hidden="true"></i>
+        {{ sectionTitle or section }}
+      </a>
+      {% else %}
+      <a href="/" class="backnav-link backnav-link--parent">
+        <i class="bi bi-house" aria-hidden="true"></i>
+        Главная
+      </a>
+      {% endif %}
+
+      <div class="backnav-prevnext">
+        {% if prevPost %}
+        <a href="{{ prevPost.url }}"
+           class="backnav-link backnav-link--prev"
+           title="{{ prevPost.title }}">
+          <i class="bi bi-chevron-left" aria-hidden="true"></i> Предыдущий
+        </a>
+        {% endif %}
+        {% if nextPost %}
+        <a href="{{ nextPost.url }}"
+           class="backnav-link backnav-link--next"
+           title="{{ nextPost.title }}">
+          Следующий <i class="bi bi-chevron-right" aria-hidden="true"></i>
+        </a>
+        {% endif %}
+      </div>
+
+    </div>
+  </nav>
+
+</article>
+{% endblock %}

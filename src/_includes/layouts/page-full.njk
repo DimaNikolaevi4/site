@@ -1,0 +1,343 @@
+{#
+  ЕДИНЫЙ ШАБЛОН ТИПА B — page-full.njk
+  7 секций страницы раздела (см. чек-лист 5.3):
+
+  Секция 1: Header                     — глобальная (base.njk)
+  Секция 2: Hero-баннер                — необязательный, управляется через hero.*
+            + Контекст (хлебные крошки, заголовок, описание, фильтры)
+  Секция 3: About — заглушка           — components/about.njk (aboutMode='stub')
+  Секция 4: Контент + Сайдбар          — сетка (контент | единый сайдбар 30%)
+  Секция 5: Материалы / Подрубрики     — components/news.njk (subrubrics)
+            Динамический список Level 1 / Level 2 на основе rubric (frontmatter)
+  Секция 6: Популярные разделы         — components/popular.njk (заглушка)
+  Секция 7: Footer                     — глобальная (base.njk) + нижняя навигация
+#}
+{% extends "layouts/base.njk" %}
+
+{% block content %}
+<div class="page-layout page-type-b page-type-b--full">
+
+  {# === СЕКЦИЯ 2: Hero-баннер === #}
+  {% include "components/hero.njk" %}
+
+  {# === СЕКЦИЯ 3: Контекстная (хлебные крошки + заголовок + описание + фильтры) === #}
+  <section class="section-context" aria-label="Контекст страницы">
+    <div class="container">
+
+      {# Хлебные крошки #}
+      {% include "components/breadcrumbs.njk" %}
+
+      <div class="context-header">
+        {% if showHero == false %}
+        <h1 class="page-title">{{ title }}</h1>
+        {% endif %}
+
+        {% if description %}
+        <p class="page-description lead">{{ description }}</p>
+        {% endif %}
+
+        {# Мета-строка (дата публикации, категория) #}
+        {% if date or category or section %}
+        <div class="context-meta">
+          {% if date %}
+          <time class="context-meta__item" datetime="{{ date | dateToISO }}">
+            <i class="bi bi-calendar3" aria-hidden="true"></i>
+            {{ date | dateRu }}
+          </time>
+          {% endif %}
+          {% if category %}
+          <span class="context-meta__item">
+            <i class="bi bi-folder" aria-hidden="true"></i>
+            <a href="/{{ category | slugify }}/">{{ categoryTitle or category }}</a>
+          </span>
+          {% elif section %}
+          <span class="context-meta__item">
+            <i class="bi bi-folder" aria-hidden="true"></i>
+            <a href="/{{ section | slugify }}/">{{ sectionTitle or section }}</a>
+          </span>
+          {% endif %}
+        </div>
+        {% endif %}
+      </div>
+
+      {# Фильтры для страниц-списков #}
+      {% if sectionContext and (sectionContext.filters or sectionContext.sortOptions) %}
+      <div class="listing-controls">
+        {% if sectionContext.filters %}
+        <div class="listing-filters">
+          <label for="filter-select" class="visually-hidden">Фильтр</label>
+          <select id="filter-select" class="filter-select form-select form-select-sm">
+            <option value="">Все материалы</option>
+            {% for filter in sectionContext.filters %}
+            <option value="{{ filter.value }}">{{ filter.label }}</option>
+            {% endfor %}
+          </select>
+        </div>
+        {% endif %}
+        {% if sectionContext.sortOptions %}
+        <div class="listing-sort">
+          <label for="sort-select" class="visually-hidden">Сортировка</label>
+          <select id="sort-select" class="sort-select form-select form-select-sm">
+            {% for option in sectionContext.sortOptions %}
+            <option value="{{ option.value }}" {% if option.default %}selected{% endif %}>
+              {{ option.label }}
+            </option>
+            {% endfor %}
+          </select>
+        </div>
+        {% endif %}
+      </div>
+      {% endif %}
+
+      {# Баннер раздела (без full-hero) #}
+      {% if showHero == false and sectionContext and sectionContext.banner %}
+      <div class="page-banner">
+        <img src="{{ sectionContext.banner }}" alt="{{ title }}" loading="lazy" class="img-fluid rounded">
+      </div>
+      {% endif %}
+
+    </div>
+  </section>
+
+  {# ═══════════════════════════════════════════════ #}
+  {# === СЕКЦИЯ 3 — About (единая заглушка на всех разделах) === #}
+  {# ═══════════════════════════════════════════════ #}
+  {% set aboutMode = 'stub' %}
+  {% include "components/about.njk" %}
+
+  {# ═══════════════════════════════════════════════ #}
+  {# === СЕКЦИЯ 4 — Контент + Сайдбар (единые баннеры) === #}
+  {# ═══════════════════════════════════════════════ #}
+  <section class="section-main">
+    <div class="container">
+
+      {% set _showSidebar = showSidebar if showSidebar is defined else (sidebar.show if (sidebar and sidebar.show is defined) else true) %}
+
+      <div class="content-sidebar-grid{% if not _showSidebar %} content-sidebar-grid--full{% endif %}">
+
+        {# Сайдбар — единый компонент (30% слева) #}
+        {% if _showSidebar %}
+        <div class="sidebar-col">
+          {% include "components/sidebar.njk" %}
+        </div>
+        {% endif %}
+
+        {# Основной контент #}
+        <div class="page-content-area content-col">
+
+          {# Лента карточек для listing-страниц #}
+          {% set _listItems = pagination.items if (pagination and pagination.items) else (collections[collectionName] if collectionName else null) %}
+          {% if _listItems %}
+            {% if _listItems.length > 0 %}
+            <div class="cards-grid">
+              {% for item in _listItems %}
+              <article class="card" itemscope itemtype="https://schema.org/Article">
+                {% if item.data.image %}
+                <div class="card-image">
+                  <a href="{{ item.url }}">
+                    <img src="{{ item.data.image }}"
+                         alt="{{ item.data.imageAlt or item.data.title }}"
+                         loading="lazy" itemprop="image">
+                  </a>
+                </div>
+                {% endif %}
+                <div class="card-content">
+                  <header class="card-header">
+                    {% set _cat = item.data.category or item.data.section %}
+                    {% if _cat %}
+                    <span class="card-category">{{ sectionLabels.bySlug[_cat] or _cat }}</span>
+                    {% endif %}
+                    <h3 class="card-title">
+                      <a href="{{ item.url }}" itemprop="url">
+                        <span itemprop="headline">{{ item.data.title }}</span>
+                      </a>
+                    </h3>
+                    {% if item.data.date %}
+                    <time class="card-date" datetime="{{ item.data.date | dateToISO }}" itemprop="datePublished">
+                      {{ item.data.date | dateRu }}
+                    </time>
+                    {% endif %}
+                  </header>
+                  {% set _excerpt = item.data.excerpt or item.data.description %}
+                  {% if _excerpt %}
+                  <div class="card-excerpt" itemprop="description">{{ _excerpt }}</div>
+                  {% endif %}
+                  <a href="{{ item.url }}" class="card-readmore">Читать далее →</a>
+                </div>
+              </article>
+              {% endfor %}
+            </div>
+
+            {# Пагинация — единый компонент #}
+            {% include "components/pagination.njk" %}
+
+            {% else %}
+            <div class="no-results">
+              <i class="bi bi-inbox no-results__icon" aria-hidden="true"></i>
+              <p>В этом разделе пока нет материалов.</p>
+            </div>
+            {% endif %}
+
+          {# Статический контент (Markdown / HTML) #}
+          {% else %}
+          <article class="page-content" itemprop="mainContentOfPage">
+            {{ content | safe }}
+          </article>
+          {% endif %}
+
+          {# Вложения (для страниц с документами) #}
+          {% if attachments and attachments.length > 0 %}
+          <section class="post-attachments" aria-label="Вложения">
+            <h2 class="attachments-title">
+              <i class="bi bi-paperclip" aria-hidden="true"></i> Вложения
+            </h2>
+            <ul class="attachments-list">
+              {% for attachment in attachments %}
+              <li class="attachment-item">
+                <a href="{{ attachment.url }}" class="attachment-link" download>
+                  {% set _ext = attachment.url | lower %}
+                  {% if '.pdf' in _ext %}
+                    <i class="bi bi-file-earmark-pdf attachment-icon attachment-icon--pdf"></i>
+                  {% elif '.doc' in _ext %}
+                    <i class="bi bi-file-earmark-word attachment-icon attachment-icon--doc"></i>
+                  {% elif '.xls' in _ext %}
+                    <i class="bi bi-file-earmark-excel attachment-icon attachment-icon--xls"></i>
+                  {% else %}
+                    <i class="bi bi-file-earmark attachment-icon"></i>
+                  {% endif %}
+                  <span class="attachment-name">{{ attachment.name }}</span>
+                  {% if attachment.size %}<span class="attachment-size">({{ attachment.size }})</span>{% endif %}
+                </a>
+              </li>
+              {% endfor %}
+            </ul>
+          </section>
+          {% endif %}
+
+          {# Теги #}
+          {% if tags and tags.length > 0 %}
+          <footer class="post-footer">
+            <div class="post-tags">
+              <span class="tags-label">
+                <i class="bi bi-tags" aria-hidden="true"></i> Теги:
+              </span>
+              {% for tag in tags %}
+                {% if tag != 'nav' and tag != 'all' %}
+                <a href="/tags/{{ tag | slugify }}/" class="tag">{{ tag }}</a>
+                {% endif %}
+              {% endfor %}
+            </div>
+          </footer>
+          {% endif %}
+
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  {# === Дополнительные блоки (опц. front matter) === #}
+  {% if additionalBlocks %}
+  <section class="section-extra" aria-label="Дополнительные материалы">
+    <div class="container">
+      <div class="extra-inner">
+        {{ additionalBlocks | safe }}
+      </div>
+    </div>
+  </section>
+  {% endif %}
+
+  {# ═══════════════════════════════════════════════ #}
+  {# === СЕКЦИЯ 5 — Материалы / Подрубрики (динамический список) === #}
+  {# Уровень 1: rubric="3"  → Level 1 подрубрики "3.1", "3.2"…           #}
+  {# Уровень 2: rubric="4.5" → Level 2 подрубрики "4.5.1", "4.5.2"…       #}
+  {# ═══════════════════════════════════════════════ #}
+  {% set _subrubricCards = rubric | getSubrubricCards %}
+  {% if _subrubricCards and _subrubricCards.length > 0 %}
+    {% set newsMode = 'subrubrics' %}
+    {% set newsTitle = 'Подрубрики раздела' %}
+    {% set newsCollection = _subrubricCards %}
+    {% include "components/news.njk" %}
+  {% endif %}
+
+  {# ═══════════════════════════════════════════════ #}
+  {# === СЕКЦИЯ 6 — Популярные разделы (единая заглушка) === #}
+  {# ═══════════════════════════════════════════════ #}
+  {% include "components/popular.njk" %}
+
+  {# === Связанные материалы / «Читайте также» === #}
+  {% if relatedPages and relatedPages.length > 0 %}
+  <section class="section-related" aria-label="Читайте также">
+    <div class="container">
+      <h2 class="section-related__title">
+        <i class="bi bi-journals" aria-hidden="true"></i> Читайте также
+      </h2>
+      <div class="related-grid">
+        {% for item in relatedPages %}
+        <article class="related-card">
+          {% if item.image %}
+          <div class="related-card__img">
+            <a href="{{ item.url }}">
+              <img src="{{ item.image }}" alt="{{ item.title }}" loading="lazy">
+            </a>
+          </div>
+          {% endif %}
+          <div class="related-card__body">
+            {% if item.date %}
+            <time class="related-card__date">{{ item.date | dateRu }}</time>
+            {% endif %}
+            <h3 class="related-card__title">
+              <a href="{{ item.url }}">{{ item.title }}</a>
+            </h3>
+            {% if item.excerpt %}
+            <p class="related-card__excerpt">{{ item.excerpt }}</p>
+            {% endif %}
+          </div>
+        </article>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+  {% endif %}
+
+  {# === СЕКЦИЯ 8: Нижняя навигация (к родительскому разделу, пред/след) === #}
+  {% if parentSection or prevPage or nextPage or category or section %}
+  <nav class="section-backnav" aria-label="Навигация по разделу">
+    <div class="container">
+      {# Ссылка на родительский раздел #}
+      {% if parentSection %}
+      <a href="{{ parentSection.url }}" class="backnav-link backnav-link--parent">
+        <i class="bi bi-arrow-left-circle" aria-hidden="true"></i>
+        {{ parentSection.title }}
+      </a>
+      {% elif category %}
+      <a href="/{{ category | slugify }}/" class="backnav-link backnav-link--parent">
+        <i class="bi bi-arrow-left-circle" aria-hidden="true"></i>
+        {{ categoryTitle or category }}
+      </a>
+      {% elif section %}
+      <a href="/{{ section | slugify }}/" class="backnav-link backnav-link--parent">
+        <i class="bi bi-arrow-left-circle" aria-hidden="true"></i>
+        {{ sectionTitle or section }}
+      </a>
+      {% endif %}
+
+      {# Пред/след навигация #}
+      <div class="backnav-prevnext">
+        {% if prevPage %}
+        <a href="{{ prevPage.url }}" class="backnav-link backnav-link--prev" title="{{ prevPage.title }}">
+          <i class="bi bi-chevron-left" aria-hidden="true"></i> Предыдущая
+        </a>
+        {% endif %}
+        {% if nextPage %}
+        <a href="{{ nextPage.url }}" class="backnav-link backnav-link--next" title="{{ nextPage.title }}">
+          Следующая <i class="bi bi-chevron-right" aria-hidden="true"></i>
+        </a>
+        {% endif %}
+      </div>
+    </div>
+  </nav>
+  {% endif %}
+
+</div>
+{% endblock %}

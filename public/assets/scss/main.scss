@@ -1,0 +1,140 @@
+// === Точка входа для стилей (Mobile First) ===
+
+// 1. Переменные и настройки
+@import 'variables';
+
+// 2. Базовые стили
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: var(--font-size-base);
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-family-base);
+  font-size: var(--font-size-base);
+  line-height: 1.6;
+  color: var(--color-text);
+  background: var(--color-background);
+  
+  // Масштабируемый шрифт
+  font-size: clamp(1rem, 2.5vw, 1.125rem);
+}
+
+// 3. Типографика
+h1, h2, h3, h4, h5, h6 {
+  margin-top: 0;
+  margin-bottom: var(--spacing-md);
+  line-height: 1.2;
+  font-weight: 600;
+}
+
+h1 { font-size: var(--font-size-3xl); }
+h2 { font-size: var(--font-size-2xl); }
+h3 { font-size: var(--font-size-xl); }
+
+p {
+  margin-top: 0;
+  margin-bottom: var(--spacing-md);
+}
+
+a {
+  color: var(--color-primary);
+  text-decoration: underline;
+  
+  &:hover {
+    color: var(--color-secondary);
+  }
+}
+
+// 4. Изображения
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+// 5. Списки
+ul, ol {
+  padding-left: var(--spacing-lg);
+  margin-top: 0;
+  margin-bottom: var(--spacing-md);
+}
+
+// 6. Таблицы
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: var(--spacing-md);
+  
+  th, td {
+    padding: var(--spacing-sm) var(--spacing-md);
+    border: 1px solid var(--color-border);
+    text-align: left;
+  }
+  
+  th {
+    background: var(--color-background-alt);
+    font-weight: 600;
+  }
+}
+
+// 7. Формы
+input, textarea, select {
+  font-family: inherit;
+  font-size: inherit;
+  padding: var(--spacing-sm) var(--spacing-md);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  width: 100%;
+  
+  &:focus {
+    outline: 2px solid var(--color-primary);
+    border-color: transparent;
+  }
+}
+
+button {
+  font-family: inherit;
+  font-size: inherit;
+  cursor: pointer;
+  padding: var(--spacing-sm) var(--spacing-md);
+  border: none;
+  border-radius: var(--radius-md);
+  background: var(--color-primary);
+  color: #fff;
+  transition: background var(--transition-fast);
+  
+  &:hover {
+    background: var(--color-secondary);
+  }
+  
+  &:focus {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+  }
+}
+
+// 8. Импортируем компоненты
+@import 'a11y';
+
+// 8.1. Компоненты (отдельные файлы) - ДО общих компонентов
+@import 'components/header';
+
+// 8.2. Общие компоненты
+@import 'components';
+
+// 9. Утилиты
+.text-center { text-align: center; }
+.text-right { text-align: right; }
+.mt-1 { margin-top: var(--spacing-sm); }
+.mt-2 { margin-top: var(--spacing-md); }
+.mt-3 { margin-top: var(--spacing-lg); }
+.mb-1 { margin-bottom: var(--spacing-sm); }
+.mb-2 { margin-bottom: var(--spacing-md); }
+.mb-3 { margin-bottom: var(--spacing-lg); }

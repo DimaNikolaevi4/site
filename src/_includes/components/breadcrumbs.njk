@@ -1,0 +1,142 @@
+{#
+  Компонент — Хлебные крошки (Schema.org BreadcrumbList)
+  Единая точка рендеринга.
+
+  Приоритеты построения цепочки:
+    1. Ручной массив `breadcrumbs` — полный контроль.
+       Каждый элемент: { text, url }. Последний — без ссылки (текущая страница).
+
+    2. Авто-режим из frontmatter:
+       section/sectionTitle, category/categoryTitle, subsection/subsectionTitle, title.
+
+    3. Авто-режим из URL (по умолчанию, если ничего не задано):
+       Цепочка строится из сегментов `page.url`,
+       человеческие названия берутся из _data/sectionLabels.js (byUrl, bySlug).
+       Последний сегмент — текущая страница, без ссылки.
+       Для последнего сегмента используется `title` страницы как метка,
+       если в карте меток не нашлось ничего лучше.
+
+  Метки (sectionTitle/categoryTitle/subsectionTitle) автоматически подтягиваются
+  из sectionLabels.bySlug, если не заданы в frontmatter.
+#}
+
+{# ─── Хелпер: вычисляем эффективные метки уровней ─── #}
+{% set _labels = sectionLabels or { byUrl: {}, bySlug: {} } %}
+{% set _sectionKey = section or category %}
+{% set _sectionLabel = sectionTitle or categoryTitle or _labels.bySlug[_sectionKey] or _sectionKey %}
+{% set _subsectionLabel = subsectionTitle or _labels.bySlug[subsection] or subsection %}
+
+<nav class="breadcrumbs component-breadcrumbs" aria-label="Хлебные крошки">
+  <ol class="breadcrumb-list"
+      itemscope
+      itemtype="https://schema.org/BreadcrumbList">
+
+    {# ═══ Режим 1: ручной массив ═══ #}
+    {% if breadcrumbs and breadcrumbs.length > 0 %}
+
+      {% for crumb in breadcrumbs %}
+      <li class="breadcrumb-item{% if loop.last %} breadcrumb-item--current{% endif %}"
+          itemprop="itemListElement"
+          itemscope
+          itemtype="https://schema.org/ListItem">
+        {% if not loop.last and crumb.url %}
+          <a href="{{ crumb.url }}" itemprop="item">
+            <span itemprop="name">{{ crumb.text }}</span>
+          </a>
+        {% else %}
+          <span itemprop="name">{{ crumb.text }}</span>
+        {% endif %}
+        <meta itemprop="position" content="{{ loop.index }}"/>
+      </li>
+      {% endfor %}
+
+    {# ═══ Режим 2: явный frontmatter (section / category / subsection) ═══ #}
+    {% elif _sectionKey %}
+
+      {# Главная #}
+      <li class="breadcrumb-item"
+          itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a href="/" itemprop="item"><span itemprop="name">Главная</span></a>
+        <meta itemprop="position" content="1"/>
+      </li>
+
+      {# Уровень 1: раздел #}
+      <li class="breadcrumb-item"
+          itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a href="/{{ _sectionKey }}/" itemprop="item">
+          <span itemprop="name">{{ _sectionLabel }}</span>
+        </a>
+        <meta itemprop="position" content="2"/>
+      </li>
+
+      {# Уровень 2: подраздел (опц.) #}
+      {% if subsection %}
+      <li class="breadcrumb-item"
+          itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a href="/{{ _sectionKey }}/{{ subsection }}/" itemprop="item">
+          <span itemprop="name">{{ _subsectionLabel }}</span>
+        </a>
+        <meta itemprop="position" content="3"/>
+      </li>
+      {% endif %}
+
+      {# Текущая страница #}
+      {% if title %}
+      <li class="breadcrumb-item breadcrumb-item--current"
+          itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <span itemprop="name">{{ title }}</span>
+        <meta itemprop="position"
+              content="{{ 4 if subsection else 3 }}"/>
+      </li>
+      {% endif %}
+
+    {# ═══ Режим 3: авто из URL ═══ #}
+    {% else %}
+
+      {# Главная — всегда первая #}
+      <li class="breadcrumb-item"
+          itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a href="/" itemprop="item"><span itemprop="name">Главная</span></a>
+        <meta itemprop="position" content="1"/>
+      </li>
+
+      {# Сегменты текущего URL (используем JS-метод .split()) #}
+      {% set _url = page.url or "/" %}
+      {% set _segments = _url.split("/") %}
+      {% set _clean = [] %}
+      {% for s in _segments %}
+        {% if s %}
+          {% set _clean = (_clean.push(s), _clean) %}
+        {% endif %}
+      {% endfor %}
+
+      {% set _accUrl = "/" %}
+
+      {% for seg in _clean %}
+        {% set _accUrl = _accUrl + seg + "/" %}
+        {% set _isLast = loop.last %}
+        {% set _label = _labels.byUrl[_accUrl] or _labels.bySlug[seg] %}
+        {% if _isLast %}
+          {# Для текущей страницы: breadcrumbTitle (если задан) > title > карта меток > slug #}
+          {% set _label = breadcrumbTitle or title or _label or seg %}
+        {% else %}
+          {% set _label = _label or seg %}
+        {% endif %}
+
+        <li class="breadcrumb-item{% if _isLast %} breadcrumb-item--current{% endif %}"
+            itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+          {% if _isLast %}
+            <span itemprop="name">{{ _label }}</span>
+          {% else %}
+            <a href="{{ _accUrl }}" itemprop="item">
+              <span itemprop="name">{{ _label }}</span>
+            </a>
+          {% endif %}
+          <meta itemprop="position" content="{{ loop.index + 1 }}"/>
+        </li>
+      {% endfor %}
+
+    {% endif %}
+
+  </ol>
+</nav>

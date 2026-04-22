@@ -1,0 +1,114 @@
+{#
+  Компонент Секция 4 — О техникуме / Слово директора
+  Режимы, задаются переменной `aboutMode`:
+
+    aboutMode = 'director'  → Блок «Слово директора» (главная страница)
+                              Автоматически подтягивает материал с slug 'slovo-direktora'.
+                              Показывает: фото, заголовок, excerpt, highlights, ссылку.
+
+    aboutMode = 'stub'      → Пустая заглушка для страниц разделов.
+                              Ничего не рендерится — placeholder для будущего контента.
+
+    aboutMode = 'section'   → Краткий информационный блок для страниц разделов.
+                              Переменные: aboutTitle, aboutText, aboutImage, aboutUrl.
+
+  Если `aboutMode` не задан — компонент не рендерится.
+#}
+
+{# ── Режим 1: Слово директора (главная) ── #}
+{% if aboutMode == 'director' %}
+
+  {% set directorPost = collections.all | findBySlug('slovo-direktora') %}
+
+  {% if directorPost %}
+  <section id="about" class="about section component-about component-about--director">
+    <div class="container">
+      <div class="row gy-4 align-items-center">
+
+        {# Фото директора — справа на десктопе #}
+        <div class="col-lg-6 order-1 order-lg-2" data-aos="fade-left" data-aos-delay="100">
+          <div class="about-img-wrap">
+            <img
+              src="{{ directorPost.data.image or '/assets/mentor/img/about.jpg' }}"
+              class="img-fluid rounded shadow-sm"
+              alt="Директор ГБПОУ РО «СИТ»"
+              loading="lazy"
+            >
+          </div>
+        </div>
+
+        {# Текстовый блок — слева на десктопе #}
+        <div class="col-lg-6 order-2 order-lg-1 content" data-aos="fade-right" data-aos-delay="200">
+          <h2 class="about-title">{{ directorPost.data.title }}</h2>
+
+          {% if directorPost.data.excerpt %}
+          <div class="about-excerpt fst-italic text-muted mb-3">
+            {{ directorPost.data.excerpt | safe }}
+          </div>
+          {% endif %}
+
+          {% if directorPost.data.highlights and directorPost.data.highlights.length > 0 %}
+          <ul class="about-highlights list-unstyled mb-4">
+            {% for item in directorPost.data.highlights %}
+            <li class="d-flex align-items-start gap-2 mb-2">
+              <i class="bi bi-check-circle-fill text-primary flex-shrink-0 mt-1" aria-hidden="true"></i>
+              <span>{{ item }}</span>
+            </li>
+            {% endfor %}
+          </ul>
+          {% endif %}
+
+          <a href="{{ directorPost.url }}" class="read-more" aria-label="Читать полностью — Слово директора">
+            <span>Читать полностью</span>
+            <i class="bi bi-arrow-right" aria-hidden="true"></i>
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+  {% endif %}
+
+{# ── Режим 2: Краткий блок для страниц разделов ── #}
+{% elif aboutMode == 'section' %}
+
+  {% set _aboutTitle = aboutTitle if aboutTitle else "О техникуме" %}
+  {% set _aboutText  = aboutText  if aboutText  else "" %}
+
+  <section class="section component-about component-about--section">
+    <div class="container">
+      <div class="row gy-4 align-items-center">
+
+        {% if aboutImage %}
+        <div class="col-lg-5" data-aos="fade-right">
+          <img
+            src="{{ aboutImage }}"
+            class="img-fluid rounded shadow-sm"
+            alt="{{ _aboutTitle }}"
+            loading="lazy"
+          >
+        </div>
+        {% endif %}
+
+        <div class="col-lg-{{ '7' if aboutImage else '12' }} content" data-aos="fade-up">
+          <h2 class="about-title">{{ _aboutTitle }}</h2>
+          {% if _aboutText %}
+          <div class="about-text">{{ _aboutText | safe }}</div>
+          {% endif %}
+          {% if aboutUrl %}
+          <a href="{{ aboutUrl }}" class="read-more mt-3 d-inline-flex align-items-center gap-1">
+            <span>Подробнее</span>
+            <i class="bi bi-arrow-right" aria-hidden="true"></i>
+          </a>
+          {% endif %}
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+{# ── Режим 3: Заглушка — ничего не рендерится, placeholder ── #}
+{% elif aboutMode == 'stub' %}
+  {# Заглушка: секция намеренно пуста. Контент будет добавлен позднее. #}
+
+{% endif %}

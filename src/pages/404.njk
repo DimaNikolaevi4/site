@@ -1,0 +1,101 @@
+---
+layout: layouts/base.njk
+title: 404 - Страница не найдена
+description: Запрошенная страница не существует
+permalink: false
+eleventyExcludeFromCollections: true
+---
+
+<div class="container error-page">
+  <div class="error-page__content">
+    <h1 class="error-page__code">404</h1>
+    <h2 class="error-page__title">Страница не найдена</h2>
+    <p class="error-page__text">
+      К сожалению, запрашиваемая страница не существует или была перемещена.
+    </p>
+    
+    <div class="error-page__actions">
+      <a href="/" class="btn btn--primary btn--large">На главную</a>
+      <a href="/search/" class="btn btn--outline btn--large">Поиск по сайту</a>
+    </div>
+    
+    <div class="error-page__help">
+      <h3>Возможно, вы искали:</h3>
+      <ul>
+        <li><a href="/news/">Новости техникума</a></li>
+        <li><a href="/about/">Информация о техникуме</a></li>
+        <li><a href="/admission/">Абитуриенту</a></li>
+        <li><a href="/#footer">Контакты</a></li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<style>
+  .error-page {
+    text-align: center;
+    padding: 80px 20px;
+    min-height: 60vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .error-page__code {
+    font-size: 120px;
+    font-weight: bold;
+    color: #e74c3c;
+    margin: 0;
+    line-height: 1;
+  }
+  
+  .error-page__title {
+    font-size: 32px;
+    margin: 20px 0;
+    color: #2c3e50;
+  }
+  
+  .error-page__text {
+    font-size: 18px;
+    color: #7f8c8d;
+    max-width: 500px;
+    margin: 0 auto 30px;
+  }
+  
+  .error-page__actions {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 40px;
+  }
+  
+  .error-page__help {
+    text-align: left;
+    max-width: 500px;
+    margin: 0 auto;
+  }
+  
+  .error-page__help h3 {
+    margin-bottom: 15px;
+    color: #2c3e50;
+  }
+  
+  .error-page__help ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .error-page__help li {
+    margin-bottom: 10px;
+  }
+  
+  .error-page__help a {
+    color: #3498db;
+    text-decoration: none;
+  }
+  
+  .error-page__help a:hover {
+    text-decoration: underline;
+  }
+</style>

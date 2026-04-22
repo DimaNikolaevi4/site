@@ -1,0 +1,53 @@
+{#
+  Компонент Секция 6 — Популярные разделы (заглушка)
+  Переменные:
+    popularTitle    — заголовок (по умолчанию «Популярные разделы»)
+    popularSubtitle — подзаголовок (опционально)
+    popularLinks    — массив объектов { title, subtitle, description, url, icon }
+                      Если не передан — используется список по умолчанию
+#}
+
+{% set _popularTitle = popularTitle if popularTitle else "Популярные разделы" %}
+{% set _popularSubtitle = popularSubtitle if popularSubtitle else "Важная информация для посетителей сайта" %}
+
+{# Заглушка — блок популярных/важных ссылок физически присутствует на всех
+   страницах, но по умолчанию пуст. Наполняется позже через popularLinks
+   или редактируя массив ниже. #}
+{% set _defaultLinks = [] %}
+
+{% set _links = popularLinks if popularLinks else _defaultLinks %}
+
+<section id="popular-sections" class="section component-popular trainers-index">
+
+  <div class="container">
+
+    <div class="container section-title" data-aos="fade-up">
+      <h2>{{ _popularTitle }}</h2>
+      <p>{{ _popularSubtitle }}</p>
+    </div>
+
+    <div class="row">
+      {% for item in _links %}
+      <div class="col-lg-3 col-md-6 d-flex" data-aos="fade-up" data-aos-delay="{{ loop.index * 100 }}">
+        <div class="member w-100">
+          <div class="member-icon-wrap">
+            <i class="bi {{ item.icon or 'bi-arrow-right-circle' }} member-icon" aria-hidden="true"></i>
+          </div>
+          <div class="member-content">
+            <h4>{{ item.title }}</h4>
+            <span>{{ item.subtitle }}</span>
+            <p>{{ item.description }}</p>
+            <div class="social">
+              <a href="{{ item.url }}" aria-label="Перейти в раздел {{ item.title }}">
+                <i class="bi bi-arrow-right-circle" aria-hidden="true"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+
+  </div>
+
+</section>

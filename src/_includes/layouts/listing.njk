@@ -1,0 +1,152 @@
+{#
+  ШАБЛОН — layouts/listing.njk
+  Листинг новостей / категорий / тегов в новой архитектуре
+
+  Секция 1: Header                — глобальная (base.njk)
+  Секция 2: Hero (опц.) + Контекст — хлебные крошки, заголовок, фильтры, баннер раздела
+  Секции 3+7: Контент 70% (карточки + пагинация) + Сайдбар 30% (единые баннеры)
+  Секция 4: Дополнительные блоки   — опц.
+  Секция 8: Footer                 — глобальная (base.njk)
+
+  Управление через frontmatter:
+    title, description
+    collectionName     — имя коллекции для перебора
+    pagination         — стандартный объект Eleventy pagination
+    hero               — { image, title, subtitle, alt, cta } (опц.) — Hero-баннер
+    rubricTitle        — название рубрики под чертой в Hero
+    showSidebar        — true/false (по умолчанию true) — единые баннеры слева
+    sidebarBanners     — массив баннеров (переопределить набор по умолчанию)
+    sectionContext     — { filters, sortOptions, banner } — фильтры/сортировка/баннер
+    additionalBlocks   — HTML после ленты карточек
+#}
+{% extends "layouts/base.njk" %}
+
+{% block content %}
+{% set _showSidebar = showSidebar if showSidebar is defined else true %}
+
+<div class="page-layout listing-layout">
+
+  {# ═══════════════════════════════════════════════
+     СЕКЦИЯ 2: Hero (опционально) + Контекст
+  ═══════════════════════════════════════════════ #}
+
+  {# Hero-баннер — если задан hero.image #}
+  {% include "components/hero.njk" %}
+
+  <section class="section-context" aria-label="Фильтры и сортировка">
+    <div class="container">
+
+      {# Единые хлебные крошки #}
+      {% include "components/breadcrumbs.njk" %}
+
+      <div class="context-header">
+        {% if showHero == false %}
+        <h1 class="page-title">{{ title }}</h1>
+        {% endif %}
+        {% if description %}
+        <p class="page-description lead text-muted">{{ description }}</p>
+        {% endif %}
+      </div>
+
+      {% if sectionContext and (sectionContext.filters or sectionContext.sortOptions) %}
+      <div class="listing-controls">
+        {% if sectionContext.filters %}
+        <div class="listing-filters">
+          <label for="filter-select" class="visually-hidden">Фильтр по типу</label>
+          <select id="filter-select" class="filter-select form-select form-select-sm">
+            <option value="">Все материалы</option>
+            {% for filter in sectionContext.filters %}
+            <option value="{{ filter.value }}">{{ filter.label }}</option>
+            {% endfor %}
+          </select>
+        </div>
+        {% endif %}
+
+        {% if sectionContext.sortOptions %}
+        <div class="listing-sort">
+          <label for="sort-select" class="visually-hidden">Сортировка</label>
+          <select id="sort-select" class="sort-select form-select form-select-sm">
+            {% for option in sectionContext.sortOptions %}
+            <option value="{{ option.value }}" {% if option.default %}selected{% endif %}>
+              {{ option.label }}
+            </option>
+            {% endfor %}
+          </select>
+        </div>
+        {% endif %}
+      </div>
+      {% endif %}
+
+      {% if showHero == false and sectionContext and sectionContext.banner %}
+      <div class="page-banner mt-3">
+        <img src="{{ sectionContext.banner }}" alt="{{ title }}" loading="lazy" class="img-fluid rounded">
+      </div>
+      {% endif %}
+    </div>
+  </section>
+
+  {# ═══════════════════════════════════════════════
+     СЕКЦИИ 3 + 7: Контент 70% + Сайдбар 30% (слева)
+  ═══════════════════════════════════════════════ #}
+  <section class="section-main">
+    <div class="container">
+      <div class="content-sidebar-grid{% if not _showSidebar %} content-sidebar-grid--full{% endif %}">
+
+        {# ── Секция 7: Сайдбар (единые баннеры, 30% слева) ── #}
+        {% if _showSidebar %}
+        <div class="sidebar-col">
+          {% include "components/sidebar.njk" %}
+        </div>
+        {% endif %}
+
+        {# ── Секция 3: Лента карточек ── #}
+        <div class="content-col">
+          <div class="listing-content">
+
+            {% if collections[collectionName] and collections[collectionName].length > 0 %}
+            <div class="cards-grid">
+              {% for item in collections[collectionName] %}
+                {% include "components/card.njk" with { card: {
+                  title: item.data.title,
+                  url: item.url,
+                  image: item.data.image,
+                  imageAlt: item.data.imageAlt,
+                  category: item.data.category or item.data.section,
+                  date: item.data.date,
+                  excerpt: item.data.excerpt,
+                  tags: item.data.tags
+                }} %}
+              {% endfor %}
+            </div>
+
+            {# Пагинация — единый компонент #}
+            {% include "components/pagination.njk" %}
+
+            {% else %}
+            <div class="no-results">
+              <div class="no-results__icon">
+                <i class="bi bi-inbox" aria-hidden="true"></i>
+              </div>
+              <p class="no-results__text">В этом разделе пока нет материалов.</p>
+              <a href="/" class="btn btn-outline-primary btn-sm">На главную</a>
+            </div>
+            {% endif %}
+
+            {# Секция 4: Дополнительные блоки #}
+            {% if additionalBlocks %}
+            <section class="section-extra mt-4" aria-label="Дополнительно">
+              <div class="extra-inner">
+                {{ additionalBlocks | safe }}
+              </div>
+            </section>
+            {% endif %}
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+</div>
+{% endblock %}

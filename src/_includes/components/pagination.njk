@@ -1,0 +1,111 @@
+{#
+  Компонент: Пагинация
+  Используется в layouts/listing.njk и layouts/page-full.njk
+
+  Зависит от стандартного объекта Eleventy `pagination`:
+    pagination.pageNumber       — текущий индекс (с 0)
+    pagination.pages.length     — всего страниц
+    pagination.hrefs            — массив URL всех страниц
+    pagination.href.previous    — URL предыдущей
+    pagination.href.next        — URL следующей
+    pagination.href.first       — URL первой
+    pagination.href.last        — URL последней
+
+  Особенности:
+    - Не показывается, если страница одна (pagination.pages.length <= 1)
+    - «Умная» нумерация: первая, многоточие, current ±2, многоточие, последняя
+    - Кнопки «В начало» и «В конец»
+    - Доступность: aria-current на текущей, aria-label на навигации
+#}
+
+{% if pagination and pagination.pages.length > 1 %}
+{% set _cur = pagination.pageNumber %}
+{% set _total = pagination.pages.length %}
+
+<nav class="pagination-nav" aria-label="Навигация по страницам">
+  <ul class="pagination">
+
+    {# В начало #}
+    {% if _cur > 1 %}
+    <li class="page-item page-item--first">
+      <a href="{{ pagination.href.first }}" class="page-link" rel="first" aria-label="К первой странице" title="К первой">
+        <i class="bi bi-chevron-double-left" aria-hidden="true"></i>
+      </a>
+    </li>
+    {% endif %}
+
+    {# Назад #}
+    {% if pagination.href.previous %}
+    <li class="page-item page-item--prev">
+      <a href="{{ pagination.href.previous }}" class="page-link" rel="prev" aria-label="Предыдущая страница">
+        <i class="bi bi-chevron-left" aria-hidden="true"></i>
+        <span class="page-link__text">Назад</span>
+      </a>
+    </li>
+    {% endif %}
+
+    {# Номера страниц с многоточиями #}
+    {% for pageLink in pagination.hrefs %}
+      {% set _idx = loop.index0 %}
+      {% set _showFirst = _idx == 0 %}
+      {% set _showLast = _idx == (_total - 1) %}
+      {% set _showWindow = _idx >= (_cur - 2) and _idx <= (_cur + 2) %}
+
+      {% if _showFirst or _showLast or _showWindow %}
+        {# Многоточие перед окном #}
+        {% if _idx == 0 and _cur > 3 %}
+        <li class="page-item page-item--num {% if _idx == _cur %}active{% endif %}">
+          <a href="{{ pageLink }}" class="page-link"
+             {% if _idx == _cur %}aria-current="page"{% endif %}>1</a>
+        </li>
+        {% if _cur > 4 %}
+        <li class="page-item page-item--ellipsis" aria-hidden="true">
+          <span class="page-link page-link--ellipsis">…</span>
+        </li>
+        {% endif %}
+        {% elif _idx == (_total - 1) and _cur < (_total - 4) %}
+          {% if _cur < (_total - 5) %}
+          <li class="page-item page-item--ellipsis" aria-hidden="true">
+            <span class="page-link page-link--ellipsis">…</span>
+          </li>
+          {% endif %}
+          <li class="page-item page-item--num {% if _idx == _cur %}active{% endif %}">
+            <a href="{{ pageLink }}" class="page-link"
+               {% if _idx == _cur %}aria-current="page"{% endif %}>{{ loop.index }}</a>
+          </li>
+        {% else %}
+        <li class="page-item page-item--num {% if _idx == _cur %}active{% endif %}">
+          <a href="{{ pageLink }}" class="page-link"
+             {% if _idx == _cur %}aria-current="page"{% endif %}
+             aria-label="Страница {{ loop.index }}">{{ loop.index }}</a>
+        </li>
+        {% endif %}
+      {% endif %}
+    {% endfor %}
+
+    {# Вперёд #}
+    {% if pagination.href.next %}
+    <li class="page-item page-item--next">
+      <a href="{{ pagination.href.next }}" class="page-link" rel="next" aria-label="Следующая страница">
+        <span class="page-link__text">Вперёд</span>
+        <i class="bi bi-chevron-right" aria-hidden="true"></i>
+      </a>
+    </li>
+    {% endif %}
+
+    {# В конец #}
+    {% if _cur < (_total - 2) %}
+    <li class="page-item page-item--last">
+      <a href="{{ pagination.href.last }}" class="page-link" rel="last" aria-label="К последней странице" title="К последней">
+        <i class="bi bi-chevron-double-right" aria-hidden="true"></i>
+      </a>
+    </li>
+    {% endif %}
+
+  </ul>
+
+  <p class="pagination-info text-muted small">
+    Страница <strong>{{ _cur + 1 }}</strong> из <strong>{{ _total }}</strong>
+  </p>
+</nav>
+{% endif %}
