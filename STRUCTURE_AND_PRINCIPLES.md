@@ -495,7 +495,7 @@ src/_includes/
 **Пример front matter с тегами:**
 ```yaml
 ---
-title: Приёмная кампания 2026
+title: Приёмная кампания 2025
 date: 2026-04-15
 tags: [абитуриенту, приём, 2026]
 category: news
@@ -901,7 +901,7 @@ module.exports = function(config) {
    ```yaml
    ---
    layout: post.njk
-   title: "Приёмная кампания 2026: важные даты"
+   title: "Приёмная кампания 2025: важные даты"
    date: 2026-04-15
    tags: [абитуриенту, приём, 2026]
    category: news
@@ -1054,7 +1054,7 @@ config.addFilter("slugify", (str) => {
 ```yaml
 # Front matter в контенте
 ---
-title: Приёмная кампания 2026
+title: Приёмная кампания 2025
 permalink: /news/{{ title | slugify }}/
 ---
 ```
@@ -1073,7 +1073,7 @@ permalink: /news/{{ title | slugify }}/
 **Пример front matter с мета-тегами:**
 ```yaml
 ---
-title: Приёмная кампания 2026
+title: Приёмная кампания 2025
 description: "Сроки, документы и правила приёма в ГБПОУ РО 'СИТ' в 2026 году. Информация для абитуриентов."
 permalink: /news/priemnaya-kampaniya-2026/
 date: 2026-04-15
@@ -1152,7 +1152,7 @@ config.addShortcode("responsiveImage", async (src, alt) => {
 
 **Правила анкоров:**
 ```
-✅ «Приёмная кампания 2026» → /news/priemnaya-kampaniya-2026/
+✅ «Приёмная кампания 2025» → /news/priemnaya-kampaniya-2026/
 ✅ «сведения об образовательной организации» → /svedenija/
 ❌ «кликните здесь» → /news/...
 ❌ «подробнее подробнее подробнее» → /...

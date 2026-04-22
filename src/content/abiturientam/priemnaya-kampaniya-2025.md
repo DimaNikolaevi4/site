@@ -1,5 +1,5 @@
 ---
-title: "Приёмная кампания 2026"
+title: "Приёмная кампания 2025"
 layout: layouts/post.njk
 category: abiturientam
 rubric: "1.3"
