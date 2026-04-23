@@ -1,5 +1,5 @@
 ---
-layout: svedenija-page.njk
+layout: layouts/svedenija-page.njk
 title: Противодействие коррупции
 permalink: /svedenija/dokumenty/anti-corruption/
 eleventyNavigation:

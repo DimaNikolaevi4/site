@@ -1,6 +1,6 @@
 ---
 title: Финансово-хозяйственная деятельность
-layout: svedenija-page.njk
+layout: layouts/svedenija-page.njk
 section: finance
 rubric: "2.9"
 permalink: /svedenija/finance/

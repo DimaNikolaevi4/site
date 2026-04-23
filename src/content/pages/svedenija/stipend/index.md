@@ -1,6 +1,6 @@
 ---
 title: Стипендии и меры поддержки
-layout: svedenija-page.njk
+layout: layouts/svedenija-page.njk
 section: stipend
 rubric: "2.9.1"
 permalink: /svedenija/stipend/

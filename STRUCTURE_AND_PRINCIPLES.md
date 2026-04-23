@@ -623,7 +623,7 @@ project-root/
 │
 ├── src/                        # Исходный код (единственный источник правды)
 │   ├── _includes/              # Шаблоны и компоненты
-│   │   ├── svedenija-page.njk  # Шаблон раздела «Сведения» (через include)
+│   │   │   └── svedenija-page.njk # Шаблон раздела «Сведения» (layout: layouts/svedenija-page.njk)
 │   │   ├── components/         # Компоненты секций
 │   │   │   ├── header.njk      # Секция 1: Шапка
 │   │   │   ├── footer.njk      # Секция 8: Подвал

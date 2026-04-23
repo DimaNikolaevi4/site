@@ -1,6 +1,6 @@
 ---
 title: Доступная среда
-layout: svedenija-page.njk
+layout: layouts/svedenija-page.njk
 section: access
 rubric: "2.7"
 permalink: /svedenija/access/

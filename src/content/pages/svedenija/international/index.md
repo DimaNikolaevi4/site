@@ -1,6 +1,6 @@
 ---
 title: Международное сотрудничество
-layout: svedenija-page.njk
+layout: layouts/svedenija-page.njk
 section: international
 rubric: "2.4.2"
 permalink: /svedenija/obrazovanie/mezhdunarodnoe/

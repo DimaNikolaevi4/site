@@ -1,6 +1,6 @@
 ---
 title: Основные сведения
-layout: svedenija-page.njk
+layout: layouts/svedenija-page.njk
 section: basic
 rubric: "2.1"
 permalink: /svedenija/basic/

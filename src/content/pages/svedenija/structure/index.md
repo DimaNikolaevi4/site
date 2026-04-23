@@ -1,6 +1,6 @@
 ---
 title: Структура и органы управления образовательной организацией
-layout: svedenija-page.njk
+layout: layouts/svedenija-page.njk
 section: structure
 rubric: "2.2"
 permalink: /svedenija/structure/

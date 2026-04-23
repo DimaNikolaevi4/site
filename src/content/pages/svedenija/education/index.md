@@ -1,6 +1,6 @@
 ---
 title: Образование
-layout: svedenija-page.njk
+layout: layouts/svedenija-page.njk
 section: education
 rubric: "2.4"
 permalink: /svedenija/education/

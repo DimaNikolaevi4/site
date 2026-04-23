@@ -1,5 +1,5 @@
 ---
-layout: svedenija-page.njk
+layout: layouts/svedenija-page.njk
 title: Сведения об образовательной организации
 description: Информация об организации в соответствии с Приказом Рособрнадзора №1493
 permalink: /svedenija/

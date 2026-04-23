@@ -1,6 +1,6 @@
 ---
 title: Документы
-layout: svedenija-page.njk
+layout: layouts/svedenija-page.njk
 section: documents
 rubric: "2.3"
 permalink: /svedenija/dokumenty/

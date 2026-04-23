@@ -1,6 +1,6 @@
 ---
 title: Педагогический состав
-layout: svedenija-page.njk
+layout: layouts/svedenija-page.njk
 section: employees
 rubric: "2.5.1"
 permalink: /svedenija/rukovodstvo/pedagogicheskiy-sostav/

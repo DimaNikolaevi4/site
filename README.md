@@ -15,7 +15,7 @@ src/
 │   │                   # news, popular, sidebar, breadcrumbs (+ card, anti-corruption-content)
 │   ├── layouts/        # base.njk, page.njk (Тип B), page-full.njk (Type B расширенный),
 │   │                   # post.njk (Тип C), listing.njk
-│   └── svedenija-page.njk  # Шаблон раздела «Сведения» (подключается через include)
+│   └── layouts/svedenija-page.njk  # Шаблон раздела «Сведения» (layout: layouts/svedenija-page.njk)
 ├── admin/              # Decap CMS: index.html + config.yml
 ├── assets/             # Статические файлы (JS, SCSS-исходники, изображения)
 ├── styles/             # Скомпилированный main.css (используется на страницах)

@@ -1,6 +1,6 @@
 ---
 title: Материально-техническое обеспечение
-layout: svedenija-page.njk
+layout: layouts/svedenija-page.njk
 section: objects
 rubric: "2.7"
 permalink: /svedenija/objects/

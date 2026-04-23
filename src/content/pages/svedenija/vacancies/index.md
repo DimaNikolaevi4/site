@@ -1,6 +1,6 @@
 ---
 title: Вакантные места для приёма и перевода
-layout: svedenija-page.njk
+layout: layouts/svedenija-page.njk
 section: vacancies
 rubric: "2.4.1"
 permalink: /svedenija/vacancies/
