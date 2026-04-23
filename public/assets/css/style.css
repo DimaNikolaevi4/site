@@ -4951,32 +4951,29 @@ html {
 
 /* ============================================
    Блок «Поделиться материалом»
+   (визуально согласован со стилем .tag)
    ============================================ */
 .post-share {
   margin-top: 2rem;
-  padding: 1.25rem 1.5rem 1.35rem;
+  padding: 1.1rem 1.25rem 1.25rem;
   background: #fff;
-  border: 1px solid #e6ece8;
+  border: 1px solid var(--border-color, #e6ece8);
   border-radius: 14px;
   box-shadow: 0 1px 2px rgba(15, 30, 20, 0.04);
+  text-align: center;
 }
 
 .post-share__head {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  padding-bottom: 0.85rem;
-  margin-bottom: 0.95rem;
-  border-bottom: 1px solid #eef3ef;
+  margin-bottom: 0.9rem;
 }
 
 .post-share__label {
   display: inline-flex;
   align-items: center;
-  gap: 0.55rem;
+  gap: 0.5rem;
   font-size: 0.95rem;
   font-weight: 600;
-  color: #1f2d22;
+  color: var(--text-primary, #1f2d22);
   letter-spacing: 0.01em;
 }
 
@@ -4985,21 +4982,14 @@ html {
   font-size: 1.05rem;
 }
 
-/* Ряды */
-.post-share__row {
+.post-share__list {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.5rem;
+  justify-content: center;
+  gap: 0.45rem;
   padding: 0;
   margin: 0;
   list-style: none;
-}
-
-.post-share__row--actions {
-  margin-top: 0.75rem;
-  padding-top: 0.85rem;
-  border-top: 1px dashed #eef3ef;
-  gap: 0.55rem;
 }
 
 .post-share__item {
@@ -5007,123 +4997,65 @@ html {
   list-style: none;
 }
 
-/* ── Иконки соцсетей (круглые) ── */
-.post-share__icon-btn {
+/* Кнопка/ссылка в стиле .tag, дополненная иконкой */
+.post-share__tag {
   display: inline-flex;
   align-items: center;
-  justify-content: center;
-  width: 42px;
-  height: 42px;
-  color: #4b5b53;
-  background: #f3f6f4;
-  border: 1px solid #e3ebe6;
-  border-radius: 50%;
-  text-decoration: none;
-  font-size: 1.1rem;
-  transition: transform .18s ease, color .18s ease, background-color .18s ease, border-color .18s ease, box-shadow .18s ease;
-  -webkit-tap-highlight-color: transparent;
-}
-
-.post-share__icon-btn svg {
-  display: block;
-}
-
-.post-share__icon-btn:hover,
-.post-share__icon-btn:focus-visible {
-  color: #fff;
-  border-color: transparent;
-  transform: translateY(-2px);
-  box-shadow: 0 6px 14px rgba(15, 30, 20, 0.14);
-  text-decoration: none;
-}
-
-.post-share__icon-btn:focus-visible {
-  outline: 2px solid var(--color-primary, #2d8a47);
-  outline-offset: 2px;
-}
-
-.post-share__icon-btn:active {
-  transform: translateY(0);
-  box-shadow: 0 2px 5px rgba(15, 30, 20, 0.12);
-}
-
-.post-share__icon-btn--vk:hover,   .post-share__icon-btn--vk:focus-visible   { background: #0077FF; }
-.post-share__icon-btn--ok:hover,   .post-share__icon-btn--ok:focus-visible   { background: #EE8208; }
-.post-share__icon-btn--tg:hover,   .post-share__icon-btn--tg:focus-visible   { background: #229ED9; }
-.post-share__icon-btn--wa:hover,   .post-share__icon-btn--wa:focus-visible   { background: #25D366; }
-.post-share__icon-btn--vb:hover,   .post-share__icon-btn--vb:focus-visible   { background: #7360F2; }
-.post-share__icon-btn--mail:hover, .post-share__icon-btn--mail:focus-visible { background: #5b6770; }
-
-/* ── Действия со ссылкой (вторичные кнопки) ── */
-.post-share__action {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 0.55rem 1rem;
-  font-size: 0.875rem;
-  font-weight: 500;
-  line-height: 1;
-  color: #2d4a36;
-  background: transparent;
-  border: 1px solid #d3ddd6;
-  border-radius: 10px;
+  gap: 0.4rem;
   cursor: pointer;
-  transition: color .18s ease, background-color .18s ease, border-color .18s ease, transform .18s ease;
-  -webkit-tap-highlight-color: transparent;
+  font-family: inherit;
+  line-height: 1.2;
 }
 
-.post-share__action .bi {
-  font-size: 1rem;
-  color: var(--color-primary, #2d8a47);
-  transition: color .18s ease;
+.post-share__tag .bi,
+.post-share__svg {
+  display: inline-block;
+  font-size: 0.95rem;
+  flex: 0 0 auto;
 }
 
-.post-share__action:hover,
-.post-share__action:focus-visible {
-  background: var(--color-primary, #2d8a47);
-  border-color: var(--color-primary, #2d8a47);
+.post-share__tag--btn {
+  /* button-сброс, чтобы выглядел как ссылка-тег */
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  color: var(--text-secondary);
+  padding: 0.2rem 0.7rem;
+  font-size: 0.78rem;
+  border-radius: 20px;
+}
+
+.post-share__tag--btn:hover,
+.post-share__tag--btn:focus-visible {
+  background: var(--color-primary);
   color: #fff;
+  border-color: var(--color-primary);
 }
-.post-share__action:hover .bi,
-.post-share__action:focus-visible .bi { color: #fff; }
 
-.post-share__action:focus-visible {
+.post-share__tag:focus-visible {
   outline: 2px solid var(--color-primary, #2d8a47);
   outline-offset: 2px;
 }
 
-.post-share__action:active { transform: translateY(1px); }
-
-.post-share__action--copy.is-copied {
+/* Состояние «Скопировано» */
+.post-share__tag.is-copied,
+.post-share__tag.is-copied:hover {
   background: #198754;
   border-color: #198754;
   color: #fff;
 }
-.post-share__action--copy.is-copied .bi { color: #fff; }
 
-/* Адаптив */
-@media (max-width: 640px) {
+@media (max-width: 480px) {
   .post-share {
-    padding: 1rem 1rem 1.15rem;
+    padding: 0.95rem 0.85rem 1.05rem;
     border-radius: 12px;
   }
-  .post-share__icon-btn {
-    width: 40px;
-    height: 40px;
-    font-size: 1rem;
-  }
-  .post-share__action {
-    flex: 1 1 auto;
-    justify-content: center;
-    padding: 0.55rem 0.85rem;
+  .post-share__list {
+    gap: 0.4rem;
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .post-share__icon-btn,
-  .post-share__action { transition: none; }
-  .post-share__icon-btn:hover,
-  .post-share__action:hover { transform: none; }
+  .post-share__tag { transition: none; }
 }
 
 /* --- Мобильная адаптация --- */
