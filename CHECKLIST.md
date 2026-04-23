@@ -110,7 +110,7 @@
 | 3.3.3.1 Отсутствуют ключевые `<meta>` в base.njk | ✅ | В `<head>` нет: `<link rel="canonical">`, Open Graph (`og:title`, `og:description`, `og:image`, `og:type`, `og:url`), Twitter Card, JSON-LD `EducationalOrganization` (схема для Рособрнадзора и Яндекса), `<meta name="theme-color">`, `<link rel="manifest">` (хотя в `favicons/` обычно есть `site.webmanifest`). Критично для SEO и шаринга в соцсетях. |
 | 3.3.3.2 8 скриптов без defer/async | ✅ | В `base.njk` все `<script>` блокируют рендер: Bootstrap, validate.js, AOS, GLightbox, PureCounter, mentor-main.js, main.js, offcanvas-nav.js. Уже зафиксировано в 9.4.5, но это и реальное узкое место Lighthouse Performance. **Решение:** добавить `defer` ко всем скриптам, перенести `<script>` в конец `<body>` или использовать `async` где возможно. |
 | 3.3.3.3 Отсутствует skip-link | ✅ | Дублирует 9.1.8: `<a href="#main-content" class="skip-link">Перейти к основному содержимому</a>` отсутствует в `base.njk`. Обязательное требование WCAG 2.1 AA / ГОСТ Р 52872-2019 для навигации с клавиатуры. |
-| 3.3.3.4 Двойные CSS-стеки | 🔶 | Подключаются и `assets/mentor/css/main.css`, и `/styles/main.css`. Возможна каскадная борьба и лишний вес (~2 полных Bootstrap-наследия). **Решение:** либо инлайнить только нужный Mentor, либо собирать всё в один итоговый CSS через PostCSS/Sass. |
+| 3.3.3.4 Двойные CSS-стеки | ✅ | Подключаются и `assets/mentor/css/main.css`, и `/styles/main.css`. Возможна каскадная борьба и лишний вес (~2 полных Bootstrap-наследия). **Решение:** либо инлайнить только нужный Mentor, либо собирать всё в один итоговый CSS через PostCSS/Sass. |
 
 #### 3.3.4 Что работает корректно
 
