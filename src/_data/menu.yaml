@@ -46,8 +46,8 @@ main:
         url: /abiturientam/slovo-direktora/
       - title: Правила приема
         url: /abiturientam/#rules
-      - title: Специальности
-        url: /abiturientam/#specialties
+      - title: Специальности и профессии
+        url: /abiturientam/specialnosti/
       - title: Приемная комиссия
         url: /abiturientam/#commission
       - title: День открытых дверей
