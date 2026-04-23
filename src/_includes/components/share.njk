@@ -37,7 +37,7 @@
          rel="noopener noreferrer"
          title="Поделиться ВКонтакте"
          aria-label="Поделиться ВКонтакте">
-        <i class="bi bi-vimeo" aria-hidden="true"></i>
+        <svg class="post-share__icon" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" fill="currentColor"><path d="M12.785 16.241s.288-.032.435-.193c.135-.148.131-.425.131-.425s-.018-1.298.582-1.494c.59-.193 1.348 1.288 2.151 1.858.607.43 1.068.336 1.068.336l2.147-.03s1.123-.071.59-.964c-.043-.073-.31-.661-1.594-1.87-1.345-1.265-1.165-1.06.456-3.243.987-1.33 1.382-2.143 1.259-2.49-.117-.331-.85-.243-.85-.243l-2.418.015s-.179-.025-.312.056c-.13.079-.213.262-.213.262s-.382 1.03-.892 1.907c-1.075 1.85-1.504 1.948-1.679 1.834-.408-.266-.306-1.075-.306-1.65 0-1.795.272-2.543-.526-2.737-.265-.064-.46-.107-1.137-.114-.87-.009-1.605.003-2.022.208-.277.135-.491.437-.361.455.16.022.523.099.715.363.249.34.24 1.105.24 1.105s.144 2.116-.337 2.376c-.329.179-.78-.187-1.74-1.866-.491-.86-.862-1.81-.862-1.81s-.072-.176-.2-.27c-.155-.114-.372-.151-.372-.151l-2.298.015s-.345.01-.471.16c-.113.135-.009.413-.009.413s1.798 4.214 3.835 6.337c1.866 1.948 3.985 1.82 3.985 1.82h.962z"/></svg>
         <span class="post-share__btn-text">ВКонтакте</span>
       </a>
     </li>
@@ -50,7 +50,7 @@
          rel="noopener noreferrer"
          title="Поделиться в Одноклассниках"
          aria-label="Поделиться в Одноклассниках">
-        <i class="bi bi-circle-square" aria-hidden="true"></i>
+        <svg class="post-share__icon" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" fill="currentColor"><path d="M12 2.4c-2.65 0-4.8 2.15-4.8 4.8s2.15 4.8 4.8 4.8 4.8-2.15 4.8-4.8S14.65 2.4 12 2.4zm0 7.2c-1.32 0-2.4-1.08-2.4-2.4s1.08-2.4 2.4-2.4 2.4 1.08 2.4 2.4S13.32 9.6 12 9.6zm3.07 6.13c1.05-.27 2.04-.69 2.94-1.27.59-.38.76-1.16.38-1.75-.38-.59-1.16-.76-1.75-.38-1.4.9-3.05 1.38-4.74 1.38s-3.34-.48-4.74-1.38c-.59-.38-1.37-.21-1.75.38-.38.59-.21 1.37.38 1.75.9.58 1.89 1 2.94 1.27l-2.83 2.83c-.5.5-.5 1.3 0 1.79.25.25.57.37.9.37s.65-.12.9-.37l2.74-2.74 2.74 2.74c.25.25.57.37.9.37s.65-.12.9-.37c.5-.5.5-1.3 0-1.79l-2.83-2.83z"/></svg>
         <span class="post-share__btn-text">Одноклассники</span>
       </a>
     </li>
@@ -111,7 +111,7 @@
               type="button"
               title="Копировать ссылку"
               aria-label="Копировать ссылку"
-              onclick="(function(b){navigator.clipboard.writeText('{{ _shareUrl }}').then(function(){var t=b.querySelector('.post-share__btn-text');var o=t.textContent;t.textContent='Скопировано';setTimeout(function(){t.textContent=o;},1500);});})(this)">
+              onclick="(function(b){navigator.clipboard.writeText('{{ _shareUrl }}').then(function(){var t=b.querySelector('.post-share__btn-text');var o=t.textContent;t.textContent='Скопировано';b.classList.add('is-copied');setTimeout(function(){t.textContent=o;b.classList.remove('is-copied');},1600);});})(this)">
         <i class="bi bi-link-45deg" aria-hidden="true"></i>
         <span class="post-share__btn-text">Копировать</span>
       </button>

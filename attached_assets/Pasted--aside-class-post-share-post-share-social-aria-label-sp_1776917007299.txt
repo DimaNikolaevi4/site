@@ -1,0 +1,83 @@
+<aside class="post-share post-share--social" aria-label="Поделиться материалом">
+  <span class="post-share__label">
+    <i class="bi bi-share-fill" aria-hidden="true"></i>
+    Поделиться:
+  </span>
+
+  <ul class="post-share__list" role="list">
+
+    
+    <li class="post-share__item">
+      <a class="post-share__btn post-share__btn--vk" href="https://vk.com/share.php?url=https%3A%2F%2F%D1%81%D0%B8%D1%82-%D1%81%D0%B0%D0%BB%D1%8C%D1%81%D0%BA.%D1%80%D1%84%2Fabiturientam%2Fslovo-direktora%2F&amp;title=%D0%A1%D0%BB%D0%BE%D0%B2%D0%BE%20%D0%B4%D0%B8%D1%80%D0%B5%D0%BA%D1%82%D0%BE%D1%80%D0%B0&amp;description=%3Cp%3E%D0%93%D0%BE%D1%81%D1%83%D0%B4%D0%B0%D1%80%D1%81%D1%82%D0%B2%D0%B5%D0%BD%D0%BD%D0%BE%D0%B5%20%D0%B1%D1%8E%D0%B4%D0%B6%D0%B5%D1%82%D0%BD%D0%BE%D0%B5%20%D0%BF%D1%80%D0%BE%D1%84%D0%B5%D1%81%D1%81%D0%B8%D0%BE%D0%BD%D0%B0%D0%BB%D1%8C%D0%BD%D0%BE%D0%B5%20%D0%BE%D0%B1%D1%80%D0%B0%D0%B7%D0%BE%D0%B2%D0%B0%D1%82%D0%B5%D0%BB%D1%8C%D0%BD%D0%BE%D0%B5%20%D1%83%D1%87%D1%80%D0%B5%D0%B6%D0%B4%D0%B5%D0%BD%D0%B8%D0%B5%20%D0%A0%D0%BE%D1%81%D1%82%D0%BE%D0%B2%D1%81%D0%BA%D0%BE%D0%B9%20%D0%BE%D0%B1%D0%BB%D0%B0%D1%81%D1%82%D0%B8%20%C2%AB%D0%A1%D0%B0%D0%BB%D1%8C%D1%81%D0%BA%D0%B8%D0%B9%20%D0%B8%D0%BD%D0%B4%D1%83%D1%81%D1%82%D1%80%D0%B8%D0%B0%D0%BB%D1%8C%D0%BD%D1%8B%D0%B9%20%D1%82%D0%B5%D1%85%D0%BD%D0%B8%D0%BA%D1%83%D0%BC%C2%BB%20%D1%8F%D0%B2%D0%BB%D1%8F%D0%B5%D1%82%D1%81%D1%8F%20%D1%81%D0%BE%D0%B2%D1%80%D0%B5%D0%BC%D0%B5%D0%BD%D0%BD%D1%8B%D0%BC%20%D0%BE%D0%B1%D1%80%D0%B0%D0%B7%D0%BE%D0%B2%D0%B0%D1%82%D0%B5%D0%BB%D1%8C%D0%BD%D1%8B%D0%BC%20%D1%83%D1%87%D1%80%D0%B5%D0%B6%D0%B4%D0%B5%D0%BD%D0%B8%D0%B5%D0%BC%2C%20%D1%83%D1%81%D0%BF%D0%B5%D1%88%D0%BD%D0%BE%20%D0%B3%D0%BE%D1%82%D0%BE%D0%B2%D1%8F%D1%89%D0%B8%D0%BC%20%D0%BA%D0%B0%D0%B4%D1%80%D1%8B%20%D1%81%D1%80%D0%B5%D0%B4%D0%BD%D0%B5%D0%B3%D0%BE%20%D0%B7%D0%B2%D0%B5%D0%BD%D0%B0%20%D0%B4%D0%BB%D1%8F%20%D1%80%D0%B0%D0%B7%D0%B2%D0%B8%D0%B2%D0%B0%D1%8E%D1%89%D0%B5%D0%B9%D1%81%D1%8F%20%D1%8D%D0%BA%D0%BE%D0%BD%D0%BE%D0%BC%D0%B8%D0%BA%D0%B8%20%D0%94%D0%BE%D0%BD%D1%81%D0%BA%D0%BE%D0%B3%D0%BE%20%D0%BA%D1%80%D0%B0%D1%8F.%3C%2Fp%3E&amp;noparse=true" target="_blank" rel="noopener noreferrer" title="Поделиться ВКонтакте" aria-label="Поделиться ВКонтакте">
+        <i class="bi bi-vimeo" aria-hidden="true"></i>
+        <span class="post-share__btn-text">ВКонтакте</span>
+      </a>
+    </li>
+
+    
+    <li class="post-share__item">
+      <a class="post-share__btn post-share__btn--ok" href="https://connect.ok.ru/offer?url=https%3A%2F%2F%D1%81%D0%B8%D1%82-%D1%81%D0%B0%D0%BB%D1%8C%D1%81%D0%BA.%D1%80%D1%84%2Fabiturientam%2Fslovo-direktora%2F&amp;title=%D0%A1%D0%BB%D0%BE%D0%B2%D0%BE%20%D0%B4%D0%B8%D1%80%D0%B5%D0%BA%D1%82%D0%BE%D1%80%D0%B0&amp;description=%3Cp%3E%D0%93%D0%BE%D1%81%D1%83%D0%B4%D0%B0%D1%80%D1%81%D1%82%D0%B2%D0%B5%D0%BD%D0%BD%D0%BE%D0%B5%20%D0%B1%D1%8E%D0%B4%D0%B6%D0%B5%D1%82%D0%BD%D0%BE%D0%B5%20%D0%BF%D1%80%D0%BE%D1%84%D0%B5%D1%81%D1%81%D0%B8%D0%BE%D0%BD%D0%B0%D0%BB%D1%8C%D0%BD%D0%BE%D0%B5%20%D0%BE%D0%B1%D1%80%D0%B0%D0%B7%D0%BE%D0%B2%D0%B0%D1%82%D0%B5%D0%BB%D1%8C%D0%BD%D0%BE%D0%B5%20%D1%83%D1%87%D1%80%D0%B5%D0%B6%D0%B4%D0%B5%D0%BD%D0%B8%D0%B5%20%D0%A0%D0%BE%D1%81%D1%82%D0%BE%D0%B2%D1%81%D0%BA%D0%BE%D0%B9%20%D0%BE%D0%B1%D0%BB%D0%B0%D1%81%D1%82%D0%B8%20%C2%AB%D0%A1%D0%B0%D0%BB%D1%8C%D1%81%D0%BA%D0%B8%D0%B9%20%D0%B8%D0%BD%D0%B4%D1%83%D1%81%D1%82%D1%80%D0%B8%D0%B0%D0%BB%D1%8C%D0%BD%D1%8B%D0%B9%20%D1%82%D0%B5%D1%85%D0%BD%D0%B8%D0%BA%D1%83%D0%BC%C2%BB%20%D1%8F%D0%B2%D0%BB%D1%8F%D0%B5%D1%82%D1%81%D1%8F%20%D1%81%D0%BE%D0%B2%D1%80%D0%B5%D0%BC%D0%B5%D0%BD%D0%BD%D1%8B%D0%BC%20%D0%BE%D0%B1%D1%80%D0%B0%D0%B7%D0%BE%D0%B2%D0%B0%D1%82%D0%B5%D0%BB%D1%8C%D0%BD%D1%8B%D0%BC%20%D1%83%D1%87%D1%80%D0%B5%D0%B6%D0%B4%D0%B5%D0%BD%D0%B8%D0%B5%D0%BC%2C%20%D1%83%D1%81%D0%BF%D0%B5%D1%88%D0%BD%D0%BE%20%D0%B3%D0%BE%D1%82%D0%BE%D0%B2%D1%8F%D1%89%D0%B8%D0%BC%20%D0%BA%D0%B0%D0%B4%D1%80%D1%8B%20%D1%81%D1%80%D0%B5%D0%B4%D0%BD%D0%B5%D0%B3%D0%BE%20%D0%B7%D0%B2%D0%B5%D0%BD%D0%B0%20%D0%B4%D0%BB%D1%8F%20%D1%80%D0%B0%D0%B7%D0%B2%D0%B8%D0%B2%D0%B0%D1%8E%D1%89%D0%B5%D0%B9%D1%81%D1%8F%20%D1%8D%D0%BA%D0%BE%D0%BD%D0%BE%D0%BC%D0%B8%D0%BA%D0%B8%20%D0%94%D0%BE%D0%BD%D1%81%D0%BA%D0%BE%D0%B3%D0%BE%20%D0%BA%D1%80%D0%B0%D1%8F.%3C%2Fp%3E" target="_blank" rel="noopener noreferrer" title="Поделиться в Одноклассниках" aria-label="Поделиться в Одноклассниках">
+        <i class="bi bi-circle-square" aria-hidden="true"></i>
+        <span class="post-share__btn-text">Одноклассники</span>
+      </a>
+    </li>
+
+    
+    <li class="post-share__item">
+      <a class="post-share__btn post-share__btn--tg" href="https://t.me/share/url?url=https%3A%2F%2F%D1%81%D0%B8%D1%82-%D1%81%D0%B0%D0%BB%D1%8C%D1%81%D0%BA.%D1%80%D1%84%2Fabiturientam%2Fslovo-direktora%2F&amp;text=%D0%A1%D0%BB%D0%BE%D0%B2%D0%BE%20%D0%B4%D0%B8%D1%80%D0%B5%D0%BA%D1%82%D0%BE%D1%80%D0%B0" target="_blank" rel="noopener noreferrer" title="Поделиться в Telegram" aria-label="Поделиться в Telegram">
+        <i class="bi bi-telegram" aria-hidden="true"></i>
+        <span class="post-share__btn-text">Telegram</span>
+      </a>
+    </li>
+
+    
+    <li class="post-share__item">
+      <a class="post-share__btn post-share__btn--wa" href="https://api.whatsapp.com/send?text=%D0%A1%D0%BB%D0%BE%D0%B2%D0%BE%20%D0%B4%D0%B8%D1%80%D0%B5%D0%BA%D1%82%D0%BE%D1%80%D0%B0%20https%3A%2F%2F%D1%81%D0%B8%D1%82-%D1%81%D0%B0%D0%BB%D1%8C%D1%81%D0%BA.%D1%80%D1%84%2Fabiturientam%2Fslovo-direktora%2F" target="_blank" rel="noopener noreferrer" title="Поделиться в WhatsApp" aria-label="Поделиться в WhatsApp">
+        <i class="bi bi-whatsapp" aria-hidden="true"></i>
+        <span class="post-share__btn-text">WhatsApp</span>
+      </a>
+    </li>
+
+    
+    <li class="post-share__item">
+      <a class="post-share__btn post-share__btn--vb" href="viber://forward?text=%D0%A1%D0%BB%D0%BE%D0%B2%D0%BE%20%D0%B4%D0%B8%D1%80%D0%B5%D0%BA%D1%82%D0%BE%D1%80%D0%B0%20https%3A%2F%2F%D1%81%D0%B8%D1%82-%D1%81%D0%B0%D0%BB%D1%8C%D1%81%D0%BA.%D1%80%D1%84%2Fabiturientam%2Fslovo-direktora%2F" target="_blank" rel="noopener noreferrer" title="Поделиться в Viber" aria-label="Поделиться в Viber">
+        <i class="bi bi-chat-dots" aria-hidden="true"></i>
+        <span class="post-share__btn-text">Viber</span>
+      </a>
+    </li>
+
+    
+    <li class="post-share__item">
+      <a class="post-share__btn post-share__btn--mail" href="mailto:?subject=%D0%A1%D0%BB%D0%BE%D0%B2%D0%BE%20%D0%B4%D0%B8%D1%80%D0%B5%D0%BA%D1%82%D0%BE%D1%80%D0%B0&amp;body=%3Cp%3E%D0%93%D0%BE%D1%81%D1%83%D0%B4%D0%B0%D1%80%D1%81%D1%82%D0%B2%D0%B5%D0%BD%D0%BD%D0%BE%D0%B5%20%D0%B1%D1%8E%D0%B4%D0%B6%D0%B5%D1%82%D0%BD%D0%BE%D0%B5%20%D0%BF%D1%80%D0%BE%D1%84%D0%B5%D1%81%D1%81%D0%B8%D0%BE%D0%BD%D0%B0%D0%BB%D1%8C%D0%BD%D0%BE%D0%B5%20%D0%BE%D0%B1%D1%80%D0%B0%D0%B7%D0%BE%D0%B2%D0%B0%D1%82%D0%B5%D0%BB%D1%8C%D0%BD%D0%BE%D0%B5%20%D1%83%D1%87%D1%80%D0%B5%D0%B6%D0%B4%D0%B5%D0%BD%D0%B8%D0%B5%20%D0%A0%D0%BE%D1%81%D1%82%D0%BE%D0%B2%D1%81%D0%BA%D0%BE%D0%B9%20%D0%BE%D0%B1%D0%BB%D0%B0%D1%81%D1%82%D0%B8%20%C2%AB%D0%A1%D0%B0%D0%BB%D1%8C%D1%81%D0%BA%D0%B8%D0%B9%20%D0%B8%D0%BD%D0%B4%D1%83%D1%81%D1%82%D1%80%D0%B8%D0%B0%D0%BB%D1%8C%D0%BD%D1%8B%D0%B9%20%D1%82%D0%B5%D1%85%D0%BD%D0%B8%D0%BA%D1%83%D0%BC%C2%BB%20%D1%8F%D0%B2%D0%BB%D1%8F%D0%B5%D1%82%D1%81%D1%8F%20%D1%81%D0%BE%D0%B2%D1%80%D0%B5%D0%BC%D0%B5%D0%BD%D0%BD%D1%8B%D0%BC%20%D0%BE%D0%B1%D1%80%D0%B0%D0%B7%D0%BE%D0%B2%D0%B0%D1%82%D0%B5%D0%BB%D1%8C%D0%BD%D1%8B%D0%BC%20%D1%83%D1%87%D1%80%D0%B5%D0%B6%D0%B4%D0%B5%D0%BD%D0%B8%D0%B5%D0%BC%2C%20%D1%83%D1%81%D0%BF%D0%B5%D1%88%D0%BD%D0%BE%20%D0%B3%D0%BE%D1%82%D0%BE%D0%B2%D1%8F%D1%89%D0%B8%D0%BC%20%D0%BA%D0%B0%D0%B4%D1%80%D1%8B%20%D1%81%D1%80%D0%B5%D0%B4%D0%BD%D0%B5%D0%B3%D0%BE%20%D0%B7%D0%B2%D0%B5%D0%BD%D0%B0%20%D0%B4%D0%BB%D1%8F%20%D1%80%D0%B0%D0%B7%D0%B2%D0%B8%D0%B2%D0%B0%D1%8E%D1%89%D0%B5%D0%B9%D1%81%D1%8F%20%D1%8D%D0%BA%D0%BE%D0%BD%D0%BE%D0%BC%D0%B8%D0%BA%D0%B8%20%D0%94%D0%BE%D0%BD%D1%81%D0%BA%D0%BE%D0%B3%D0%BE%20%D0%BA%D1%80%D0%B0%D1%8F.%3C%2Fp%3E%250A%250Ahttps%3A%2F%2F%D1%81%D0%B8%D1%82-%D1%81%D0%B0%D0%BB%D1%8C%D1%81%D0%BA.%D1%80%D1%84%2Fabiturientam%2Fslovo-direktora%2F" title="Отправить по почте" aria-label="Отправить по почте">
+        <i class="bi bi-envelope" aria-hidden="true"></i>
+        <span class="post-share__btn-text">Почта</span>
+      </a>
+    </li>
+
+    
+    <li class="post-share__item">
+      <button class="post-share__btn post-share__btn--copy" type="button" title="Копировать ссылку" aria-label="Копировать ссылку" onclick="(function(b){navigator.clipboard.writeText('https://сит-сальск.рф/abiturientam/slovo-direktora/').then(function(){var t=b.querySelector('.post-share__btn-text');var o=t.textContent;t.textContent='Скопировано';setTimeout(function(){t.textContent=o;},1500);});})(this)">
+        <i class="bi bi-link-45deg" aria-hidden="true"></i>
+        <span class="post-share__btn-text">Копировать</span>
+      </button>
+    </li>
+
+    
+    <li class="post-share__item post-share__item--native">
+      <button class="post-share__btn post-share__btn--native" type="button" title="Поделиться через систему" aria-label="Поделиться через систему" onclick="navigator.share({title:document.title,url:'https://сит-сальск.рф/abiturientam/slovo-direktora/'}).catch(function(){});">
+        <i class="bi bi-three-dots" aria-hidden="true"></i>
+        <span class="post-share__btn-text">Ещё</span>
+      </button>
+    </li>
+
+  </ul>
+
+  <script>
+    (function(){
+      if (navigator.share) {
+        var el = document.currentScript.parentNode.querySelector('.post-share__item--native');
+        if (el) el.hidden = false;
+      }
+    })();
+  </script>
+</aside>
