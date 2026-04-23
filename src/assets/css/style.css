@@ -4403,6 +4403,52 @@ html {
   align-items: start;
 }
 
+/* ============================================
+   LAYOUT: HOME — сквозной сайдбар (3.3.2.4)
+   Секция 7 — колонка ~30% слева, идёт от
+   Секции 3 (About) до Секции 6 (Популярное).
+   ============================================ */
+.home-with-sidebar {
+  display: grid;
+  grid-template-columns: 30% 1fr;
+  gap: 2rem;
+  align-items: start;
+}
+
+.home-sidebar {
+  position: sticky;
+  top: 80px;
+  align-self: start;
+}
+
+.home-content {
+  min-width: 0;
+}
+
+/* Внутри правой колонки секции уже добавляют свои отступы/контейнеры —
+   убираем повторный container max-width, чтобы не сжимать контент дважды. */
+.home-content > section > .container,
+.home-content > section .container {
+  max-width: 100%;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+@media (max-width: 991px) {
+  .home-with-sidebar {
+    grid-template-columns: 1fr;
+  }
+
+  .home-sidebar {
+    position: static;
+    order: 2;
+  }
+
+  .home-content {
+    order: 1;
+  }
+}
+
 .content-sidebar-grid--full {
   grid-template-columns: 1fr;
 }
