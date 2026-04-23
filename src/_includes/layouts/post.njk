@@ -193,20 +193,21 @@
   <nav class="section-backnav" aria-label="Навигация по материалам">
     <div class="container">
 
+      {% set _bnLabels = sectionLabels or { byUrl: {}, bySlug: {} } %}
+      {% set _bnKey = category or section %}
+      {% set _bnSlug = _bnKey | slugify if _bnKey else "" %}
+      {% set _bnUrl = "/" + _bnSlug + "/" if _bnSlug else "" %}
+      {% set _bnLabel = categoryTitle or sectionTitle or _bnLabels.byUrl[_bnUrl] or _bnLabels.bySlug[_bnSlug] or _bnLabels.bySlug[_bnKey] or _bnKey %}
+
       {% if parentSection %}
       <a href="{{ parentSection.url }}" class="backnav-link backnav-link--parent">
         <i class="bi bi-arrow-left-circle" aria-hidden="true"></i>
         {{ parentSection.title }}
       </a>
-      {% elif category %}
-      <a href="/{{ category | slugify }}/" class="backnav-link backnav-link--parent">
+      {% elif _bnKey %}
+      <a href="{{ _bnUrl }}" class="backnav-link backnav-link--parent">
         <i class="bi bi-arrow-left-circle" aria-hidden="true"></i>
-        {{ categoryTitle or category }}
-      </a>
-      {% elif section %}
-      <a href="/{{ section | slugify }}/" class="backnav-link backnav-link--parent">
-        <i class="bi bi-arrow-left-circle" aria-hidden="true"></i>
-        {{ sectionTitle or section }}
+        {{ _bnLabel }}
       </a>
       {% else %}
       <a href="/" class="backnav-link backnav-link--parent">
