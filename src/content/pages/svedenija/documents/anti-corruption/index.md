@@ -14,5 +14,5 @@ breadcrumb:
 rubric: "0"
 ---
 
-{% set antiCorruption = collections["anti-corruption-data"][0].data.sections %}
+{% set antiCorruption = antiCorruption.sections %}
 {% include "components/anti-corruption-content.njk" %}
