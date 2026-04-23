@@ -57,22 +57,6 @@
 
       <header class="post-header">
 
-        {% if category or section %}
-        <div class="post-header__rubric">
-          {% if category %}
-          <a href="/{{ category | slugify }}/" class="post-rubric-badge">
-            <i class="bi bi-folder2-open" aria-hidden="true"></i>
-            {{ categoryTitle or category }}
-          </a>
-          {% elif section %}
-          <a href="/{{ section | slugify }}/" class="post-rubric-badge">
-            <i class="bi bi-folder2-open" aria-hidden="true"></i>
-            {{ sectionTitle or section }}
-          </a>
-          {% endif %}
-        </div>
-        {% endif %}
-
         {% if showHero == false %}
         <h1 class="post-title" itemprop="headline">{{ title }}</h1>
         {% else %}
