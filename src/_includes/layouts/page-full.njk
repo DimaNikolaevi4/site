@@ -144,7 +144,10 @@
                   <header class="card-header">
                     {% set _cat = item.data.category or item.data.section %}
                     {% if _cat %}
-                    <span class="card-category">{{ sectionLabels.bySlug[_cat] or _cat }}</span>
+                    {% set _catSlug = _cat | slugify %}
+                    {% set _catUrl = "/" + _catSlug + "/" %}
+                    {% set _catLabel = sectionLabels.byUrl[_catUrl] or sectionLabels.bySlug[_catSlug] or sectionLabels.bySlug[_cat] or _cat %}
+                    <a href="{{ _catUrl }}" class="card-category">{{ _catLabel }}</a>
                     {% endif %}
                     <h3 class="card-title">
                       <a href="{{ item.url }}" itemprop="url">

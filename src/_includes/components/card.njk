@@ -16,7 +16,11 @@
   <div class="card-content">
     <header class="card-header">
       {% if card.category %}
-      <span class="card-category">{{ card.category }}</span>
+      {% set _cardLabels = sectionLabels or { byUrl: {}, bySlug: {} } %}
+      {% set _cardSlug = card.category | slugify %}
+      {% set _cardUrl = "/" + _cardSlug + "/" %}
+      {% set _cardLabel = card.categoryTitle or _cardLabels.byUrl[_cardUrl] or _cardLabels.bySlug[_cardSlug] or _cardLabels.bySlug[card.category] or card.category %}
+      <a href="{{ _cardUrl }}" class="card-category">{{ _cardLabel }}</a>
       {% endif %}
       
       <h3 class="card-title">
