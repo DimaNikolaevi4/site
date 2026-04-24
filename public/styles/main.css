@@ -2922,15 +2922,9 @@ body.dark-theme .site-footer .footer-resources {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-
-  background: #5fcf80;
-  border-radius: 10px;
-  border: 1px solid color-mix(in srgb, #5fcf80, #1f2a23 25%);
-=======
   background: #fff;
   border-radius: 10px;
   border: 1px solid var(--footer-border);
-
   overflow: hidden;
 }
 .site-footer .footer-resource-icon img {
