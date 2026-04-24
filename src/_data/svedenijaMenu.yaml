@@ -19,12 +19,18 @@
 - title: Стипендии и поддержка
   url: /svedenija/stipend/
   key: stipend
+- title: Платные образовательные услуги
+  url: /svedenija/paid-services/
+  key: paid-services
 - title: Финансово-хозяйственная деятельность
   url: /svedenija/finance/
   key: finance
 - title: Вакантные места
   url: /svedenija/vacancies/
   key: vacancies
+- title: Трудоустройство выпускников
+  url: /svedenija/employment/
+  key: employment
 - title: Доступная среда
   url: /svedenija/access/
   key: access
