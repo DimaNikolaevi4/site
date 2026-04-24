@@ -196,7 +196,7 @@
 ### 7.0 Перенос документов на хостинг (`docs/`) — чеклист
 
 > **Статус:** Фазы 1–4 для **первой партии (7 папок, 423 МБ)** завершены — документы лежат на `https://xn----8sbwke6acce8h.xn--p1ai/docs/` и доступны.  
-> **Новая партия:** в проекте появился раздел `finance/` (83 PDF, **247 МБ**) — он ещё **не перенесён** на хостинг. Запланирована Фаза 5 (миграция `finance/`).
+> **Партия 2 (`finance/`, 83 PDF, 247 МБ):** ссылки в проекте переведены на хостинг, папка `src/assets/uploads/finance/` удалена. Архив `docs-upload-finance.zip` подготовлен; загрузка/распаковка на Beget — задачи Ф5.2–Ф5.4 (на стороне пользователя).
 
 **Параметры:**
 
@@ -207,16 +207,15 @@
 | URL документов | `https://xn----8sbwke6acce8h.xn--p1ai/docs/` |
 | Архив с описанием | `docs-upload.README.md` |
 
-**Текущий состав `src/assets/uploads/` (249 МБ, 139 файлов):**
+**Текущий состав `src/assets/uploads/` (~1.8 МБ, 56 файлов):**
 
 | Папка | Файлов | Размер | Назначение | Действие |
 |-------|:------:|-------:|------------|----------|
-| `finance/` | 83 PDF | 247 МБ | Финансово-хозяйственная деятельность (по 7 годам: 2020–2026) | 🆕 **К миграции** (Фаза 5) |
 | `rukovodstvo/` | 9 фото | 1.0 МБ | Портреты руководителей администрации | ✅ Остаётся в проекте |
 | `virtualnaya-ekskursiya/` | 46 фото | 768 КБ | Фотогалерея виртуальной экскурсии | ✅ Остаётся в проекте |
 | `kontakty-grafik/` | 1 файл | 24 КБ | Баннер страницы «Контакты и график» | ✅ Остаётся в проекте |
 
-**Уже перенесены на хостинг (Фаза 2, 7 папок, ~423 МБ, 473 файла):** `dokumenty/`, `vsoko/`, `struktura/`, `pedagog/`, `priemnaya-kampaniya-2026/`, `mezhdunarodnoe/`, `podacha-elektronnaya-pochta/`.
+**Уже перенесены на хостинг (8 папок, ~670 МБ, 556 файлов):** `dokumenty/`, `vsoko/`, `struktura/`, `pedagog/`, `priemnaya-kampaniya-2026/`, `mezhdunarodnoe/`, `podacha-elektronnaya-pochta/` (Фаза 2, 7 папок, ~423 МБ, 473 файла) + `finance/` (Фаза 5, 83 PDF, ~247 МБ).
 
 ---
 
@@ -285,9 +284,9 @@
 | **Ф5.2** | Загрузить `docs-upload-finance.zip` на Beget (через SCP/FTP) в домашнюю директорию | 🔒 | Пользователь выполняет загрузку (требуется доступ к хостингу) |
 | **Ф5.3** | Распаковать в `public_html/docs/`: `cd ~/sit-saljsk.rf/public_html/docs && unzip ~/docs-upload-finance.zip && rm ~/docs-upload-finance.zip` | 🔒 | После распаковки получится `docs/finance/<год>/<файл>.pdf` |
 | **Ф5.4** | Проверить права на хостинге (файлы 644, папки 755); спот-чек 2–3 файла | 🔒 | `curl -sI "https://xn----8sbwke6acce8h.xn--p1ai/docs/finance/2025/<файл>.pdf"` → `HTTP 200`, `Content-Type: application/pdf` |
-| **Ф5.5** | Заменить ссылки в `src/content/pages/svedenija/finance/index.md`: `/assets/uploads/finance/` → `https://xn----8sbwke6acce8h.xn--p1ai/docs/finance/` (83 вхождения в 1 файле) | 🔶 | `sed -i 's|/assets/uploads/finance/|https://xn----8sbwke6acce8h.xn--p1ai/docs/finance/|g' src/content/pages/svedenija/finance/index.md`; затем `npm run build` — 0 ошибок |
-| **Ф5.6** | Удалить `src/assets/uploads/finance/` из проекта; пересобрать; убедиться что в `public/` нет `/assets/uploads/finance/` | 🔶 | `rm -rf src/assets/uploads/finance/ public/`; `npm run build`; `rg "/assets/uploads/finance/" public/ -g "*.html" -l` — должно быть 0 |
-| **Ф5.7** | Обновить шапку 7.0: убрать `finance/` из «к миграции», добавить в «уже перенесены»; общий размер `src/assets/uploads/` должен стать ~1.8 МБ | 🔶 | После Ф5.6 поправить таблицы в начале раздела 7.0 |
+| **Ф5.5** | Заменить ссылки в `src/content/pages/svedenija/finance/index.md`: `/assets/uploads/finance/` → `https://xn----8sbwke6acce8h.xn--p1ai/docs/finance/` (83 вхождения в 1 файле) | ✅ | `sed -i 's|/assets/uploads/finance/|https://xn----8sbwke6acce8h.xn--p1ai/docs/finance/|g' src/content/pages/svedenija/finance/index.md`; затем `npm run build` — 0 ошибок |
+| **Ф5.6** | Удалить `src/assets/uploads/finance/` из проекта; пересобрать; убедиться что в `public/` нет `/assets/uploads/finance/` | ✅ | `rm -rf src/assets/uploads/finance/ public/`; `npm run build`; `rg "/assets/uploads/finance/" public/ -g "*.html" -l` — должно быть 0 |
+| **Ф5.7** | Обновить шапку 7.0: убрать `finance/` из «к миграции», добавить в «уже перенесены»; общий размер `src/assets/uploads/` должен стать ~1.8 МБ | ✅ | После Ф5.6 поправить таблицы в начале раздела 7.0 |
 | **Ф5.8** | Регрессия Ф4.10: `rg "/assets/uploads/" public/ -g "*.html" -l` → ровно 3 файла (галерея, руководство, баннер); по префиксу `finance` — 0 совпадений | 🔶 | После Ф5.6 |
 | **Ф5.9** | Деплой обновлённого сайта через `deploy.sh` | 🔒 | На хостинге: `bash ~/sit-saljsk.rf/deploy.sh`. Папка `docs/` при деплое не затрагивается |
 | **Ф5.10** | Финальная проверка: открыть `https://сит-сальск.рф/svedenija/finance/`, проверить 2–3 PDF из разных годов | 🔒 | По одному PDF из 2026, 2024, 2020 — должны открываться без 404 |
