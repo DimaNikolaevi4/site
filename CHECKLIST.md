@@ -221,60 +221,31 @@
 
 ---
 
-#### Фаза 2. Обновление ссылок в проекте Eleventy (по папкам)
+#### Задачи Фаз 2–4
 
-> Выполняется **по одной папке за раз**; каждый перенос — отдельный коммит.  
-> Порядок: по убыванию размера (`dokumenty` → `vsoko` → `struktura` → ...).
-
-**Карта переноса:**
-
-| Папка | Связь с разделом | Файлов | Размер | Статус |
-|-------|-----------------|-------:|-------:|:------:|
-| `dokumenty/` | 7.2.3 Документы + 7.2.4 Антикоррупция | 304 | 322 МБ | ❌ |
-| `vsoko/` | 7.2.3.1 ВСОКО | 90 | 84 МБ | ❌ |
-| `struktura/` | 7.2.2 Структура и органы управления | 33 | 9.7 МБ | ❌ |
-| `pedagog/` | 7.2.8.1 Педагогический состав | 16 | 3.6 МБ | ❌ |
-| `priemnaya-kampaniya-2026/` | 7.1.3 Приёмная кампания 2026 | 15 | 2.4 МБ | ❌ |
-| `mezhdunarodnoe/` | 7.2.7 Международное сотрудничество | 9 | 1.6 МБ | ❌ |
-| `podacha-elektronnaya-pochta/` | 7.1.6 + 7.1.7 Подача документов (бланки) | 6 | 336 КБ | ❌ |
-
-**Шаги для каждой папки (2.1–2.5):**
-
-| Шаг | Действие | Кто | Подробности |
-|-----|----------|-----|-------------|
-| 2.1 | Найти все ссылки на старый путь | агент | `rg "/assets/uploads/<папка>/" src/` — зафиксировать список файлов с совпадениями |
-| 2.2 | Заменить ссылки на абсолютный URL хостинга | агент | Старый путь: `/assets/uploads/<папка>/имя.pdf` → Новый: `https://xn----8sbwke6acce8h.xn--p1ai/docs/<папка>/имя.pdf` |
-| 2.3 | Проверить сборку: `npm run build` | агент | Убедиться в 0 ошибок; просмотреть HTML затронутых страниц — ссылки должны вести на `docs/` |
-| 2.4 | Открыть 2–3 документа в браузере, проверить HTTP 200 | агент/пользователь | Убедиться что документы открываются с нового URL |
-| 2.5 | Удалить папку из проекта и закоммитить | агент | `git rm -r src/assets/uploads/<папка>/`, затем `git commit -m "feat(docs): migrate <папка> to hosting"` и пуш |
-
----
-
-#### Фаза 3. Финальная очистка
-
-| № | Задача | Статус | Подробности |
-|---|--------|:------:|-------------|
-| 3.1 | Добавить 301-редиректы в `.htaccess` хостинга | ❌ | `RedirectMatch 301 ^/assets/uploads/(.*)$ /docs/$1` — для обратной совместимости со старыми ссылками |
-| 3.2 | Убедиться что в `src/assets/uploads/` остались только контентные изображения | ❌ | Должны быть только: `rukovodstvo/` (9 фото), `virtualnaya-ekskursiya/` (46 фото), `kontakty-grafik/` (1 баннер) |
-| 3.3 | Финальный `npm run build` — убедиться в 0 ошибок и корректном HTML | ❌ | Проверить что ни в одной собранной странице нет пути `/assets/uploads/` |
-| 3.4 | Деплой обновлённого сайта на хостинг через `deploy.sh` | ❌ | `bash deploy.sh` на хостинге; сайт публикуется из ветки `main` |
-
----
-
-#### Фаза 4. Проверка работы с документами на сайте
-
-| № | Задача | Статус | URL для проверки |
-|---|--------|:------:|-----------------|
-| 4.1 | Раздел «Документы» — все файлы открываются | ❌ | `/documents/` |
-| 4.2 | Раздел «Противодействие коррупции» — все файлы открываются | ❌ | `/bezopasnost/antikorrupcija/` |
-| 4.3 | Раздел «ВСОКО» (Внутренняя система оценки качества) — файлы доступны | ❌ | `/svedenija/dokumenty/vsoko/` |
-| 4.4 | Раздел «Структура и органы управления» — документы открываются | ❌ | `/svedenija/structure/` |
-| 4.5 | Раздел «Педагогический состав» — файлы педагогов скачиваются | ❌ | `/svedenija/rukovodstvo/pedagogicheskiy-sostav/` |
-| 4.6 | Раздел «Приёмная кампания 2026» — все 14+ документов доступны | ❌ | `/abiturientam/priemnaya-kampaniya-2025/` |
-| 4.7 | Раздел «Подача документов» — 6 бланков заявлений скачиваются | ❌ | `/abiturientam/podacha-elektronnaya-pochta/` |
-| 4.8 | Раздел «Международное сотрудничество» — файлы открываются | ❌ | `/svedenija/obrazovanie/mezhdunarodnoe/` |
-| 4.9 | Спот-чек командой: по 2–3 файла из каждой папки — `HTTP/2 200` и корректный `Content-Type` | ❌ | `curl -I "https://сит-сальск.рф/docs/dokumenty/<файл>.pdf"` и т.д. |
-| 4.10 | Убедиться что в итоговом HTML нет ни одного пути `/assets/uploads/` (только `/docs/` или контентные `/assets/uploads/rukovodstvo/` и т.п.) | ❌ | `rg "/assets/uploads/" public/ --include="*.html"` — должны остаться только контентные изображения |
+| Задача | Статус | Промт / Рекомендации |
+|--------|:------:|----------------------|
+| **Ф2.1** Мигрировать `dokumenty/` — 304 файла, 322 МБ (обновить ссылки → пересобрать → удалить из проекта) | ❌ | `rg "/assets/uploads/dokumenty/" src/` — список файлов с совпадениями; заменить все вхождения на `https://xn----8sbwke6acce8h.xn--p1ai/docs/dokumenty/`; `npm run build` — убедиться в 0 ошибок; проверить 2–3 URL в браузере; `git rm -r src/assets/uploads/dokumenty/ && git commit -m "feat(docs): migrate dokumenty to hosting" && git push` |
+| **Ф2.2** Мигрировать `vsoko/` — 90 файлов, 84 МБ | ❌ | Аналогично Ф2.1. Заменить `/assets/uploads/vsoko/` → `https://xn----8sbwke6acce8h.xn--p1ai/docs/vsoko/`; `git commit -m "feat(docs): migrate vsoko to hosting"` |
+| **Ф2.3** Мигрировать `struktura/` — 33 файла, 9.7 МБ | ❌ | Аналогично Ф2.1. Заменить `/assets/uploads/struktura/` → `https://xn----8sbwke6acce8h.xn--p1ai/docs/struktura/`; `git commit -m "feat(docs): migrate struktura to hosting"` |
+| **Ф2.4** Мигрировать `pedagog/` — 16 файлов, 3.6 МБ | ❌ | Аналогично Ф2.1. Заменить `/assets/uploads/pedagog/` → `https://xn----8sbwke6acce8h.xn--p1ai/docs/pedagog/`; `git commit -m "feat(docs): migrate pedagog to hosting"` |
+| **Ф2.5** Мигрировать `priemnaya-kampaniya-2026/` — 15 файлов, 2.4 МБ | ❌ | Аналогично Ф2.1. Заменить `/assets/uploads/priemnaya-kampaniya-2026/` → `https://xn----8sbwke6acce8h.xn--p1ai/docs/priemnaya-kampaniya-2026/`; `git commit -m "feat(docs): migrate priemnaya-kampaniya to hosting"` |
+| **Ф2.6** Мигрировать `mezhdunarodnoe/` — 9 файлов, 1.6 МБ | ❌ | Аналогично Ф2.1. Заменить `/assets/uploads/mezhdunarodnoe/` → `https://xn----8sbwke6acce8h.xn--p1ai/docs/mezhdunarodnoe/`; `git commit -m "feat(docs): migrate mezhdunarodnoe to hosting"` |
+| **Ф2.7** Мигрировать `podacha-elektronnaya-pochta/` — 6 файлов, 336 КБ | ❌ | Аналогично Ф2.1. Заменить `/assets/uploads/podacha-elektronnaya-pochta/` → `https://xn----8sbwke6acce8h.xn--p1ai/docs/podacha-elektronnaya-pochta/`; `git commit -m "feat(docs): migrate podacha to hosting"` |
+| **Ф3.1** Добавить 301-редиректы в `.htaccess` на хостинге | 🔒 | Через SSH или файловый менеджер Beget: в `~/sit-saljsk.rf/public_html/.htaccess` добавить `RedirectMatch 301 ^/assets/uploads/(.*)$ /docs/$1` — обратная совместимость для старых ссылок |
+| **Ф3.2** Убедиться: в `src/assets/uploads/` остались только контентные изображения | ❌ | `ls src/assets/uploads/` — должны быть только `rukovodstvo/` (9 фото), `virtualnaya-ekskursiya/` (46 фото), `kontakty-grafik/` (1 баннер). Всё остальное должно быть уже удалено в Ф2.1–2.7 |
+| **Ф3.3** Финальный `npm run build` — 0 ошибок, в HTML нет `/assets/uploads/` для документов | ❌ | `npm run build && rg "/assets/uploads/" public/ --include="*.html"` — совпадения должны быть только для контентных фото (`rukovodstvo/`, `virtualnaya-ekskursiya/`, `kontakty-grafik/`) |
+| **Ф3.4** Деплой обновлённого сайта через `deploy.sh` | 🔒 | На хостинге Beget выполнить `bash ~/sit-saljsk.rf/deploy.sh`. Папка `docs/` при деплое не затрагивается (исправлено ранее). Сайт публикуется из ветки `main` |
+| **Ф4.1** Раздел «Документы» — все файлы открываются | 🔒 | Открыть `https://сит-сальск.рф/documents/`, убедиться что PDF-ссылки ведут на `docs/` и открываются. `curl -I "https://сит-сальск.рф/docs/dokumenty/<файл>.pdf"` → `200 OK` |
+| **Ф4.2** Раздел «Противодействие коррупции» — файлы открываются | 🔒 | Открыть `https://сит-сальск.рф/bezopasnost/antikorrupcija/`, проверить 2–3 файла из `docs/dokumenty/` |
+| **Ф4.3** Раздел «ВСОКО» — файлы доступны | 🔒 | Открыть `https://сит-сальск.рф/svedenija/dokumenty/vsoko/`, проверить 2–3 файла из `docs/vsoko/` |
+| **Ф4.4** Раздел «Структура и органы управления» — документы открываются | 🔒 | Открыть `https://сит-сальск.рф/svedenija/structure/`, проверить 2–3 файла из `docs/struktura/` |
+| **Ф4.5** Раздел «Педагогический состав» — файлы педагогов скачиваются | 🔒 | Открыть `https://сит-сальск.рф/svedenija/rukovodstvo/pedagogicheskiy-sostav/`, проверить 2–3 документа из `docs/pedagog/` |
+| **Ф4.6** Раздел «Приёмная кампания 2026» — все 15 документов доступны | 🔒 | Открыть `https://сит-сальск.рф/abiturientam/priemnaya-kampaniya-2026/`, проверить 2–3 документа из `docs/priemnaya-kampaniya-2026/` |
+| **Ф4.7** Раздел «Подача документов» — 6 бланков скачиваются | 🔒 | Открыть `https://сит-сальск.рф/abiturientam/podacha-elektronnaya-pochta/`, скачать 2–3 бланка из `docs/podacha-elektronnaya-pochta/` |
+| **Ф4.8** Раздел «Международное сотрудничество» — файлы открываются | 🔒 | Открыть `https://сит-сальск.рф/svedenija/obrazovanie/mezhdunarodnoe/`, проверить 2–3 файла из `docs/mezhdunarodnoe/` |
+| **Ф4.9** Спот-чек через curl: `HTTP/2 200` и `Content-Type: application/pdf` для 2–3 файлов из каждой папки | 🔒 | `for folder in dokumenty vsoko struktura pedagog priemnaya-kampaniya-2026 mezhdunarodnoe podacha-elektronnaya-pochta; do echo "=== $folder ==="; curl -sI "https://сит-сальск.рф/docs/$folder/" | head -2; done` |
+| **Ф4.10** В итоговом HTML нет `/assets/uploads/` для документов (только контентные фото) | ❌ | `rg "/assets/uploads/" public/ --include="*.html" -l` — список должен содержать только страницы с галереей, руководством и контактами |
 
 ---
 
