@@ -1,0 +1,8 @@
+uploads = []
+generated = []
+
+[[outputs]]
+id = "n3nHjSaGrtRWvHmBrblVd"
+uri = "file://docs-upload-finance.zip"
+type = "unspecified"
+title = "docs-upload-finance.zip — архив финансовых отчётов (247 МБ, 83 PDF)"
