@@ -1,1 +1,25 @@
-Nothing should be ignored since only a markdown file (CHECKLIST.md) was modified and there are no build artifacts, dependencies, or temporary files in the changes.attached_assets/docs.zip
+# Зависимости
+node_modules/
+
+# Результат сборки Eleventy
+public/
+
+# Переменные окружения
+.env
+.env.local
+.env.*.local
+
+# Архивы (большие файлы, не хранятся в репозитории)
+attached_assets/docs.zip
+_export/
+*.zip
+
+# Системные файлы
+.DS_Store
+Thumbs.db
+
+# Редакторы
+.vscode/
+.idea/
+*.swp
+*.swo
