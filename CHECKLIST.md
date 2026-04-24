@@ -245,7 +245,7 @@
 | **Ф4.7** Раздел «Подача документов» — 6 бланков скачиваются | 🔒 | Открыть `https://сит-сальск.рф/abiturientam/podacha-elektronnaya-pochta/`, скачать 2–3 бланка из `docs/podacha-elektronnaya-pochta/` |
 | **Ф4.8** Раздел «Международное сотрудничество» — файлы открываются | 🔒 | Открыть `https://сит-сальск.рф/svedenija/obrazovanie/mezhdunarodnoe/`, проверить 2–3 файла из `docs/mezhdunarodnoe/` |
 | **Ф4.9** Спот-чек через curl: `HTTP/2 200` и `Content-Type: application/pdf` для 2–3 файлов из каждой папки | 🔒 | `for folder in dokumenty vsoko struktura pedagog priemnaya-kampaniya-2026 mezhdunarodnoe podacha-elektronnaya-pochta; do echo "=== $folder ==="; curl -sI "https://сит-сальск.рф/docs/$folder/" | head -2; done` |
-| **Ф4.10** В итоговом HTML нет `/assets/uploads/` для документов (только контентные фото) | ❌ | `rg "/assets/uploads/" public/ --include="*.html" -l` — список должен содержать только страницы с галереей, руководством и контактами |
+| **Ф4.10** В итоговом HTML нет `/assets/uploads/` для документов (только контентные фото) | ✅ | Выполнено: чистая пересборка (`rm -rf public/ && npm run build` — Wrote 63, Copied 336, 0 ошибок); `rg "/assets/uploads/" public/ -g "*.html" -l` вернул ровно 3 файла, каждый соответствует разрешённому назначению: `public/abiturientam/virtualnaya-ekskursiya/index.html` (галерея — 92 ссылки на `virtualnaya-ekskursiya/`), `public/svedenija/employees/index.html` (руководство — 9 ссылок на `rukovodstvo/`), `public/abiturientam/kontakty-grafik/index.html` (контакты — 3 ссылки на `kontakty-grafik/`); проверка по 7 документным префиксам (`dokumenty`, `vsoko`, `struktura`, `pedagog`, `priemnaya-kampaniya-2026`, `mezhdunarodnoe`, `podacha-elektronnaya-pochta`) — **0 совпадений** по каждому. |
 
 ---
 
