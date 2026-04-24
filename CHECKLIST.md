@@ -281,7 +281,7 @@
 
 | № | Задача | Статус | Промт / Рекомендации |
 |---|--------|:------:|----------------------|
-| **Ф5.1** | Создать архив `docs-upload-finance.zip` из `src/assets/uploads/finance/` (без сжатия `-0`); обновить `docs-upload.README.md` — добавить раздел «Партия 2: finance/» | 🔶 | `cd src/assets/uploads && zip -0 -r ../../../docs-upload-finance.zip finance/` — структура внутри архива: `finance/<год>/<файл>.pdf` |
+| **Ф5.1** | Создать архив `docs-upload-finance.zip` из `src/assets/uploads/finance/` (без сжатия `-0`); обновить `docs-upload.README.md` — добавить раздел «Партия 2: finance/» | ✅ | `cd src/assets/uploads && zip -0 -r ../../../docs-upload-finance.zip finance/` — структура внутри архива: `finance/<год>/<файл>.pdf` |
 | **Ф5.2** | Загрузить `docs-upload-finance.zip` на Beget (через SCP/FTP) в домашнюю директорию | 🔒 | Пользователь выполняет загрузку (требуется доступ к хостингу) |
 | **Ф5.3** | Распаковать в `public_html/docs/`: `cd ~/sit-saljsk.rf/public_html/docs && unzip ~/docs-upload-finance.zip && rm ~/docs-upload-finance.zip` | 🔒 | После распаковки получится `docs/finance/<год>/<файл>.pdf` |
 | **Ф5.4** | Проверить права на хостинге (файлы 644, папки 755); спот-чек 2–3 файла | 🔒 | `curl -sI "https://xn----8sbwke6acce8h.xn--p1ai/docs/finance/2025/<файл>.pdf"` → `HTTP 200`, `Content-Type: application/pdf` |
