@@ -5001,8 +5001,8 @@ html {
    ============================================ */
 .post-share {
   margin-top: 2rem;
-  padding: 1.1rem 1.25rem 1.25rem;
-  background: #fff;
+  padding: 1.25rem 1.25rem 1.35rem;
+  background: linear-gradient(180deg, #fff 0%, #f7faf8 100%);
   border: 1px solid var(--border-color, #e6ece8);
   border-radius: 14px;
   box-shadow: 0 1px 2px rgba(15, 30, 20, 0.04);
@@ -5029,8 +5029,8 @@ html {
 }
 
 .post-share__list {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
   justify-content: center;
   gap: 0.45rem;
   padding: 0;
@@ -5043,43 +5043,95 @@ html {
   list-style: none;
 }
 
-/* Кнопка/ссылка в стиле .tag, дополненная иконкой */
+/* Карточка-плитка для каждой кнопки шаринга */
 .post-share__tag {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  width: 100%;
+  min-height: 78px;
+  padding: 0.7rem 0.5rem;
+  background: #fff;
+  border: 1px solid var(--border-color, #e6ece8);
+  border-radius: 12px;
+  color: var(--text-secondary, #4a5a52);
+  font-family: inherit;
+  font-size: 0.78rem;
+  font-weight: 500;
+  line-height: 1.2;
+  text-decoration: none;
+  text-align: center;
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease,
+              background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+}
+
+.post-share__icon {
   display: inline-flex;
   align-items: center;
-  gap: 0.4rem;
-  cursor: pointer;
-  font-family: inherit;
-  line-height: 1.2;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: #f1f6f3;
+  color: var(--color-primary, #2d8a47);
+  font-size: 1.1rem;
+  transition: background 0.15s ease, color 0.15s ease;
 }
 
-.post-share__tag .bi,
-.post-share__svg {
+.post-share__icon .bi { line-height: 1; }
+.post-share__icon svg { display: block; }
+
+.post-share__tag-text {
   display: inline-block;
-  font-size: 0.95rem;
-  flex: 0 0 auto;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
-.post-share__tag--btn {
-  /* button-сброс, чтобы выглядел как ссылка-тег */
-  background: var(--bg-card);
-  border: 1px solid var(--border-color);
-  color: var(--text-secondary);
-  padding: 0.2rem 0.7rem;
-  font-size: 0.78rem;
-  border-radius: 20px;
-}
-
-.post-share__tag--btn:hover,
-.post-share__tag--btn:focus-visible {
-  background: var(--color-primary);
-  color: #fff;
-  border-color: var(--color-primary);
+/* Hover / focus — единое поведение для всех кнопок */
+.post-share__tag:hover,
+.post-share__tag:focus-visible {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 10px rgba(15, 30, 20, 0.08);
+  text-decoration: none;
 }
 
 .post-share__tag:focus-visible {
   outline: 2px solid var(--color-primary, #2d8a47);
   outline-offset: 2px;
+}
+
+/* Сброс стилей button */
+.post-share__tag--btn {
+  -webkit-appearance: none;
+          appearance: none;
+}
+
+/* Брендовые акценты при наведении */
+.post-share__tag--vk:hover .post-share__icon,
+.post-share__tag--vk:focus-visible .post-share__icon {
+  background: #0077ff;
+  color: #fff;
+}
+
+.post-share__tag--ok:hover .post-share__icon,
+.post-share__tag--ok:focus-visible .post-share__icon {
+  background: #ee8208;
+  color: #fff;
+}
+
+.post-share__tag--mail:hover .post-share__icon,
+.post-share__tag--mail:focus-visible .post-share__icon,
+.post-share__tag--copy:hover .post-share__icon,
+.post-share__tag--copy:focus-visible .post-share__icon,
+.post-share__tag--more:hover .post-share__icon,
+.post-share__tag--more:focus-visible .post-share__icon {
+  background: var(--color-primary, #2d8a47);
+  color: #fff;
 }
 
 /* Состояние «Скопировано» */
@@ -5090,18 +5142,37 @@ html {
   color: #fff;
 }
 
+.post-share__tag.is-copied .post-share__icon {
+  background: rgba(255, 255, 255, 0.2);
+  color: #fff;
+}
+
 @media (max-width: 480px) {
   .post-share {
-    padding: 0.95rem 0.85rem 1.05rem;
+    padding: 1rem 0.85rem 1.1rem;
     border-radius: 12px;
   }
   .post-share__list {
+    grid-template-columns: repeat(2, 1fr);
     gap: 0.4rem;
+  }
+  .post-share__tag {
+    min-height: 72px;
+    padding: 0.6rem 0.4rem;
+    font-size: 0.74rem;
+  }
+  .post-share__icon {
+    width: 32px;
+    height: 32px;
+    font-size: 1rem;
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .post-share__tag { transition: none; }
+  .post-share__tag,
+  .post-share__icon { transition: none; }
+  .post-share__tag:hover,
+  .post-share__tag:focus-visible { transform: none; }
 }
 
 /* --- Мобильная адаптация --- */
