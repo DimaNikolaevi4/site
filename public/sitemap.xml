@@ -259,12 +259,6 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://сит-сальск.рф/svedenija/vacancies/</loc>
-    <lastmod>2026-04-24</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
     <loc>https://сит-сальск.рф/uchebno-metodicheskaja-rabota/</loc>
     <lastmod>2026-04-24</lastmod>
     <changefreq>monthly</changefreq>
@@ -350,6 +344,12 @@
   </url>
   <url>
     <loc>https://сит-сальск.рф/abiturientam/</loc>
+    <lastmod>2026-04-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://сит-сальск.рф/svedenija/vacancies/</loc>
     <lastmod>2026-04-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
