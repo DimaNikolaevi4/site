@@ -30,11 +30,11 @@ npm install js-yaml 2>/dev/null || true
 echo "🔨 Собираем проект..."
 npm run build
 
-# Очищаем public_html (кроме важных файлов)
-echo "🧹 Очищаем public_html..."
+# Очищаем public_html (кроме важных файлов и папки docs/)
+# docs/ — документы вне репозитория (~423 МБ), не перезаписываются при деплое
+echo "🧹 Очищаем public_html (без docs/)..."
 cd ~/sit-saljsk.rf/public_html
-find . -type f ! -name "submit-form.php" ! -name "forms.log" ! -name ".htaccess" -delete
-find . -type d -empty -delete 2>/dev/null || true
+find . -mindepth 1 -maxdepth 1 ! -name "docs" ! -name "submit-form.php" ! -name "forms.log" ! -name ".htaccess" -exec rm -rf {} +
 
 # Копируем новые файлы
 echo "📋 Копируем файлы сборки..."
