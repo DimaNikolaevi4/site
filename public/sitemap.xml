@@ -211,12 +211,6 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://сит-сальск.рф/svedenija/access/</loc>
-    <lastmod>2026-04-24</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
     <loc>https://сит-сальск.рф/svedenija/basic/</loc>
     <lastmod>2026-04-24</lastmod>
     <changefreq>monthly</changefreq>
@@ -271,19 +265,7 @@
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://сит-сальск.рф/svedenija/objects/</loc>
-    <lastmod>2026-04-24</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
     <loc>https://сит-сальск.рф/svedenija/standards/</loc>
-    <lastmod>2026-04-24</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://сит-сальск.рф/svedenija/stipend/</loc>
     <lastmod>2026-04-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
@@ -368,6 +350,24 @@
   </url>
   <url>
     <loc>https://сит-сальск.рф/svedenija/finance/</loc>
+    <lastmod>2026-04-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://сит-сальск.рф/svedenija/objects/</loc>
+    <lastmod>2026-04-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://сит-сальск.рф/svedenija/stipend/</loc>
+    <lastmod>2026-04-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://сит-сальск.рф/svedenija/access/</loc>
     <lastmod>2026-04-24</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
