@@ -338,7 +338,7 @@
 | 9.1.5 Видимый фокус при навигации с клавиатуры | ✅ | Стили в main.css |
 | 9.1.6 Минимальный размер области нажатия 44×44px | 🔶 | Стили для мобильных в main.css. **Рекомендация:** проверить touch-target ≥44×44px у иконок шапки, кнопок offcanvas, переключателей a11y/тёмной темы, пагинации, тегов |
 | 9.1.7 Lighthouse Accessibility ≥ 95 | ❌ | Не проверялось. **Рекомендация:** прогнать Lighthouse Accessibility после деплоя на продакшен; целевой балл ≥95 |
-| 9.1.8 Ссылка «Перейти к основному содержимому» (skip-link) | ❌ | Нужна для навигации с клавиатуры. **Рекомендация:** добавить `<a href="#main-content" class="skip-link">Перейти к основному содержимому</a>` первым элементом `<body>` в `base.njk`; стиль `.skip-link` — visually-hidden + видимый по фокусу |
+| 9.1.8 Ссылка «Перейти к основному содержимому» (skip-link) | ✅ | Нужна для навигации с клавиатуры. **Рекомендация:** добавить `<a href="#main-content" class="skip-link">Перейти к основному содержимому</a>` первым элементом `<body>` в `base.njk`; стиль `.skip-link` — visually-hidden + видимый по фокусу |
 | 9.1.9 Требования ГОСТ Р 52872-2019 выполнены по умолчанию | ✅ | HTML-страницы доступны для скринридеров (NVDA, JAWS), поддерживают увеличение шрифта (Ctrl++), копирование текста. PDF-конвертация новостей избыточна — пользователь может сохранить страницу через «Печать → Сохранить как PDF» (Ctrl+P). Кнопка «Скачать PDF» обязательна только для отдельных документов (приказы, бланки, лицензии) в разделе «Сведения об образовательной организации». |
 | 9.1.10 Тёмная тема (переключатель «луна/солнце») | ✅ | Кнопка `#darkThemeToggle` в шапке (десктоп) и `#darkThemeToggleMobile` в offcanvas (мобильная). `window.toggleDarkTheme` в `src/assets/js/main.js` переключает класс `dark-theme` на `<html>`/`<body>`, сохраняет выбор в localStorage (`sit-dark-theme`), обновляет иконки обеих кнопок (`bi-moon-stars` ⇄ `bi-sun-fill`). Анти-FOUC через инлайн-скрипт в `<head>`. |
 
@@ -358,11 +358,11 @@
 |--------|--------|-------------|
 | 9.3.1 `<title>` на всех страницах | ✅ | `{{ title }}` |
 | 9.3.2 `<meta name="description">` | ✅ | Из frontmatter или site.description |
-| 9.3.3 Open Graph теги (og:title, og:description, og:image) | ❌ | **Рекомендация:** добавить блок `og:title/description/image/type/url` и Twitter Card в `<head>` `base.njk`; дефолтный og:image — логотип сайта |
+| 9.3.3 Open Graph теги (og:title, og:description, og:image) | ✅ | **Рекомендация:** добавить блок `og:title/description/image/type/url` и Twitter Card в `<head>` `base.njk`; дефолтный og:image — логотип сайта |
 | 9.3.4 sitemap.xml | 🔶 | sitemap.njk есть, нужно проверить. **Рекомендация:** открыть `/sitemap.xml` после сборки и убедиться, что в нём все коллекционные URL с актуальными `lastmod` |
-| 9.3.5 robots.txt | ❌ | Файл `src/robots.txt` существует, но в `.eleventy.js` указано `addPassthroughCopy({ "robots.njk": "robots.txt" })` — этого `robots.njk` в проекте нет, поэтому в `public/` файла `robots.txt` не появляется. Нужно либо переименовать источник в `robots.njk`, либо поправить passthrough на `src/robots.txt`. |
-| 9.3.6 Schema.org разметка EducationalOrganization | ❌ | **Рекомендация:** добавить JSON-LD `EducationalOrganization` в `base.njk` на основе `_data/contacts.yaml` и `_data/site.yaml` |
-| 9.3.7 Каноничные URL (`<link rel="canonical">`) | ❌ | **Рекомендация:** `<link rel="canonical" href="{{ site.url }}{{ page.url }}">` в `<head>` `base.njk` |
+| 9.3.5 robots.txt | ✅ | Файл `src/robots.txt` существует, но в `.eleventy.js` указано `addPassthroughCopy({ "robots.njk": "robots.txt" })` — этого `robots.njk` в проекте нет, поэтому в `public/` файла `robots.txt` не появляется. Нужно либо переименовать источник в `robots.njk`, либо поправить passthrough на `src/robots.txt`. |
+| 9.3.6 Schema.org разметка EducationalOrganization | ✅ | **Рекомендация:** добавить JSON-LD `EducationalOrganization` в `base.njk` на основе `_data/contacts.yaml` и `_data/site.yaml` |
+| 9.3.7 Каноничные URL (`<link rel="canonical">`) | ✅ | **Рекомендация:** `<link rel="canonical" href="{{ site.url }}{{ page.url }}">` в `<head>` `base.njk` |
 | 9.3.8 Чистые URL (ЧПУ) | ✅ | Eleventy генерирует /slug/index.html |
 
 ### 9.4 Производительность
@@ -373,7 +373,7 @@
 | 9.4.2 Минификация CSS | ❌ | **Рекомендация:** прогонять `main.css` через `cssnano`/`clean-css` в npm-скрипте сборки; в prod подключать минифицированную версию |
 | 9.4.3 Lazy loading изображений (loading="lazy") | 🔶 | `loading="lazy"` уже добавлен в шаблонах: `about.njk`, `news.njk`, `card.njk`, `related.njk`, `listing.njk`, `page-full.njk` (всего ~46 мест). Не для всех изображений в контенте — нужна сверка по `src/content/` и `src/assets/uploads/`. |
 | 9.4.4 WebP формат для изображений | ❌ | **Рекомендация:** при импорте изображений из `/mirror/` в `src/assets/uploads/` параллельно генерировать `.webp` (sharp/cwebp); в шаблоне карточек/шапки — `<picture>` с fallback на JPG/PNG |
-| 9.4.5 defer / async для JS-скриптов | ❌ | В `base.njk` 8 тегов `<script>` (Bootstrap, AOS, GLightbox, PureCounter, mentor-main.js, main.js, offcanvas-nav.js и др.), ни на одном из них нет `defer` или `async`. |
+| 9.4.5 defer / async для JS-скриптов | ✅ | В `base.njk` 8 тегов `<script>` (Bootstrap, AOS, GLightbox, PureCounter, mentor-main.js, main.js, offcanvas-nav.js и др.), ни на одном из них нет `defer` или `async`. |
 | 9.4.6 Lighthouse Performance ≥ 90 | ❌ | Не проверялось. **Рекомендация:** прогнать Lighthouse Performance после деплоя; цели LCP < 2.5s, CLS < 0.1, TBT < 200ms |
 
 ---
