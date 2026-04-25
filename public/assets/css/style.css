@@ -4404,19 +4404,29 @@ html {
 }
 
 /* ============================================
-   LAYOUT: HOME — сквозной сайдбар (3.3.2.4)
-   Секция 7 (components/sidebar.njk) — колонка ~30%
-   слева на десктопе, идёт от Секции 3 (About) до
-   Секции 6 (Популярное). На мобильном встраивается
-   между Секцией 3 и Секцией 5 — без дублирования
-   разметки (через display:contents + order).
+   LAYOUT: HOME — сквозной сайдбар (канон C, секции 4–7)
+   Секция 5 (components/sidebar.njk) — колонка ~30% слева
+   на десктопе, идёт на всю высоту от Секции 4 (About)
+   до Секции 7 (Популярное). На мобильном встраивается
+   ровно между Секцией 4 и Секцией 6 — натурально,
+   через порядок DOM, без display:contents и без order.
+   Реализация — CSS Grid + grid-template-areas.
    ============================================ */
 .home-with-sidebar {
   display: grid;
   grid-template-columns: 30% 1fr;
+  grid-template-areas:
+    "sidebar about"
+    "sidebar news"
+    "sidebar popular";
   gap: 2rem;
   align-items: start;
 }
+
+.home-with-sidebar > .home-sidebar       { grid-area: sidebar; }
+.home-with-sidebar > .component-about    { grid-area: about; }
+.home-with-sidebar > .component-news     { grid-area: news; }
+.home-with-sidebar > .component-popular  { grid-area: popular; }
 
 .home-sidebar {
   position: sticky;
@@ -4425,56 +4435,35 @@ html {
   z-index: 1;
 }
 
-.home-content {
-  min-width: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 0;
-}
-
 /* Внутри правой колонки секции уже добавляют свои отступы/контейнеры —
    убираем повторный container max-width, чтобы не сжимать контент дважды. */
-.home-content > section > .container,
-.home-content > section .container {
+.home-with-sidebar > section > .container,
+.home-with-sidebar > section .container {
   max-width: 100%;
   padding-left: 0;
   padding-right: 0;
 }
 
-/* Мобильный (≤991px): сетка превращается в одну колонку, .home-content
-   "растворяется" (display:contents) — все его дети-секции становятся
-   прямыми flex-детьми .home-with-sidebar. Через order ставим сайдбар
-   ровно после Секции 3 (About) и перед Секцией 5 (News). Так у нас
-   ровно ОДИН экземпляр sidebar.njk на странице. */
+/* Мобильный (≤991px): grid превращается в одну колонку (flex-стопка).
+   Порядок берётся из DOM: About (4) → Sidebar (5) → News (6) → Popular (7).
+   Никакого order и display:contents — DOM = визуальный порядок. */
 @media (max-width: 991px) {
   .home-with-sidebar {
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
+    grid-template-areas: none;
   }
 
   .home-sidebar {
     position: static;
-    order: 2;
     width: 100%;
-  }
-
-  .home-content {
-    display: contents;
-  }
-
-  .home-content > .component-about         { order: 1; }
-  .home-content > .component-news          { order: 3; }
-  .home-content > .component-popular       { order: 4; }
-  /* fallback на любой <section>, не подпадающий под классы выше */
-  .home-content > section:not(.component-about):not(.component-news):not(.component-popular) {
-    order: 5;
   }
 }
 
 /* ============================================
    COMPONENT: SIDEBAR — единый медиа-баннер
-   (Секция 7, картинка-ссылка под наши стили)
+   (Секция 5, картинка-ссылка под наши стили)
    ============================================ */
 .component-sidebar {
   display: flex;
