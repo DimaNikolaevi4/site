@@ -2922,10 +2922,13 @@ body.dark-theme .site-footer .footer-resources {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  background: #fff;
+  background: #5fcf80;
   border-radius: 10px;
   border: 1px solid var(--footer-border);
   overflow: hidden;
+}
+body.dark-theme .site-footer .footer-resource-icon {
+  background: #fff;
 }
 .site-footer .footer-resource-icon img {
   max-width: 80%;
