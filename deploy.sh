@@ -42,9 +42,9 @@ cp -r ~/sit-saljsk.rf/temp-build/public/* ~/sit-saljsk.rf/public_html/
 cp ~/sit-saljsk.rf/temp-build/submit-form.php ~/sit-saljsk.rf/public_html/ 2>/dev/null || true
 
 # Перемещаем robots.txt в корень если он в папке
-if [ -f "~/sit-saljsk.rf/public_html/robots/index.html" ]; then
-    mv ~/sit-saljsk.rf/public_html/robots/index.html ~/sit-saljsk.rf/public_html/robots.txt
-    rmdir ~/sit-saljsk.rf/public_html/robots 2>/dev/null || true
+if [ -f "$HOME/sit-saljsk.rf/public_html/robots/index.html" ]; then
+    mv "$HOME/sit-saljsk.rf/public_html/robots/index.html" "$HOME/sit-saljsk.rf/public_html/robots.txt"
+    rmdir "$HOME/sit-saljsk.rf/public_html/robots" 2>/dev/null || true
 fi
 
 # Устанавливаем правильные права
@@ -58,4 +58,4 @@ echo "🧹 Удаляем временные файлы..."
 rm -rf ~/sit-saljsk.rf/temp-build
 
 echo "✅ Деплой завершён успешно!"
-echo "🌐 Сайт доступен по адресу: https://sit-saljsk.rf"
+echo "🌐 Сайт доступен по адресу: https://сит-сальск.рф"
