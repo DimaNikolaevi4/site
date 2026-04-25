@@ -2,13 +2,16 @@
   ШАБЛОН ТИП B — layouts/page.njk
   Все 8 секций для страниц разделов (любой уровень)
 
-  Секция 1: Header          — глобальная, в base.njk
-  Секция 2: Hero + Контекст — hero-баннер (опц.), хлебные крошки, заголовок, описание
-  Секция 3+7: Контент + Сайдбар — сетка 70/30 (контент | сайдбар с баннерами)
-  Секция 4: About           — слово директора / заглушка (опц., управляется aboutMode)
-  Секция 5: Materials       — список подрубрик / последние материалы (опц., newsMode)
-  Секция 6: Popular         — популярные разделы (опц., showPopular: true)
-  Секция 8: Нижняя навигация + Footer — глобальная base.njk + возврат к разделу
+  Канон секций (тот же на всём сайте):
+    Секция 1: Header              — components/header.njk        (в base.njk)
+    Секция 2: Hero                — components/hero.njk          (в base.njk)
+    Секция 3: Хлебные крошки      — components/breadcrumbs.njk
+    Секция 4: About               — components/about.njk         (опц., aboutMode)
+    Секция 5: Сайдбар             — components/sidebar.njk       (30% слева, sticky)
+    Секция 6: Материалы / News    — components/news.njk          (опц., newsMode)
+    Секция 7: Популярное          — components/popular.njk       (опц., showPopular)
+    Секция 8: Footer              — components/footer.njk        (в base.njk)
+  + Нижняя навигация (возврат к разделу) — между Секцией 7 и Секцией 8.
 
   Управление секциями через frontmatter:
     hero:              { image, title, subtitle, alt, cta } — включает Hero-баннер
@@ -84,14 +87,14 @@
     <div class="container">
       <div class="content-sidebar-grid{% if not _showSidebar %} content-sidebar-grid--full{% endif %}">
 
-        {# ── Секция 7: Сайдбар (30% левая колонка) ── #}
+        {# ── Секция 5: Сайдбар (30% левая колонка) ── #}
         {% if _showSidebar %}
         <div class="sidebar-col">
           {% include "components/sidebar.njk" %}
         </div>
         {% endif %}
 
-        {# ── Секция 3: Основной контент ── #}
+        {# ── Основной контент страницы ── #}
         <div class="content-col">
           <article class="page-content" itemprop="mainContentOfPage">
             {{ content | safe }}
@@ -137,9 +140,9 @@
 
   {# ═══════════════════════════════════════════════
      Связанные материалы / «Читайте также»
-     Разметка и логика автоподбора — в components/related.njk
+     Разметка и логика автоподбора — в components/_partials/related.njk
   ═══════════════════════════════════════════════ #}
-  {% include "components/related.njk" %}
+  {% include "components/_partials/related.njk" %}
 
   {# ═══════════════════════════════════════════════
      Нижняя навигация (возврат к разделу, пред/след)

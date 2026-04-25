@@ -15,4 +15,4 @@ rubric: "0"
 ---
 
 {% set antiCorruption = antiCorruption.sections %}
-{% include "components/anti-corruption-content.njk" %}
+{% include "components/_partials/anti-corruption-content.njk" %}

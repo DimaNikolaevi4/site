@@ -2,11 +2,14 @@
   ШАБЛОН — layouts/listing.njk
   Листинг новостей / категорий / тегов в новой архитектуре
 
-  Секция 1: Header                — глобальная (base.njk)
-  Секция 2: Hero (опц.) + Контекст — хлебные крошки, заголовок, фильтры, баннер раздела
-  Секции 3+7: Контент 70% (карточки + пагинация) + Сайдбар 30% (единые баннеры)
-  Секция 4: Дополнительные блоки   — опц.
-  Секция 8: Footer                 — глобальная (base.njk)
+  Канон секций (тот же на всём сайте):
+    Секция 1: Header                — components/header.njk      (в base.njk)
+    Секция 2: Hero                  — components/hero.njk        (в base.njk, опц.)
+    Секция 3: Хлебные крошки        — components/breadcrumbs.njk
+    Секция 5: Сайдбар               — components/sidebar.njk     (30% слева)
+    Секция 6: Лента карточек        — содержимое листинга
+    Секция 7: Дополнительные блоки  — опц.
+    Секция 8: Footer                — components/footer.njk      (в base.njk)
 
   Управление через frontmatter:
     title, description
@@ -89,21 +92,21 @@
     <div class="container">
       <div class="content-sidebar-grid{% if not _showSidebar %} content-sidebar-grid--full{% endif %}">
 
-        {# ── Секция 7: Сайдбар (единые баннеры, 30% слева) ── #}
+        {# ── Секция 5: Сайдбар (единые баннеры, 30% слева) ── #}
         {% if _showSidebar %}
         <div class="sidebar-col">
           {% include "components/sidebar.njk" %}
         </div>
         {% endif %}
 
-        {# ── Секция 3: Лента карточек ── #}
+        {# ── Секция 6: Лента карточек ── #}
         <div class="content-col">
           <div class="listing-content">
 
             {% if collections[collectionName] and collections[collectionName].length > 0 %}
             <div class="cards-grid">
               {% for item in collections[collectionName] %}
-                {% include "components/card.njk" with { card: {
+                {% include "components/_partials/card.njk" with { card: {
                   title: item.data.title,
                   url: item.url,
                   image: item.data.image,
@@ -117,7 +120,7 @@
             </div>
 
             {# Пагинация — единый компонент #}
-            {% include "components/pagination.njk" %}
+            {% include "components/_partials/pagination.njk" %}
 
             {% else %}
             <div class="no-results">
@@ -129,7 +132,7 @@
             </div>
             {% endif %}
 
-            {# Секция 4: Дополнительные блоки #}
+            {# Секция 7: Дополнительные блоки #}
             {% if additionalBlocks %}
             <section class="section-extra mt-4" aria-label="Дополнительно">
               <div class="extra-inner">

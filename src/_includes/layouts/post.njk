@@ -175,7 +175,7 @@
         {% endif %}
 
         {# Кнопки «Поделиться» (ВКонтакте, ОК, Telegram, WhatsApp, Viber, Email, копировать) #}
-        {% include "components/share.njk" %}
+        {% include "components/_partials/share.njk" %}
 
       </div>
     </div>
@@ -183,9 +183,9 @@
 
   {# ═══════════════════════════════════════════════
      СЕКЦИЯ 4: «Читайте также»
-     Логика и разметка вынесены в components/related.njk
+     Логика и разметка вынесены в components/_partials/related.njk
   ═══════════════════════════════════════════════ #}
-  {% include "components/related.njk" %}
+  {% include "components/_partials/related.njk" %}
 
   {# ═══════════════════════════════════════════════
      Нижняя навигация: возврат к разделу + пред/след

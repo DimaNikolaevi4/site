@@ -2,15 +2,18 @@
   ЕДИНЫЙ ШАБЛОН ТИПА B — page-full.njk
   7 секций страницы раздела (см. чек-лист 5.3):
 
-  Секция 1: Header                     — глобальная (base.njk)
-  Секция 2: Hero-баннер                — необязательный, управляется через hero.*
+  Канон секций (тот же на всём сайте):
+    Секция 1: Header                   — components/header.njk      (в base.njk)
+    Секция 2: Hero                     — components/hero.njk        (в base.njk, опц.)
             + Контекст (хлебные крошки, заголовок, описание, фильтры)
-  Секция 3: About — заглушка           — components/about.njk (aboutMode='stub')
-  Секция 4: Контент + Сайдбар          — сетка (контент | единый сайдбар 30%)
-  Секция 5: Материалы / Подрубрики     — components/news.njk (subrubrics)
+    Секция 3: Хлебные крошки           — components/breadcrumbs.njk
+    Секция 4: About — заглушка         — components/about.njk       (aboutMode='stub')
+    Секция 5: Сайдбар                  — components/sidebar.njk     (30% слева)
+    Секция 6: Материалы / Подрубрики   — components/news.njk        (subrubrics)
             Динамический список Level 1 / Level 2 на основе rubric (frontmatter)
-  Секция 6: Популярные разделы         — components/popular.njk (заглушка)
-  Секция 7: Footer                     — глобальная (base.njk) + нижняя навигация
+    Секция 7: Популярные разделы       — components/popular.njk     (заглушка)
+    Секция 8: Footer                   — components/footer.njk      (в base.njk)
+  + Нижняя навигация (возврат к разделу) — между Секцией 7 и Секцией 8.
 #}
 {% extends "layouts/base.njk" %}
 
@@ -174,7 +177,7 @@
             </div>
 
             {# Пагинация — единый компонент #}
-            {% include "components/pagination.njk" %}
+            {% include "components/_partials/pagination.njk" %}
 
             {% else %}
             <div class="no-results">

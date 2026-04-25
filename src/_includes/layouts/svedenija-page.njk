@@ -8,13 +8,15 @@ showSidebar: true
   Раздел «Сведения об образовательной организации» (Приказ Рособрнадзора №1493)
 
   Унифицирован со схемой layouts/page.njk:
-    Секция 1: Header                — глобальная (base.njk)
-    Секция 2: Hero (опц.) + Контекст — хлебные крошки + заголовок + описание
-    Секции 3+7: Контент 70% + Сайдбар 30% — единые баннеры слева (components/sidebar.njk)
-    Подсекция: подменю «Сведений» — обязательный набор подразделов по №1493
-    Секция 4: Связанные подразделы (опц.)
-    Нижняя навигация: возврат к /svedenija/
-    Секция 8: Footer                — глобальная (base.njk)
+    Канон секций (тот же на всём сайте):
+    Секция 1: Header                — components/header.njk      (в base.njk)
+    Секция 2: Hero                  — components/hero.njk        (в base.njk, опц.)
+    Секция 3: Хлебные крошки        — components/breadcrumbs.njk
+    Секция 5: Сайдбар               — components/sidebar.njk     (30% слева)
+    Секция 6: Основной контент + подменю «Сведений» (по №1493)
+    Секция 7: Связанные подразделы (опц.)
+    Секция 8: Footer                — components/footer.njk      (в base.njk)
+  + Нижняя навигация (возврат к /svedenija/) — между Секцией 7 и Секцией 8.
 
   Управление через frontmatter страницы:
     title, description
@@ -74,14 +76,14 @@ showSidebar: true
     <div class="container">
       <div class="content-sidebar-grid{% if not _showSidebar %} content-sidebar-grid--full{% endif %}">
 
-        {# ── Секция 7: Сайдбар — единые баннеры (НЕ навигация) ── #}
+        {# ── Секция 5: Сайдбар — единые баннеры (НЕ навигация) ── #}
         {% if _showSidebar %}
         <div class="sidebar-col">
           {% include "components/sidebar.njk" %}
         </div>
         {% endif %}
 
-        {# ── Секция 3: Основной контент + подменю «Сведений» ── #}
+        {# ── Секция 6: Основной контент + подменю «Сведений» ── #}
         <div class="content-col">
 
           {# Подменю раздела (требование №1493 — все 11 подразделов доступны) #}
