@@ -6945,4 +6945,24 @@ body.a11y-high-contrast .backnav-link--next { background: #1a1a1a !important; bo
 body.a11y-high-contrast .backnav-link--parent { background: #1a6620 !important; }
 body.a11y-high-contrast .svedenija-nav-link { color: #fff !important; }
 body.a11y-high-contrast .svedenija-nav-link--active { color: #ff0 !important; }
-body.a11y-high-contrast .tag,
+body.a11y-high-contrast .tag { background: #333 !important; color: #fff !important; border-color: #888 !important; }
+
+/* ─── Skip-link (доступность, WCAG 2.1 AA) ─── */
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: 1rem;
+  z-index: 9999;
+  padding: 0.5rem 1rem;
+  background: #2e7d32;
+  color: #fff;
+  font-size: 1rem;
+  border-radius: 0 0 4px 4px;
+  text-decoration: none;
+  transition: top 0.1s;
+}
+.skip-link:focus {
+  top: 0;
+  outline: 3px solid #ff0;
+  outline-offset: 2px;
+}
