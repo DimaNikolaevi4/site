@@ -301,6 +301,39 @@
     }
   });
 
+  // ─── Якорные ссылки внутри offcanvas (например «Контакты» → #footer) ───
+  // Сначала закрываем панель, и только после полного закрытия плавно
+  // прокручиваем к цели, иначе скролл происходит при заблокированном body.
+  if (offcanvasEl) {
+    offcanvasEl.addEventListener('click', function (e) {
+      var link = e.target.closest('a[href^="#"]');
+      if (!link || !offcanvasEl.contains(link)) return;
+      var hash = link.getAttribute('href');
+      if (!hash || hash === '#' || hash.length < 2) return;
+      var target = document.querySelector(hash);
+      if (!target) return;
+      e.preventDefault();
+      var bsOc = bootstrap.Offcanvas.getInstance(offcanvasEl);
+      var doScroll = function () {
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        if (history.pushState) {
+          history.pushState(null, '', hash);
+        } else {
+          window.location.hash = hash;
+        }
+      };
+      if (bsOc && offcanvasEl.classList.contains('show')) {
+        offcanvasEl.addEventListener('hidden.bs.offcanvas', function once() {
+          offcanvasEl.removeEventListener('hidden.bs.offcanvas', once);
+          setTimeout(doScroll, 20);
+        });
+        bsOc.hide();
+      } else {
+        doScroll();
+      }
+    });
+  }
+
   // ─── Hover-открытие на десктопе ───
   var isPointer = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
   if (isPointer) {
