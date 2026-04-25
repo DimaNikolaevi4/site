@@ -2591,19 +2591,11 @@ body.dark-theme .site-footer {
 }
 
 .site-footer .footer-logo-mark {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 52px;
+  display: block;
+  width: auto;
   height: 52px;
-  border-radius: 12px;
-  background: linear-gradient(135deg, var(--footer-accent), #2fa55a);
-  color: var(--footer-mark-fg);
-  font-family: var(--heading-font);
-  font-weight: 800;
-  font-size: 16px;
-  letter-spacing: 0.05em;
-  box-shadow: 0 8px 20px rgba(95, 207, 128, 0.25);
+  max-height: 52px;
+  object-fit: contain;
   flex-shrink: 0;
 }
 
