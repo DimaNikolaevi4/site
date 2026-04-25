@@ -6,7 +6,7 @@ const NEW_BASE = 'https://xn----8sbwke6acce8h.xn--p1ai/docs/';
 const OLD_RE = /https:\/\/sit-salsk\.ru\/wp-content\/uploads\/\d{4}\/\d{2}\/([^)\s"<>]+)/g;
 
 const serverFiles = new Set(
-  fs.readFileSync('attached_assets/server_list_1777087858156.txt', 'utf8')
+  fs.readFileSync('attached_assets/server_list_1777089935351.txt', 'utf8')
     .split('\n')
     .map(l => l.split(' | ')[0].trim())
     .filter(Boolean)
