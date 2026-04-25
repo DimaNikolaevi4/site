@@ -5,27 +5,27 @@ sections:
     documents:
       - title: ФЗ №273 "О противодействии коррупции"
         date: 25.12.2008
-        type: pdf
-        size: "1.2 МБ"
-        url: "#"
+        type: html
+        size: ""
+        url: "https://pravo.gov.ru/proxy/ips/?docbody=&nd=102120933"
         signed: true
       - title: Указ Президента РФ №460 (Национальная стратегия)
         date: 13.04.2010
-        type: pdf
-        size: "890 КБ"
-        url: "#"
+        type: html
+        size: ""
+        url: "https://pravo.gov.ru/proxy/ips/?docbody=&nd=102139112"
         signed: true
       - title: Указ Президента РФ №378 (Национальный план)
         date: 08.07.2013
-        type: pdf
-        size: "750 КБ"
-        url: "#"
+        type: html
+        size: ""
+        url: "https://pravo.gov.ru/proxy/ips/?docbody=&nd=102168017"
         signed: true
       - title: Приказ Рособрнадзора №1493
         date: 10.12.2021
-        type: pdf
-        size: "2.1 МБ"
-        url: "#"
+        type: html
+        size: ""
+        url: "https://pravo.gov.ru/proxy/ips/?docbody=&nd=402726"
         signed: true
 
   - id: local
