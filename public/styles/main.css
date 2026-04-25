@@ -2458,6 +2458,83 @@ body.dark-theme .about-title {
 }
 
 /*--------------------------------------------------------------
+# Home — сквозной сайдбар (канон C, секции 4–7)
+#
+# Секция 5 (components/sidebar.njk) — колонка ~30% слева на десктопе,
+# идёт на всю высоту от Секции 4 (About) до Секции 7 (Популярное).
+# На мобильном встраивается ровно между Секцией 4 и Секцией 6 —
+# натурально, через порядок DOM, без display:contents и без order.
+# Реализация — CSS Grid + grid-template-areas.
+--------------------------------------------------------------*/
+.home-with-sidebar {
+  display: grid;
+  grid-template-columns: 30% 1fr;
+  grid-template-areas:
+    "sidebar about"
+    "sidebar news"
+    "sidebar popular";
+  gap: 2rem;
+  align-items: start;
+}
+
+.home-with-sidebar > .home-sidebar      { grid-area: sidebar; }
+.home-with-sidebar > .component-about   { grid-area: about; }
+.home-with-sidebar > .component-news    { grid-area: news; }
+.home-with-sidebar > .component-popular { grid-area: popular; }
+
+.home-sidebar {
+  position: sticky;
+  top: 80px;
+  align-self: start;
+  z-index: 1;
+  min-width: 0;
+}
+
+/* Внутри грид-ячеек у секций уже есть свой Bootstrap-контейнер с
+   max-width 1140px — снимаем эту границу, иначе на десктопе он
+   попытается «вырваться» за пределы 70%-ячейки. Боковые padding
+   оставляем нормальные, чтобы Bootstrap .row (с margin: -.75rem)
+   не уезжал под сайдбар. */
+.home-with-sidebar > section > .container,
+.home-with-sidebar > section .container {
+  max-width: 100%;
+}
+
+/* На вёрстке секций About / News / Popular внутри грида убираем
+   собственные верхние/нижние padding (60px из mentor-темы), чтобы
+   три блока в правой колонке шли единым ритмом, согласованным с gap. */
+.home-with-sidebar > .component-about,
+.home-with-sidebar > .component-news,
+.home-with-sidebar > .component-popular {
+  padding-top: 0;
+  padding-bottom: 0;
+  min-width: 0;
+}
+
+/* Мобильный (≤991px): грид схлопывается в одну колонку (flex-стопка).
+   Порядок берётся из DOM: About (4) → Sidebar (5) → News (6) → Popular (7). */
+@media (max-width: 991px) {
+  .home-with-sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    grid-template-areas: none;
+  }
+
+  .home-sidebar {
+    position: static;
+    width: 100%;
+  }
+
+  .home-with-sidebar > .component-about,
+  .home-with-sidebar > .component-news,
+  .home-with-sidebar > .component-popular {
+    padding-top: 60px;
+    padding-bottom: 60px;
+  }
+}
+
+/*--------------------------------------------------------------
 # Site Footer (новый дизайн в фирменной палитре)
 --------------------------------------------------------------*/
 .site-footer {
