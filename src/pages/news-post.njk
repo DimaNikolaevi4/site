@@ -61,7 +61,10 @@ pagination:
               <a href="{{ other.url }}">{{ other.data.title }}</a>
             </h3>
             <p class="news-card__excerpt">{{ other.data.excerpt or other.templateContent | truncate(150) }}</p>
-            <a href="{{ other.url }}" class="news-card__link">Читать далее →</a>
+            <a href="{{ other.url }}" class="read-more" aria-label="Читать полностью — {{ other.data.title }}">
+              <span>Читать полностью</span>
+              <i class="bi bi-arrow-right" aria-hidden="true"></i>
+            </a>
           </article>
           {% endif %}
         {% endif %}

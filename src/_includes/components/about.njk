@@ -96,8 +96,8 @@
           <div class="about-text">{{ _aboutText | safe }}</div>
           {% endif %}
           {% if aboutUrl %}
-          <a href="{{ aboutUrl }}" class="read-more mt-3 d-inline-flex align-items-center gap-1">
-            <span>Подробнее</span>
+          <a href="{{ aboutUrl }}" class="read-more mt-3" aria-label="Читать полностью — {{ _aboutTitle }}">
+            <span>Читать полностью</span>
             <i class="bi bi-arrow-right" aria-hidden="true"></i>
           </a>
           {% endif %}

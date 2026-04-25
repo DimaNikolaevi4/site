@@ -972,6 +972,7 @@ section,
   margin-bottom: 0;
 }
 
+.read-more,
 .about .content .read-more {
   background: var(--accent-color);
   color: var(--contrast-color);
@@ -985,22 +986,28 @@ section,
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  text-decoration: none;
+  gap: 5px;
 }
 
+.read-more i,
 .about .content .read-more i {
   font-size: 18px;
-  margin-left: 5px;
   line-height: 0;
-  transition: 0.3s;
+  transition: margin 0.3s;
+  margin-left: 0;
 }
 
+.read-more:hover,
 .about .content .read-more:hover {
   background: color-mix(in srgb, var(--accent-color), transparent 20%);
+  color: var(--contrast-color);
   padding-right: 19px;
 }
 
+.read-more:hover i,
 .about .content .read-more:hover i {
-  margin-left: 10px;
+  margin-left: 5px;
 }
 
 /*--------------------------------------------------------------
@@ -3412,6 +3419,7 @@ section,
   margin-bottom: 0;
 }
 
+.read-more,
 .about .content .read-more {
   background: var(--accent-color);
   color: var(--contrast-color);
@@ -3425,22 +3433,28 @@ section,
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  text-decoration: none;
+  gap: 5px;
 }
 
+.read-more i,
 .about .content .read-more i {
   font-size: 18px;
-  margin-left: 5px;
   line-height: 0;
-  transition: 0.3s;
+  transition: margin 0.3s;
+  margin-left: 0;
 }
 
+.read-more:hover,
 .about .content .read-more:hover {
   background: color-mix(in srgb, var(--accent-color), transparent 20%);
+  color: var(--contrast-color);
   padding-right: 19px;
 }
 
+.read-more:hover i,
 .about .content .read-more:hover i {
-  margin-left: 10px;
+  margin-left: 5px;
 }
 
 /*--------------------------------------------------------------

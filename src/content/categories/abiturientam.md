@@ -29,7 +29,10 @@ description: 'Информация для абитуриентов: правил
           <p class="material-preview-description">{{ page.data.description }}</p>
           {% endif %}
           
-          <a href="{{ page.url }}" class="material-preview-link">Читать далее →</a>
+          <a href="{{ page.url }}" class="read-more" aria-label="Читать полностью — {{ page.data.title }}">
+            <span>Читать полностью</span>
+            <i class="bi bi-arrow-right" aria-hidden="true"></i>
+          </a>
         </article>
       {% endif %}
     {% endif %}
