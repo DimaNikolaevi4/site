@@ -4545,14 +4545,7 @@ section,
 }
 
 .main-nav__link.active::before {
-  content: "";
-  position: absolute;
-  left: 4px;
-  top: 13px;
-  bottom: 13px;
-  width: 3px;
-  border-radius: 999px;
-  background: var(--accent-color);
+  content: none;
 }
 
 .main-nav__icon {
