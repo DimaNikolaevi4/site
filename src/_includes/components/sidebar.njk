@@ -1,22 +1,65 @@
 {#
   Компонент Секция 7 — Сайдбар (30% левая колонка с едиными баннерами)
-  Принцип: единые баннеры на всех страницах, НЕ навигация
+  Принцип: единые баннеры на всех страницах, НЕ навигация.
   Использование:
     {% include "components/sidebar.njk" %}
-  Переменные (все опциональны — по умолчанию показывается стандартный набор баннеров):
-    sidebarBanners — массив объектов { title, text, url, linkText, icon, modifier }
-                     Если не передан — используется набор по умолчанию
+
+  Переменные (все опциональны):
+    sidebarImageBanners — массив { image, alt, url, external, title, caption }
+                          для медиа-баннеров (картинка-ссылка). По умолчанию
+                          выводится единый баннер БПЛА (на всех страницах).
+    sidebarBanners      — массив { title, text, url, linkText, icon, modifier }
+                          для текстовых баннеров (опционально).
 #}
 
-{# Заглушка — единые баннеры (НЕ навигация), одинаковые на всём сайте.
-   Сейчас пусто, наполняется позже через переменную sidebarBanners
-   или редактируя массив ниже. #}
-{% set _defaultBanners = [] %}
+{# === Единые медиа-баннеры (картинки-ссылки) === #}
+{% set _defaultImageBanners = [
+  {
+    image: "/images/banners/bpla.jpg",
+    alt: "Стань оператором БПЛА — выбери профессию будущего",
+    url: "https://xn--61-6kc3bbqgrrd.xn--p1ai/bpla.html",
+    external: true
+  }
+] %}
+{% set _imageBanners = sidebarImageBanners if sidebarImageBanners else _defaultImageBanners %}
 
+{# === Текстовые баннеры (необязательные) === #}
+{% set _defaultBanners = [] %}
 {% set _banners = sidebarBanners if sidebarBanners else _defaultBanners %}
 
 <aside class="component-sidebar" role="complementary" aria-label="Дополнительная информация">
 
+  {% if _imageBanners and _imageBanners | length > 0 %}
+  <div class="sidebar-image-banners">
+    {% for b in _imageBanners %}
+    <a class="sidebar-image-banner"
+       href="{{ b.url }}"
+       {% if b.external %}target="_blank" rel="noopener noreferrer"{% endif %}
+       aria-label="{{ b.alt or b.title }}"
+       data-aos="fade-left"
+       data-aos-delay="{{ loop.index * 80 }}">
+      <figure class="sidebar-image-banner__figure">
+        <img class="sidebar-image-banner__img"
+             src="{{ b.image }}"
+             alt="{{ b.alt or b.title }}"
+             loading="lazy"
+             decoding="async">
+        {% if b.title or b.caption %}
+        <figcaption class="sidebar-image-banner__caption">
+          {% if b.title %}<span class="sidebar-image-banner__title">{{ b.title }}</span>{% endif %}
+          {% if b.caption %}<span class="sidebar-image-banner__text">{{ b.caption }}</span>{% endif %}
+          <span class="sidebar-image-banner__cta" aria-hidden="true">
+            Подробнее <i class="bi bi-arrow-right"></i>
+          </span>
+        </figcaption>
+        {% endif %}
+      </figure>
+    </a>
+    {% endfor %}
+  </div>
+  {% endif %}
+
+  {% if _banners and _banners | length > 0 %}
   <div class="sidebar-banners">
     {% for banner in _banners %}
     <div class="sidebar-banner {{ banner.modifier }}" data-aos="fade-left" data-aos-delay="{{ loop.index * 80 }}">
@@ -33,5 +76,6 @@
     </div>
     {% endfor %}
   </div>
+  {% endif %}
 
 </aside>

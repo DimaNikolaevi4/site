@@ -4449,6 +4449,134 @@ html {
   }
 }
 
+/* ============================================
+   COMPONENT: SIDEBAR — единый медиа-баннер
+   (Секция 7, картинка-ссылка под наши стили)
+   ============================================ */
+.component-sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.sidebar-image-banners {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.sidebar-image-banner {
+  display: block;
+  position: relative;
+  border-radius: 16px;
+  overflow: hidden;
+  text-decoration: none;
+  background: var(--surface-color, #ffffff);
+  box-shadow: 0 4px 14px rgba(31, 42, 35, 0.08);
+  transition: transform .25s ease, box-shadow .25s ease;
+  isolation: isolate;
+}
+
+.sidebar-image-banner:hover,
+.sidebar-image-banner:focus-visible {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 28px rgba(31, 42, 35, 0.16);
+  outline: none;
+}
+
+.sidebar-image-banner__figure {
+  margin: 0;
+  display: block;
+  position: relative;
+}
+
+.sidebar-image-banner__img {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  transition: transform .4s ease;
+}
+
+.sidebar-image-banner:hover .sidebar-image-banner__img {
+  transform: scale(1.03);
+}
+
+.sidebar-image-banner__caption {
+  position: absolute;
+  inset: auto 0 0 0;
+  padding: 14px 16px 14px;
+  color: #fff;
+  background: linear-gradient(180deg,
+    rgba(0, 0, 0, 0) 0%,
+    rgba(0, 0, 0, 0.55) 45%,
+    rgba(0, 0, 0, 0.78) 100%);
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.sidebar-image-banner__title {
+  font-weight: 700;
+  font-size: 1.05rem;
+  line-height: 1.2;
+  letter-spacing: 0.2px;
+}
+
+.sidebar-image-banner__text {
+  font-size: 0.85rem;
+  line-height: 1.35;
+  opacity: 0.92;
+}
+
+.sidebar-image-banner__cta {
+  margin-top: 6px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: #fff;
+  opacity: 0.95;
+}
+
+.sidebar-image-banner__cta i {
+  transition: transform .25s ease;
+}
+
+.sidebar-image-banner:hover .sidebar-image-banner__cta i {
+  transform: translateX(3px);
+}
+
+/* Тёмная тема */
+body.dark-theme .sidebar-image-banner {
+  background: rgba(255, 255, 255, 0.04);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.35);
+}
+
+body.dark-theme .sidebar-image-banner:hover,
+body.dark-theme .sidebar-image-banner:focus-visible {
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.5);
+}
+
+/* Мобильный вариант баннера — встроенный в контент,
+   виден только на мобильном (после Секции 3 / 4). */
+.home-mobile-banner {
+  display: none;
+}
+
+@media (max-width: 991px) {
+  .home-mobile-banner {
+    display: block;
+    margin: 0 0 1.5rem;
+  }
+  /* Скрываем десктопный сайдбар на мобильном,
+     чтобы баннер не дублировался. */
+  .home-sidebar {
+    display: none;
+  }
+}
+
 .content-sidebar-grid--full {
   grid-template-columns: 1fr;
 }
