@@ -24,7 +24,7 @@
 
 | Задача | Статус | Примечание |
 |--------|--------|-------------|
-| 1.1.1 Инициализация проекта (package.json, .eleventy.js) | 🔶 | Конфиг в `.eleventy.js`, package.json настроен. Нужна тщательная проверка |
+| 1.1.1 Инициализация проекта (package.json, .eleventy.js) | ✅ | `package.json` (name `tehnikum-site`, main → `.eleventy.js`, скрипты `dev`/`build`, deps: eleventy 3.1.5, eleventy-navigation, lunr, js-yaml) и `.eleventy.js` (автогенерация коллекций из `rubrics.yaml`, 14+ фильтров, plugin navigation, passthrough `assets/images/styles/admin/favicons/robots.txt`, server 0.0.0.0:5000, движки `njk`) проверены. `npm run build` — 67 файлов, 0 ошибок. |
 | 1.1.2 npm install — установка зависимостей | 🔶 | Все пакеты установлены (Eleventy 3.1.5). Нужна тщательная проверка |
 | 1.1.3 Workflow npm run dev на порту 5000 | 🔶 | Сборка: 69 файлов, 0 ошибок. Нужна тщательная проверка |
 | 1.1.4 markdownTemplateEngine: "njk" — Nunjucks в md-файлах | 🔶 | В .eleventy.js. Нужна тщательная проверка |
