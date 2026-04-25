@@ -25,7 +25,7 @@
 | Задача | Статус | Примечание |
 |--------|--------|-------------|
 | 1.1.1 Инициализация проекта (package.json, .eleventy.js) | ✅ | `package.json` (name `tehnikum-site`, main → `.eleventy.js`, скрипты `dev`/`build`, deps: eleventy 3.1.5, eleventy-navigation, lunr, js-yaml) и `.eleventy.js` (автогенерация коллекций из `rubrics.yaml`, 14+ фильтров, plugin navigation, passthrough `assets/images/styles/admin/favicons/robots.txt`, server 0.0.0.0:5000, движки `njk`) проверены. `npm run build` — 67 файлов, 0 ошибок. |
-| 1.1.2 npm install — установка зависимостей | 🔶 | Все пакеты установлены (Eleventy 3.1.5). Нужна тщательная проверка |
+| 1.1.2 npm install — установка зависимостей | ✅ | Node v20.20.0, npm 10.8.2. Все 4 пакета из `package.json` установлены и резолвятся в правильные версии (`@11ty/eleventy@3.1.5`, `@11ty/eleventy-navigation@0.3.5`, `js-yaml@4.1.1`, `lunr@2.3.9`), `package-lock.json` v3 в репозитории. Бинарники `eleventy`/`eleventy-dev-server` доступны в `node_modules/.bin`. `npm audit fix` закрыл уязвимость в `liquidjs` (DoS, GHSA-4rc3-7j7w-m548) — теперь `0 vulnerabilities`. Сборка после фикса: 67 файлов, 0 ошибок. |
 | 1.1.3 Workflow npm run dev на порту 5000 | 🔶 | Сборка: 69 файлов, 0 ошибок. Нужна тщательная проверка |
 | 1.1.4 markdownTemplateEngine: "njk" — Nunjucks в md-файлах | 🔶 | В .eleventy.js. Нужна тщательная проверка |
 | 1.1.5 deploy.sh — скрипт деплоя | 🔶 | Скрипт `deploy.sh` в корне проекта (rsync/SSH-публикация на хостинг). Нужна тщательная проверка |
