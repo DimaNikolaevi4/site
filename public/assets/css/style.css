@@ -4405,8 +4405,11 @@ html {
 
 /* ============================================
    LAYOUT: HOME — сквозной сайдбар (3.3.2.4)
-   Секция 7 — колонка ~30% слева, идёт от
-   Секции 3 (About) до Секции 6 (Популярное).
+   Секция 7 (components/sidebar.njk) — колонка ~30%
+   слева на десктопе, идёт от Секции 3 (About) до
+   Секции 6 (Популярное). На мобильном встраивается
+   между Секцией 3 и Секцией 5 — без дублирования
+   разметки (через display:contents + order).
    ============================================ */
 .home-with-sidebar {
   display: grid;
@@ -4419,10 +4422,14 @@ html {
   position: sticky;
   top: 80px;
   align-self: start;
+  z-index: 1;
 }
 
 .home-content {
   min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
 }
 
 /* Внутри правой колонки секции уже добавляют свои отступы/контейнеры —
@@ -4434,18 +4441,34 @@ html {
   padding-right: 0;
 }
 
+/* Мобильный (≤991px): сетка превращается в одну колонку, .home-content
+   "растворяется" (display:contents) — все его дети-секции становятся
+   прямыми flex-детьми .home-with-sidebar. Через order ставим сайдбар
+   ровно после Секции 3 (About) и перед Секцией 5 (News). Так у нас
+   ровно ОДИН экземпляр sidebar.njk на странице. */
 @media (max-width: 991px) {
   .home-with-sidebar {
-    grid-template-columns: 1fr;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
   }
 
   .home-sidebar {
     position: static;
     order: 2;
+    width: 100%;
   }
 
   .home-content {
-    order: 1;
+    display: contents;
+  }
+
+  .home-content > .component-about         { order: 1; }
+  .home-content > .component-news          { order: 3; }
+  .home-content > .component-popular       { order: 4; }
+  /* fallback на любой <section>, не подпадающий под классы выше */
+  .home-content > section:not(.component-about):not(.component-news):not(.component-popular) {
+    order: 5;
   }
 }
 
@@ -4557,24 +4580,6 @@ body.dark-theme .sidebar-image-banner {
 body.dark-theme .sidebar-image-banner:hover,
 body.dark-theme .sidebar-image-banner:focus-visible {
   box-shadow: 0 12px 28px rgba(0, 0, 0, 0.5);
-}
-
-/* Мобильный вариант баннера — встроенный в контент,
-   виден только на мобильном (после Секции 3 / 4). */
-.home-mobile-banner {
-  display: none;
-}
-
-@media (max-width: 991px) {
-  .home-mobile-banner {
-    display: block;
-    margin: 0 0 1.5rem;
-  }
-  /* Скрываем десктопный сайдбар на мобильном,
-     чтобы баннер не дублировался. */
-  .home-sidebar {
-    display: none;
-  }
 }
 
 .content-sidebar-grid--full {
