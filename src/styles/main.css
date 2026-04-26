@@ -7249,6 +7249,49 @@ body.dark-theme .post-share__tag:focus-visible {
   opacity: 1;
 }
 
+/* ─── Универсальный фирменный разделитель ─── */
+.brand-divider {
+  width: 180px;
+  max-width: 70%;
+  height: 4px;
+  margin: 1.25rem auto;
+  border: 0;
+  border-radius: 999px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    color-mix(in srgb, var(--accent-color, #5fcf80), transparent 30%) 20%,
+    var(--accent-color, #5fcf80) 50%,
+    color-mix(in srgb, var(--accent-color, #5fcf80), transparent 30%) 80%,
+    transparent 100%
+  );
+  box-shadow: 0 0 10px color-mix(in srgb, var(--accent-color, #5fcf80), transparent 60%);
+  opacity: 1;
+}
+.brand-divider--wide { width: 100%; max-width: 100%; }
+.brand-divider--light {
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.4) 20%,
+    var(--accent-color, #5fcf80) 50%,
+    rgba(255, 255, 255, 0.4) 80%,
+    transparent 100%
+  );
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.35),
+              0 0 12px color-mix(in srgb, var(--accent-color, #5fcf80), transparent 55%);
+}
+body.dark-theme .brand-divider {
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.25) 20%,
+    var(--accent-color, #5fcf80) 50%,
+    rgba(255, 255, 255, 0.25) 80%,
+    transparent 100%
+  );
+}
+
 .page-hero__rubric {
   color: #fff;
   font-family: var(--heading-font);
