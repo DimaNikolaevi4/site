@@ -75,35 +75,38 @@
     </div>
   </section>
 
-  {# ═══════════════════════════════════════════════ #}
-  {# === СЕКЦИЯ 3 — About === #}
-  {# По умолчанию — заглушка ('stub'). Любая страница раздела может #}
-  {# переопределить режим во frontmatter переменной `aboutMode`     #}
-  {# (например, 'director' — «Слово директора», как на главной).    #}
-  {# ═══════════════════════════════════════════════ #}
+  {# ═══════════════════════════════════════════════════════════════════ #}
+  {# === ЕДИНАЯ СЕТКА page-with-sidebar (от breadcrumbs до footer) === #}
+  {#                                                                     #}
+  {# Слева — `components/sidebar.njk` (sticky, 30%, на всю высоту блока).#}
+  {# Справа — стопка: about (сбоку, режим razdel/home/director/section), #}
+  {# основной контент, дополнительные блоки, news, popular, related,     #}
+  {# нижняя навигация (backnav). Sidebar.njk идёт от первой строки       #}
+  {# до последней (grid-row: 1 / -1) — ровно «между breadcrumbs и        #}
+  {# footer», как требует канон страниц-разделов.                        #}
+  {# ═══════════════════════════════════════════════════════════════════ #}
+  {% set _showSidebar = showSidebar if showSidebar is defined else (sidebar.show if (sidebar and sidebar.show is defined) else true) %}
+
   {% if aboutMode is not defined or not aboutMode %}
     {% set aboutMode = 'stub' %}
   {% endif %}
-  {% include "components/about.njk" %}
 
-  {# ═══════════════════════════════════════════════ #}
-  {# === СЕКЦИЯ 4 — Контент + Сайдбар (единые баннеры) === #}
-  {# ═══════════════════════════════════════════════ #}
-  <section class="section-main">
-    <div class="container">
+  <div class="container">
+    <div class="page-with-sidebar{% if not _showSidebar %} page-with-sidebar--full{% endif %}">
 
-      {% set _showSidebar = showSidebar if showSidebar is defined else (sidebar.show if (sidebar and sidebar.show is defined) else true) %}
+      {# Левая колонка: единый сайдбар, sticky на всю высоту #}
+      {% if _showSidebar %}
+      <aside class="page-sidebar-col">
+        {% include "components/sidebar.njk" %}
+      </aside>
+      {% endif %}
 
-      <div class="content-sidebar-grid{% if not _showSidebar %} content-sidebar-grid--full{% endif %}">
+      {# Правая колонка, элемент 1: about (режим razdel — пара баннеров «сбоку») #}
+      {% include "components/about.njk" %}
 
-        {# Сайдбар — единый компонент (30% слева) #}
-        {% if _showSidebar %}
-        <div class="sidebar-col">
-          {% include "components/sidebar.njk" %}
-        </div>
-        {% endif %}
-
-        {# Основной контент #}
+      {# Правая колонка, элемент 2: основной контент (карточки или Markdown) #}
+      <section class="section-main">
+        <div class="container">
         <div class="page-content-area content-col">
 
           {# Лента карточек для listing-страниц #}
@@ -218,10 +221,8 @@
           {% endif %}
 
         </div>
-
-      </div>
-    </div>
-  </section>
+        </div>
+      </section>
 
   {# === Дополнительные блоки (опц. front matter) === #}
   {% if additionalBlocks %}
@@ -326,6 +327,9 @@
     </div>
   </nav>
   {% endif %}
+
+    </div>{# /.page-with-sidebar #}
+  </div>{# /.container #}
 
 </div>
 {% endblock %}

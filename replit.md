@@ -22,6 +22,13 @@
 ## Замечания по дизайну главной
 - Баннер «Народный фронт» в `src/index.njk` (секция `component-pobeda-banner`) использует изображение `https://сит-сальск.рф/docs/kontrakt/kontrakt.jpg` одинаково на десктопе и мобильных (`<source>` и `<img>` указывают на один и тот же URL).
 
+## Шаблон страниц-разделов (`layouts/page-full.njk`)
+- Между `breadcrumbs.njk` (внутри `section-context`) и футером всё содержимое страницы оборачивается в единую сетку `.page-with-sidebar` (CSS — `src/styles/main.css`, секция «Layout: Type B — Page-wide Sidebar Grid»).
+- Левая колонка — `components/sidebar.njk` в `<aside class="page-sidebar-col">`, `position: sticky; grid-row: 1 / -1;` — растягивается на всю высоту блока (от первой строки до последней).
+- Правая колонка стопкой: `components/about.njk` (любой режим, по умолчанию `stub`) → `section-main` (контент или карточки) → `section-extra` → `news` (подрубрики) → `popular` → `section-related` → `section-backnav`.
+- На мобильном (≤991px) сетка сворачивается в одну колонку, сайдбар уходит вниз через `order: 99`.
+- Режимы `aboutMode` в `components/about.njk`: `director` | `section` | `stub` | `home` (главная — 4 блока: 2 баннера + Слово директора + День открытых дверей) | `razdel` (страницы разделов — только пара баннеров «Народный фронт» + «О заключении контракта»).
+
 ## Соглашения по вёрстке новых страниц
 
 ### Прозрачный фон для контентных секций (ОБЯЗАТЕЛЬНО)

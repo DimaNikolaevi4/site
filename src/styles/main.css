@@ -2740,6 +2740,88 @@ body.dark-theme .component-about--narodfront .narodfront-text-link {
 }
 
 /*--------------------------------------------------------------
+# Layout: Type B — Page-wide Sidebar Grid (page-full.njk)
+#
+# Единая сетка от breadcrumbs до footer для страниц-разделов:
+#   слева  — components/sidebar.njk (sticky, 30%, на всю высоту блока,
+#            grid-row: 1 / -1 — занимает все строки правой колонки),
+#   справа — стопка элементов: about (режим razdel/home/director/section),
+#            section-main (контент/карточки), section-extra,
+#            news (подрубрики), popular, section-related, section-backnav.
+#
+# На мобильном (≤991px) сетка сворачивается в одну колонку, сайдбар
+# уезжает вниз (order: 99), порядок остального контента сохраняется.
+--------------------------------------------------------------*/
+.page-with-sidebar {
+  display: grid;
+  grid-template-columns: 30% 1fr;
+  grid-auto-flow: row dense;
+  gap: 2rem;
+  align-items: start;
+}
+
+.page-with-sidebar--full {
+  grid-template-columns: 1fr;
+}
+
+.page-with-sidebar > .page-sidebar-col {
+  grid-column: 1;
+  grid-row: 1 / -1;
+  position: sticky;
+  top: 80px;
+  align-self: start;
+  min-width: 0;
+}
+
+.page-with-sidebar > *:not(.page-sidebar-col) {
+  grid-column: 2;
+  min-width: 0;
+}
+
+.page-with-sidebar--full > * {
+  grid-column: 1;
+}
+
+/* Внутри грида у вложенных секций уже есть свой Bootstrap-контейнер
+   с max-width 1140px — снимаем это ограничение, иначе на десктопе он
+   будет «вырываться» за пределы своей ячейки. */
+.page-with-sidebar > section > .container,
+.page-with-sidebar > section .container,
+.page-with-sidebar > nav > .container {
+  max-width: 100%;
+}
+
+/* В рамках сетки убираем «жирные» вертикальные отступы у вложенных
+   секций — единый ритм задаёт grid gap. */
+.page-with-sidebar > .section-main,
+.page-with-sidebar > .section-extra,
+.page-with-sidebar > .section-related,
+.page-with-sidebar > .section-backnav,
+.page-with-sidebar > .component-about,
+.page-with-sidebar > .component-news,
+.page-with-sidebar > .component-popular {
+  padding-top: 0;
+  padding-bottom: 0;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+@media (max-width: 991px) {
+  .page-with-sidebar {
+    grid-template-columns: 1fr;
+  }
+  .page-with-sidebar > .page-sidebar-col {
+    grid-column: 1;
+    grid-row: auto;
+    position: static;
+    order: 99;
+  }
+  .page-with-sidebar > *:not(.page-sidebar-col) {
+    grid-column: 1;
+  }
+}
+
+/*--------------------------------------------------------------
 # Layout: Type B — Content + Sidebar Grid (3.1.2)
 #
 # Сетка для внутренних страниц: сайдбар 30% слева | контент 70% справа.
