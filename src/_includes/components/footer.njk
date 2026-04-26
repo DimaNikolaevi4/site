@@ -121,8 +121,6 @@
       </div>
     </div>
 
-    <hr class="brand-divider brand-divider--light brand-divider--wide" aria-hidden="true">
-
     {# ============ ОФИЦИАЛЬНЫЕ РЕСУРСЫ ============ #}
     <section class="footer-resources" aria-labelledby="footer-resources-title">
       <h4 id="footer-resources-title" class="footer-heading footer-resources-title">Официальные ресурсы</h4>
@@ -202,8 +200,6 @@
       </ul>
     </section>
 
-    <hr class="brand-divider brand-divider--light brand-divider--wide" aria-hidden="true">
-
     {# ============ ЛИЦЕНЗИИ ============ #}
     {% if site.license or site.accreditation %}
     <div class="footer-legal">
@@ -211,6 +207,8 @@
       {% if site.accreditation %}<span class="footer-legal-item"><strong>Аккредитация:</strong> {{ site.accreditation }}</span>{% endif %}
     </div>
     {% endif %}
+
+    <hr class="brand-divider brand-divider--light brand-divider--wide" aria-hidden="true">
 
     {# ============ НИЖНИЙ БЛОК ============ #}
     <div class="footer-bottom">

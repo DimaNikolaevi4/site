@@ -3014,8 +3014,19 @@ body.dark-theme .site-footer {
   align-items: center;
   gap: 10px;
   margin-bottom: 10px;
-  padding-bottom: 10px;
-  border-bottom: 1px dashed var(--footer-border);
+  padding-bottom: 12px;
+  border-bottom: 0;
+  background-image: linear-gradient(
+    90deg,
+    transparent 0%,
+    color-mix(in srgb, var(--accent-color, #5fcf80), transparent 30%) 20%,
+    var(--accent-color, #5fcf80) 50%,
+    color-mix(in srgb, var(--accent-color, #5fcf80), transparent 30%) 80%,
+    transparent 100%
+  );
+  background-repeat: no-repeat;
+  background-position: bottom left;
+  background-size: 100% 2px;
 }
 
 .site-footer .footer-corp-header i {
@@ -3284,9 +3295,8 @@ body.dark-theme .site-footer .footer-resource-icon {
   align-items: center;
   justify-content: space-between;
   gap: 14px 28px;
-  margin-top: 28px;
-  padding: 22px 0;
-  border-top: 1px solid var(--footer-border);
+  margin-top: 12px;
+  padding: 14px 0 22px;
   font-size: 12.5px;
   color: var(--footer-muted);
 }
