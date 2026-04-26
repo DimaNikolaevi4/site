@@ -30,7 +30,6 @@ belowGridSubrubric: "1.9"
 
 {# ── Полезные материалы (подрубрики раздела) — без 1.9 «Контакты и график работы» ── #}
 {% set newsMode = 'subrubrics' %}
-{% set newsTitle = 'Полезные материалы' %}
 {% set newsCollection = "1" | getSubrubricCards(collections) %}
 {% set excludeUrls = ["/abiturientam/kontakty-grafik/"] %}
 {% include "components/news.njk" %}
