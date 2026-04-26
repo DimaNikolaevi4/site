@@ -2514,23 +2514,26 @@ body.dark-theme .about-title {
   min-width: 0;
 }
 
-/* News и Popular: возвращаем небольшой верхний внутренний отступ,
-   чтобы заголовок секции и обводка карточек не «съедались» сверху.
-   У About верхнего отступа не нужно — там фото/текст, без section-title. */
+/* News и Popular: возвращаем небольшой верхний и нижний внутренний отступ,
+   чтобы заголовок секции и карточки не «съедались» сверху и снизу.
+   У About вертикальных отступов не нужно — там фото/текст, без section-title. */
 .home-with-sidebar > .component-news,
 .home-with-sidebar > .component-popular {
   padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
 }
 @media (min-width: 992px) {
   .home-with-sidebar > .component-news,
   .home-with-sidebar > .component-popular {
     padding-top: 2rem;
+    padding-bottom: 2rem;
   }
 }
 @media (min-width: 1200px) {
   .home-with-sidebar > .component-news,
   .home-with-sidebar > .component-popular {
     padding-top: 2.5rem;
+    padding-bottom: 2.5rem;
   }
 }
 
