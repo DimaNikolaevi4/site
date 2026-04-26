@@ -2453,7 +2453,10 @@ body.dark-theme .about-title {
 .home-bg > section,
 .home-bg .courses,
 .home-bg .about,
-.home-bg .popular {
+.home-bg .popular,
+.home-bg .component-about,
+.home-bg .component-news,
+.home-bg .component-popular {
   background-color: transparent;
 }
 
@@ -2509,6 +2512,26 @@ body.dark-theme .about-title {
   padding-top: 0;
   padding-bottom: 0;
   min-width: 0;
+}
+
+/* News и Popular: возвращаем небольшой верхний внутренний отступ,
+   чтобы заголовок секции и обводка карточек не «съедались» сверху.
+   У About верхнего отступа не нужно — там фото/текст, без section-title. */
+.home-with-sidebar > .component-news,
+.home-with-sidebar > .component-popular {
+  padding-top: 1.5rem;
+}
+@media (min-width: 992px) {
+  .home-with-sidebar > .component-news,
+  .home-with-sidebar > .component-popular {
+    padding-top: 2rem;
+  }
+}
+@media (min-width: 1200px) {
+  .home-with-sidebar > .component-news,
+  .home-with-sidebar > .component-popular {
+    padding-top: 2.5rem;
+  }
 }
 
 /* Мобильный (≤991px): грид схлопывается в одну колонку (flex-стопка).
