@@ -2473,8 +2473,8 @@ body.dark-theme .about-title {
   display: grid;
   grid-template-columns: 1fr 30%;
   grid-template-areas:
-    "about       sidebar"
     "narodfront  sidebar"
+    "about       sidebar"
     "pobeda      sidebar"
     "news        sidebar"
     "popular     sidebar";
@@ -2569,8 +2569,9 @@ body.dark-theme .about-title {
 
 /*--------------------------------------------------------------
 # Блок «Народный фронт» (CTA) — about.njk, режим narodfront
-# Полноширинная картинка-ссылка с подписью под ней.
-# Используется на главной как Секция 4а.
+# Mobile (<768px): картинка сверху, подпись снизу (стопка).
+# Desktop/Tablet (≥768px): картинка слева, подпись справа (горизонталь).
+# Используется на главной как Секция 4а (над «Словом директора»).
 --------------------------------------------------------------*/
 .component-about--narodfront .narodfront-card {
   max-width: 720px;
@@ -2598,12 +2599,39 @@ body.dark-theme .about-title {
 
 .component-about--narodfront .narodfront-caption {
   font-family: 'Times New Roman', Times, serif;
-  font-size: 1.25rem;
+  font-size: 1.15rem;
   font-weight: 600;
   letter-spacing: 0.01em;
 }
 
+/* Tablet/Desktop ≥768px: горизонтальная раскладка картинка + текст */
 @media (min-width: 768px) {
+  .component-about--narodfront .narodfront-card {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    max-width: 860px;
+  }
+
+  .component-about--narodfront .narodfront-link {
+    flex: 0 0 auto;
+    width: 320px;
+    max-width: 45%;
+  }
+
+  .component-about--narodfront .narodfront-caption {
+    flex: 1 1 auto;
+    margin: 0;
+    text-align: left;
+    font-size: 1.35rem;
+  }
+}
+
+@media (min-width: 1200px) {
+  .component-about--narodfront .narodfront-link {
+    width: 380px;
+  }
+
   .component-about--narodfront .narodfront-caption {
     font-size: 1.5rem;
   }
