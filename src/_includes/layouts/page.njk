@@ -95,6 +95,51 @@
             </div>
           </div>
           {% endif %}
+
+          {# Вложения (для страниц с документами) — синхронизировано с page-full.njk #}
+          {% if attachments and attachments.length > 0 %}
+          <section class="post-attachments" aria-label="Вложения">
+            <h2 class="attachments-title">
+              <i class="bi bi-paperclip" aria-hidden="true"></i> Вложения
+            </h2>
+            <ul class="attachments-list">
+              {% for attachment in attachments %}
+              <li class="attachment-item">
+                <a href="{{ attachment.url }}" class="attachment-link" download>
+                  {% set _ext = attachment.url | lower %}
+                  {% if '.pdf' in _ext %}
+                    <i class="bi bi-file-earmark-pdf attachment-icon attachment-icon--pdf"></i>
+                  {% elif '.doc' in _ext %}
+                    <i class="bi bi-file-earmark-word attachment-icon attachment-icon--doc"></i>
+                  {% elif '.xls' in _ext %}
+                    <i class="bi bi-file-earmark-excel attachment-icon attachment-icon--xls"></i>
+                  {% else %}
+                    <i class="bi bi-file-earmark attachment-icon"></i>
+                  {% endif %}
+                  <span class="attachment-name">{{ attachment.name }}</span>
+                  {% if attachment.size %}<span class="attachment-size">({{ attachment.size }})</span>{% endif %}
+                </a>
+              </li>
+              {% endfor %}
+            </ul>
+          </section>
+          {% endif %}
+
+          {# Теги — синхронизировано с page-full.njk #}
+          {% if tags and tags.length > 0 %}
+          <footer class="post-footer">
+            <div class="post-tags">
+              <span class="tags-label">
+                <i class="bi bi-tags" aria-hidden="true"></i> Теги:
+              </span>
+              {% for tag in tags %}
+                {% if tag != 'nav' and tag != 'all' %}
+                <a href="/tags/{{ tag | slugify }}/" class="tag">{{ tag }}</a>
+                {% endif %}
+              {% endfor %}
+            </div>
+          </footer>
+          {% endif %}
         </div>
 
       </div>
