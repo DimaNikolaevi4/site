@@ -90,42 +90,7 @@
   {% endif %}
 
 {# ── Режим 2: Список подрубрик раздела (страницы разделов) ── #}
-{% elif newsMode == 'subrubrics' %}
-
-<section class="section component-news component-news--subrubrics">
-
-  <div class="container">
-    {% if newsTitle %}
-    <div class="section-title mb-4" data-aos="fade-up">
-      <h2>{{ _newsTitle }}</h2>
-    </div>
-    {% endif %}
-
-    {% if newsCollection and newsCollection.length > 0 %}
-    <ul class="rubric-resources-grid">
-      {% for item in newsCollection %}
-      {% if not (excludeUrls and item.url in excludeUrls) %}
-      <li data-aos="fade-up" data-aos-delay="{{ loop.index * 50 }}">
-        <a href="{{ item.url }}" class="rubric-resource">
-          <span class="rubric-resource-icon" aria-hidden="true">{{ item.data.emoji if item.data.emoji else "📄" }}</span>
-          <span class="rubric-resource-text">
-            {{ item.data.title }}
-            {% if item.data.description %}
-            <span class="rubric-resource-desc">{{ item.data.description }}</span>
-            {% endif %}
-          </span>
-        </a>
-      </li>
-      {% endif %}
-      {% endfor %}
-    </ul>
-    {% else %}
-    <div class="alert alert-info" role="status">
-      <i class="bi bi-info-circle me-2"></i>Материалы в этом разделе пока не добавлены.
-    </div>
-    {% endif %}
-  </div>
-
-</section>
+{%- elif newsMode == 'subrubrics' -%}
+<section class="section component-news component-news--subrubrics"><div class="container">{%- if newsTitle %}<div class="section-title mb-4" data-aos="fade-up"><h2>{{ _newsTitle }}</h2></div>{%- endif %}{%- if newsCollection and newsCollection.length > 0 %}<ul class="rubric-resources-grid">{%- for item in newsCollection -%}{%- if not (excludeUrls and item.url in excludeUrls) %}<li data-aos="fade-up" data-aos-delay="{{ loop.index * 50 }}"><a href="{{ item.url }}" class="rubric-resource"><span class="rubric-resource-icon" aria-hidden="true">{{ item.data.emoji if item.data.emoji else "📄" }}</span><span class="rubric-resource-text">{{ item.data.title }}{% if item.data.description %}<span class="rubric-resource-desc">{{ item.data.description }}</span>{% endif %}</span></a></li>{%- endif -%}{%- endfor %}</ul>{%- else %}<div class="alert alert-info" role="status"><i class="bi bi-info-circle me-2"></i>Материалы в этом разделе пока не добавлены.</div>{%- endif %}</div></section>
 
 {% endif %}
