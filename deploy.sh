@@ -17,7 +17,7 @@ echo "📦 Клонируем репозиторий..."
 GIT_SSH_COMMAND="ssh -i ~/.ssh/github -o IdentitiesOnly=yes" git clone git@github.com:DimaNikolaevi4/site.git temp-build
 
 # Переходим в папку проекта
-cd ~/temp-build
+cd temp-build
 
 # Устанавливаем зависимости
 echo "📦 Устанавливаем зависимости..."
