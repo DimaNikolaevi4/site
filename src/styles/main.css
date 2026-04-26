@@ -2806,9 +2806,11 @@ body.dark-theme .component-about--narodfront .narodfront-text-link {
   margin-bottom: 0;
 }
 
-/* Народный фронт внутри страниц-разделов — возвращаем отступ сверху */
+/* Народный фронт внутри страниц-разделов — нужный отступ, без лишних padding от .section */
 .page-with-sidebar > .component-about--narodfront {
   margin-top: 2rem;
+  padding-top: 0;
+  padding-bottom: 0;
 }
 
 @media (max-width: 991px) {
