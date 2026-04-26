@@ -285,7 +285,10 @@ module.exports = function(eleventyConfig) {
   
   // Новости
   eleventyConfig.addCollection("news", function(collectionApi) {
-    return collectionApi.getFilteredByGlob("src/content/news/*.md")
+    return collectionApi.getFilteredByGlob([
+        "src/content/news/*.md",
+        "src/content/studentam-roditeljam/resursy/novosti/**/*.md"
+      ])
       .sort((a, b) => b.date - a.date);
   });
   
