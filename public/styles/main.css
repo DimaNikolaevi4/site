@@ -6456,10 +6456,10 @@ ol.breadcrumb-list { list-style-type: none !important; }
 .breadcrumb-item--current {
   color: var(--text-color, #333);
   font-weight: 500;
-  max-width: 280px;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  white-space: normal;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+  min-width: 0;
 }
 
 /* ─── Контекстная секция (Секция 2) ─── */
