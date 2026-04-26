@@ -74,36 +74,50 @@ relatedCount: 3                 # (опц.) Сколько материалов 
 
 ## 2. Шаблон: Раздел (Тип B — индекс рубрики, страница раздела)
 
-Используется для индексных страниц рубрик (`/abiturientam/`, `/vospitanie/`, …) и под-разделов (`/abiturientam/specialnosti/`).
+Используется для индексных страниц всех **11 разделов** сайта (`/abiturientam/`, `/svedenija/`, `/vospitanie/`, `/sotrudnichestvo/`, `/psihologicheskoe/`, `/bezopasnost/`, `/studentam-i-roditeljam/`, `/uchebno-metodicheskaja-rabota/`, `/obshestvennoe-mnenie/`, `/vypusknikam/`, …) и при необходимости — для подразделов L1/L2.
 
-**Основной шаблон** — `layouts/page-full.njk` (24 страницы): hero + хлебные крошки + сетка 70/30 с сайдбаром + опциональные секции about/news/popular.  
-**Упрощённый** — `layouts/page.njk` (используется реже).  
+**Канонический шаблон** — `layouts/page-full.njk`: header + hero + section-context (только хлебные крошки) + about + сетка 70/30 (sticky-sidebar слева + контент + подрубрики справа) + popular + backnav + footer.  
+**Упрощённый** — `layouts/page.njk` (для статических страниц без всех 8 секций).  
 **Спец-вариант** — `layouts/svedenija-page.njk` (для раздела «Сведения об ОО» по Приказу Рособрнадзора №1493, 18 страниц).
+
+> **Канон Type B зафиксирован** (см. `STRUCTURE_AND_PRINCIPLES.md` раздел 3.6). Эталон — `src/content/abiturientam/index.md`. Все 11 разделов сайта приводятся к этому единому виду.
 
 ```yaml
 ---
-layout: layouts/page-full.njk
-title: Абитуриентам
+title: Абитуриентам                      # H1 страницы и <title> в браузере
+layout: layouts/page-full.njk            # Единый шаблон для всех 11 разделов
 description: "Раздел для будущих студентов — приёмная кампания, специальности, контакты приёмной комиссии."
 permalink: /abiturientam/
-rubric: "1"                     # Уровень 0: "1" / Уровень 1: "1.3" / Уровень 2: "4.7.2"
-section: abiturientam           # (опц.) Слаг раздела для группировки и сайдбара
-sectionTitle: Абитуриентам      # (опц.) Заголовок секции для hero и breadcrumbs
-tags:
-  - Абитуриентам
-eleventyNavigation:             # (опц.) Регистрация в главном меню через @11ty/eleventy-navigation
+rubric: "1"                              # L0: "1" / L1: "1.3" / L2: "4.7.2"
+section: abiturientam                    # Слаг раздела для backnav и related
+sectionTitle: Абитуриентам               # Человеческое имя раздела (для hero/breadcrumbs)
+subrubricTitle: "Полезные материалы"     # Заголовок над сеткой подрубрик в теле
+eleventyNavigation:                      # Регистрация в главном меню
   key: abiturientam
   parent: main
   order: 1
+tags:
+  - Абитуриентам
+aboutMode: razdel                        # Фиксированно для всех 11 разделов
+suppressSubrubrics: true                 # Подрубрики выводим вручную в нужной точке тела
 ---
 ```
 
 ### Пояснения:
 
-- **`layout`** — для разделов используйте `layouts/page-full.njk` (рекомендуется); `page.njk` — для упрощённых страниц без всех 8 секций.
+- **`layout: layouts/page-full.njk`** — единый канонический шаблон для всех 11 разделов. `page.njk` — только для упрощённых статических страниц.
 - **`rubric`** — обязательно для разделов: код из `rubrics.yaml`. Уровни иерархии: L0 (`"1"`), L1 (`"1.3"`), L2 (`"2.3.1"`).
-- **`section` / `sectionTitle`** — используются `hero.njk` и `breadcrumbs.njk` для отображения родительской группировки.
+- **`section` / `sectionTitle`** — используются `hero.njk`, `breadcrumbs.njk`, `section-backnav` и блоком «Похожие материалы».
+- **`subrubricTitle`** — заголовок, который встаёт над сеткой подрубрик внутри тела Markdown (типичные значения: «Полезные материалы», «Документы и положения», «Памятки и инструкции»).
+- **`aboutMode: razdel`** — фиксированный режим секции About: пара баннеров справа от контента (`Народный фронт` + `О заключении контракта`). Для всех 11 разделов значение одинаково.
+- **`suppressSubrubrics: true`** — отключает автоматический вывод подрубрик в правой колонке (после контента). Подрубрики выводим **вручную** в теле Markdown через `{% include "components/news.njk" %}` — между приветственным текстом и блоком «Ключевая информация».
 - **`eleventyNavigation`** — задействует плагин `@11ty/eleventy-navigation` для построения главного меню. Корневой ключ родителя — `main` (соответствует пунктам в `src/_data/menu.yaml`).
+
+### Что **больше не поддерживается** в Type B (удалено в v3.5):
+
+- `sectionContext.banner` — баннер раздела внутри секции «Контекст». Удалён из `page-full.njk` и `page.njk`.
+- `sectionContext.filters` / `sectionContext.sortOptions` — фильтры списка и переключатель сортировки. Удалены из шаблонов.
+- `belowGridSubrubric` (внизу страницы) и `btn-primary`-кнопки в финальном CTA — заменены сеткой `rubric-resource` карточек (📞 Контакты + ✉️ Обращение mailto).
 
 ---
 

@@ -23,15 +23,21 @@
 - Баннер «Народный фронт» в `src/index.njk` (секция `component-pobeda-banner`) использует изображение `https://сит-сальск.рф/docs/kontrakt/kontrakt.jpg` одинаково на десктопе и мобильных (`<source>` и `<img>` указывают на один и тот же URL).
 
 ## Шаблон страниц-разделов (`layouts/page-full.njk`)
-- Между `breadcrumbs.njk` (внутри `section-context`) и футером всё содержимое страницы оборачивается в единую сетку `.page-with-sidebar` (CSS — `src/styles/main.css`, секция «Layout: Type B — Page-wide Sidebar Grid»).
+
+> **🟢 Канон Type B зафиксирован (v3.5, апрель 2026).** Эталон — `/abiturientam/` (`src/content/abiturientam/index.md`). Подробное описание — `STRUCTURE_AND_PRINCIPLES.md` § 3.6 и `docs/FRONTMATTER_SPEC.md` § 2.
+
+- Секция `section-context` (под Hero) содержит **только хлебные крошки** (плюс `<h1>`, если `showHero: false`). Блоки `listing-controls` (фильтр + сортировка) и `page-banner` (опциональный баннер раздела) удалены из `page-full.njk` и `page.njk` в v3.5; поля `sectionContext.filters / sortOptions / banner` больше не поддерживаются.
+- Между `section-context` и футером всё содержимое страницы оборачивается в единую сетку `.page-with-sidebar` (CSS — `src/styles/main.css`, секция «Layout: Type B — Page-wide Sidebar Grid»).
 - Левая колонка — `components/sidebar.njk` в `<aside class="page-sidebar-col">`, `position: sticky; grid-row: 1 / -1;` — растягивается на всю высоту блока (от первой строки до последней).
 - Правая колонка стопкой: `components/about.njk` (любой режим, по умолчанию `stub`) → `section-main` (контент или карточки) → `section-extra` → `news` (подрубрики) → `popular` → `section-related` → `section-backnav`.
 - На мобильном (≤991px) сетка сворачивается в одну колонку, сайдбар уходит вниз через `order: 99`.
-- Режимы `aboutMode` в `components/about.njk`: `director` | `section` | `stub` | `home` (главная — 4 блока: 2 баннера + Слово директора + День открытых дверей) | `razdel` (страницы разделов — только пара баннеров «Народный фронт» + «О заключении контракта»).
+- Режимы `aboutMode` в `components/about.njk`: `director` | `section` | `stub` | `home` (главная — 4 блока: 2 баннера + Слово директора + День открытых дверей) | `razdel` (**канон Type B для всех 11 разделов сайта** — пара баннеров «Народный фронт» + «О заключении контракта»).
 - Frontmatter-флаги для тонкой настройки шаблона:
-  - `suppressSubrubrics: true` — отключает авто-вывод подрубрик в правой колонке. Страница может вызвать `{% include "components/news.njk" %}` (с `newsMode='subrubrics'`, `newsCollection`, опц. `excludeUrls`) в нужной точке Markdown-тела.
-  - `belowGridSubrubric: "X.Y"` — выводит карточку указанной подрубрики отдельной полосой во всю ширину контейнера ниже двухколоночной сетки. Опц. `belowGridSubrubricTitle` — заголовок над полосой.
+  - `suppressSubrubrics: true` — **обязательно для канонических Type B разделов**. Отключает авто-вывод подрубрик в правой колонке; страница вызывает `{% include "components/news.njk" %}` (с `newsMode='subrubrics'`, `newsCollection`, опц. `excludeUrls`) в нужной точке Markdown-тела — между приветственным текстом и блоком «Ключевая информация».
+  - `subrubricTitle: "Полезные материалы"` — заголовок над сеткой подрубрик внутри тела.
+  - `belowGridSubrubric: "X.Y"` — выводит карточку указанной подрубрики отдельной полосой во всю ширину контейнера ниже двухколоночной сетки. Опц. `belowGridSubrubricTitle` — заголовок над полосой. На канонических Type B разделах **не используется**.
 - В `components/news.njk` (режим `subrubrics`) поддерживается `excludeUrls` — массив URL, которые надо пропустить при отрисовке списка.
+- **Финальный CTA** на длинных страницах разделов оформляется сеткой `<ul class="rubric-resources-grid">` с двумя карточками (📞 контакты раздела + ✉️ обращение mailto), а **не** одиночной кнопкой `btn-primary`.
 
 ## Соглашения по вёрстке новых страниц
 
