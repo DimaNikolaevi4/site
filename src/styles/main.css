@@ -2568,15 +2568,25 @@ body.dark-theme .about-title {
 }
 
 /*--------------------------------------------------------------
-# Блок «Народный фронт» (CTA) — about.njk, режим narodfront
-# Mobile (<768px): картинка сверху, подпись снизу (стопка).
-# Desktop/Tablet (≥768px): картинка слева, подпись справа (горизонталь).
-# Используется на главной как Секция 4а (над «Словом директора»).
+# Блок «Народный фронт» + «Контракт» (CTA) — about.njk, режим narodfront
+# Mobile (<768px): две колонки превращаются в стопку (одна под другой),
+#                   подпись «Поддержим…» всегда под изображением.
+# Desktop/Tablet (≥768px): две колонки бок о бок, подпись «Поддержим…»
+#                   аккуратно под левым изображением (как на мобильной).
 --------------------------------------------------------------*/
 .component-about--narodfront .narodfront-card {
-  max-width: 720px;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  max-width: 1080px;
   margin-left: auto;
   margin-right: auto;
+}
+
+.component-about--narodfront .narodfront-col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .component-about--narodfront .narodfront-link {
@@ -2584,6 +2594,7 @@ body.dark-theme .about-title {
   overflow: hidden;
   border-radius: 0.75rem;
   transition: transform 0.25s ease, box-shadow 0.25s ease;
+  width: 100%;
 }
 
 .component-about--narodfront .narodfront-link:hover {
@@ -2604,36 +2615,27 @@ body.dark-theme .about-title {
   letter-spacing: 0.01em;
 }
 
-/* Tablet/Desktop ≥768px: горизонтальная раскладка картинка + текст */
+/* Tablet/Desktop ≥768px: две колонки бок о бок */
 @media (min-width: 768px) {
   .component-about--narodfront .narodfront-card {
-    display: flex;
-    align-items: center;
-    gap: 1.5rem;
-    max-width: 860px;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 2rem;
   }
 
-  .component-about--narodfront .narodfront-link {
-    flex: 0 0 auto;
-    width: 320px;
-    max-width: 45%;
+  .component-about--narodfront .narodfront-col {
+    flex: 1 1 0;
+    min-width: 0;
   }
 
   .component-about--narodfront .narodfront-caption {
-    flex: 1 1 auto;
-    margin: 0;
-    text-align: left;
-    font-size: 1.35rem;
+    font-size: 1.25rem;
   }
 }
 
 @media (min-width: 1200px) {
-  .component-about--narodfront .narodfront-link {
-    width: 380px;
-  }
-
   .component-about--narodfront .narodfront-caption {
-    font-size: 1.5rem;
+    font-size: 1.4rem;
   }
 }
 

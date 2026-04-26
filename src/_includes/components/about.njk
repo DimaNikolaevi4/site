@@ -122,32 +122,49 @@
     <div class="container">
       <div class="narodfront-card" data-aos="fade-up">
 
-        <a href="https://pobeda.onf.ru/requirements/rostovskaya"
-           class="narodfront-link"
-           target="_blank"
-           rel="noopener noreferrer"
-           aria-label="Народный фронт — поддержим наших ребят на передовой">
-          <picture>
-            <source media="(max-width: 575px)" srcset="/images/logos/nf-2025.png">
-            <img
-              src="/images/logos/narodnyj-front-2025.png"
-              alt="Народный фронт 2025"
-              class="img-fluid rounded shadow-sm narodfront-image"
-              loading="lazy"
-              width="817"
-              height="514"
-            >
-          </picture>
-        </a>
-
-        <p class="narodfront-caption text-center mt-3 mb-0">
+        {# Левая колонка: логотип Народного фронта + подпись снизу #}
+        <div class="narodfront-col narodfront-col--left">
           <a href="https://pobeda.onf.ru/requirements/rostovskaya"
+             class="narodfront-link"
              target="_blank"
              rel="noopener noreferrer"
-             class="narodfront-text-link">
-            Поддержим наших ребят на передовой!
+             aria-label="Народный фронт — поддержим наших ребят на передовой">
+            <picture>
+              <source media="(max-width: 575px)" srcset="/images/logos/nf-2025.png">
+              <img
+                src="/images/logos/narodnyj-front-2025.png"
+                alt="Народный фронт 2025"
+                class="img-fluid rounded shadow-sm narodfront-image"
+                loading="lazy"
+                width="817"
+                height="514"
+              >
+            </picture>
           </a>
-        </p>
+
+          <p class="narodfront-caption text-center mt-3 mb-0">
+            <a href="https://pobeda.onf.ru/requirements/rostovskaya"
+               target="_blank"
+               rel="noopener noreferrer"
+               class="narodfront-text-link">
+              Поддержим наших ребят на передовой!
+            </a>
+          </p>
+        </div>
+
+        {# Правая колонка: баннер «Заключение контракта» #}
+        <div class="narodfront-col narodfront-col--right">
+          <a href="/news/kontrakt/"
+             class="narodfront-link"
+             aria-label="Заключение контракта на военную службу в Ростовской области">
+            <img
+              src="https://сит-сальск.рф/docs/kontrakt/kontrakt.jpg"
+              alt="Заключение контракта на военную службу в Ростовской области"
+              class="img-fluid rounded shadow-sm narodfront-image"
+              loading="lazy"
+            >
+          </a>
+        </div>
 
       </div>
     </div>
