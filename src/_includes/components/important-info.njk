@@ -1,0 +1,82 @@
+{# ════════════════════════════════════════════════════════════════════
+   КОМПОНЕНТ: «Важная информация для посетителей сайта»
+   Глобальный блок, отображается на всех страницах сайта (через base.njk).
+   Содержит 3 превью-карточки:
+     1. Противодействие коррупции   → /bezopasnost/antikorrupcija/
+     2. Абитуриентам                 → /abiturientam/
+     3. Сведения об ОО               → /svedenija/
+   Если текущая страница принадлежит одному из этих разделов,
+   соответствующая карточка заменяется на 4-ю — «Расписание занятий»
+   (заглушка, без ссылки), чтобы пользователь не видел ссылку «сам на себя».
+   ════════════════════════════════════════════════════════════════════ #}
+
+{% set _iiItems = [
+  {
+    title: "Противодействие коррупции",
+    desc: "Меры противодействия коррупции, нормативная база, комиссия по урегулированию конфликтов и канал для сообщений.",
+    url: "/bezopasnost/antikorrupcija/",
+    image: "/assets/images/sliders/slider1.jpg",
+    alt: "Противодействие коррупции"
+  },
+  {
+    title: "Абитуриентам",
+    desc: "Приёмная кампания 2026 года: специальности, контрольные цифры приёма, контакты приёмной комиссии и порядок подачи документов.",
+    url: "/abiturientam/",
+    image: "/assets/images/privetstvie-abiturientov-2026.png",
+    alt: "Абитуриентам — приём 2026"
+  },
+  {
+    title: "Сведения об образовательной организации",
+    desc: "Обязательная информация по Приказу Рособрнадзора № 1493: документы, образование, руководство, материально-техническое обеспечение.",
+    url: "/svedenija/",
+    image: "/assets/images/logo.png",
+    alt: "Сведения об образовательной организации"
+  }
+] %}
+
+{% set _iiPlaceholder = {
+  title: "Расписание занятий",
+  desc: "Скоро здесь появится актуальное расписание занятий по группам и преподавателям. Раздел в разработке.",
+  url: null,
+  image: "/assets/images/raspisanie-placeholder.gif",
+  alt: "Расписание занятий — скоро"
+} %}
+
+<section class="section component-important-info" aria-label="Важная информация для посетителей сайта">
+  <div class="container">
+    <div class="section-title mb-4" data-aos="fade-up">
+      <h2>Важная информация для посетителей сайта</h2>
+    </div>
+
+    <div class="important-info-grid">
+      {% for _c in _iiItems %}
+        {% if page.url | startsWith(_c.url) %}
+          {# Заменяем карточку текущего раздела на placeholder «Расписание» #}
+          <article class="important-info-card important-info-card--placeholder" data-aos="fade-up">
+            <div class="important-info-card__img">
+              <img src="{{ _iiPlaceholder.image }}" alt="{{ _iiPlaceholder.alt }}" loading="lazy">
+            </div>
+            <div class="important-info-card__body">
+              <h3 class="important-info-card__title">{{ _iiPlaceholder.title }}</h3>
+              <p class="important-info-card__desc">{{ _iiPlaceholder.desc }}</p>
+              <span class="important-info-card__badge">Скоро</span>
+            </div>
+          </article>
+        {% else %}
+          <a href="{{ _c.url }}" class="important-info-card" data-aos="fade-up">
+            <div class="important-info-card__img">
+              <img src="{{ _c.image }}" alt="{{ _c.alt }}" loading="lazy">
+            </div>
+            <div class="important-info-card__body">
+              <h3 class="important-info-card__title">{{ _c.title }}</h3>
+              <p class="important-info-card__desc">{{ _c.desc }}</p>
+              <span class="important-info-card__more">
+                Перейти <i class="bi bi-arrow-right" aria-hidden="true"></i>
+              </span>
+            </div>
+          </a>
+        {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+</section>
