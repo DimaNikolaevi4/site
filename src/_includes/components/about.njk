@@ -29,8 +29,8 @@
     <div class="container">
       <div class="row gy-4 align-items-center">
 
-        {# Фото директора — слева на десктопе, чуть уже основной колонки #}
-        <div class="col-lg-5 order-1" data-aos="fade-up" data-aos-delay="100">
+        {# Фото директора — слева на десктопе, ширина 50% (50/50 с текстом) #}
+        <div class="col-lg-6 order-1" data-aos="fade-up" data-aos-delay="100">
           <div class="about-img-wrap">
             <img
               src="{{ directorPost.data.image or '/assets/mentor/img/about.jpg' }}"
@@ -41,8 +41,8 @@
           </div>
         </div>
 
-        {# Текстовый блок — справа на десктопе #}
-        <div class="col-lg-7 order-2 content" data-aos="fade-up" data-aos-delay="200">
+        {# Текстовый блок — справа на десктопе, ширина 50% (50/50 с фото) #}
+        <div class="col-lg-6 order-2 content" data-aos="fade-up" data-aos-delay="200">
           <h2 class="about-title">{{ directorPost.data.title }}</h2>
 
           {% if directorPost.data.excerpt %}
