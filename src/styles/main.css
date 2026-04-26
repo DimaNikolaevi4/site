@@ -2565,6 +2565,18 @@ body.dark-theme .about-title {
     padding-top: 0;
     padding-bottom: 0;
   }
+
+  /* Лёгкое разделение между «Словом директора» и блоком новостей:
+     тонкая линия-разделитель сверху блока новостей на мобильной. */
+  .home-with-sidebar > .component-news {
+    border-top: 1px solid rgba(0, 0, 0, 0.08);
+    margin-top: 0.5rem;
+    padding-top: 2rem;
+  }
+
+  body.dark-theme .home-with-sidebar > .component-news {
+    border-top-color: rgba(255, 255, 255, 0.12);
+  }
 }
 
 /*--------------------------------------------------------------
