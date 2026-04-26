@@ -51,7 +51,7 @@
       showHero / rubricTitle / hero.*)
   ═══════════════════════════════════════════════ #}
 
-  {# Контекстная полоса: хлебные крошки + заголовок + описание + баннер раздела #}
+  {# Контекстная полоса: только хлебные крошки #}
   <section class="section-context" aria-label="Контекст страницы">
     <div class="container">
 
@@ -62,16 +62,6 @@
         <h1 class="page-title">{{ title }}</h1>
         {% endif %}
       </div>
-
-      {# Баннер раздела (если нет full-hero) #}
-      {% if showHero == false and sectionContext and sectionContext.banner %}
-      <div class="page-banner mt-3">
-        <img src="{{ sectionContext.banner }}"
-             alt="{{ title }}"
-             loading="lazy"
-             class="img-fluid rounded">
-      </div>
-      {% endif %}
 
     </div>
   </section>

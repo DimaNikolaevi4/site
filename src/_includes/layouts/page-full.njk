@@ -22,7 +22,7 @@
 
   {# === СЕКЦИЯ 2: Hero — единый, рендерится в base.njk === #}
 
-  {# === СЕКЦИЯ 3: Контекстная (хлебные крошки + заголовок + описание + фильтры) === #}
+  {# === СЕКЦИЯ 3: Контекстная — только хлебные крошки === #}
   <section class="section-context" aria-label="Контекст страницы">
     <div class="container">
 
@@ -33,44 +33,7 @@
         {% if showHero == false %}
         <h1 class="page-title">{{ title }}</h1>
         {% endif %}
-
       </div>
-
-      {# Фильтры для страниц-списков #}
-      {% if sectionContext and (sectionContext.filters or sectionContext.sortOptions) %}
-      <div class="listing-controls">
-        {% if sectionContext.filters %}
-        <div class="listing-filters">
-          <label for="filter-select" class="visually-hidden">Фильтр</label>
-          <select id="filter-select" class="filter-select form-select form-select-sm">
-            <option value="">Все материалы</option>
-            {% for filter in sectionContext.filters %}
-            <option value="{{ filter.value }}">{{ filter.label }}</option>
-            {% endfor %}
-          </select>
-        </div>
-        {% endif %}
-        {% if sectionContext.sortOptions %}
-        <div class="listing-sort">
-          <label for="sort-select" class="visually-hidden">Сортировка</label>
-          <select id="sort-select" class="sort-select form-select form-select-sm">
-            {% for option in sectionContext.sortOptions %}
-            <option value="{{ option.value }}" {% if option.default %}selected{% endif %}>
-              {{ option.label }}
-            </option>
-            {% endfor %}
-          </select>
-        </div>
-        {% endif %}
-      </div>
-      {% endif %}
-
-      {# Баннер раздела (без full-hero) #}
-      {% if showHero == false and sectionContext and sectionContext.banner %}
-      <div class="page-banner">
-        <img src="{{ sectionContext.banner }}" alt="{{ title }}" loading="lazy" class="img-fluid rounded">
-      </div>
-      {% endif %}
 
     </div>
   </section>
