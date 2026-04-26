@@ -7414,6 +7414,15 @@ body.a11y-high-contrast .tag { background: #333 !important; color: #fff !importa
   border-radius: var(--home-img-radius) var(--home-img-radius) 0 0;
 }
 
+/* Mobile (<768px): добавляем промежуток между превью новостей,
+   чтобы карточки не «слипались» друг с другом */
+@media (max-width: 767.98px) {
+  .component-news .course-item {
+    margin-top: 0.75rem;
+    margin-bottom: 0.75rem;
+  }
+}
+
 /* Подрубрики (на страницах разделов, для единообразия) */
 .subrubric-card {
   border-radius: var(--home-img-radius);
