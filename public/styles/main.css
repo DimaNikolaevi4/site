@@ -2614,19 +2614,13 @@ body.dark-theme .about-title {
     padding-bottom: 0;
   }
 
-  /* Лёгкое разделение между «Словом директора» и блоком новостей,
-     а также между блоком новостей и «Популярное» — единый ритм
-     секций на мобильной. */
+  /* Ритм между «Словом директора», блоком новостей и «Популярное»
+     на мобильной. Серую разделительную линию убрали — её роль теперь
+     выполняет градиентная линия в .section-title::before. */
   .home-with-sidebar > .component-news,
   .home-with-sidebar > .component-popular {
-    border-top: 1px solid rgba(0, 0, 0, 0.08);
     margin-top: 0.5rem;
     padding-top: 2rem;
-  }
-
-  body.dark-theme .home-with-sidebar > .component-news,
-  body.dark-theme .home-with-sidebar > .component-popular {
-    border-top-color: rgba(255, 255, 255, 0.12);
   }
 }
 
