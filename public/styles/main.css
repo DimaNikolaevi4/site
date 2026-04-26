@@ -2523,11 +2523,6 @@ body.dark-theme .about-title {
   padding-bottom: 1.5rem;
 }
 
-/* Тонкая разделительная линия между News и Popular в правой колонке.
-   Делается через верхнюю границу следующего за News блока Popular. */
-.home-with-sidebar > .component-news + .component-popular {
-  border-top: 1px solid color-mix(in srgb, var(--default-color, #444) 12%, transparent);
-}
 @media (min-width: 992px) {
   .home-with-sidebar > .component-news,
   .home-with-sidebar > .component-popular {
@@ -2540,6 +2535,20 @@ body.dark-theme .about-title {
   .home-with-sidebar > .component-popular {
     padding-top: 2.5rem;
     padding-bottom: 2.5rem;
+  }
+}
+
+/* Единый стиль section-title в News и Popular внутри домашнего грида:
+   одинаковый компактный нижний отступ, чтобы оба блока выглядели как
+   элементы одной серии (а не один с большим, другой с маленьким зазором). */
+.home-with-sidebar > .component-news .section-title,
+.home-with-sidebar > .component-popular .section-title {
+  padding-bottom: 1.75rem;
+}
+@media (min-width: 992px) {
+  .home-with-sidebar > .component-news .section-title,
+  .home-with-sidebar > .component-popular .section-title {
+    padding-bottom: 2rem;
   }
 }
 
