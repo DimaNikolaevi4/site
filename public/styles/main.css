@@ -2558,6 +2558,51 @@ body.dark-theme .about-title {
 }
 
 /*--------------------------------------------------------------
+# Layout: Type B — Content + Sidebar Grid (3.1.2)
+#
+# Сетка для внутренних страниц: сайдбар 30% слева | контент 70% справа.
+# Используется в layouts/page.njk, layouts/page-full.njk,
+# layouts/listing.njk и layouts/svedenija-page.njk.
+# Модификатор `.content-sidebar-grid--full` — режим без сайдбара
+# (одна колонка во всю ширину).
+# Перенесено из src/assets/css/style.css (CHECKLIST 2.7.4).
+--------------------------------------------------------------*/
+.content-sidebar-grid {
+  display: grid;
+  grid-template-columns: 30% 1fr;
+  gap: 2rem;
+  align-items: start;
+}
+
+.content-sidebar-grid--full {
+  grid-template-columns: 1fr;
+}
+
+.sidebar-col {
+  position: sticky;
+  top: 80px;
+}
+
+.content-col {
+  min-width: 0;
+}
+
+@media (max-width: 991px) {
+  .content-sidebar-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .sidebar-col {
+    position: static;
+    order: 2;
+  }
+
+  .content-col {
+    order: 1;
+  }
+}
+
+/*--------------------------------------------------------------
 # Site Footer (новый дизайн в фирменной палитре)
 --------------------------------------------------------------*/
 .site-footer {

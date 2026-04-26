@@ -229,7 +229,14 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addPlugin(require("@11ty/eleventy-navigation"));
   
   // === Копирование статики ===
-  eleventyConfig.addPassthroughCopy("src/assets");
+  // Канонический CSS — только src/styles/main.css (см. STRUCTURE_AND_PRINCIPLES.md § 2.4).
+  // Из src/assets копируем точечно только подпапки, реально используемые шаблонами:
+  // favicons, images, js, uploads. Папки scss/, vendor/, img/ не публикуются —
+  // SCSS это исходники, vendor подключается через _mentor/assets, img/ нигде не используется.
+  eleventyConfig.addPassthroughCopy("src/assets/favicons");
+  eleventyConfig.addPassthroughCopy("src/assets/images");
+  eleventyConfig.addPassthroughCopy("src/assets/js");
+  eleventyConfig.addPassthroughCopy("src/assets/uploads");
   eleventyConfig.addPassthroughCopy("src/images");
   eleventyConfig.addPassthroughCopy({ "_mentor/assets": "assets/mentor" });
   eleventyConfig.addPassthroughCopy("src/admin");
