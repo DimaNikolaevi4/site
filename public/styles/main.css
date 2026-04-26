@@ -7056,9 +7056,28 @@ body.a11y-high-contrast .tag { background: #333 !important; color: #fff !importa
 }
 
 /* Фото директора — секция About (уже rounded shadow-sm, закрепляем единые значения) */
-.component-about .about-img-wrap > img {
+.component-about .about-img-wrap {
+  overflow: hidden;
   border-radius: var(--home-img-radius);
   box-shadow: var(--home-img-shadow);
+  transition: box-shadow .35s ease, transform .35s ease;
+  will-change: transform;
+}
+.component-about .about-img-wrap > img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: var(--home-img-radius);
+  transition: transform .5s ease;
+}
+@media (hover: hover) {
+  .component-about .about-img-wrap:hover {
+    box-shadow: 0 .75rem 1.75rem rgba(0, 0, 0, .18);
+    transform: translateY(-2px);
+  }
+  .component-about .about-img-wrap:hover > img {
+    transform: scale(1.04);
+  }
 }
 
 /* Сайдбар: медиа-баннеры (БПЛА и т. п.) */
