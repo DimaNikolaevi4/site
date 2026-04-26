@@ -12,6 +12,10 @@
     aboutMode = 'section'   → Краткий информационный блок для страниц разделов.
                               Переменные: aboutTitle, aboutText, aboutImage, aboutUrl.
 
+    aboutMode = 'narodfront' → Баннер-CTA «Народный фронт»: картинка-ссылка
+                              + подпись со ссылкой на pobeda.onf.ru.
+                              Без дополнительных переменных, контент зафиксирован.
+
   Если `aboutMode` не задан — компонент не рендерится.
 #}
 
@@ -110,5 +114,43 @@
 {# ── Режим 3: Заглушка — ничего не рендерится, placeholder ── #}
 {% elif aboutMode == 'stub' %}
   {# Заглушка: секция намеренно пуста. Контент будет добавлен позднее. #}
+
+{# ── Режим 4: «Народный фронт» — баннер-CTA на главной ── #}
+{% elif aboutMode == 'narodfront' %}
+
+  <section class="section component-about component-about--narodfront">
+    <div class="container">
+      <div class="narodfront-card" data-aos="fade-up">
+
+        <a href="https://pobeda.onf.ru/requirements/rostovskaya"
+           class="narodfront-link"
+           target="_blank"
+           rel="noopener noreferrer"
+           aria-label="Народный фронт — поддержим наших ребят на передовой">
+          <picture>
+            <source media="(max-width: 575px)" srcset="/images/logos/nf-2025.png">
+            <img
+              src="/images/logos/narodnyj-front-2025.png"
+              alt="Народный фронт 2025"
+              class="img-fluid rounded shadow-sm narodfront-image"
+              loading="lazy"
+              width="817"
+              height="514"
+            >
+          </picture>
+        </a>
+
+        <p class="narodfront-caption text-center mt-3 mb-0">
+          <a href="https://pobeda.onf.ru/requirements/rostovskaya"
+             target="_blank"
+             rel="noopener noreferrer"
+             class="narodfront-text-link">
+            Поддержим наших ребят на передовой!
+          </a>
+        </p>
+
+      </div>
+    </div>
+  </section>
 
 {% endif %}

@@ -2473,17 +2473,21 @@ body.dark-theme .about-title {
   display: grid;
   grid-template-columns: 1fr 30%;
   grid-template-areas:
-    "about    sidebar"
-    "news     sidebar"
-    "popular  sidebar";
+    "about       sidebar"
+    "narodfront  sidebar"
+    "pobeda      sidebar"
+    "news        sidebar"
+    "popular     sidebar";
   gap: 2rem;
   align-items: start;
 }
 
-.home-with-sidebar > .home-sidebar      { grid-area: sidebar; }
-.home-with-sidebar > .component-about   { grid-area: about; }
-.home-with-sidebar > .component-news    { grid-area: news; }
-.home-with-sidebar > .component-popular { grid-area: popular; }
+.home-with-sidebar > .home-sidebar                 { grid-area: sidebar; }
+.home-with-sidebar > .component-about--director    { grid-area: about; }
+.home-with-sidebar > .component-about--narodfront  { grid-area: narodfront; }
+.home-with-sidebar > .component-pobeda-banner      { grid-area: pobeda; }
+.home-with-sidebar > .component-news               { grid-area: news; }
+.home-with-sidebar > .component-popular            { grid-area: popular; }
 
 .home-sidebar {
   position: sticky;
@@ -2507,6 +2511,7 @@ body.dark-theme .about-title {
    собственные верхние/нижние padding (60px из mentor-темы), чтобы
    три блока в правой колонке шли единым ритмом, согласованным с gap. */
 .home-with-sidebar > .component-about,
+.home-with-sidebar > .component-pobeda-banner,
 .home-with-sidebar > .component-news,
 .home-with-sidebar > .component-popular {
   padding-top: 0;
@@ -2555,6 +2560,96 @@ body.dark-theme .about-title {
     padding-top: 60px;
     padding-bottom: 60px;
   }
+
+  .home-with-sidebar > .component-pobeda-banner {
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+}
+
+/*--------------------------------------------------------------
+# Блок «Народный фронт» (CTA) — about.njk, режим narodfront
+# Полноширинная картинка-ссылка с подписью под ней.
+# Используется на главной как Секция 4а.
+--------------------------------------------------------------*/
+.component-about--narodfront .narodfront-card {
+  max-width: 720px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.component-about--narodfront .narodfront-link {
+  display: block;
+  overflow: hidden;
+  border-radius: 0.75rem;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.component-about--narodfront .narodfront-link:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0.75rem 1.75rem rgba(0, 0, 0, 0.15);
+}
+
+.component-about--narodfront .narodfront-image {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.component-about--narodfront .narodfront-caption {
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 1.25rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+}
+
+@media (min-width: 768px) {
+  .component-about--narodfront .narodfront-caption {
+    font-size: 1.5rem;
+  }
+}
+
+.component-about--narodfront .narodfront-text-link {
+  color: var(--accent-color, #1a8754);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: color 0.2s ease, border-color 0.2s ease;
+}
+
+.component-about--narodfront .narodfront-text-link:hover,
+.component-about--narodfront .narodfront-text-link:focus {
+  color: var(--accent-color-hover, #156c43);
+  border-bottom-color: currentColor;
+}
+
+body.dark-theme .component-about--narodfront .narodfront-text-link {
+  color: var(--accent-color, #6ee7b7);
+}
+
+/*--------------------------------------------------------------
+# Полноширинный баннер «Победа ZA нами!» (без текста)
+# Превью одноимённой статьи на главной (Секция 4б).
+--------------------------------------------------------------*/
+.component-pobeda-banner .pobeda-banner-link {
+  display: block;
+  max-width: 960px;
+  margin-left: auto;
+  margin-right: auto;
+  overflow: hidden;
+  border-radius: 0.75rem;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.component-pobeda-banner .pobeda-banner-link:hover,
+.component-pobeda-banner .pobeda-banner-link:focus {
+  transform: translateY(-2px);
+  box-shadow: 0 0.75rem 1.75rem rgba(0, 0, 0, 0.18);
+}
+
+.component-pobeda-banner .pobeda-banner-img {
+  display: block;
+  width: 100%;
+  height: auto;
 }
 
 /*--------------------------------------------------------------

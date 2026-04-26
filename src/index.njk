@@ -59,6 +59,37 @@ hideRubric: true
         {% set aboutMode = 'director' %}
         {% include "components/about.njk" %}
 
+        <!-- ═══════════════════════════════════════════ -->
+        <!-- Секция 4а — Блок «Народный фронт» (CTA)     -->
+        <!-- ═══════════════════════════════════════════ -->
+        {% set aboutMode = 'narodfront' %}
+        {% include "components/about.njk" %}
+
+        <!-- ═══════════════════════════════════════════ -->
+        <!-- Секция 4б — Превью статьи «Победа ZA нами!» -->
+        <!-- Полноширинный кликабельный баннер без текста-->
+        <!-- ═══════════════════════════════════════════ -->
+        <section class="section component-pobeda-banner">
+          <div class="container">
+            <a href="https://pobeda.onf.ru/requirements/rostovskaya"
+               class="pobeda-banner-link"
+               target="_blank"
+               rel="noopener noreferrer"
+               aria-label="Победа ZA нами — Народный фронт, поддержать наших ребят на передовой"
+               data-aos="zoom-in">
+              <picture>
+                <source media="(max-width: 575px)" srcset="/images/logos/nf-2025.png">
+                <img src="/images/logos/narodnyj-front-2025.png"
+                     alt=""
+                     class="img-fluid rounded shadow-sm pobeda-banner-img"
+                     loading="lazy"
+                     width="817"
+                     height="514">
+              </picture>
+            </a>
+          </div>
+        </section>
+
         <!-- ═══════════════════════════════════════════════ -->
         <!-- Секция 5 — Сайдбар                              -->
         <!-- desktop: sticky-колонка ~30% слева на всю высоту -->
