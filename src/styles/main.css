@@ -2813,6 +2813,12 @@ body.dark-theme .component-about--narodfront .narodfront-text-link {
   padding-bottom: 0;
 }
 
+/* Список подрубрик — компактные отступы вместо 60px от .section */
+.component-news.component-news--subrubrics {
+  padding-top: 1.25rem;
+  padding-bottom: 1.25rem;
+}
+
 @media (max-width: 991px) {
   .page-with-sidebar {
     grid-template-columns: 1fr;
