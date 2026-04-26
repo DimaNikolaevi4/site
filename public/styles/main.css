@@ -7080,6 +7080,28 @@ body.a11y-high-contrast .tag { background: #333 !important; color: #fff !importa
   }
 }
 
+/* Сайдбар: контейнер медиа-баннеров — вертикальные отступы между баннерами */
+.sidebar-image-banners {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+@media (min-width: 768px) {
+  .sidebar-image-banners {
+    gap: 1.75rem;
+  }
+}
+@media (min-width: 992px) {
+  .sidebar-image-banners {
+    gap: 2.25rem;
+  }
+}
+@media (min-width: 1200px) {
+  .sidebar-image-banners {
+    gap: 2.75rem;
+  }
+}
+
 /* Сайдбар: медиа-баннеры (БПЛА и т. п.) */
 .sidebar-image-banner {
   border-radius: var(--home-img-radius);
