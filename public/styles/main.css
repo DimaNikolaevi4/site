@@ -2405,7 +2405,29 @@ h6 {
 }
 
 /*--------------------------------------------------------------
+# Глобальный декоративный фон страниц (bg-02 / bg-03)
+# Подключается ко всем страницам через body.page (класс задан
+# в base.njk: <body class="page page--{{ layout }}">).
+# На главной поверх него работает .home-bg (тот же визуал).
+--------------------------------------------------------------*/
+body.page {
+  background-image: url("/images/fon/bg-02.svg");
+  background-repeat: no-repeat;
+  background-position: top center;
+  background-size: 100% auto;
+  background-attachment: scroll;
+  background-color: var(--background-color);
+}
+
+body.page.dark-theme,
+body.dark-theme.page {
+  background-image: url("/images/fon/bg-03.svg");
+}
+
+/*--------------------------------------------------------------
 # Home Background Wrap (объединённое пространство секций 3–6)
+# На главной фон тот же, что и на body.page — оставляем для
+# совместимости визуального ритма (top center, 100% auto).
 --------------------------------------------------------------*/
 .home-bg {
   position: relative;
