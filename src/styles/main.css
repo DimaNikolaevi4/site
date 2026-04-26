@@ -816,7 +816,13 @@ h6 {
 section,
 .section {
   color: var(--default-color);
-  background-color: var(--background-color);
+  /* Прозрачный фон по умолчанию — чтобы декоративный SVG-фон сайта
+     (body.page → /images/fon/bg-02.svg, dark → bg-03.svg) был виден
+     на всех страницах. См. CHECKLIST.md п. 12.11 и replit.md
+     «Соглашения по вёрстке новых страниц». Секции с осознанным
+     фоном переопределяют background-color у себя (например
+     .dark-background, .light-background и собственные секции). */
+  background-color: transparent;
   padding: 60px 0;
   scroll-margin-top: 900px;
   overflow: clip;
@@ -3547,7 +3553,13 @@ body.dark-theme .site-footer .footer-resource-icon {
 section,
 .section {
   color: var(--default-color);
-  background-color: var(--background-color);
+  /* Прозрачный фон по умолчанию — чтобы декоративный SVG-фон сайта
+     (body.page → /images/fon/bg-02.svg, dark → bg-03.svg) был виден
+     на всех страницах. См. CHECKLIST.md п. 12.11 и replit.md
+     «Соглашения по вёрстке новых страниц». Секции с осознанным
+     фоном переопределяют background-color у себя (например
+     .dark-background, .light-background и собственные секции). */
+  background-color: transparent;
   padding: 60px 0;
   scroll-margin-top: 900px;
   overflow: clip;
