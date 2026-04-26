@@ -63,6 +63,72 @@ sections:
         size: ""
         url: "https://xn--b1auaw.xn--p1ai/wp-content/uploads/2022/04/Кодекс-этики-РО-1.pdf"
         signed: true
+      - title: Указ Президента РФ №567 (общественный совет при Президенте по делам казачества — типовой пример)
+        date: 04.05.2011
+        type: pdf
+        size: ""
+        url: "https://xn--b1auaw.xn--p1ai/wp-content/uploads/2022/04/Указ-т-2011-№567.pdf"
+        signed: true
+      - title: Указ Президента РФ №1065 (антикоррупционные стандарты — порядок проверки)
+        date: 21.09.2009
+        type: pdf
+        size: ""
+        url: "https://xn--b1auaw.xn--p1ai/wp-content/uploads/2022/04/Указ-от2009-№1065.pdf"
+        signed: true
+      - title: Указ Президента РФ №559 (представление сведений о доходах)
+        date: 18.05.2009
+        type: pdf
+        size: ""
+        url: "https://xn--b1auaw.xn--p1ai/wp-content/uploads/2022/04/Указ-от-2009-№559.pdf"
+        signed: true
+      - title: Распоряжение Губернатора Ростовской области №61 (план противодействия коррупции)
+        date: 2016
+        type: pdf
+        size: ""
+        url: "https://xn--b1auaw.xn--p1ai/wp-content/uploads/2022/04/Распоряж-Губерн-2016-№61.pdf"
+        signed: true
+      - title: Постановление Правительства РО №220 (положение о мониторинге коррупционных рисков, ред. 2018)
+        date: 2012
+        type: pdf
+        size: ""
+        url: "https://xn--b1auaw.xn--p1ai/wp-content/uploads/2022/04/Постанов-РО-2012-№220_red82.pdf"
+        signed: true
+      - title: Постановление Правительства РО №291 (антикоррупционная экспертиза НПА РО)
+        date: 2013
+        type: pdf
+        size: ""
+        url: "https://xn--b1auaw.xn--p1ai/wp-content/uploads/2022/04/Постанов-РО-2013-№291.pdf"
+        signed: true
+      - title: Постановление Правительства РО №339 (порядок проверки сведений о доходах гражданских служащих РО)
+        date: 2012
+        type: pdf
+        size: ""
+        url: "https://xn--b1auaw.xn--p1ai/wp-content/uploads/2022/04/Постановл-РО-2012-№339.pdf"
+        signed: true
+      - title: Постановление Правительства РО №419 (порядок уведомления о склонении к коррупции)
+        date: 2013
+        type: pdf
+        size: ""
+        url: "https://xn--b1auaw.xn--p1ai/wp-content/uploads/2022/04/Постановл-РО-2013-№419-.pdf"
+        signed: true
+      - title: Постановление Правительства РО №610 (комиссия по конфликту интересов)
+        date: 2013
+        type: pdf
+        size: ""
+        url: "https://xn--b1auaw.xn--p1ai/wp-content/uploads/2022/04/ПОСТАНОВЛ-РО-2013-№610.pdf"
+        signed: true
+      - title: План мероприятий по противодействию коррупции в Ростовской области на 2021–2024 гг.
+        date: 2021
+        type: pdf
+        size: ""
+        url: "https://xn--b1auaw.xn--p1ai/wp-content/uploads/2022/04/План-меропр-на-21-23-г.pdf"
+        signed: true
+      - title: План по профилактике коррупционных и иных правонарушений Минобразования РО
+        date: 2021
+        type: pdf
+        size: ""
+        url: "https://xn--b1auaw.xn--p1ai/wp-content/uploads/2022/04/План-по-профилакт-минобр-РО.pdf"
+        signed: true
 
   - id: local
     title: Локальные нормативные акты ГБПОУ РО «СИТ»
@@ -103,6 +169,48 @@ sections:
         size: ""
         url: "https://sit-salsk.ru/wp-content/uploads/2015/04/Антикоррупционный-стандарт-закупочной-деятельности-ГБПОУ-РО-_СИТ_-2024.docx"
         signed: false
+      - title: Положение о комиссии по урегулированию конфликта интересов (Приказ №144 от 13.12.2024)
+        date: 13.12.2024
+        type: pdf
+        size: ""
+        url: "https://sit-salsk.ru/wp-content/uploads/2021/08/пол-о-ком-по-урег-конф-пр-144.pdf"
+        signed: true
+      - title: Положение о комиссии по соблюдению профессиональной этики (Приказ №140 от 13.12.2024)
+        date: 13.12.2024
+        type: pdf
+        size: ""
+        url: "https://sit-salsk.ru/wp-content/uploads/2021/08/пол-о-ком-проф-этик-пр-140.pdf"
+        signed: true
+      - title: Положение о взаимодействии с лицами, ответственными за профилактику коррупции (Приказ №139 от 13.12.2024)
+        date: 13.12.2024
+        type: pdf
+        size: ""
+        url: "https://sit-salsk.ru/wp-content/uploads/2021/08/пол-о-взаим-лица-пр-139.pdf"
+        signed: true
+      - title: Положение о взаимодействии с правоохранительными органами (Приказ №138 от 13.12.2024)
+        date: 13.12.2024
+        type: pdf
+        size: ""
+        url: "https://sit-salsk.ru/wp-content/uploads/2021/08/пол-о-взаим-правоох-пр-138.pdf"
+        signed: true
+      - title: Порядок уведомления о фактах склонения к коррупции (Приказ №142 от 13.12.2024)
+        date: 13.12.2024
+        type: pdf
+        size: ""
+        url: "https://sit-salsk.ru/wp-content/uploads/2021/08/поряд-уведом-пр-142.pdf"
+        signed: true
+      - title: Комплексный план противодействия идеологии терроризма в РФ на 2024–2028 гг. в ГБПОУ РО «СИТ»
+        date: 07.02.2025
+        type: pdf
+        size: ""
+        url: "https://sit-salsk.ru/wp-content/uploads/2021/08/Комплексный-план-по-противодействию-идеологии-терроризма-в-Российской-Федерации-на-2024-28-гг.-в-ГБПОУ-РО-СИТ-07.02.2025.pdf"
+        signed: true
+      - title: Приказ №20 «Об утверждении Комплексного плана противодействия идеологии терроризма на 2024–2028 гг.»
+        date: 07.02.2025
+        type: pdf
+        size: ""
+        url: "https://sit-salsk.ru/wp-content/uploads/2021/08/Приказ-№20-Об-утверждении-Комплексного-плана-по-противодействию-идеологии-терроризма-в-Российской-Федерации-на-2024-28-07.02.2025.pdf"
+        signed: true
 
   - id: methodical
     title: Методические материалы
@@ -158,6 +266,14 @@ sections:
         type: html
         size: ""
         url: "https://www.donland.ru/activity/1400/"
+      - title: Антикоррупционная экспертиза — Законодательное собрание Ростовской области
+        type: html
+        size: ""
+        url: "https://zsro.ru/deyatelnost/protivodeystvie-korruptsii/antikorruptsionnaya-ekspertiza/"
+      - title: Постановление Правительства РФ №96 «Об антикоррупционной экспертизе НПА» (Гарант)
+        type: html
+        size: ""
+        url: "https://base.garant.ru/197633/"
 
   - id: commission
     title: Комиссия по урегулированию конфликта интересов
@@ -212,6 +328,24 @@ sections:
         size: ""
         url: "https://sit-salsk.ru/wp-content/uploads/2018/11/Протокол-заседания-комиссии-по-противодействию-коррупциии-в-ГБПОУ-РО-«Сальский-индустриальный-техникум»-21.12.2020.pdf"
         signed: false
+      - title: Протокол заседания комиссии 24.03.2016
+        date: 24.03.2016
+        type: pdf
+        size: ""
+        url: "https://sit-salsk.ru/wp-content/uploads/2016/09/Протокол-заседания-комиссии-по-противодействию-коррупции-в-ГБПОУ-РО-СИТ-24.03.2016.pdf"
+        signed: false
+      - title: Приказ №25 «О внесении изменений в положение о борьбе с коррупцией»
+        date: 17.03.2016
+        type: pdf
+        size: ""
+        url: "https://sit-salsk.ru/wp-content/uploads/2016/09/Приказ-№25.-О-внесении-изменений-в-положение-о-борьбе-с-коррупцией-17.03.2016.pdf"
+        signed: false
+      - title: Положение об антикоррупционной комиссии в ГОУ (архивная версия)
+        date: 2015
+        type: pdf
+        size: ""
+        url: "https://sit-salsk.ru/wp-content/uploads/2015/04/Положение-о-антикоррупционной-комиссии-в-ГОУ.pdf"
+        signed: false
 
   - id: income
     title: Сведения о доходах руководителей
@@ -229,6 +363,12 @@ sections:
         type: pdf
         size: ""
         url: "#"
+        signed: true
+      - title: Приобретение оборудования за период с 01.01.2022 по 31.12.2022
+        date: 2022
+        type: pdf
+        size: ""
+        url: "https://sit-salsk.ru/wp-content/uploads/2021/08/Приобретение-оборудования-за-период-с-01.01.22-по-31.12.22.pdf"
         signed: true
 
   - id: reports
