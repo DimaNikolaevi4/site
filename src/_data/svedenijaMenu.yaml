@@ -4,6 +4,9 @@
 - title: Документы
   url: /svedenija/dokumenty/
   key: documents
+- title: Противодействие коррупции
+  url: /svedenija/dokumenty/anti-corruption/
+  key: anti-corruption
 - title: Структура управления
   url: /svedenija/structure/
   key: structure

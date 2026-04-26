@@ -92,6 +92,8 @@ main:
         url: /bezopasnost/extremizm/
       - title: Противодействие коррупции
         url: /bezopasnost/antikorrupcija/
+      - title: Противодействие коррупции (рубрика)
+        url: /bezopasnost/korrupcija/
   - title: Студентам и родителям
     url: /studentam-i-roditeljam/
     key: studentam
