@@ -2,7 +2,7 @@
 title: Доступная среда
 layout: layouts/svedenija-page.njk
 section: access
-rubric: "2.11"
+rubric: "2.12"
 permalink: /svedenija/access/
 description: Доступная среда для лиц с ОВЗ и инвалидов в ГБПОУ РО «Сальский индустриальный техникум»
 ---

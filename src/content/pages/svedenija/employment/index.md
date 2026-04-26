@@ -2,7 +2,7 @@
 title: Трудоустройство выпускников
 layout: layouts/svedenija-page.njk
 section: employment
-rubric: "2.4.4"
+rubric: "2.14"
 permalink: /svedenija/employment/
 description: Содействие трудоустройству выпускников ГБПОУ РО «Сальский индустриальный техникум»
 ---

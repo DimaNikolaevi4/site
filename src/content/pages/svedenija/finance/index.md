@@ -2,7 +2,7 @@
 title: Финансово-хозяйственная деятельность
 layout: layouts/svedenija-page.njk
 section: finance
-rubric: "2.9"
+rubric: "2.10"
 permalink: /svedenija/finance/
 description: Финансово-хозяйственная деятельность ГБПОУ РО «Сальский индустриальный техникум» — государственные задания, планы ФХД, отчёты по годам.
 ---

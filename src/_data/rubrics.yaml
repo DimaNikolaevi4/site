@@ -42,10 +42,10 @@ main_rubrics:
     children:
       - code: "2.1"
         title: "Основные сведения"
-        slug: osnovnye-svedenija
+        slug: basic
       - code: "2.2"
         title: "Структура и органы управления"
-        slug: struktura-upravleniya
+        slug: structure
       - code: "2.3"
         title: "Документы"
         slug: dokumenty
@@ -58,62 +58,41 @@ main_rubrics:
             slug: anti-corruption
       - code: "2.4"
         title: "Образование"
-        slug: obrazovanie
-        children:
-          - code: "2.4.1"
-            title: "Вакантные места"
-            slug: vakantnye-mesta
-          - code: "2.4.2"
-            title: "Международное сотрудничество"
-            slug: mezhdunarodnoe
-          - code: "2.4.3"
-            title: "Инклюзивное образование"
-            slug: inklyuzivnoe
-          - code: "2.4.4"
-            title: "Трудоустройство выпускников"
-            slug: trudoustrojstvo
+        slug: education
       - code: "2.5"
-        title: "Руководство"
-        slug: rukovodstvo
+        title: "Руководство. Педагогический (научно-педагогический) состав"
+        slug: employees
         children:
           - code: "2.5.1"
             title: "Педагогический состав"
             slug: pedagogicheskiy-sostav
       - code: "2.6"
-        title: "Образовательные стандарты"
-        slug: standarty
+        title: "Образовательные стандарты и требования"
+        slug: standards
       - code: "2.7"
-        title: "Материально-техническое обеспечение"
-        slug: materialno-tehnicheskoe
-        children:
-          - code: "2.7.1"
-            title: "Электронная информационно-образовательная среда"
-            slug: elektronnoe-obrazovanie
-          - code: "2.7.2"
-            title: "Цифровая библиотека"
-            slug: elektronnaya-biblioteka
-          - code: "2.7.3"
-            title: "Электронные образовательные ресурсы"
-            slug: elektronnye-resursy
-          - code: "2.7.4"
-            title: "Образовательная платформа"
-            slug: platforma
-          - code: "2.7.5"
-            title: "Электронное расписание"
-            slug: elektronnoe-raspisanie
-          - code: "2.7.6"
-            title: "Организация питания"
-            slug: pitanie
+        title: "Материально-техническое обеспечение и оснащённость образовательного процесса"
+        slug: objects
       - code: "2.8"
-        title: "Платные образовательные услуги"
-        slug: platnye-uslugi
+        title: "Стипендии и меры поддержки обучающихся"
+        slug: stipend
       - code: "2.9"
+        title: "Платные образовательные услуги"
+        slug: paid-services
+      - code: "2.10"
         title: "Финансово-хозяйственная деятельность"
-        slug: finansy
-        children:
-          - code: "2.9.1"
-            title: "Стипендии и меры поддержки"
-            slug: stipendii
+        slug: finance
+      - code: "2.11"
+        title: "Вакантные места для приёма (перевода) обучающихся"
+        slug: vacancies
+      - code: "2.12"
+        title: "Доступная среда"
+        slug: access
+      - code: "2.13"
+        title: "Международное сотрудничество"
+        slug: obrazovanie/mezhdunarodnoe
+      - code: "2.14"
+        title: "Трудоустройство выпускников"
+        slug: employment
 
   - code: "3"
     title: "УЧЕБНО-МЕТОДИЧЕСКАЯ РАБОТА"
