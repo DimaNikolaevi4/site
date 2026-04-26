@@ -13,6 +13,7 @@ eleventyNavigation:
   order: 1
 tags:
   - Абитуриентам
+aboutMode: director
 ---
 
 # Абитуриентам
