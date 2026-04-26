@@ -61,9 +61,20 @@
       </li>
 
       {# Уровень 1: раздел #}
+      {# Если текущий URL совпадает с корнем раздела — раздел является текущей страницей #}
+      {% set _sectionUrl = "/" + _sectionKey + "/" %}
+      {% set _isRootOfSection = (page.url == _sectionUrl) and not subsection %}
+
+      {% if _isRootOfSection %}
+      <li class="breadcrumb-item breadcrumb-item--current"
+          itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <span itemprop="name">{{ _sectionLabel }}</span>
+        <meta itemprop="position" content="2"/>
+      </li>
+      {% else %}
       <li class="breadcrumb-item"
           itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-        <a href="/{{ _sectionKey }}/" itemprop="item">
+        <a href="{{ _sectionUrl }}" itemprop="item">
           <span itemprop="name">{{ _sectionLabel }}</span>
         </a>
         <meta itemprop="position" content="2"/>
@@ -88,6 +99,7 @@
         <meta itemprop="position"
               content="{{ 4 if subsection else 3 }}"/>
       </li>
+      {% endif %}
       {% endif %}
 
     {# ═══ Режим 3: авто из URL ═══ #}
