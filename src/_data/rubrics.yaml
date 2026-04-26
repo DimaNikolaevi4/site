@@ -53,6 +53,9 @@ main_rubrics:
           - code: "2.3.1"
             title: "ВСОКО"
             slug: vsoko
+          - code: "2.3.2"
+            title: "Антикоррупционные документы"
+            slug: anti-corruption
       - code: "2.4"
         title: "Образование"
         slug: obrazovanie
@@ -246,7 +249,7 @@ main_rubrics:
         slug: ekstremizm
       - code: "7.3"
         title: "Противодействие коррупции"
-        slug: korrupcija
+        slug: antikorrupcija
       - code: "7.4"
         title: "Пожарная безопасность"
         slug: pozharnaya
