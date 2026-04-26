@@ -15,7 +15,6 @@ tags:
   - Абитуриентам
 aboutMode: razdel
 suppressSubrubrics: true
-belowGridSubrubric: "1.9"
 ---
 
 # Абитуриентам
@@ -48,5 +47,21 @@ belowGridSubrubric: "1.9"
 - **Телефон:** 8 (86372) 5-05-71
 - **Электронная почта:** [sitsalsk@mail.ru](mailto:sitsalsk@mail.ru)
 - **Официальный сайт:** [сит-сальск.рф](https://xn----8sbwke6acce8h.xn--p1ai/)
+
+<section class="section component-news component-news--subrubrics">
+  <div class="container">
+    <ul class="rubric-resources-grid">
+      <li data-aos="fade-up">
+        <a href="/abiturientam/kontakty-grafik/" class="rubric-resource">
+          <span class="rubric-resource-icon" aria-hidden="true">📞</span>
+          <span class="rubric-resource-text">
+            Контакты и график работы приёмной комиссии
+            <span class="rubric-resource-desc">Адрес, телефон, часы приёма документов, ссылки на официальный сайт и сообщество ВКонтакте.</span>
+          </span>
+        </a>
+      </li>
+    </ul>
+  </div>
+</section>
 
 <a href="mailto:sitsalsk@mail.ru?subject=Вопрос%20о%20поступлении" class="btn btn-primary">Обращение граждан по вопросам приёмной кампании</a>
