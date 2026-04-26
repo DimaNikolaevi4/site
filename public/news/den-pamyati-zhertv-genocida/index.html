@@ -919,27 +919,7 @@
       </button>
     </li>
 
-    <li class="post-share__item post-share__item--native" hidden>
-      <button class="post-share__tag post-share__tag--more post-share__tag--btn"
-              type="button"
-              title="Поделиться через систему"
-              aria-label="Поделиться через систему"
-              onclick="navigator.share({title:document.title,url:'https://сит-сальск.рф/news/den-pamyati-zhertv-genocida/'}).catch(function(){});">
-        <span class="post-share__icon"><i class="bi bi-box-arrow-up" aria-hidden="true"></i></span>
-        <span class="post-share__tag-text">Ещё</span>
-      </button>
-    </li>
-
   </ul>
-
-  <script>
-    (function(){
-      if (navigator.share) {
-        var el = document.currentScript.parentNode.querySelector('.post-share__item--native');
-        if (el) el.hidden = false;
-      }
-    })();
-  </script>
 </aside>
 
 
