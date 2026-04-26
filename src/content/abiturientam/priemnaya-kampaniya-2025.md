@@ -1,6 +1,7 @@
 ---
 title: "Приёмная кампания 2026"
 description: Правила приёма, контрольные цифры, сроки подачи документов, целевое обучение, информация об общежитии.
+emoji: "📋"
 layout: layouts/post.njk
 category: abiturientam
 rubric: "1.3"

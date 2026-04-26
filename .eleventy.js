@@ -140,7 +140,8 @@ module.exports = function(eleventyConfig) {
           pageData = {
             title: page.data.title || c.title,
             description: page.data.description || '',
-            image: page.data.image || ''
+            image: page.data.image || '',
+            emoji: page.data.emoji || ''
           };
         }
       }

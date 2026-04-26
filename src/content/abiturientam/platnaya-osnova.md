@@ -1,6 +1,7 @@
 ---
 title: "Платная основа обучения"
 description: Информация о местах с оплатой стоимости обучения по договорам.
+emoji: "💳"
 layout: layouts/post.njk
 category: abiturientam
 rubric: "1.8"

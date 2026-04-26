@@ -1,5 +1,6 @@
 ---
 title: День открытых дверей
+emoji: "🚪"
 layout: layouts/page-full.njk
 category: abiturientam
 rubric: "1.4"

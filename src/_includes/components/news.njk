@@ -100,30 +100,21 @@
     {% endif %}
 
     {% if newsCollection and newsCollection.length > 0 %}
-    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+    <ul class="rubric-resources-grid">
       {% for item in newsCollection %}
-      <div class="col" data-aos="fade-up" data-aos-delay="{{ loop.index * 50 }}">
-        <article class="subrubric-card h-100">
-          {% if item.data.image %}
-          <a href="{{ item.url }}" class="subrubric-card__img-wrap">
-            <img src="{{ item.data.image }}" alt="{{ item.data.title }}" loading="lazy" class="img-fluid">
-          </a>
-          {% endif %}
-          <div class="subrubric-card__body">
-            <h3 class="subrubric-card__title">
-              <a href="{{ item.url }}">{{ item.data.title }}</a>
-            </h3>
+      <li data-aos="fade-up" data-aos-delay="{{ loop.index * 50 }}">
+        <a href="{{ item.url }}" class="rubric-resource">
+          <span class="rubric-resource-icon" aria-hidden="true">{{ item.data.emoji if item.data.emoji else "📄" }}</span>
+          <span class="rubric-resource-text">
+            {{ item.data.title }}
             {% if item.data.description %}
-            <p class="subrubric-card__desc">{{ item.data.description }}</p>
+            <span class="rubric-resource-desc">{{ item.data.description }}</span>
             {% endif %}
-            <a href="{{ item.url }}" class="subrubric-card__link">
-              Перейти <i class="bi bi-arrow-right"></i>
-            </a>
-          </div>
-        </article>
-      </div>
+          </span>
+        </a>
+      </li>
       {% endfor %}
-    </div>
+    </ul>
     {% else %}
     <div class="alert alert-info" role="status">
       <i class="bi bi-info-circle me-2"></i>Материалы в этом разделе пока не добавлены.

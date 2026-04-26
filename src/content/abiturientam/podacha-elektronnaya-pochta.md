@@ -1,6 +1,7 @@
 ---
 title: "Подача документов по электронной почте"
 description: Пошаговая инструкция и бланки заявлений по специальностям и профессиям.
+emoji: "✉️"
 layout: layouts/post.njk
 category: abiturientam
 rubric: "1.6"

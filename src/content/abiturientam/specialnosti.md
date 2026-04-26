@@ -1,5 +1,6 @@
 ---
 title: Специальности и профессии
+emoji: "📚"
 layout: layouts/post.njk
 category: abiturientam
 rubric: "1.2"

@@ -1,6 +1,7 @@
 ---
 title: "Контакты и график работы приёмной комиссии"
 description: Адрес, телефон, часы приёма документов, ссылки на официальный сайт и сообщество ВКонтакте.
+emoji: "📞"
 layout: layouts/post.njk
 category: abiturientam
 rubric: "1.9"

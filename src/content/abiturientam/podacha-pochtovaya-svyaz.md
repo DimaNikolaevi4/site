@@ -1,6 +1,7 @@
 ---
 title: "Подача документов через операторов почтовой связи"
 description: Порядок отправки документов почтой и бланки заявлений.
+emoji: "📮"
 layout: layouts/post.njk
 category: abiturientam
 rubric: "1.7"

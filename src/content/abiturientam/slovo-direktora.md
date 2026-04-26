@@ -1,6 +1,7 @@
 ---
 title: Слово директора
 description: Обращение руководителя техникума к будущим студентам и их родителям.
+emoji: "🎓"
 layout: layouts/post.njk
 category: abiturientam
 rubric: "1.1"
