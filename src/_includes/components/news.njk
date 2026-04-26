@@ -13,6 +13,8 @@
     newsTitle      — заголовок секции (по умолчанию «Новости»)
     newsSubtitle   — подзаголовок (опционально)
     newsInline     — bool (по умолчанию false)
+    excludeUrls    — массив URL для исключения карточек (только для 'subrubrics').
+                     Например: excludeUrls = ["/abiturientam/kontakty-grafik/"].
 #}
 
 {% set _newsCount = newsCount if newsCount else 3 %}
@@ -102,6 +104,7 @@
     {% if newsCollection and newsCollection.length > 0 %}
     <ul class="rubric-resources-grid">
       {% for item in newsCollection %}
+      {% if not (excludeUrls and item.url in excludeUrls) %}
       <li data-aos="fade-up" data-aos-delay="{{ loop.index * 50 }}">
         <a href="{{ item.url }}" class="rubric-resource">
           <span class="rubric-resource-icon" aria-hidden="true">{{ item.data.emoji if item.data.emoji else "📄" }}</span>
@@ -113,6 +116,7 @@
           </span>
         </a>
       </li>
+      {% endif %}
       {% endfor %}
     </ul>
     {% else %}

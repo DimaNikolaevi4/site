@@ -239,13 +239,18 @@
   {# === СЕКЦИЯ 5 — Материалы / Подрубрики (динамический список) === #}
   {# Уровень 1: rubric="3"  → Level 1 подрубрики "3.1", "3.2"…           #}
   {# Уровень 2: rubric="4.5" → Level 2 подрубрики "4.5.1", "4.5.2"…       #}
+  {# Frontmatter `suppressSubrubrics: true` отключает авто-вывод —        #}
+  {# страница рендерит подрубрики самостоятельно (например, в нужной      #}
+  {# точке Markdown-тела через {% include "components/news.njk" %}).      #}
   {# ═══════════════════════════════════════════════ #}
+  {% if not suppressSubrubrics %}
   {% set _subrubricCards = rubric | getSubrubricCards(collections) %}
   {% if _subrubricCards and _subrubricCards.length > 0 %}
     {% set newsMode = 'subrubrics' %}
     {% set newsTitle = subrubricTitle or 'Подрубрики раздела' %}
     {% set newsCollection = _subrubricCards %}
     {% include "components/news.njk" %}
+  {% endif %}
   {% endif %}
 
   {# ═══════════════════════════════════════════════ #}
@@ -330,6 +335,42 @@
 
     </div>{# /.page-with-sidebar #}
   </div>{# /.container #}
+
+  {# ═══════════════════════════════════════════════════════════════════ #}
+  {# === ПОЛОСА ВО ВСЮ ШИРИНУ ПОД СЕТКОЙ ===                             #}
+  {# Frontmatter `belowGridSubrubric: "X.Y"` рендерит карточку указанной #}
+  {# подрубрики ниже сетки, во всю ширину контейнера. Стили — те же,    #}
+  {# что у component-news--subrubrics, но без сетки .page-with-sidebar. #}
+  {# Опционально: `belowGridSubrubricTitle` — заголовок секции.          #}
+  {# ═══════════════════════════════════════════════════════════════════ #}
+  {% if belowGridSubrubric %}
+  <section class="section component-news component-news--subrubrics">
+    <div class="container">
+      {% if belowGridSubrubricTitle %}
+      <div class="section-title mb-4" data-aos="fade-up">
+        <h2>{{ belowGridSubrubricTitle }}</h2>
+      </div>
+      {% endif %}
+      <ul class="rubric-resources-grid">
+        {% for _bgsPage in collections.all %}
+        {% if _bgsPage.data.rubric == belowGridSubrubric %}
+        <li data-aos="fade-up">
+          <a href="{{ _bgsPage.url }}" class="rubric-resource">
+            <span class="rubric-resource-icon" aria-hidden="true">{{ _bgsPage.data.emoji if _bgsPage.data.emoji else "📄" }}</span>
+            <span class="rubric-resource-text">
+              {{ _bgsPage.data.title }}
+              {% if _bgsPage.data.description %}
+              <span class="rubric-resource-desc">{{ _bgsPage.data.description }}</span>
+              {% endif %}
+            </span>
+          </a>
+        </li>
+        {% endif %}
+        {% endfor %}
+      </ul>
+    </div>
+  </section>
+  {% endif %}
 
 </div>
 {% endblock %}

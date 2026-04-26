@@ -28,6 +28,10 @@
 - Правая колонка стопкой: `components/about.njk` (любой режим, по умолчанию `stub`) → `section-main` (контент или карточки) → `section-extra` → `news` (подрубрики) → `popular` → `section-related` → `section-backnav`.
 - На мобильном (≤991px) сетка сворачивается в одну колонку, сайдбар уходит вниз через `order: 99`.
 - Режимы `aboutMode` в `components/about.njk`: `director` | `section` | `stub` | `home` (главная — 4 блока: 2 баннера + Слово директора + День открытых дверей) | `razdel` (страницы разделов — только пара баннеров «Народный фронт» + «О заключении контракта»).
+- Frontmatter-флаги для тонкой настройки шаблона:
+  - `suppressSubrubrics: true` — отключает авто-вывод подрубрик в правой колонке. Страница может вызвать `{% include "components/news.njk" %}` (с `newsMode='subrubrics'`, `newsCollection`, опц. `excludeUrls`) в нужной точке Markdown-тела.
+  - `belowGridSubrubric: "X.Y"` — выводит карточку указанной подрубрики отдельной полосой во всю ширину контейнера ниже двухколоночной сетки. Опц. `belowGridSubrubricTitle` — заголовок над полосой.
+- В `components/news.njk` (режим `subrubrics`) поддерживается `excludeUrls` — массив URL, которые надо пропустить при отрисовке списка.
 
 ## Соглашения по вёрстке новых страниц
 
