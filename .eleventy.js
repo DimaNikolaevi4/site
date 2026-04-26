@@ -122,8 +122,8 @@ module.exports = function(eleventyConfig) {
   });
 
   // Возвращает прямых детей рубрики, упакованных как карточки для news.njk (subrubrics mode)
-  // На вход — код рубрики ("3", "4.5", "2.7" и т.п.)
-  eleventyConfig.addFilter('getSubrubricCards', function(code) {
+  // На вход — код рубрики ("3", "4.5", "2.7" и т.п.) и collections (для чтения frontmatter)
+  eleventyConfig.addFilter('getSubrubricCards', function(code, collections) {
     if (!code) return [];
     const parent = allSlugs.find(r => r.code === code);
     if (!parent) return [];
@@ -131,14 +131,21 @@ module.exports = function(eleventyConfig) {
       return r.fullPath.startsWith(parent.fullPath + '/') &&
              r.fullPath.split('/').length === parent.fullPath.split('/').length + 1;
     });
-    return children.map(c => ({
-      url: '/' + c.fullPath + '/',
-      data: {
-        title: c.title,
-        description: '',
-        image: ''
+    return children.map(c => {
+      const url = '/' + c.fullPath + '/';
+      let pageData = { title: c.title, description: '', image: '' };
+      if (collections && collections.all) {
+        const page = collections.all.find(p => p.url === url);
+        if (page && page.data) {
+          pageData = {
+            title: page.data.title || c.title,
+            description: page.data.description || '',
+            image: page.data.image || ''
+          };
+        }
       }
-    }));
+      return { url, data: pageData };
+    });
   });
   
   // === Резолвер меток URL → человеческое название (для хлебных крошек) ===

@@ -1,5 +1,6 @@
 ---
 title: "Виртуальная экскурсия"
+description: Фотогалерея корпусов, мастерских и студенческой жизни техникума.
 layout: layouts/post.njk
 category: abiturientam
 rubric: "1.5"
