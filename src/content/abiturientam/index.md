@@ -60,8 +60,15 @@ suppressSubrubrics: true
           </span>
         </a>
       </li>
+      <li data-aos="fade-up" data-aos-delay="50">
+        <a href="mailto:sitsalsk@mail.ru?subject=Вопрос%20о%20поступлении" class="rubric-resource">
+          <span class="rubric-resource-icon" aria-hidden="true">✉️</span>
+          <span class="rubric-resource-text">
+            Обращение граждан по вопросам приёмной кампании
+            <span class="rubric-resource-desc">Напишите нам на электронную почту приёмной комиссии — ответим на ваш вопрос о поступлении.</span>
+          </span>
+        </a>
+      </li>
     </ul>
   </div>
 </section>
-
-<a href="mailto:sitsalsk@mail.ru?subject=Вопрос%20о%20поступлении" class="btn btn-primary">Обращение граждан по вопросам приёмной кампании</a>
