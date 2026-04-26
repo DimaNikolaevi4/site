@@ -2846,10 +2846,17 @@ body.dark-theme .site-footer {
   position: absolute;
   left: 0;
   bottom: 0;
-  width: 36px;
+  width: 80px;
   height: 2px;
-  border-radius: 2px;
-  background: var(--footer-accent);
+  border-radius: 999px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    color-mix(in srgb, var(--footer-accent), transparent 30%) 15%,
+    var(--footer-accent) 50%,
+    color-mix(in srgb, var(--footer-accent), transparent 30%) 85%,
+    transparent 100%
+  );
 }
 
 .site-footer a {
@@ -6764,10 +6771,17 @@ body.dark-theme .post-share {
   left: 50%;
   bottom: 0;
   transform: translateX(-50%);
-  width: 36px;
+  width: 80px;
   height: 2px;
-  background: var(--accent-color, #5fcf80);
-  border-radius: 2px;
+  border-radius: 999px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    color-mix(in srgb, var(--accent-color, #5fcf80), transparent 30%) 20%,
+    var(--accent-color, #5fcf80) 50%,
+    color-mix(in srgb, var(--accent-color, #5fcf80), transparent 30%) 80%,
+    transparent 100%
+  );
 }
 .post-share__label i {
   color: var(--accent-color, #5fcf80);
@@ -6893,7 +6907,18 @@ body.dark-theme .post-share__tag:focus-visible {
   align-items: center;
   gap: 0.4rem;
   padding-bottom: 0.6rem;
-  border-bottom: 2px solid var(--accent-color, #5fcf80);
+  border-bottom: 0;
+  background-image: linear-gradient(
+    90deg,
+    transparent 0%,
+    color-mix(in srgb, var(--accent-color, #5fcf80), transparent 30%) 15%,
+    var(--accent-color, #5fcf80) 50%,
+    color-mix(in srgb, var(--accent-color, #5fcf80), transparent 30%) 85%,
+    transparent 100%
+  );
+  background-repeat: no-repeat;
+  background-position: bottom left;
+  background-size: 100% 2px;
 }
 
 .sidebar-search-form .input-group { gap: 0.3rem; }
@@ -7261,8 +7286,8 @@ body.dark-theme .post-share__tag:focus-visible {
 }
 
 .page-hero__divider {
-  width: 180px;
-  max-width: 70%;
+  width: 320px;
+  max-width: 88%;
   height: 2px;
   margin: 18px auto 14px;
   border: 0;
@@ -7384,7 +7409,7 @@ body.dark-theme .brand-divider {
 
 /* Боковое меню «Сведений» */
 .svedenija-nav-widget { padding: 0; overflow: hidden; }
-.svedenija-nav-title { padding: 0.9rem 1.1rem; margin: 0; border-bottom: 2px solid var(--accent-color, #5fcf80); }
+.svedenija-nav-title { padding: 0.9rem 1.1rem; margin: 0; border-bottom: 0; background-image: linear-gradient(90deg, transparent 0%, color-mix(in srgb, var(--accent-color, #5fcf80), transparent 30%) 15%, var(--accent-color, #5fcf80) 50%, color-mix(in srgb, var(--accent-color, #5fcf80), transparent 30%) 85%, transparent 100%); background-repeat: no-repeat; background-position: bottom left; background-size: 100% 2px; }
 
 .svedenija-nav-list { margin: 0; padding: 0.4rem 0; }
 
