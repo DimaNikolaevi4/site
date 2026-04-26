@@ -7080,6 +7080,29 @@ body.a11y-high-contrast .tag { background: #333 !important; color: #fff !importa
   }
 }
 
+/* Сайдбар: лёгкая светло-зелёная подложка вокруг всей секции
+   (используем accent-color с низкой непрозрачностью). */
+.component-sidebar {
+  background-color: color-mix(in srgb, var(--accent-color) 10%, transparent);
+  border-radius: var(--home-img-radius);
+  padding: 1rem;
+}
+@media (min-width: 768px) {
+  .component-sidebar {
+    padding: 1.25rem;
+  }
+}
+@media (min-width: 992px) {
+  .component-sidebar {
+    padding: 1.5rem;
+  }
+}
+@media (min-width: 1200px) {
+  .component-sidebar {
+    padding: 1.75rem;
+  }
+}
+
 /* Сайдбар: контейнер медиа-баннеров — вертикальные отступы между баннерами */
 .sidebar-image-banners {
   display: flex;
