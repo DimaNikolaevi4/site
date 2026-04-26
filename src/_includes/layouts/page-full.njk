@@ -34,32 +34,6 @@
         <h1 class="page-title">{{ title }}</h1>
         {% endif %}
 
-        {% if description %}
-        <p class="page-description lead">{{ description }}</p>
-        {% endif %}
-
-        {# Мета-строка (дата публикации, категория) #}
-        {% if date or category or section %}
-        <div class="context-meta">
-          {% if date %}
-          <time class="context-meta__item" datetime="{{ date | dateToISO }}">
-            <i class="bi bi-calendar3" aria-hidden="true"></i>
-            {{ date | dateRu }}
-          </time>
-          {% endif %}
-          {% if category %}
-          <span class="context-meta__item">
-            <i class="bi bi-folder" aria-hidden="true"></i>
-            <a href="/{{ category | slugify }}/">{{ categoryTitle or category }}</a>
-          </span>
-          {% elif section %}
-          <span class="context-meta__item">
-            <i class="bi bi-folder" aria-hidden="true"></i>
-            <a href="/{{ section | slugify }}/">{{ sectionTitle or section }}</a>
-          </span>
-          {% endif %}
-        </div>
-        {% endif %}
       </div>
 
       {# Фильтры для страниц-списков #}
