@@ -2755,8 +2755,7 @@ body.dark-theme .component-about--narodfront .narodfront-text-link {
 .page-with-sidebar {
   display: grid;
   grid-template-columns: 30% 1fr;
-  grid-auto-flow: row dense;
-  gap: 2rem;
+  column-gap: 2rem;
   align-items: start;
 }
 
@@ -2764,51 +2763,46 @@ body.dark-theme .component-about--narodfront .narodfront-text-link {
   grid-template-columns: 1fr;
 }
 
+/* Левая колонка: сайдбар — один grid-item, sticky */
 .page-with-sidebar > .page-sidebar-col {
-  grid-column: 1;
-  grid-row: 1 / -1;
   position: sticky;
   top: 80px;
   align-self: start;
   min-width: 0;
 }
 
-.page-with-sidebar > *:not(.page-sidebar-col) {
-  grid-column: 2;
+/* Правая колонка: всё содержимое сложено в flex-column */
+.page-with-sidebar > .page-main-col {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
   min-width: 0;
 }
 
-.page-with-sidebar--full > * {
-  grid-column: 1;
-}
-
-/* Внутри грида у вложенных секций уже есть свой Bootstrap-контейнер
-   с max-width 1140px — снимаем это ограничение, иначе на десктопе он
-   будет «вырываться» за пределы своей ячейки. */
-.page-with-sidebar > section > .container,
-.page-with-sidebar > section .container,
-.page-with-sidebar > nav > .container {
+/* Вложенные секции — снимаем ограничение Bootstrap-контейнера */
+.page-main-col > section > .container,
+.page-main-col > section .container,
+.page-main-col > nav > .container {
   max-width: 100%;
 }
 
-/* В рамках сетки убираем «жирные» вертикальные отступы у вложенных
-   секций — единый ритм задаёт grid gap. */
-.page-with-sidebar > .section-main,
-.page-with-sidebar > .section-extra,
-.page-with-sidebar > .section-related,
-.page-with-sidebar > .section-backnav,
-.page-with-sidebar > .component-about,
-.page-with-sidebar > .component-news,
-.page-with-sidebar > .component-popular {
+/* Убираем «жирные» вертикальные отступы у секций внутри flex-колонки
+   (ритм задаёт gap самого page-main-col). */
+.page-main-col > .section-main,
+.page-main-col > .section-extra,
+.page-main-col > .section-related,
+.page-main-col > .section-backnav,
+.page-main-col > .component-about,
+.page-main-col > .component-news,
+.page-main-col > .component-popular {
   padding-top: 0;
   padding-bottom: 0;
   margin-top: 0;
   margin-bottom: 0;
 }
 
-/* Народный фронт внутри страниц-разделов — нужный отступ, без лишних padding от .section */
-.page-with-sidebar > .component-about--narodfront {
-  margin-top: 2rem;
+/* Народный фронт — убираем отступы .section, gap flex-колонки уже есть */
+.page-main-col > .component-about--narodfront {
   padding-top: 0;
   padding-bottom: 0;
 }
@@ -2824,13 +2818,12 @@ body.dark-theme .component-about--narodfront .narodfront-text-link {
     grid-template-columns: 1fr;
   }
   .page-with-sidebar > .page-sidebar-col {
-    grid-column: 1;
-    grid-row: auto;
     position: static;
     order: 99;
   }
-  .page-with-sidebar > *:not(.page-sidebar-col) {
-    grid-column: 1;
+  .page-with-sidebar > .page-main-col {
+    /* На мобильном main-col занимает всю ширину */
+    min-width: 0;
   }
 }
 

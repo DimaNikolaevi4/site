@@ -101,6 +101,10 @@
       </aside>
       {% endif %}
 
+      {# Правая колонка: весь контент в одном flex-column контейнере,
+         чтобы сайдбар (grid-item слева) не влиял на высоту строк. #}
+      <div class="page-main-col">
+
       {# Правая колонка, элемент 1: about (режим razdel — пара баннеров «сбоку») #}
       {% include "components/about.njk" %}
 
@@ -332,6 +336,8 @@
     </div>
   </nav>
   {% endif %}
+
+      </div>{# /.page-main-col #}
 
     </div>{# /.page-with-sidebar #}
   </div>{# /.container #}
