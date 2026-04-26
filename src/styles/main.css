@@ -2806,6 +2806,11 @@ body.dark-theme .component-about--narodfront .narodfront-text-link {
   margin-bottom: 0;
 }
 
+/* Народный фронт внутри страниц-разделов — возвращаем отступ сверху */
+.page-with-sidebar > .component-about--narodfront {
+  margin-top: 2rem;
+}
+
 @media (max-width: 991px) {
   .page-with-sidebar {
     grid-template-columns: 1fr;
