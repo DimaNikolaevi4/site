@@ -7099,3 +7099,31 @@ body.a11y-high-contrast .tag { background: #333 !important; color: #fff !importa
 .subrubric-card__img-wrap img {
   border-radius: var(--home-img-radius) var(--home-img-radius) 0 0;
 }
+
+/*--------------------------------------------------------------
+# Главная: увеличенные вертикальные отступы для десктопа
+# (большие и средние экраны ≥992px)
+# - больший gap между About / News / Popular в правой колонке
+# - воздух сверху и снизу блока .home-bg, чтобы отделить от Hero и Footer
+--------------------------------------------------------------*/
+@media (min-width: 992px) {
+  .home-with-sidebar {
+    gap: 4rem;
+  }
+
+  .home-bg {
+    padding-top: 3.5rem;
+    padding-bottom: 3.5rem;
+  }
+}
+
+@media (min-width: 1200px) {
+  .home-with-sidebar {
+    gap: 5rem;
+  }
+
+  .home-bg {
+    padding-top: 4.5rem;
+    padding-bottom: 4.5rem;
+  }
+}
