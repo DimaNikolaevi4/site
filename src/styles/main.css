@@ -6698,6 +6698,145 @@ ol.breadcrumb-list { list-style-type: none !important; }
   background: color-mix(in srgb, var(--accent-color, #5fcf80), transparent 50%);
 }
 
+/* ─── Поделиться материалом (post-share) ───
+   Оформление в стиле «Официальные ресурсы» в футере:
+   контейнер-карточка + сетка auto-fit + карточка-плитка
+   (цветная иконка слева + подпись справа). */
+.post-share {
+  margin-top: 2rem;
+  padding: 28px 24px 32px;
+  border-radius: 16px;
+  background: color-mix(in srgb, #5fcf80, #ffffff 78%);
+  border: 1px solid color-mix(in srgb, #5fcf80, transparent 70%);
+}
+body.dark-theme .post-share {
+  background: color-mix(in srgb, #5fcf80, #1a2620 80%);
+  border-color: color-mix(in srgb, #5fcf80, transparent 65%);
+}
+
+.post-share__head {
+  margin-bottom: 18px;
+  text-align: center;
+}
+.post-share__label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--heading-color, #1a2e1a);
+  position: relative;
+  padding-bottom: 8px;
+}
+.post-share__label::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  transform: translateX(-50%);
+  width: 36px;
+  height: 2px;
+  background: var(--accent-color, #5fcf80);
+  border-radius: 2px;
+}
+.post-share__label i {
+  color: var(--accent-color, #5fcf80);
+}
+
+.post-share__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 12px;
+}
+
+.post-share__item { margin: 0; }
+
+.post-share__tag {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  height: 100%;
+  padding: 12px 14px;
+  background: var(--surface-color, #fff);
+  border: 1px solid var(--border-color, #e8e8e8);
+  border-radius: 12px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+  color: var(--heading-color, #1a2e1a);
+  font-family: inherit;
+  font-size: 0.95rem;
+  text-align: left;
+  text-decoration: none;
+  cursor: pointer;
+  transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease, background-color .2s ease;
+}
+.post-share__tag:hover,
+.post-share__tag:focus-visible {
+  transform: translateY(-2px);
+  background: color-mix(in srgb, var(--accent-color, #5fcf80), var(--surface-color, #fff) 92%);
+  border-color: color-mix(in srgb, var(--accent-color, #5fcf80), transparent 55%);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  color: var(--heading-color, #1a2e1a);
+  outline: none;
+}
+body.dark-theme .post-share__tag {
+  background: #1f2a23;
+  border-color: #2f3d33;
+  color: #e6efe7;
+}
+body.dark-theme .post-share__tag:hover,
+body.dark-theme .post-share__tag:focus-visible {
+  background: #25342b;
+  color: #ffffff;
+}
+
+.post-share__icon {
+  flex: 0 0 44px;
+  width: 44px;
+  height: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  color: #fff;
+  font-size: 20px;
+  border: 1px solid rgba(0,0,0,0.06);
+}
+.post-share__icon svg,
+.post-share__icon i { display: block; line-height: 1; }
+
+.post-share__tag-text {
+  flex: 1;
+  font-weight: 600;
+  line-height: 1.2;
+  word-break: break-word;
+}
+
+/* Бренд-цвета иконок */
+.post-share__tag--vk    .post-share__icon { background: #0077FF; }
+.post-share__tag--ok    .post-share__icon { background: #EE8208; }
+.post-share__tag--mail  .post-share__icon { background: #5fcf80; }
+.post-share__tag--copy  .post-share__icon { background: #6c757d; }
+.post-share__tag--more  .post-share__icon { background: #495057; }
+
+/* Состояние «Скопировано» */
+.post-share__tag--copy.is-copied {
+  border-color: var(--accent-color, #5fcf80);
+  background: color-mix(in srgb, var(--accent-color, #5fcf80), var(--surface-color, #fff) 88%);
+}
+.post-share__tag--copy.is-copied .post-share__icon {
+  background: var(--accent-color, #5fcf80);
+}
+
+@media (max-width: 575.98px) {
+  .post-share { padding: 22px 18px 24px; }
+  .post-share__list { grid-template-columns: 1fr; }
+  .post-share__tag-text { font-size: 0.92rem; }
+}
+
 /* ─── Сайдбар (Секция 5) ─── */
 .sidebar {
   position: sticky;
