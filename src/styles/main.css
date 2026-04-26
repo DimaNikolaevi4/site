@@ -6474,10 +6474,30 @@ ol.breadcrumb-list { list-style-type: none !important; }
 
 /* ─── Контекстная секция (Секция 2) ─── */
 .section-context {
+  position: relative;
   padding: 1.25rem 0 1rem;
   background: color-mix(in srgb, var(--accent-color, #5fcf80), var(--surface-color, #fff) 94%);
-  border-bottom: 1px solid color-mix(in srgb, var(--accent-color, #5fcf80), transparent 70%);
+  border-bottom: 0;
 }
+.section-context::after,
+.section-related::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 2px;
+  pointer-events: none;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    color-mix(in srgb, var(--accent-color, #5fcf80), transparent 30%) 20%,
+    var(--accent-color, #5fcf80) 50%,
+    color-mix(in srgb, var(--accent-color, #5fcf80), transparent 30%) 80%,
+    transparent 100%
+  );
+}
+.section-context::after { bottom: 0; }
+.section-related::before { top: 0; }
 
 .context-header {
   margin-top: 0.5rem;
@@ -6973,9 +6993,10 @@ body.dark-theme .post-share__tag:focus-visible {
 
 /* ─── Связанные материалы (Секция 7) ─── */
 .section-related {
+  position: relative;
   padding: 2.5rem 0;
   background: color-mix(in srgb, var(--accent-color, #5fcf80), var(--surface-color, #fff) 95%);
-  border-top: 1px solid color-mix(in srgb, var(--accent-color, #5fcf80), transparent 70%);
+  border-top: 0;
 }
 
 .section-related__title {
@@ -7242,20 +7263,20 @@ body.dark-theme .post-share__tag:focus-visible {
 .page-hero__divider {
   width: 180px;
   max-width: 70%;
-  height: 5px;
-  margin: 22px auto 18px;
+  height: 2px;
+  margin: 18px auto 14px;
   border: 0;
   border-radius: 999px;
   background: linear-gradient(
     90deg,
     rgba(255, 255, 255, 0) 0%,
-    rgba(255, 255, 255, 0.95) 20%,
+    rgba(255, 255, 255, 0.9) 20%,
     var(--accent-color, #5fcf80) 50%,
-    rgba(255, 255, 255, 0.95) 80%,
+    rgba(255, 255, 255, 0.9) 80%,
     rgba(255, 255, 255, 0) 100%
   );
-  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.45),
-              0 0 12px color-mix(in srgb, var(--accent-color, #5fcf80), transparent 55%);
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.4),
+              0 0 10px color-mix(in srgb, var(--accent-color, #5fcf80), transparent 60%);
   opacity: 1;
 }
 
@@ -7263,7 +7284,7 @@ body.dark-theme .post-share__tag:focus-visible {
 .brand-divider {
   width: 180px;
   max-width: 70%;
-  height: 4px;
+  height: 2px;
   margin: 1.25rem auto;
   border: 0;
   border-radius: 999px;
@@ -7275,7 +7296,7 @@ body.dark-theme .post-share__tag:focus-visible {
     color-mix(in srgb, var(--accent-color, #5fcf80), transparent 30%) 80%,
     transparent 100%
   );
-  box-shadow: 0 0 10px color-mix(in srgb, var(--accent-color, #5fcf80), transparent 60%);
+  box-shadow: 0 0 8px color-mix(in srgb, var(--accent-color, #5fcf80), transparent 70%);
   opacity: 1;
 }
 .brand-divider--wide { width: 100%; max-width: 100%; }
