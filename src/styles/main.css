@@ -7720,3 +7720,76 @@ body.a11y-high-contrast .tag { background: #333 !important; color: #fff !importa
 .news-card .read-more {
   font-size: 12.5px;
 }
+
+/*--------------------------------------------------------------
+# Прозрачные подложки внутренних страниц
+# Чтобы декоративный SVG-фон body.page (/images/fon/bg-02.svg)
+# был виден сквозь все блоки, убираем сплошные подложки у секций
+# и делаем карточки/виджеты полупрозрачными.
+--------------------------------------------------------------*/
+
+/* Большие секции-обёртки — полностью прозрачные */
+.section-context,
+.section-context--svedenija,
+.section-main,
+.section-extra,
+.section-related,
+.section-backnav,
+.svedenija-layout,
+.page-layout {
+  background: transparent !important;
+  border-top-color: transparent !important;
+  border-bottom-color: transparent !important;
+}
+
+/* Карточки и виджеты — полупрозрачное «стекло» */
+.sidebar-widget,
+.related-card,
+.related-section-card,
+.extra-inner,
+.post-attachments,
+.no-results,
+.svedenija-submenu,
+.svedenija-nav-widget,
+.cards-grid > .card,
+article.card {
+  background: rgba(255, 255, 255, 0.72) !important;
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+}
+
+/* Тёмная тема — полупрозрачное «тёмное стекло» */
+body.dark-theme .sidebar-widget,
+body.dark-theme .related-card,
+body.dark-theme .related-section-card,
+body.dark-theme .extra-inner,
+body.dark-theme .post-attachments,
+body.dark-theme .no-results,
+body.dark-theme .svedenija-submenu,
+body.dark-theme .svedenija-nav-widget,
+body.dark-theme .cards-grid > .card,
+body.dark-theme article.card {
+  background: rgba(20, 28, 23, 0.65) !important;
+}
+
+/* Sidebar-баннеры (если есть собственный <a>/<div> с фоном) */
+.sidebar-widget a,
+.sidebar-widget .widget-banner {
+  background-color: transparent;
+}
+
+/* High-contrast: возвращаем непрозрачные фоны для доступности */
+body.a11y-high-contrast .section-context,
+body.a11y-high-contrast .section-related,
+body.a11y-high-contrast .section-backnav,
+body.a11y-high-contrast .section-extra,
+body.a11y-high-contrast .sidebar-widget,
+body.a11y-high-contrast .related-card,
+body.a11y-high-contrast .post-attachments,
+body.a11y-high-contrast .no-results,
+body.a11y-high-contrast .svedenija-submenu,
+body.a11y-high-contrast article.card {
+  background: #111 !important;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+}
