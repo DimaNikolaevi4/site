@@ -7103,6 +7103,73 @@ body.a11y-high-contrast .tag { background: #333 !important; color: #fff !importa
   }
 }
 
+/* Сайдбар: ПОС-баннер «Госуслуги — Решаем вместе» */
+.sidebar-pos {
+  background: #fff;
+  border: 1px solid color-mix(in srgb, #1a73e8 12%, transparent);
+  border-radius: var(--home-img-radius);
+  box-shadow: var(--home-img-shadow);
+  padding: 1rem 1.1rem;
+  display: flex;
+  flex-direction: column;
+  gap: .75rem;
+}
+.sidebar-pos .bf-22 {
+  display: flex;
+  flex-direction: column;
+  gap: .85rem;
+}
+.sidebar-pos .bf-22__logo-wrap {
+  display: flex;
+  align-items: center;
+  gap: .55rem;
+  flex-wrap: wrap;
+}
+.sidebar-pos .bf-22__logo {
+  height: 26px;
+  width: auto;
+  display: block;
+}
+.sidebar-pos .bf-22__slogan {
+  font-size: .8125rem;
+  font-weight: 600;
+  color: #1a73e8;
+  letter-spacing: .01em;
+}
+.sidebar-pos .bf-22__text {
+  font-size: .9375rem;
+  line-height: 1.45;
+  color: #2b2b2b;
+  margin: 0;
+}
+.sidebar-pos .bf-22__bottom-wrap,
+.sidebar-pos .bf-22__btn-wrap {
+  width: 100%;
+}
+.sidebar-pos .pos-banner-btn_2 {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: .65rem 1rem;
+  background: #1a73e8;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  font-size: .9375rem;
+  font-weight: 500;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color .2s ease, transform .2s ease;
+}
+.sidebar-pos .pos-banner-btn_2:hover,
+.sidebar-pos .pos-banner-btn_2:focus-visible {
+  background: #155ab6;
+  color: #fff;
+  text-decoration: none;
+  transform: translateY(-1px);
+}
+
 /* Сайдбар: контейнер медиа-баннеров — вертикальные отступы между баннерами */
 .sidebar-image-banners {
   display: flex;
