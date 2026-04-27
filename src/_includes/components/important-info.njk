@@ -1,7 +1,10 @@
 {# ════════════════════════════════════════════════════════════════════
    КОМПОНЕНТ: «Важная информация для посетителей сайта»
-   Глобальный блок, отображается на всех страницах сайта (через base.njk).
-   Содержит 3 превью-карточки:
+   Секция 7 канона — единый компонент для всех страниц сайта.
+   Подключается в шаблонах: index.njk, page-full.njk, page.njk,
+   post.njk, listing.njk (на месте бывшей секции «Популярное»).
+
+   Содержит 3 превью-карточки в визуальном языке news.njk (режим home):
      1. Противодействие коррупции   → /bezopasnost/antikorrupcija/
      2. Абитуриентам                 → /abiturientam/
      3. Сведения об ОО               → /svedenija/
@@ -37,46 +40,55 @@
 {% set _iiPlaceholder = {
   title: "Расписание занятий",
   desc: "Скоро здесь появится актуальное расписание занятий по группам и преподавателям. Раздел в разработке.",
-  url: null,
   image: "/assets/images/raspisanie-placeholder.gif",
   alt: "Расписание занятий — скоро"
 } %}
 
-<section class="section component-important-info" aria-label="Важная информация для посетителей сайта">
-  <div class="container">
-    <div class="section-title mb-4" data-aos="fade-up">
-      <h2>Важная информация для посетителей сайта</h2>
-    </div>
+<section id="important-info" class="section component-important-info" aria-label="Важная информация для посетителей сайта">
+  <div class="container section-title" data-aos="fade-up">
+    <h2>Важная информация для посетителей сайта</h2>
+    <p>Ключевые разделы для быстрого перехода</p>
+  </div>
 
-    <div class="important-info-grid">
-      {% for _c in _iiItems %}
-        {% if page.url | startsWith(_c.url) %}
-          {# Заменяем карточку текущего раздела на placeholder «Расписание» #}
-          <article class="important-info-card important-info-card--placeholder" data-aos="fade-up">
-            <div class="important-info-card__img">
-              <img src="{{ _iiPlaceholder.image }}" alt="{{ _iiPlaceholder.alt }}" loading="lazy">
+  <div class="container">
+    <div class="content-col">
+      <div class="row">
+        {% for _c in _iiItems %}
+          {% if page.url | startsWith(_c.url) %}
+          {# Карточка текущего раздела заменена на placeholder «Расписание» #}
+          <div class="col-md-6 col-xl-4 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="{{ loop.index * 100 }}">
+            <div class="course-item important-info-card--placeholder">
+              <img src="{{ _iiPlaceholder.image }}" class="img-fluid" alt="{{ _iiPlaceholder.alt }}" loading="lazy">
+              <div class="course-content">
+                <h3>{{ _iiPlaceholder.title }}</h3>
+                <p class="description">{{ _iiPlaceholder.desc }}</p>
+                <div class="trainer d-flex justify-content-between align-items-center">
+                  <span class="important-info-card__badge">Скоро</span>
+                </div>
+              </div>
             </div>
-            <div class="important-info-card__body">
-              <h3 class="important-info-card__title">{{ _iiPlaceholder.title }}</h3>
-              <p class="important-info-card__desc">{{ _iiPlaceholder.desc }}</p>
-              <span class="important-info-card__badge">Скоро</span>
+          </div>
+          {% else %}
+          <div class="col-md-6 col-xl-4 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="{{ loop.index * 100 }}">
+            <div class="course-item">
+              <img src="{{ _c.image }}" class="img-fluid" alt="{{ _c.alt }}" loading="lazy">
+              <div class="course-content">
+                <h3><a href="{{ _c.url }}">{{ _c.title }}</a></h3>
+                <p class="description">{{ _c.desc }}</p>
+                <div class="trainer d-flex justify-content-between align-items-center">
+                  <div class="trainer-profile d-flex align-items-center">
+                    <a href="{{ _c.url }}" class="read-more" aria-label="Перейти — {{ _c.title }}">
+                      <span>Перейти</span>
+                      <i class="bi bi-arrow-right" aria-hidden="true"></i>
+                    </a>
+                  </div>
+                </div>
+              </div>
             </div>
-          </article>
-        {% else %}
-          <a href="{{ _c.url }}" class="important-info-card" data-aos="fade-up">
-            <div class="important-info-card__img">
-              <img src="{{ _c.image }}" alt="{{ _c.alt }}" loading="lazy">
-            </div>
-            <div class="important-info-card__body">
-              <h3 class="important-info-card__title">{{ _c.title }}</h3>
-              <p class="important-info-card__desc">{{ _c.desc }}</p>
-              <span class="important-info-card__more">
-                Перейти <i class="bi bi-arrow-right" aria-hidden="true"></i>
-              </span>
-            </div>
-          </a>
-        {% endif %}
-      {% endfor %}
+          </div>
+          {% endif %}
+        {% endfor %}
+      </div>
     </div>
   </div>
 </section>

@@ -9,7 +9,7 @@
     Секция 4: About               — components/about.njk         (опц., aboutMode)
     Секция 5: Сайдбар             — components/sidebar.njk       (30% слева, sticky)
     Секция 6: Материалы / News    — components/news.njk          (опц., newsMode)
-    Секция 7: Популярное          — components/popular.njk       (опц., showPopular)
+    Секция 7: Важная информация   — components/important-info.njk (глобальный блок)
     Секция 8: Footer              — components/footer.njk        (в base.njk)
   + Нижняя навигация (возврат к разделу) — между Секцией 7 и Секцией 8.
 
@@ -27,9 +27,6 @@
     newsCards:         массив карточек (для newsMode='razdel')
     newsCount:         число (для newsMode='home', по умолчанию 3)
     excludeUrls:       массив URL для исключения карточек (для newsMode='razdel')
-    showPopular:       true/false (по умолчанию false) — секция 6
-    popularTitle:      строка
-    popularLinks:      массив { title, subtitle, description, url, icon }
     additionalBlocks:  HTML-строка — доп. блоки после контента
     parentSection:     { url, title } — для нижней навигации
     prevPage:          { url, title }
@@ -155,12 +152,10 @@
   {% endif %}
 
   {# ═══════════════════════════════════════════════
-     СЕКЦИЯ 6: Популярные разделы
-     Показывается только если showPopular: true
+     СЕКЦИЯ 7: Важная информация для посетителей сайта
+     Глобальный блок — без условия (унифицировано с page-full.njk).
   ═══════════════════════════════════════════════ #}
-  {% if showPopular %}
-  {% include "components/popular.njk" %}
-  {% endif %}
+  {% include "components/important-info.njk" %}
 
   {# ═══════════════════════════════════════════════
      Связанные материалы / «Читайте также»

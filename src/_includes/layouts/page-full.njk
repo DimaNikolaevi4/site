@@ -11,7 +11,7 @@
     Секция 5: Сайдбар                  — components/sidebar.njk     (30% слева)
     Секция 6: Материалы / Подрубрики   — components/news.njk        (newsMode='razdel')
             Динамический список Level 1 / Level 2 на основе rubric (frontmatter)
-    Секция 7: Популярные разделы       — components/popular.njk     (заглушка)
+    Секция 7: Важная информация        — components/important-info.njk (глобальный блок)
     Секция 8: Footer                   — components/footer.njk      (в base.njk)
   + Нижняя навигация (возврат к разделу) — между Секцией 7 и Секцией 8.
 #}
@@ -211,9 +211,9 @@
   {% endif %}
 
   {# ═══════════════════════════════════════════════ #}
-  {# === СЕКЦИЯ 6 — Популярные разделы (единая заглушка) === #}
+  {# === СЕКЦИЯ 7 — Важная информация для посетителей === #}
   {# ═══════════════════════════════════════════════ #}
-  {% include "components/popular.njk" %}
+  {% include "components/important-info.njk" %}
 
   {# === Связанные материалы / «Читайте также» === #}
   {% if relatedPages and relatedPages.length > 0 %}

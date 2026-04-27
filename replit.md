@@ -29,7 +29,7 @@
 - Секция `section-context` (под Hero) содержит **только хлебные крошки** (плюс `<h1>`, если `showHero: false`). Блоки `listing-controls` (фильтр + сортировка) и `page-banner` (опциональный баннер раздела) удалены из `page-full.njk` и `page.njk` в v3.5; поля `sectionContext.filters / sortOptions / banner` больше не поддерживаются.
 - Между `section-context` и футером всё содержимое страницы оборачивается в единую сетку `.page-with-sidebar` (CSS — `src/styles/main.css`, секция «Layout: Type B — Page-wide Sidebar Grid»).
 - Левая колонка — `components/sidebar.njk` в `<aside class="page-sidebar-col">`, `position: sticky; grid-row: 1 / -1;` — растягивается на всю высоту блока (от первой строки до последней).
-- Правая колонка стопкой: `components/about.njk` (для разделов — `aboutMode: razdel`; если не задан — ничего не рендерится) → `section-main` (контент или карточки) → `section-extra` → `news` (подрубрики) → `popular` → `section-related` → `section-backnav`.
+- Правая колонка стопкой: `components/about.njk` (для разделов — `aboutMode: razdel`; если не задан — ничего не рендерится) → `section-main` (контент или карточки) → `section-extra` → `news` (подрубрики) → `important-info` (Секция 7 канона) → `section-related` → `section-backnav`.
 - На мобильном (≤991px) сетка сворачивается в одну колонку, сайдбар уходит вниз через `order: 99`.
 - Режимы `aboutMode` в `components/about.njk` (только два, остальные удалены в апреле 2026):
   - `home` — для главной страницы (`src/index.njk`): 4 блока — 2 баннера + Слово директора + День открытых дверей.
