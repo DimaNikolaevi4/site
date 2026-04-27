@@ -57,6 +57,12 @@ sections:
         size: ""
         url: "https://sit-salsk.ru/wp-content/uploads/2015/04/Постановл-ПРАВ-РФ-2015-№29.pdf"
         signed: true
+      - title: Постановление Правительства РФ №10 «О порядке сообщения о получении подарка в связи с должностным положением, сдачи, оценки и реализации подарка»
+        date: 09.01.2014
+        type: html
+        size: ""
+        url: "http://www.pravo.gov.ru/proxy/ips/?docbody=&link_id=0&nd=102170581&intelsearch=&firstDoc=1"
+        signed: true
       - title: Постановление Правительства РО №666 (Кодекс этики гражданских служащих РО)
         date: 22.09.2016
         type: pdf
@@ -135,16 +141,19 @@ sections:
     description: Действующие локальные акты техникума по противодействию коррупции
     documents:
       - title: Положение об антикоррупционной политике в ГБПОУ РО «СИТ» (Приказ №143 от 13.12.2024)
+        date: 13.12.2024
         type: pdf
         size: "607 КБ"
         url: https://xn----8sbwke6acce8h.xn--p1ai/docs/dokumenty/anti-corruption/polozhenie-antikorrupcia-143-full.pdf
         signed: true
       - title: Кодекс профессиональной этики работников ГБПОУ РО «СИТ» (Приказ №140 от 13.12.2024)
+        date: 13.12.2024
         type: pdf
         size: "319 КБ"
         url: https://xn----8sbwke6acce8h.xn--p1ai/docs/dokumenty/anti-corruption/kodeks-etiki-140.pdf
         signed: true
       - title: Правила обмена деловыми подарками и знаками делового гостеприимства (Приказ №144 от 13.12.2024)
+        date: 13.12.2024
         type: pdf
         size: "199 КБ"
         url: https://xn----8sbwke6acce8h.xn--p1ai/docs/dokumenty/anti-corruption/pravila-obmena-delovymi-podarkami-144.pdf
