@@ -5,8 +5,10 @@
    `col-md-6 col-xl-4` + `course-item` (тот же визуальный язык, что
    у news.njk в режиме home).
 
-   Подключается во всех шаблонах сайта: index.njk, page-full.njk,
-   page.njk, post.njk, listing.njk.
+   Подключается в шаблонах: index.njk, page-full.njk, page.njk,
+   listing.njk. На post.njk (Type C / Материал) НЕ подключается —
+   по канону §3.0.1 секция 6 для материалов заменена на
+   «Читайте также» (см. _partials/related.njk).
 
    Если текущая страница принадлежит одному из перечисленных разделов,
    соответствующая карточка заменяется на 4-ю — «Расписание занятий»
@@ -18,7 +20,7 @@
     title: "Противодействие коррупции",
     desc: "Меры противодействия коррупции, нормативная база, комиссия по урегулированию конфликтов и канал для сообщений.",
     url: "/bezopasnost/antikorrupcija/",
-    image: "/assets/images/sliders/slider1.jpg",
+    image: "/images/sliders/slider1.jpg",
     alt: "Противодействие коррупции"
   },
   {
