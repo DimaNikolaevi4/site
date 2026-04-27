@@ -68,20 +68,15 @@ templateEngineOverride: njk,md
         {# ── Секция 5: Основной контент + подменю «Сведений» ── #}
         <div class="content-col">
 
-          {# Подменю раздела (требование №1493 — все 11 подразделов доступны) #}
+          {# Подменю раздела (требование №1493 — все 11 подразделов доступны).
+             Визуально — карточки с эмодзи, как на корне /svedenija/
+             (та же разметка `rubric-resources-grid` из components/news.njk razdel-режима). #}
           {% if svedenijaMenu %}
-          <nav class="svedenija-submenu" aria-label="Навигация по разделу Сведения">
-            <ul class="svedenija-submenu__list list-unstyled">
-              {% for item in svedenijaMenu %}
-              <li class="svedenija-submenu__item">
-                <a href="{{ item.url }}"
-                   class="svedenija-submenu__link{% if page.url == item.url %} svedenija-submenu__link--active{% endif %}"
-                   {% if page.url == item.url %}aria-current="page"{% endif %}>
-                  {% if item.icon %}<i class="bi bi-{{ item.icon }}" aria-hidden="true"></i>{% endif %}
-                  {{ item.title }}
-                </a>
-              </li>
-              {% endfor %}
+          <nav class="svedenija-submenu component-news component-news--razdel" aria-label="Навигация по разделу Сведения">
+            <ul class="rubric-resources-grid">
+              {%- for item in svedenijaMenu -%}
+                <li data-aos="fade-up" data-aos-delay="{{ loop.index * 40 }}"><a href="{{ item.url }}" class="rubric-resource{% if page.url == item.url %} rubric-resource--active{% endif %}"{% if page.url == item.url %} aria-current="page"{% endif %}><span class="rubric-resource-icon" aria-hidden="true">{{- item.emoji or "📄" -}}</span><span class="rubric-resource-text">{{- item.title -}}{%- if item.description %}<span class="rubric-resource-desc">{{- item.description -}}</span>{%- endif -%}</span></a></li>
+              {%- endfor -%}
             </ul>
           </nav>
           {% endif %}
