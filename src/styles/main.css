@@ -760,57 +760,6 @@ h6 {
 }
 
 /*--------------------------------------------------------------
-# Global Page Titles & Breadcrumbs
---------------------------------------------------------------*/
-.page-title {
-  --default-color: var(--contrast-color);
-  --background-color: var(--accent-color);
-  --heading-color: var(--contrast-color);
-  color: var(--default-color);
-  background-color: var(--background-color);
-  position: relative;
-}
-
-.page-title .heading {
-  padding: 80px 0;
-  border-top: 1px solid color-mix(in srgb, var(--default-color), transparent 90%);
-}
-
-.page-title .heading h1 {
-  font-size: 38px;
-  font-weight: 700;
-}
-
-.page-title nav {
-  background-color: color-mix(in srgb, var(--accent-color) 90%, black 5%);
-  padding: 20px 0;
-}
-
-.page-title nav a {
-  color: var(--default-color);
-}
-
-.page-title nav ol {
-  display: flex;
-  flex-wrap: wrap;
-  list-style: none;
-  margin: 0;
-  font-size: 16px;
-  font-weight: 600;
-}
-
-.page-title nav ol li+li {
-  padding-left: 10px;
-}
-
-.page-title nav ol li+li::before {
-  content: "/";
-  display: inline-block;
-  padding-right: 10px;
-  color: color-mix(in srgb, var(--default-color), transparent 70%);
-}
-
-/*--------------------------------------------------------------
 # Global Sections
 --------------------------------------------------------------*/
 section,
@@ -3531,57 +3480,6 @@ body.dark-theme .site-footer .footer-resource-icon {
   [data-aos-delay] {
     transition-delay: 0 !important;
   }
-}
-
-/*--------------------------------------------------------------
-# Global Page Titles & Breadcrumbs (legacy Mentor section wrapper)
---------------------------------------------------------------*/
-.page-title {
-  --default-color: var(--contrast-color);
-  --background-color: var(--accent-color);
-  --heading-color: var(--contrast-color);
-  color: var(--default-color);
-  background-color: var(--background-color);
-  position: relative;
-}
-
-.page-title .heading {
-  padding: 80px 0;
-  border-top: 1px solid color-mix(in srgb, var(--default-color), transparent 90%);
-}
-
-.page-title .heading h1 {
-  font-size: 38px;
-  font-weight: 700;
-}
-
-.page-title nav {
-  background-color: color-mix(in srgb, var(--accent-color) 90%, black 5%);
-  padding: 20px 0;
-}
-
-.page-title nav a {
-  color: var(--default-color);
-}
-
-.page-title nav ol {
-  display: flex;
-  flex-wrap: wrap;
-  list-style: none;
-  margin: 0;
-  font-size: 16px;
-  font-weight: 600;
-}
-
-.page-title nav ol li+li {
-  padding-left: 10px;
-}
-
-.page-title nav ol li+li::before {
-  content: "/";
-  display: inline-block;
-  padding-right: 10px;
-  color: color-mix(in srgb, var(--default-color), transparent 70%);
 }
 
 /*--------------------------------------------------------------
