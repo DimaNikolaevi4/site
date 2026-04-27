@@ -11,8 +11,10 @@ src/
 ├── _filters/           # Пользовательские фильтры Nunjucks (dateRu, slugify, truncate, lunr-index)
 ├── _includes/          # Шаблоны и компоненты
 │   ├── base.njk        # Базовый макет (head, header, main, footer)
-│   ├── components/     # 8 компонентов секций: header, footer, hero, about,
-│   │                   # news, popular, sidebar, breadcrumbs (+ card, anti-corruption-content)
+│   ├── components/     # 8 компонентов секций (порядок канона §3.0.1):
+│   │                   # 1 header, 2 hero, 3 breadcrumbs, 4 about,
+│   │                   # 5 news, 6 popular, 7 sidebar, 8 footer
+│   │                   # + _partials/ (card, pagination, share, related, anti-corruption-content)
 │   ├── layouts/        # base.njk, page.njk (Тип B), page-full.njk (Type B расширенный),
 │   │                   # post.njk (Тип C), listing.njk
 │   └── layouts/svedenija-page.njk  # Шаблон раздела «Сведения» (layout: layouts/svedenija-page.njk)
@@ -54,9 +56,9 @@ npm run build
 
 | Тип | Назначение | Файл шаблона | Секции | Описание |
 |-----|------------|--------------|--------|----------|
-| **A** | Главная страница | `src/index.njk` | 1, 3, 4, 5, 6, 7, 8 | Hero без рубрики, слово директора, 3 последние новости |
-| **B** | Раздел / Рубрика | `layouts/page-full.njk` | 1, 2, 3, 4, 5, 6, 7, 8 | Все 8 секций: Hero с рубрикой, хлебные крошки (только они в `section-context`), about-баннеры, sticky-сайдбар 30%, контент, подрубрики, popular, backnav |
-| **C** | Материал / Новость / 404 | `layouts/post.njk` | 1, 2, 8 | Только шапка, Hero с названием, хлебные крошки + мета, контент материала, «Читайте также», подвал |
+| **A** | Главная страница | `src/index.njk` | 1, 2, 4, 5, 6, 7, 8 | Hero без рубрики, About `home` (4 блока), 3 последние новости, 3 карточки «Популярное», sticky-сайдбар 30% |
+| **B** | Раздел / Рубрика | `layouts/page-full.njk` | 1, 2, 3, 4, 5, 6, 7, 8 | Все 8 секций канона §3.0.1: Hero с рубрикой → крошки → About `razdel` (баннеры) → подрубрики (`news` razdel) → 3 карточки «Популярное» → sticky-сайдбар 30% → backnav |
+| **C** | Материал / Новость / 404 | `layouts/post.njk` | 1, 2, 3, контент, «Читайте также», 8 | Шапка, Hero с названием, крошки + мета, контент материала, «Читайте также» (вместо секции 6), подвал. Секции 4, 5, 7 отсутствуют. |
 
 > **🟢 Канон Type B зафиксирован (v3.5, апрель 2026).** Эталон — `src/content/abiturientam/index.md`. Все 11 разделов сайта приводятся к этому единому виду. Подробное описание — `STRUCTURE_AND_PRINCIPLES.md` § 3.6 и `docs/FRONTMATTER_SPEC.md` § 2.
 
