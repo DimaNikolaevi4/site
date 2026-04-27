@@ -3534,71 +3534,6 @@ body.dark-theme .site-footer .footer-resource-icon {
 }
 
 /*--------------------------------------------------------------
-# Inner Page Hero / Page Header
---------------------------------------------------------------*/
-.page-hero {
-  padding: 28px 0 22px;
-  background-color: var(--background-color);
-  border-bottom: 1px solid color-mix(in srgb, var(--default-color), transparent 88%);
-}
-
-.page-hero__breadcrumbs {
-  margin-bottom: 10px;
-}
-
-.page-hero__breadcrumbs ol {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0 4px;
-  font-size: 0.83rem;
-}
-
-.page-hero__breadcrumbs li {
-  color: color-mix(in srgb, var(--default-color), transparent 35%);
-}
-
-.page-hero__breadcrumbs li + li::before {
-  content: "›";
-  margin-right: 4px;
-  color: var(--accent-color);
-}
-
-.page-hero__breadcrumbs a {
-  color: color-mix(in srgb, var(--default-color), transparent 35%);
-  text-decoration: none;
-  transition: color 0.2s;
-}
-
-.page-hero__breadcrumbs a:hover {
-  color: var(--accent-color);
-}
-
-.page-hero__title {
-  font-size: clamp(1.4rem, 3.5vw, 2.2rem);
-  font-weight: 700;
-  color: var(--heading-color);
-  margin: 0;
-  font-family: var(--heading-font);
-  line-height: 1.25;
-}
-
-.page-hero__meta {
-  margin-top: 8px;
-  font-size: 0.875rem;
-  color: color-mix(in srgb, var(--default-color), transparent 35%);
-  display: flex;
-  flex-wrap: wrap;
-  gap: 4px 14px;
-}
-
-.page-hero__meta a {
-  color: var(--accent-color);
-}
-
-/*--------------------------------------------------------------
 # Global Page Titles & Breadcrumbs (legacy Mentor section wrapper)
 --------------------------------------------------------------*/
 .page-title {
@@ -7359,14 +7294,6 @@ body.dark-theme .post-share__tag:focus-visible {
   padding: 2.5rem 0;
 }
 
-.page-hero__title {
-  font-size: clamp(1.75rem, 4vw, 2.75rem);
-  font-weight: 800;
-  color: #fff;
-  text-shadow: 0 2px 8px rgba(0,0,0,0.3);
-  margin: 0 0 0.5rem;
-}
-
 .page-hero__subtitle {
   font-size: 1.1rem;
   color: rgba(255,255,255,0.88);
@@ -7482,7 +7409,6 @@ body.dark-theme .brand-divider {
 
 @media (max-width: 767px) {
   .page-hero { min-height: 200px; }
-  .page-hero__title { font-size: 1.5rem; }
   .page-hero__divider { width: 80px; margin: 12px auto 10px; }
 }
 
