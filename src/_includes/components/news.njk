@@ -1,96 +1,126 @@
 {#
-  Компонент Секция 6 — Новости / Материалы
-  Режимы:
-    newsMode = 'latest'    → 3 последние новости (для главной)
-    newsMode = 'subrubrics'→ список подрубрик текущего раздела (для страниц разделов)
-  Дополнительно:
-    newsInline = true      → отрисовать только сетку карточек + кнопку (без <section> и заголовка),
-                              чтобы встраивать внутрь content-col на главной
-  Переменные:
-    newsMode       — строка (обязательно)
-    newsCount      — кол-во новостей (по умолчанию 3, только для 'latest')
-    newsCollection — коллекция для фильтрации подрубрик (только для 'subrubrics')
-    newsTitle      — заголовок секции (по умолчанию «Новости»)
-    newsSubtitle   — подзаголовок (опционально)
-    newsInline     — bool (по умолчанию false)
-    excludeUrls    — массив URL для исключения карточек (только для 'subrubrics').
-                     Например: excludeUrls = ["/abiturientam/kontakty-grafik/"].
+  Компонент Секция 6 — Новости / Подрубрики
+
+  Режимы, задаются переменной `newsMode`:
+
+    newsMode = 'home'   → 3 последние новости карточками (для главной).
+                          Также используется на новостных страницах при ручном
+                          подключении.
+                          Параметры:
+                            newsCount    — сколько новостей показать (по умолчанию 3)
+                            newsTitle    — заголовок секции (по умолчанию «Новости»)
+                            newsSubtitle — подзаголовок (по умолчанию «Последние события техникума»)
+
+    newsMode = 'razdel' → Единая сетка компактных ссылок с эмодзи
+                          (`<ul class="rubric-resources-grid">`) для страниц-разделов.
+                          Используется как для списка подрубрик, так и для CTA-блоков
+                          «Контакты + обращение».
+                          Параметры:
+                            newsCards   — массив карточек (обязательно). Каждый элемент — либо
+                                            элемент коллекции (`{url, data: {emoji, title, description}}`),
+                                            либо плоский объект (`{url, emoji, title, description}`).
+                            newsTitle   — заголовок секции (опционально; без дефолта)
+                            excludeUrls — массив URL для исключения карточек (опционально)
+
+  Если `newsMode` не задан или имеет другое значение — компонент ничего не рендерит.
 #}
 
-{% set _newsCount = newsCount if newsCount else 3 %}
-{% set _newsTitle = newsTitle if newsTitle else "Новости" %}
-{% set _newsInline = true if newsInline else false %}
+{# ── Режим 1: Последние новости (главная и новостные страницы) ── #}
+{% if newsMode == 'home' %}
 
-{# ── Макрос: сетка последних новостей (карточки + кнопка «Все новости») ── #}
-{% macro latestGrid(count) %}
-<div class="content-col">
-  <div class="row">
-    {% set latestNews = collections.news | reverse %}
-    {% for post in latestNews %}
-    {% if loop.index <= count %}
-    <div class="col-md-6 col-xl-4 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="{{ loop.index * 100 }}">
-      <div class="course-item">
-        <img
-          src="{{ post.data.image or '/assets/mentor/img/course-' ~ loop.index ~ '.jpg' }}"
-          class="img-fluid"
-          alt="{{ post.data.title }}"
-          loading="lazy"
-        >
-        <div class="course-content">
-          <p class="date mb-3">{{ post.date | dateRu }}</p>
-          <h3><a href="{{ post.url }}">{{ post.data.title }}</a></h3>
-          <p class="description">{{ post.data.excerpt or (post.templateContent | truncate(120)) }}</p>
-          <div class="trainer d-flex justify-content-between align-items-center">
-            <div class="trainer-profile d-flex align-items-center">
-              <a href="{{ post.url }}" class="read-more" aria-label="Читать полностью — {{ post.data.title }}">
-                <span>Читать полностью</span>
-                <i class="bi bi-arrow-right" aria-hidden="true"></i>
-              </a>
+  {% set _newsCount    = newsCount    if newsCount    else 3 %}
+  {% set _newsTitle    = newsTitle    if newsTitle    else "Новости" %}
+  {% set _newsSubtitle = newsSubtitle if newsSubtitle else "Последние события техникума" %}
+
+  <section id="news" class="section component-news component-news--home">
+    <div class="container section-title" data-aos="fade-up">
+      <h2>{{ _newsTitle }}</h2>
+      <p>{{ _newsSubtitle }}</p>
+    </div>
+
+    <div class="container">
+      <div class="content-col">
+        <div class="row">
+          {% set latestNews = collections.news | reverse %}
+          {% for post in latestNews %}
+          {% if loop.index <= _newsCount %}
+          <div class="col-md-6 col-xl-4 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="{{ loop.index * 100 }}">
+            <div class="course-item">
+              <img
+                src="{{ post.data.image or '/assets/mentor/img/course-' ~ loop.index ~ '.jpg' }}"
+                class="img-fluid"
+                alt="{{ post.data.title }}"
+                loading="lazy"
+              >
+              <div class="course-content">
+                <p class="date mb-3">{{ post.date | dateRu }}</p>
+                <h3><a href="{{ post.url }}">{{ post.data.title }}</a></h3>
+                <p class="description">{{ post.data.excerpt or (post.templateContent | truncate(120)) }}</p>
+                <div class="trainer d-flex justify-content-between align-items-center">
+                  <div class="trainer-profile d-flex align-items-center">
+                    <a href="{{ post.url }}" class="read-more" aria-label="Читать полностью — {{ post.data.title }}">
+                      <span>Читать полностью</span>
+                      <i class="bi bi-arrow-right" aria-hidden="true"></i>
+                    </a>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
+          {% endif %}
+          {% else %}
+          <div class="col-12 text-center">
+            <p class="text-muted">Новости пока не добавлены.</p>
+          </div>
+          {% endfor %}
+        </div>
+
+        <div class="text-center mt-4" data-aos="fade-up" data-aos-delay="500">
+          <a href="/news/" class="btn-get-started">Все новости</a>
         </div>
       </div>
     </div>
-    {% endif %}
-    {% else %}
-    <div class="col-12 text-center">
-      <p class="text-muted">Новости пока не добавлены.</p>
+  </section>
+
+{# ── Режим 2: Сетка компактных ссылок с эмодзи (страницы разделов) ── #}
+{% elif newsMode == 'razdel' %}
+
+  <section class="section component-news component-news--razdel">
+    <div class="container">
+
+      {% if newsTitle %}
+      <div class="section-title mb-4" data-aos="fade-up">
+        <h2>{{ newsTitle }}</h2>
+      </div>
+      {% endif %}
+
+      {% if newsCards and newsCards.length > 0 %}
+      <ul class="rubric-resources-grid">
+        {% for item in newsCards %}
+        {% if not (excludeUrls and item.url in excludeUrls) %}
+          {# Поддержка двух форматов: элемент коллекции (item.data.*) или плоский объект (item.*) #}
+          {% set _emoji       = (item.data.emoji       if item.data else item.emoji)       or "📄" %}
+          {% set _title       =  item.data.title       if item.data else item.title %}
+          {% set _description =  item.data.description if item.data else item.description %}
+          <li data-aos="fade-up" data-aos-delay="{{ loop.index * 50 }}">
+            <a href="{{ item.url }}" class="rubric-resource">
+              <span class="rubric-resource-icon" aria-hidden="true">{{ _emoji }}</span>
+              <span class="rubric-resource-text">
+                {{ _title }}
+                {% if _description %}<span class="rubric-resource-desc">{{ _description }}</span>{% endif %}
+              </span>
+            </a>
+          </li>
+        {% endif %}
+        {% endfor %}
+      </ul>
+      {% else %}
+      <div class="alert alert-info" role="status">
+        <i class="bi bi-info-circle me-2"></i>Материалы в этом разделе пока не добавлены.
+      </div>
+      {% endif %}
+
     </div>
-    {% endfor %}
-  </div>
-
-  <div class="text-center mt-4" data-aos="fade-up" data-aos-delay="500">
-    <a href="/news/" class="btn-get-started">Все новости</a>
-  </div>
-</div>
-{% endmacro %}
-
-{# ── Режим 1: Последние новости (главная) ── #}
-{% if newsMode == 'latest' %}
-
-  {% if _newsInline %}
-    {# Встраиваемый вариант — без обёртки <section> и заголовка,
-       чтобы помещаться внутрь content-col на главной #}
-    {{ latestGrid(_newsCount) }}
-  {% else %}
-<section id="news" class="section component-news component-news--latest">
-  <div class="container section-title" data-aos="fade-up">
-    <h2>{{ _newsTitle }}</h2>
-    {% if newsSubtitle %}
-    <p>{{ newsSubtitle }}</p>
-    {% else %}
-    <p>Последние события техникума</p>
-    {% endif %}
-  </div>
-
-  <div class="container">
-    {{ latestGrid(_newsCount) }}
-  </div>
-</section>
-  {% endif %}
-
-{# ── Режим 2: Список подрубрик раздела (страницы разделов) ── #}
-{%- elif newsMode == 'subrubrics' -%}
-<section class="section component-news component-news--subrubrics"><div class="container">{%- if newsTitle %}<div class="section-title mb-4" data-aos="fade-up"><h2>{{ _newsTitle }}</h2></div>{%- endif %}{%- if newsCollection and newsCollection.length > 0 %}<ul class="rubric-resources-grid">{%- for item in newsCollection -%}{%- if not (excludeUrls and item.url in excludeUrls) %}<li data-aos="fade-up" data-aos-delay="{{ loop.index * 50 }}"><a href="{{ item.url }}" class="rubric-resource"><span class="rubric-resource-icon" aria-hidden="true">{{ item.data.emoji if item.data.emoji else "📄" }}</span><span class="rubric-resource-text">{{ item.data.title }}{% if item.data.description %}<span class="rubric-resource-desc">{{ item.data.description }}</span>{% endif %}</span></a></li>{%- endif -%}{%- endfor %}</ul>{%- else %}<div class="alert alert-info" role="status"><i class="bi bi-info-circle me-2"></i>Материалы в этом разделе пока не добавлены.</div>{%- endif %}</div></section>
+  </section>
 
 {% endif %}

@@ -9,7 +9,7 @@
     Секция 3: Хлебные крошки           — components/breadcrumbs.njk
     Секция 4: About — заглушка         — components/about.njk       (aboutMode='stub')
     Секция 5: Сайдбар                  — components/sidebar.njk     (30% слева)
-    Секция 6: Материалы / Подрубрики   — components/news.njk        (subrubrics)
+    Секция 6: Материалы / Подрубрики   — components/news.njk        (newsMode='razdel')
             Динамический список Level 1 / Level 2 на основе rubric (frontmatter)
     Секция 7: Популярные разделы       — components/popular.njk     (заглушка)
     Секция 8: Footer                   — components/footer.njk      (в base.njk)
@@ -203,9 +203,9 @@
   {% if not suppressSubrubrics %}
   {% set _subrubricCards = rubric | getSubrubricCards(collections) %}
   {% if _subrubricCards and _subrubricCards.length > 0 %}
-    {% set newsMode = 'subrubrics' %}
+    {% set newsMode = 'razdel' %}
     {% set newsTitle = subrubricTitle or 'Подрубрики раздела' %}
-    {% set newsCollection = _subrubricCards %}
+    {% set newsCards = _subrubricCards %}
     {% include "components/news.njk" %}
   {% endif %}
   {% endif %}

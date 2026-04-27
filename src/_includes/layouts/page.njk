@@ -22,10 +22,11 @@
     aboutMode:         'razdel' (для всех страниц-разделов: пара баннеров «Народный фронт» + «Контракт»)
                        'home'   (только для главной — задаётся в src/index.njk, не во frontmatter)
     showNews:          true/false (по умолчанию false) — секция 5
-    newsMode:          'latest' | 'subrubrics'
-    newsTitle:         строка
-    newsCollection:    имя коллекции (для newsMode='subrubrics')
-    newsCount:         число (для newsMode='latest', по умолчанию 3)
+    newsMode:          'home' | 'razdel'
+    newsTitle:         строка (для 'home' дефолт «Новости»; для 'razdel' без дефолта)
+    newsCards:         массив карточек (для newsMode='razdel')
+    newsCount:         число (для newsMode='home', по умолчанию 3)
+    excludeUrls:       массив URL для исключения карточек (для newsMode='razdel')
     showPopular:       true/false (по умолчанию false) — секция 6
     popularTitle:      строка
     popularLinks:      массив { title, subtitle, description, url, icon }

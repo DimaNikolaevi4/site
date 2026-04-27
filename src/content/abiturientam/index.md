@@ -28,8 +28,8 @@ suppressSubrubrics: true
 Приглашаем вместе изучить всё, что поможет вам сделать первый шаг к профессии:
 
 {# ── Полезные материалы (подрубрики раздела) — без 1.9 «Контакты и график работы» ── #}
-{% set newsMode = 'subrubrics' %}
-{% set newsCollection = "1" | getSubrubricCards(collections) %}
+{% set newsMode = 'razdel' %}
+{% set newsCards = "1" | getSubrubricCards(collections) %}
 {% set excludeUrls = ["/abiturientam/kontakty-grafik/"] %}
 {% include "components/news.njk" %}
 
@@ -48,27 +48,22 @@ suppressSubrubrics: true
 - **Электронная почта:** [sitsalsk@mail.ru](mailto:sitsalsk@mail.ru)
 - **Официальный сайт:** [сит-сальск.рф](https://xn----8sbwke6acce8h.xn--p1ai/)
 
-<section class="section component-news component-news--subrubrics">
-  <div class="container">
-    <ul class="rubric-resources-grid">
-      <li data-aos="fade-up">
-        <a href="/abiturientam/kontakty-grafik/" class="rubric-resource">
-          <span class="rubric-resource-icon" aria-hidden="true">📞</span>
-          <span class="rubric-resource-text">
-            Контакты и график работы приёмной комиссии
-            <span class="rubric-resource-desc">Адрес, телефон, часы приёма документов, ссылки на официальный сайт и сообщество ВКонтакте.</span>
-          </span>
-        </a>
-      </li>
-      <li data-aos="fade-up" data-aos-delay="50">
-        <a href="mailto:sitsalsk@mail.ru?subject=Вопрос%20о%20поступлении" class="rubric-resource">
-          <span class="rubric-resource-icon" aria-hidden="true">✉️</span>
-          <span class="rubric-resource-text">
-            Обращение граждан по вопросам приёмной кампании
-            <span class="rubric-resource-desc">Напишите нам на электронную почту приёмной комиссии — ответим на ваш вопрос о поступлении.</span>
-          </span>
-        </a>
-      </li>
-    </ul>
-  </div>
-</section>
+{# ── Контакты и обращение (CTA-блок) ── #}
+{% set newsMode = 'razdel' %}
+{% set newsTitle = none %}
+{% set excludeUrls = none %}
+{% set newsCards = [
+  {
+    "url": "/abiturientam/kontakty-grafik/",
+    "emoji": "📞",
+    "title": "Контакты и график работы приёмной комиссии",
+    "description": "Адрес, телефон, часы приёма документов, ссылки на официальный сайт и сообщество ВКонтакте."
+  },
+  {
+    "url": "mailto:sitsalsk@mail.ru?subject=Вопрос%20о%20поступлении",
+    "emoji": "✉️",
+    "title": "Обращение граждан по вопросам приёмной кампании",
+    "description": "Напишите нам на электронную почту приёмной комиссии — ответим на ваш вопрос о поступлении."
+  }
+] %}
+{% include "components/news.njk" %}

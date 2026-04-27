@@ -30,8 +30,8 @@ suppressSubrubrics: true
 Здесь собрана вся обязательная информация о **ГБПОУ РО «Сальский индустриальный техникум»** — выберите нужный подраздел:
 
 {# ── Обязательные подразделы по Приказу №1493 (подрубрики 2.1–2.9) ── #}
-{% set newsMode = 'subrubrics' %}
-{% set newsCollection = "2" | getSubrubricCards(collections) %}
+{% set newsMode = 'razdel' %}
+{% set newsCards = "2" | getSubrubricCards(collections) %}
 {% include "components/news.njk" %}
 
 Сведения регулярно обновляются — мы открыты для проверок надзорных органов, родителей, абитуриентов и социальных партнёров. Если вы не нашли нужного документа или сведения — напишите нам, мы оперативно ответим и при необходимости опубликуем недостающие материалы.
@@ -55,27 +55,22 @@ suppressSubrubrics: true
 - **Сообщество ВКонтакте:** [vk.com/sitsalsksit](https://vk.com/sitsalsksit)
 - **График работы администрации:** пн–пт, 08:00–17:00 (перерыв 12:00–13:00).
 
-<section class="section component-news component-news--subrubrics">
-  <div class="container">
-    <ul class="rubric-resources-grid">
-      <li data-aos="fade-up">
-        <a href="/svedenija/basic/" class="rubric-resource">
-          <span class="rubric-resource-icon" aria-hidden="true">📞</span>
-          <span class="rubric-resource-text">
-            Основные сведения и контакты
-            <span class="rubric-resource-desc">Полное и сокращённое наименование, адреса, реквизиты, контакты руководства и приёмной комиссии.</span>
-          </span>
-        </a>
-      </li>
-      <li data-aos="fade-up" data-aos-delay="50">
-        <a href="mailto:sitsalsk@mail.ru?subject=Обращение%20по%20разделу%20«Сведения%20об%20ОО»" class="rubric-resource">
-          <span class="rubric-resource-icon" aria-hidden="true">✉️</span>
-          <span class="rubric-resource-text">
-            Обращение по разделу «Сведения об ОО»
-            <span class="rubric-resource-desc">Не нашли нужного документа или информации? Напишите нам — оперативно ответим и при необходимости опубликуем недостающие материалы.</span>
-          </span>
-        </a>
-      </li>
-    </ul>
-  </div>
-</section>
+{# ── Контакты и обращение (CTA-блок) ── #}
+{% set newsMode = 'razdel' %}
+{% set newsTitle = none %}
+{% set excludeUrls = none %}
+{% set newsCards = [
+  {
+    "url": "/svedenija/basic/",
+    "emoji": "📞",
+    "title": "Основные сведения и контакты",
+    "description": "Полное и сокращённое наименование, адреса, реквизиты, контакты руководства и приёмной комиссии."
+  },
+  {
+    "url": "mailto:sitsalsk@mail.ru?subject=Обращение%20по%20разделу%20«Сведения%20об%20ОО»",
+    "emoji": "✉️",
+    "title": "Обращение по разделу «Сведения об ОО»",
+    "description": "Не нашли нужного документа или информации? Напишите нам — оперативно ответим и при необходимости опубликуем недостающие материалы."
+  }
+] %}
+{% include "components/news.njk" %}
