@@ -3,24 +3,31 @@ layout: layouts/base.njk
 templateEngineOverride: njk,md
 ---
 {#
-  ШАБЛОН — svedenija-page.njk (новая архитектура)
+  ШАБЛОН — svedenija-page.njk
   Раздел «Сведения об образовательной организации» (Приказ Рособрнадзора №1493)
 
-  Унифицирован со схемой layouts/page.njk:
-    Канон секций (тот же на всём сайте):
+  Канон секций (§3.0.1, тот же на всём сайте):
     Секция 1: Header                — components/header.njk      (в base.njk)
-    Секция 2: Hero                  — components/hero.njk        (в base.njk, опц.)
-    Секция 3: Хлебные крошки        — components/breadcrumbs.njk
-    Секция 5: Сайдбар               — components/sidebar.njk     (30% слева, единые баннеры на всём сайте)
-    Секция 6: Основной контент + подменю «Сведений» (по №1493)
-    Секция 7: Связанные подразделы (опц.)
+    Секция 2: Hero                  — components/hero.njk        (в base.njk, опц.) +
+                                      собственная плашка svedenija-header (иконка, supertitle)
+    Секция 3: Хлебные крошки        — components/breadcrumbs.njk (с ручным контекстом)
+    Секция 5: Основной контент      — подменю «Сведений» (Приказ №1493) + page-content
+    Секция 7: Сайдбар               — components/sidebar.njk     (30% слева, единые баннеры)
     Секция 8: Footer                — components/footer.njk      (в base.njk)
-  + Нижняя навигация (возврат к /svedenija/) — между Секцией 7 и Секцией 8.
+  + Связанные подразделы (опц.)     — section-related, под сеткой во всю ширину
+  + Нижняя навигация (возврат к /svedenija/) — между связанными и Секцией 8.
+
+  Layout-цепочка (Eleventy layout chaining):
+    content (md) → svedenija-page.njk → layouts/base.njk
+    (frontmatter `layout: layouts/base.njk` ниже — наследование через цепочку,
+     в отличие от page-full/post/listing, где используется {% extends %}).
 
   Управление через frontmatter страницы:
     title, description
     hero            — { image, title, subtitle, alt } (опц.)
-    relatedSections — массив { url, title, icon } для секции 4
+    breadcrumbTitle — заголовок последней крошки, если отличается от title
+    relatedSections — массив { url, title, icon } для блока «Связанные подразделы»
+    additionalBlocks — HTML/Markdown под основным контентом
 #}
 <div class="page-layout svedenija-layout">
 
@@ -63,18 +70,18 @@ templateEngineOverride: njk,md
   </div>
 
   {# ═══════════════════════════════════════════════
-     СЕКЦИИ 3 + 7: Контент 70% + Сайдбар 30% (слева)
+     СЕКЦИИ 5 + 7: Контент 70% + Сайдбар 30% (слева)
   ═══════════════════════════════════════════════ #}
   <section class="section-main">
     <div class="container">
       <div class="content-sidebar-grid">
 
-        {# ── Секция 5: Сайдбар — единые баннеры (НЕ навигация) ── #}
+        {# ── Секция 7: Сайдбар — единые баннеры (НЕ навигация) ── #}
         <div class="sidebar-col">
           {% include "components/sidebar.njk" %}
         </div>
 
-        {# ── Секция 6: Основной контент + подменю «Сведений» ── #}
+        {# ── Секция 5: Основной контент + подменю «Сведений» ── #}
         <div class="content-col">
 
           {# Подменю раздела (требование №1493 — все 11 подразделов доступны) #}
@@ -112,7 +119,7 @@ templateEngineOverride: njk,md
   </section>
 
   {# ═══════════════════════════════════════════════
-     СЕКЦИЯ 4: Связанные подразделы (опц.)
+     Связанные подразделы (опц.) — под сеткой, во всю ширину
   ═══════════════════════════════════════════════ #}
   {% if relatedSections and relatedSections.length > 0 %}
   <section class="section-related" aria-label="Связанные подразделы">
