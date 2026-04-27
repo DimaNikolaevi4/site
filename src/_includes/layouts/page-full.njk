@@ -44,10 +44,6 @@
   {# ═══════════════════════════════════════════════════════════════════ #}
   {% set _showSidebar = showSidebar if showSidebar is defined else (sidebar.show if (sidebar and sidebar.show is defined) else true) %}
 
-  {% if aboutMode is not defined or not aboutMode %}
-    {% set aboutMode = 'stub' %}
-  {% endif %}
-
   <div class="container">
     <div class="page-with-sidebar{% if not _showSidebar %} page-with-sidebar--full{% endif %}">
 

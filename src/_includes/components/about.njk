@@ -1,135 +1,29 @@
 {#
-  Компонент Секция 4 — About / Слово директора
+  Компонент Секция 4 — About
+
   Режимы, задаются переменной `aboutMode`:
 
-    aboutMode = 'director'  → Блок «Слово директора» (страницы разделов)
-                              Автоматически подтягивает материал с slug 'slovo-direktora'.
-                              Показывает: фото, заголовок, excerpt, highlights, ссылку.
+    aboutMode = 'home'   → Композиция для главной страницы (src/index.njk).
+                           Рендерит подряд:
+                             1) баннер «Поддержим наших ребят на передовой!»
+                                (Народный фронт, ссылка на pobeda.onf.ru),
+                             2) баннер «О заключении контракта»
+                                (ссылка на /news/kontrakt/),
+                             3) блок «Слово директора» (под баннерами 1 и 2),
+                             4) баннер «День открытых дверей»
+                                (/images/banners/День-открытых-дверей-2-scaled.jpg).
 
-    aboutMode = 'stub'      → Пустая заглушка для страниц разделов.
-                              Ничего не рендерится — placeholder для будущего контента.
+    aboutMode = 'razdel' → Канон Type B для всех страниц-разделов.
+                           Только пара баннеров (1 + 2) — «Народный фронт»
+                           + «О заключении контракта». Без «Слова директора»
+                           и без баннера «День открытых дверей».
 
-    aboutMode = 'section'   → Краткий информационный блок для страниц разделов.
-                              Переменные: aboutTitle, aboutText, aboutImage, aboutUrl.
-
-    aboutMode = 'home'      → Композиция-«дом» (используется на главной и
-                              на ключевых страницах разделов). Рендерит подряд:
-                              1) баннер «Поддержим наших ребят на передовой!»
-                                 (Народный фронт, ссылка на pobeda.onf.ru),
-                              2) баннер «О заключении контракта»
-                                 (ссылка на /news/kontrakt/),
-                              3) блок «Слово директора» (под баннерами 1 и 2),
-                              4) баннер «День открытых дверей»
-                                 (/images/banners/День-открытых-дверей-2-scaled.jpg).
-
-    aboutMode = 'razdel'    → Только пара баннеров (1 + 2) для страниц разделов:
-                              «Поддержим наших ребят на передовой!»
-                              + «О заключении контракта». Без «Слова директора»
-                              и без баннера «День открытых дверей».
-
-  Если `aboutMode` не задан — компонент не рендерится.
+  Если `aboutMode` не задан или имеет другое значение — компонент ничего не рендерит.
 #}
 
-{# ── Режим 1: Слово директора (главная) ── #}
-{% if aboutMode == 'director' %}
+{% if aboutMode == 'home' or aboutMode == 'razdel' %}
 
-  {% set directorPost = collections.all | findBySlug('slovo-direktora') %}
-
-  {% if directorPost %}
-  <section id="about" class="about section component-about component-about--director">
-    <div class="container">
-      <div class="row gy-4 align-items-center">
-
-        {# Фото директора — слева на десктопе, ширина 50% (50/50 с текстом) #}
-        <div class="col-lg-6 order-1" data-aos="fade-up" data-aos-delay="100">
-          <div class="about-img-wrap">
-            <img
-              src="{{ directorPost.data.image or '/assets/mentor/img/about.jpg' }}"
-              class="img-fluid rounded shadow-sm"
-              alt="Директор ГБПОУ РО «СИТ»"
-              loading="eager"
-            >
-          </div>
-        </div>
-
-        {# Текстовый блок — справа на десктопе, ширина 50% (50/50 с фото) #}
-        <div class="col-lg-6 order-2 content" data-aos="fade-up" data-aos-delay="200">
-          <h2 class="about-title">{{ directorPost.data.title }}</h2>
-
-          {% if directorPost.data.excerpt %}
-          <div class="about-excerpt fst-italic text-muted mb-3">
-            {{ directorPost.data.excerpt | safe }}
-          </div>
-          {% endif %}
-
-          {% if directorPost.data.highlights and directorPost.data.highlights.length > 0 %}
-          <ul class="about-highlights list-unstyled mb-4">
-            {% for item in directorPost.data.highlights %}
-            <li class="d-flex align-items-start gap-2 mb-2">
-              <i class="bi bi-check-circle-fill text-primary flex-shrink-0 mt-1" aria-hidden="true"></i>
-              <span>{{ item }}</span>
-            </li>
-            {% endfor %}
-          </ul>
-          {% endif %}
-
-          <a href="{{ directorPost.url }}" class="read-more" aria-label="Читать полностью — Слово директора">
-            <span>Читать полностью</span>
-            <i class="bi bi-arrow-right" aria-hidden="true"></i>
-          </a>
-        </div>
-
-      </div>
-    </div>
-  </section>
-  {% endif %}
-
-{# ── Режим 2: Краткий блок для страниц разделов ── #}
-{% elif aboutMode == 'section' %}
-
-  {% set _aboutTitle = aboutTitle if aboutTitle else "О техникуме" %}
-  {% set _aboutText  = aboutText  if aboutText  else "" %}
-
-  <section class="section component-about component-about--section">
-    <div class="container">
-      <div class="row gy-4 align-items-center">
-
-        {% if aboutImage %}
-        <div class="col-lg-5" data-aos="fade-right">
-          <img
-            src="{{ aboutImage }}"
-            class="img-fluid rounded shadow-sm"
-            alt="{{ _aboutTitle }}"
-            loading="lazy"
-          >
-        </div>
-        {% endif %}
-
-        <div class="col-lg-{{ '7' if aboutImage else '12' }} content" data-aos="fade-up">
-          <h2 class="about-title">{{ _aboutTitle }}</h2>
-          {% if _aboutText %}
-          <div class="about-text">{{ _aboutText | safe }}</div>
-          {% endif %}
-          {% if aboutUrl %}
-          <a href="{{ aboutUrl }}" class="read-more mt-3" aria-label="Читать полностью — {{ _aboutTitle }}">
-            <span>Читать полностью</span>
-            <i class="bi bi-arrow-right" aria-hidden="true"></i>
-          </a>
-          {% endif %}
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-{# ── Режим 3: Заглушка — ничего не рендерится, placeholder ── #}
-{% elif aboutMode == 'stub' %}
-  {# Заглушка: секция намеренно пуста. Контент будет добавлен позднее. #}
-
-{# ── Режим 4: композиция «дом» — баннеры + Слово директора + День открытых дверей ── #}
-{% elif aboutMode == 'home' %}
-
-  {# 1 + 2: пара баннеров «Народный фронт» и «Заключение контракта» #}
+  {# ── Блоки 1 + 2: пара баннеров «Народный фронт» и «Заключение контракта» ── #}
   <section class="section component-about component-about--narodfront">
     <div class="container">
       <div class="narodfront-card" data-aos="fade-up">
@@ -188,126 +82,70 @@
     </div>
   </section>
 
-  {# 3 — Слово директора (под баннерами 1 и 2) #}
-  {% set directorPost = collections.all | findBySlug('slovo-direktora') %}
-  {% if directorPost %}
-  <section id="about" class="about section component-about component-about--director">
-    <div class="container">
-      <div class="row gy-4 align-items-center">
+  {# ── Дополнительные блоки только для главной (режим 'home') ── #}
+  {% if aboutMode == 'home' %}
 
-        <div class="col-lg-6 order-1" data-aos="fade-up" data-aos-delay="100">
-          <div class="about-img-wrap">
-            <img
-              src="{{ directorPost.data.image or '/assets/mentor/img/about.jpg' }}"
-              class="img-fluid rounded shadow-sm"
-              alt="Директор ГБПОУ РО «СИТ»"
-              loading="eager"
-            >
-          </div>
-        </div>
+    {# 3 — Слово директора (под баннерами 1 и 2) #}
+    {% set directorPost = collections.all | findBySlug('slovo-direktora') %}
+    {% if directorPost %}
+    <section id="about" class="about section component-about component-about--director">
+      <div class="container">
+        <div class="row gy-4 align-items-center">
 
-        <div class="col-lg-6 order-2 content" data-aos="fade-up" data-aos-delay="200">
-          <h2 class="about-title">{{ directorPost.data.title }}</h2>
-
-          {% if directorPost.data.excerpt %}
-          <div class="about-excerpt fst-italic text-muted mb-3">
-            {{ directorPost.data.excerpt | safe }}
-          </div>
-          {% endif %}
-
-          {% if directorPost.data.highlights and directorPost.data.highlights.length > 0 %}
-          <ul class="about-highlights list-unstyled mb-4">
-            {% for item in directorPost.data.highlights %}
-            <li class="d-flex align-items-start gap-2 mb-2">
-              <i class="bi bi-check-circle-fill text-primary flex-shrink-0 mt-1" aria-hidden="true"></i>
-              <span>{{ item }}</span>
-            </li>
-            {% endfor %}
-          </ul>
-          {% endif %}
-
-          <a href="{{ directorPost.url }}" class="read-more" aria-label="Читать полностью — Слово директора">
-            <span>Читать полностью</span>
-            <i class="bi bi-arrow-right" aria-hidden="true"></i>
-          </a>
-        </div>
-
-      </div>
-    </div>
-  </section>
-  {% endif %}
-
-  {# 4 — Баннер «День открытых дверей» (под Словом директора) #}
-  <section class="section component-pobeda-banner">
-    <div class="container">
-      <div class="pobeda-banner-link" data-aos="zoom-in">
-        <img src="/images/banners/День-открытых-дверей-2-scaled.jpg"
-             alt="День открытых дверей"
-             class="img-fluid rounded shadow-sm pobeda-banner-img"
-             loading="lazy">
-      </div>
-    </div>
-  </section>
-
-{# ── Режим 5: «razdel» — только пара баннеров (1 + 2) для страниц разделов ── #}
-{% elif aboutMode == 'razdel' %}
-
-  <section class="section component-about component-about--narodfront">
-    <div class="container">
-      <div class="narodfront-card" data-aos="fade-up">
-
-        {# 1 — Левая колонка: логотип Народного фронта + подпись снизу #}
-        <div class="narodfront-col narodfront-col--left">
-          <a href="https://pobeda.onf.ru/requirements/rostovskaya"
-             class="narodfront-link"
-             target="_blank"
-             rel="noopener noreferrer"
-             aria-label="Народный фронт — поддержим наших ребят на передовой">
-            <picture>
-              <source media="(max-width: 575px)" srcset="/images/logos/nf-2025.png">
+          <div class="col-lg-6 order-1" data-aos="fade-up" data-aos-delay="100">
+            <div class="about-img-wrap">
               <img
-                src="/images/logos/narodnyj-front-2025.png"
-                alt="Народный фронт 2025"
-                class="img-fluid rounded shadow-sm narodfront-image"
-                loading="lazy"
-                width="817"
-                height="514"
+                src="{{ directorPost.data.image or '/assets/mentor/img/about.jpg' }}"
+                class="img-fluid rounded shadow-sm"
+                alt="Директор ГБПОУ РО «СИТ»"
+                loading="eager"
               >
-            </picture>
-          </a>
+            </div>
+          </div>
 
-          <p class="narodfront-caption text-center mt-3 mb-0">
-            <a href="https://pobeda.onf.ru/requirements/rostovskaya"
-               target="_blank"
-               rel="noopener noreferrer"
-               class="narodfront-text-link">
-              Поддержим наших ребят на передовой!
+          <div class="col-lg-6 order-2 content" data-aos="fade-up" data-aos-delay="200">
+            <h2 class="about-title">{{ directorPost.data.title }}</h2>
+
+            {% if directorPost.data.excerpt %}
+            <div class="about-excerpt fst-italic text-muted mb-3">
+              {{ directorPost.data.excerpt | safe }}
+            </div>
+            {% endif %}
+
+            {% if directorPost.data.highlights and directorPost.data.highlights.length > 0 %}
+            <ul class="about-highlights list-unstyled mb-4">
+              {% for item in directorPost.data.highlights %}
+              <li class="d-flex align-items-start gap-2 mb-2">
+                <i class="bi bi-check-circle-fill text-primary flex-shrink-0 mt-1" aria-hidden="true"></i>
+                <span>{{ item }}</span>
+              </li>
+              {% endfor %}
+            </ul>
+            {% endif %}
+
+            <a href="{{ directorPost.url }}" class="read-more" aria-label="Читать полностью — Слово директора">
+              <span>Читать полностью</span>
+              <i class="bi bi-arrow-right" aria-hidden="true"></i>
             </a>
-          </p>
+          </div>
+
         </div>
-
-        {# 2 — Правая колонка: баннер «Заключение контракта» #}
-        <div class="narodfront-col narodfront-col--right">
-          <a href="/news/kontrakt/"
-             class="narodfront-link"
-             aria-label="Заключение контракта на военную службу в Ростовской области">
-            <img
-              src="https://сит-сальск.рф/docs/kontrakt/kontrakt.jpg"
-              alt="Заключение контракта на военную службу в Ростовской области"
-              class="img-fluid rounded shadow-sm narodfront-image"
-              loading="lazy"
-            >
-          </a>
-
-          <p class="narodfront-caption text-center mt-3 mb-0">
-            <a href="/news/kontrakt/" class="narodfront-text-link">
-              О заключении контракта
-            </a>
-          </p>
-        </div>
-
       </div>
-    </div>
-  </section>
+    </section>
+    {% endif %}
+
+    {# 4 — Баннер «День открытых дверей» (под Словом директора) #}
+    <section class="section component-pobeda-banner">
+      <div class="container">
+        <div class="pobeda-banner-link" data-aos="zoom-in">
+          <img src="/images/banners/День-открытых-дверей-2-scaled.jpg"
+               alt="День открытых дверей"
+               class="img-fluid rounded shadow-sm pobeda-banner-img"
+               loading="lazy">
+        </div>
+      </div>
+    </section>
+
+  {% endif %}
 
 {% endif %}
