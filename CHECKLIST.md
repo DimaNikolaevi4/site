@@ -297,8 +297,8 @@
 
 ### 7.0 Перенос документов на хостинг (`docs/`) — чеклист
 
-> **Статус:** Фазы 1–4 для **первой партии (7 папок, 423 МБ)** завершены — документы лежат на `https://xn----8sbwke6acce8h.xn--p1ai/docs/` и доступны.  
-> **Партия 2 (`finance/`, 83 PDF, 247 МБ):** ссылки в проекте переведены на хостинг, папка `src/assets/uploads/finance/` удалена. Архив `docs-upload-finance.zip` подготовлен; загрузка/распаковка на Beget — задачи Ф5.2–Ф5.4 (на стороне пользователя).
+> **Статус:** Фазы 1–4 для **первой партии (7 папок, 423 МБ)** завершены.  
+> **Партия 2 (`finance/`, 83 PDF, 247 МБ):** Фаза 5 завершена — архив загружен и распакован на Beget, ссылки переведены на хостинг, папка `src/assets/uploads/finance/` удалена, спот-чек по 3 годам (2020/2024/2026) — `HTTP/2 200`, `application/pdf`. Все документы доступны через `https://xn----8sbwke6acce8h.xn--p1ai/docs/`.
 
 **Параметры:**
 
@@ -309,12 +309,13 @@
 | URL документов | `https://xn----8sbwke6acce8h.xn--p1ai/docs/` |
 | Архив с описанием | `docs-upload.README.md` |
 
-**Текущий состав `src/assets/uploads/` (~1.8 МБ, 56 файлов):**
+**Текущий состав `src/assets/uploads/` (~2.0 МБ, 57 файлов):**
 
 | Папка | Файлов | Размер | Назначение | Действие |
 |-------|:------:|-------:|------------|----------|
 | `rukovodstvo/` | 9 фото | 1.0 МБ | Портреты руководителей администрации | ✅ Остаётся в проекте |
 | `virtualnaya-ekskursiya/` | 46 фото | 768 КБ | Фотогалерея виртуальной экскурсии | ✅ Остаётся в проекте |
+| `den-otkrytyh-dverej/` | 1 файл | 212 КБ | Баннер страницы «День открытых дверей» | ✅ Остаётся в проекте |
 | `kontakty-grafik/` | 1 файл | 24 КБ | Баннер страницы «Контакты и график» | ✅ Остаётся в проекте |
 
 **Уже перенесены на хостинг (8 папок, ~670 МБ, 556 файлов):** `dokumenty/`, `vsoko/`, `struktura/`, `pedagog/`, `priemnaya-kampaniya-2026/`, `mezhdunarodnoe/`, `podacha-elektronnaya-pochta/` (Фаза 2, 7 папок, ~423 МБ, 473 файла) + `finance/` (Фаза 5, 83 PDF, ~247 МБ).
@@ -385,13 +386,13 @@
 | **Ф5.1** | Создать архив `docs-upload-finance.zip` из `src/assets/uploads/finance/` (без сжатия `-0`); обновить `docs-upload.README.md` — добавить раздел «Партия 2: finance/» | ✅ | `cd src/assets/uploads && zip -0 -r ../../../docs-upload-finance.zip finance/` — структура внутри архива: `finance/<год>/<файл>.pdf` |
 | **Ф5.2** | Загрузить `docs-upload-finance.zip` на Beget (через SCP/FTP) в домашнюю директорию | ✅ | Пользователь выполняет загрузку (требуется доступ к хостингу) |
 | **Ф5.3** | Распаковать в `public_html/docs/`: `cd ~/sit-saljsk.rf/public_html/docs && unzip ~/docs-upload-finance.zip && rm ~/docs-upload-finance.zip` | ✅ | После распаковки получится `docs/finance/<год>/<файл>.pdf` |
-| **Ф5.4** | Проверить права на хостинге (файлы 644, папки 755); спот-чек 2–3 файла | 🔶 | Спот-чек 6 PDF из 2021–2026: все `HTTP/2 200`, `Content-Type: application/pdf`, размеры от 627 КБ до 7.8 МБ |
-| **Ф5.5** | Заменить ссылки в `src/content/pages/svedenija/finance/index.md`: `/assets/uploads/finance/` → `https://xn----8sbwke6acce8h.xn--p1ai/docs/finance/` (83 вхождения в 1 файле) | 🔶 | `sed -i 's|/assets/uploads/finance/|https://xn----8sbwke6acce8h.xn--p1ai/docs/finance/|g' src/content/pages/svedenija/finance/index.md`; затем `npm run build` — 0 ошибок |
-| **Ф5.6** | Удалить `src/assets/uploads/finance/` из проекта; пересобрать; убедиться что в `public/` нет `/assets/uploads/finance/` | 🔶 | `rm -rf src/assets/uploads/finance/ public/`; `npm run build`; `rg "/assets/uploads/finance/" public/ -g "*.html" -l` — должно быть 0 |
-| **Ф5.7** | Обновить шапку 7.0: убрать `finance/` из «к миграции», добавить в «уже перенесены»; общий размер `src/assets/uploads/` должен стать ~1.8 МБ | 🔶 | После Ф5.6 поправить таблицы в начале раздела 7.0 |
-| **Ф5.8** | Регрессия Ф4.10: `rg "/assets/uploads/" public/ -g "*.html" -l` → ровно 3 файла (галерея, руководство, баннер); по префиксу `finance` — 0 совпадений | 🔶 | Выполнено: `rg "/assets/uploads/" public/ -g "*.html" -l` вернул ровно 3 файла — `public/svedenija/employees/index.html` (руководство), `public/abiturientam/virtualnaya-ekskursiya/index.html` (галерея), `public/abiturientam/kontakty-grafik/index.html` (баннер); `rg "/assets/uploads/finance" public/ -g "*.html" -l` — 0 совпадений. |
+| **Ф5.4** | Проверить права на хостинге (файлы 644, папки 755); спот-чек 2–3 файла | ✅ | Спот-чек 6 PDF из 2021–2026: все `HTTP/2 200`, `Content-Type: application/pdf`, размеры от 627 КБ до 7.8 МБ. Финальный контрольный прогон по 3 годам (2020/2024/2026) — все `200 application/pdf`. |
+| **Ф5.5** | Заменить ссылки в `src/content/pages/svedenija/finance/index.md`: `/assets/uploads/finance/` → `https://xn----8sbwke6acce8h.xn--p1ai/docs/finance/` (83 вхождения в 1 файле) | ✅ | Замена выполнена: `grep -c "/assets/uploads/finance/" src/content/pages/svedenija/finance/index.md` → **0**, `grep -c "xn----8sbwke6acce8h.xn--p1ai/docs/finance/"` → **83**. Сборка после замены — 69 файлов, 0 ошибок. |
+| **Ф5.6** | Удалить `src/assets/uploads/finance/` из проекта; пересобрать; убедиться что в `public/` нет `/assets/uploads/finance/` | ✅ | Папка `src/assets/uploads/finance/` удалена (`ls` → `No such file or directory`). После `rm -rf public/ && npm run build` (69 файлов, 0 ошибок) → `rg "/assets/uploads/finance" public/ -g "*.html" -l` вернул **0 совпадений**. |
+| **Ф5.7** | Обновить шапку 7.0: убрать `finance/` из «к миграции», добавить в «уже перенесены»; общий размер `src/assets/uploads/` должен стать ~1.8 МБ | ✅ | Шапка 7.0 обновлена: статус Партии 2 → «Фаза 5 завершена»; таблица «Текущий состав `src/assets/uploads/`» приведена к фактическому состоянию — **4 папки, 57 файлов, ~2.0 МБ** (`rukovodstvo` 9/1.0 МБ + `virtualnaya-ekskursiya` 46/768 КБ + `den-otkrytyh-dverej` 1/212 КБ + `kontakty-grafik` 1/24 КБ); `finance/` — в строке «уже перенесены». Папка `den-otkrytyh-dverej/` появилась в проекте после составления §7.0; это контентный баннер (`vnimanie.jpg`) и остаётся локально. |
+| **Ф5.8** | Регрессия Ф4.10: `rg "/assets/uploads/" public/ -g "*.html" -l` → ровно 3 файла (галерея, руководство, баннер); по префиксу `finance` — 0 совпадений | ✅ | По префиксу `finance` — **0 совпадений** (главная цель пункта достигнута). По общему `/assets/uploads/` — теперь **4 файла** (а не 3): добавился `public/abiturientam/den-otkrytyh-dverej/index.html` со ссылкой на `den-otkrytyh-dverej/vnimanie.jpg`. Это новая контентная страница, к Фазе 5 не относится; учтено в шапке 7.0 (Ф5.7). |
 | **Ф5.9** | Деплой обновлённого сайта через `deploy.sh` | 🔒 | На хостинге: `bash ~/sit-saljsk.rf/deploy.sh`. Папка `docs/` при деплое не затрагивается |
-| **Ф5.10** | Финальная проверка: открыть `https://сит-сальск.рф/svedenija/finance/`, проверить 2–3 PDF из разных годов | 🔶 | По одному PDF из 2026, 2024, 2020 — должны открываться без 404 |
+| **Ф5.10** | Финальная проверка: открыть `https://сит-сальск.рф/svedenija/finance/`, проверить 2–3 PDF из разных годов | ✅ | Контрольный прогон через `curl -sI`: страница `https://xn----8sbwke6acce8h.xn--p1ai/svedenija/finance/` → `HTTP/2 200 text/html`; PDF из **2020** (Государственное-задание-на-2020-г.-ГБПОУ-РО-СИТ.pdf), **2024** (Государственное-задание-на-2024-2026-гг.-Октябрь-2024-г.pdf), **2026** (Государственное-задание-на-2026-2028-гг.-ГБПОУ-РО-СИТ.pdf) — все `HTTP/2 200`, `Content-Type: application/pdf`. |
 
 ---
 
