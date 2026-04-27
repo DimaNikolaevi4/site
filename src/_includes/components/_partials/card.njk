@@ -31,7 +31,7 @@
       
       {% if card.date %}
       <time class="card-date" datetime="{{ card.date | dateToISO }}" itemprop="datePublished">
-        {{ card.date | date: "DD.MM.YYYY" }}
+        {{ card.date | dateRu }}
       </time>
       {% endif %}
     </header>
