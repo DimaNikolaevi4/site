@@ -2577,7 +2577,7 @@ body.dark-theme .component-about--narodfront .narodfront-text-link {
 .page-main-col > .section-backnav,
 .page-main-col > .component-about,
 .page-main-col > .component-news,
-.page-main-col > .component-important-info {
+.page-main-col > .component-popular {
   padding-top: 0;
   padding-bottom: 0;
   margin-top: 0;
@@ -7726,13 +7726,13 @@ body.dark-theme .rubric-resource-icon {
 }
 
 /* ════════════════════════════════════════════════════════════════════
-   КОМПОНЕНТ: «Важная информация для посетителей сайта»
-   Секция 7 канона — подключается в index.njk, page-full.njk, page.njk,
-   post.njk, listing.njk. Использует визуальный язык news.njk (режим home):
+   КОМПОНЕНТ: «Популярное» (Секция 6 канона 3.0.1)
+   Подключается в index.njk, page-full.njk, page.njk, post.njk, listing.njk.
+   Использует визуальный язык news.njk (режим home):
    Bootstrap-сетка `col-md-6 col-xl-4` + карточки `.course-item` mentor-темы.
    Своих стилей сетки/карточек не имеет — только бейдж placeholder-карточки.
    ════════════════════════════════════════════════════════════════════ */
-.important-info-card__badge {
+.popular-card__badge {
   display: inline-flex;
   align-items: center;
   font-size: 12px;

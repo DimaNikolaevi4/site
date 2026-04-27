@@ -7,11 +7,11 @@
     Секция 2: Hero                — components/hero.njk          (в base.njk)
     Секция 3: Хлебные крошки      — components/breadcrumbs.njk
     Секция 4: About               — components/about.njk         (опц., aboutMode)
-    Секция 5: Сайдбар             — components/sidebar.njk       (30% слева, единые баннеры на всём сайте)
-    Секция 6: Материалы / News    — components/news.njk          (опц., newsMode)
-    Секция 7: Важная информация   — components/important-info.njk (глобальный блок)
+    Секция 5: Материалы / News    — components/news.njk          (опц., newsMode)
+    Секция 6: Популярное          — components/popular.njk       (глобальный блок)
+    Секция 7: Сайдбар             — components/sidebar.njk       (30% слева, единые баннеры на всём сайте)
     Секция 8: Footer              — components/footer.njk        (в base.njk)
-  + Нижняя навигация (возврат к разделу) — между Секцией 7 и Секцией 8.
+  + Нижняя навигация (возврат к разделу) — между Секцией 6 и Секцией 8.
 
   Управление секциями через frontmatter:
     hero:              { image, title, subtitle, alt, cta } — включает Hero-баннер
@@ -146,10 +146,10 @@
   {% endif %}
 
   {# ═══════════════════════════════════════════════
-     СЕКЦИЯ 7: Важная информация для посетителей сайта
+     СЕКЦИЯ 6: Популярное (3 карточки)
      Глобальный блок — без условия (унифицировано с page-full.njk).
   ═══════════════════════════════════════════════ #}
-  {% include "components/important-info.njk" %}
+  {% include "components/popular.njk" %}
 
   {# ═══════════════════════════════════════════════
      Связанные материалы / «Читайте также»
