@@ -115,6 +115,12 @@ module.exports = function(eleventyConfig) {
     });
   });
 
+  // Проверяет, существует ли страница с данным URL в коллекции
+  eleventyConfig.addFilter('urlExists', function(url, collection) {
+    if (!url || !collection || !Array.isArray(collection)) return false;
+    return collection.some(item => item.url === url);
+  });
+
   // Поиск рубрики по коду (например "4.5") — возвращает объект из allSlugs
   eleventyConfig.addFilter('getRubricByCode', function(code) {
     if (!code) return null;

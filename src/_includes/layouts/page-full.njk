@@ -279,7 +279,7 @@
         {{ parentSection.title }}
       </a>
       {% elif _bnKey %}
-        {% if _bnUrl == page.url %}
+        {% if _bnUrl == page.url or not (_bnUrl | urlExists(collections.all)) %}
       <a href="/" class="backnav-link backnav-link--parent">
         <i class="bi bi-house" aria-hidden="true"></i>
         Главная
