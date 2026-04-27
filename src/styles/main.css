@@ -7446,20 +7446,30 @@ body.a11y-high-contrast .tag { background: #333 !important; color: #fff !importa
   border-radius: var(--home-img-radius);
 }
 
-/* Новости: изображения карточек course-item */
-.component-news .course-item {
+/* ══════════════════════════════════════════════════════════════════
+   Единый стиль превью-карточек: Новости · Важное · Читайте также
+   ══════════════════════════════════════════════════════════════════ */
+.component-news .course-item,
+.component-popular .course-item,
+.section-related .course-item {
   overflow: hidden;
   box-shadow: var(--home-img-shadow);
 }
+
+/* border-radius на изображениях — кроме logo.png в popular */
 .component-news .course-item > img,
-.component-news .course-item .img-fluid {
+.component-news .course-item .img-fluid,
+.component-popular .course-item > img:not(.popular-card__logo-img),
+.component-popular .course-item .img-fluid:not(.popular-card__logo-img),
+.section-related .course-item > img,
+.section-related .course-item .img-fluid {
   border-radius: var(--home-img-radius) var(--home-img-radius) 0 0;
 }
 
-/* Mobile (<768px): добавляем промежуток между превью новостей,
-   чтобы карточки не «слипались» друг с другом */
 @media (max-width: 767.98px) {
-  .component-news .course-item {
+  .component-news .course-item,
+  .component-popular .course-item,
+  .section-related .course-item {
     margin-top: 0.75rem;
     margin-bottom: 0.75rem;
   }
@@ -7508,6 +7518,8 @@ body.a11y-high-contrast .tag { background: #333 !important; color: #fff !importa
 #
 # Применяется ко всем типам превью-карточек:
 #   - .component-news .course-item       — превью новостей на главной
+#   - .component-popular .course-item    — «Важное» на главной
+#   - .section-related .course-item      — «Читайте также» на страницах
 #   - .subrubric-card                    — превью разделов в листингах
 #                                          /abiturientam/, /svedenija/
 #   - .news-card                         — превью «Другие новости» на
@@ -7515,11 +7527,15 @@ body.a11y-high-contrast .tag { background: #333 !important; color: #fff !importa
 # Не затрагивает «Слово директора» (.component-about) и заголовки секций.
 --------------------------------------------------------------*/
 
-/* Превью новостей на главной (.course-item внутри .component-news) */
-.component-news .course-item .course-content {
+/* Единый размер текста для всех трёх компонентов */
+.component-news .course-item .course-content,
+.component-popular .course-item .course-content,
+.section-related .course-item .course-content {
   padding: 14px 16px 16px;
 }
-.component-news .course-item .course-content h3 {
+.component-news .course-item .course-content h3,
+.component-popular .course-item .course-content h3,
+.section-related .course-item .course-content h3 {
   font-size: 15px;
   line-height: 1.3;
   font-weight: 700;
@@ -7529,11 +7545,15 @@ body.a11y-high-contrast .tag { background: #333 !important; color: #fff !importa
   font-size: 12px;
   line-height: 1.2;
 }
-.component-news .course-item .course-content .description {
+.component-news .course-item .course-content .description,
+.component-popular .course-item .course-content .description,
+.section-related .course-item .course-content .description {
   font-size: 13px;
   line-height: 1.45;
 }
-.component-news .course-item .read-more {
+.component-news .course-item .read-more,
+.component-popular .course-item .read-more,
+.section-related .course-item .read-more {
   font-size: 12.5px;
 }
 
@@ -7748,45 +7768,6 @@ body.dark-theme .rubric-resource-icon {
   border-radius: 50px;
   text-decoration: none;
   gap: 5px;
-}
-
-/* ── Карточки popular: те же стили что у component-news (канон §3.0.1) ── */
-.component-popular .course-item {
-  overflow: hidden;
-  box-shadow: var(--home-img-shadow);
-}
-
-/* border-radius на изображениях — кроме logo.png (у него своя обёртка) */
-.component-popular .course-item > img:not(.popular-card__logo-img),
-.component-popular .course-item .img-fluid:not(.popular-card__logo-img) {
-  border-radius: var(--home-img-radius) var(--home-img-radius) 0 0;
-}
-
-@media (max-width: 767.98px) {
-  .component-popular .course-item {
-    margin-top: 0.75rem;
-    margin-bottom: 0.75rem;
-  }
-}
-
-.component-popular .course-item .course-content {
-  padding: 14px 16px 16px;
-}
-
-.component-popular .course-item .course-content h3 {
-  font-size: 15px;
-  line-height: 1.3;
-  font-weight: 700;
-  margin-bottom: 8px;
-}
-
-.component-popular .course-item .course-content .description {
-  font-size: 13px;
-  line-height: 1.45;
-}
-
-.component-popular .course-item .read-more {
-  font-size: 12.5px;
 }
 
 /* Логотип в карточке «Сведения» — уменьшен */
