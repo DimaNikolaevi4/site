@@ -1,50 +1,97 @@
+{#
+  Партиал: контентный блок страницы «Противодействие коррупции»
+  ────────────────────────────────────────────────────────────
+  Подключение (живые потребители — 2 страницы):
+    • src/content/pages/svedenija/documents/anti-corruption/index.md
+      (рубрика 0 «Сведения → Документы → Противодействие коррупции»,
+       layout: layouts/svedenija-page.njk).
+    • src/content/pages/bezopasnost/antikorrupcija.md
+      (рубрика 7.3 «Безопасность → Противодействие коррупции»,
+       layout: layouts/page-full.njk).
+    Обе страницы выводят один и тот же контент (см. перекрёстную ссылку
+    в `bezopasnost/antikorrupcija.md` стр. 21).
+
+  Источник данных (Eleventy `_data/`):
+    src/_data/antiCorruption.yaml — корневой ключ `sections: [...]`.
+    Перед include обе страницы делают `{% set antiCorruption = antiCorruption.sections %}`
+    — переопределяют переменную на массив секций (партиал итерирует именно его).
+
+  Контракт элемента `section`:
+    id           строка — якорь HTML (`<article id="…">`).
+    title        строка — заголовок секции (`<h2>`).
+    description  строка (опц.) — подзаголовок-абзац под `<h2>`.
+    content      HTML-строка (опц.) — выводится через `| safe`.
+    contacts     массив `{label, value}` (опц.) — карточки контактов.
+    documents    массив `{title, date, type, size, url, signed}` (опц.):
+                   type='html' → ссылка `target="_blank"` («Открыть»);
+                   иной type   → ссылка `download`         («Скачать»);
+                   signed=true → бейдж «✓ ЭП».
+    form         true (опц.) — рендерит форму обратной связи (см. ниже).
+
+  Форма «Сообщить о факте коррупции» (включается `form: true`):
+    action="/submit-form.php" — серверный обработчик ОЖИДАЕТСЯ на хостинге Beget
+    (PHP 8.3). В репозитории файла нет — нужен отдельный продовый бэкенд (TODO).
+    honeypot-поле `name="website"` (CSS-скрыто, atrib `data-honeypot="website"`),
+    обязательное согласие на обработку ПДн, минимум 20 символов в сообщении,
+    accept .pdf/.doc/.docx/.jpg/.png/.jpeg, max ~10 МБ (валидируется на бэкенде;
+    в HTML атрибут `data-max-size` несёт значение для возможного JS-предчекa).
+
+  ВАЖНО — whitespace control:
+    Партиал включается из `.md`-страниц. По цепочке Eleventy сначала рендерит
+    Nunjucks, потом markdown-it. Если в выводе партиала остаются пустые строки,
+    markdown-it ломает «HTML block» и оборачивает каждый второй кусок в `<p>…</p>`
+    (`<p></li></p>`, `<p><ul></p>` и т. п.). Поэтому ВСЕ управляющие теги Jinja
+    обязательно используют `{%- … -%}` (срез пробелов), а в самой разметке
+    блоков нет пустых строк. НЕ ДОБАВЛЯТЬ пустые строки в этот файл.
+
+  A11y/SEO: `<section>` без явного `aria-label` (заголовок страницы даёт layout);
+  у каждого `<article id="…">` свой `<h2>`; иконки SVG `aria-hidden="true"`,
+  у каждой ссылки документа осмысленный `aria-label`; honeypot `aria-hidden="true"`.
+#}
 <section class="anti-corruption-page">
-  {% for section in antiCorruption %}
+{%- for section in antiCorruption %}
   <article class="doc-section" id="{{ section.id }}">
     <header class="doc-section-header">
       <h2>{{ section.title }}</h2>
-      {% if section.description %}
+      {%- if section.description %}
       <p class="section-desc">{{ section.description }}</p>
-      {% endif %}
+      {%- endif %}
     </header>
-    
-    {% if section.content %}
+    {%- if section.content %}
     <div class="section-content">{{ section.content | safe }}</div>
-    {% endif %}
-    
-    {% if section.contacts %}
+    {%- endif %}
+    {%- if section.contacts %}
     <div class="contact-cards">
-      {% for contact in section.contacts %}
+      {%- for contact in section.contacts %}
       <div class="contact-card">
         <span class="contact-label">{{ contact.label }}:</span>
         <span class="contact-value">{{ contact.value }}</span>
       </div>
-      {% endfor %}
+      {%- endfor %}
     </div>
-    {% endif %}
-    
-    {% if section.documents %}
+    {%- endif %}
+    {%- if section.documents %}
     <ul class="doc-list" role="list">
-      {% for doc in section.documents %}
+      {%- for doc in section.documents %}
       <li class="doc-item">
         <div class="doc-info">
           <strong class="doc-title">{{ doc.title }}</strong>
           <div class="doc-meta">
-            {% if doc.date %}
+            {%- if doc.date %}
             <time class="doc-date" datetime="{{ doc.date }}">{{ doc.date }}</time>
-            {% endif %}
-            {% if doc.type %}
+            {%- endif %}
+            {%- if doc.type %}
             <span class="doc-type {{ doc.type }}" title="Формат файла: {{ doc.type | upper }}">{{ doc.type | upper }}</span>
-            {% endif %}
-            {% if doc.size %}
+            {%- endif %}
+            {%- if doc.size %}
             <span class="doc-size" title="Размер файла">{{ doc.size }}</span>
-            {% endif %}
-            {% if doc.signed %}
+            {%- endif %}
+            {%- if doc.signed %}
             <span class="doc-signed" title="Документ подписан электронной подписью">✓ ЭП</span>
-            {% endif %}
+            {%- endif %}
           </div>
         </div>
-        {% if doc.type == 'html' %}
+        {%- if doc.type == 'html' %}
         <a href="{{ doc.url }}" class="doc-download" target="_blank" rel="noopener noreferrer" aria-label="Открыть документ: {{ doc.title }}">
           <svg class="icon-download" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
             <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
@@ -53,7 +100,7 @@
           </svg>
           <span>Открыть</span>
         </a>
-        {% else %}
+        {%- else %}
         <a href="{{ doc.url }}" class="doc-download" download aria-label="Скачать документ: {{ doc.title }}">
           <svg class="icon-download" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
             <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
@@ -62,43 +109,36 @@
           </svg>
           <span>Скачать</span>
         </a>
-        {% endif %}
+        {%- endif %}
       </li>
-      {% endfor %}
+      {%- endfor %}
     </ul>
-    {% endif %}
-    
-    {% if section.form %}
+    {%- endif %}
+    {%- if section.form %}
     <form class="report-form" action="/submit-form.php" method="POST" enctype="multipart/form-data" data-honeypot="website" novalidate>
       <input type="text" name="website" class="honeypot" tabindex="-1" autocomplete="off" aria-hidden="true">
-      
       <div class="form-group">
         <label for="report-name">Ваше имя (необязательно)</label>
         <input type="text" id="report-name" name="name" maxlength="100" placeholder="Иван Иванов">
       </div>
-      
       <div class="form-group">
         <label for="report-email">Email для связи (необязательно)</label>
         <input type="email" id="report-email" name="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" placeholder="example@mail.ru">
       </div>
-      
       <div class="form-group">
         <label for="report-message">Сообщение <span class="required">*</span></label>
         <textarea id="report-message" name="message" required minlength="20" maxlength="2000" placeholder="Опишите ситуацию подробно..."></textarea>
         <small class="form-hint">Минимум 20 символов</small>
       </div>
-      
       <div class="form-group">
         <label for="report-attachment">Прикрепить файл (макс. 10 МБ)</label>
-        <input type="file" id="report-attachment" name="attachment" accept=".pdf,.doc,.docx,.jpg,.png,.jpeg" max-size="10485760">
+        <input type="file" id="report-attachment" name="attachment" accept=".pdf,.doc,.docx,.jpg,.png,.jpeg" data-max-size="10485760">
         <small class="form-hint">PDF, DOC, DOCX, JPG, PNG</small>
       </div>
-      
       <div class="form-consent">
         <input type="checkbox" id="consent" name="consent" required>
         <label for="consent">Я согласен на обработку <a href="/svedenija/dokumenty/privacy-policy/" target="_blank">персональных данных</a> <span class="required">*</span></label>
       </div>
-      
       <button type="submit" class="btn-submit">
         <span>Отправить сообщение</span>
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
@@ -107,7 +147,7 @@
         </svg>
       </button>
     </form>
-    {% endif %}
+    {%- endif %}
   </article>
-  {% endfor %}
+{%- endfor %}
 </section>
