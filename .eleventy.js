@@ -288,6 +288,7 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addPassthroughCopy("src/admin");
   eleventyConfig.addPassthroughCopy("src/styles");
   eleventyConfig.addPassthroughCopy({ "src/robots.txt": "robots.txt" });
+  eleventyConfig.addPassthroughCopy({ "src/.htaccess": ".htaccess" });
   
   // === Расширения данных ===
   eleventyConfig.addDataExtension("yaml", contents => yaml.load(contents));
