@@ -6,7 +6,7 @@
     Секция 1: Header                — components/header.njk      (в base.njk)
     Секция 2: Hero                  — components/hero.njk        (в base.njk, опц.)
     Секция 3: Хлебные крошки        — components/breadcrumbs.njk
-    Секция 5: Сайдбар               — components/sidebar.njk     (30% слева)
+    Секция 5: Сайдбар               — components/sidebar.njk     (30% слева, единые баннеры на всём сайте)
     Секция 6: Лента карточек        — содержимое листинга
     Секция 7: Дополнительные блоки  — опц.
     Секция 8: Footer                — components/footer.njk      (в base.njk)
@@ -17,16 +17,12 @@
     pagination         — стандартный объект Eleventy pagination
     hero               — { image, title, subtitle, alt, cta } (опц.) — Hero-баннер
     rubricTitle        — название рубрики под чертой в Hero
-    showSidebar        — true/false (по умолчанию true) — единые баннеры слева
-    sidebarBanners     — массив баннеров (переопределить набор по умолчанию)
     sectionContext     — { filters, sortOptions, banner } — фильтры/сортировка/баннер
     additionalBlocks   — HTML после ленты карточек
 #}
 {% extends "layouts/base.njk" %}
 
 {% block content %}
-{% set _showSidebar = showSidebar if showSidebar is defined else true %}
-
 <div class="page-layout listing-layout">
 
   {# ═══════════════════════════════════════════════
@@ -47,14 +43,12 @@
   ═══════════════════════════════════════════════ #}
   <section class="section-main">
     <div class="container">
-      <div class="content-sidebar-grid{% if not _showSidebar %} content-sidebar-grid--full{% endif %}">
+      <div class="content-sidebar-grid">
 
         {# ── Секция 5: Сайдбар (единые баннеры, 30% слева) ── #}
-        {% if _showSidebar %}
         <div class="sidebar-col">
           {% include "components/sidebar.njk" %}
         </div>
-        {% endif %}
 
         {# ── Секция 6: Лента карточек ── #}
         <div class="content-col">

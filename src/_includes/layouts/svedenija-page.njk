@@ -1,7 +1,6 @@
 ---
 layout: layouts/base.njk
 templateEngineOverride: njk,md
-showSidebar: true
 ---
 {#
   ШАБЛОН — svedenija-page.njk (новая архитектура)
@@ -12,7 +11,7 @@ showSidebar: true
     Секция 1: Header                — components/header.njk      (в base.njk)
     Секция 2: Hero                  — components/hero.njk        (в base.njk, опц.)
     Секция 3: Хлебные крошки        — components/breadcrumbs.njk
-    Секция 5: Сайдбар               — components/sidebar.njk     (30% слева)
+    Секция 5: Сайдбар               — components/sidebar.njk     (30% слева, единые баннеры на всём сайте)
     Секция 6: Основной контент + подменю «Сведений» (по №1493)
     Секция 7: Связанные подразделы (опц.)
     Секция 8: Footer                — components/footer.njk      (в base.njk)
@@ -21,8 +20,6 @@ showSidebar: true
   Управление через frontmatter страницы:
     title, description
     hero            — { image, title, subtitle, alt } (опц.)
-    showSidebar     — true/false (по умолч. true)
-    sidebarBanners  — переопределить единые баннеры
     relatedSections — массив { url, title, icon } для секции 4
 #}
 <div class="page-layout svedenija-layout">
@@ -68,18 +65,14 @@ showSidebar: true
   {# ═══════════════════════════════════════════════
      СЕКЦИИ 3 + 7: Контент 70% + Сайдбар 30% (слева)
   ═══════════════════════════════════════════════ #}
-  {% set _showSidebar = showSidebar if showSidebar is defined else true %}
-
   <section class="section-main">
     <div class="container">
-      <div class="content-sidebar-grid{% if not _showSidebar %} content-sidebar-grid--full{% endif %}">
+      <div class="content-sidebar-grid">
 
         {# ── Секция 5: Сайдбар — единые баннеры (НЕ навигация) ── #}
-        {% if _showSidebar %}
         <div class="sidebar-col">
           {% include "components/sidebar.njk" %}
         </div>
-        {% endif %}
 
         {# ── Секция 6: Основной контент + подменю «Сведений» ── #}
         <div class="content-col">

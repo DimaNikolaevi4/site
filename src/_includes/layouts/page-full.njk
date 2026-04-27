@@ -8,7 +8,7 @@
             + Контекст (хлебные крошки, заголовок, описание, фильтры)
     Секция 3: Хлебные крошки           — components/breadcrumbs.njk
     Секция 4: About — заглушка         — components/about.njk       (aboutMode='stub')
-    Секция 5: Сайдбар                  — components/sidebar.njk     (30% слева)
+    Секция 5: Сайдбар                  — components/sidebar.njk     (30% слева, единые баннеры на всём сайте)
     Секция 6: Материалы / Подрубрики   — components/news.njk        (newsMode='razdel')
             Динамический список Level 1 / Level 2 на основе rubric (frontmatter)
     Секция 7: Важная информация        — components/important-info.njk (глобальный блок)
@@ -42,17 +42,13 @@
   {# до последней (grid-row: 1 / -1) — ровно «между breadcrumbs и        #}
   {# footer», как требует канон страниц-разделов.                        #}
   {# ═══════════════════════════════════════════════════════════════════ #}
-  {% set _showSidebar = showSidebar if showSidebar is defined else (sidebar.show if (sidebar and sidebar.show is defined) else true) %}
-
   <div class="container">
-    <div class="page-with-sidebar{% if not _showSidebar %} page-with-sidebar--full{% endif %}">
+    <div class="page-with-sidebar">
 
       {# Левая колонка: единый сайдбар, sticky на всю высоту #}
-      {% if _showSidebar %}
       <aside class="page-sidebar-col">
         {% include "components/sidebar.njk" %}
       </aside>
-      {% endif %}
 
       {# Правая колонка: весь контент в одном flex-column контейнере,
          чтобы сайдбар (grid-item слева) не влиял на высоту строк. #}

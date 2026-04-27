@@ -1,73 +1,59 @@
 {#
-  Компонент Секция 5 — Сайдбар (30% левая колонка с едиными баннерами)
-  Принцип: единые баннеры на всех страницах, НЕ навигация.
+  Компонент Секция 5 — Сайдбар
+  Левая колонка ~30% на всех страницах сайта (между Секцией 2 и Секцией 8,
+  на всю высоту блока: от Секции 3 до Секции 6).
+
+  Принцип: ЕДИНЫЕ баннеры на всём сайте, без переопределения в шаблонах:
+    1. Баннер «Стань оператором БПЛА» (внешняя ссылка).
+    2. Баннер «НОК-2025» (независимая оценка качества, внешняя ссылка).
+    3. ПОС «Решаем вместе» — официальный фиксированный блок Госуслуг.
+
   Использование:
     {% include "components/sidebar.njk" %}
-
-  Переменные (все опциональны):
-    sidebarImageBanners — массив { image, alt, url, external, title, caption }
-                          для медиа-баннеров (картинка-ссылка). По умолчанию
-                          выводится единый баннер БПЛА (на всех страницах).
-    sidebarBanners      — массив { title, text, url, linkText, icon, modifier }
-                          для текстовых баннеров (опционально).
 #}
-
-{# === Единые медиа-баннеры (картинки-ссылки) === #}
-{% set _defaultImageBanners = [
-  {
-    image: "/images/banners/bpla.jpg",
-    alt: "Стань оператором БПЛА — выбери профессию будущего",
-    url: "https://xn--61-6kc3bbqgrrd.xn--p1ai/bpla.html",
-    external: true
-  },
-  {
-    image: "/images/banners/nok-2025.jpg",
-    alt: "НОК-2025 — независимая оценка качества",
-    url: "https://bus.gov.ru/info-card/399429",
-    external: true
-  }
-] %}
-{% set _imageBanners = sidebarImageBanners if sidebarImageBanners else _defaultImageBanners %}
-
-{# === Текстовые баннеры (необязательные) === #}
-{% set _defaultBanners = [] %}
-{% set _banners = sidebarBanners if sidebarBanners else _defaultBanners %}
-
 <aside class="component-sidebar" role="complementary" aria-label="Дополнительная информация">
 
-  {% if _imageBanners and _imageBanners | length > 0 %}
   <div class="sidebar-image-banners">
-    {% for b in _imageBanners %}
+
+    {# === Баннер 1: БПЛА === #}
     <a class="sidebar-image-banner"
-       href="{{ b.url }}"
-       {% if b.external %}target="_blank" rel="noopener noreferrer"{% endif %}
-       aria-label="{{ b.alt or b.title }}"
+       href="https://xn--61-6kc3bbqgrrd.xn--p1ai/bpla.html"
+       target="_blank"
+       rel="noopener noreferrer"
+       aria-label="Стань оператором БПЛА — выбери профессию будущего"
        data-aos="fade-left"
-       data-aos-delay="{{ loop.index * 80 }}">
+       data-aos-delay="80">
       <figure class="sidebar-image-banner__figure">
         <img class="sidebar-image-banner__img"
-             src="{{ b.image }}"
-             alt="{{ b.alt or b.title }}"
+             src="/images/banners/bpla.jpg"
+             alt="Стань оператором БПЛА — выбери профессию будущего"
              loading="lazy"
              decoding="async">
-        {% if b.title or b.caption %}
-        <figcaption class="sidebar-image-banner__caption">
-          {% if b.title %}<span class="sidebar-image-banner__title">{{ b.title }}</span>{% endif %}
-          {% if b.caption %}<span class="sidebar-image-banner__text">{{ b.caption }}</span>{% endif %}
-          <span class="sidebar-image-banner__cta" aria-hidden="true">
-            Подробнее <i class="bi bi-arrow-right"></i>
-          </span>
-        </figcaption>
-        {% endif %}
       </figure>
     </a>
-    {% endfor %}
 
-    {# === ПОС: Госуслуги «Решаем вместе» — третий баннер === #}
+    {# === Баннер 2: НОК-2025 === #}
+    <a class="sidebar-image-banner"
+       href="https://bus.gov.ru/info-card/399429"
+       target="_blank"
+       rel="noopener noreferrer"
+       aria-label="НОК-2025 — независимая оценка качества"
+       data-aos="fade-left"
+       data-aos-delay="160">
+      <figure class="sidebar-image-banner__figure">
+        <img class="sidebar-image-banner__img"
+             src="/images/banners/nok-2025.jpg"
+             alt="НОК-2025 — независимая оценка качества"
+             loading="lazy"
+             decoding="async">
+      </figure>
+    </a>
+
+    {# === Баннер 3: ПОС «Решаем вместе» — официальный фиксированный блок === #}
     <div id="js-show-iframe-wrapper"
          class="sidebar-pos"
          data-aos="fade-left"
-         data-aos-delay="{{ (_imageBanners | length + 1) * 80 }}">
+         data-aos-delay="240">
       <div class="pos-banner-fluid bf-22">
         <div class="bf-22__decor">
           <div class="bf-22__logo-wrap">
@@ -95,26 +81,7 @@
         </div>
       </div>
     </div>
-  </div>
-  {% endif %}
 
-  {% if _banners and _banners | length > 0 %}
-  <div class="sidebar-banners">
-    {% for banner in _banners %}
-    <div class="sidebar-banner {{ banner.modifier }}" data-aos="fade-left" data-aos-delay="{{ loop.index * 80 }}">
-      <div class="sidebar-banner__icon">
-        <i class="bi {{ banner.icon }}" aria-hidden="true"></i>
-      </div>
-      <div class="sidebar-banner__body">
-        <h3 class="sidebar-banner__title">{{ banner.title }}</h3>
-        <p class="sidebar-banner__text">{{ banner.text }}</p>
-        <a href="{{ banner.url }}" class="sidebar-banner__link">
-          {{ banner.linkText }} <i class="bi bi-arrow-right" aria-hidden="true"></i>
-        </a>
-      </div>
-    </div>
-    {% endfor %}
   </div>
-  {% endif %}
 
 </aside>

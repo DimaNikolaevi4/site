@@ -7,7 +7,7 @@
     Секция 2: Hero                — components/hero.njk          (в base.njk)
     Секция 3: Хлебные крошки      — components/breadcrumbs.njk
     Секция 4: About               — components/about.njk         (опц., aboutMode)
-    Секция 5: Сайдбар             — components/sidebar.njk       (30% слева, sticky)
+    Секция 5: Сайдбар             — components/sidebar.njk       (30% слева, единые баннеры на всём сайте)
     Секция 6: Материалы / News    — components/news.njk          (опц., newsMode)
     Секция 7: Важная информация   — components/important-info.njk (глобальный блок)
     Секция 8: Footer              — components/footer.njk        (в base.njk)
@@ -16,8 +16,6 @@
   Управление секциями через frontmatter:
     hero:              { image, title, subtitle, alt, cta } — включает Hero-баннер
     rubricTitle:       строка — название рубрики под чертой в Hero
-    showSidebar:       true/false (по умолчанию true) — 30% левая колонка с баннерами
-    sidebarBanners:    массив — переопределить стандартные баннеры сайдбара
     showAbout:         true/false (по умолчанию false) — секция 4
     aboutMode:         'razdel' (для всех страниц-разделов: пара баннеров «Народный фронт» + «Контракт»)
                        'home'   (только для главной — задаётся в src/index.njk, не во frontmatter)
@@ -36,8 +34,6 @@
 {% extends "layouts/base.njk" %}
 
 {% block content %}
-{% set _showSidebar = showSidebar if showSidebar is defined else true %}
-
 <div class="page-layout page-type-b">
 
   {# ═══════════════════════════════════════════════
@@ -61,14 +57,12 @@
   ═══════════════════════════════════════════════ #}
   <section class="section-main">
     <div class="container">
-      <div class="content-sidebar-grid{% if not _showSidebar %} content-sidebar-grid--full{% endif %}">
+      <div class="content-sidebar-grid">
 
-        {# ── Секция 5: Сайдбар (30% левая колонка) ── #}
-        {% if _showSidebar %}
+        {# ── Секция 5: Сайдбар (30% левая колонка, единые баннеры) ── #}
         <div class="sidebar-col">
           {% include "components/sidebar.njk" %}
         </div>
-        {% endif %}
 
         {# ── Основной контент страницы ── #}
         <div class="content-col">

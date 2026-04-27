@@ -2546,10 +2546,6 @@ body.dark-theme .component-about--narodfront .narodfront-text-link {
   align-items: start;
 }
 
-.page-with-sidebar--full {
-  grid-template-columns: 1fr;
-}
-
 /* Левая колонка: сайдбар — один grid-item, sticky */
 .page-with-sidebar > .page-sidebar-col {
   position: sticky;
@@ -2581,7 +2577,7 @@ body.dark-theme .component-about--narodfront .narodfront-text-link {
 .page-main-col > .section-backnav,
 .page-main-col > .component-about,
 .page-main-col > .component-news,
-.page-main-col > .component-popular {
+.page-main-col > .component-important-info {
   padding-top: 0;
   padding-bottom: 0;
   margin-top: 0;
@@ -2620,19 +2616,14 @@ body.dark-theme .component-about--narodfront .narodfront-text-link {
 # Сетка для внутренних страниц: сайдбар 30% слева | контент 70% справа.
 # Используется в layouts/page.njk, layouts/page-full.njk,
 # layouts/listing.njk и layouts/svedenija-page.njk.
-# Модификатор `.content-sidebar-grid--full` — режим без сайдбара
-# (одна колонка во всю ширину).
-# Перенесено из src/assets/css/style.css (CHECKLIST 2.7.4).
+# Сайдбар присутствует на всех страницах с едиными баннерами — модификатор
+# «без сайдбара» намеренно убран в апреле 2026 (никогда не использовался).
 --------------------------------------------------------------*/
 .content-sidebar-grid {
   display: grid;
   grid-template-columns: 30% 1fr;
   gap: 2rem;
   align-items: start;
-}
-
-.content-sidebar-grid--full {
-  grid-template-columns: 1fr;
 }
 
 .sidebar-col {
