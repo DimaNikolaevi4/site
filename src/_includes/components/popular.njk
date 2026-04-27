@@ -35,7 +35,8 @@
     desc: "Обязательная информация по Приказу Рособрнадзора № 1493: документы, образование, руководство, материально-техническое обеспечение.",
     url: "/svedenija/",
     image: "/assets/images/logo.png",
-    alt: "Сведения об образовательной организации"
+    alt: "Сведения об образовательной организации",
+    imgClass: "popular-card__logo-img"
   }
 ] %}
 
@@ -73,7 +74,7 @@
           {% else %}
           <div class="col-md-6 col-xl-4 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="{{ loop.index * 100 }}">
             <div class="course-item">
-              <img src="{{ _c.image }}" class="img-fluid" alt="{{ _c.alt }}" loading="lazy">
+              <img src="{{ _c.image }}" class="img-fluid{{ ' ' + _c.imgClass if _c.imgClass }}" alt="{{ _c.alt }}" loading="lazy">
               <div class="course-content">
                 <h3><a href="{{ _c.url }}">{{ _c.title }}</a></h3>
                 <p class="description">{{ _c.desc }}</p>
