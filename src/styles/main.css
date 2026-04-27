@@ -7141,43 +7141,6 @@ body.dark-theme .brand-divider {
   .page-hero__divider { width: 80px; margin: 12px auto 10px; }
 }
 
-/* ─── Раздел «Сведения»: специальные стили ─── */
-.svedenija-header {
-  display: flex;
-  align-items: flex-start;
-  gap: 1rem;
-  margin-top: 0.5rem;
-}
-
-.svedenija-header__icon {
-  font-size: 2rem;
-  color: var(--accent-color, #5fcf80);
-  flex-shrink: 0;
-  line-height: 1;
-  margin-top: 0.2rem;
-}
-
-.svedenija-header__super {
-  display: block;
-  font-size: 0.8rem;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  color: var(--text-muted, #888);
-  margin-bottom: 0.2rem;
-}
-
-.svedenija-header__title {
-  font-size: clamp(1.3rem, 2.5vw, 1.85rem);
-  font-weight: 700;
-  margin: 0;
-  color: var(--heading-color, #1a2e1a);
-}
-
-.svedenija-header__desc {
-  font-size: 0.95rem;
-  margin: 0.4rem 0 0;
-}
-
 /* Боковое меню «Сведений» */
 .svedenija-nav-widget { padding: 0; overflow: hidden; }
 .svedenija-nav-title { padding: 0.9rem 1.1rem; margin: 0; border-bottom: 0; background-image: linear-gradient(90deg, transparent 0%, color-mix(in srgb, var(--accent-color, #5fcf80), transparent 30%) 15%, var(--accent-color, #5fcf80) 50%, color-mix(in srgb, var(--accent-color, #5fcf80), transparent 30%) 85%, transparent 100%); background-repeat: no-repeat; background-position: bottom left; background-size: 100% 2px; }
@@ -7244,8 +7207,7 @@ body.dark-theme .brand-divider {
   .section-backnav .container { flex-direction: column; align-items: flex-start; }
   .related-grid { grid-template-columns: 1fr; }
   .main-grid { gap: 1.25rem; }
-  .svedenija-header { flex-direction: column; gap: 0.5rem; }
-  .svedenija-header__icon { font-size: 1.5rem; }
+
 }
 
 /* ─── High Contrast: новые секции ─── */

@@ -8,8 +8,7 @@ templateEngineOverride: njk,md
 
   Канон секций (§3.0.1, тот же на всём сайте):
     Секция 1: Header                — components/header.njk      (в base.njk)
-    Секция 2: Hero                  — components/hero.njk        (в base.njk, опц.) +
-                                      собственная плашка svedenija-header (иконка, supertitle)
+    Секция 2: Hero                  — components/hero.njk        (в base.njk, опц.)
     Секция 3: Хлебные крошки        — components/breadcrumbs.njk (с ручным контекстом)
     Секция 5: Основной контент      — подменю «Сведений» (Приказ №1493) + page-content
     Секция 7: Сайдбар               — components/sidebar.njk     (30% слева, единые баннеры)
@@ -51,21 +50,6 @@ templateEngineOverride: njk,md
       ] %}
     {% endif %}
     {% include "components/breadcrumbs.njk" %}
-
-    <div class="svedenija-header">
-      <div class="svedenija-header__icon">
-        <i class="bi bi-building" aria-hidden="true"></i>
-      </div>
-      <div class="svedenija-header__text">
-        <span class="svedenija-header__super">Сведения об образовательной организации</span>
-        {% if showHero == false %}
-        <h1 class="svedenija-header__title">{{ title }}</h1>
-        {% endif %}
-        {% if description %}
-        <p class="svedenija-header__desc text-muted">{{ description }}</p>
-        {% endif %}
-      </div>
-    </div>
 
   </div>
 
