@@ -279,10 +279,17 @@
         {{ parentSection.title }}
       </a>
       {% elif _bnKey %}
+        {% if _bnUrl == page.url %}
+      <a href="/" class="backnav-link backnav-link--parent">
+        <i class="bi bi-house" aria-hidden="true"></i>
+        Главная
+      </a>
+        {% else %}
       <a href="{{ _bnUrl }}" class="backnav-link backnav-link--parent">
         <i class="bi bi-arrow-left-circle" aria-hidden="true"></i>
         {{ _bnLabel }}
       </a>
+        {% endif %}
       {% endif %}
 
       {# Пред/след навигация #}
