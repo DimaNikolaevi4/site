@@ -1,19 +1,35 @@
 {#
   ЕДИНЫЙ ШАБЛОН ТИПА B — page-full.njk
-  7 секций страницы раздела (см. чек-лист 5.3):
+  Активный расширенный шаблон Type B, используется в 25 страницах
+  (24 в `src/content/` + `src/pages/news-list.njk`).
 
-  Канон секций (тот же на всём сайте):
+  Канон секций (§3.0.1, тот же на всём сайте):
     Секция 1: Header                   — components/header.njk      (в base.njk)
     Секция 2: Hero                     — components/hero.njk        (в base.njk, опц.)
-            + Контекст (хлебные крошки, заголовок, описание, фильтры)
-    Секция 3: Хлебные крошки           — components/breadcrumbs.njk
-    Секция 4: About                    — components/about.njk       (aboutMode='razdel')
-    Секция 5: Материалы / Подрубрики   — components/news.njk        (newsMode='razdel')
-            Динамический список Level 1 / Level 2 на основе rubric (frontmatter)
+    Секция 3: Хлебные крошки           — components/breadcrumbs.njk (над сеткой)
+    Секция 4: About                    — components/about.njk       (aboutMode='razdel'/'home')
+    Секция 5: Материалы / Подрубрики   — components/news.njk        (динамический список L1/L2 по rubric)
+                                       + лента карточек (pagination.items / collections[collectionName])
+                                       + статический контент (Markdown), если карточек нет
     Секция 6: Популярное               — components/popular.njk     (глобальный блок)
-    Секция 7: Сайдбар                  — components/sidebar.njk     (30% слева, единые баннеры на всём сайте)
+    Секция 7: Сайдбар                  — components/sidebar.njk     (30% слева, sticky на всю высоту)
     Секция 8: Footer                   — components/footer.njk      (в base.njk)
-  + Нижняя навигация (возврат к разделу) — между Секцией 6 и Секцией 8.
+  + Нижняя навигация (возврат / пред / след) — между Секцией 6 и Секцией 8 (`.section-backnav`).
+  + Полоса во всю ширину под сеткой — `belowGridSubrubric` (карточки заданной подрубрики L2).
+
+  Опциональные frontmatter-поля:
+    aboutMode             — режим About: 'razdel' | 'home' | 'director' | 'section'
+    collectionName        — имя коллекции для ленты карточек (без pagination)
+    pagination            — стандартный объект Eleventy pagination
+    suppressSubrubrics    — true → отключить авто-вывод подрубрик (страница рендерит сама)
+    subrubricTitle        — заголовок секции подрубрик (по умолчанию «Подрубрики раздела»)
+    additionalBlocks      — HTML/Markdown под основным контентом
+    attachments           — массив { name, url, size } для блока «Вложения»
+    relatedPages          — массив { title, url, image, date, excerpt } для «Читайте также»
+    parentSection         — { title, url } родительского раздела для backnav
+    prevPage / nextPage   — { title, url } для пред/след навигации
+    belowGridSubrubric    — код подрубрики (например, "2.3.1") для блока во всю ширину
+    belowGridSubrubricTitle — заголовок этого блока
 #}
 {% extends "layouts/base.njk" %}
 
