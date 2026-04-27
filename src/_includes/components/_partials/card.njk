@@ -1,4 +1,27 @@
-{# Карточка материала (превью + теги) #}
+{# ════════════════════════════════════════════════════════════════════
+   ПАРТИАЛ: _partials/card.njk — универсальная карточка материала
+
+   Используется в listing.njk (Секция 5 «Лента карточек», между sidebar
+   слева и popular снизу). Принимает на входе объект `card` через
+   `{% set card = {...} %}` непосредственно перед `{% include %}`.
+
+   Поля объекта `card` (все опциональны, кроме title и url):
+     • title         — заголовок (string, required)
+     • url           — ссылка на материал (string, required)
+     • image         — URL превью; при отсутствии блок .card-image не выводится
+     • imageAlt      — alt для img (default: title)
+     • category      — slug рубрики (используется как fallback-источник
+                       URL `/{slug}/` и человеческой метки через
+                       sectionLabels.byUrl → bySlug → raw)
+     • categoryTitle — явная метка рубрики (опц. override sectionLabels)
+     • date          — дата публикации (Date или ISO-строка, рендерится
+                       через фильтры dateRu и dateToISO в .eleventy.js)
+     • excerpt       — краткое описание
+     • tags          — массив тегов (служебный 'nav' исключается)
+
+   SEO/Schema.org: <article itemscope itemtype="https://schema.org/Article">
+   с itemprop="image|url|headline|datePublished|description|keywords".
+   ════════════════════════════════════════════════════════════════════ #}
 <article class="card" itemscope itemtype="https://schema.org/Article">
   {% if card.image %}
   <div class="card-image">
