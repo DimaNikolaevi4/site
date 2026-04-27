@@ -7767,3 +7767,363 @@ body.dark-theme .rubric-resource-icon {
   display: block;
   object-fit: contain;
 }
+
+/* ════════════════════════════════════════════════════════════════════
+   КОМПОНЕНТ: «Противодействие коррупции» (партиал anti-corruption-content.njk)
+   Используется на двух страницах:
+     • /bezopasnost/antikorrupcija/
+     • /svedenija/dokumenty/anti-corruption/
+   Структура партиала: .anti-corruption-page → .doc-section → header,
+   опц. .section-content, .contact-cards (.contact-card),
+   .doc-list (.doc-item с .doc-info + .doc-download), опц. .report-form.
+   ════════════════════════════════════════════════════════════════════ */
+
+.anti-corruption-page {
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
+}
+
+.anti-corruption-page .doc-section {
+  background: var(--surface-color, #fff);
+  border: 1px solid color-mix(in srgb, var(--accent-color, #5fcf80), transparent 78%);
+  border-radius: 14px;
+  padding: 1.5rem 1.5rem 1.75rem;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+@media (min-width: 768px) {
+  .anti-corruption-page .doc-section {
+    padding: 2rem 2rem 2.25rem;
+  }
+}
+
+.anti-corruption-page .doc-section-header {
+  margin-bottom: 1rem;
+  padding-bottom: 0.85rem;
+  border-bottom: 2px solid color-mix(in srgb, var(--accent-color, #5fcf80), transparent 80%);
+}
+
+.anti-corruption-page .doc-section-header h2 {
+  margin: 0 0 0.35rem;
+  font-size: clamp(1.2rem, 1.4vw + 0.7rem, 1.55rem);
+  font-weight: 700;
+  color: var(--heading-color, #1a2e1a);
+  line-height: 1.25;
+}
+
+.anti-corruption-page .section-desc {
+  margin: 0;
+  font-size: 0.95rem;
+  color: var(--default-color, #555);
+  opacity: 0.85;
+}
+
+/* Свободный HTML-контент внутри секции (списки, абзацы, ссылки) */
+.anti-corruption-page .section-content {
+  color: var(--default-color, #333);
+  line-height: 1.6;
+}
+.anti-corruption-page .section-content > * + * { margin-top: 0.75rem; }
+.anti-corruption-page .section-content ul,
+.anti-corruption-page .section-content ol {
+  padding-left: 1.25rem;
+  margin: 0.5rem 0;
+}
+.anti-corruption-page .section-content li + li { margin-top: 0.35rem; }
+.anti-corruption-page .section-content a {
+  color: var(--accent-color, #1a8754);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.2s ease, color 0.2s ease;
+}
+.anti-corruption-page .section-content a:hover,
+.anti-corruption-page .section-content a:focus-visible {
+  border-bottom-color: currentColor;
+}
+
+/* ── Контактные карточки ── */
+.anti-corruption-page .contact-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 0.75rem;
+  margin-top: 1rem;
+}
+
+.anti-corruption-page .contact-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  padding: 0.85rem 1rem;
+  background: color-mix(in srgb, var(--accent-color, #5fcf80), #fff 92%);
+  border: 1px solid color-mix(in srgb, var(--accent-color, #5fcf80), transparent 70%);
+  border-radius: 10px;
+}
+body.dark-theme .anti-corruption-page .contact-card {
+  background: color-mix(in srgb, var(--accent-color, #5fcf80), #1a2e24 86%);
+}
+
+.anti-corruption-page .contact-label {
+  font-size: 0.78rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--default-color, #555);
+  opacity: 0.75;
+}
+
+.anti-corruption-page .contact-value {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--heading-color, #1a2e1a);
+  word-break: break-word;
+}
+
+/* ── Список документов ── */
+.anti-corruption-page .doc-list {
+  list-style: none;
+  margin: 1rem 0 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.anti-corruption-page .doc-item {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem 1rem;
+  padding: 0.85rem 1rem;
+  background: var(--surface-color, #fff);
+  border: 1px solid color-mix(in srgb, var(--accent-color, #5fcf80), transparent 80%);
+  border-radius: 10px;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+}
+.anti-corruption-page .doc-item:hover {
+  border-color: color-mix(in srgb, var(--accent-color, #5fcf80), transparent 50%);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.06);
+  transform: translateY(-1px);
+}
+
+.anti-corruption-page .doc-info {
+  flex: 1 1 260px;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.anti-corruption-page .doc-title {
+  font-size: 0.98rem;
+  font-weight: 600;
+  line-height: 1.35;
+  color: var(--heading-color, #1a2e1a);
+}
+
+.anti-corruption-page .doc-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.4rem 0.6rem;
+  font-size: 0.8rem;
+  color: var(--default-color, #555);
+}
+
+.anti-corruption-page .doc-date {
+  opacity: 0.8;
+}
+
+.anti-corruption-page .doc-type {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.1rem 0.5rem;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--accent-color, #5fcf80), #fff 82%);
+  color: var(--accent-color, #1a8754);
+  border: 1px solid color-mix(in srgb, var(--accent-color, #5fcf80), transparent 65%);
+}
+.anti-corruption-page .doc-type.pdf {
+  background: color-mix(in srgb, #d9534f, #fff 86%);
+  color: #b8362e;
+  border-color: color-mix(in srgb, #d9534f, transparent 60%);
+}
+.anti-corruption-page .doc-type.html {
+  background: color-mix(in srgb, #2c7be5, #fff 88%);
+  color: #1f5fbf;
+  border-color: color-mix(in srgb, #2c7be5, transparent 65%);
+}
+
+.anti-corruption-page .doc-size {
+  opacity: 0.75;
+}
+
+.anti-corruption-page .doc-signed {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.1rem 0.5rem;
+  font-size: 0.72rem;
+  font-weight: 700;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--accent-color, #5fcf80), #fff 82%);
+  color: var(--accent-color, #1a8754);
+}
+
+/* Кнопка-ссылка «Открыть / Скачать» */
+.anti-corruption-page .doc-download {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  flex: 0 0 auto;
+  padding: 0.55rem 1rem;
+  background: var(--accent-color, #1a8754);
+  color: #fff;
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-decoration: none;
+  border-radius: 999px;
+  transition: background-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+.anti-corruption-page .doc-download:hover,
+.anti-corruption-page .doc-download:focus-visible {
+  background: var(--accent-color-hover, #156c43);
+  color: #fff;
+  text-decoration: none;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+}
+
+.anti-corruption-page .doc-download .icon-download {
+  width: 1.05rem;
+  height: 1.05rem;
+  flex: 0 0 auto;
+}
+
+/* ── Форма «Сообщить о факте коррупции» ── */
+.anti-corruption-page .report-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 1rem;
+  padding: 1.25rem;
+  background: color-mix(in srgb, var(--accent-color, #5fcf80), #fff 95%);
+  border: 1px solid color-mix(in srgb, var(--accent-color, #5fcf80), transparent 78%);
+  border-radius: 12px;
+}
+body.dark-theme .anti-corruption-page .report-form {
+  background: color-mix(in srgb, var(--accent-color, #5fcf80), #1a2e24 88%);
+}
+
+.anti-corruption-page .report-form .honeypot {
+  position: absolute;
+  left: -10000px;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+.anti-corruption-page .form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+
+.anti-corruption-page .form-group label,
+.anti-corruption-page .form-consent label {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--heading-color, #1a2e1a);
+}
+
+.anti-corruption-page .form-group input,
+.anti-corruption-page .form-group textarea {
+  padding: 0.6rem 0.85rem;
+  font-size: 0.95rem;
+  font-family: inherit;
+  color: var(--default-color, #333);
+  background: var(--surface-color, #fff);
+  border: 1px solid color-mix(in srgb, var(--accent-color, #5fcf80), transparent 70%);
+  border-radius: 8px;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+.anti-corruption-page .form-group textarea {
+  min-height: 130px;
+  resize: vertical;
+}
+.anti-corruption-page .form-group input:focus,
+.anti-corruption-page .form-group textarea:focus {
+  outline: none;
+  border-color: var(--accent-color, #1a8754);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent-color, #5fcf80), transparent 75%);
+}
+
+.anti-corruption-page .form-hint {
+  font-size: 0.78rem;
+  color: var(--default-color, #555);
+  opacity: 0.7;
+}
+
+.anti-corruption-page .required {
+  color: #c0392b;
+  margin-left: 0.15rem;
+}
+
+.anti-corruption-page .form-consent {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.55rem;
+  font-size: 0.9rem;
+  line-height: 1.4;
+}
+.anti-corruption-page .form-consent input[type="checkbox"] {
+  margin-top: 0.2rem;
+  accent-color: var(--accent-color, #1a8754);
+}
+.anti-corruption-page .form-consent label {
+  font-weight: 400;
+}
+.anti-corruption-page .form-consent a {
+  color: var(--accent-color, #1a8754);
+  text-decoration: underline;
+}
+
+.anti-corruption-page .btn-submit {
+  align-self: flex-start;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.7rem 1.4rem;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #fff;
+  background: var(--accent-color, #1a8754);
+  border: none;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+.anti-corruption-page .btn-submit:hover,
+.anti-corruption-page .btn-submit:focus-visible {
+  background: var(--accent-color-hover, #156c43);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.14);
+}
+.anti-corruption-page .btn-submit svg {
+  width: 1.05rem;
+  height: 1.05rem;
+}
+
+/* Мобильный: кнопка-загрузка под информацией о документе, на всю ширину */
+@media (max-width: 575.98px) {
+  .anti-corruption-page .doc-item {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .anti-corruption-page .doc-download {
+    justify-content: center;
+  }
+}
