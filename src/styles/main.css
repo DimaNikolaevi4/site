@@ -4713,9 +4713,18 @@ section,
   left: 12px;
   right: 12px;
   bottom: 10px;
-  height: 3px;
+  height: 4px;
   border-radius: 999px;
-  background: var(--accent-color);
+  /* Тот же градиент, что у разделительных линий (.section-related::before),
+     только чуть толще — мягкий «ход» от прозрачного к акценту и обратно. */
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    color-mix(in srgb, var(--accent-color, #5fcf80), transparent 30%) 20%,
+    var(--accent-color, #5fcf80) 50%,
+    color-mix(in srgb, var(--accent-color, #5fcf80), transparent 30%) 80%,
+    transparent 100%
+  );
   opacity: 0;
   transform: scaleX(0.45);
   transition: opacity 0.2s ease, transform 0.2s ease;
