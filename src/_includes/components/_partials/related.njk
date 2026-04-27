@@ -1,19 +1,45 @@
 {#
-  Компонент: «Читайте также» (связанные материалы)
-  Используется в layouts/post.njk и layouts/page.njk
+  Партиал: «Читайте также» (связанные материалы)
+  ────────────────────────────────────────────────────────────
+  Подключение:
+    • src/_includes/layouts/post.njk  (Type C / Материал) — стр. 187.
+      По канону §3.0.1 на Type C блок «Читайте также» ЗАМЕНЯЕТ
+      Секцию 6 «Популярное» (popular.njk на материалах не выводится).
+    • src/_includes/layouts/page.njk  (Type B / Страница раздела) — стр. 158.
+      Здесь идёт ПОСЛЕ Секции 6 «Популярное» как дополнительный блок.
+
+  ВАЖНО: в layouts/page-full.njk (стр. 231–263) исторически живёт
+  независимая инлайн-копия с другой разметкой (`<article class="related-card">`).
+  Та копия читает только `relatedPages` (без авто-подбора). На реальном
+  контенте сейчас не используется ни одной страницей `page-full.njk`
+  (мёртвый код, фиксируется в § 3.2.2 как минор для отдельной задачи —
+  унифицировать через этот партиал).
 
   Логика выбора источника (по приоритету):
-    1. relatedPages       — массив { url, title, image, excerpt, date } (явно из frontmatter)
-    2. relatedCollection  — имя коллекции из collections.*
-    3. category / section — slug используется как имя коллекции
+    1. relatedPages       — массив { url, title, image, excerpt, date } из frontmatter (override).
+    2. relatedCollection  — имя коллекции из collections.* (явный авто-подбор).
+    3. category / section — slug используется как имя коллекции (авто-подбор по умолчанию).
+  Текущий материал (page.url) исключается из авто-подбора. Если коллекция не
+  найдена и `relatedPages` пуст — партиал НИЧЕГО не рендерит (self-gating).
 
-  Параметры из frontmatter страницы:
-    relatedPages       массив объектов — переопределение
-    relatedCollection  строка — имя коллекции
-    relatedCount       число (по умолчанию 3)
-    relatedTitle       строка (по умолчанию «Читайте также»)
+  Параметры frontmatter страницы:
+    relatedPages       массив объектов — переопределение источника.
+    relatedCollection  строка — имя коллекции для авто-подбора.
+    relatedCount       число — сколько карточек выводить (по умолчанию 3).
+    relatedTitle       строка — заголовок секции (по умолчанию «Читайте также»).
 
-  Текущий материал (page.url) исключается из автоподбора.
+  Реальные потребители авто-режима (на 04.2026):
+    • 6 страниц `src/content/abiturientam/` через `relatedCollection: abiturientam`
+      (kontakty-grafik, priemnaya-kampaniya-2025, podacha-pochtovaya-svyaz,
+       podacha-elektronnaya-pochta, virtualnaya-ekskursiya, platnaya-osnova).
+    • Все материалы новостей через `category: news` → `collections.news`.
+
+  Разметка карточки — `<div class="course-item">` (визуально единый язык
+  с `news.njk` в режиме `home` и `popular.njk`). Превью `loading="lazy"`,
+  дата через фильтр `dateRu`, ссылки «Читать полностью» с `aria-label`.
+
+  A11y: `<section aria-label="Читайте также">`, иконки `aria-hidden="true"`,
+  у каждой ссылки «Читать полностью» — осмысленный `aria-label` с заголовком.
 #}
 
 {% set _relItems = relatedPages %}
