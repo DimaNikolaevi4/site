@@ -33,54 +33,14 @@
      СЕКЦИЯ 2: Hero — единый, рендерится в base.njk
   ═══════════════════════════════════════════════ #}
 
-  <section class="section-context" aria-label="Фильтры и сортировка">
-    <div class="container">
+  <div class="container container--breadcrumbs" aria-label="Контекст страницы">
+    {# Единые хлебные крошки #}
+    {% include "components/breadcrumbs.njk" %}
 
-      {# Единые хлебные крошки #}
-      {% include "components/breadcrumbs.njk" %}
-
-      <div class="context-header">
-        {% if showHero == false %}
-        <h1 class="page-title">{{ title }}</h1>
-        {% endif %}
-      </div>
-
-      {% if sectionContext and (sectionContext.filters or sectionContext.sortOptions) %}
-      <div class="listing-controls">
-        {% if sectionContext.filters %}
-        <div class="listing-filters">
-          <label for="filter-select" class="visually-hidden">Фильтр по типу</label>
-          <select id="filter-select" class="filter-select form-select form-select-sm">
-            <option value="">Все материалы</option>
-            {% for filter in sectionContext.filters %}
-            <option value="{{ filter.value }}">{{ filter.label }}</option>
-            {% endfor %}
-          </select>
-        </div>
-        {% endif %}
-
-        {% if sectionContext.sortOptions %}
-        <div class="listing-sort">
-          <label for="sort-select" class="visually-hidden">Сортировка</label>
-          <select id="sort-select" class="sort-select form-select form-select-sm">
-            {% for option in sectionContext.sortOptions %}
-            <option value="{{ option.value }}" {% if option.default %}selected{% endif %}>
-              {{ option.label }}
-            </option>
-            {% endfor %}
-          </select>
-        </div>
-        {% endif %}
-      </div>
-      {% endif %}
-
-      {% if showHero == false and sectionContext and sectionContext.banner %}
-      <div class="page-banner mt-3">
-        <img src="{{ sectionContext.banner }}" alt="{{ title }}" loading="lazy" class="img-fluid rounded">
-      </div>
-      {% endif %}
-    </div>
-  </section>
+    {% if showHero == false %}
+    <h1 class="page-title">{{ title }}</h1>
+    {% endif %}
+  </div>
 
   {# ═══════════════════════════════════════════════
      СЕКЦИИ 3 + 7: Контент 70% + Сайдбар 30% (слева)

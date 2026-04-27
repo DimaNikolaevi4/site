@@ -31,41 +31,39 @@ showSidebar: true
      СЕКЦИЯ 2: Hero — единый, рендерится в base.njk
   ═══════════════════════════════════════════════ #}
 
-  <section class="section-context section-context--svedenija" aria-label="Раздел Сведения">
-    <div class="container">
+  <div class="container container--breadcrumbs" aria-label="Раздел Сведения">
 
-      {# Единые хлебные крошки — ручной режим, чтобы не дублировать заголовок на корне #}
-      {% if page.url == '/svedenija/' %}
-        {% set breadcrumbs = [
-          { text: "Главная", url: "/" },
-          { text: "Сведения об образовательной организации" }
-        ] %}
-      {% else %}
-        {% set breadcrumbs = [
-          { text: "Главная", url: "/" },
-          { text: "Сведения об образовательной организации", url: "/svedenija/" },
-          { text: breadcrumbTitle or title }
-        ] %}
-      {% endif %}
-      {% include "components/breadcrumbs.njk" %}
+    {# Единые хлебные крошки — ручной режим, чтобы не дублировать заголовок на корне #}
+    {% if page.url == '/svedenija/' %}
+      {% set breadcrumbs = [
+        { text: "Главная", url: "/" },
+        { text: "Сведения об образовательной организации" }
+      ] %}
+    {% else %}
+      {% set breadcrumbs = [
+        { text: "Главная", url: "/" },
+        { text: "Сведения об образовательной организации", url: "/svedenija/" },
+        { text: breadcrumbTitle or title }
+      ] %}
+    {% endif %}
+    {% include "components/breadcrumbs.njk" %}
 
-      <div class="svedenija-header">
-        <div class="svedenija-header__icon">
-          <i class="bi bi-building" aria-hidden="true"></i>
-        </div>
-        <div class="svedenija-header__text">
-          <span class="svedenija-header__super">Сведения об образовательной организации</span>
-          {% if showHero == false %}
-          <h1 class="svedenija-header__title">{{ title }}</h1>
-          {% endif %}
-          {% if description %}
-          <p class="svedenija-header__desc text-muted">{{ description }}</p>
-          {% endif %}
-        </div>
+    <div class="svedenija-header">
+      <div class="svedenija-header__icon">
+        <i class="bi bi-building" aria-hidden="true"></i>
       </div>
-
+      <div class="svedenija-header__text">
+        <span class="svedenija-header__super">Сведения об образовательной организации</span>
+        {% if showHero == false %}
+        <h1 class="svedenija-header__title">{{ title }}</h1>
+        {% endif %}
+        {% if description %}
+        <p class="svedenija-header__desc text-muted">{{ description }}</p>
+        {% endif %}
+      </div>
     </div>
-  </section>
+
+  </div>
 
   {# ═══════════════════════════════════════════════
      СЕКЦИИ 3 + 7: Контент 70% + Сайдбар 30% (слева)

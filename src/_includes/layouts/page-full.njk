@@ -23,20 +23,14 @@
   {# === СЕКЦИЯ 2: Hero — единый, рендерится в base.njk === #}
 
   {# === СЕКЦИЯ 3: Контекстная — только хлебные крошки === #}
-  <section class="section-context" aria-label="Контекст страницы">
-    <div class="container">
+  <div class="container container--breadcrumbs" aria-label="Контекст страницы">
+    {# Хлебные крошки #}
+    {% include "components/breadcrumbs.njk" %}
 
-      {# Хлебные крошки #}
-      {% include "components/breadcrumbs.njk" %}
-
-      <div class="context-header">
-        {% if showHero == false %}
-        <h1 class="page-title">{{ title }}</h1>
-        {% endif %}
-      </div>
-
-    </div>
-  </section>
+    {% if showHero == false %}
+    <h1 class="page-title">{{ title }}</h1>
+    {% endif %}
+  </div>
 
   {# ═══════════════════════════════════════════════════════════════════ #}
   {# === ЕДИНАЯ СЕТКА page-with-sidebar (от breadcrumbs до footer) === #}

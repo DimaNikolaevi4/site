@@ -52,19 +52,13 @@
   ═══════════════════════════════════════════════ #}
 
   {# Контекстная полоса: только хлебные крошки #}
-  <section class="section-context" aria-label="Контекст страницы">
-    <div class="container">
+  <div class="container container--breadcrumbs" aria-label="Контекст страницы">
+    {% include "components/breadcrumbs.njk" %}
 
-      {% include "components/breadcrumbs.njk" %}
-
-      <div class="context-header">
-        {% if showHero == false %}
-        <h1 class="page-title">{{ title }}</h1>
-        {% endif %}
-      </div>
-
-    </div>
-  </section>
+    {% if showHero == false %}
+    <h1 class="page-title">{{ title }}</h1>
+    {% endif %}
+  </div>
 
   {# ═══════════════════════════════════════════════
      СЕКЦИИ 3 + 7: Контент (70%) + Сайдбар (30%)
