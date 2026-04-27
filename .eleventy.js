@@ -121,6 +121,38 @@ module.exports = function(eleventyConfig) {
     return allSlugs.find(r => r.code === code) || null;
   });
 
+  // Навигация по соседним рубрикам (пред/след) по коду текущей рубрики
+  // Возвращает { prev: {title, url} | null, next: {title, url} | null }
+  eleventyConfig.addFilter('getRubricNavigation', function(code) {
+    if (!code) return { prev: null, next: null };
+    const current = allSlugs.find(r => r.code === code);
+    if (!current) return { prev: null, next: null };
+
+    // Определяем родительский путь
+    const parts = current.fullPath.split('/');
+    const parentPath = parts.length > 1 ? parts.slice(0, -1).join('/') : null;
+
+    // Получаем всех прямых «братьев» (один уровень вложенности от родителя)
+    const siblings = allSlugs.filter(r => {
+      const rParts = r.fullPath.split('/');
+      if (parentPath) {
+        return r.fullPath.startsWith(parentPath + '/') &&
+               rParts.length === parts.length;
+      } else {
+        return rParts.length === 1;
+      }
+    });
+
+    const idx = siblings.findIndex(r => r.code === code);
+    const prev = idx > 0 ? siblings[idx - 1] : null;
+    const next = idx < siblings.length - 1 ? siblings[idx + 1] : null;
+
+    return {
+      prev: prev ? { title: prev.title, url: '/' + prev.fullPath + '/' } : null,
+      next: next ? { title: next.title, url: '/' + next.fullPath + '/' } : null
+    };
+  });
+
   // Возвращает прямых детей рубрики, упакованных как карточки для news.njk (subrubrics mode)
   // На вход — код рубрики ("3", "4.5", "2.7" и т.п.) и collections (для чтения frontmatter)
   eleventyConfig.addFilter('getSubrubricCards', function(code, collections) {

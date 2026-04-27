@@ -140,15 +140,28 @@ templateEngineOverride: njk,md
   {% endif %}
 
   {# ═══════════════════════════════════════════════
-     Нижняя навигация — возврат к разделу
+     Нижняя навигация — возврат к разделу + пред/след
   ═══════════════════════════════════════════════ #}
   {% if page.url != '/svedenija/' %}
-  <nav class="section-backnav" aria-label="Навигация">
+  {% set _rubnav = rubric | getRubricNavigation %}
+  <nav class="section-backnav" aria-label="Навигация по разделу">
     <div class="container">
       <a href="/svedenija/" class="backnav-link backnav-link--parent">
         <i class="bi bi-arrow-left-circle" aria-hidden="true"></i>
         Сведения об образовательной организации
       </a>
+      <div class="backnav-prevnext">
+        {% if _rubnav.prev %}
+        <a href="{{ _rubnav.prev.url }}" class="backnav-link backnav-link--prev" title="{{ _rubnav.prev.title }}">
+          <i class="bi bi-chevron-left" aria-hidden="true"></i> {{ _rubnav.prev.title }}
+        </a>
+        {% endif %}
+        {% if _rubnav.next %}
+        <a href="{{ _rubnav.next.url }}" class="backnav-link backnav-link--next" title="{{ _rubnav.next.title }}">
+          {{ _rubnav.next.title }} <i class="bi bi-chevron-right" aria-hidden="true"></i>
+        </a>
+        {% endif %}
+      </div>
     </div>
   </nav>
   {% endif %}

@@ -6923,10 +6923,12 @@ body.dark-theme .post-share__tag:focus-visible {
   display: inline-flex;
   align-items: center;
   gap: 0.4rem;
-  padding: 0.4rem 0.9rem;
-  border-radius: 2rem;
-  font-size: 0.875rem;
+  padding: 10px 24px 12px 24px;
+  border-radius: 50px;
+  font-family: var(--heading-font);
+  font-size: 15px;
   font-weight: 500;
+  letter-spacing: 1px;
   text-decoration: none;
   transition: background 0.15s, color 0.15s;
 }
