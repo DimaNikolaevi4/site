@@ -14,8 +14,8 @@ main_rubrics:
         title: "Специальности и профессии"
         slug: specialnosti
       - code: "1.3"
-        title: "Приемная кампания 2025"
-        slug: priemnaya-kampaniya-2025
+        title: "Приёмная кампания 2026"
+        slug: priemnaya-kampaniya-2026
       - code: "1.4"
         title: "День открытых дверей"
         slug: den-otkrytyh-dverej

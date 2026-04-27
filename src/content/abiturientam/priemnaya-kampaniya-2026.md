@@ -5,7 +5,7 @@ emoji: "📋"
 layout: layouts/post.njk
 category: abiturientam
 rubric: "1.3"
-permalink: /abiturientam/priemnaya-kampaniya-2025/
+permalink: /abiturientam/priemnaya-kampaniya-2026/
 tags:
   - Абитуриентам
   - Приёмная кампания
