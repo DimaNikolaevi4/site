@@ -1,0 +1,122 @@
+/* ============================================================
+   CRITICAL CSS — стили первого экрана (above-the-fold)
+   ------------------------------------------------------------
+   Что входит:
+     1. CSS-переменные (цвета, шрифты, навигация)
+     2. Базовая типографика (body, a, h1–h6, img)
+     3. Skip-link и .visually-hidden (a11y, WCAG 2.1 AA)
+     4. Шапка (.header, .logo, .header-logo-img, .header-icons,
+        .header-phone-link, .main-nav, .main-nav__link)
+     5. Hero-баннер (.page-hero и все его подэлементы)
+     6. Базовый layout (.container, .container-fluid, .container-xl,
+        .main-content) — дублирует Bootstrap 5 grid breakpoints
+     7. Кнопка «Наверх» (.scroll-top — fixed, чтобы не прыгала)
+     8. A11y-режимы (.dark-theme, .a11y-high-contrast,
+        .a11y-large-font, .a11y-no-animations) — классы ставятся
+        inline-скриптом в <head> ДО загрузки main.css, поэтому
+        соответствующие правила должны быть в критическом CSS
+   ------------------------------------------------------------
+   Размер: ~7 КБ (uncompressed), укладывается в бюджет 10–15 КБ.
+   Подключение: инлайн в base.njk через src/_data/criticalCSS.js
+   (закрывающий тег style в этом комментарии не упоминается специально,
+   иначе браузер закроет inline-блок раньше времени).
+   ============================================================ */
+
+:root{--default-font:"Open Sans",system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;--heading-font:"Raleway",sans-serif;--nav-font:"Poppins",sans-serif;--background-color:#fff;--default-color:#444;--heading-color:#37423b;--accent-color:#5fcf80;--surface-color:#fff;--contrast-color:#fff;--nav-color:#272828;--nav-hover-color:#5fcf80}
+
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{margin:0;color:var(--default-color);background-color:var(--background-color);font-family:var(--default-font);line-height:1.6}
+a{color:var(--accent-color);text-decoration:none;transition:.3s}
+a:hover{text-decoration:none}
+h1,h2,h3,h4,h5,h6{color:var(--heading-color);font-family:var(--heading-font);margin:0 0 .5rem}
+img{max-width:100%;height:auto}
+ul{padding-left:1.5rem}
+.list-unstyled{list-style:none;padding:0;margin:0}
+
+/* Skip-link (a11y, WCAG 2.1 AA) */
+.skip-link{position:absolute;top:-100%;left:1rem;z-index:9999;padding:.5rem 1rem;background:#2e7d32;color:#fff;font-size:1rem;border-radius:0 0 4px 4px;text-decoration:none;transition:top .1s}
+.skip-link:focus{top:0;outline:3px solid #ff0;outline-offset:2px}
+.visually-hidden{position:absolute!important;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+
+/* Минимальный набор Bootstrap-утилит (нужны до загрузки bootstrap.min.css) */
+.d-flex{display:flex}
+.d-none{display:none}
+.d-block{display:block}
+.d-inline-block{display:inline-block}
+@media(min-width:992px){.d-lg-flex{display:flex!important}.d-lg-none{display:none!important}}
+.align-items-center{align-items:center}
+.justify-content-between{justify-content:space-between}
+.justify-content-center{justify-content:center}
+.flex-shrink-0{flex-shrink:0}
+.flex-column{flex-direction:column}
+.mx-auto{margin-left:auto;margin-right:auto}
+.m-0{margin:0!important}
+.p-0{padding:0!important}
+.position-relative{position:relative}
+.position-absolute{position:absolute}
+.sticky-top{position:sticky;top:0;z-index:1020}
+.text-center{text-align:center}
+
+/* Container: воспроизводим Bootstrap 5 breakpoints */
+.container,.container-fluid,.container-xl{width:100%;padding-right:.75rem;padding-left:.75rem;margin-right:auto;margin-left:auto}
+@media(min-width:576px){.container{max-width:540px}}
+@media(min-width:768px){.container{max-width:720px}}
+@media(min-width:992px){.container{max-width:960px}}
+@media(min-width:1200px){.container,.container-xl{max-width:1140px}}
+@media(min-width:1400px){.container,.container-xl{max-width:1320px}}
+
+/* Header (шапка) */
+.header{color:var(--default-color);background-color:var(--background-color);padding:15px 0;transition:all .5s;z-index:997}
+.header.sticky-top{position:sticky;top:0}
+.header .container-fluid{display:flex;align-items:center;flex-wrap:nowrap;width:100%;position:relative}
+.header .logo{display:flex;align-items:center;flex-shrink:0;line-height:1;text-decoration:none}
+.header-logo-img{width:auto;height:clamp(32px,5vw,52px);max-height:52px;display:block;transition:height .25s ease}
+.header.header--compact{min-height:54px;box-shadow:0 2px 16px rgba(0,0,0,.06)}
+.header.header--compact .header-logo-img{height:34px}
+.scrolled .header{box-shadow:0 0 18px rgba(0,0,0,.1)}
+.header .header-icons{display:flex;align-items:center;flex-shrink:0;gap:6px;padding-left:10px}
+.header .header-icons a,.header .header-icons button{color:var(--nav-color);font-size:1.2rem;background:none;border:none;padding:0;line-height:1;margin:0;transition:color .3s}
+.header .header-icons a:hover,.header .header-icons button:hover{color:var(--nav-hover-color)}
+.header-phone-link{display:inline-flex;align-items:center;gap:6px;height:36px;padding:0 10px;border-radius:999px;color:var(--nav-color);font-size:.9rem;font-weight:600;line-height:1;text-decoration:none;transition:color .2s,background .2s}
+.header-phone-link:hover{color:var(--accent-color);background:rgba(95,207,128,.08)}
+
+/* Главная навигация (.main-nav) */
+.main-nav ul{display:flex;align-items:center;list-style:none;margin:0;padding:0}
+.main-nav__link{display:flex;align-items:center;position:relative;gap:.45rem;color:var(--nav-color);text-decoration:none;font-size:15px;font-family:var(--nav-font);font-weight:400;padding:18px 12px;white-space:nowrap;transition:color .3s,padding .25s ease}
+.main-nav__link:hover,.main-nav__link.active{color:var(--nav-hover-color)}
+.main-nav__link.active{background:rgba(95,207,128,.08)}
+.main-nav__icon{display:inline-flex;align-items:center;justify-content:center;width:1.35rem;min-width:1.35rem;height:1.35rem;border-radius:999px;background:rgba(95,207,128,.09);font-size:.82rem;line-height:1}
+.header.header--compact .main-nav__link{padding-top:13px;padding-bottom:13px}
+
+/* Hero-баннер (Секция 2 — единый компонент) */
+.page-hero{position:relative;min-height:280px;display:flex;align-items:center;overflow:hidden}
+.page-hero__bg{position:absolute;inset:0;background-size:cover;background-position:center;z-index:0}
+.page-hero__overlay{position:absolute;inset:0;background:linear-gradient(135deg,rgba(10,60,20,.72) 0%,rgba(95,207,128,.35) 100%);z-index:1}
+.page-hero__content{position:relative;z-index:2;padding:2.5rem 0;width:100%}
+.page-hero__subtitle{font-size:1.1rem;color:rgba(255,255,255,.88);margin:0 0 1.25rem;max-width:600px}
+.page-hero__cta{font-weight:600}
+.page-hero--banner{text-align:center}
+.page-hero__inner{max-width:900px;margin:0 auto;padding:0 1rem}
+.page-hero__org{color:#fff;font-family:var(--heading-font);font-weight:800;font-size:clamp(1.6rem,3.6vw,2.4rem);line-height:1.15;text-shadow:0 2px 10px rgba(0,0,0,.35);letter-spacing:.5px;margin:0}
+.page-hero__org small{display:inline-block;margin-top:6px;font-size:clamp(1rem,2vw,1.35rem);font-weight:600;color:rgba(255,255,255,.95);letter-spacing:0}
+.page-hero__divider{width:320px;max-width:88%;height:2px;margin:18px auto 14px;border:0;border-radius:999px;background:linear-gradient(90deg,rgba(255,255,255,0) 0%,rgba(255,255,255,.9) 20%,#5fcf80 50%,rgba(255,255,255,.9) 80%,rgba(255,255,255,0) 100%);box-shadow:0 1px 4px rgba(0,0,0,.4),0 0 10px rgba(95,207,128,.4);opacity:1}
+.page-hero__rubric{color:#fff;font-family:var(--heading-font);font-weight:700;font-size:clamp(1.15rem,2.4vw,1.75rem);margin:0;text-shadow:0 2px 8px rgba(0,0,0,.35);line-height:1.3}
+@media(max-width:767px){.page-hero{min-height:200px}.page-hero__divider{width:80px;margin:12px auto 10px}}
+
+/* Main wrapper */
+.main-content{outline:none}
+
+/* Кнопка «Наверх» (fixed, чтобы не прыгала при загрузке main.css) */
+.scroll-top{position:fixed;visibility:hidden;opacity:0;right:15px;bottom:15px;z-index:99999;background:var(--accent-color);width:40px;height:40px;border-radius:50%;transition:all .4s}
+.scroll-top.active{visibility:visible;opacity:1}
+
+/* A11y-режимы — выставляются inline-скриптом до загрузки main.css */
+html.dark-theme{background:#0f1411;color:#e8e8e8}
+html.a11y-high-contrast,html.a11y-high-contrast body{background-color:#000!important;color:#fff!important}
+html.a11y-high-contrast .header{background-color:#111!important;border-bottom:2px solid #ff0!important}
+html.a11y-high-contrast .main-nav__link,html.a11y-high-contrast a,html.a11y-high-contrast .header-icons a,html.a11y-high-contrast .header-icons button{color:#ff0!important}
+html.a11y-large-font body{font-size:1.15rem}
+html.a11y-large-font h1{font-size:2.2rem}html.a11y-large-font h2{font-size:1.9rem}
+html.a11y-large-font .main-nav__link{font-size:1.05rem}
+html.a11y-no-animations *,html.a11y-no-animations *::before,html.a11y-no-animations *::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}

@@ -24,13 +24,41 @@
   <meta name="theme-color" content="#2e7d32">
   <link rel="manifest" href="/assets/favicons/site.webmanifest">
 
-  <link rel="stylesheet" href="/assets/mentor/vendor/bootstrap/css/bootstrap.min.css">
-  <link rel="stylesheet" href="/assets/mentor/vendor/bootstrap-icons/bootstrap-icons.css">
-  <link rel="stylesheet" href="/assets/mentor/vendor/aos/aos.css">
-  <link rel="stylesheet" href="/assets/mentor/vendor/glightbox/css/glightbox.min.css">
-  <link rel="stylesheet" href="/assets/mentor/vendor/swiper/swiper-bundle.min.css">
+  {# ════════════════════════════════════════════════════════════════
+     CRITICAL CSS (CHECKLIST § 3.4) — стили первого экрана инлайн в <head>
+     Содержимое из src/styles/critical.css (~7 КБ): variables, base
+     typography, skip-link, header, hero, a11y-режимы, container.
+     Загружается синхронно — FCP начинается после распарсивания этого
+     <style>, без ожидания внешних CSS-файлов.
+     ════════════════════════════════════════════════════════════════ #}
+  <style>{{ criticalCSS | safe }}</style>
+
+  {# ════════════════════════════════════════════════════════════════
+     ASYNC CSS — все остальные стили (vendor + main.css) грузим
+     асинхронно через preload+onload (паттерн filamentgroup loadCSS):
+       1) <link rel="preload" as="style"> — браузер скачивает файл
+          с высоким приоритетом, НЕ блокируя рендер
+       2) onload="this.rel='stylesheet'" — после загрузки превращается
+          в обычный stylesheet и применяется
+       3) <noscript> fallback — для пользователей без JS файлы
+          подключаются как обычные blocking <link rel="stylesheet">
+     ════════════════════════════════════════════════════════════════ #}
+  <link rel="preload" as="style" href="/assets/mentor/vendor/bootstrap/css/bootstrap.min.css" onload="this.onload=null;this.rel='stylesheet'">
+  <link rel="preload" as="style" href="/assets/mentor/vendor/bootstrap-icons/bootstrap-icons.css" onload="this.onload=null;this.rel='stylesheet'">
+  <link rel="preload" as="style" href="/assets/mentor/vendor/aos/aos.css" onload="this.onload=null;this.rel='stylesheet'">
+  <link rel="preload" as="style" href="/assets/mentor/vendor/glightbox/css/glightbox.min.css" onload="this.onload=null;this.rel='stylesheet'">
+  <link rel="preload" as="style" href="/assets/mentor/vendor/swiper/swiper-bundle.min.css" onload="this.onload=null;this.rel='stylesheet'">
   {# Mentor + кастомные стили объединены в /styles/main.css (3.3.3.4) #}
-  <link rel="stylesheet" href="/styles/main.css">
+  <link rel="preload" as="style" href="/styles/main.css" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript>
+    <link rel="stylesheet" href="/assets/mentor/vendor/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/mentor/vendor/bootstrap-icons/bootstrap-icons.css">
+    <link rel="stylesheet" href="/assets/mentor/vendor/aos/aos.css">
+    <link rel="stylesheet" href="/assets/mentor/vendor/glightbox/css/glightbox.min.css">
+    <link rel="stylesheet" href="/assets/mentor/vendor/swiper/swiper-bundle.min.css">
+    <link rel="stylesheet" href="/styles/main.css">
+  </noscript>
+
   <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicons/favicon-16x16.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicons/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="192x192" href="/assets/favicons/favicon.png">
