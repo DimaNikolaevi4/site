@@ -1,3 +1,55 @@
+/*
+  Модуль: мобильное / десктопное offcanvas-меню «Разделы сайта»
+  ──────────────────────────────────────────────────────────────
+  Подключение:
+    • Загружается из base.njk (`<script defer src="/assets/js/offcanvas-nav.js">`)
+      ПОСЛЕ bootstrap.bundle.min.js — глобальный `bootstrap.Offcanvas` доступен
+      на момент выполнения благодаря порядку `defer`.
+    • Разметка живёт в components/header.njk (контейнеры `#offcanvasRubrics`,
+      `#ocPanel1`, `#ocPanel2`, `#ocPanel3` и `<script id="rubricsData">`).
+    • Источник данных — `_data/rubrics.yaml` ключ `main_rubrics`, выводится в
+      `header.njk` стр. 301 как JSON: `{{ rubrics.main_rubrics | dump | safe }}`.
+
+  Архитектура — три каскадные панели (1-й / 2-й / 3-й уровень иерархии):
+    • Панель 1 (`#ocPanel1`) — корневой Bootstrap Offcanvas со списком L1-рубрик.
+    • Панель 2 (`#ocPanel2`) — выезжает поверх, заполняется JS из L2-children
+      выбранной L1-рубрики (`buildLevel2Items`).
+    • Панель 3 (`#ocPanel3`) — выезжает поверх Панели 2, L3-children
+      (`buildLevel3Items`).
+
+  Ключевые поведения:
+    • Self-gating: ранний выход при отсутствии `#rubricsData` (на страницах без
+      offcanvas скрипт безопасно ничего не делает).
+    • Авто-выделение текущего раздела при открытии (`autoHighlight` — событие
+      `show.bs.offcanvas`): по `window.location.pathname` находит активные L1/L2
+      и сразу разворачивает соответствующие панели в `silent`-режиме (без
+      переноса фокуса; вместо этого `scrollActiveIntoView` подкручивает к active).
+    • Управление фокусом (`focusFirstIn`) — при открытии панели фокус уходит
+      на первый интерактивный элемент (a11y-keyboard nav).
+    • Escape: закрывает самую глубокую открытую панель (3 → 2 → весь offcanvas).
+    • Анти-спам hover-открытия на десктопе (220 мс задержки через `hoverTimer`),
+      медиа-query `(hover: hover) and (pointer: fine)` — на тач-устройствах
+      hover-логика не активируется.
+    • Закрытие всего стека (`closeAll`) при клике на любую конечную ссылку
+      (класс `.oc-dismiss-all`) или на «Открыть весь раздел».
+    • Якорные ссылки `href^="#"` внутри offcanvas — сначала закрывают панель
+      и только в `hidden.bs.offcanvas` плавно скроллят к цели (иначе scroll
+      шёл бы при заблокированном `<body>` от Bootstrap).
+
+  Утилиты:
+    • `esc(s)` — HTML-escape для безопасной вставки названий рубрик в `innerHTML`.
+    • `pluralRu(n, ['раздел','раздела','разделов'])` — плюрализация счётчика.
+    • `isActive(href)` — текущая страница попадает в href L1/L2/L3.
+
+  ARIA-разметка управляется JS:
+    • `aria-expanded` на L1-кнопках (`.oc-split-row__toggle[data-rubric-index]`).
+    • `aria-expanded` на L2-«chevron»-кнопках (`.oc-open-l3`).
+    • `aria-hidden` на `#ocPanel2` / `#ocPanel3` (false при открытии).
+    • `aria-current="page"` на ссылках, совпадающих с текущим URL.
+
+  Зависимости: глобальный `bootstrap.Offcanvas` (Bootstrap 5 bundle).
+  IIFE-обёртка изолирует все функции/переменные от глобального scope.
+*/
 (function () {
   'use strict';
 
