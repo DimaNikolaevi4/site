@@ -2354,6 +2354,17 @@ body.dark-theme .about-title {
   min-width: 0;
 }
 
+/* Небольшой верхний отступ у первого блока в правой колонке (Народный фронт),
+   чтобы баннер не прилипал к Hero. На десктопе чуть больше. */
+.home-with-sidebar > .component-about--narodfront {
+  padding-top: 1.25rem;
+}
+@media (min-width: 992px) {
+  .home-with-sidebar > .component-about--narodfront {
+    padding-top: 2rem;
+  }
+}
+
 /* News и Popular: возвращаем небольшой верхний внутренний отступ,
    чтобы заголовок секции и обводка карточек не «съедались» сверху.
    У About верхнего отступа не нужно — там фото/текст, без section-title. */
@@ -2584,10 +2595,16 @@ body.dark-theme .component-about--narodfront .narodfront-text-link {
   margin-bottom: 0;
 }
 
-/* Народный фронт — убираем отступы .section, gap flex-колонки уже есть */
+/* Народный фронт — отступ снизу убираем, сверху оставляем небольшой,
+   чтобы баннер не прилипал к Hero / хлебным крошкам. */
 .page-main-col > .component-about--narodfront {
-  padding-top: 0;
+  padding-top: 1.25rem;
   padding-bottom: 0;
+}
+@media (min-width: 992px) {
+  .page-main-col > .component-about--narodfront {
+    padding-top: 2rem;
+  }
 }
 
 /* Список подрубрик — компактные отступы вместо 60px от .section */
