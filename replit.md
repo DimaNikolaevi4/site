@@ -9,9 +9,14 @@
 
 ## Структура (кратко)
 - `src/` — исходники (njk-шаблоны, контент, конфиг рубрик).
+- `src/assets/template/` — fallback-картинки для компонентов hero/about/news (`hero-bg.jpg`, `about.jpg`, `course-1..3.jpg`); собираются в `/assets/template/`.
+- `src/assets/vendor/php-email-form/validate.js` — кастомный скрипт валидации формы из BootstrapMade-шаблона (нет npm-аналога), собирается в `/assets/mentor/vendor/php-email-form/`.
 - `public/` — собранный сайт (артефакт сборки, под git, чтобы хостер мог отдавать как есть).
 - `.eleventy.js` — конфигурация Eleventy.
 - `scripts/post-merge.sh` — скрипт реконсиляции после слияния задач.
+
+## Vendor-библиотеки (Bootstrap, AOS, Swiper и др.)
+Все frontend-библиотеки подключаются как **npm-пакеты** (`bootstrap`, `bootstrap-icons`, `aos`, `glightbox`, `swiper`, `@srexi/purecounterjs`) и копируются Eleventy из `node_modules/` в `public/assets/mentor/vendor/` через точечные `addPassthroughCopy` в `.eleventy.js` (см. блок «Vendor-библиотеки — из node_modules»). URL-префикс `/assets/mentor/vendor/` сохранён ради совместимости с 16 ссылками в `src/_includes/layouts/base.njk` — переименовывать не нужно. Папка `_mentor/` в репозитории больше не используется и подлежит удалению.
 
 ## Git и публикация изменений
 - Удалённый `origin` — GitHub HTTPS. **Push с агента невозможен**: учётные данные GitHub в окружении не настроены, GitHub-интеграция Replit пользователем отклонена.

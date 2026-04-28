@@ -276,15 +276,28 @@ module.exports = function(eleventyConfig) {
   
   // === Копирование статики ===
   // Канонический CSS — только src/styles/main.css (см. STRUCTURE_AND_PRINCIPLES.md § 2.4).
-  // Из src/assets копируем точечно только подпапки, реально используемые шаблонами:
-  // favicons, images, js, uploads. Папки scss/, vendor/, img/ не публикуются —
-  // SCSS это исходники, vendor подключается через _mentor/assets, img/ нигде не используется.
+  // Из src/assets копируем точечно подпапки, реально используемые шаблонами:
+  // favicons, images, js, uploads, template, vendor. Папка scss/ не публикуется (исходники).
   eleventyConfig.addPassthroughCopy("src/assets/favicons");
   eleventyConfig.addPassthroughCopy("src/assets/images");
   eleventyConfig.addPassthroughCopy("src/assets/js");
   eleventyConfig.addPassthroughCopy("src/assets/uploads");
+  eleventyConfig.addPassthroughCopy({ "src/assets/template": "assets/template" });
+  eleventyConfig.addPassthroughCopy({ "src/assets/vendor/php-email-form": "assets/mentor/vendor/php-email-form" });
   eleventyConfig.addPassthroughCopy("src/images");
-  eleventyConfig.addPassthroughCopy({ "_mentor/assets": "assets/mentor" });
+  // Vendor-библиотеки — из node_modules. URL-префикс /assets/mentor/vendor/ оставлен
+  // ради совместимости со ссылками в layouts/base.njk; сама папка _mentor/ больше не нужна.
+  eleventyConfig.addPassthroughCopy({ "node_modules/bootstrap/dist/css/bootstrap.min.css": "assets/mentor/vendor/bootstrap/css/bootstrap.min.css" });
+  eleventyConfig.addPassthroughCopy({ "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js": "assets/mentor/vendor/bootstrap/js/bootstrap.bundle.min.js" });
+  eleventyConfig.addPassthroughCopy({ "node_modules/bootstrap-icons/font/bootstrap-icons.css": "assets/mentor/vendor/bootstrap-icons/bootstrap-icons.css" });
+  eleventyConfig.addPassthroughCopy({ "node_modules/bootstrap-icons/font/fonts": "assets/mentor/vendor/bootstrap-icons/fonts" });
+  eleventyConfig.addPassthroughCopy({ "node_modules/aos/dist/aos.css": "assets/mentor/vendor/aos/aos.css" });
+  eleventyConfig.addPassthroughCopy({ "node_modules/aos/dist/aos.js": "assets/mentor/vendor/aos/aos.js" });
+  eleventyConfig.addPassthroughCopy({ "node_modules/glightbox/dist/css/glightbox.min.css": "assets/mentor/vendor/glightbox/css/glightbox.min.css" });
+  eleventyConfig.addPassthroughCopy({ "node_modules/glightbox/dist/js/glightbox.min.js": "assets/mentor/vendor/glightbox/js/glightbox.min.js" });
+  eleventyConfig.addPassthroughCopy({ "node_modules/swiper/swiper-bundle.min.css": "assets/mentor/vendor/swiper/swiper-bundle.min.css" });
+  eleventyConfig.addPassthroughCopy({ "node_modules/swiper/swiper-bundle.min.js": "assets/mentor/vendor/swiper/swiper-bundle.min.js" });
+  eleventyConfig.addPassthroughCopy({ "node_modules/@srexi/purecounterjs/dist/purecounter_vanilla.js": "assets/mentor/vendor/purecounter/purecounter_vanilla.js" });
   eleventyConfig.addPassthroughCopy("src/admin");
   eleventyConfig.addPassthroughCopy("src/styles");
   eleventyConfig.addPassthroughCopy({ "src/robots.txt": "robots.txt" });
