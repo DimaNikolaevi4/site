@@ -41,13 +41,18 @@
     <div class="container">
       <div class="content-col">
         <div class="row">
-          {% set latestNews = collections.news | reverse %}
-          {% for post in latestNews %}
-          {% if loop.index <= _newsCount %}
+          {# Фильтр «нет картинки → не выводим»: новости без image пропускаем, берём следующие свежие. #}
+          {% set _filteredNews = [] %}
+          {% for post in collections.news | reverse %}
+            {% if post.data.image and _filteredNews.length < _newsCount %}
+              {% set _filteredNews = (_filteredNews.push(post), _filteredNews) %}
+            {% endif %}
+          {% endfor %}
+          {% for post in _filteredNews %}
           <div class="col-md-6 col-xl-4 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="{{ loop.index * 100 }}">
             <div class="course-item">
               <img
-                src="{{ post.data.image or '/assets/template/course-' ~ loop.index ~ '.jpg' }}"
+                src="{{ post.data.image }}"
                 class="img-fluid"
                 alt="{{ post.data.title }}"
                 loading="lazy"
@@ -67,7 +72,6 @@
               </div>
             </div>
           </div>
-          {% endif %}
           {% else %}
           <div class="col-12 text-center">
             <p class="text-muted">Новости пока не добавлены.</p>
