@@ -235,21 +235,21 @@
             {% set sectionIcon = '📁' %}
             {% if item.slug == 'svedenija' %}
               {% set sectionIcon = '📋' %}
-            {% elif item.slug == 'abiturientam' %}
+            {% elseif item.slug == 'abiturientam' %}
               {% set sectionIcon = '🎓' %}
-            {% elif item.slug == 'vospitanie' %}
+            {% elseif item.slug == 'vospitanie' %}
               {% set sectionIcon = '🏋️' %}
-            {% elif item.slug == 'uchebno-metodicheskaja-rabota' %}
+            {% elseif item.slug == 'uchebno-metodicheskaja-rabota' %}
               {% set sectionIcon = '📚' %}
-            {% elif item.slug == 'bezopasnost' %}
+            {% elseif item.slug == 'bezopasnost' %}
               {% set sectionIcon = '🛡️' %}
-            {% elif item.slug == 'psihologicheskoe' %}
+            {% elseif item.slug == 'psihologicheskoe' %}
               {% set sectionIcon = '🤝' %}
-            {% elif item.slug == 'studentam-i-roditeljam' %}
+            {% elseif item.slug == 'studentam-i-roditeljam' %}
               {% set sectionIcon = '👨‍👩‍👧‍👦' %}
-            {% elif item.slug == 'vypusknikam' %}
+            {% elseif item.slug == 'vypusknikam' %}
               {% set sectionIcon = '🎯' %}
-            {% elif item.slug == 'obshestvennoe-mnenie' %}
+            {% elseif item.slug == 'obshestvennoe-mnenie' %}
               {% set sectionIcon = '💬' %}
             {% endif %}
             {% if item.children %}

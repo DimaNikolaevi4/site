@@ -157,9 +157,9 @@
                   {% set _ext = attachment.url | lower %}
                   {% if '.pdf' in _ext %}
                     <i class="bi bi-file-earmark-pdf attachment-icon attachment-icon--pdf"></i>
-                  {% elif '.doc' in _ext %}
+                  {% elseif '.doc' in _ext %}
                     <i class="bi bi-file-earmark-word attachment-icon attachment-icon--doc"></i>
-                  {% elif '.xls' in _ext %}
+                  {% elseif '.xls' in _ext %}
                     <i class="bi bi-file-earmark-excel attachment-icon attachment-icon--xls"></i>
                   {% else %}
                     <i class="bi bi-file-earmark attachment-icon"></i>
@@ -278,7 +278,7 @@
         <i class="bi bi-arrow-left-circle" aria-hidden="true"></i>
         {{ parentSection.title }}
       </a>
-      {% elif _bnKey %}
+      {% elseif _bnKey %}
         {% if _bnUrl == page.url or not (_bnUrl | urlExists(collections.all)) %}
       <a href="/" class="backnav-link backnav-link--parent">
         <i class="bi bi-house" aria-hidden="true"></i>

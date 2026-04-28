@@ -115,15 +115,15 @@
                 {% set _ext = attachment.url | lower %}
                 {% if '.pdf' in _ext %}
                   <i class="bi bi-file-earmark-pdf attachment-icon attachment-icon--pdf" aria-hidden="true"></i>
-                {% elif '.doc' in _ext %}
+                {% elseif '.doc' in _ext %}
                   <i class="bi bi-file-earmark-word attachment-icon attachment-icon--doc" aria-hidden="true"></i>
-                {% elif '.xls' in _ext %}
+                {% elseif '.xls' in _ext %}
                   <i class="bi bi-file-earmark-excel attachment-icon attachment-icon--xls" aria-hidden="true"></i>
-                {% elif '.ppt' in _ext %}
+                {% elseif '.ppt' in _ext %}
                   <i class="bi bi-file-earmark-ppt attachment-icon attachment-icon--ppt" aria-hidden="true"></i>
-                {% elif '.zip' in _ext or '.rar' in _ext %}
+                {% elseif '.zip' in _ext or '.rar' in _ext %}
                   <i class="bi bi-file-earmark-zip attachment-icon" aria-hidden="true"></i>
-                {% elif '.jpg' in _ext or '.png' in _ext or '.gif' in _ext or '.webp' in _ext %}
+                {% elseif '.jpg' in _ext or '.png' in _ext or '.gif' in _ext or '.webp' in _ext %}
                   <i class="bi bi-file-earmark-image attachment-icon" aria-hidden="true"></i>
                 {% else %}
                   <i class="bi bi-file-earmark attachment-icon" aria-hidden="true"></i>
@@ -187,7 +187,7 @@
         <i class="bi bi-arrow-left-circle" aria-hidden="true"></i>
         {{ parentSection.title }}
       </a>
-      {% elif _bnKey %}
+      {% elseif _bnKey %}
       <a href="{{ _bnUrl }}" class="backnav-link backnav-link--parent">
         <i class="bi bi-arrow-left-circle" aria-hidden="true"></i>
         {{ _bnLabel }}
