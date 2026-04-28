@@ -76,6 +76,33 @@
   {% endif %}
 {% endif %}
 
+{# «Добор» из других разделов сайта: если в целевой коллекции не набирается _relCount,
+   проходим по collections.all (свежие первыми), пропускаем уже добавленные, текущую
+   страницу, служебные страницы (без title/date) и материалы без картинки. #}
+{% if (not _relItems) or _relItems.length < _relCount %}
+  {% if not _relItems %}{% set _relItems = [] %}{% endif %}
+  {% set _existingUrls = [] %}
+  {% for it in _relItems %}
+    {% set _existingUrls = (_existingUrls.push(it.url), _existingUrls) %}
+  {% endfor %}
+  {% for item in collections.all | reverse %}
+    {% set _img = item.data.image or item.data.coverImage or (item.data.hero and item.data.hero.image) %}
+    {% if item.url and item.data.title and item.data.date and _img
+        and item.url != page.url
+        and (item.url not in _existingUrls)
+        and _relItems.length < _relCount %}
+      {% set _relItems = (_relItems.push({
+        url: item.url,
+        title: item.data.title,
+        image: _img,
+        excerpt: item.data.excerpt or item.data.description,
+        date: item.data.date
+      }), _relItems) %}
+      {% set _existingUrls = (_existingUrls.push(item.url), _existingUrls) %}
+    {% endif %}
+  {% endfor %}
+{% endif %}
+
 {% if _relItems and _relItems.length > 0 %}
 <section class="section-related" aria-label="Читайте также">
   <div class="container">

@@ -48,27 +48,34 @@ pagination:
 </div>
 
 <!-- Другие новости -->
+{# Фильтр «нет картинки → не выводим»: новости без image пропускаем,
+   берём следующие свежие, исключая текущую. #}
+{% set _otherNews = [] %}
+{% for other in collections.news | reverse %}
+  {% if other.url != post.url and other.data.image and _otherNews.length < 3 %}
+    {% set _otherNews = (_otherNews.push(other), _otherNews) %}
+  {% endif %}
+{% endfor %}
+{% if _otherNews.length > 0 %}
 <section class="section">
   <div class="container">
     <h2 class="section-title">Другие новости</h2>
     <div class="news-grid">
-      {% for other in collections.news | reverse %}
-        {% if other.url != post.url %}
-          {% if loop.index <= 3 %}
-          <article class="news-card">
-            <time class="news-card__date" datetime="{{ other.date }}">{{ other.date | dateRu }}</time>
-            <h3 class="news-card__title">
-              <a href="{{ other.url }}">{{ other.data.title }}</a>
-            </h3>
-            <p class="news-card__excerpt">{{ other.data.excerpt or other.templateContent | truncate(150) }}</p>
-            <a href="{{ other.url }}" class="read-more" aria-label="Читать полностью — {{ other.data.title }}">
-              <span>Читать полностью</span>
-              <i class="bi bi-arrow-right" aria-hidden="true"></i>
-            </a>
-          </article>
-          {% endif %}
-        {% endif %}
+      {% for other in _otherNews %}
+      <article class="news-card">
+        <img src="{{ other.data.image }}" class="news-card__image img-fluid" alt="{{ other.data.title }}" loading="lazy">
+        <time class="news-card__date" datetime="{{ other.date }}">{{ other.date | dateRu }}</time>
+        <h3 class="news-card__title">
+          <a href="{{ other.url }}">{{ other.data.title }}</a>
+        </h3>
+        <p class="news-card__excerpt">{{ other.data.excerpt or other.templateContent | truncate(150) }}</p>
+        <a href="{{ other.url }}" class="read-more" aria-label="Читать полностью — {{ other.data.title }}">
+          <span>Читать полностью</span>
+          <i class="bi bi-arrow-right" aria-hidden="true"></i>
+        </a>
+      </article>
       {% endfor %}
     </div>
   </div>
 </section>
+{% endif %}
