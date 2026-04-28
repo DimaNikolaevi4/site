@@ -45,5 +45,5 @@ relatedCount: 3
 
 ## Интернет-ресурсы
 
-- [Официальный сайт — sit-salsk.ru](https://sit-salsk.ru)
+- [Официальный сайт — сит-сальск.рф](https://сит-сальск.рф)
 - [Сообщество ВКонтакте — vk.com/sitsalsksit](https://vk.com/sitsalsksit)
