@@ -75,36 +75,10 @@
     {% endfor %}
   {% endif %}
 
-  {# Если в целевой коллекции картинок не хватило — добираем из других разделов сайта.
-     Проходим по collections.all (свежие первыми), исключаем уже добавленные URL,
-     текущую страницу, материалы без картинки и без title/date (служебные страницы). #}
-  {% if _auto.length < _relCount %}
-    {% for item in collections.all | reverse %}
-      {% if _auto.length < _relCount and item.url != page.url and item.data.title and item.data.date %}
-        {% set _img = item.data.image or item.data.coverImage or (item.data.hero and item.data.hero.image) %}
-        {% if _img %}
-          {% set _alreadyIn = false %}
-          {% for added in _auto %}
-            {% if added.url == item.url %}{% set _alreadyIn = true %}{% endif %}
-          {% endfor %}
-          {% if not _alreadyIn %}
-            {% set _auto = (_auto.push({
-              url: item.url,
-              title: item.data.title,
-              image: _img,
-              excerpt: item.data.excerpt or item.data.description,
-              date: item.data.date
-            }), _auto) %}
-          {% endif %}
-        {% endif %}
-      {% endif %}
-    {% endfor %}
-  {% endif %}
-
   {% set _relItems = _auto %}
 {% endif %}
 
-{# «Добор» из других разделов сайта: если в целевой коллекции не набирается _relCount,
+{# Добор из других разделов сайта: если в целевой коллекции не набирается _relCount,
    проходим по collections.all (свежие первыми), пропускаем уже добавленные, текущую
    страницу, служебные страницы (без title/date) и материалы без картинки. #}
 {% if (not _relItems) or _relItems.length < _relCount %}
