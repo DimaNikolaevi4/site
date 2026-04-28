@@ -96,7 +96,7 @@ main_rubrics:
 
   - code: "3"
     title: "УЧЕБНО-МЕТОДИЧЕСКАЯ РАБОТА"
-    slug: uchebno-metodicheskaya
+    slug: uchebno-metodicheskaja-rabota
     level: 0
     children:
       - code: "3.1"
@@ -172,7 +172,7 @@ main_rubrics:
 
   - code: "5"
     title: "СОЦИАЛЬНОЕ ПАРТНЕРСТВО И ПРОФОРИЕНТАЦИЯ"
-    slug: partnerstvo
+    slug: sotrudnichestvo
     level: 0
     children:
       - code: "5.1"
@@ -235,7 +235,7 @@ main_rubrics:
 
   - code: "8"
     title: "СТУДЕНТАМ И ИХ РОДИТЕЛЯМ"
-    slug: studentam-roditeljam
+    slug: studentam-i-roditeljam
     level: 0
     children:
       - code: "8.1"
