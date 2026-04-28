@@ -75,7 +75,7 @@ description: Основные сведения о ГБПОУ РО «Сальск
 - **E-mail:**
   - [sitsalsk@mail.ru](mailto:sitsalsk@mail.ru)
   - [sitsporo@yandex.ru](mailto:sitsporo@yandex.ru)
-- **Официальный сайт:** [sit-salsk.ru](https://sit-salsk.ru)
+- **Официальный сайт:** [сит-сальск.рф](https://сит-сальск.рф)
 - **Сообщество ВКонтакте:** [vk.com/sitsalsksit](https://vk.com/sitsalsksit)
 
 ### Приёмная комиссия

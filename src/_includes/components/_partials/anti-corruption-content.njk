@@ -91,7 +91,8 @@
             {%- endif %}
           </div>
         </div>
-        {%- if doc.type == 'html' %}
+        {%- if doc.url %}
+          {%- if doc.type == 'html' %}
         <a href="{{ doc.url }}" class="doc-download" target="_blank" rel="noopener noreferrer" aria-label="Открыть документ: {{ doc.title }}">
           <svg class="icon-download" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
             <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
@@ -100,7 +101,7 @@
           </svg>
           <span>Открыть</span>
         </a>
-        {%- else %}
+          {%- else %}
         <a href="{{ doc.url }}" class="doc-download" download aria-label="Скачать документ: {{ doc.title }}">
           <svg class="icon-download" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
             <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
@@ -109,6 +110,9 @@
           </svg>
           <span>Скачать</span>
         </a>
+          {%- endif %}
+        {%- else %}
+        <span class="doc-unavailable" title="Файл временно недоступен">Файл недоступен</span>
         {%- endif %}
       </li>
       {%- endfor %}
