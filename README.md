@@ -89,17 +89,14 @@ tags: [Новости]
 
 ## 🎨 Стилизация
 
-Проект использует **Bootstrap 5.3.x + SCSS** для адаптивной вёрстки:
+Проект использует **Bootstrap 5.3.x + плоский CSS** для адаптивной вёрстки:
 
-- **Bootstrap 5** — базовая сетка, компоненты (navbar, cards, buttons, modals)
-- **SCSS переменные** — кастомизация цветов, шрифтов, отступов под брендбук техникума
+- **Bootstrap 5** — базовая сетка, компоненты (navbar, cards, buttons, modals); подключается из npm-пакета через passthrough (см. `.eleventy.js`)
 - **Mobile First** — базовые стили для мобильных, затем media queries для планшетов и десктопов
-- **Доступность** — соответствие WCAG 2.1 AA (контраст, фокус, ARIA-атрибуты)
+- **Доступность** — соответствие WCAG 2.1 AA (контраст, фокус, ARIA-атрибуты, переключатель «версии для слабовидящих»)
 
-Основные файлы:
-- `src/styles/main.scss` — главный SCSS файл (импортирует Bootstrap и кастомные стили)
-- `src/styles/_variables.scss` — переменные темы (цвета, шрифты, breakpoints)
-- `src/styles/_custom.scss` — кастомные компоненты и overrides Bootstrap
+Канонический стиль:
+- `src/styles/main.css` — единственный продакшен-CSS (~7 300 строк), копируется как есть в `public/styles/main.css`. SCSS-исходников в проекте нет — правки вносятся напрямую в `main.css`.
 
 Подробнее: см. [`STRUCTURE_AND_PRINCIPLES.md`](STRUCTURE_AND_PRINCIPLES.md#15-технологический-стек)
 
@@ -132,12 +129,18 @@ tags: [Новости]
 
 | Пакет | Версия | Назначение |
 |-------|--------|------------|
-| `@11ty/eleventy` | 3.1.5 | Генератор статических сайтов |
+| `@11ty/eleventy` | 3.1.x | Генератор статических сайтов (devDependency) |
 | `@11ty/eleventy-navigation` | 0.3.x | Навигация и иерархия страниц |
-| `js-yaml` | 4.x | Парсинг YAML файлов данных |
-| `lunr` | 2.3.x | Клиентский полнотекстовый поиск |
+| `js-yaml` | 4.x | Парсинг YAML файлов данных (devDependency) |
+| `bootstrap` | 5.3.x | UI-компоненты (offcanvas-меню, dropdowns, collapse) |
+| `bootstrap-icons` | 1.13.x | Иконочный шрифт |
+| `aos` | 2.3.x | Анимации появления при скролле (`data-aos`) |
+| `glightbox` | 3.3.x | Лайтбокс для изображений |
+| `swiper` | 12.1.x | Слайдеры/карусели |
+| `@srexi/purecounterjs` | 1.5.x | Счётчики цифр в hero/about-блоках |
+| `lunr` | 2.3.x | Серверная генерация поискового индекса (фильтр `lunrIndex` в `.eleventy.js`) |
 
-> ℹ️ Bootstrap 5 и SCSS-исходники присутствуют в `src/assets/scss/`, но в продакшен-сборке используется готовый `src/styles/main.css`. Decap CMS подключается из CDN в `src/admin/index.html`.
+> ℹ️ Все vendor-библиотеки (Bootstrap, AOS, Swiper, GLightbox, PureCounter) копируются Eleventy из `node_modules/` в `public/assets/mentor/vendor/` через точечные `addPassthroughCopy`. Decap CMS подключается из CDN в `src/admin/index.html`.
 
 Установка:
 ```bash
