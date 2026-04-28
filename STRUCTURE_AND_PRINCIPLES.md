@@ -1067,11 +1067,25 @@ module.exports = function (eleventyConfig) {
   // Копирование статики (точечный список — см. § 2.7.4 CHECKLIST)
   eleventyConfig.addPassthroughCopy("src/assets/favicons");
   eleventyConfig.addPassthroughCopy("src/assets/images");
-  eleventyConfig.addPassthroughCopy("src/assets/img");
   eleventyConfig.addPassthroughCopy("src/assets/js");
   eleventyConfig.addPassthroughCopy("src/assets/uploads");
+  eleventyConfig.addPassthroughCopy({ "src/assets/template": "assets/template" });
+  eleventyConfig.addPassthroughCopy({ "src/assets/vendor/php-email-form": "assets/mentor/vendor/php-email-form" });
   eleventyConfig.addPassthroughCopy("src/styles");
-  eleventyConfig.addPassthroughCopy({ "_mentor/assets": "assets/mentor" });
+
+  // Vendor-библиотеки — точечно из node_modules в /assets/mentor/vendor/.
+  // URL-префикс /assets/mentor/vendor/ оставлен ради совместимости со ссылками в layouts/base.njk.
+  eleventyConfig.addPassthroughCopy({ "node_modules/bootstrap/dist/css/bootstrap.min.css": "assets/mentor/vendor/bootstrap/css/bootstrap.min.css" });
+  eleventyConfig.addPassthroughCopy({ "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js": "assets/mentor/vendor/bootstrap/js/bootstrap.bundle.min.js" });
+  eleventyConfig.addPassthroughCopy({ "node_modules/bootstrap-icons/font/bootstrap-icons.css": "assets/mentor/vendor/bootstrap-icons/bootstrap-icons.css" });
+  eleventyConfig.addPassthroughCopy({ "node_modules/bootstrap-icons/font/fonts": "assets/mentor/vendor/bootstrap-icons/fonts" });
+  eleventyConfig.addPassthroughCopy({ "node_modules/aos/dist/aos.css": "assets/mentor/vendor/aos/aos.css" });
+  eleventyConfig.addPassthroughCopy({ "node_modules/aos/dist/aos.js": "assets/mentor/vendor/aos/aos.js" });
+  eleventyConfig.addPassthroughCopy({ "node_modules/glightbox/dist/js/glightbox.min.js": "assets/mentor/vendor/glightbox/js/glightbox.min.js" });
+  eleventyConfig.addPassthroughCopy({ "node_modules/swiper/swiper-bundle.min.css": "assets/mentor/vendor/swiper/swiper-bundle.min.css" });
+  eleventyConfig.addPassthroughCopy({ "node_modules/swiper/swiper-bundle.min.js": "assets/mentor/vendor/swiper/swiper-bundle.min.js" });
+  eleventyConfig.addPassthroughCopy({ "node_modules/@srexi/purecounterjs/dist/purecounter_vanilla.js": "assets/mentor/vendor/purecounter/purecounter_vanilla.js" });
+
   eleventyConfig.addPassthroughCopy({ "src/robots.txt": "robots.txt" });
 
   // Коллекции (новости, рубрики из rubrics.yaml — авторегистрация 77 коллекций)

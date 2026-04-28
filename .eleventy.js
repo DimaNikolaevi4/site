@@ -286,7 +286,8 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addPassthroughCopy({ "src/assets/vendor/php-email-form": "assets/mentor/vendor/php-email-form" });
   eleventyConfig.addPassthroughCopy("src/images");
   // Vendor-библиотеки — из node_modules. URL-префикс /assets/mentor/vendor/ оставлен
-  // ради совместимости со ссылками в layouts/base.njk; сама папка _mentor/ больше не нужна.
+  // ради совместимости со ссылками в layouts/base.njk (исторически путь шёл от
+  // справочного шаблона BootstrapMade «Mentor», который из репозитория удалён).
   eleventyConfig.addPassthroughCopy({ "node_modules/bootstrap/dist/css/bootstrap.min.css": "assets/mentor/vendor/bootstrap/css/bootstrap.min.css" });
   eleventyConfig.addPassthroughCopy({ "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js": "assets/mentor/vendor/bootstrap/js/bootstrap.bundle.min.js" });
   eleventyConfig.addPassthroughCopy({ "node_modules/bootstrap-icons/font/bootstrap-icons.css": "assets/mentor/vendor/bootstrap-icons/bootstrap-icons.css" });

@@ -16,7 +16,7 @@
 - `scripts/post-merge.sh` — скрипт реконсиляции после слияния задач.
 
 ## Vendor-библиотеки (Bootstrap, AOS, Swiper и др.)
-Все frontend-библиотеки подключаются как **npm-пакеты** (`bootstrap`, `bootstrap-icons`, `aos`, `glightbox`, `swiper`, `@srexi/purecounterjs`) и копируются Eleventy из `node_modules/` в `public/assets/mentor/vendor/` через точечные `addPassthroughCopy` в `.eleventy.js` (см. блок «Vendor-библиотеки — из node_modules»). URL-префикс `/assets/mentor/vendor/` сохранён ради совместимости с 16 ссылками в `src/_includes/layouts/base.njk` — переименовывать не нужно. Папка `_mentor/` в репозитории больше не используется и подлежит удалению.
+Все frontend-библиотеки подключаются как **npm-пакеты** (`bootstrap`, `bootstrap-icons`, `aos`, `glightbox`, `swiper`, `@srexi/purecounterjs`) и копируются Eleventy из `node_modules/` в `public/assets/mentor/vendor/` через точечные `addPassthroughCopy` в `.eleventy.js` (см. блок «Vendor-библиотеки — из node_modules»). URL-префикс `/assets/mentor/vendor/` сохранён ради совместимости с 16 ссылками в `src/_includes/layouts/base.njk` — переименовывать не нужно. Справочный шаблон BootstrapMade «Mentor» (папка `_mentor/`) удалён из репозитория в апреле 2026 — все нужные vendor-файлы теперь идут из `node_modules`.
 
 ## Git и публикация изменений
 - Удалённый `origin` — GitHub HTTPS. **Push с агента невозможен**: учётные данные GitHub в окружении не настроены, GitHub-интеграция Replit пользователем отклонена.
