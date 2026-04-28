@@ -42,15 +42,6 @@
       <div class="content-col">
         <div class="row">
 
-          {# Фильтр «нет картинки → не выводим»: новости без image пропускаем, берём следующие свежие. #}
-          {% set _filteredNews = [] %}
-          {% for post in collections.news | reverse %}
-            {% if post.data.image and _filteredNews.length < _newsCount %}
-              {% set _filteredNews = (_filteredNews.push(post), _filteredNews) %}
-            {% endif %}
-          {% endfor %}
-          {% for post in _filteredNews %}
-
           {# Фильтруем новости без картинки и берём первые _newsCount свежих. #}
           {% set _newsToShow = [] %}
           {% for post in collections.news | reverse %}
@@ -99,7 +90,7 @@
   </section>
 
 {# ── Режим 2: Сетка компактных ссылок с эмодзи (страницы разделов) ── #}
-{% elif newsMode == 'razdel' %}
+{% elseif newsMode == 'razdel' %}
 
   {#
     Внимание: компонент часто включается из .md-файлов (страницы-разделы).
