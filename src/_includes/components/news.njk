@@ -41,6 +41,7 @@
     <div class="container">
       <div class="content-col">
         <div class="row">
+
           {# Фильтр «нет картинки → не выводим»: новости без image пропускаем, берём следующие свежие. #}
           {% set _filteredNews = [] %}
           {% for post in collections.news | reverse %}
@@ -49,6 +50,17 @@
             {% endif %}
           {% endfor %}
           {% for post in _filteredNews %}
+
+          {# Фильтруем новости без картинки и берём первые _newsCount свежих. #}
+          {% set _newsToShow = [] %}
+          {% for post in collections.news | reverse %}
+            {% if post.data.image and _newsToShow.length < _newsCount %}
+              {% set _newsToShow = (_newsToShow.push(post), _newsToShow) %}
+            {% endif %}
+          {% endfor %}
+
+          {% for post in _newsToShow %}
+
           <div class="col-md-6 col-xl-4 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="{{ loop.index * 100 }}">
             <div class="course-item">
               <img
