@@ -1,0 +1,107 @@
+# ГБПОУ РО «Сальский индустриальный техникум» — сайт
+
+Статический сайт техникума на **Eleventy (11ty)**, контент — Markdown + Decap CMS.
+Хостинг: Beget. Удалённый репозиторий: GitHub `https://github.com/DimaNikolaevi4/site`.
+
+## Запуск
+- `npm run dev` — dev-сервер Eleventy на порту 5000 (workflow «Start application»).
+- `npm run build` — сборка статики в `public/`.
+
+## Структура (кратко)
+- `src/` — исходники (njk-шаблоны, контент, конфиг рубрик).
+- `src/assets/template/` — fallback-картинки для компонентов hero/about/news (`hero-bg.jpg`, `about.jpg`, `course-1..3.jpg`); собираются в `/assets/template/`.
+- `src/assets/vendor/php-email-form/validate.js` — кастомный скрипт валидации формы из BootstrapMade-шаблона (нет npm-аналога), собирается в `/assets/mentor/vendor/php-email-form/`.
+- `public/` — собранный сайт (артефакт сборки, под git, чтобы хостер мог отдавать как есть).
+- `.eleventy.js` — конфигурация Eleventy.
+- `scripts/post-merge.sh` — скрипт реконсиляции после слияния задач.
+
+## Vendor-библиотеки (Bootstrap, AOS, Swiper и др.)
+Все frontend-библиотеки подключаются как **npm-пакеты** (`bootstrap`, `bootstrap-icons`, `aos`, `glightbox`, `swiper`, `@srexi/purecounterjs`) и копируются Eleventy из `node_modules/` в `public/assets/mentor/vendor/` через точечные `addPassthroughCopy` в `.eleventy.js` (см. блок «Vendor-библиотеки — из node_modules»). URL-префикс `/assets/mentor/vendor/` сохранён ради совместимости с 16 ссылками в `src/_includes/layouts/base.njk` — переименовывать не нужно. Справочный шаблон BootstrapMade «Mentor» (папка `_mentor/`) удалён из репозитория в апреле 2026 — все нужные vendor-файлы теперь идут из `node_modules`.
+
+## Git и публикация изменений
+- Удалённый `origin` — GitHub HTTPS. **Push с агента невозможен**: учётные данные GitHub в окружении не настроены, GitHub-интеграция Replit пользователем отклонена.
+- Дополнительный remote `gitsafe-backup` — внутренний бэкап Replit, обновляется автоматически.
+- Коммиты создаются автоматически платформой после каждого изменения (чекпоинты).
+- **Push в GitHub пользователь делает вручную через Git-панель Replit** (или по отдельной просьбе — тогда нужен Personal Access Token в секрете, либо подключение GitHub-интеграции).
+- **Откат к историческому коммиту нужно делать вручную в Shell** — destructive git-операции (`git fetch --unshallow`, `git reset --hard`, `rm .git/*.lock`) заблокированы в окружении агента системной защитой Replit. Локальный репозиторий после импорта приходит shallow с одним коммитом — для отката к коммиту из истории GitHub:
+  ```bash
+  rm -f .git/index.lock .git/shallow.lock   # если остались стейл-локи
+  git fetch origin --unshallow              # подтягивает всю историю с GitHub
+  git reset --hard <sha>                    # откат к нужному коммиту
+  npm install                               # если изменились зависимости
+  ```
+  После этого попросите агента перезапустить workflow «Start application».
+
+## Замечания по дизайну главной
+- Баннер «Народный фронт» в `src/index.njk` (секция `component-pobeda-banner`) использует изображение `https://сит-сальск.рф/docs/kontrakt/kontrakt.jpg` одинаково на десктопе и мобильных (`<source>` и `<img>` указывают на один и тот же URL).
+
+## Шаблон страниц-разделов (`layouts/page-full.njk`)
+
+> **🟢 Канон Type B зафиксирован (v3.5, апрель 2026).** Эталон — `/abiturientam/` (`src/content/abiturientam/index.md`). Подробное описание — `STRUCTURE_AND_PRINCIPLES.md` § 3.6 и `docs/FRONTMATTER_SPEC.md` § 2.
+
+- Секция `section-context` (под Hero) содержит **только хлебные крошки** (плюс `<h1>`, если `showHero: false`). Блоки `listing-controls` (фильтр + сортировка) и `page-banner` (опциональный баннер раздела) удалены из `page-full.njk` и `page.njk` в v3.5; поля `sectionContext.filters / sortOptions / banner` больше не поддерживаются.
+- Между `section-context` и футером всё содержимое страницы оборачивается в единую сетку `.page-with-sidebar` (CSS — `src/styles/main.css`, секция «Layout: Type B — Page-wide Sidebar Grid»).
+- Левая колонка — `components/sidebar.njk` в `<aside class="page-sidebar-col">`, `position: sticky; grid-row: 1 / -1;` — растягивается на всю высоту блока (от первой строки до последней).
+- Правая колонка стопкой: `components/about.njk` (для разделов — `aboutMode: razdel`; если не задан — ничего не рендерится) → `section-main` (контент или карточки) → `section-extra` → `news` (подрубрики) → `popular.njk` (Секция 6 канона §3.0.1 «Популярное», 3 карточки) → `section-related` → `section-backnav`.
+- На мобильном (≤991px) сетка сворачивается в одну колонку, сайдбар уходит вниз через `order: 99`.
+- Режимы `aboutMode` в `components/about.njk` (только два, остальные удалены в апреле 2026):
+  - `home` — для главной страницы (`src/index.njk`): 4 блока — 2 баннера + Слово директора + День открытых дверей.
+  - `razdel` — **канон Type B для всех 11 разделов сайта**: только пара баннеров «Народный фронт» + «О заключении контракта».
+  Если `aboutMode` не задан — компонент ничего не рендерит.
+- Frontmatter-флаги для тонкой настройки шаблона:
+  - `suppressSubrubrics: true` — **обязательно для канонических Type B разделов**. Отключает авто-вывод подрубрик в правой колонке; страница вызывает `{% include "components/news.njk" %}` (с `newsMode='razdel'`, `newsCards`, опц. `excludeUrls`) в нужной точке Markdown-тела — между приветственным текстом и блоком «Ключевая информация».
+  - `subrubricTitle: "Полезные материалы"` — заголовок над сеткой подрубрик внутри тела.
+  - `belowGridSubrubric: "X.Y"` — выводит карточку указанной подрубрики отдельной полосой во всю ширину контейнера ниже двухколоночной сетки. Опц. `belowGridSubrubricTitle` — заголовок над полосой. На канонических Type B разделах **не используется**.
+- `components/news.njk` имеет два режима: `home` (3 последние новости карточками — для главной и новостных страниц) и `razdel` (единая сетка `<ul class="rubric-resources-grid">` из массива `newsCards` — используется для списков подрубрик и для CTA-блоков «контакты + обращение»). В режиме `razdel` поддерживается `excludeUrls` — массив URL, которые надо пропустить. Каждый элемент `newsCards` может быть либо элементом коллекции (с `.data.emoji/title/description`), либо плоским объектом (`{url, emoji, title, description}`).
+- **Финальный CTA** на длинных страницах разделов оформляется сеткой `<ul class="rubric-resources-grid">` с двумя карточками (📞 контакты раздела + ✉️ обращение mailto), а **не** одиночной кнопкой `btn-primary`.
+
+## Соглашения по вёрстке новых страниц
+
+### Прозрачный фон для контентных секций (ОБЯЗАТЕЛЬНО)
+В глобальных стилях `src/styles/main.css` есть правило:
+```css
+section, .section {
+  background-color: var(--background-color); /* белый */
+  ...
+}
+```
+Оно делает любой `<section>` или элемент с классом `.section` непрозрачным белым прямоугольником и **перекрывает декоративный SVG-фон сайта** (`/images/fon/bg-02.svg` для светлой темы, `bg-03.svg` для тёмной), который подключается на `body.page` в том же файле.
+
+**Правило для всех новых страниц и секций:** если корневая обёртка контента — это `<section>` (или элемент с классом `.section`), нужно явно переопределить фон на прозрачный, чтобы фоновое изображение сайта оставалось видимым:
+
+```css
+.my-page-section {
+  background-color: transparent;
+  /* остальные стили */
+}
+```
+
+Применяется ко всем шаблонам в `src/content/`, `src/pages/` и `src/*.md`.
+
+Готовый пример — `src/404.md`, селектор `.error-404`.
+
+Исключения: тёмные «акцентные» блоки внутри страницы (карточки, баннеры, hero), где собственный фон нужен по дизайну, оставляйте с явным `background:`.
+
+### Компоненты, включаемые из Markdown — без посторонних `<p>` (ОБЯЗАТЕЛЬНО)
+
+Любой компонент в `src/_includes/components/*.njk`, который **может быть подключён через `{% include %}` из `.md`-файла** (страницы-разделы в `src/content/`), должен генерировать HTML **одной непрерывной строкой без пустых строк и без переносов между блочными тегами**.
+
+**Почему:** markdown-it обрабатывает результат рендера Nunjucks как обычный markdown. Любая пустая строка между `<ul>`, `<li>`, `<div>`, `<section>` и т. п. превращается в новый `<p>`, в который заворачиваются соседние блочные теги. Браузер автокорректит невалидную вложенность (`<p><ul>…</ul></p>` → закрытый `<p>` + «голый» `<li>`), и сетка/grid ломается — например, карточки в `rubric-resources-grid` начинают «прыгать шахматкой».
+
+**Канонический пример** — `components/news.njk`, режим `razdel` (после фикса апреля 2026). Для всех новых компонентов и при правках существующих:
+
+1. Используйте whitespace-control Nunjucks: `{%- ... -%}`, `{{- ... -}}`, `{#- ... -#}`. Минус «съедает» соседние пробелы и переносы строк.
+2. Пишите соседние блочные теги **встык**, без пустой строки между ними:
+   ```njk
+   <section class="..."><div class="container">
+     {%- if title -%}<h2>{{- title -}}</h2>{%- endif -%}
+     <ul class="grid">
+     {%- for item in items -%}
+       <li><a href="{{ item.url }}">{{- item.title -}}</a></li>
+     {%- endfor -%}
+     </ul>
+   </div></section>
+   ```
+3. Проверка: `curl -s http://localhost:5000/<страница-раздела>/ | grep -A2 "<имя-класса>"` — в выводе **не должно быть** `<p><ul>`, `<p><li>`, `<p><section>` и т. п. вокруг блочных элементов компонента.
+
+Список компонентов, которые уже сейчас включаются из `.md` и должны соответствовать этому правилу: `components/news.njk` (режим `razdel`), `components/about.njk` (`razdel`), `components/popular.njk`, `components/sidebar.njk`. При создании новых компонентов под подключение из markdown — сразу применяйте whitespace-control.

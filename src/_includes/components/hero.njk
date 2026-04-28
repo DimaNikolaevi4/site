@@ -1,0 +1,82 @@
+{#
+  Компонент Секция 2 — Hero-баннер (для всех типов страниц)
+
+  Рендерится на любой странице, где явно подключён, и показывает:
+    1) название организации «ГБПОУ РО / Сальский индустриальный техникум» (как на главной),
+    2) горизонтальную черту,
+    3) название рубрики (раздела/подраздела) под чертой.
+
+  Управление через frontmatter:
+    showHero      — false, чтобы выключить блок (по умолчанию — показываем)
+    hero          — объект для тонкой настройки:
+                      hero.image    — URL фонового изображения
+                                       (по умолчанию /assets/template/hero-bg.jpg)
+                      hero.title    — переопределяет рубрику под чертой
+                      hero.subtitle — подзаголовок (опционально)
+                      hero.alt      — alt-текст фона (опционально)
+                      hero.cta      — { url, label } для кнопки (опционально)
+    rubricTitle   — название рубрики под чертой (приоритет над hero.title и title)
+    title         — заголовок страницы (fallback для рубрики, если ничего не задано)
+    hideRubric    — true, чтобы скрыть черту и название рубрики (используется на главной)
+#}
+
+{% if showHero != false %}
+
+{% set _heroImage = (hero.image if hero else null) or "/assets/template/hero-bg.jpg" %}
+{% set _heroAlt = (hero.alt if hero else null) or title or "Сальский индустриальный техникум" %}
+{% set _heroRubric = rubricTitle or (hero.title if hero else null) or title %}
+
+<section class="section-hero page-hero page-hero--banner component-hero" aria-label="Баннер раздела">
+
+  <div
+    class="page-hero__bg"
+    style="background-image: url('{{ _heroImage }}');"
+    role="img"
+    aria-label="{{ _heroAlt }}"
+  ></div>
+
+  <div class="page-hero__overlay" aria-hidden="true"></div>
+
+  <div class="container page-hero__content">
+    <div class="page-hero__inner">
+
+      {# Название организации — как на главной странице.
+         На главной (hideRubric=true) — это <h1> страницы.
+         На внутренних страницах <h1> — это рубрика, а название организации — <div>. #}
+      {% if hideRubric %}
+      <h1 class="page-hero__org" aria-label="ГБПОУ РО Сальский индустриальный техникум">
+        ГБПОУ РО
+        <br>
+        <small>«Сальский индустриальный техникум»</small>
+      </h1>
+      {% else %}
+      <div class="page-hero__org" aria-label="ГБПОУ РО Сальский индустриальный техникум">
+        ГБПОУ РО
+        <br>
+        <small>«Сальский индустриальный техникум»</small>
+      </div>
+      {% endif %}
+
+      {# Название рубрики под горизонтальной чертой — на внутренних страницах это <h1> #}
+      {% if _heroRubric and not hideRubric %}
+      <hr class="page-hero__divider" aria-hidden="true">
+      <h1 class="page-hero__rubric">{{ _heroRubric }}</h1>
+      {% endif %}
+
+      {# Подзаголовок (опционально) #}
+      {% if hero and hero.subtitle %}
+      <p class="page-hero__subtitle">{{ hero.subtitle }}</p>
+      {% endif %}
+
+      {# CTA-кнопка (опционально) #}
+      {% if hero and hero.cta and hero.cta.url and hero.cta.label %}
+      <a href="{{ hero.cta.url }}" class="btn btn-primary btn-lg page-hero__cta">
+        {{ hero.cta.label }}
+      </a>
+      {% endif %}
+
+    </div>
+  </div>
+
+</section>
+{% endif %}

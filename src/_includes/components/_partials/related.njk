@@ -1,0 +1,102 @@
+{#
+  Партиал: «Читайте также» (связанные материалы)
+  ────────────────────────────────────────────────────────────
+  Подключение:
+    • src/_includes/layouts/post.njk  (Type C / Материал) — стр. 187.
+      По канону §3.0.1 на Type C блок «Читайте также» ЗАМЕНЯЕТ
+      Секцию 6 «Популярное» (popular.njk на материалах не выводится).
+    • src/_includes/layouts/page.njk  (Type B / Страница раздела) — стр. 158.
+      Здесь идёт ПОСЛЕ Секции 6 «Популярное» как дополнительный блок.
+
+  ВАЖНО: в layouts/page-full.njk (стр. 231–263) исторически живёт
+  независимая инлайн-копия с другой разметкой (`<article class="related-card">`).
+  Та копия читает только `relatedPages` (без авто-подбора). На реальном
+  контенте сейчас не используется ни одной страницей `page-full.njk`
+  (мёртвый код, фиксируется в § 3.2.2 как минор для отдельной задачи —
+  унифицировать через этот партиал).
+
+  Логика выбора источника (по приоритету):
+    1. relatedPages       — массив { url, title, image, excerpt, date } из frontmatter (override).
+    2. relatedCollection  — имя коллекции из collections.* (явный авто-подбор).
+    3. category / section — slug используется как имя коллекции (авто-подбор по умолчанию).
+  Текущий материал (page.url) исключается из авто-подбора. Если коллекция не
+  найдена и `relatedPages` пуст — партиал НИЧЕГО не рендерит (self-gating).
+
+  Параметры frontmatter страницы:
+    relatedPages       массив объектов — переопределение источника.
+    relatedCollection  строка — имя коллекции для авто-подбора.
+    relatedCount       число — сколько карточек выводить (по умолчанию 3).
+    relatedTitle       строка — заголовок секции (по умолчанию «Читайте также»).
+
+  Реальные потребители авто-режима (на 04.2026):
+    • 6 страниц `src/content/abiturientam/` через `relatedCollection: abiturientam`
+      (kontakty-grafik, priemnaya-kampaniya-2026, podacha-pochtovaya-svyaz,
+       podacha-elektronnaya-pochta, virtualnaya-ekskursiya, platnaya-osnova).
+    • Все материалы новостей через `category: news` → `collections.news`.
+
+  Разметка карточки — `<div class="course-item">` (визуально единый язык
+  с `news.njk` в режиме `home` и `popular.njk`). Превью `loading="lazy"`,
+  дата через фильтр `dateRu`, ссылки «Читать полностью» с `aria-label`.
+
+  A11y: `<section aria-label="Читайте также">`, иконки `aria-hidden="true"`,
+  у каждой ссылки «Читать полностью» — осмысленный `aria-label` с заголовком.
+#}
+
+{% set _relItems = relatedPages %}
+
+{% if not _relItems %}
+  {% set _relCollection = relatedCollection or category or section %}
+  {% set _relCount = relatedCount or 3 %}
+  {% if _relCollection and collections[_relCollection] %}
+    {% set _auto = [] %}
+    {% for item in collections[_relCollection] | reverse %}
+      {% if item.url != page.url and _auto.length < _relCount %}
+        {% set _auto = (_auto.push({
+          url: item.url,
+          title: item.data.title,
+          image: item.data.coverImage or (item.data.hero and item.data.hero.image),
+          excerpt: item.data.excerpt or item.data.description,
+          date: item.data.date
+        }), _auto) %}
+      {% endif %}
+    {% endfor %}
+    {% set _relItems = _auto %}
+  {% endif %}
+{% endif %}
+
+{% if _relItems and _relItems.length > 0 %}
+<section class="section-related" aria-label="Читайте также">
+  <div class="container">
+    <h2 class="section-related__title">
+      <i class="bi bi-journals" aria-hidden="true"></i>
+      {{ relatedTitle or 'Читайте также' }}
+    </h2>
+    <div class="related-grid">
+      {% for item in _relItems %}
+      <div class="course-item">
+        {% if item.image %}
+        <img src="{{ item.image }}" class="img-fluid" alt="{{ item.title }}" loading="lazy">
+        {% endif %}
+        <div class="course-content">
+          {% if item.date %}
+          <p class="date mb-3">{{ item.date | dateRu }}</p>
+          {% endif %}
+          <h3><a href="{{ item.url }}">{{ item.title }}</a></h3>
+          {% if item.excerpt %}
+          <p class="description">{{ item.excerpt }}</p>
+          {% endif %}
+          <div class="trainer d-flex justify-content-between align-items-center">
+            <div class="trainer-profile d-flex align-items-center">
+              <a href="{{ item.url }}" class="read-more" aria-label="Читать полностью — {{ item.title }}">
+                <span>Читать полностью</span>
+                <i class="bi bi-arrow-right" aria-hidden="true"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endif %}

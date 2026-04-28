@@ -1,0 +1,210 @@
+{#
+  ШАБЛОН ТИП B — layouts/page.njk
+  Все 8 секций для страниц разделов (любой уровень)
+
+  Канон секций (тот же на всём сайте):
+    Секция 1: Header              — components/header.njk        (в base.njk)
+    Секция 2: Hero                — components/hero.njk          (в base.njk)
+    Секция 3: Хлебные крошки      — components/breadcrumbs.njk
+    Секция 4: About               — components/about.njk         (опц., aboutMode)
+    Секция 5: Материалы / News    — components/news.njk          (опц., newsMode)
+    Секция 6: Популярное          — components/popular.njk       (глобальный блок)
+    Секция 7: Сайдбар             — components/sidebar.njk       (30% слева, единые баннеры на всём сайте)
+    Секция 8: Footer              — components/footer.njk        (в base.njk)
+  + Нижняя навигация (возврат к разделу) — между Секцией 6 и Секцией 8.
+
+  Управление секциями через frontmatter:
+    hero:              { image, title, subtitle, alt, cta } — включает Hero-баннер
+    rubricTitle:       строка — название рубрики под чертой в Hero
+    showAbout:         true/false (по умолчанию false) — секция 4
+    aboutMode:         'razdel' (для всех страниц-разделов: пара баннеров «Народный фронт» + «Контракт»)
+                       'home'   (только для главной — задаётся в src/index.njk, не во frontmatter)
+    showNews:          true/false (по умолчанию false) — секция 5
+    newsMode:          'home' | 'razdel'
+    newsTitle:         строка (для 'home' дефолт «Новости»; для 'razdel' без дефолта)
+    newsCards:         массив карточек (для newsMode='razdel')
+    newsCount:         число (для newsMode='home', по умолчанию 3)
+    excludeUrls:       массив URL для исключения карточек (для newsMode='razdel')
+    additionalBlocks:  HTML-строка — доп. блоки после контента
+    parentSection:     { url, title } — для нижней навигации
+    prevPage:          { url, title }
+    nextPage:          { url, title }
+    relatedPages:      массив { url, title, image, excerpt, date }
+#}
+{% extends "layouts/base.njk" %}
+
+{% block content %}
+<div class="page-layout page-type-b">
+
+  {# ═══════════════════════════════════════════════
+     СЕКЦИЯ 2: Hero — единый, рендерится в base.njk
+     (см. components/hero.njk; управляется frontmatter:
+      showHero / rubricTitle / hero.*)
+  ═══════════════════════════════════════════════ #}
+
+  {# Контекстная полоса: только хлебные крошки #}
+  <div class="container container--breadcrumbs" aria-label="Контекст страницы">
+    {% include "components/breadcrumbs.njk" %}
+
+    {% if showHero == false %}
+    <h1 class="page-title">{{ title }}</h1>
+    {% endif %}
+  </div>
+
+  {# ═══════════════════════════════════════════════
+     СЕКЦИИ 3 + 7: Контент (70%) + Сайдбар (30%)
+     Сайдбар — слева, контент — справа
+  ═══════════════════════════════════════════════ #}
+  <section class="section-main">
+    <div class="container">
+      <div class="content-sidebar-grid">
+
+        {# ── Секция 5: Сайдбар (30% левая колонка, единые баннеры) ── #}
+        <div class="sidebar-col">
+          {% include "components/sidebar.njk" %}
+        </div>
+
+        {# ── Основной контент страницы ── #}
+        <div class="content-col">
+          <article class="page-content" itemprop="mainContentOfPage">
+            {{ content | safe }}
+          </article>
+
+          {# Дополнительные блоки (документы, уведомления, произвольный HTML) #}
+          {% if additionalBlocks %}
+          <div class="section-extra mt-4">
+            <div class="extra-inner">
+              {{ additionalBlocks | safe }}
+            </div>
+          </div>
+          {% endif %}
+
+          {# Вложения (для страниц с документами) — синхронизировано с page-full.njk #}
+          {% if attachments and attachments.length > 0 %}
+          <section class="post-attachments" aria-label="Вложения">
+            <h2 class="attachments-title">
+              <i class="bi bi-paperclip" aria-hidden="true"></i> Вложения
+            </h2>
+            <ul class="attachments-list">
+              {% for attachment in attachments %}
+              <li class="attachment-item">
+                <a href="{{ attachment.url }}" class="attachment-link" download>
+                  {% set _ext = attachment.url | lower %}
+                  {% if '.pdf' in _ext %}
+                    <i class="bi bi-file-earmark-pdf attachment-icon attachment-icon--pdf"></i>
+                  {% elif '.doc' in _ext %}
+                    <i class="bi bi-file-earmark-word attachment-icon attachment-icon--doc"></i>
+                  {% elif '.xls' in _ext %}
+                    <i class="bi bi-file-earmark-excel attachment-icon attachment-icon--xls"></i>
+                  {% else %}
+                    <i class="bi bi-file-earmark attachment-icon"></i>
+                  {% endif %}
+                  <span class="attachment-name">{{ attachment.name }}</span>
+                  {% if attachment.size %}<span class="attachment-size">({{ attachment.size }})</span>{% endif %}
+                </a>
+              </li>
+              {% endfor %}
+            </ul>
+          </section>
+          {% endif %}
+
+          {# Теги — синхронизировано с page-full.njk #}
+          {% if tags and tags.length > 0 %}
+          <footer class="post-footer">
+            <div class="post-tags">
+              <span class="tags-label">
+                <i class="bi bi-tags" aria-hidden="true"></i> Теги:
+              </span>
+              {% for tag in tags %}
+                {% if tag != 'nav' and tag != 'all' %}
+                <a href="/tags/{{ tag | slugify }}/" class="tag">{{ tag }}</a>
+                {% endif %}
+              {% endfor %}
+            </div>
+          </footer>
+          {% endif %}
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  {# ═══════════════════════════════════════════════
+     СЕКЦИЯ 4: About (заглушка или слово директора)
+     Показывается только если showAbout: true
+  ═══════════════════════════════════════════════ #}
+  {% if showAbout %}
+  {% include "components/about.njk" %}
+  {% endif %}
+
+  {# ═══════════════════════════════════════════════
+     СЕКЦИЯ 5: Материалы (подрубрики или последние новости)
+     Показывается только если showNews: true
+  ═══════════════════════════════════════════════ #}
+  {% if showNews %}
+  {% include "components/news.njk" %}
+  {% endif %}
+
+  {# ═══════════════════════════════════════════════
+     СЕКЦИЯ 6: Популярное (3 карточки)
+     Глобальный блок — без условия (унифицировано с page-full.njk).
+  ═══════════════════════════════════════════════ #}
+  {% include "components/popular.njk" %}
+
+  {# ═══════════════════════════════════════════════
+     Связанные материалы / «Читайте также»
+     Разметка и логика автоподбора — в components/_partials/related.njk
+  ═══════════════════════════════════════════════ #}
+  {% include "components/_partials/related.njk" %}
+
+  {# ═══════════════════════════════════════════════
+     Нижняя навигация (возврат к разделу, пред/след)
+  ═══════════════════════════════════════════════ #}
+  {% if parentSection or prevPage or nextPage or category or section %}
+  <nav class="section-backnav" aria-label="Навигация по разделу">
+    <div class="container">
+
+      {% set _bnLabels = sectionLabels or { byUrl: {}, bySlug: {} } %}
+      {% set _bnKey = category or section %}
+      {% set _bnSlug = _bnKey | slugify if _bnKey else "" %}
+      {% set _bnUrl = "/" + _bnSlug + "/" if _bnSlug else "" %}
+      {% set _bnLabel = categoryTitle or sectionTitle or _bnLabels.byUrl[_bnUrl] or _bnLabels.bySlug[_bnSlug] or _bnLabels.bySlug[_bnKey] or _bnKey %}
+
+      {% if parentSection %}
+      <a href="{{ parentSection.url }}" class="backnav-link backnav-link--parent">
+        <i class="bi bi-arrow-left-circle" aria-hidden="true"></i>
+        {{ parentSection.title }}
+      </a>
+      {% elif _bnKey %}
+        {% if _bnUrl == page.url or not (_bnUrl | urlExists(collections.all)) %}
+      <a href="/" class="backnav-link backnav-link--parent">
+        <i class="bi bi-house" aria-hidden="true"></i>
+        Главная
+      </a>
+        {% else %}
+      <a href="{{ _bnUrl }}" class="backnav-link backnav-link--parent">
+        <i class="bi bi-arrow-left-circle" aria-hidden="true"></i>
+        {{ _bnLabel }}
+      </a>
+        {% endif %}
+      {% endif %}
+
+      <div class="backnav-prevnext">
+        {% if prevPage %}
+        <a href="{{ prevPage.url }}" class="backnav-link backnav-link--prev" title="{{ prevPage.title }}">
+          <i class="bi bi-chevron-left" aria-hidden="true"></i> Предыдущая
+        </a>
+        {% endif %}
+        {% if nextPage %}
+        <a href="{{ nextPage.url }}" class="backnav-link backnav-link--next" title="{{ nextPage.title }}">
+          Следующая <i class="bi bi-chevron-right" aria-hidden="true"></i>
+        </a>
+        {% endif %}
+      </div>
+
+    </div>
+  </nav>
+  {% endif %}
+
+</div>
+{% endblock %}

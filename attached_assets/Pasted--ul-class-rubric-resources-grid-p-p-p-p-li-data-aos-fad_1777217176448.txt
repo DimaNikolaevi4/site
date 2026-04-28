@@ -1,0 +1,74 @@
+<ul class="rubric-resources-grid"><p></p>
+<p></p><li data-aos="fade-up" data-aos-delay="50" class="aos-init aos-animate">
+<a href="/abiturientam/slovo-direktora/" class="rubric-resource">
+<span class="rubric-resource-icon" aria-hidden="true">🎓</span>
+<span class="rubric-resource-text">
+Слово директора<p></p>
+<p><span class="rubric-resource-desc">Обращение руководителя техникума к будущим студентам и их родителям.</span></p>
+</span></a><p><a href="/abiturientam/slovo-direktora/" class="rubric-resource">
+</a>
+</p></li><p></p>
+<p></p><li data-aos="fade-up" data-aos-delay="100" class="aos-init aos-animate">
+<a href="/abiturientam/specialnosti/" class="rubric-resource">
+<span class="rubric-resource-icon" aria-hidden="true">📚</span>
+<span class="rubric-resource-text">
+Специальности и профессии<p></p>
+<p><span class="rubric-resource-desc">Перечень специальностей и профессий ГБПОУ РО «Сальский индустриальный техникум» — сроки обучения, квалификации, профессии, чему научат, важные предметы, практика и итоговая аттестация</span></p>
+</span></a><p><a href="/abiturientam/specialnosti/" class="rubric-resource">
+</a>
+</p></li><p></p>
+<p></p><li data-aos="fade-up" data-aos-delay="150" class="aos-init aos-animate">
+<a href="/abiturientam/priemnaya-kampaniya-2025/" class="rubric-resource">
+<span class="rubric-resource-icon" aria-hidden="true">📋</span>
+<span class="rubric-resource-text">
+Приёмная кампания 2026<p></p>
+<p><span class="rubric-resource-desc">Правила приёма, контрольные цифры, сроки подачи документов, целевое обучение, информация об общежитии.</span></p>
+</span></a><p><a href="/abiturientam/priemnaya-kampaniya-2025/" class="rubric-resource">
+</a>
+</p></li><p></p>
+<p></p><li data-aos="fade-up" data-aos-delay="200" class="aos-init aos-animate">
+<a href="/abiturientam/den-otkrytyh-dverej/" class="rubric-resource">
+<span class="rubric-resource-icon" aria-hidden="true">🚪</span>
+<span class="rubric-resource-text">
+День открытых дверей<p></p>
+<p><span class="rubric-resource-desc">Дни открытых дверей в Сальском индустриальном техникуме — расписание, программа и порядок участия</span></p>
+</span></a><p><a href="/abiturientam/den-otkrytyh-dverej/" class="rubric-resource">
+</a>
+</p></li><p></p>
+<p></p><li data-aos="fade-up" data-aos-delay="250" class="aos-init aos-animate">
+<a href="/abiturientam/virtualnaya-ekskursiya/" class="rubric-resource">
+<span class="rubric-resource-icon" aria-hidden="true">🏛️</span>
+<span class="rubric-resource-text">
+Виртуальная экскурсия<p></p>
+<p><span class="rubric-resource-desc">Фотогалерея корпусов, мастерских и студенческой жизни техникума.</span></p>
+</span></a><p><a href="/abiturientam/virtualnaya-ekskursiya/" class="rubric-resource">
+</a>
+</p></li><p></p>
+<p></p><li data-aos="fade-up" data-aos-delay="300" class="aos-init aos-animate">
+<a href="/abiturientam/podacha-elektronnaya-pochta/" class="rubric-resource">
+<span class="rubric-resource-icon" aria-hidden="true">✉️</span>
+<span class="rubric-resource-text">
+Подача документов по электронной почте<p></p>
+<p><span class="rubric-resource-desc">Пошаговая инструкция и бланки заявлений по специальностям и профессиям.</span></p>
+</span></a><p><a href="/abiturientam/podacha-elektronnaya-pochta/" class="rubric-resource">
+</a>
+</p></li><p></p>
+<p></p><li data-aos="fade-up" data-aos-delay="350" class="aos-init aos-animate">
+<a href="/abiturientam/podacha-pochtovaya-svyaz/" class="rubric-resource">
+<span class="rubric-resource-icon" aria-hidden="true">📮</span>
+<span class="rubric-resource-text">
+Подача документов через операторов почтовой связи<p></p>
+<p><span class="rubric-resource-desc">Порядок отправки документов почтой и бланки заявлений.</span></p>
+</span></a><p><a href="/abiturientam/podacha-pochtovaya-svyaz/" class="rubric-resource">
+</a>
+</p></li><p></p>
+<p></p><li data-aos="fade-up" data-aos-delay="400" class="aos-init aos-animate">
+<a href="/abiturientam/platnaya-osnova/" class="rubric-resource">
+<span class="rubric-resource-icon" aria-hidden="true">💳</span>
+<span class="rubric-resource-text">
+Платная основа обучения<p></p>
+<p><span class="rubric-resource-desc">Информация о местах с оплатой стоимости обучения по договорам.</span></p>
+</span></a><p><a href="/abiturientam/platnaya-osnova/" class="rubric-resource">
+</a>
+</p></li><p></p>
+<p></p></ul>

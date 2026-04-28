@@ -1,0 +1,86 @@
+📐 Каноническая структура страницы раздела (Type B)
+На примере /abiturientam/ → src/content/abiturientam/index.md
+________________________________________
+1. Frontmatter (метаданные страницы)
+title: Абитуриентам                      # H1 страницы и <title> в браузере
+layout: layouts/page-full.njk            # Единый шаблон для всех 11 разделов
+description: Раздел для будущих студентов ГБПОУ РО «Сальский индустриальный техникум» — приёмная кампания, специальности, виртуальная экскурсия, контакты приёмной комиссии и порядок подачи документов.
+permalink: /abiturientam/                # Чистый URL раздела
+rubric: "1"                              # Код рубрики из src/_data/rubrics.yaml (для подрубрик и хлебных крошек)
+section: abiturientam                    # Slug раздела (для backnav, related, фильтров)
+sectionTitle: Абитуриентам               # Человеческое имя раздела (для backnav и сайдбара)
+subrubricTitle: "Полезные материалы"     # Заголовок над сеткой подрубрик
+eleventyNavigation:                      # Привязка к главному меню
+  key: abiturientam
+  parent: main
+  order: 1
+tags:
+  - Абитуриентам
+aboutMode: razdel                        # Режим components/about.njk (пара баннеров «Народный фронт» + «О заключении контракта»)
+suppressSubrubrics: true                 # Отключаем авто-вывод подрубрик в правой колонке — выводим их вручную в нужной точке Markdown
+________________________________________
+2. Что автоматически рендерит layouts/page-full.njk
+Шаблон собирает страницу из 8 канонических секций (см. STRUCTURE_AND_PRINCIPLES.md, раздел 5.3 чек-листа):
+№	Секция	Источник	Управление через frontmatter
+1	Header	components/header.njk (в base.njk)	—
+2	Hero «ГБПОУ РО / СИТ + название раздела»	components/hero.njk (в base.njk)	showHero: false чтобы скрыть
+3	Контекст: хлебные крошки 	components/breadcrumbs.njk	sectionContext.banner, sectionContext.filters
+4	About (правая колонка, элемент 1)	components/about.njk	aboutMode: razdel 
+5а	Sidebar 30% (левая колонка, sticky на всю высоту)	components/sidebar.njk	showSidebar: false чтобы убрать
+5б	Основной контент (правая колонка, элемент 2)	<article class="page-content">{{ content | safe }}</article>	сюда попадает всё тело Markdown
+6	Подрубрики (правая колонка, элемент 3)	components/news.njk (newsMode='subrubrics')	автогенерация из rubric; отключено через suppressSubrubrics: true — рендерим вручную
+7	Популярные разделы	components/popular.njk	popularLinks
+—	Backnav (возврат к родителю + пред/след)	section-backnav	автоматически по section / parentSection
+8	Footer	components/footer.njk (в base.njk)	—
+⬇	(опц.) Полоса во всю ширину под сеткой	belowGridSubrubric: "X.Y"	мы сейчас этим не пользуемся на /abiturientam/
+________________________________________
+3. Структура тела Markdown (что пишется внутри index.md)
+Сейчас на /abiturientam/ тело выстроено так — это и предлагаю сделать каноном для всех 11 разделов:
+1. # Заголовок раздела                    (H1 = title)
+2. <img …приветственная картинка…>        (баннер раздела, опц., width:100%, border-radius:4px, margin-bottom:1.5rem)
+3. Приветственный блок (2–4 коротких параграфа)
+   — обращение к посетителю, что найдёт в разделе
+4. {# Полезные материалы — подрубрики раздела #}
+   {% set newsMode = 'subrubrics' %}
+   {% set newsCollection = "<КОД>" | getSubrubricCards(collections) %}
+   {% set excludeUrls = ["…urls для ручного размещения ниже…"] %}
+   {% include "components/news.njk" %}
+   ↑ сетка карточек Level 1 подрубрик (rubric-resources-grid, 2 колонки на десктопе)
+5. Завершающий смысловой параграф
+   — мост между подрубриками и блоком ключевой информации
+6. ## Ключевая информация раздела          (H2)
+   — маркированный список фактов (даты, адреса, цифры, документы)
+7. ## Контакты блока                       (H2)
+   — телефон, e-mail, сайт списком
+8. <section class="component-news--subrubrics">
+     <ul class="rubric-resources-grid">
+       <li>📞 Карточка-контакт (на отдельную страницу контактов раздела)</li>
+       <li>✉️ Карточка-CTA (mailto / форма обращения)</li>
+     </ul>
+   </section>
+   ↑ ровно те же rubric-resource карточки, что и в п.4 — единый визуальный язык призывов
+________________________________________
+4. Что повторяется одинаково на всех 11 разделах
+•	layout: layouts/page-full.njk — без вариантов.
+•	aboutMode: razdel — пара баннеров «Народный фронт» + «О заключении контракта» сбоку.
+•	suppressSubrubrics: true + ручной вызов news.njk в теле — чтобы сетка подрубрик стояла между приветственным текстом и ключевой информацией, а не в самом низу.
+•	Сайдбар слева (showSidebar: true по умолчанию) — sticky на всю высоту блока.
+•	Hero и хлебные крошки — автоматически.
+•	Backnav — автоматически (по section).
+•	Финальный CTA-блок — карточками rubric-resource в той же сетке (никаких btn-primary на длинных страницах разделов).
+5. Что меняется от раздела к разделу
+•	title, description, permalink, rubric, section, sectionTitle, eleventyNavigation.key/order, tags
+•	subrubricTitle (например, «Полезные материалы», «Документы и положения», «Памятки и инструкции»)
+•	Приветственная картинка (/assets/images/privetstvie-…-2026.png)
+•	Текст приветствия и завершающего параграфа
+•	Список ключевой информации (что важно для конкретного раздела)
+•	Состав финальных карточек (контакты + CTA, специфичные для раздела)
+________________________________________
+Посмотри, пожалуйста, и скажи, что нужно скорректировать — например:
+•	порядок блоков в Markdown-теле (4↔5, 6↔7),
+•	убрать/добавить какие-то поля frontmatter,
+•	нужны ли где-то опциональные блоки (additionalBlocks, belowGridSubrubric, relatedPages),
+•	стандартный подбор карточек в финальном блоке (всегда «Контакты раздела» + «Обращение по e-mail»? или варианты?),
+•	нужно ли всем 11 разделам жёстко требовать приветственное изображение, или оно опциональное.
+После твоих правок я зафиксирую финальный канон и применю его ко всем оставшимся 10 страницам.
+

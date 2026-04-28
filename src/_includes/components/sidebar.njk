@@ -1,0 +1,95 @@
+{#
+  Компонент Секция 7 — Сайдбар (канон §3.0.1)
+  Левая sticky-колонка ~30%, идёт на всю высоту блока:
+    - на главной (Type A, index.njk):                от Секции 4 (About) до Секции 6 (Popular)
+    - на разделах/материалах (page, page-full, listing, svedenija-page):
+                                                     от Секции 3 (Breadcrumbs) до Секции 6 (Popular)
+    - на мобильном (≤991px) встаёт в обычный поток после правой колонки.
+
+  Принцип: ЕДИНЫЕ баннеры на всём сайте, БЕЗ конфигурации через frontmatter
+  или yaml-данные — все 3 баннера захардкожены прямо в шаблоне, потому что
+  это сквозной сайтовый блок и переопределять его в отдельных страницах
+  не требуется и нежелательно (единый рекламный/информационный фон):
+    1. Баннер «Стань оператором БПЛА» (внешняя ссылка, картинка).
+    2. Баннер «НОК-2025» (независимая оценка качества, внешняя ссылка, картинка).
+    3. ПОС «Решаем вместе» — официальная фиксированная разметка Госуслуг
+       (id `js-show-iframe-wrapper` — наследие старого JS-инжектора;
+       работает как статический блок-ссылка на pos.gosuslugi.ru).
+
+  Использование:
+    {% include "components/sidebar.njk" %}
+#}
+<aside class="component-sidebar" role="complementary" aria-label="Дополнительная информация">
+
+  <div class="sidebar-image-banners">
+
+    {# === Баннер 1: БПЛА === #}
+    <a class="sidebar-image-banner"
+       href="https://xn--61-6kc3bbqgrrd.xn--p1ai/bpla.html"
+       target="_blank"
+       rel="noopener noreferrer"
+       aria-label="Стань оператором БПЛА — выбери профессию будущего"
+       data-aos="fade-left"
+       data-aos-delay="80">
+      <figure class="sidebar-image-banner__figure">
+        <img class="sidebar-image-banner__img"
+             src="/images/banners/bpla.jpg"
+             alt="Стань оператором БПЛА — выбери профессию будущего"
+             loading="lazy"
+             decoding="async">
+      </figure>
+    </a>
+
+    {# === Баннер 2: НОК-2025 === #}
+    <a class="sidebar-image-banner"
+       href="https://bus.gov.ru/info-card/399429"
+       target="_blank"
+       rel="noopener noreferrer"
+       aria-label="НОК-2025 — независимая оценка качества"
+       data-aos="fade-left"
+       data-aos-delay="160">
+      <figure class="sidebar-image-banner__figure">
+        <img class="sidebar-image-banner__img"
+             src="/images/banners/nok-2025.jpg"
+             alt="НОК-2025 — независимая оценка качества"
+             loading="lazy"
+             decoding="async">
+      </figure>
+    </a>
+
+    {# === Баннер 3: ПОС «Решаем вместе» — официальный фиксированный блок === #}
+    <div id="js-show-iframe-wrapper"
+         class="sidebar-pos"
+         data-aos="fade-left"
+         data-aos-delay="240">
+      <div class="pos-banner-fluid bf-22">
+        <div class="bf-22__decor">
+          <div class="bf-22__logo-wrap">
+            <img class="bf-22__logo"
+                 src="https://pos.gosuslugi.ru/bin/banner-fluid/gosuslugi-logo-blue.svg"
+                 alt="Госуслуги"
+                 loading="lazy"
+                 decoding="async">
+            <div class="bf-22__slogan">Решаем вместе</div>
+          </div>
+        </div>
+        <div class="bf-22__content">
+          <div class="bf-22__text">
+            Не убран снег, яма на дороге, не горит фонарь?
+          </div>
+          <div class="bf-22__bottom-wrap">
+            <div class="bf-22__btn-wrap">
+              {# pos-banner-btn_2 не удалять; другие классы не добавлять #}
+              <a class="pos-banner-btn_2"
+                 href="https://pos.gosuslugi.ru/"
+                 target="_blank"
+                 rel="noopener noreferrer">Написать о проблеме</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</aside>

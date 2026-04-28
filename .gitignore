@@ -1,0 +1,42 @@
+# Зависимости
+node_modules/
+
+# Результат сборки Eleventy
+public/
+_site/
+.eleventy-cache/
+
+# Кэш сборки и инструментов
+.cache/
+.parcel-cache/
+.npm/
+.sass-cache/
+
+# Логи (npm / yarn / pnpm / eleventy)
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Переменные окружения
+.env
+.env.local
+.env.*.local
+
+# Архивы (большие файлы, не хранятся в репозитории)
+attached_assets/docs.zip
+_export/
+*.zip
+
+# Системные файлы
+.DS_Store
+._*
+Thumbs.db
+
+# Редакторы и IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~

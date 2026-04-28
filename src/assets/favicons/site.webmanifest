@@ -1,0 +1,13 @@
+{
+  "name": "ГБПОУ РО \"Сальский индустриальный техникум\"",
+  "short_name": "СИТ",
+  "icons": [
+    { "src": "/assets/favicons/favicon.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "/assets/favicons/favicon.png", "sizes": "512x512", "type": "image/png" }
+  ],
+  "theme_color": "#2e7d32",
+  "background_color": "#ffffff",
+  "display": "standalone",
+  "lang": "ru",
+  "start_url": "/"
+}

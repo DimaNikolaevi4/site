@@ -1,0 +1,133 @@
+main:
+  - title: Главная
+    url: /
+    key: home
+  - title: О техникуме
+    url: /about/
+    key: about
+    children:
+      - title: Основные сведения
+        url: /about/osnovnye-svedenija/
+      - title: История
+        url: /about/#history
+      - title: Руководство
+        url: /about/#leadership
+      - title: Контакты
+        url: /#footer
+  - title: Сведения об образовательной организации
+    url: /svedenija/
+    key: svedenija
+    children:
+      - title: Документы
+        url: /svedenija/dokumenty/
+      - title: Структура и органы управления
+        url: /svedenija/structure/
+      - title: Образование
+        url: /svedenija/education/
+      - title: Руководство и ППС
+        url: /svedenija/employees/
+      - title: Материально-техническое обеспечение
+        url: /svedenija/objects/
+      - title: Стипендии и поддержка
+        url: /svedenija/stipend/
+      - title: Финансово-хозяйственная деятельность
+        url: /svedenija/finance/
+      - title: Вакантные места
+        url: /svedenija/vacancies/
+      - title: Доступная среда
+        url: /svedenija/access/
+      - title: Международное сотрудничество
+        url: /svedenija/obrazovanie/mezhdunarodnoe/
+  - title: Абитуриентам
+    url: /abiturientam/
+    key: abiturientam
+    children:
+      - title: Слово директора
+        url: /abiturientam/slovo-direktora/
+      - title: Специальности и профессии
+        url: /abiturientam/specialnosti/
+      - title: Приёмная кампания 2026
+        url: /abiturientam/priemnaya-kampaniya-2026/
+      - title: День открытых дверей
+        url: /abiturientam/den-otkrytyh-dverej/
+      - title: Виртуальная экскурсия
+        url: /abiturientam/virtualnaya-ekskursiya/
+      - title: Подача документов (эл. почта)
+        url: /abiturientam/podacha-elektronnaya-pochta/
+      - title: Подача документов (почтовая связь)
+        url: /abiturientam/podacha-pochtovaya-svyaz/
+      - title: Платная основа обучения
+        url: /abiturientam/platnaya-osnova/
+      - title: Контакты приёмной комиссии
+        url: /abiturientam/kontakty-grafik/
+  - title: Учебно-методическая работа
+    url: /uchebno-metodicheskaja-rabota/
+    key: umr
+    children:
+      - title: Материалы УМР
+        url: /uchebno-metodicheskaja-rabota/#materials
+  - title: Воспитание
+    url: /vospitanie/
+    key: vospitanie
+    children:
+      - title: Направления воспитания
+        url: /vospitanie/#directions
+      - title: Великая Победа
+        url: /vospitanie/velikaja-pobeda/
+      - title: Волонтерское движение
+        url: /vospitanie/volonterstvo/
+      - title: Культурно-массовая работа
+        url: /vospitanie/kulturno-massovaja/
+      - title: Медиацентр «Новости СИТ»
+        url: /vospitanie/mediacentr/
+      - title: Поздравления
+        url: /vospitanie/pozdravlenija/
+  - title: Сотрудничество
+    url: /sotrudnichestvo/
+    key: sotrudnichestvo
+    children:
+      - title: С предприятиями
+        url: /sotrudnichestvo/predprijatija/
+      - title: Со школами
+        url: /sotrudnichestvo/shkoly/
+  - title: Безопасность
+    url: /bezopasnost/
+    key: bezopasnost
+    children:
+      - title: Комплексная безопасность
+        url: /bezopasnost/#complex
+      - title: Профилактика экстремизма
+        url: /bezopasnost/extremizm/
+      - title: Противодействие коррупции
+        url: /bezopasnost/antikorrupcija/
+      - title: Противодействие коррупции (рубрика)
+        url: /bezopasnost/korrupcija/
+  - title: Студентам и родителям
+    url: /studentam-i-roditeljam/
+    key: studentam
+    children:
+      - title: Новости
+        url: /news/
+      - title: Расписание занятий
+        url: /studentam-i-roditeljam/raspisanie/
+      - title: Родителям
+        url: /studentam-i-roditeljam/roditeljam/
+  - title: Центр Карьеры
+    url: /career/
+    key: career
+    children:
+      - title: О центре
+        url: /career/#about
+      - title: Вакансии для выпускников
+        url: /career/#vacancies
+      - title: Партнеры
+        url: /career/#partners
+  - title: Профессионалы-2026
+    url: /professionaly-2026/
+    key: professionals
+  - title: Новости
+    url: /news/
+    key: news
+  - title: Контакты
+    url: /#footer
+    key: contacts

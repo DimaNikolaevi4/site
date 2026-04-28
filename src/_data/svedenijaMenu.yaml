@@ -1,0 +1,70 @@
+- title: Основные сведения
+  url: /svedenija/basic/
+  key: basic
+  emoji: "🏛️"
+  description: Наименование, история, адреса, учредитель, контакты, символика
+- title: Документы
+  url: /svedenija/dokumenty/
+  key: documents
+  emoji: "📄"
+  description: Устав, лицензия, локальные акты, правила приёма, положения, отчёты
+- title: Антикоррупционные документы
+  url: /svedenija/dokumenty/anti-corruption/
+  key: anti-corruption
+  emoji: "🛡️"
+  description: Антикоррупционная политика, нормативные акты, формы, отчёты
+- title: Структура управления
+  url: /svedenija/structure/
+  key: structure
+  emoji: "🏢"
+  description: Органы управления, структурные подразделения, положения
+- title: Образование
+  url: /svedenija/education/
+  key: education
+  emoji: "🎓"
+  description: Лицензия, аккредитация, программы, учебные планы, ГИА
+- title: Руководство и ППС
+  url: /svedenija/employees/
+  key: employees
+  emoji: "👥"
+  description: Администрация, заведующие отделениями, преподаватели, контакты
+- title: Материально-техническое обеспечение
+  url: /svedenija/objects/
+  key: objects
+  emoji: "🔧"
+  description: Оснащённость кабинетов, мастерские, средства обучения
+- title: Стипендии и поддержка
+  url: /svedenija/stipend/
+  key: stipend
+  emoji: "💼"
+  description: Стипендии, меры социальной поддержки обучающихся
+- title: Платные образовательные услуги
+  url: /svedenija/paid-services/
+  key: paid-services
+  emoji: "💳"
+  description: Перечень и порядок оказания платных образовательных услуг
+- title: Финансово-хозяйственная деятельность
+  url: /svedenija/finance/
+  key: finance
+  emoji: "📊"
+  description: Государственные задания, планы ФХД, отчёты по годам
+- title: Вакантные места
+  url: /svedenija/vacancies/
+  key: vacancies
+  emoji: "📝"
+  description: Контрольные цифры приёма, перевода обучающихся, общежитие
+- title: Трудоустройство выпускников
+  url: /svedenija/employment/
+  key: employment
+  emoji: "🤝"
+  description: Содействие трудоустройству, центр карьеры, статистика
+- title: Доступная среда
+  url: /svedenija/access/
+  key: access
+  emoji: "♿"
+  description: Условия для лиц с ОВЗ и инвалидов
+- title: Международное сотрудничество
+  url: /svedenija/obrazovanie/mezhdunarodnoe/
+  key: international
+  emoji: "🌍"
+  description: Соглашения, программы, обмены и совместные проекты

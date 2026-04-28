@@ -1,0 +1,148 @@
+<section class="section component-news component-news--subrubrics">
+    <div class="container">
+      
+      <ul class="rubric-resources-grid">
+        
+        
+        
+        
+        
+        
+        <li data-aos="fade-up" class="aos-init aos-animate">
+          <a href="/abiturientam/kontakty-grafik/" class="rubric-resource">
+            <span class="rubric-resource-icon" aria-hidden="true">📞</span>
+            <span class="rubric-resource-text">
+              Контакты и график работы приёмной комиссии
+              
+              <span class="rubric-resource-desc">Адрес, телефон, часы приёма документов, ссылки на официальный сайт и сообщество ВКонтакте.</span>
+              
+            </span>
+          </a>
+        </li>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+      </ul>
+    </div>
+  </section>

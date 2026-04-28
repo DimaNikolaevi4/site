@@ -1,0 +1,148 @@
+---
+layout: layouts/base.njk
+templateEngineOverride: njk,md
+---
+{#
+  ШАБЛОН — svedenija-page.njk
+  Раздел «Сведения об образовательной организации» (Приказ Рособрнадзора №1493)
+
+  Канон секций (§3.0.1, тот же на всём сайте):
+    Секция 1: Header                — components/header.njk      (в base.njk)
+    Секция 2: Hero                  — components/hero.njk        (в base.njk, опц.)
+    Секция 3: Хлебные крошки        — components/breadcrumbs.njk (с ручным контекстом)
+    Секция 5: Основной контент      — подменю «Сведений» (Приказ №1493) + page-content
+    Секция 7: Сайдбар               — components/sidebar.njk     (30% слева, единые баннеры)
+    Секция 8: Footer                — components/footer.njk      (в base.njk)
+  + Связанные подразделы (опц.)     — section-related, под сеткой во всю ширину
+  + Нижняя навигация (возврат к /svedenija/) — между связанными и Секцией 8.
+
+  Layout-цепочка (Eleventy layout chaining):
+    content (md) → svedenija-page.njk → layouts/base.njk
+    (frontmatter `layout: layouts/base.njk` ниже — наследование через цепочку,
+     в отличие от page-full/post/listing, где используется {% extends %}).
+
+  Управление через frontmatter страницы:
+    title, description
+    hero            — { image, title, subtitle, alt } (опц.)
+    breadcrumbTitle — заголовок последней крошки, если отличается от title
+    relatedSections — массив { url, title, icon } для блока «Связанные подразделы»
+    additionalBlocks — HTML/Markdown под основным контентом
+#}
+<div class="page-layout svedenija-layout">
+
+  {# ═══════════════════════════════════════════════
+     СЕКЦИЯ 2: Hero — единый, рендерится в base.njk
+  ═══════════════════════════════════════════════ #}
+
+  <div class="container container--breadcrumbs" aria-label="Раздел Сведения">
+
+    {# Единые хлебные крошки — ручной режим, чтобы не дублировать заголовок на корне #}
+    {% if page.url == '/svedenija/' %}
+      {% set breadcrumbs = [
+        { text: "Главная", url: "/" },
+        { text: "Сведения об образовательной организации" }
+      ] %}
+    {% else %}
+      {% set breadcrumbs = [
+        { text: "Главная", url: "/" },
+        { text: "Сведения об образовательной организации", url: "/svedenija/" },
+        { text: breadcrumbTitle or title }
+      ] %}
+    {% endif %}
+    {% include "components/breadcrumbs.njk" %}
+
+  </div>
+
+  {# ═══════════════════════════════════════════════
+     СЕКЦИИ 5 + 7: Контент 70% + Сайдбар 30% (слева)
+  ═══════════════════════════════════════════════ #}
+  <section class="section-main">
+    <div class="container">
+      <div class="content-sidebar-grid">
+
+        {# ── Секция 7: Сайдбар — единые баннеры (НЕ навигация) ── #}
+        <div class="sidebar-col">
+          {% include "components/sidebar.njk" %}
+        </div>
+
+        {# ── Секция 5: Основной контент + подменю «Сведений» ── #}
+        <div class="content-col">
+
+          {# Подменю раздела (требование №1493 — все 11 подразделов доступны).
+             Визуально — карточки с эмодзи, как на корне /svedenija/
+             (та же разметка `rubric-resources-grid` из components/news.njk razdel-режима). #}
+          {% if svedenijaMenu %}
+          <nav class="svedenija-submenu component-news component-news--razdel" aria-label="Навигация по разделу Сведения">
+            <ul class="rubric-resources-grid">
+              {%- for item in svedenijaMenu -%}
+                <li data-aos="fade-up" data-aos-delay="{{ loop.index * 40 }}"><a href="{{ item.url }}" class="rubric-resource{% if page.url == item.url %} rubric-resource--active{% endif %}"{% if page.url == item.url %} aria-current="page"{% endif %}><span class="rubric-resource-icon" aria-hidden="true">{{- item.emoji or "📄" -}}</span><span class="rubric-resource-text">{{- item.title -}}{%- if item.description %}<span class="rubric-resource-desc">{{- item.description -}}</span>{%- endif -%}</span></a></li>
+              {%- endfor -%}
+            </ul>
+          </nav>
+          {% endif %}
+
+          <article class="page-content svedenija-content" itemprop="mainContentOfPage">
+            {{ content | safe }}
+          </article>
+
+          {% if additionalBlocks %}
+          <div class="section-extra mt-4">
+            <div class="extra-inner">{{ additionalBlocks | safe }}</div>
+          </div>
+          {% endif %}
+
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  {# ═══════════════════════════════════════════════
+     Связанные подразделы (опц.) — под сеткой, во всю ширину
+  ═══════════════════════════════════════════════ #}
+  {% if relatedSections and relatedSections.length > 0 %}
+  <section class="section-related" aria-label="Связанные подразделы">
+    <div class="container">
+      <h2 class="section-related__title">
+        <i class="bi bi-grid" aria-hidden="true"></i> Связанные подразделы
+      </h2>
+      <div class="related-grid related-grid--compact">
+        {% for rs in relatedSections %}
+        <a href="{{ rs.url }}" class="related-section-card">
+          <i class="bi bi-{{ rs.icon or 'chevron-right' }}" aria-hidden="true"></i>
+          <span>{{ rs.title }}</span>
+        </a>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+  {% endif %}
+
+  {# ═══════════════════════════════════════════════
+     Нижняя навигация — возврат к разделу + пред/след
+  ═══════════════════════════════════════════════ #}
+  {% if page.url != '/svedenija/' %}
+  {% set _rubnav = rubric | getRubricNavigation %}
+  <nav class="section-backnav" aria-label="Навигация по разделу">
+    <div class="container">
+      <a href="/svedenija/" class="backnav-link backnav-link--parent">
+        <i class="bi bi-arrow-left-circle" aria-hidden="true"></i>
+        Сведения об образовательной организации
+      </a>
+      <div class="backnav-prevnext">
+        {% if _rubnav.prev %}
+        <a href="{{ _rubnav.prev.url }}" class="backnav-link backnav-link--prev" title="{{ _rubnav.prev.title }}">
+          <i class="bi bi-chevron-left" aria-hidden="true"></i> {{ _rubnav.prev.title }}
+        </a>
+        {% endif %}
+        {% if _rubnav.next %}
+        <a href="{{ _rubnav.next.url }}" class="backnav-link backnav-link--next" title="{{ _rubnav.next.title }}">
+          {{ _rubnav.next.title }} <i class="bi bi-chevron-right" aria-hidden="true"></i>
+        </a>
+        {% endif %}
+      </div>
+    </div>
+  </nav>
+  {% endif %}
+
+</div>

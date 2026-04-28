@@ -1,0 +1,12 @@
+---
+layout: layouts/page-full.njk
+title: Новости
+rubricTitle: Новости
+description: Все новости Сальского индустриального техникума
+permalink: "/news/{% if pagination.pageNumber > 0 %}page/{{ pagination.pageNumber + 1 }}/{% endif %}"
+pagination:
+  data: collections.news
+  size: 6
+  alias: posts
+  reverse: true
+---

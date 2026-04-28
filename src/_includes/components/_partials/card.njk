@@ -1,0 +1,80 @@
+{# ════════════════════════════════════════════════════════════════════
+   ПАРТИАЛ: _partials/card.njk — универсальная карточка материала
+
+   Используется в listing.njk (Секция 5 «Лента карточек», между sidebar
+   слева и popular снизу). Принимает на входе объект `card` через
+   `{% set card = {...} %}` непосредственно перед `{% include %}`.
+
+   Поля объекта `card` (все опциональны, кроме title и url):
+     • title         — заголовок (string, required)
+     • url           — ссылка на материал (string, required)
+     • image         — URL превью; при отсутствии блок .card-image не выводится
+     • imageAlt      — alt для img (default: title)
+     • category      — slug рубрики (используется как fallback-источник
+                       URL `/{slug}/` и человеческой метки через
+                       sectionLabels.byUrl → bySlug → raw)
+     • categoryTitle — явная метка рубрики (опц. override sectionLabels)
+     • date          — дата публикации (Date или ISO-строка, рендерится
+                       через фильтры dateRu и dateToISO в .eleventy.js)
+     • excerpt       — краткое описание
+     • tags          — массив тегов (служебный 'nav' исключается)
+
+   SEO/Schema.org: <article itemscope itemtype="https://schema.org/Article">
+   с itemprop="image|url|headline|datePublished|description|keywords".
+   ════════════════════════════════════════════════════════════════════ #}
+<article class="card" itemscope itemtype="https://schema.org/Article">
+  {% if card.image %}
+  <div class="card-image">
+    <a href="{{ card.url }}">
+      <img 
+        src="{{ card.image }}" 
+        alt="{{ card.imageAlt | default(card.title) }}"
+        loading="lazy"
+        itemprop="image"
+      >
+    </a>
+  </div>
+  {% endif %}
+  
+  <div class="card-content">
+    <header class="card-header">
+      {% if card.category %}
+      {% set _cardLabels = sectionLabels or { byUrl: {}, bySlug: {} } %}
+      {% set _cardSlug = card.category | slugify %}
+      {% set _cardUrl = "/" + _cardSlug + "/" %}
+      {% set _cardLabel = card.categoryTitle or _cardLabels.byUrl[_cardUrl] or _cardLabels.bySlug[_cardSlug] or _cardLabels.bySlug[card.category] or card.category %}
+      <a href="{{ _cardUrl }}" class="card-category">{{ _cardLabel }}</a>
+      {% endif %}
+      
+      <h3 class="card-title">
+        <a href="{{ card.url }}" itemprop="url">
+          <span itemprop="headline">{{ card.title }}</span>
+        </a>
+      </h3>
+      
+      {% if card.date %}
+      <time class="card-date" datetime="{{ card.date | dateToISO }}" itemprop="datePublished">
+        {{ card.date | dateRu }}
+      </time>
+      {% endif %}
+    </header>
+    
+    {% if card.excerpt %}
+    <div class="card-excerpt" itemprop="description">
+      {{ card.excerpt }}
+    </div>
+    {% endif %}
+    
+    {% if card.tags and card.tags.length > 0 %}
+    <footer class="card-footer">
+      <div class="card-tags">
+        {% for tag in card.tags %}
+          {% if tag != 'nav' %}
+          <a href="/tags/{{ tag | slugify }}/" class="tag" itemprop="keywords">{{ tag }}</a>
+          {% endif %}
+        {% endfor %}
+      </div>
+    </footer>
+    {% endif %}
+  </div>
+</article>

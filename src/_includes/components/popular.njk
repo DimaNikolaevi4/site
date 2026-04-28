@@ -1,0 +1,97 @@
+{# ════════════════════════════════════════════════════════════════════
+   КОМПОНЕНТ: Секция 6 — «Популярное» (канон 3.0.1)
+
+   Блок популярных/важных материалов — 3 карточки в Bootstrap-сетке
+   `col-md-6 col-xl-4` + `course-item` (тот же визуальный язык, что
+   у news.njk в режиме home).
+
+   Подключается в шаблонах: index.njk, page-full.njk, page.njk,
+   listing.njk. На post.njk (Type C / Материал) НЕ подключается —
+   по канону §3.0.1 секция 6 для материалов заменена на
+   «Читайте также» (см. _partials/related.njk).
+
+   Если текущая страница принадлежит одному из перечисленных разделов,
+   соответствующая карточка заменяется на 4-ю — «Расписание занятий»
+   (заглушка, без ссылки), чтобы пользователь не видел ссылку «сам на себя».
+   ════════════════════════════════════════════════════════════════════ #}
+
+{% set _popularItems = [
+  {
+    title: "Противодействие коррупции",
+    desc: "Меры противодействия коррупции, нормативная база, комиссия по урегулированию конфликтов и канал для сообщений.",
+    url: "/bezopasnost/antikorrupcija/",
+    image: "/images/sliders/slider1.jpg",
+    alt: "Противодействие коррупции"
+  },
+  {
+    title: "Абитуриентам",
+    desc: "Приёмная кампания 2026 года: специальности, контрольные цифры приёма, контакты приёмной комиссии и порядок подачи документов.",
+    url: "/abiturientam/",
+    image: "/assets/images/privetstvie-abiturientov-2026.png",
+    alt: "Абитуриентам — приём 2026"
+  },
+  {
+    title: "Сведения об образовательной организации",
+    desc: "Обязательная информация по Приказу Рособрнадзора № 1493: документы, образование, руководство, материально-техническое обеспечение.",
+    url: "/svedenija/",
+    image: "/assets/images/logo.png",
+    alt: "Сведения об образовательной организации",
+    imgClass: "popular-card__logo-img"
+  }
+] %}
+
+{% set _popularPlaceholder = {
+  title: "Расписание занятий",
+  desc: "Скоро здесь появится актуальное расписание занятий по группам и преподавателям. Раздел в разработке.",
+  image: "/assets/images/raspisanie-placeholder.gif",
+  alt: "Расписание занятий — скоро"
+} %}
+
+<section id="popular" class="section component-popular" aria-label="Популярное">
+  <div class="container section-title" data-aos="fade-up">
+    <h2>Популярное</h2>
+    <p>Важное</p>
+  </div>
+
+  <div class="container">
+    <div class="content-col">
+      <div class="row">
+        {% for _c in _popularItems %}
+          {% if page.url | startsWith(_c.url) %}
+          {# Карточка текущего раздела заменена на placeholder «Расписание» #}
+          <div class="col-md-6 col-xl-4 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="{{ loop.index * 100 }}">
+            <div class="course-item popular-card--placeholder">
+              <img src="{{ _popularPlaceholder.image }}" class="img-fluid" alt="{{ _popularPlaceholder.alt }}" loading="lazy">
+              <div class="course-content">
+                <h3>{{ _popularPlaceholder.title }}</h3>
+                <p class="description">{{ _popularPlaceholder.desc }}</p>
+                <div class="trainer d-flex justify-content-between align-items-center">
+                  <span class="popular-card__badge">Скоро</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          {% else %}
+          <div class="col-md-6 col-xl-4 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="{{ loop.index * 100 }}">
+            <div class="course-item">
+              <img src="{{ _c.image }}" class="img-fluid{{ ' ' + _c.imgClass if _c.imgClass }}" alt="{{ _c.alt }}" loading="lazy">
+              <div class="course-content">
+                <h3><a href="{{ _c.url }}">{{ _c.title }}</a></h3>
+                <p class="description">{{ _c.desc }}</p>
+                <div class="trainer d-flex justify-content-between align-items-center">
+                  <div class="trainer-profile d-flex align-items-center">
+                    <a href="{{ _c.url }}" class="read-more" aria-label="Перейти — {{ _c.title }}">
+                      <span>Перейти</span>
+                      <i class="bi bi-arrow-right" aria-hidden="true"></i>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          {% endif %}
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</section>

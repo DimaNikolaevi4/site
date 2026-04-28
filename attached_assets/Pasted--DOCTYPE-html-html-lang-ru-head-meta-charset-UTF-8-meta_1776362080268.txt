@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <title>Шапка сайта ГБПОУ РО «СИТ»</title>
+  
+  <!-- Bootstrap 5 + Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.0/font/bootstrap-icons.min.css">
+  
+ <style>
+    :root {
+      --sit-primary: #0d4a6b;
+      --sit-accent: #e67e22;
+      --sit-accent-hover: #d35400;
+      --sit-border: #dee2e6;
+      --focus-outline: 0.125rem solid #0d4a6b; /* 2px -> 0.125rem */
+    }
+
+    /* Базовый размер шрифта = 16px, но можно менять через body */
+    html {
+      font-size: 100%; /* 1rem = 16px по умолчанию */
+    }
+
+    body {
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+      margin: 0;
+      background: #f9fafb;
+    }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 1030;
+      background: #ffffff;
+      box-shadow: 0 0.25rem 0.75rem rgba(0,0,0,0.03), 0 0.0625rem 0.125rem rgba(0,0,0,0.05); /* 4px,12px,1px,2px -> rem */
+    }
+
+    /* Верхняя строка */
+    .header-top {
+      padding: 0.75rem 0; /* 12px -> 0.75rem */
+      border-bottom: 0.0625rem solid var(--sit-border); /* 1px -> 0.0625rem */
+      background: #fff;
+    }
+
+    .header-brand-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.5rem; /* 8px -> 0.5rem */
+    }
+
+    .logo-link img,
+    .gerb-link img {
+      width: auto;
+      max-width: 100%;
+      height: auto;
+      max-height: 3.75rem; /* 60px -> 3.75rem */
+      display: block;
+    }
+
+    /* Для поддержки старых браузеров зададим фиксированную ширину в %, но с ограничением */
+    .logo-link, .gerb-link {
+      flex: 0 0 auto;
+      width: 15%;
+      max-width: 3.75rem;
+    }
+
+    .site-title {
+      text-align: center;
+      font-weight: 700;
+      text-transform: uppercase;
+      font-size: 1.6rem; /* 25.6px -> 1.6rem (база 16px) */
+      line-height: 1.3;
+      color: #0d4a6b;
+      letter-spacing: 0.03125em; /* 0.5px -> 0.03125em */
+      word-break: break-word;
+      flex: 1 1 auto;
+    }
+
+    .site-title small {
+      display: block;
+      font-size: 1.2rem;
+      font-weight: 500;
+      text-transform: none;
+      color: #2c3e50;
+    }
+
+    /* Навигация */
+    .header-nav {
+      padding: 0.5rem 0; /* 8px -> 0.5rem */
+      border-bottom: 0.0625rem solid var(--sit-border);
+    }
+
+    .navbar {
+      padding: 0;
+    }
+
+    .navbar-nav {
+      gap: 0.25rem; /* 4px -> 0.25rem */
+      flex-wrap: wrap;
+    }
+
+    .nav-link {
+      font-weight: 500;
+      color: #1e293b !important;
+      padding: 0.5rem 1rem !important; /* 8px 16px -> rem */
+      border-radius: 0.375rem; /* 6px -> 0.375rem */
+      white-space: nowrap;
+    }
+
+    .dropdown-menu {
+      border: none;
+      box-shadow: 0 0.5rem 1.25rem rgba(0,0,0,0.08); /* 8px 20px -> rem */
+      border-radius: 0.75rem; /* 12px -> 0.75rem */
+      padding: 0.5rem 0;
+    }
+
+    .navbar-toggler {
+      border: none;
+      padding: 0.5rem 0.75rem;
+      border-radius: 2.5rem; /* 40px -> 2.5rem */
+      background-color: #f8f9fa;
+    }
+
+    /* Инфо-панель */
+    .header-info-bar {
+      padding: 0.5rem 0;
+      background: #f8f9fa;
+      border-bottom: 0.0625rem solid var(--sit-border);
+      font-size: 0.9rem; /* 14.4px -> 0.9rem */
+      color: #1e293b;
+    }
+
+    .info-item {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .info-item i {
+      color: var(--sit-primary);
+      font-size: 1.2rem; /* 19.2px -> 1.2rem */
+    }
+
+    .btn-icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 2.5rem;  /* 40px -> 2.5rem */
+      height: 2.5rem;
+      padding: 0;
+      border-radius: 50%;
+      background: transparent;
+      border: none;
+      color: #2c3e50;
+      font-size: 1.4rem; /* 22.4px -> 1.4rem */
+      transition: background-color 0.15s;
+    }
+
+    .eos-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      background-color: #e9f0f5;
+      padding: 0.3rem 1rem;
+      border-radius: 1.875rem; /* 30px -> 1.875rem */
+      text-decoration: none;
+      color: var(--sit-primary);
+      font-weight: 500;
+      transition: background-color 0.2s;
+      white-space: nowrap;
+    }
+
+    /* Панель рубрикатора */
+    .header-actions-panel {
+      padding: 0.75rem 0;
+      background: #fafbfc;
+    }
+
+    .rubric-select {
+      width: 100%;
+      border-radius: 2.5rem; /* 40px -> 2.5rem */
+      padding: 0.65rem 2rem 0.65rem 1.5rem;
+      border: 0.0625rem solid #ced4da;
+      font-weight: 500;
+      background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23343a40' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m2 5 6 6 6-6'/%3e%3c/svg%3e");
+      background-repeat: no-repeat;
+      background-position: right 1.2rem center;
+      background-size: 1rem 0.75rem; /* 16px 12px -> rem */
+      appearance: none;
+    }
+
+    /* Мобильные: шрифт >= 16px */
+    @media (max-width: 48rem) { /* 768px -> 48rem (1rem=16px) */
+      .rubric-select {
+        font-size: 1rem; /* 16px */
+      }
+    }
+
+    option.level-0 { font-weight: 700; }
+    option.level-1 { padding-left: 1.8rem; }
+    option.level-2 { padding-left: 3rem; }
+
+    .svedeniya-block {
+      display: flex;
+      justify-content: flex-end;
+    }
+
+    .svedeniya-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background-color: var(--sit-primary);
+      color: white;
+      padding: 0.65rem 1.5rem;
+      border-radius: 2.5rem;
+      text-decoration: none;
+      font-weight: 600;
+      transition: background-color 0.2s;
+      white-space: nowrap;
+    }
+
+    /* ========== АДАПТИВНОСТЬ ========== */
+    @media (max-width: 48rem) { /* 768px */
+      .site-title {
+        font-size: 1.2rem;
+      }
+      .site-title small {
+        font-size: 0.9rem;
+      }
+      .logo-link, .gerb-link {
+        width: 12%;
+        max-width: 2.75rem; /* 44px -> 2.75rem */
+      }
+      
+      .navbar-collapse {
+        background: white;
+        padding: 1rem;
+        border-radius: 1rem; /* 16px -> 1rem */
+        margin-top: 0.5rem;
+        box-shadow: 0 0.5rem 1.25rem rgba(0,0,0,0.08);
+        max-height: 70vh;
+        overflow-y: auto;
+      }
+      
+      .nav-link,
+      .btn-icon,
+      .eos-link,
+      .svedeniya-link,
+      .dropdown-item {
+        min-height: 2.75rem; /* 44px -> 2.75rem */
+        display: inline-flex;
+        align-items: center;
+      }
+      
+      .nav-link {
+        white-space: normal;
+        word-break: break-word;
+      }
+      
+      .header-info-bar .d-flex {
+        flex-wrap: wrap;
+        gap: 0.75rem;
+      }
+      
+      .svedeniya-block {
+        justify-content: flex-start;
+        margin-top: 0.5rem;
+      }
+      
+      .svedeniya-block .nav-link {
+        white-space: normal;
+        text-align: center;
+        background-color: #eef2f5;
+        border-radius: 2.5rem;
+        padding: 0.5rem 1rem !important;
+        width: 100%;
+        justify-content: center;
+      }
+    }
+
+    /* Очень маленькие экраны (до 30rem = 480px) */
+    @media (max-width: 30rem) {
+      .logo-link, .gerb-link {
+        width: 10%;
+        max-width: 2.25rem; /* 36px -> 2.25rem */
+      }
+      .site-title {
+        font-size: 1rem;
+      }
+      .site-title small {
+        font-size: 0.75rem;
+      }
+      .header-top {
+        padding: 0.5rem 0;
+      }
+      .info-item span {
+        font-size: 0.8rem;
+      }
+      .btn-icon {
+        width: 2.25rem;
+        height: 2.25rem;
+        font-size: 1.2rem;
+      }
+    }
+
+    /* ========== ВЕРСИЯ ДЛЯ СЛАБОВИДЯЩИХ ========== */
+    body.a11y-high-contrast {
+      background: #000 !important;
+      color: #fff !important;
+    }
+    body.a11y-high-contrast .site-header {
+      background: #1a1a1a !important;
+    }
+    body.a11y-high-contrast a,
+    body.a11y-high-contrast .nav-link,
+    body.a11y-high-contrast .btn-icon,
+    body.a11y-high-contrast .eos-link,
+    body.a11y-high-contrast .svedeniya-link {
+      color: #ffd700 !important;
+    }
+    body.a11y-high-contrast .eos-link,
+    body.a11y-high-contrast .svedeniya-link {
+      background-color: #333 !important;
+    }
+    
+    /* Крупный шрифт */
+    body.a11y-large-font {
+      font-size: 1.2rem;
+    }
+    body.a11y-large-font .site-title {
+      font-size: 1.8rem;
+    }
+    body.a11y-large-font .site-title small {
+      font-size: 1.4rem;
+    }
+    body.a11y-large-font .nav-link,
+    body.a11y-large-font .dropdown-item,
+    body.a11y-large-font .info-item,
+    body.a11y-large-font .eos-link,
+    body.a11y-large-font .rubric-select {
+      font-size: 1.2rem;
+    }
+    body.a11y-large-font .btn-icon {
+      width: 3rem;
+      height: 3rem;
+      font-size: 1.8rem;
+    }
+    
+    /* Отключение анимаций */
+    body.a11y-no-animation *,
+    body.a11y-no-animation *::before,
+    body.a11y-no-animation *::after {
+      transition: none !important;
+      animation: none !important;
+    }
+
+    *:focus-visible {
+      outline: var(--focus-outline);
+      outline-offset: 0.125rem; /* 2px -> 0.125rem */
+    }
+  </style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container">
+    
+    <!-- ВЕРХНЯЯ СТРОКА: логотип, название, герб -->
+    <div class="header-top">
+      <div class="header-brand-row">
+        <a href="/" class="logo-link" title="Главная страница ГБПОУ РО «Сальский индустриальный техникум»">
+          <img src="logo.png" alt="Логотип ГБПОУ РО «Сальский индустриальный техникум»">
+        </a>
+        
+        <div class="site-title">
+          ГБПОУ РО<br>
+          <small>«Сальский индустриальный техникум»</small>
+        </div>
+        
+        <a href="/" class="gerb-link" title="Герб Ростовской области — официальный сайт техникума">
+          <img src="gerb-red1.png" alt="Герб Ростовской области">
+        </a>
+      </div>
+    </div>
+    
+    <!-- НАВИГАЦИЯ (как на sit-salsk.ru) -->
+    <div class="header-nav">
+      <nav class="navbar navbar-expand-lg">
+        <div class="container-fluid px-0">
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarMain" 
+                  aria-controls="navbarMain" aria-expanded="false" aria-label="Меню навигации">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          
+          <div class="collapse navbar-collapse" id="navbarMain">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+              <li class="nav-item"><a class="nav-link active" href="/" title="Главная страница">Главная</a></li>
+              
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" title="Сведения об образовательной организации">Сведения об образовательной организации</a>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="/svedenija/" title="Основные сведения">Основные сведения</a></li>
+                  <li><a class="dropdown-item" href="/svedenija/struktura/" title="Структура и органы управления">Структура</a></li>
+                  <li><a class="dropdown-item" href="/svedenija/dokumenty/" title="Документы">Документы</a></li>
+                  <li><a class="dropdown-item" href="/svedenija/obrazovanie/" title="Образование">Образование</a></li>
+                  <li><a class="dropdown-item" href="/svedenija/rukovodstvo/" title="Руководство">Руководство</a></li>
+                </ul>
+              </li>
+              
+              <li class="nav-item"><a class="nav-link" href="/abiturientam/" title="Информация для абитуриентов">Абитуриентам</a></li>
+              <li class="nav-item"><a class="nav-link" href="/studentam-roditeljam/" title="Информация для студентов и родителей">Студентам</a></li>
+              <li class="nav-item"><a class="nav-link" href="/uchebno-metodicheskaya/" title="Учебно-методическая работа">Учебная работа</a></li>
+              <li class="nav-item"><a class="nav-link" href="/vospitanie/" title="Воспитательная работа">Воспитание</a></li>
+              <li class="nav-item"><a class="nav-link" href="/bezopasnost/" title="Комплексная безопасность">Безопасность</a></li>
+              
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </div>
+    
+    <!-- ИНФОРМАЦИОННАЯ ПАНЕЛЬ: график, телефоны, ЭОС, иконки действий -->
+    <div class="header-info-bar d-none d-md-block">
+      <div class="d-flex flex-wrap align-items-center justify-content-between">
+        <!-- Левая группа: график -->
+        <div class="info-item">
+          <i class="bi bi-clock" title="Режим работы"></i>
+          <span><strong>Пн–Пт:</strong> 8:00–17:00 &nbsp;|&nbsp; <strong>Сб, Вс:</strong> выходной</span>
+        </div>
+        
+        <!-- Центральная группа: корпуса и ЭОС -->
+        <div class="d-flex gap-4 align-items-center">
+          <div class="info-item">
+            <i class="bi bi-building" title="Корпус №1 (приёмная)"></i>
+            <span>Корпус 1: <a href="tel:+78637250571" title="Позвонить в приёмную корпуса №1">5-05-71</a> (приёмная)</span>
+          </div>
+          <div class="info-item">
+            <i class="bi bi-building" title="Корпус №2 (приёмная)"></i>
+            <span>Корпус 2: <a href="tel:+78637256041" title="Позвонить в приёмную корпуса №2">5-60-41</a> (приёмная)</span>
+          </div>
+          
+          <!-- Ссылка на ЭОС -->
+          <a href="https://эос.сит-сальск.рф/" class="eos-link" target="_blank" rel="noopener" title="Электронная образовательная система ГБПОУ РО «СИТ»">
+            <i class="bi bi-laptop"></i> ЭОС
+          </a>
+        </div>
+        
+        <!-- Правая группа: иконки (ВК, почта, поиск, доступность) -->
+        <div class="header-actions">
+          <a href="https://vk.com/sitsalsksit" class="btn-icon" target="_blank" rel="noopener" title="Официальная группа ВКонтакте">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24" style="display:block;">
+              <path d="M21.579 6.855c.17-.565 0-.98-.802-.98h-2.652c-.67 0-.979.357-1.146.752 0 0-1.34 3.283-3.237 5.414-.614.618-.893.814-1.228.814-.17 0-.42-.196-.42-.76V6.854c0-.671-.19-.98-.76-.98H9.389c-.42 0-.67.315-.67.615 0 .644.96.793 1.06 2.605v3.935c0 .864-.155 1.021-.492 1.021-.893 0-3.066-3.303-4.355-7.083C4.68 6.37 4.428 5.875 3.754 5.875H1.102c-.76 0-.913.357-.913.752 0 .704.893 4.197 4.155 8.817 2.175 3.144 5.239 4.848 8.026 4.848 1.674 0 1.88-.38 1.88-1.035v-2.385c0-.76.16-.912.694-.912.393 0 1.067.198 2.641 1.727 1.798 1.81 2.094 2.62 3.102 2.62h2.652c.76 0 1.14-.38.92-1.134-.237-.744-1.092-1.82-2.226-3.101-.614-.73-1.535-1.517-1.814-1.91-.393-.508-.28-.733 0-1.185 0 0 3.21-4.55 3.546-6.095z"/>
+            </svg>
+          </a>
+          <a href="mailto:sitsalsk@mail.ru" class="btn-icon" title="Написать на почту администрации">
+            <i class="bi bi-envelope-fill"></i>
+          </a>
+          <button class="btn-icon" data-bs-toggle="modal" data-bs-target="#searchModal" title="Поиск по сайту">
+            <i class="bi bi-search"></i>
+          </button>
+          <button class="btn-icon" id="a11yToggle" title="Версия для слабовидящих">
+            <i class="bi bi-eye"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Упрощённая версия для мобильных -->
+    <div class="header-info-bar d-md-none">
+      <div class="d-flex flex-wrap align-items-center justify-content-between">
+        <div class="d-flex flex-wrap gap-2">
+          <span><i class="bi bi-clock" title="Режим работы"></i> Пн–Пт 8–17, Сб-Вс вых.</span>
+          <span><i class="bi bi-telephone" title="Телефоны"></i> К1: 5-05-71, К2: 5-60-41</span>
+          <a href="https://эос.сит-сальск.рф/" class="eos-link" target="_blank" rel="noopener" title="Электронная образовательная система">
+            <i class="bi bi-laptop"></i> ЭОС
+          </a>
+        </div>
+        <div class="header-actions">
+          <a href="https://vk.com/sitsalsksit" class="btn-icon" target="_blank" rel="noopener" title="ВКонтакте">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24" style="display:block;">
+              <path d="M21.579 6.855c.17-.565 0-.98-.802-.98h-2.652c-.67 0-.979.357-1.146.752 0 0-1.34 3.283-3.237 5.414-.614.618-.893.814-1.228.814-.17 0-.42-.196-.42-.76V6.854c0-.671-.19-.98-.76-.98H9.389c-.42 0-.67.315-.67.615 0 .644.96.793 1.06 2.605v3.935c0 .864-.155 1.021-.492 1.021-.893 0-3.066-3.303-4.355-7.083C4.68 6.37 4.428 5.875 3.754 5.875H1.102c-.76 0-.913.357-.913.752 0 .704.893 4.197 4.155 8.817 2.175 3.144 5.239 4.848 8.026 4.848 1.674 0 1.88-.38 1.88-1.035v-2.385c0-.76.16-.912.694-.912.393 0 1.067.198 2.641 1.727 1.798 1.81 2.094 2.62 3.102 2.62h2.652c.76 0 1.14-.38.92-1.134-.237-.744-1.092-1.82-2.226-3.101-.614-.73-1.535-1.517-1.814-1.91-.393-.508-.28-.733 0-1.185 0 0 3.21-4.55 3.546-6.095z"/>
+            </svg>
+          </a>
+          <a href="mailto:sitsalsk@mail.ru" class="btn-icon" title="Почта">
+            <i class="bi bi-envelope-fill"></i>
+          </a>
+          <button class="btn-icon" data-bs-toggle="modal" data-bs-target="#searchModal" title="Поиск">
+            <i class="bi bi-search"></i>
+          </button>
+          <button class="btn-icon" id="a11yToggleMobile" title="Версия для слабовидящих">
+            <i class="bi bi-eye"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+    
+    <!-- ПАНЕЛЬ С РУБРИКАТОРОМ (2/3) И ССЫЛКОЙ "Сведения об образовательной организации" (1/3) -->
+    <div class="header-actions-panel">
+      <div class="row align-items-center g-3">
+        <!-- Рубрикатор (2/3) -->
+        <div class="col-md-8">
+          <select class="form-select rubric-select" id="rubricSelect" aria-label="Выберите рубрику" title="Навигация по разделам сайта">
+            <option selected disabled>Выберите рубрику</option>
+            <option class="level-0" value="/abiturientam/">1. АБИТУРИЕНТАМ</option>
+            <option class="level-1" value="/abiturientam/specialnosti/">&nbsp;&nbsp;&nbsp;1.2. Специальности и профессии</option>
+            <option class="level-1" value="/abiturientam/priemnaya-kampaniya/">&nbsp;&nbsp;&nbsp;1.3. Приемная кампания</option>
+            <option class="level-0" value="/svedenija/">2. СВЕДЕНИЯ ОБ ОБРАЗОВАТЕЛЬНОЙ ОРГАНИЗАЦИИ</option>
+            <option class="level-1" value="/svedenija/dokumenty/">&nbsp;&nbsp;&nbsp;2.3. Документы</option>
+            <option class="level-2" value="/svedenija/dokumenty/vsoko/">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.3.1. ВСОКО</option>
+            <option class="level-0" value="/uchebno-metodicheskaya/">3. УЧЕБНО-МЕТОДИЧЕСКАЯ РАБОТА</option>
+            <option class="level-0" value="/vospitanie/">4. ВОСПИТАТЕЛЬНАЯ РАБОТА</option>
+            <option class="level-1" value="/vospitanie/volonterstvo/">&nbsp;&nbsp;&nbsp;4.5. Волонтерское движение</option>
+            <option class="level-0" value="/partnerstvo/">5. СОЦИАЛЬНОЕ ПАРТНЕРСТВО</option>
+            <option class="level-0" value="/psihologicheskoe/">6. ПСИХОЛОГИЧЕСКОЕ СОПРОВОЖДЕНИЕ</option>
+            <option class="level-0" value="/bezopasnost/">7. КОМПЛЕКСНАЯ БЕЗОПАСНОСТЬ</option>
+          </select>
+        </div>
+        
+        <!-- Правая часть (1/3): ссылка "Контакты техникума" -->
+        <div class="col-md-4 svedeniya-block">
+          <a class="nav-link" href="/kontakty/" title="Контакты техникума">Контакты</a>
+        </div>
+      </div>
+    </div>
+    
+  </div>
+</header>
+
+<!-- МОДАЛЬНОЕ ОКНО ПОИСКА -->
+<div class="modal fade" id="searchModal" tabindex="-1" aria-labelledby="searchModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="searchModalLabel">Поиск по сайту</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Закрыть"></button>
+      </div>
+      <div class="modal-body">
+        <form role="search">
+          <div class="input-group">
+            <input type="search" class="form-control" placeholder="Введите запрос..." aria-label="Поисковый запрос">
+            <button class="btn btn-primary" type="submit"><i class="bi bi-search"></i> Найти</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+  (function() {
+    // Рубрикатор
+    document.getElementById('rubricSelect')?.addEventListener('change', e => {
+      const url = e.target.value;
+      if (url && url !== '#') {
+        // window.location.href = url;
+        console.log('Переход на:', url);
+      }
+    });
+    
+    // Версия для слабовидящих
+    const a11yToggle = document.getElementById('a11yToggle');
+    const STORAGE_KEY = 'sit-a11y-prefs';
+    let a11yState = { contrast: false, largeFont: false, noAnimation: false };
+    
+    try {
+      const saved = localStorage.getItem(STORAGE_KEY);
+      if (saved) a11yState = { ...a11yState, ...JSON.parse(saved) };
+    } catch(e) {}
+    
+    function applyA11yState() {
+      const body = document.body;
+      body.classList.remove('a11y-high-contrast', 'a11y-large-font', 'a11y-no-animation');
+      if (a11yState.contrast) body.classList.add('a11y-high-contrast');
+      if (a11yState.largeFont) body.classList.add('a11y-large-font');
+      if (a11yState.noAnimation) body.classList.add('a11y-no-animation');
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(a11yState));
+    }
+    applyA11yState();
+    
+    a11yToggle.addEventListener('click', () => {
+      if (!a11yState.contrast && !a11yState.largeFont && !a11yState.noAnimation) {
+        a11yState.contrast = true;
+      } else if (a11yState.contrast && !a11yState.largeFont) {
+        a11yState.largeFont = true;
+      } else if (a11yState.contrast && a11yState.largeFont && !a11yState.noAnimation) {
+        a11yState.noAnimation = true;
+      } else {
+        a11yState.contrast = a11yState.largeFont = a11yState.noAnimation = false;
+      }
+      applyA11yState();
+      const status = (a11yState.contrast ? 'контраст' : '') + 
+                     (a11yState.largeFont ? ', крупный шрифт' : '') +
+                     (a11yState.noAnimation ? ', без анимации' : '');
+      a11yToggle.setAttribute('aria-label', `Версия для слабовидящих${status ? ' (' + status + ')' : ''}`);
+    });
+    
+    // Закрытие мобильного меню при клике
+    const navLinks = document.querySelectorAll('.navbar-nav .nav-link');
+    const navbarCollapse = document.getElementById('navbarMain');
+    if (navbarCollapse) {
+      navLinks.forEach(link => {
+        link.addEventListener('click', () => {
+          if (window.innerWidth < 992) {
+            bootstrap.Collapse.getInstance(navbarCollapse)?.hide();
+          }
+        });
+      });
+    }
+  })();
+</script>
+</body>
+</html>

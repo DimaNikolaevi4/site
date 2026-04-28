@@ -1,0 +1,111 @@
+{#
+  ШАБЛОН — layouts/listing.njk
+  Листинг новостей / категорий / тегов в новой архитектуре
+
+  Канон секций (§3.0.1, тот же на всём сайте):
+    Секция 1: Header                — components/header.njk      (в base.njk)
+    Секция 2: Hero                  — components/hero.njk        (в base.njk, опц.)
+    Секция 3: Хлебные крошки        — components/breadcrumbs.njk
+    Секция 5: Материалы (карточки)  — содержимое листинга (cards-grid + пагинация)
+    Секция 6: Популярное            — components/popular.njk
+    Секция 7: Сайдбар               — components/sidebar.njk     (30% слева, единые баннеры на всём сайте)
+    Секция 8: Footer                — components/footer.njk      (в base.njk)
+
+  Управление через frontmatter:
+    title, description
+    collectionName     — имя коллекции для перебора
+    pagination         — стандартный объект Eleventy pagination
+    hero               — { image, title, subtitle, alt, cta } (опц.) — Hero-баннер
+    rubricTitle        — название рубрики под чертой в Hero
+    additionalBlocks   — HTML после ленты карточек
+#}
+{% extends "layouts/base.njk" %}
+
+{% block content %}
+<div class="page-layout listing-layout">
+
+  {# ═══════════════════════════════════════════════
+     СЕКЦИЯ 2: Hero — единый, рендерится в base.njk
+  ═══════════════════════════════════════════════ #}
+
+  {# ═══════════════════════════════════════════════
+     СЕКЦИЯ 3: Хлебные крошки (над сеткой, во всю ширину)
+  ═══════════════════════════════════════════════ #}
+  <div class="container container--breadcrumbs" aria-label="Контекст страницы">
+    {% include "components/breadcrumbs.njk" %}
+
+    {% if showHero == false %}
+    <h1 class="page-title">{{ title }}</h1>
+    {% endif %}
+  </div>
+
+  {# ═══════════════════════════════════════════════
+     СЕКЦИИ 5 + 7: Лента карточек 70% + Сайдбар 30% (слева)
+  ═══════════════════════════════════════════════ #}
+  <section class="section-main">
+    <div class="container">
+      <div class="content-sidebar-grid">
+
+        {# ── Секция 7: Сайдбар (единые баннеры, 30% слева, sticky) ── #}
+        <div class="sidebar-col">
+          {% include "components/sidebar.njk" %}
+        </div>
+
+        {# ── Секция 5: Лента карточек ── #}
+        <div class="content-col">
+          <div class="listing-content">
+
+            {% set _items = pagination.items if (pagination and pagination.items) else (collections[collectionName] if collectionName else null) %}
+            {% if _items and _items.length > 0 %}
+            <div class="cards-grid">
+              {% for item in _items %}
+                {% set card = {
+                  title: item.data.title,
+                  url: item.url,
+                  image: item.data.image,
+                  imageAlt: item.data.imageAlt,
+                  category: item.data.category or item.data.section,
+                  date: item.data.date,
+                  excerpt: item.data.excerpt,
+                  tags: item.data.tags
+                } %}
+                {% include "components/_partials/card.njk" %}
+              {% endfor %}
+            </div>
+
+            {# Пагинация — единый компонент #}
+            {% include "components/_partials/pagination.njk" %}
+
+            {% else %}
+            <div class="no-results">
+              <div class="no-results__icon">
+                <i class="bi bi-inbox" aria-hidden="true"></i>
+              </div>
+              <p class="no-results__text">В этом разделе пока нет материалов.</p>
+              <a href="/" class="btn btn-outline-primary btn-sm">На главную</a>
+            </div>
+            {% endif %}
+
+            {# Дополнительные блоки (опц.) #}
+            {% if additionalBlocks %}
+            <section class="section-extra mt-4" aria-label="Дополнительно">
+              <div class="extra-inner">
+                {{ additionalBlocks | safe }}
+              </div>
+            </section>
+            {% endif %}
+
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  {# ═══════════════════════════════════════════════
+     СЕКЦИЯ 6: Популярное (3 карточки) — во всю ширину под сеткой
+  ═══════════════════════════════════════════════ #}
+  {% include "components/popular.njk" %}
+
+</div>
+{% endblock %}

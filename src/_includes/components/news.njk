@@ -1,0 +1,116 @@
+{#
+  Компонент Секция 5 — Новости / Подрубрики (по канону §3.0.1)
+
+  Режимы, задаются переменной `newsMode`:
+
+    newsMode = 'home'   → 3 последние новости карточками (для главной).
+                          Также используется на новостных страницах при ручном
+                          подключении.
+                          Параметры:
+                            newsCount    — сколько новостей показать (по умолчанию 3)
+                            newsTitle    — заголовок секции (по умолчанию «Новости»)
+                            newsSubtitle — подзаголовок (по умолчанию «Последние события техникума»)
+
+    newsMode = 'razdel' → Единая сетка компактных ссылок с эмодзи
+                          (`<ul class="rubric-resources-grid">`) для страниц-разделов.
+                          Используется как для списка подрубрик, так и для CTA-блоков
+                          «Контакты + обращение».
+                          Параметры:
+                            newsCards   — массив карточек (обязательно). Каждый элемент — либо
+                                            элемент коллекции (`{url, data: {emoji, title, description}}`),
+                                            либо плоский объект (`{url, emoji, title, description}`).
+                            newsTitle   — заголовок секции (опционально; без дефолта)
+                            excludeUrls — массив URL для исключения карточек (опционально)
+
+  Если `newsMode` не задан или имеет другое значение — компонент ничего не рендерит.
+#}
+
+{# ── Режим 1: Последние новости (главная и новостные страницы) ── #}
+{% if newsMode == 'home' %}
+
+  {% set _newsCount    = newsCount    if newsCount    else 3 %}
+  {% set _newsTitle    = newsTitle    if newsTitle    else "Новости" %}
+  {% set _newsSubtitle = newsSubtitle if newsSubtitle else "Последние события техникума" %}
+
+  <section id="news" class="section component-news component-news--home">
+    <div class="container section-title" data-aos="fade-up">
+      <h2>{{ _newsTitle }}</h2>
+      <p>{{ _newsSubtitle }}</p>
+    </div>
+
+    <div class="container">
+      <div class="content-col">
+        <div class="row">
+          {% set latestNews = collections.news | reverse %}
+          {% for post in latestNews %}
+          {% if loop.index <= _newsCount %}
+          <div class="col-md-6 col-xl-4 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="{{ loop.index * 100 }}">
+            <div class="course-item">
+              <img
+                src="{{ post.data.image or '/assets/template/course-' ~ loop.index ~ '.jpg' }}"
+                class="img-fluid"
+                alt="{{ post.data.title }}"
+                loading="lazy"
+              >
+              <div class="course-content">
+                <p class="date mb-3">{{ post.date | dateRu }}</p>
+                <h3><a href="{{ post.url }}">{{ post.data.title }}</a></h3>
+                <p class="description">{{ post.data.excerpt or (post.templateContent | truncate(120)) }}</p>
+                <div class="trainer d-flex justify-content-between align-items-center">
+                  <div class="trainer-profile d-flex align-items-center">
+                    <a href="{{ post.url }}" class="read-more" aria-label="Читать полностью — {{ post.data.title }}">
+                      <span>Читать полностью</span>
+                      <i class="bi bi-arrow-right" aria-hidden="true"></i>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          {% endif %}
+          {% else %}
+          <div class="col-12 text-center">
+            <p class="text-muted">Новости пока не добавлены.</p>
+          </div>
+          {% endfor %}
+        </div>
+
+        <div class="text-center mt-4" data-aos="fade-up" data-aos-delay="500">
+          <a href="/news/" class="btn-get-started">Все новости</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+{# ── Режим 2: Сетка компактных ссылок с эмодзи (страницы разделов) ── #}
+{% elif newsMode == 'razdel' %}
+
+  {#
+    Внимание: компонент часто включается из .md-файлов (страницы-разделы).
+    Markdown-парсер оборачивает любую «пустую» строку в <p>, что ломает <ul>/<li>
+    (карточки начинают «прыгать шахматкой»). Поэтому ниже используется
+    whitespace-control Nunjucks ({%- -%}, {{- -}}), чтобы итоговый HTML шёл
+    единым блоком без переносов строк между блочными тегами.
+  #}
+  <section class="section component-news component-news--razdel"><div class="container">
+    {%- if newsTitle -%}
+    <div class="section-title mb-4" data-aos="fade-up"><h2>{{- newsTitle -}}</h2></div>
+    {%- endif -%}
+    {%- if newsCards and newsCards.length > 0 -%}
+    <ul class="rubric-resources-grid">
+    {%- for item in newsCards -%}
+      {%- if not (excludeUrls and item.url in excludeUrls) -%}
+        {#- Поддержка двух форматов: элемент коллекции (item.data.*) или плоский объект (item.*) -#}
+        {%- set _emoji       = (item.data.emoji       if item.data else item.emoji)       or "📄" -%}
+        {%- set _title       =  item.data.title       if item.data else item.title -%}
+        {%- set _description =  item.data.description if item.data else item.description -%}
+        <li data-aos="fade-up" data-aos-delay="{{ loop.index * 50 }}"><a href="{{ item.url }}" class="rubric-resource"><span class="rubric-resource-icon" aria-hidden="true">{{- _emoji -}}</span><span class="rubric-resource-text">{{- _title -}}{%- if _description %}<span class="rubric-resource-desc">{{- _description -}}</span>{%- endif -%}</span></a></li>
+      {%- endif -%}
+    {%- endfor -%}
+    </ul>
+    {%- else -%}
+    <div class="alert alert-info" role="status"><i class="bi bi-info-circle me-2"></i>Материалы в этом разделе пока не добавлены.</div>
+    {%- endif -%}
+  </div></section>
+
+{% endif %}

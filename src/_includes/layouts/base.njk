@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ title }} | {{ site.name }}</title>
+  <meta name="description" content="{{ description or site.description }}">
+
+  {# === SEO: canonical + Open Graph + Twitter Card === #}
+  <link rel="canonical" href="{{ site.url }}{{ page.url }}">
+  <meta property="og:type" content="{% if layout == 'layouts/post.njk' %}article{% else %}website{% endif %}">
+  <meta property="og:site_name" content="{{ site.name }}">
+  <meta property="og:title" content="{{ title }} | {{ site.name }}">
+  <meta property="og:description" content="{{ description or site.description }}">
+  <meta property="og:url" content="{{ site.url }}{{ page.url }}">
+  <meta property="og:image" content="{{ site.url }}{% if image %}{{ image }}{% else %}/assets/favicons/favicon.png{% endif %}">
+  <meta property="og:locale" content="ru_RU">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="{{ title }} | {{ site.name }}">
+  <meta name="twitter:description" content="{{ description or site.description }}">
+  <meta name="twitter:image" content="{{ site.url }}{% if image %}{{ image }}{% else %}/assets/favicons/favicon.png{% endif %}">
+
+  {# === PWA / theme === #}
+  <meta name="theme-color" content="#2e7d32">
+  <link rel="manifest" href="/assets/favicons/site.webmanifest">
+
+  {# ════════════════════════════════════════════════════════════════
+     CRITICAL CSS (CHECKLIST § 3.4) — стили первого экрана инлайн в <head>
+     Содержимое из src/styles/critical.css (~7 КБ): variables, base
+     typography, skip-link, header, hero, a11y-режимы, container.
+     Загружается синхронно — FCP начинается после распарсивания этого
+     <style>, без ожидания внешних CSS-файлов.
+     ════════════════════════════════════════════════════════════════ #}
+  <style>{{ criticalCSS | safe }}</style>
+
+  {# ════════════════════════════════════════════════════════════════
+     ASYNC CSS — все остальные стили (vendor + main.css) грузим
+     асинхронно через preload+onload (паттерн filamentgroup loadCSS):
+       1) <link rel="preload" as="style"> — браузер скачивает файл
+          с высоким приоритетом, НЕ блокируя рендер
+       2) onload="this.rel='stylesheet'" — после загрузки превращается
+          в обычный stylesheet и применяется
+       3) <noscript> fallback — для пользователей без JS файлы
+          подключаются как обычные blocking <link rel="stylesheet">
+     ════════════════════════════════════════════════════════════════ #}
+  <link rel="preload" as="style" href="/assets/mentor/vendor/bootstrap/css/bootstrap.min.css" onload="this.onload=null;this.rel='stylesheet'">
+  <link rel="preload" as="style" href="/assets/mentor/vendor/bootstrap-icons/bootstrap-icons.css" onload="this.onload=null;this.rel='stylesheet'">
+  <link rel="preload" as="style" href="/assets/mentor/vendor/aos/aos.css" onload="this.onload=null;this.rel='stylesheet'">
+  <link rel="preload" as="style" href="/assets/mentor/vendor/glightbox/css/glightbox.min.css" onload="this.onload=null;this.rel='stylesheet'">
+  <link rel="preload" as="style" href="/assets/mentor/vendor/swiper/swiper-bundle.min.css" onload="this.onload=null;this.rel='stylesheet'">
+  {# Mentor + кастомные стили объединены в /styles/main.css (3.3.3.4) #}
+  <link rel="preload" as="style" href="/styles/main.css" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript>
+    <link rel="stylesheet" href="/assets/mentor/vendor/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/mentor/vendor/bootstrap-icons/bootstrap-icons.css">
+    <link rel="stylesheet" href="/assets/mentor/vendor/aos/aos.css">
+    <link rel="stylesheet" href="/assets/mentor/vendor/glightbox/css/glightbox.min.css">
+    <link rel="stylesheet" href="/assets/mentor/vendor/swiper/swiper-bundle.min.css">
+    <link rel="stylesheet" href="/styles/main.css">
+  </noscript>
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicons/favicon-16x16.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicons/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="/assets/favicons/favicon.png">
+  <link rel="apple-touch-icon" href="/assets/favicons/favicon.png">
+  <script>
+    (function(){
+      try {
+        if (localStorage.getItem('sit-dark-theme') === '1') document.documentElement.classList.add('dark-theme');
+        var _p = localStorage.getItem('sit-a11y-prefs');
+        if (_p) {
+          _p = JSON.parse(_p);
+          if (_p.hc) document.documentElement.classList.add('a11y-high-contrast');
+          if (_p.lf) document.documentElement.classList.add('a11y-large-font');
+          if (_p.na) document.documentElement.classList.add('a11y-no-animations');
+        } else if (localStorage.getItem('sit-a11y') === '1') {
+          document.documentElement.classList.add('a11y-high-contrast');
+        }
+      } catch(e){}
+    })();
+  </script>
+
+  {# === JSON-LD: EducationalOrganization (Schema.org) === #}
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "EducationalOrganization",
+    "name": "{{ site.name }}",
+    "alternateName": "{{ site.short_name }}",
+    "legalName": "{{ site.full_name }}",
+    "url": "{{ site.url }}",
+    "logo": "{{ site.url }}/assets/favicons/favicon.png",
+    "description": "{{ site.description }}",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "ул. Ленина, д. 27",
+      "addressLocality": "Сальск",
+      "addressRegion": "Ростовская область",
+      "postalCode": "347630",
+      "addressCountry": "RU"
+    },
+    "telephone": "{{ site.phone }}",
+    "email": "{{ site.email }}",
+    "foundingDate": "{{ site.founded }}",
+    "sameAs": [
+      "{{ site.social.vk }}",
+      "{{ site.social.rutube }}",
+      "{{ site.legacy_url }}"
+    ]
+  }
+  </script>
+</head>
+<body class="page page--{{ layout or 'default' }}">
+  <a class="skip-link" href="#main-content">Перейти к основному содержимому</a>
+  <!-- ═══════════════════════════════════════════════ -->
+  <!-- Секция 1 — Header (Шапка)                       -->
+  <!--    Глобально подключается во всех layouts через  -->
+  <!--    base.njk → components/header.njk              -->
+  <!-- ═══════════════════════════════════════════════ -->
+  {% include "components/header.njk" %}
+
+  {# ═══════════════════════════════════════════════ #}
+  {# Секция 2 — Hero (единая на всём сайте)            #}
+  {#    components/hero.njk: «ГБПОУ РО / СИТ» +         #}
+  {#    название рубрики под чертой. Скрывается через   #}
+  {#    `hideRubric: true` во frontmatter (главная).    #}
+  {# Один файл, без условного рендера по типу страницы. #}
+  {# Меняется только надпись под чертой:             #}
+  {#   • главная — hideRubric=true, без черты        #}
+  {#   • разделы — rubricTitle (или title)           #}
+  {#   • материалы — title материала                 #}
+  {# Чтобы выключить — showHero: false во frontmatter. #}
+  {# ═══════════════════════════════════════════════ #}
+  {% include "components/hero.njk" %}
+
+  <main id="main-content" class="main-content" tabindex="-1">
+    {% block content %}{{ content | safe }}{% endblock %}
+  </main>
+
+  <!-- ═══════════════════════════════════════════════ -->
+  <!-- Секция 8 — Footer (Подвал)                      -->
+  <!--    Глобально подключается во всех layouts через  -->
+  <!--    base.njk → components/footer.njk              -->
+  <!-- ═══════════════════════════════════════════════ -->
+  {% include "components/footer.njk" %}
+
+  <a href="#" class="scroll-top d-flex align-items-center justify-content-center" id="scrollTop" aria-label="Наверх" title="Наверх">
+    <i class="bi bi-arrow-up-short" style="font-size:1.5rem;color:#fff;line-height:1;"></i>
+  </a>
+
+  {# === Все скрипты с defer (3.3.3.2) — не блокируют рендер === #}
+  <script defer src="/assets/mentor/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script defer src="/assets/mentor/vendor/php-email-form/validate.js"></script>
+  <script defer src="/assets/mentor/vendor/aos/aos.js"></script>
+  <script defer src="/assets/mentor/vendor/glightbox/js/glightbox.min.js"></script>
+  <script defer src="/assets/mentor/vendor/purecounter/purecounter_vanilla.js"></script>
+  <script defer src="/assets/js/mentor-main.js"></script>
+  <script defer src="/assets/js/main.js"></script>
+  <script defer src="/assets/js/offcanvas-nav.js"></script>
+</body>
+</html>
