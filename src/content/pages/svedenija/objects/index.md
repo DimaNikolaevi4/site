@@ -9,9 +9,16 @@ description: Материально-техническое обеспечени�
 
 Материально-техническое обеспечение представлено в соответствии с подпунктом «ж» пункта 3.4 Приказа Рособрнадзора №1493 и охватывает оборудованные кабинеты, объекты для проведения практических занятий, библиотеки, объекты спорта, средства обучения, условия питания и охраны здоровья, доступ к информационным системам и ЭОР.
 
+![МТО ГБПОУ РО «СИТ»](/assets/uploads/mto/main/MTO-2022-7.jpg)
+
 ---
 
 ## 2.7.1 Оборудованные учебные кабинеты
+
+### Сводные перечни обеспечения образовательного процесса
+
+- 📄 [Обеспечение образовательного процесса корпуса №1](/assets/uploads/mto/main/Obespechenie-obrazovatelnogo-protsessa-korpusa-1.doc)
+- 📄 [Обеспечение образовательного процесса корпуса №2](/assets/uploads/mto/main/Obespechenie-obrazovatelnogo-protsessa-korpusa-2.doc)
 
 ### Корпус №1 (г. Сальск, ул. Ленина, 1)
 
@@ -28,6 +35,16 @@ description: Материально-техническое обеспечени�
 - Мастерские производственного обучения
 - Гаражный бокс для учебных автомобилей
 
+### Фотогалерея кабинетов
+
+- ![Кабинет безопасности жизнедеятельности](/assets/uploads/mto/main/Kabinet-bezopasnosti-zhiznedeyatelnosti.jpg)
+- ![Кабинет математики](/assets/uploads/mto/main/Kabinet-matematiki.jpg)
+- ![Кабинет общих гуманитарных и социальных дисциплин](/assets/uploads/mto/main/Kabinet-obshchih-gumanitarnyh-i-sotsialnyh-distsiplin.jpg)
+- ![Кабинет технологии кулинарного и кондитерского производства](/assets/uploads/mto/main/Kabinet-tehnologii-kulinarnogo-i-konditerskogo-proizvodstva.jpg)
+- ![Кабинет физики и электротехники](/assets/uploads/mto/main/Kabinet-fiziki-i-elektrotehniki.jpg)
+- ![Кабинет химии и биологии](/assets/uploads/mto/main/Kabinet-himii-biologii.jpg)
+- ![Кабинет экономики, менеджмента, финансов, денежного обращения и кредита](/assets/uploads/mto/main/Kabinet-ekonomiki-menedzhmenta-finansov-denezhnogo-obrashcheniya-i-kredita.jpg)
+
 ---
 
 ## 2.7.2 Объекты для проведения практических занятий
@@ -41,6 +58,11 @@ description: Материально-техническое обеспечени�
 | Лаборатория электротехники | 50 м² | Стенды, измерительные приборы |
 | Кулинарная мастерская | 80 м² | Профессиональное кухонное оборудование |
 
+### Фото лабораторий
+
+- ![Лаборатория бухгалтерского учёта, налогов, налогообложения и аудита](/assets/uploads/mto/main/Laboratoriya-buhgalterskogo-ucheta-nalogov-i-nalogooblozheniya-audita.jpg)
+- ![Лаборатория информационных технологий](/assets/uploads/mto/main/Laboratoriya-informatsionnyh-tehnologiy.jpg)
+
 ---
 
 ## 2.7.3 Библиотека и информационные ресурсы
@@ -52,6 +74,17 @@ description: Материально-техническое обеспечени�
 - Доступ к электронным учебникам по реализуемым специальностям и профессиям
 - Подключение к **ЭБС «Юрайт»** (urait.ru) и **ЭБС «Лань»** (e.lanbook.com) — по логину/паролю учебной части
 - Доступ к электронным каталогам Российской государственной библиотеки
+
+**Лицензионные договоры с ЭБС:**
+
+- 📄 [Лицензионный договор с ООО «Издательство ЮРАЙТ» №43 с приложениями №1–3 (2025)](/assets/uploads/mto/biblioteka/Litsenzionnyy-dogovor-43-2025.pdf) ([прил. 1](/assets/uploads/mto/biblioteka/Prilozhenie-1-2025.pdf), [прил. 2](/assets/uploads/mto/biblioteka/Prilozhenie-2-2025.pdf), [прил. 3](/assets/uploads/mto/biblioteka/Prilozhenie-3-2025.pdf))
+- 📄 [Лицензионный договор с ООО «Издательство ЛАНЬ» на использование электронной библиотеки (04.03.2024)](/assets/uploads/mto/biblioteka/Dogovor-s-OOO-Izd-vo-LAN-04.03.2024.pdf)
+
+**Инструкции пользователей:**
+
+- 📄 [Инструкция для преподавателей (2023)](/assets/uploads/mto/biblioteka/Instruktsiya-dlya-prepodavateley-2023.pdf)
+- 📄 [Инструкция для студентов (2023)](/assets/uploads/mto/biblioteka/Instruktsiya-dlya-studentov-2023.pdf)
+- 📄 [Руководство по работе с мобильным приложением ЭБС «Лань»](/assets/uploads/mto/biblioteka/Rukovodstvo_mob_pril_LANY.pdf)
 
 ---
 
@@ -108,6 +141,10 @@ description: Материально-техническое обеспечени�
 - Контентная фильтрация доступа в Интернет (соответствие ФЗ № 436)
 - Доступ к федеральным информационным системам ФИС ГИА, ФИС ФРДО
 
+**Договор на услуги связи:**
+
+- 📄 [Государственный контракт №5703704.22 с ПАО «Ростелеком» — об оказании услуг электросвязи (16.01.2024)](/assets/uploads/mto/main/Dogovor-Rostelekom-internet.pdf)
+
 ---
 
 ## 2.7.9 Электронные образовательные ресурсы (ЭОР)
@@ -120,6 +157,22 @@ description: Материально-техническое обеспечени�
 - Дистанционные курсы и платформы повышения квалификации
 - Государственная платформа «Сферум» для учебной коммуникации
 - РЭШ (Российская электронная школа) — для довузовской подготовки
+
+**Нормативная база ЭИОС:**
+
+- 📄 [Положение об электронной информационно-образовательной среде (приложение №6 к приказу от 30.11.2023 №106а)](/assets/uploads/mto/eios/Polozhenie-EOS-2023.pdf) ([с электронной подписью](/assets/uploads/mto/eios/Polozhenie-EOS-2023.zip))
+- 📄 [Каталог электронных ресурсов](/assets/uploads/mto/eor/Katalog-elektronnyh-resursov.pdf)
+
+**Перечни ЭОР по реализуемым программам (Приказ Рособрнадзора №1493, п. 3.4 «м»):**
+
+- 📄 [09.02.01 Компьютерные системы и комплексы (2023)](/assets/uploads/mto/eor/09.02.01_perechen-EOR.pdf)
+- 📄 [38.02.01 Экономика и бухгалтерский учёт (по отраслям) (2023)](/assets/uploads/mto/eor/38.02.01_perechen-EOR.pdf)
+- 📄 [08.01.07 Мастер общестроительных работ (2023)](/assets/uploads/mto/eor/08.01.07_perechen-EOR.pdf)
+- 📄 [13.01.10 Электромонтёр по ремонту и обслуживанию электрооборудования (2023)](/assets/uploads/mto/eor/13.01.10_Perechen-EOR.pdf) · [версия 2024](/assets/uploads/mto/eor/13.01.10_Perechen-EOR.docx)
+- 📄 [15.01.05 Сварщик ручной и частично механизированной сварки (наплавки) (2023)](/assets/uploads/mto/eor/15.01.05_perechen-EOR.pdf)
+- 📄 [15.02.07 Автоматизация технологических процессов и производств (2023)](/assets/uploads/mto/eor/15.02.07_perechen-EOR.pdf)
+- 📄 [38.01.02 Продавец, контролёр-кассир (2023)](/assets/uploads/mto/eor/38.01.02_perechen-EOR.pdf)
+- 📄 [43.01.09 Повар, кондитер (2023)](/assets/uploads/mto/eor/43.01.09_perechen-EOR.pdf)
 
 ---
 
