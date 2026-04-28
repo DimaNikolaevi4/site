@@ -44,25 +44,22 @@
 
 {% set _relCount = relatedCount or 3 %}
 
-{# Если задан relatedPages — используем его, но фильтруем элементы без image. #}
+{# Источник 1: если задан relatedPages — используем как есть (без фильтра по картинке;
+   карточки без image получают template-fallback в разметке ниже). #}
 {% if relatedPages %}
-  {% set _filteredManual = [] %}
-  {% for item in relatedPages %}
-    {% if item.image and _filteredManual.length < _relCount %}
-      {% set _filteredManual = (_filteredManual.push(item), _filteredManual) %}
-    {% endif %}
-  {% endfor %}
-  {% set _relItems = _filteredManual %}
+  {% set _relItems = relatedPages %}
 {% endif %}
 
-{# Авто-подбор из коллекции: пропускаем материалы без картинки и берём следующие. #}
+{# Источник 2: авто-подбор из коллекции. Берём подряд первые _relCount материалов
+   (исключая текущую страницу). Картинку, если у материала её нет, подменяет
+   template-fallback в разметке — чтобы блок гарантированно был полным. #}
 {% if not _relItems %}
   {% set _relCollection = relatedCollection or category or section %}
   {% if _relCollection and collections[_relCollection] %}
     {% set _auto = [] %}
     {% for item in collections[_relCollection] | reverse %}
-      {% set _img = item.data.image or item.data.coverImage or (item.data.hero and item.data.hero.image) %}
-      {% if item.url != page.url and _img and _auto.length < _relCount %}
+      {% if item.url != page.url and _auto.length < _relCount %}
+        {% set _img = item.data.image or item.data.coverImage or (item.data.hero and item.data.hero.image) %}
         {% set _auto = (_auto.push({
           url: item.url,
           title: item.data.title,
@@ -86,7 +83,7 @@
     <div class="related-grid">
       {% for item in _relItems %}
       <div class="course-item">
-        <img src="{{ item.image }}" class="img-fluid" alt="{{ item.title }}" loading="lazy">
+        <img src="{{ item.image or '/assets/template/course-' ~ ((loop.index0 % 3) + 1) ~ '.jpg' }}" class="img-fluid" alt="{{ item.title }}" loading="lazy">
         <div class="course-content">
           {% if item.date %}
           <p class="date mb-3">{{ item.date | dateRu }}</p>
