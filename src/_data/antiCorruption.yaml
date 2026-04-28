@@ -29,9 +29,9 @@ sections:
         signed: true
       - title: Указ Президента РФ №460 (форма справки о доходах)
         date: 23.06.2014
-        type: pdf
+        type: html
         size: ""
-        url: ""
+        url: "http://publication.pravo.gov.ru/Document/View/0001201406240039"
         signed: true
       - title: Указ Президента РФ №378 (Национальный план 2018–2020)
         date: 29.06.2018
@@ -53,9 +53,9 @@ sections:
         signed: true
       - title: Постановление Правительства РФ №29 (правила сообщения о трудоустройстве с госслужбы)
         date: 21.01.2015
-        type: pdf
+        type: html
         size: ""
-        url: ""
+        url: "http://publication.pravo.gov.ru/Document/View/0001201501230003"
         signed: true
       - title: Постановление Правительства РФ №10 «О порядке сообщения о получении подарка в связи с должностным положением, сдачи, оценки и реализации подарка»
         date: 09.01.2014
