@@ -44,14 +44,22 @@ main:
     children:
       - title: Слово директора
         url: /abiturientam/slovo-direktora/
-      - title: Правила приема
-        url: /abiturientam/#rules
       - title: Специальности и профессии
         url: /abiturientam/specialnosti/
-      - title: Приемная комиссия
-        url: /abiturientam/#commission
+      - title: Приёмная кампания 2026
+        url: /abiturientam/priemnaya-kampaniya-2026/
       - title: День открытых дверей
         url: /abiturientam/den-otkrytyh-dverej/
+      - title: Виртуальная экскурсия
+        url: /abiturientam/virtualnaya-ekskursiya/
+      - title: Подача документов (эл. почта)
+        url: /abiturientam/podacha-elektronnaya-pochta/
+      - title: Подача документов (почтовая связь)
+        url: /abiturientam/podacha-pochtovaya-svyaz/
+      - title: Платная основа обучения
+        url: /abiturientam/platnaya-osnova/
+      - title: Контакты приёмной комиссии
+        url: /abiturientam/kontakty-grafik/
   - title: Учебно-методическая работа
     url: /uchebno-metodicheskaja-rabota/
     key: umr
