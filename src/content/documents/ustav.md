@@ -1,10 +1,37 @@
 ---
 title: Устав техникума
+layout: layouts/page.njk
 date: 2024-01-15
-file: /uploads/ustav.pdf
-description: Основной учредительный документ
-fileType: pdf
-fileSize: 2.5 МБ
-fileUrl: /uploads/ustav.pdf
-eleventyExcludeFromCollections: false
+description: Устав ГБПОУ РО «Сальский индустриальный техникум» — основной учредительный документ образовательной организации
+showHero: false
+parentSection:
+  url: /svedenija/dokumenty/
+  title: Документы
+additionalBlocks: |
+  <div class="alert alert-warning d-flex align-items-start gap-3 mt-4" role="alert" style="border-left: 4px solid #f0ad4e;">
+    <i class="bi bi-exclamation-triangle-fill fs-4 flex-shrink-0 mt-1" aria-hidden="true"></i>
+    <div>
+      <strong>Файл временно недоступен</strong><br>
+      PDF-версия Устава в настоящее время не размещена на сайте. Для получения документа обратитесь в канцелярию техникума:
+      <ul class="mb-0 mt-2">
+        <li>Лично: г. Сальск, ул. Ленина, 98</li>
+        <li>По телефону: <a href="tel:+78637242215">8 (86372) 4-22-15</a></li>
+        <li>По e-mail: <a href="mailto:info@sit-salsk.ru">info@sit-salsk.ru</a></li>
+      </ul>
+    </div>
+  </div>
 ---
+
+## Устав ГБПОУ РО «Сальский индустриальный техникум»
+
+Устав является основным учредительным документом государственного бюджетного профессионального образовательного учреждения Ростовской области «Сальский индустриальный техникум».
+
+Документ определяет:
+
+- полное и сокращённое наименование учреждения;
+- организационно-правовую форму и тип образовательной организации;
+- учредителя и собственника имущества;
+- предмет, цели и виды деятельности;
+- порядок управления учреждением;
+- права и обязанности участников образовательных отношений;
+- порядок реорганизации и ликвидации.
