@@ -22,12 +22,10 @@
     coverImage:     URL — обложка внутри контентной зоны
     coverAlt:       строка — alt текста обложки
     date:           дата публикации (YYYY-MM-DD)
-    author:         строка — автор
     category:       slug раздела (для хлебных крошек, мета, ссылки «назад»)
     categoryTitle:  строка — человеческое название категории
     section:        slug раздела (альтернатива category)
     sectionTitle:   строка — человеческое название раздела
-    readingTime:    число (минут)
     attachments:    массив { url, name, size } — вложения (PDF, DOCX, …)
     tags:           массив строк — теги
     relatedPages:   массив { url, title, image, excerpt, date } — переопределить «Читайте также»
@@ -73,20 +71,6 @@
         </time>
         {% endif %}
 
-        {% if author %}
-        <span class="post-meta__item post-author" itemprop="author" itemscope itemtype="https://schema.org/Person">
-          <i class="bi bi-person" aria-hidden="true"></i>
-          <span class="visually-hidden">Автор:</span>
-          <span itemprop="name">{{ author }}</span>
-        </span>
-        {% endif %}
-
-        {% if readingTime %}
-        <span class="post-meta__item post-reading-time">
-          <i class="bi bi-clock" aria-hidden="true"></i>
-          {{ readingTime }} мин
-        </span>
-        {% endif %}
       </div>
 
     </header>
