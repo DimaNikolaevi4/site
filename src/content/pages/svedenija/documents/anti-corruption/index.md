@@ -5,12 +5,12 @@ permalink: /svedenija/dokumenty/anti-corruption/
 eleventyNavigation:
   key: anti-corruption
   parent: documents
-breadcrumb:
-  - title: Сведения
+breadcrumbs:
+  - text: Сведения
     url: /svedenija/
-  - title: Документы
+  - text: Документы
     url: /svedenija/dokumenty/
-  - title: Антикоррупционные документы
+  - text: Антикоррупционные документы
 rubric: "0"
 ---
 
