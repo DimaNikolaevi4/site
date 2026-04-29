@@ -2,6 +2,7 @@ const yaml = require("js-yaml");
 const lunr = require("lunr");
 const fs = require('fs');
 const path = require('path');
+const { minify: minifyHtml } = require('html-minifier-terser');
 
 // Загрузка структуры рубрик
 function loadRubrics() {
@@ -421,6 +422,97 @@ module.exports = function(eleventyConfig) {
     return JSON.stringify(idx);
   });
   
+  // === <picture> с WebP-источником для всех локальных растровых <img> ===
+  // Для каждого <img src="/path.jpg|.jpeg|.png"> оборачиваем в <picture>:
+  //   <picture><source srcset="/path.webp" type="image/webp"><img ...></picture>
+  // Только если файл public/path.webp существует (генерируется pre-build скриптом scripts/generate-webp.mjs).
+  // Защищаемся от двойного оборачивания: уже существующие <picture>...</picture> блоки временно прячем.
+  // Внешние URL (http/https), .gif (часто анимация), .svg, .webp — пропускаем.
+  const webpExistsCache = new Map();
+  function localWebpExists(srcUrl) {
+    // Только локальные пути, начинающиеся с "/" (и не "//" — это protocol-relative)
+    if (!srcUrl || !srcUrl.startsWith('/') || srcUrl.startsWith('//')) return false;
+    // Соответствие webp-файлу в выходной директории (passthrough копирует туда из src/)
+    const webpUrl = srcUrl.replace(/\.(jpe?g|png)$/i, '.webp');
+    if (webpExistsCache.has(webpUrl)) return webpExistsCache.get(webpUrl);
+    const fsPath = path.join(__dirname, 'public', webpUrl.replace(/^\//, ''));
+    const exists = fs.existsSync(fsPath);
+    webpExistsCache.set(webpUrl, exists);
+    return exists;
+  }
+
+  eleventyConfig.addTransform('pictureWebp', function (content) {
+    const outputPath = this.page && this.page.outputPath;
+    if (!outputPath || !outputPath.endsWith('.html')) return content;
+
+    // 1) Спрятать существующие <picture>...</picture> блоки (чтобы не оборачивать вложенные <img>).
+    const placeholders = [];
+    const PLACEHOLDER = (i) => `\u0000PICTURE_PLACEHOLDER_${i}\u0000`;
+    let work = content.replace(/<picture\b[\s\S]*?<\/picture>/gi, (block) => {
+      placeholders.push(block);
+      return PLACEHOLDER(placeholders.length - 1);
+    });
+
+    // 2) Для оставшихся <img> с локальным .jpg/.jpeg/.png src и существующим webp — обернуть.
+    work = work.replace(/<img\b([^>]*?)>/gi, (full, attrs) => {
+      const srcMatch = attrs.match(/\bsrc\s*=\s*["']([^"']+)["']/i);
+      if (!srcMatch) return full;
+      const src = srcMatch[1];
+      if (!/\.(jpe?g|png)$/i.test(src)) return full;       // не растровый — пропуск
+      if (!localWebpExists(src)) return full;               // нет webp-эквивалента — пропуск
+      const webpUrl = src.replace(/\.(jpe?g|png)$/i, '.webp');
+      return `<picture><source srcset="${webpUrl}" type="image/webp"><img${attrs}></picture>`;
+    });
+
+    // 3) Восстановить спрятанные блоки.
+    work = work.replace(/\u0000PICTURE_PLACEHOLDER_(\d+)\u0000/g, (_, i) => placeholders[Number(i)]);
+    return work;
+  });
+
+  // === Lazy loading для всех <img> без атрибута loading= ===
+  // Покрывает картинки из импортированного Markdown-контента и любые ручные <img>,
+  // у которых атрибут не выставлен. Если loading= уже задан явно (eager/lazy) — не трогаем.
+  // decoding="async" добавляем тоже только при отсутствии — для лучшей отзывчивости рендера.
+  // ВАЖНО: транформ работает ВСЕГДА (и в dev, и в build), т.к. это исправление разметки, а не оптимизация.
+  eleventyConfig.addTransform('imgLazy', function (content) {
+    const outputPath = this.page && this.page.outputPath;
+    if (!outputPath || !outputPath.endsWith('.html')) return content;
+    return content.replace(/<img\b([^>]*?)>/gi, (full, attrs) => {
+      let out = attrs;
+      if (!/\bloading\s*=/i.test(out)) out += ' loading="lazy"';
+      if (!/\bdecoding\s*=/i.test(out)) out += ' decoding="async"';
+      return `<img${out}>`;
+    });
+  });
+
+  // === Минификация HTML (только в режиме build, не в dev/serve) ===
+  // Eleventy 3.x выставляет process.env.ELEVENTY_RUN_MODE в "build"|"serve"|"watch".
+  // Минифицируем только при build (npm run build), чтобы не замедлять разработку.
+  if (process.env.ELEVENTY_RUN_MODE === 'build') {
+    eleventyConfig.addTransform('htmlmin', async function (content) {
+      const outputPath = this.page && this.page.outputPath;
+      if (!outputPath || !outputPath.endsWith('.html')) return content;
+      try {
+        return await minifyHtml(content, {
+          collapseWhitespace: true,
+          removeComments: true,
+          conservativeCollapse: true,    // не схлопывать пробелы там, где это поменяет рендер (между inline-элементами)
+          minifyCSS: true,
+          minifyJS: true,
+          decodeEntities: false,         // не трогать &nbsp; и пр. — оставляем как написано
+          removeAttributeQuotes: false,  // оставить кавычки у атрибутов (надёжнее, лишь немного больше байт)
+          removeRedundantAttributes: true,
+          useShortDoctype: true,
+          // ВАЖНО: НЕ удалять атрибуты-ссылки на внешние ресурсы и внутренние якоря.
+          // НЕ трогать содержимое <pre>, <code>, <textarea> — html-minifier-terser сам их щадит.
+        });
+      } catch (e) {
+        console.warn(`[htmlmin] не удалось минифицировать ${outputPath}: ${e.message}`);
+        return content;
+      }
+    });
+  }
+
   // === Поддержка pathPrefix для деплоя в подпапку ===
   const pathPrefix = process.env.PATH_PREFIX || "/";
   

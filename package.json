@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "scripts": {
     "dev": "node_modules/.bin/eleventy --serve --port=5000",
-    "build": "node_modules/.bin/eleventy"
+    "build": "node scripts/generate-webp.mjs && node_modules/.bin/eleventy && node scripts/minify-css.mjs"
   },
   "dependencies": {
     "@11ty/eleventy-navigation": "^0.3.5",
@@ -17,7 +17,10 @@
   },
   "devDependencies": {
     "@11ty/eleventy": "^3.1.5",
-    "js-yaml": "^4.1.1"
+    "clean-css": "^5.3.3",
+    "html-minifier-terser": "^7.2.0",
+    "js-yaml": "^4.1.1",
+    "sharp": "^0.34.5"
   },
   "description": "> 🏫 **ГБПОУ РО \"Сальский индустриальный техникум\"**   > 🌐 Официальный сайт: `https://сит-сальск.рф/`   > 📦 Статический сайт на **Eleventy + Decap CMS**   > 🚀 Хостинг: **Beget** (SSH, Node.js 18, PHP 8.3)",
   "main": ".eleventy.js",
