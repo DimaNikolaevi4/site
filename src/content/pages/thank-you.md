@@ -1,12 +1,25 @@
 ---
-layout: layouts/page-full.njk
 title: Спасибо за обращение
+layout: layouts/page-full.njk
 permalink: /thank-you/
-eleventyExcludeFromCollections: true
+description: "Подтверждение отправки сообщения через форму обратной связи на сайте ГБПОУ РО «Сальский индустриальный техникум»"
 rubric: "0"
+eleventyExcludeFromCollections: true
+suppressSubrubrics: true
 ---
-<div class="thank-you-page">
-  <h1>Спасибо за ваше сообщение!</h1>
-  <p>Ваше обращение успешно отправлено. Мы свяжемся с вами в ближайшее время.</p>
-  <p><a href="/" class="submit-button">Вернуться на главную</a></p>
-</div>
+
+# Спасибо за ваше обращение
+
+Ваше сообщение успешно отправлено в ГБПОУ РО «Сальский индустриальный техникум». Мы рассмотрим обращение и свяжемся с вами в ближайшее время.
+
+Если вопрос срочный — позвоните в приёмную: **8 (86372) 5-00-52** (пн–пт 08:00–16:00, сб 08:00–13:00, перерыв 12:00–13:00).
+
+{% set newsMode = 'razdel' %}
+{% set newsTitle = "Что дальше" %}
+{% set excludeUrls = none %}
+{% set newsCards = [
+  { url: "/", emoji: "🏠", title: "Главная страница", description: "Вернуться на главную сайта техникума." },
+  { url: "/contacts/", emoji: "📞", title: "Контакты и график работы", description: "Адрес, телефон, график работы приёмной комиссии." },
+  { url: "/news/", emoji: "📰", title: "Новости техникума", description: "Свежие события, объявления и публикации." }
+] %}
+{% include "components/news.njk" %}
