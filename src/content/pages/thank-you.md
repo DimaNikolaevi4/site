@@ -4,7 +4,6 @@ layout: layouts/page-full.njk
 permalink: /thank-you/
 description: "Подтверждение отправки сообщения через форму обратной связи на сайте ГБПОУ РО «Сальский индустриальный техникум»"
 rubric: "0"
-eleventyExcludeFromCollections: true
 suppressSubrubrics: true
 ---
 

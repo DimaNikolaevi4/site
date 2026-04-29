@@ -5,10 +5,10 @@ eleventyExcludeFromCollections: true
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 {%- for page in collections.all %}
-{%- if page.url and not page.data.eleventyExcludeFromCollections %}
+{%- if page.url and not page.data.excludeFromSitemap %}
   <url>
     <loc>{{ site.url }}{{ page.url | url }}</loc>
-    <lastmod>{{ page.date.toISOString().split('T')[0] }}</lastmod>
+    <lastmod>{% if page.data.updated %}{{ (page.data.updated | dateToISO).split('T')[0] }}{% else %}{{ (page.date | dateToISO).split('T')[0] }}{% endif %}</lastmod>
     <changefreq>monthly</changefreq>
     <priority>{% if page.url == '/' %}1.0{% else %}0.8{% endif %}</priority>
   </url>

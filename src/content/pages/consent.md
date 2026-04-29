@@ -4,7 +4,6 @@ layout: layouts/page-full.njk
 permalink: /consent/
 description: "Информация о порядке оформления согласия на обработку персональных данных в ГБПОУ РО «Сальский индустриальный техникум»"
 rubric: "0"
-eleventyExcludeFromCollections: true
 suppressSubrubrics: true
 updated: 2025-11-07
 ---

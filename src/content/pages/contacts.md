@@ -4,7 +4,6 @@ layout: layouts/page-full.njk
 permalink: /contacts/
 description: "Контактная информация и график работы приёмной комиссии ГБПОУ РО «Сальский индустриальный техникум»"
 rubric: "0"
-eleventyExcludeFromCollections: true
 source_url: https://sit-salsk.ru/?p=33052
 updated: 2025-11-07
 ---

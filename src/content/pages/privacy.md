@@ -4,7 +4,6 @@ layout: layouts/page-full.njk
 permalink: /privacy/
 description: "Политика в отношении обработки персональных данных в государственном бюджетном профессиональном образовательном учреждении Ростовской области «Сальский индустриальный техникум» (ГБПОУ РО «СИТ»). Утверждена приказом № 49 от 03.05.2023."
 rubric: "0"
-eleventyExcludeFromCollections: true
 source_url: https://sit-salsk.ru/?page_id=13483
 updated: 2023-05-03
 ---
