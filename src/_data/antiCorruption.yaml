@@ -257,11 +257,9 @@ sections:
       - title: Форма уведомления работодателя о фактах склонения к коррупции
         type: docx
         size: ""
-        url: "#"
       - title: Анкета при поступлении на должность
         type: docx
         size: ""
-        url: "#"
 
   - id: expertise
     title: Антикоррупционная экспертиза
@@ -365,14 +363,10 @@ sections:
         date: 2025-04-01
         type: pdf
         size: ""
-        url: "#"
-        signed: true
       - title: Сведения о доходах заместителей директора за 2024 год
         date: 2025-04-01
         type: pdf
         size: ""
-        url: "#"
-        signed: true
       - title: Приобретение оборудования за период с 01.01.2022 по 31.12.2022
         date: 2022
         type: pdf
