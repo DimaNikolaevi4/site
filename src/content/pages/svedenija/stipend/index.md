@@ -77,43 +77,30 @@ description: Стипендии и меры социальной поддерж�
 
 ### Приказы о внесении изменений в положения по детям-сиротам
 
-- Приказ № 25 от 03.03.2023 — Изменения в положения по детям-сиротам 2023:
-  [PDF](https://сит-сальск.рф/assets/uploads/stipend/Prikaz-25-ot-03.03.2023-Izmeneniya-v-polozheniya-po-detyam-sirotam-2023.pdf) · [с электронной подписью (ZIP)](https://сит-сальск.рф/assets/uploads/stipend/Prikaz-25-ot-03.03.2023-Izmeneniya-v-polozheniya-po-detyam-sirotam-2023.zip)
-- Приказ № 142-А от 10.04.2023 — Изменения в положения по детям-сиротам 2023:
-  [PDF](https://сит-сальск.рф/assets/uploads/stipend/Prikaz-142-A-ot-10.04.2023-Izmeneniya-v-polozheniya-po-detyam-sirotam-2023.pdf) · [с электронной подписью (ZIP)](https://сит-сальск.рф/assets/uploads/stipend/Prikaz-142-A-ot-10.04.2023-Izmeneniya-v-polozheniya-po-detyam-sirotam-2023.zip)
-- Приказ № 3 от 09.01.2023 — О внесении изменений в Положение о полном государственном обеспечении:
-  [PDF](https://сит-сальск.рф/assets/uploads/stipend/Prikaz-3-ot-09.01.2023-g.-O-vnesenii-izmeneniy-v-Polozhenie-o-polnom-gosudarstvennom-obespechenii.pdf) · [с электронной подписью (ZIP)](https://сит-сальск.рф/assets/uploads/stipend/Prikaz-3-ot-09.01.2023g.-O-vnesenii-izmeneniy-v-Polozhenie-o-polnom-gosudarstvennom-obespechenii.zip)
-- Приказ № 2 от 10.01.2022 — Изменения в положения по детям-сиротам:
-  [PDF](https://сит-сальск.рф/assets/uploads/stipend/Prikaz-2-ot-10.01.2022-Izmeneniya-v-polozheniya-po-detyam-sirotam-2022.pdf) · [с электронной подписью (ZIP)](https://сит-сальск.рф/assets/uploads/stipend/Prikaz-2-ot-10.01.2022-Izmeneniya-v-polozheniya-po-detyam-sirotam-2022.zip)
+- [Приказ № 25 от 03.03.2023 — Изменения в положения по детям-сиротам 2023](https://сит-сальск.рф/assets/uploads/stipend/Prikaz-25-ot-03.03.2023-Izmeneniya-v-polozheniya-po-detyam-sirotam-2023.pdf) (PDF)
+- [Приказ № 142-А от 10.04.2023 — Изменения в положения по детям-сиротам 2023](https://сит-сальск.рф/assets/uploads/stipend/Prikaz-142-A-ot-10.04.2023-Izmeneniya-v-polozheniya-po-detyam-sirotam-2023.pdf) (PDF)
+- [Приказ № 3 от 09.01.2023 — О внесении изменений в Положение о полном государственном обеспечении](https://сит-сальск.рф/assets/uploads/stipend/Prikaz-3-ot-09.01.2023-g.-O-vnesenii-izmeneniy-v-Polozhenie-o-polnom-gosudarstvennom-obespechenii.pdf) (PDF)
+- [Приказ № 2 от 10.01.2022 — Изменения в положения по детям-сиротам](https://сит-сальск.рф/assets/uploads/stipend/Prikaz-2-ot-10.01.2022-Izmeneniya-v-polozheniya-po-detyam-sirotam-2022.pdf) (PDF)
 
 ### Положения по видам обеспечения детей-сирот
 
-Каждое положение представлено основным документом (PDF) и архивом с электронной подписью (ZIP).
+Каждое положение доступно в формате PDF.
 
-- **Гигиена и медикаменты** —
-  [PDF](https://сит-сальск.рф/assets/uploads/stipend/Polozhenie-na-gigienu-i-medikamenty-detyam-sirotam.pdf) · [ZIP с эл. подписью](https://сит-сальск.рф/assets/uploads/stipend/Polozhenie-na-gigienu-i-medikamenty-detyam-sirotam.zip)
-- **Одежда и обувь** —
-  [PDF](https://сит-сальск.рф/assets/uploads/stipend/Polozhenie-na-odezhdu-i-obuv-detyam-sirotam.pdf) · [ZIP с эл. подписью](https://сит-сальск.рф/assets/uploads/stipend/Polozhenie-na-odezhdu-i-obuv-detyam-sirotam.zip)
-- **Питание и проживание** —
-  [PDF](https://сит-сальск.рф/assets/uploads/stipend/Polozhenie-na-pitanie-i-prozhivanie-detey-sirot.pdf) · [ZIP с эл. подписью](https://сит-сальск.рф/assets/uploads/stipend/Polozhenie-na-pitanie-i-prozhivanie-detey-sirot.zip)
-- **Предметы первой необходимости и культурно-массовая работа** —
-  [PDF](https://сит-сальск.рф/assets/uploads/stipend/Polozhenie-na-predmety-pervoy-neobh.-i-kult.-mas.rab.-detyam-sirotam.pdf) · [ZIP с эл. подписью](https://сит-сальск.рф/assets/uploads/stipend/Polozhenie-na-predmety-pervoy-neobh.-i-kult.-mas.rab.-detyam-sirotam.zip)
-- **Проезд** —
-  [PDF](https://сит-сальск.рф/assets/uploads/stipend/Polozhenie-na-proezd-detey-sirot.pdf) · [ZIP с эл. подписью](https://сит-сальск.рф/assets/uploads/stipend/Polozhenie-na-proezd-detey-sirot.zip)
-- **Дополнительные платные услуги** —
-  [PDF](https://сит-сальск.рф/assets/uploads/stipend/Polozhenie-o-dopolnitelnyh-platnyh-uslugah.pdf) · [ZIP с эл. подписью](https://сит-сальск.рф/assets/uploads/stipend/Polozhenie-o-dopolnitelnyh-platnyh-uslugah.zip)
-- **Подготовительные курсы** —
-  [PDF](https://сит-сальск.рф/assets/uploads/stipend/Polozhenie-o-podgotovitelnyh-kursah-detyam-sirotam.pdf) · [ZIP с эл. подписью](https://сит-сальск.рф/assets/uploads/stipend/Polozhenie-o-podgotovitelnyh-kursah-detyam-sirotam.zip)
-- **Выпуск из техникума** —
-  [PDF](https://сит-сальск.рф/assets/uploads/stipend/Polozhenie-po-vypusku-detey-sirot.pdf) · [ZIP с эл. подписью](https://сит-сальск.рф/assets/uploads/stipend/Polozhenie-po-vypusku-detey-sirot.zip)
-- **Денежные выплаты** —
-  [PDF](https://сит-сальск.рф/assets/uploads/stipend/Polozhenie-po-denezhnym-vyplatam-detyam-sirotam.pdf) · [ZIP с эл. подписью](https://сит-сальск.рф/assets/uploads/stipend/Polozhenie-po-denezhnym-vyplatam-detyam-sirotam.zip)
+- **Гигиена и медикаменты** — [PDF](https://сит-сальск.рф/assets/uploads/stipend/Polozhenie-na-gigienu-i-medikamenty-detyam-sirotam.pdf)
+- **Одежда и обувь** — [PDF](https://сит-сальск.рф/assets/uploads/stipend/Polozhenie-na-odezhdu-i-obuv-detyam-sirotam.pdf)
+- **Питание и проживание** — [PDF](https://сит-сальск.рф/assets/uploads/stipend/Polozhenie-na-pitanie-i-prozhivanie-detey-sirot.pdf)
+- **Предметы первой необходимости и культурно-массовая работа** — [PDF](https://сит-сальск.рф/assets/uploads/stipend/Polozhenie-na-predmety-pervoy-neobh.-i-kult.-mas.rab.-detyam-sirotam.pdf)
+- **Проезд** — [PDF](https://сит-сальск.рф/assets/uploads/stipend/Polozhenie-na-proezd-detey-sirot.pdf)
+- **Дополнительные платные услуги** — [PDF](https://сит-сальск.рф/assets/uploads/stipend/Polozhenie-o-dopolnitelnyh-platnyh-uslugah.pdf)
+- **Подготовительные курсы** — [PDF](https://сит-сальск.рф/assets/uploads/stipend/Polozhenie-o-podgotovitelnyh-kursah-detyam-sirotam.pdf)
+- **Выпуск из техникума** — [PDF](https://сит-сальск.рф/assets/uploads/stipend/Polozhenie-po-vypusku-detey-sirot.pdf)
+- **Денежные выплаты** — [PDF](https://сит-сальск.рф/assets/uploads/stipend/Polozhenie-po-denezhnym-vyplatam-detyam-sirotam.pdf)
 
 ---
 
 ## Платные услуги и организация питания
 
-- [Положение о порядке предоставления платных услуг и расходовании средств](https://сит-сальск.рф/assets/uploads/stipend/Polozhenie-o-poryadke-predostavleniya-platnyh-uslug-i-rashodovanii-sredstv.pdf) (PDF) · [ZIP с эл. подписью](https://сит-сальск.рф/assets/uploads/stipend/Polozhenie-o-poryadke-predostavleniya-platnyh-uslug-i-rashodovanii-sredstv.zip)
+- [Положение о порядке предоставления платных услуг и расходовании средств](https://сит-сальск.рф/assets/uploads/stipend/Polozhenie-o-poryadke-predostavleniya-platnyh-uslug-i-rashodovanii-sredstv.pdf) (PDF)
 - [Изменения в Положение об организации питания обучающихся ГБПОУ РО СИТ](https://сит-сальск.рф/assets/uploads/stipend/Izmeneniya-v-Polozhenie-ob-organizatsii-pitaniya-obuchayushchihsya-GBPOU-RO-SIT.pdf) (PDF)
 
 ---
