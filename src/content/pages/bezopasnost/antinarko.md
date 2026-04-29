@@ -55,6 +55,43 @@ description: Антинаркотическая работа в ГБПОУ РО 
 
 - Единый номер вызова экстренных служб: **112**
 - Полиция: **102**
-- Линия «Сообщи, где торгуют смертью» — действует в рамках всероссийской акции МВД (см. публикации [`?p=31663`](https://sit-salsk.ru/?p=31663) и [`?p=30152`](https://sit-salsk.ru/?p=30152))
+- Дежурная часть управления по контролю за оборотом наркотиков ГУ МВД России по Ростовской области (линия «Сообщи, где торгуют смертью»): **8 (863) 249-36-96**
+- Телефон доверия ГБУ РО «Наркологический диспансер» (пн–пт, 9:00–17:30): **8 (863) 240-60-70**
+- Отдел МВД России по Сальскому району: **8 (86372) 5-13-32**, **5-24-62**
 - Приёмная техникума: **8 (86372) 5-05-71**
 - Педагог-психолог техникума — раздел [/psihologicheskoe/](/psihologicheskoe/)
+
+Источник телефонов: [`?p=31663`](https://sit-salsk.ru/?p=31663) — публикация общероссийской антинаркотической акции «Сообщи, где торгуют смертью» от 13.10.2024.
+
+<aside class="sos-block" role="complementary" aria-label="Экстренная связь">
+  <p class="sos-block__title"><i class="bi bi-exclamation-triangle-fill" aria-hidden="true"></i> Экстренная связь</p>
+  <ul class="sos-block__list">
+    <li>
+      <a class="sos-block__btn" href="tel:+78632493696">
+        <i class="bi bi-telephone-fill" aria-hidden="true"></i>
+        <span class="sos-block__btn-text">
+          <span class="sos-block__btn-label">Сообщи, где торгуют смертью</span>
+          <span class="sos-block__btn-value">8 (863) 249-36-96</span>
+        </span>
+      </a>
+    </li>
+    <li>
+      <a class="sos-block__btn" href="tel:112">
+        <i class="bi bi-shield-fill-exclamation" aria-hidden="true"></i>
+        <span class="sos-block__btn-text">
+          <span class="sos-block__btn-label">Экстренные службы</span>
+          <span class="sos-block__btn-value">112</span>
+        </span>
+      </a>
+    </li>
+    <li>
+      <a class="sos-block__btn" href="/psihologicheskoe/">
+        <i class="bi bi-chat-heart-fill" aria-hidden="true"></i>
+        <span class="sos-block__btn-text">
+          <span class="sos-block__btn-label">Психологическая помощь</span>
+          <span class="sos-block__btn-value">Психолог техникума</span>
+        </span>
+      </a>
+    </li>
+  </ul>
+</aside>
