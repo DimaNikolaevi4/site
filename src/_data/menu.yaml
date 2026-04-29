@@ -7,7 +7,7 @@ main:
     key: about
     children:
       - title: Основные сведения
-        url: /about/osnovnye-svedenija/
+        url: /svedenija/basic/
       - title: История
         url: /about/#history
       - title: Руководство
@@ -91,19 +91,19 @@ main:
       - title: Со школами
         url: /sotrudnichestvo/shkoly/
   - title: Безопасность
-    url: /bezopasnost/
+    url: /bezopasnost/extremizm/
     key: bezopasnost
     children:
-      - title: Комплексная безопасность
-        url: /bezopasnost/#complex
       - title: Профилактика экстремизма
         url: /bezopasnost/extremizm/
       - title: Противодействие коррупции
         url: /bezopasnost/antikorrupcija/
-      - title: Противодействие коррупции (рубрика)
-        url: /bezopasnost/korrupcija/
+      - title: Пожарная безопасность
+        url: /bezopasnost/pozharnaya/
+      - title: Антинаркотические меры
+        url: /bezopasnost/antinarko/
   - title: Студентам и родителям
-    url: /studentam-i-roditeljam/
+    url: /studentam-i-roditeljam/raspisanie/
     key: studentam
     children:
       - title: Новости
@@ -119,15 +119,15 @@ main:
       - title: Родителям
         url: /studentam-i-roditeljam/roditeljam/
   - title: Центр Карьеры
-    url: /career/
+    url: /vypusknikam/centr-karjery/
     key: career
     children:
-      - title: О центре
-        url: /career/#about
-      - title: Вакансии для выпускников
-        url: /career/#vacancies
-      - title: Партнеры
-        url: /career/#partners
+      - title: Центр Карьеры
+        url: /vypusknikam/centr-karjery/
+      - title: Центр содействия трудоустройству
+        url: /vypusknikam/centr-sodejstvija-trudoustrojstvu/
+      - title: Все материалы выпускникам
+        url: /vypusknikam/
   - title: Профессионалы-2026
     url: /professionaly-2026/
     key: professionals
