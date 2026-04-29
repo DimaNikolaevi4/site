@@ -232,6 +232,9 @@ main_rubrics:
       - code: "7.4"
         title: "Пожарная безопасность"
         slug: pozharnaya
+      - code: "7.5"
+        title: "Антинаркотические меры"
+        slug: antinarko
 
   - code: "8"
     title: "СТУДЕНТАМ И ИХ РОДИТЕЛЯМ"
