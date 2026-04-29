@@ -421,7 +421,31 @@ module.exports = function(eleventyConfig) {
 
     return JSON.stringify(idx);
   });
-  
+
+  // === Фильтр для поиска: исключает служебные страницы ===
+  eleventyConfig.addFilter('filterBySearch', function(collection) {
+    const excludePatterns = [
+      '/404.html',
+      '/search/',
+      '/thank-you/',
+      '/admin/',
+      '/sitemap.xml',
+      '/robots.txt',
+      '/search-index.json'
+    ];
+    return collection.filter(item => {
+      if (!item.url) return false;
+      if (excludePatterns.some(p => item.url.startsWith(p))) return false;
+      if (item.data && item.data.eleventyExcludeFromCollections) return false;
+      return true;
+    });
+  });
+
+  // === JSON-фильтр для Nunjucks ===
+  eleventyConfig.addFilter('jsonify', function(value) {
+    return JSON.stringify(value);
+  });
+
   // === <picture> с WebP-источником для всех локальных растровых <img> ===
   // Для каждого <img src="/path.jpg|.jpeg|.png"> оборачиваем в <picture>:
   //   <picture><source srcset="/path.webp" type="image/webp"><img ...></picture>
