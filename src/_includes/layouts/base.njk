@@ -81,16 +81,19 @@
   </script>
 
   {# === JSON-LD: EducationalOrganization (Schema.org) === #}
+  {# Все строковые значения сериализуются через `| dump | safe`: dump выдаёт #}
+  {# валидный JSON-литерал (с правильным экранированием кавычек и спецсимволов), #}
+  {# safe отключает HTML-эскейпинг Nunjucks (иначе кавычки превратятся в &quot;). #}
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "EducationalOrganization",
-    "name": "{{ site.name }}",
-    "alternateName": "{{ site.short_name }}",
-    "legalName": "{{ site.full_name }}",
-    "url": "{{ site.url }}",
-    "logo": "{{ site.url }}/assets/favicons/favicon.png",
-    "description": "{{ site.description }}",
+    "name": {{ site.name | dump | safe }},
+    "alternateName": {{ site.short_name | dump | safe }},
+    "legalName": {{ site.full_name | dump | safe }},
+    "url": {{ site.url | dump | safe }},
+    "logo": {{ (site.url + "/assets/favicons/favicon.png") | dump | safe }},
+    "description": {{ site.description | dump | safe }},
     "address": {
       "@type": "PostalAddress",
       "streetAddress": "ул. Ленина, д. 27",
@@ -99,13 +102,13 @@
       "postalCode": "347630",
       "addressCountry": "RU"
     },
-    "telephone": "{{ site.phone }}",
-    "email": "{{ site.email }}",
-    "foundingDate": "{{ site.founded }}",
+    "telephone": {{ site.phone | dump | safe }},
+    "email": {{ site.email | dump | safe }},
+    "foundingDate": {{ (site.founded | string) | dump | safe }},
     "sameAs": [
-      "{{ site.social.vk }}",
-      "{{ site.social.rutube }}",
-      "{{ site.legacy_url }}"
+      {{ site.social.vk | dump | safe }},
+      {{ site.social.rutube | dump | safe }},
+      {{ site.legacy_url | dump | safe }}
     ]
   }
   </script>
