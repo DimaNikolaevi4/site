@@ -281,7 +281,7 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addPassthroughCopy("src/assets/favicons");
   eleventyConfig.addPassthroughCopy("src/assets/images");
   eleventyConfig.addPassthroughCopy("src/assets/js");
-  eleventyConfig.addPassthroughCopy("src/assets/uploads");
+  // src/assets/uploads/ удалена: файлы хранятся на продакшене (https://сит-сальск.рф/assets/uploads/)
   eleventyConfig.addPassthroughCopy({ "src/assets/template": "assets/template" });
   eleventyConfig.addPassthroughCopy({ "src/assets/vendor/php-email-form": "assets/mentor/vendor/php-email-form" });
   eleventyConfig.addPassthroughCopy("src/images");

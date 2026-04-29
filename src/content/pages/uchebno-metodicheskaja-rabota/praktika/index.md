@@ -12,7 +12,7 @@ permalink: /uchebno-metodicheskaja-rabota/praktika/
 
 ## Практика в ГБПОУ РО «СИТ»
 
-📄 **[Места прохождения практики учащимися (2024)](/assets/uploads/praktika/mesta-prohozhdenija-praktiki-uchashhimisja-2024.docx)** (DOCX)
+📄 **[Места прохождения практики учащимися (2024)](https://сит-сальск.рф/assets/uploads/praktika/mesta-prohozhdenija-praktiki-uchashhimisja-2024.docx)** (DOCX)
 
 ---
 
