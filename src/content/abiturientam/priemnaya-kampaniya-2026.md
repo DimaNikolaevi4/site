@@ -44,19 +44,24 @@ relatedCollection: abiturientam
 relatedCount: 3
 ---
 
-## Основные разделы
-
-- [Правила приёма на 2026–2027 учебный год](#priem-rules)
-- [Положение о приёмной комиссии](#priem-commission)
-- [Контрольные цифры приёма](#priem-numbers)
-- [Перечень специальностей и профессий, набор на 2026–2027 год](#priem-specialties)
-- [Условия приёма для инвалидов и лиц с ОВЗ](#priem-ovz)
-- [Медицинский осмотр поступающих](#priem-medical)
-- [Апелляционная комиссия](#priem-appeal)
-- [Студенческое общежитие](#priem-dormitory)
-- [Электронная информационно-образовательная среда](#priem-eos)
-- [Образовательный кредит с господдержкой](#priem-credit)
-- [Целевое обучение](#priem-target)
+{# ── Основные разделы (внутристраничный навигатор) ── #}
+{% set newsMode = 'razdel' %}
+{% set newsTitle = "Основные разделы" %}
+{% set excludeUrls = none %}
+{% set newsCards = [
+  { "url": "#priem-rules",       "emoji": "📜", "title": "Правила приёма на 2026–2027 учебный год" },
+  { "url": "#priem-commission",  "emoji": "🏛️", "title": "Положение о приёмной комиссии" },
+  { "url": "#priem-numbers",     "emoji": "🔢", "title": "Контрольные цифры приёма" },
+  { "url": "#priem-specialties", "emoji": "📚", "title": "Перечень специальностей и профессий, набор на 2026–2027 год" },
+  { "url": "#priem-ovz",         "emoji": "♿", "title": "Условия приёма для инвалидов и лиц с ОВЗ" },
+  { "url": "#priem-medical",     "emoji": "🩺", "title": "Медицинский осмотр поступающих" },
+  { "url": "#priem-appeal",      "emoji": "⚖️", "title": "Апелляционная комиссия" },
+  { "url": "#priem-dormitory",   "emoji": "🏠", "title": "Студенческое общежитие" },
+  { "url": "#priem-eos",         "emoji": "💻", "title": "Электронная информационно-образовательная среда" },
+  { "url": "#priem-credit",      "emoji": "💳", "title": "Образовательный кредит с господдержкой" },
+  { "url": "#priem-target",      "emoji": "🎯", "title": "Целевое обучение" }
+] %}
+{% include "components/news.njk" %}
 
 ---
 
