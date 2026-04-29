@@ -9,17 +9,17 @@ description: Платные образовательные услуги ГБПО
 
 ## Документы
 
-- 📄 [Договор об образовании на обучение по образовательным программам среднего профессионального образования — Образец (2024)](/assets/uploads/paid-services/dogovor-ob-obrazovanii-2024.pdf) ([с эл. подписью, ZIP](/assets/uploads/paid-services/dogovor-ob-obrazovanii-2024.zip))
+- 📄 [Договор об образовании на обучение по образовательным программам среднего профессионального образования — Образец (2024)](https://сит-сальск.рф/assets/uploads/paid-services/dogovor-ob-obrazovanii-2024.pdf) ([с эл. подписью, ZIP](https://сит-сальск.рф/assets/uploads/paid-services/dogovor-ob-obrazovanii-2024.zip))
 
-- 📄 [Приказ № 66 от 01.07.2025 «Об утверждении расходов на платные образовательные услуги на 2025–2029 уч. год»](/assets/uploads/paid-services/prikaz-66-ot-01.07.2025-rashody-2025-2029.pdf) ([с эл. подписью, ZIP](/assets/uploads/paid-services/prikaz-66-ot-01.07.2025-rashody-2025-2029.zip))
+- 📄 [Приказ № 66 от 01.07.2025 «Об утверждении расходов на платные образовательные услуги на 2025–2029 уч. год»](https://сит-сальск.рф/assets/uploads/paid-services/prikaz-66-ot-01.07.2025-rashody-2025-2029.pdf) ([с эл. подписью, ZIP](https://сит-сальск.рф/assets/uploads/paid-services/prikaz-66-ot-01.07.2025-rashody-2025-2029.zip))
 
-- 📄 [Информация о ценах на 2025–2026 уч. год](/assets/uploads/paid-services/informatsiya-o-tsenah-2025-2026.pdf) ([с эл. подписью, ZIP](/assets/uploads/paid-services/informatsiya-o-tsenah-2025-2026.zip))
+- 📄 [Информация о ценах на 2025–2026 уч. год](https://сит-сальск.рф/assets/uploads/paid-services/informatsiya-o-tsenah-2025-2026.pdf) ([с эл. подписью, ZIP](https://сит-сальск.рф/assets/uploads/paid-services/informatsiya-o-tsenah-2025-2026.zip))
 
-- 📄 [Образец квитанции для оплаты за обучение студентами ГБПОУ РО «СИТ»](/assets/uploads/paid-services/obrazets-kvitantsii-dlya-oplaty.docx) ([с эл. подписью, ZIP](/assets/uploads/paid-services/obrazets-kvitantsii-dlya-oplaty.zip))
+- 📄 [Образец квитанции для оплаты за обучение студентами ГБПОУ РО «СИТ»](https://сит-сальск.рф/assets/uploads/paid-services/obrazets-kvitantsii-dlya-oplaty.docx) ([с эл. подписью, ZIP](https://сит-сальск.рф/assets/uploads/paid-services/obrazets-kvitantsii-dlya-oplaty.zip))
 
-- 📄 [Положение о порядке предоставления платных образовательных услуг и расходовании средств, полученных от приносящей доход деятельности (Приложение № 16 к приказу ГБПОУ РО «СИТ» от 25.01.2019 № 5-а)](/assets/uploads/paid-services/polozhenie-o-platnyh-uslugah-2019.pdf) ([с эл. подписью, ZIP](/assets/uploads/paid-services/polozhenie-o-platnyh-uslugah-2019.zip))
+- 📄 [Положение о порядке предоставления платных образовательных услуг и расходовании средств, полученных от приносящей доход деятельности (Приложение № 16 к приказу ГБПОУ РО «СИТ» от 25.01.2019 № 5-а)](https://сит-сальск.рф/assets/uploads/paid-services/polozhenie-o-platnyh-uslugah-2019.pdf) ([с эл. подписью, ZIP](https://сит-сальск.рф/assets/uploads/paid-services/polozhenie-o-platnyh-uslugah-2019.zip))
 
-- 📄 [Положение об оказании платных образовательных услуг по дополнительным образовательным программам (Приложение № 15 к приказу ГБПОУ РО «СИТ» от 25.01.2019 № 5-а)](/assets/uploads/paid-services/polozhenie-ob-okazanii-platnyh-uslug-dpp-2019.pdf) ([с эл. подписью, ZIP](/assets/uploads/paid-services/polozhenie-ob-okazanii-platnyh-uslug-dpp-2019.zip))
+- 📄 [Положение об оказании платных образовательных услуг по дополнительным образовательным программам (Приложение № 15 к приказу ГБПОУ РО «СИТ» от 25.01.2019 № 5-а)](https://сит-сальск.рф/assets/uploads/paid-services/polozhenie-ob-okazanii-platnyh-uslug-dpp-2019.pdf) ([с эл. подписью, ZIP](https://сит-сальск.рф/assets/uploads/paid-services/polozhenie-ob-okazanii-platnyh-uslug-dpp-2019.zip))
 
 ---
 

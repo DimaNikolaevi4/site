@@ -65,15 +65,15 @@ description: Вакантные места для приёма и перевод
 
 Занять бюджетное вакантное место можно, если:
 
-1. Вы учитесь на коммерческой основе в Сальском индустриальном техникуме (см. [приказ Минобрнауки РФ №443](/assets/uploads/vacancies/norm/Prikaz-Minobrnauki-RF-N443.doc), регламентирующий перевод с коммерческой на бюджетную основу).
+1. Вы учитесь на коммерческой основе в Сальском индустриальном техникуме (см. [приказ Минобрнауки РФ №443](https://сит-сальск.рф/assets/uploads/vacancies/norm/Prikaz-Minobrnauki-RF-N443.doc), регламентирующий перевод с коммерческой на бюджетную основу).
 2. Имеются вакантные бюджетные места (см. сканированный документ выше — действующий на 01.04.2026).
 3. Вы соответствуете требованиям, указанным в «Положении об отчислении, восстановлении, переводе» (ссылки на нормативные документы — ниже).
 
 ### Нормативные документы
 
-- 📄 [Приказ Минобрнауки РФ №443](/assets/uploads/vacancies/norm/Prikaz-Minobrnauki-RF-N443.doc) — порядок и случаи перехода обучающихся с платного обучения на бесплатное.
-- 📄 [О порядке и условиях перевода, восстановления и отчисления обучающихся](/assets/uploads/vacancies/norm/O-poryadke-i-usloviyah-perevoda-vosstanovleniya-i-otchisleniya-obuchayushhihsya.doc) — Положение ГБПОУ РО СИТ.
-- 📄 [Переход с коммерции на бюджет](/assets/uploads/vacancies/norm/Perehod-s-kommertsii-na-byudzhet.pdf) — Положение ГБПОУ РО СИТ.
+- 📄 [Приказ Минобрнауки РФ №443](https://сит-сальск.рф/assets/uploads/vacancies/norm/Prikaz-Minobrnauki-RF-N443.doc) — порядок и случаи перехода обучающихся с платного обучения на бесплатное.
+- 📄 [О порядке и условиях перевода, восстановления и отчисления обучающихся](https://сит-сальск.рф/assets/uploads/vacancies/norm/O-poryadke-i-usloviyah-perevoda-vosstanovleniya-i-otchisleniya-obuchayushhihsya.doc) — Положение ГБПОУ РО СИТ.
+- 📄 [Переход с коммерции на бюджет](https://сит-сальск.рф/assets/uploads/vacancies/norm/Perehod-s-kommertsii-na-byudzhet.pdf) — Положение ГБПОУ РО СИТ.
 
 ---
 
