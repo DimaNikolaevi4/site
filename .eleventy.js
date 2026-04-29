@@ -352,7 +352,39 @@ module.exports = function(eleventyConfig) {
       ])
       .sort((a, b) => b.date - a.date);
   });
-  
+
+  // Список уникальных тегов из коллекции news для страниц /tags/{slug}/
+  eleventyConfig.addCollection("tagsList", function(collectionApi) {
+    const slugify = require("./src/_filters/slugify");
+    const news = collectionApi.getFilteredByGlob([
+      "src/content/news/*.md",
+      "src/content/studentam-roditeljam/resursy/novosti/**/*.md"
+    ]);
+    // Системные теги Eleventy и слишком общие, которые не нужны как страницы
+    const skip = new Set(["nav", "all", "post", "posts", "новость"]);
+    const map = new Map();
+    for (const item of news) {
+      const tags = Array.isArray(item.data.tags) ? item.data.tags : [];
+      for (const raw of tags) {
+        const name = String(raw).trim();
+        if (!name || skip.has(name.toLowerCase())) continue;
+        const slug = slugify(name);
+        if (!slug) continue;
+        if (!map.has(slug)) {
+          map.set(slug, { name, slug, posts: [] });
+        }
+        map.get(slug).posts.push(item);
+      }
+    }
+    // Сортируем посты внутри тега по дате (свежие сверху)
+    for (const t of map.values()) {
+      t.posts.sort((a, b) => b.date - a.date);
+    }
+    // Сортируем теги по алфавиту (русская локаль)
+    return Array.from(map.values())
+      .sort((a, b) => a.name.localeCompare(b.name, "ru"));
+  });
+
   // Все материалы для поиска
   eleventyConfig.addCollection("searchable", (collection) => {
     return collection.getAll().filter((item) => {

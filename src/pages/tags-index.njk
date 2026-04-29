@@ -1,0 +1,26 @@
+---
+layout: layouts/page-full.njk
+permalink: /tags/
+title: Теги
+rubricTitle: Теги
+description: Все теги новостей Сальского индустриального техникума
+suppressSubrubrics: true
+breadcrumbs:
+  - text: "Главная"
+    url: "/"
+  - text: "Новости"
+    url: "/news/"
+  - text: "Теги"
+    url: null
+eleventyExcludeFromCollections: true
+---
+
+{%- if collections.tagsList and collections.tagsList.length > 0 -%}
+<ul class="tags-cloud" aria-label="Облако тегов">
+{%- for t in collections.tagsList -%}
+<li class="tags-cloud__item"><a href="/tags/{{ t.slug }}/" class="tag tags-cloud__link">{{ t.name }} <span class="tags-cloud__count" aria-label="публикаций: {{ t.posts.length }}">{{ t.posts.length }}</span></a></li>
+{%- endfor -%}
+</ul>
+{%- else -%}
+<p>Пока нет ни одного тега.</p>
+{%- endif -%}

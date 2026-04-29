@@ -1,0 +1,10 @@
+---
+layout: layouts/page-full.njk
+suppressSubrubrics: true
+pagination:
+  data: collections.tagsList
+  size: 1
+  alias: tag
+  resolve: values
+permalink: "/tags/{{ tag.slug }}/"
+---

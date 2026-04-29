@@ -79,7 +79,8 @@
         <div class="page-content-area content-col">
 
           {# Лента карточек для listing-страниц #}
-          {% set _listItems = pagination.items if (pagination and pagination.items) else (collections[collectionName] if collectionName else null) %}
+          {# Приоритет источников: tag.posts (страницы тегов) > pagination.items (новости и др.) > коллекция по имени #}
+          {% set _listItems = (tag.posts if tag) or (pagination.items if (pagination and pagination.items)) or (collections[collectionName] if collectionName) or null %}
           {% if _listItems %}
             {% if _listItems.length > 0 %}
             <div class="cards-grid">
