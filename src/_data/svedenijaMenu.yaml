@@ -73,3 +73,8 @@
   key: international
   emoji: "🌍"
   description: Соглашения, программы, обмены и совместные проекты
+- title: Организация питания
+  url: /svedenija/pitanie/
+  key: pitanie
+  emoji: "🍽️"
+  description: Условия питания, меню, питание для лиц с ОВЗ, ответственный
