@@ -91,9 +91,13 @@ description: Доступная среда для лиц с ОВЗ и инвал
 
 ---
 
-## Связанные подразделы
-
-- [Психологическая поддержка лиц с ОВЗ](/psihologicheskoe/podderzhka-ovz/)
-- [Материально-техническое обеспечение](/svedenija/objects/)
-- [Стипендии и меры поддержки](/svedenija/stipend/)
-- [Документы](/svedenija/dokumenty/)
+{% set newsMode = 'razdel' %}
+{% set newsTitle = "Связанные подразделы" %}
+{% set excludeUrls = none %}
+{% set newsCards = [
+  { url: "/psihologicheskoe/podderzhka-ovz/", emoji: "🧠", title: "Психологическая поддержка лиц с ОВЗ", description: "Сопровождение и адаптация обучающихся психологической службой." },
+  { url: "/svedenija/objects/", emoji: "🏛️", title: "Материально-техническое обеспечение", description: "Кабинеты, лаборатории, библиотека, спорт, питание, ИКТ." },
+  { url: "/svedenija/stipend/", emoji: "🎓", title: "Стипендии и меры поддержки", description: "ГАС, ГСС, материальная помощь, льготы для детей-сирот и лиц с инвалидностью." },
+  { url: "/svedenija/dokumenty/", emoji: "📜", title: "Документы", description: "Устав, локальные нормативные акты, отчёты, лицензии." }
+] %}
+{% include "components/news.njk" %}

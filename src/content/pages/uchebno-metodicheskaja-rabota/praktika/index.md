@@ -57,10 +57,14 @@ permalink: /uchebno-metodicheskaja-rabota/praktika/
 
 ---
 
-## Связанные разделы
-
-- [3. Учебно-методическая работа](/uchebno-metodicheskaja-rabota/) — родительский раздел.
-- [3.1. Использование электронного обучения и ДОТ](/uchebno-metodicheskaja-rabota/elektronnoe-obuchenie/)
-- [3.2. Дополнительное образование](/uchebno-metodicheskaja-rabota/dopolnitelnoe-obrazovanie/)
-- [Сотрудничество → Предприятия-партнёры](/sotrudnichestvo/predprijatija/) — расширенный перечень баз практики.
-- [Сведения → Трудоустройство выпускников. Центр Карьеры](/svedenija/employment/) — содействие трудоустройству.
+{% set newsMode = 'razdel' %}
+{% set newsTitle = "Связанные разделы" %}
+{% set excludeUrls = none %}
+{% set newsCards = [
+  { url: "/uchebno-metodicheskaja-rabota/", emoji: "📂", title: "3. Учебно-методическая работа", description: "Родительский раздел." },
+  { url: "/uchebno-metodicheskaja-rabota/elektronnoe-obuchenie/", emoji: "💻", title: "3.1. ЭО и ДОТ", description: "Электронное обучение и дистанционные образовательные технологии." },
+  { url: "/uchebno-metodicheskaja-rabota/dopolnitelnoe-obrazovanie/", emoji: "🎓", title: "3.2. Дополнительное образование", description: "Программы ДПО для студентов и взрослых." },
+  { url: "/sotrudnichestvo/predprijatija/", emoji: "🏢", title: "Сотрудничество → Предприятия-партнёры", description: "Расширенный перечень баз практики." },
+  { url: "/svedenija/employment/", emoji: "🧑‍💼", title: "Сведения → Центр Карьеры", description: "Содействие трудоустройству выпускников." }
+] %}
+{% include "components/news.njk" %}

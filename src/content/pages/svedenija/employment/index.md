@@ -129,7 +129,11 @@ description: Центр Карьеры ГБПОУ РО «Сальский инд
 
 ---
 
-## Связанные разделы
-
-- [Образование](/svedenija/education/)
-- [Сотрудничество с предприятиями](/sotrudnichestvo/predprijatija/)
+{% set newsMode = 'razdel' %}
+{% set newsTitle = "Связанные разделы" %}
+{% set excludeUrls = none %}
+{% set newsCards = [
+  { url: "/svedenija/education/", emoji: "📚", title: "Образование", description: "Реализуемые образовательные программы СПО, рабочие программы дисциплин и практик, программы ГИА." },
+  { url: "/sotrudnichestvo/predprijatija/", emoji: "🏢", title: "Сотрудничество с предприятиями", description: "Предприятия-партнёры, базы практики, договоры о сетевом взаимодействии." }
+] %}
+{% include "components/news.njk" %}

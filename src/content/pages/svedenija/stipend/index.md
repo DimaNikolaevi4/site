@@ -135,9 +135,13 @@ description: Стипендии и меры социальной поддерж�
 
 ---
 
-## Связанные подразделы
-
-- [Платные образовательные услуги](/svedenija/paid-services/)
-- [Финансово-хозяйственная деятельность](/svedenija/finance/)
-- [Документы](/svedenija/dokumenty/)
-- [Доступная среда](/svedenija/access/)
+{% set newsMode = 'razdel' %}
+{% set newsTitle = "Связанные подразделы" %}
+{% set excludeUrls = none %}
+{% set newsCards = [
+  { url: "/svedenija/paid-services/", emoji: "💳", title: "Платные образовательные услуги", description: "Договоры, цены, образцы квитанций, локальные положения." },
+  { url: "/svedenija/finance/", emoji: "💰", title: "Финансово-хозяйственная деятельность", description: "Планы ФХД, отчёты об исполнении, аудит." },
+  { url: "/svedenija/dokumenty/", emoji: "📜", title: "Документы", description: "Устав, локальные нормативные акты, отчёты, лицензии." },
+  { url: "/svedenija/access/", emoji: "♿", title: "Доступная среда", description: "Условия для обучения лиц с ОВЗ и инвалидов." }
+] %}
+{% include "components/news.njk" %}

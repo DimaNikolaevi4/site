@@ -78,8 +78,12 @@ permalink: /professionaly-2026/
 
 ---
 
-## Полезные ссылки
-
-- 🔗 [Официальный сайт «Профессионалы»](https://prof.worldskills.ru/)
-- 🔗 [Ростовский региональный центр компетенций](https://rrcpro.ru/)
-- 🔗 [Союз «Ворлдскиллс Россия»](https://worldskills.ru/)
+{% set newsMode = 'razdel' %}
+{% set newsTitle = "Полезные ссылки" %}
+{% set excludeUrls = none %}
+{% set newsCards = [
+  { url: "https://prof.worldskills.ru/", emoji: "🔗", title: "Официальный сайт «Профессионалы»", description: "Главный портал чемпионатного движения." },
+  { url: "https://rrcpro.ru/", emoji: "🔗", title: "Ростовский региональный центр компетенций", description: "Организатор регионального этапа в Ростовской области." },
+  { url: "https://worldskills.ru/", emoji: "🔗", title: "Союз «Ворлдскиллс Россия»", description: "Историческая платформа движения, сохраняющая методические материалы." }
+] %}
+{% include "components/news.njk" %}
