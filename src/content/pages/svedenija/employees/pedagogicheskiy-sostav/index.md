@@ -3,7 +3,7 @@ title: Педагогический состав
 layout: layouts/svedenija-page.njk
 section: employees
 rubric: "2.5.1"
-permalink: /svedenija/rukovodstvo/pedagogicheskiy-sostav/
+permalink: /svedenija/employees/pedagogicheskiy-sostav/
 description: Сведения о педагогических кадрах ГБПОУ РО «Сальский индустриальный техникум» — уровень образования, квалификация, повышение квалификации и опыт работы по каждой специальности и профессии (2024)
 ---
 
