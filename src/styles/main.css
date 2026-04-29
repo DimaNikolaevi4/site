@@ -5402,6 +5402,39 @@ section,
   text-decoration: none;
 }
 
+/* WCAG 2.5.5 / ГОСТ Р 52872-2019: touch-target ≥ 44×44px на касательных устройствах */
+@media (pointer: coarse), (max-width: 991.98px) {
+  .header-icon-btn {
+    width: 44px;
+    height: 44px;
+    font-size: 1.25rem;
+  }
+  .footer-social-link {
+    min-width: 44px;
+    min-height: 44px;
+  }
+  .a11y-option {
+    min-height: 44px;
+    padding: 0.5rem 0.4rem;
+  }
+  .tag {
+    min-height: 32px;
+    padding: 0.35rem 0.75rem;
+    line-height: 1.4;
+  }
+}
+
+/* WCAG 2.4.7: глобальный видимый фокус с клавиатуры (fallback) */
+*:focus-visible {
+  outline: 2px solid var(--accent-color, #2e7d32);
+  outline-offset: 2px;
+  border-radius: 3px;
+}
+body.a11y-high-contrast *:focus-visible {
+  outline-color: #ff0;
+  outline-width: 3px;
+}
+
 /* ─── Аббревиатура логотипа ─── */
 .header-logo-abbr {
   font-size: 1.05rem;
