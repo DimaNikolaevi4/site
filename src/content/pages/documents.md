@@ -2,34 +2,24 @@
 layout: layouts/page-full.njk
 title: Документы
 permalink: /documents/
+description: Официальные документы ГБПОУ РО «Сальский индустриальный техникум» — полный реестр документов размещён в разделе «Сведения об образовательной организации → Документы»
 eleventyNavigation:
   key: documents
   parent: main
 rubric: "0"
+suppressSubrubrics: true
 ---
+
 # Документы
 
-Здесь вы можете найти и скачать официальные документы техникума.
+Полный реестр официальных документов техникума размещён в разделе **«Сведения об образовательной организации → Документы»** в соответствии с приказом Рособрнадзора от 14.08.2020 № 831 и приказом Минобрнауки от 18.01.2024 № 36.
 
-{% if collections.documents %}
-<ul class="documents-list">
-  {% for doc in collections.documents | reverse %}
-  <li class="documents-item">
-    <span class="documents-icon" aria-hidden="true">📄</span>
-    <div class="documents-info">
-      <h3 class="documents-title">{{ doc.data.title }}</h3>
-      <p class="documents-meta">
-        {% if doc.data.date %}{{ doc.data.date | date("%d.%m.%Y") }}{% endif %}
-        {% if doc.data.fileType %} · {{ doc.data.fileType | upcase }}{% endif %}
-        {% if doc.data.fileSize %} · {{ doc.data.fileSize }}{% endif %}
-      </p>
-    </div>
-    <a href="{{ doc.data.fileUrl }}" class="documents-download" download>
-      Скачать
-    </a>
-  </li>
-  {% endfor %}
-</ul>
-{% else %}
-<p>Документы пока не загружены.</p>
-{% endif %}
+{% set newsMode = 'razdel' %}
+{% set newsTitle = "Перейти к документам" %}
+{% set excludeUrls = none %}
+{% set newsCards = [
+  { url: "/svedenija/dokumenty/", emoji: "📚", title: "Все документы", description: "Устав, лицензия, аккредитация, локальные нормативные акты, правила приёма, положения, отчёты — полный реестр." },
+  { url: "/svedenija/dokumenty/vsoko/", emoji: "📊", title: "ВСОКО", description: "Внутренняя система оценки качества образования: положения, отчёты, результаты." },
+  { url: "/svedenija/dokumenty/anti-corruption/", emoji: "⚖️", title: "Антикоррупционные документы", description: "Антикоррупционная политика, нормативные акты, формы документов, отчёты." }
+] %}
+{% include "components/news.njk" %}
