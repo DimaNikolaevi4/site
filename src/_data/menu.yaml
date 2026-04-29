@@ -110,6 +110,12 @@ main:
         url: /news/
       - title: Расписание занятий
         url: /studentam-i-roditeljam/raspisanie/
+      - title: Информационно-образовательные ресурсы
+        url: /studentam-i-roditeljam/resursy/
+      - title: Библиотека техникума
+        url: /studentam-i-roditeljam/biblioteka/
+      - title: Приказ о зачислении
+        url: /studentam-i-roditeljam/prikaz-zachislenie/
       - title: Родителям
         url: /studentam-i-roditeljam/roditeljam/
   - title: Центр Карьеры
