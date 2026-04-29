@@ -18,18 +18,40 @@ permalink: /search/
   <main class="layout__content layout__content--full search-page" id="main-content">
     <!-- Форма поиска -->
     <form class="search-form" role="search" action="/search/" method="get">
-      <div class="search-form__group">
-        <input
-          type="search"
-          class="search-form__input"
-          name="q"
-          value=""
-          placeholder="Введите запрос для поиска..."
-          aria-label="Поисковый запрос"
-          required
-          autocomplete="off"
-        >
-        <button type="submit" class="btn btn-primary btn-lg">Найти</button>
+      <div class="search-form__row">
+        <div class="search-form__group">
+          <input
+            type="search"
+            class="search-form__input"
+            name="q"
+            id="searchQueryInput"
+            value=""
+            placeholder="Введите запрос для поиска..."
+            aria-label="Поисковый запрос"
+            autocomplete="off"
+          >
+          <button type="submit" class="btn btn-primary btn-lg">Найти</button>
+        </div>
+      </div>
+
+      <!-- Фильтры поиска -->
+      <div class="search-filters">
+        <div class="search-filter">
+          <label for="rubricFilter" class="search-filter__label">Раздел:</label>
+          <select name="rubric" id="rubricFilter" class="search-filter__select">
+            <option value="">Все разделы</option>
+            {% for rubric in rubrics.main_rubrics %}
+            <option value="{{ rubric.slug }}">{{ rubric.title }}</option>
+            {% endfor %}
+          </select>
+        </div>
+
+        <div class="search-filter">
+          <label class="search-filter__label">Теги:</label>
+          <div class="search-filter__tags" id="tagsFilter">
+            {# Теги будут загружены динамически через JS #}
+          </div>
+        </div>
       </div>
     </form>
 
@@ -46,11 +68,17 @@ permalink: /search/
         <li>Используйте ключевые слова для более точного поиска</li>
         <li>Можно искать по названию, содержанию или тегам</li>
         <li>Для поиска точной фразы используйте кавычки: "профессиональное образование"</li>
+        <li>Используйте фильтры по разделу и тегам для уточнения результатов</li>
         <li>Поиск работает по русским и английским словам</li>
       </ul>
     </div>
   </main>
 </div>
+
+{# Данные для фильтров #}
+<script id="rubricsData" type="application/json">
+{{ rubrics.main_rubrics | dump | safe }}
+</script>
 
 {# Подключаем Lunr.js и скрипт поиска #}
 <script src="https://unpkg.com/lunr@2.3.9/lunr.min.js" defer></script>
@@ -67,10 +95,14 @@ permalink: /search/
   margin-bottom: 2rem;
 }
 
+.search-form__row {
+  margin-bottom: 1rem;
+}
+
 .search-form__group {
   display: flex;
   gap: 1rem;
-  max-width: 600px;
+  max-width: 800px;
 }
 
 .search-form__input {
@@ -88,6 +120,79 @@ permalink: /search/
   box-shadow: 0 0 0 3px rgba(46, 125, 50, 0.15);
 }
 
+/* Фильтры */
+.search-filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  padding: 1rem;
+  background: #f8f9fa;
+  border-radius: 0.5rem;
+  max-width: 800px;
+}
+
+.search-filter {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.search-filter__label {
+  font-weight: 500;
+  color: #495057;
+  white-space: nowrap;
+}
+
+.search-filter__select {
+  padding: 0.5rem 1rem;
+  font-size: 0.9375rem;
+  border: 1px solid #ced4da;
+  border-radius: 0.375rem;
+  background: #fff;
+  min-width: 200px;
+  cursor: pointer;
+}
+
+.search-filter__select:focus {
+  outline: none;
+  border-color: var(--color-primary, #2e7d32);
+}
+
+.search-filter__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  max-width: 400px;
+}
+
+.search-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.25rem 0.75rem;
+  font-size: 0.875rem;
+  background: #e9ecef;
+  border: 1px solid #dee2e6;
+  border-radius: 2rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.search-tag:hover {
+  background: #dee2e6;
+}
+
+.search-tag.active {
+  background: var(--color-primary, #2e7d32);
+  border-color: var(--color-primary, #2e7d32);
+  color: #fff;
+}
+
+.search-tag input {
+  display: none;
+}
+
+/* Результаты */
 .search-results {
   margin-top: 2rem;
 }
@@ -133,7 +238,8 @@ permalink: /search/
 
 .search-result-card__meta {
   display: flex;
-  gap: 1rem;
+  flex-wrap: wrap;
+  gap: 0.75rem;
   font-size: 0.875rem;
   color: #6c757d;
   margin-bottom: 0.5rem;
@@ -141,6 +247,13 @@ permalink: /search/
 
 .search-result-card__category {
   background: #e9ecef;
+  padding: 0.125rem 0.5rem;
+  border-radius: 0.25rem;
+}
+
+.search-result-card__rubric {
+  background: #d4edda;
+  color: #155724;
   padding: 0.125rem 0.5rem;
   border-radius: 0.25rem;
 }
@@ -157,6 +270,23 @@ permalink: /search/
   border-radius: 0.125rem;
 }
 
+.search-result-card__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem;
+  margin-top: 0.5rem;
+}
+
+.search-result-card__tag {
+  font-size: 0.75rem;
+  padding: 0.125rem 0.5rem;
+  background: #f8f9fa;
+  border: 1px solid #e9ecef;
+  border-radius: 0.25rem;
+  color: #6c757d;
+}
+
+/* Подсказки */
 .search-tips {
   background: #f8f9fa;
   border-radius: 0.5rem;
@@ -180,6 +310,32 @@ permalink: /search/
 }
 
 /* Тёмная тема */
+html.dark-theme .search-filters {
+  background: #1a1a1a;
+}
+
+html.dark-theme .search-filter__select {
+  background: #2a2a2a;
+  border-color: #444;
+  color: #fff;
+}
+
+html.dark-theme .search-tag {
+  background: #2a2a2a;
+  border-color: #444;
+  color: #ccc;
+}
+
+html.dark-theme .search-tag:hover {
+  background: #3a3a3a;
+}
+
+html.dark-theme .search-tag.active {
+  background: var(--color-primary, #2e7d32);
+  border-color: var(--color-primary, #2e7d32);
+  color: #fff;
+}
+
 html.dark-theme .search-result-card {
   background: #1a1a1a;
   border-color: #333;
@@ -197,5 +353,30 @@ html.dark-theme .search-tips {
 
 html.dark-theme .search-result-card__excerpt mark {
   background: #5c4a1f;
+}
+
+html.dark-theme .search-result-card__tag {
+  background: #2a2a2a;
+  border-color: #444;
+}
+
+/* Адаптив */
+@media (max-width: 768px) {
+  .search-form__group {
+    flex-direction: column;
+  }
+
+  .search-filters {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .search-filter__select {
+    min-width: 100%;
+  }
+
+  .search-filter__tags {
+    max-width: 100%;
+  }
 }
 </style>
