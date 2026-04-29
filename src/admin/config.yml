@@ -4,61 +4,387 @@ backend:
 
 publish_mode: editorial_workflow
 
-media_folder: "src/assets/images"
-public_folder: "/assets/images"
+# Изображения и файлы загружаются в src/assets/uploads/
+media_folder: "src/assets/uploads"
+public_folder: "/assets/uploads"
+
+# Определяем общие поля для повторного использования
+_fields:
+  - &title { label: "Заголовок", name: "title", widget: "string" }
+  - &date { label: "Дата публикации", name: "date", widget: "datetime" }
+  - &description { label: "Краткое описание", name: "description", widget: "text", required: false, hint: "Отображается в превью и SEO" }
+  - &excerpt { label: "Отрывок", name: "excerpt", widget: "text", required: false, hint: "Краткое описание для списка материалов" }
+  - &image { label: "Изображение", name: "image", widget: "image", required: false, hint: "Обложка материала" }
+  - &rubric
+    label: "Рубрика"
+    name: "rubric"
+    widget: "select"
+    options:
+      - { label: "Абитуриентам", value: "1" }
+      - { label: "Сведения об ОО", value: "2" }
+      - { label: "Учебно-методическая работа", value: "3" }
+      - { label: "Воспитательная работа", value: "4" }
+      - { label: "Социальное партнёрство", value: "5" }
+      - { label: "Психологическое сопровождение", value: "6" }
+      - { label: "Комплексная безопасность", value: "7" }
+      - { label: "Студентам и родителям", value: "8" }
+      - { label: "Общественное мнение", value: "9.4" }
+      - { label: "Выпускникам", value: "9.5" }
+      - { label: "Без рубрики", value: "0" }
+    required: false
+    hint: "Раздел, к которому относится материал"
+  - &tags
+    label: "Теги"
+    name: "tags"
+    widget: "list"
+    required: false
+    hint: "Ключевые слова через запятую"
+  - &layout
+    label: "Макет"
+    name: "layout"
+    widget: "select"
+    options:
+      - { label: "Страница раздела (page-full)", value: "layouts/page-full.njk" }
+      - { label: "Материал (post)", value: "layouts/post.njk" }
+      - { label: "Простая страница (page)", value: "layouts/page.njk" }
+    default: "layouts/post.njk"
+  - &body { label: "Содержимое", name: "body", widget: "markdown" }
 
 collections:
+  # === НОВОСТИ ===
   - name: "news"
     label: "Новости"
+    label_singular: "Новость"
     folder: "src/content/news"
     create: true
     slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    summary: "{{date}} — {{title}}"
     fields:
-      - { label: "Заголовок", name: "title", widget: "string" }
-      - { label: "Дата публикации", name: "date", widget: "datetime" }
-      - { label: "Краткое описание", name: "description", widget: "text" }
-      - { label: "Рубрика", name: "rubric", widget: "relation", collection: "rubrics", searchFields: ["title"], valueField: "code", displayFields: ["title"] }
-      - { label: "Теги", name: "tags", widget: "list", default: [] }
-      - { label: "Макет", name: "layout", widget: "hidden", default: "post.njk" }
-      - { label: "Постоянная ссылка", name: "permalink", widget: "hidden", default: "/news/{{year}}/{{month}}/{{day}}/{{slug}}/" }
-      - { label: "Текст новости", name: "body", widget: "markdown" }
+      - *title
+      - *date
+      - *description
+      - *excerpt
+      - *image
+      - name: "author"
+        label: "Автор"
+        widget: "string"
+        required: false
+      - *rubric
+      - name: "category"
+        label: "Категория"
+        widget: "hidden"
+        default: "news"
+      - *tags
+      - name: "layout"
+        label: "Макет"
+        widget: "hidden"
+        default: "layouts/post.njk"
+      - name: "permalink"
+        label: "Постоянная ссылка"
+        widget: "hidden"
+        default: "/news/{{slug}}/"
+      - *body
+      - name: "attachments"
+        label: "Вложения"
+        widget: "list"
+        required: false
+        fields:
+          - { label: "Название", name: "name", widget: "string" }
+          - { label: "Файл", name: "url", widget: "file" }
+          - { label: "Размер", name: "size", widget: "string", required: false }
 
+  # === СТАТЬИ И МАТЕРИАЛЫ ===
+  - name: "materials"
+    label: "Статьи и материалы"
+    label_singular: "Материал"
+    folder: "src/content/materials"
+    create: true
+    slug: "{{slug}}"
+    summary: "{{title}}"
+    fields:
+      - *title
+      - *date
+      - *description
+      - *excerpt
+      - *image
+      - *rubric
+      - *tags
+      - *layout
+      - name: "permalink"
+        label: "Постоянная ссылка"
+        widget: "string"
+        hint: "Например: /vospitanie/meropriyatie/"
+      - *body
+
+  # === СТРАНИЦЫ РАЗДЕЛОВ ===
+  - name: "abiturientam"
+    label: "Абитуриентам"
+    folder: "src/content/abiturientam"
+    create: true
+    slug: "{{slug}}"
+    summary: "{{title}}"
+    fields:
+      - *title
+      - *date
+      - *description
+      - *excerpt
+      - *image
+      - name: "rubric"
+        label: "Рубрика"
+        widget: "hidden"
+        default: "1"
+      - *tags
+      - name: "layout"
+        label: "Макет"
+        widget: "select"
+        options:
+          - { label: "Страница раздела", value: "layouts/page-full.njk" }
+          - { label: "Материал", value: "layouts/post.njk" }
+        default: "layouts/post.njk"
+      - name: "relatedCollection"
+        label: "Связанные материалы"
+        widget: "hidden"
+        default: "abiturientam"
+      - *body
+
+  - name: "vospitanie"
+    label: "Воспитательная работа"
+    folder: "src/content/pages/vospitanie"
+    create: true
+    slug: "{{slug}}"
+    summary: "{{title}}"
+    fields:
+      - *title
+      - *date
+      - *description
+      - *image
+      - name: "rubric"
+        label: "Рубрика"
+        widget: "hidden"
+        default: "4"
+      - *tags
+      - name: "layout"
+        label: "Макет"
+        widget: "select"
+        options:
+          - { label: "Страница раздела", value: "layouts/page-full.njk" }
+          - { label: "Материал", value: "layouts/post.njk" }
+        default: "layouts/post.njk"
+      - *body
+
+  - name: "studentam-i-roditeljam"
+    label: "Студентам и родителям"
+    folder: "src/content/pages/studentam-i-roditeljam"
+    create: true
+    slug: "{{slug}}"
+    summary: "{{title}}"
+    fields:
+      - *title
+      - *date
+      - *description
+      - *image
+      - name: "rubric"
+        label: "Рубрика"
+        widget: "hidden"
+        default: "8"
+      - *tags
+      - name: "layout"
+        label: "Макет"
+        widget: "select"
+        options:
+          - { label: "Страница раздела", value: "layouts/page-full.njk" }
+          - { label: "Материал", value: "layouts/post.njk" }
+        default: "layouts/post.njk"
+      - *body
+
+  - name: "bezopasnost"
+    label: "Безопасность"
+    folder: "src/content/pages/bezopasnost"
+    create: true
+    slug: "{{slug}}"
+    summary: "{{title}}"
+    fields:
+      - *title
+      - *date
+      - *description
+      - *image
+      - name: "rubric"
+        label: "Рубрика"
+        widget: "hidden"
+        default: "7"
+      - *tags
+      - name: "layout"
+        label: "Макет"
+        widget: "select"
+        options:
+          - { label: "Страница раздела", value: "layouts/page-full.njk" }
+          - { label: "Материал", value: "layouts/post.njk" }
+        default: "layouts/post.njk"
+      - *body
+
+  - name: "sotrudnichestvo"
+    label: "Социальное партнёрство"
+    folder: "src/content/pages/sotrudnichestvo"
+    create: true
+    slug: "{{slug}}"
+    summary: "{{title}}"
+    fields:
+      - *title
+      - *date
+      - *description
+      - *image
+      - name: "rubric"
+        label: "Рубрика"
+        widget: "hidden"
+        default: "5"
+      - *tags
+      - name: "layout"
+        label: "Макет"
+        widget: "select"
+        options:
+          - { label: "Страница раздела", value: "layouts/page-full.njk" }
+          - { label: "Материал", value: "layouts/post.njk" }
+        default: "layouts/post.njk"
+      - *body
+
+  - name: "psihologicheskoe"
+    label: "Психологическое сопровождение"
+    folder: "src/content/pages/psihologicheskoe"
+    create: true
+    slug: "{{slug}}"
+    summary: "{{title}}"
+    fields:
+      - *title
+      - *date
+      - *description
+      - *image
+      - name: "rubric"
+        label: "Рубрика"
+        widget: "hidden"
+        default: "6"
+      - *tags
+      - name: "layout"
+        label: "Макет"
+        widget: "select"
+        options:
+          - { label: "Страница раздела", value: "layouts/page-full.njk" }
+          - { label: "Материал", value: "layouts/post.njk" }
+        default: "layouts/post.njk"
+      - *body
+
+  - name: "vypusknikam"
+    label: "Выпускникам"
+    folder: "src/content/categories/vypusknikam"
+    create: true
+    slug: "{{slug}}"
+    summary: "{{title}}"
+    fields:
+      - *title
+      - *date
+      - *description
+      - *image
+      - name: "rubric"
+        label: "Рубрика"
+        widget: "hidden"
+        default: "9.5"
+      - *tags
+      - name: "layout"
+        label: "Макет"
+        widget: "select"
+        options:
+          - { label: "Страница раздела", value: "layouts/page-full.njk" }
+          - { label: "Материал", value: "layouts/post.njk" }
+        default: "layouts/post.njk"
+      - *body
+
+  # === СВЕДЕНИЯ ОБ ОО (Приказ №1493) ===
+  - name: "svedenija"
+    label: "Сведения об ОО"
+    folder: "src/content/pages/svedenija"
+    create: true
+    slug: "{{slug}}"
+    summary: "{{title}}"
+    fields:
+      - *title
+      - *date
+      - *description
+      - *image
+      - name: "rubric"
+        label: "Рубрика"
+        widget: "select"
+        options:
+          - { label: "Основные сведения", value: "2.1" }
+          - { label: "Структура и органы управления", value: "2.2" }
+          - { label: "Документы", value: "2.3" }
+          - { label: "Образование", value: "2.4" }
+          - { label: "Руководство", value: "2.5" }
+          - { label: "Образовательные стандарты", value: "2.6" }
+          - { label: "Материально-техническое обеспечение", value: "2.7" }
+          - { label: "Стипендии и поддержка", value: "2.8" }
+          - { label: "Платные услуги", value: "2.9" }
+          - { label: "Финансово-хозяйственная деятельность", value: "2.10" }
+          - { label: "Вакантные места", value: "2.11" }
+          - { label: "Доступная среда", value: "2.12" }
+          - { label: "Международное сотрудничество", value: "2.13" }
+          - { label: "Трудоустройство выпускников", value: "2.14" }
+        required: true
+      - *tags
+      - name: "layout"
+        label: "Макет"
+        widget: "hidden"
+        default: "layouts/svedenija-page.njk"
+      - *body
+
+  # === УЧЕБНО-МЕТОДИЧЕСКАЯ РАБОТА ===
+  - name: "umr"
+    label: "Учебно-методическая работа"
+    folder: "src/content/pages/uchebno-metodicheskaja-rabota"
+    create: true
+    slug: "{{slug}}"
+    summary: "{{title}}"
+    fields:
+      - *title
+      - *date
+      - *description
+      - *image
+      - name: "rubric"
+        label: "Рубрика"
+        widget: "hidden"
+        default: "3"
+      - *tags
+      - name: "layout"
+        label: "Макет"
+        widget: "select"
+        options:
+          - { label: "Страница раздела", value: "layouts/page-full.njk" }
+          - { label: "Материал", value: "layouts/post.njk" }
+        default: "layouts/page-full.njk"
+      - *body
+
+  # === ПРОЧИЕ СТАТИЧЕСКИЕ СТРАНИЦЫ ===
   - name: "pages"
-    label: "Страницы"
+    label: "Прочие страницы"
     folder: "src/content/pages"
     create: true
+    slug: "{{slug}}"
+    summary: "{{title}}"
     fields:
-      - { label: "Заголовок", name: "title", widget: "string" }
-      - { label: "Путь", name: "permalink", widget: "string" }
-      - { label: "Рубрика", name: "rubric", widget: "relation", collection: "rubrics", searchFields: ["title"], valueField: "code", displayFields: ["title"], required: false }
-      - { label: "Теги", name: "tags", widget: "list", default: [], required: false }
-      - { label: "Макет", name: "layout", widget: "hidden", default: "page.njk" }
-      - { label: "Содержимое", name: "body", widget: "markdown" }
-
-  - name: "documents"
-    label: "Документы"
-    folder: "src/content/documents"
-    create: true
-    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
-    media_folder: "src/uploads"
-    public_folder: "/uploads"
-    fields:
-      - { label: "Название документа", name: "title", widget: "string" }
-      - { label: "Дата публикации", name: "date", widget: "datetime" }
-      - { label: "Файл", name: "file", widget: "file" }
-      - { label: "Описание", name: "description", widget: "text", required: false }
-      - { label: "Рубрика", name: "rubric", widget: "relation", collection: "rubrics", searchFields: ["title"], valueField: "code", displayFields: ["title"], required: false }
-      - { label: "Теги", name: "tags", widget: "list", default: [], required: false }
-
-  # Рубрики - справочник для отношений между коллекциями
-  - name: "rubrics"
-    label: "Рубрики"
-    folder: "src/_data/rubrics"
-    create: false
-    identifier_field: code
-    summary: "{{code}}: {{title}}"
-    fields:
-      - { label: "Код", name: "code", widget: "string" }
-      - { label: "Название", name: "title", widget: "string" }
-      - { label: "Slug", name: "slug", widget: "string" }
-      - { label: "Уровень", name: "level", widget: "number", value_type: "int" }
+      - *title
+      - *date
+      - *description
+      - *image
+      - *rubric
+      - *tags
+      - name: "layout"
+        label: "Макет"
+        widget: "select"
+        options:
+          - { label: "Страница раздела (page-full)", value: "layouts/page-full.njk" }
+          - { label: "Простая страница (page)", value: "layouts/page.njk" }
+          - { label: "Материал (post)", value: "layouts/post.njk" }
+        default: "layouts/page-full.njk"
+      - name: "permalink"
+        label: "Постоянная ссылка"
+        widget: "string"
+        hint: "Например: /contacts/"
+      - *body
