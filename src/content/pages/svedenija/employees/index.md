@@ -13,7 +13,7 @@ description: Руководство ГБПОУ РО «Сальский инду�
 
 <div class="leader-card">
 
-![Сенченко Марина Евгеньевна](https://сит-сальск.рф/assets/uploads/rukovodstvo/senchenko.jpeg){.leader-photo}
+![Сенченко Марина Евгеньевна](https://сит-сальск.рф/assets/uploads/rukovodstvo/senchenko.jpeg)
 
 **Директор** — *Сенченко Марина Евгеньевна*
 
@@ -27,7 +27,7 @@ description: Руководство ГБПОУ РО «Сальский инду�
 
 <div class="leader-card">
 
-![Якимова Татьяна Владимировна](https://сит-сальск.рф/assets/uploads/rukovodstvo/yakimova.jpg){.leader-photo}
+![Якимова Татьяна Владимировна](https://сит-сальск.рф/assets/uploads/rukovodstvo/yakimova.jpg)
 
 **Заместитель директора по учебной работе** — *Якимова Татьяна Владимировна*
 
@@ -41,7 +41,7 @@ description: Руководство ГБПОУ РО «Сальский инду�
 
 <div class="leader-card">
 
-![Ломака Натэлла Евгеньевна](https://сит-сальск.рф/assets/uploads/rukovodstvo/lomaka.jpg){.leader-photo}
+![Ломака Натэлла Евгеньевна](https://сит-сальск.рф/assets/uploads/rukovodstvo/lomaka.jpg)
 
 **Заместитель директора по учебно-производственной работе** — *Ломака Натэлла Евгеньевна*
 
@@ -55,7 +55,7 @@ description: Руководство ГБПОУ РО «Сальский инду�
 
 <div class="leader-card">
 
-![Барабаш Елена Михайловна](https://сит-сальск.рф/assets/uploads/rukovodstvo/barabash.jpg){.leader-photo}
+![Барабаш Елена Михайловна](https://сит-сальск.рф/assets/uploads/rukovodstvo/barabash.jpg)
 
 **Заместитель директора по обеспечению безопасности** — *Барабаш Елена Михайловна*
 
@@ -69,7 +69,7 @@ description: Руководство ГБПОУ РО «Сальский инду�
 
 <div class="leader-card">
 
-![Безницкая Людмила Николаевна](https://сит-сальск.рф/assets/uploads/rukovodstvo/beznickaya.jpg){.leader-photo}
+![Безницкая Людмила Николаевна](https://сит-сальск.рф/assets/uploads/rukovodstvo/beznickaya.jpg)
 
 **Заместитель директора по воспитательной работе** — *Безницкая Людмила Николаевна*
 
@@ -83,7 +83,7 @@ description: Руководство ГБПОУ РО «Сальский инду�
 
 <div class="leader-card">
 
-![Яровой Сергей Александрович](https://сит-сальск.рф/assets/uploads/rukovodstvo/yarovoy.jpg){.leader-photo}
+![Яровой Сергей Александрович](https://сит-сальск.рф/assets/uploads/rukovodstvo/yarovoy.jpg)
 
 **Заместитель директора по АХЧ** — *Яровой Сергей Александрович*
 
@@ -97,7 +97,7 @@ description: Руководство ГБПОУ РО «Сальский инду�
 
 <div class="leader-card">
 
-![Шелестян Людмила Николаевна](https://сит-сальск.рф/assets/uploads/rukovodstvo/shelestyan.jpg){.leader-photo}
+![Шелестян Людмила Николаевна](https://сит-сальск.рф/assets/uploads/rukovodstvo/shelestyan.jpg)
 
 **Главный бухгалтер** — *Шелестян Людмила Николаевна*
 
@@ -111,7 +111,7 @@ description: Руководство ГБПОУ РО «Сальский инду�
 
 <div class="leader-card">
 
-![Коротя Юлия Сергеевна](https://сит-сальск.рф/assets/uploads/rukovodstvo/korotya.jpg){.leader-photo}
+![Коротя Юлия Сергеевна](https://сит-сальск.рф/assets/uploads/rukovodstvo/korotya.jpg)
 
 **Заведующий отделением ПССЗ** — *Коротя Юлия Сергеевна*
 
@@ -125,7 +125,7 @@ description: Руководство ГБПОУ РО «Сальский инду�
 
 <div class="leader-card">
 
-![Краснокутская Анна Александровна](https://сит-сальск.рф/assets/uploads/rukovodstvo/krasnokutskaya.jpg){.leader-photo}
+![Краснокутская Анна Александровна](https://сит-сальск.рф/assets/uploads/rukovodstvo/krasnokutskaya.jpg)
 
 **Заведующий отделением ПКРС** — *Краснокутская Анна Александровна*
 

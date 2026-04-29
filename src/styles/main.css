@@ -8188,3 +8188,46 @@ body.dark-theme .anti-corruption-page .report-form {
     justify-content: center;
   }
 }
+
+/* ===========================================================
+   Руководство — карточки руководителей (/svedenija/employees/)
+   Унификация размеров фото: % ширины, фиксированное соотношение
+   сторон, центрирование.
+   =========================================================== */
+.leader-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin: 2rem auto;
+  max-width: 560px;
+}
+.leader-card p {
+  margin: 0.5rem 0;
+}
+.leader-card ul {
+  text-align: left;
+  display: inline-block;
+  margin: 0.75rem auto 0;
+  padding-left: 1.25rem;
+}
+.leader-card img,
+.leader-photo {
+  display: block;
+  width: 45%;
+  max-width: 220px;
+  min-width: 140px;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+  object-position: center top;
+  margin: 0 auto 1rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.12);
+}
+@media (max-width: 575.98px) {
+  .leader-card img,
+  .leader-photo {
+    width: 60%;
+    max-width: 180px;
+  }
+}
