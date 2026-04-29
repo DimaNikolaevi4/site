@@ -34,10 +34,14 @@ permalink: /uchebno-metodicheskaja-rabota/dopolnitelnoe-obrazovanie/
 
 ---
 
-## Связанные разделы
-
-- [3. Учебно-методическая работа](/uchebno-metodicheskaja-rabota/) — родительский раздел.
-- [3.1. Использование электронного обучения и ДОТ](/uchebno-metodicheskaja-rabota/elektronnoe-obuchenie/)
-- [3.4. Практика](/uchebno-metodicheskaja-rabota/praktika/)
-- [Сведения → Образование](/svedenija/education/) — основные образовательные программы СПО.
-- [Сведения → Трудоустройство выпускников. Центр Карьеры](/svedenija/employment/) — реализация ДПО для студентов и выпускников.
+{% set newsMode = 'razdel' %}
+{% set newsTitle = "Связанные разделы" %}
+{% set excludeUrls = none %}
+{% set newsCards = [
+  { url: "/uchebno-metodicheskaja-rabota/", emoji: "📂", title: "3. Учебно-методическая работа", description: "Родительский раздел." },
+  { url: "/uchebno-metodicheskaja-rabota/elektronnoe-obuchenie/", emoji: "💻", title: "3.1. ЭО и ДОТ", description: "Электронное обучение и дистанционные образовательные технологии." },
+  { url: "/uchebno-metodicheskaja-rabota/praktika/", emoji: "🏭", title: "3.4. Практика", description: "Учебная и производственная практика обучающихся." },
+  { url: "/svedenija/education/", emoji: "📚", title: "Сведения → Образование", description: "Основные образовательные программы СПО." },
+  { url: "/svedenija/employment/", emoji: "🧑‍💼", title: "Сведения → Центр Карьеры", description: "Реализация ДПО для студентов и выпускников." }
+] %}
+{% include "components/news.njk" %}

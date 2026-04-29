@@ -23,10 +23,14 @@ description: Платные образовательные услуги ГБПО
 
 ---
 
-## Связанные разделы
-
-- [Финансово-хозяйственная деятельность](/svedenija/finance/)
-- [Стипендии и иные виды материальной поддержки обучающихся](/svedenija/stipend/)
-- [Документы](/svedenija/dokumenty/)
+{% set newsMode = 'razdel' %}
+{% set newsTitle = "Связанные разделы" %}
+{% set excludeUrls = none %}
+{% set newsCards = [
+  { url: "/svedenija/finance/", emoji: "💰", title: "Финансово-хозяйственная деятельность", description: "Планы ФХД, отчёты об исполнении, аудит." },
+  { url: "/svedenija/stipend/", emoji: "🎓", title: "Стипендии и меры поддержки", description: "Государственная академическая и социальная стипендия, материальная помощь, льготы." },
+  { url: "/svedenija/dokumenty/", emoji: "📜", title: "Документы", description: "Устав, локальные нормативные акты, отчёты, лицензии." }
+] %}
+{% include "components/news.njk" %}
 
 > Источник: [sit-salsk.ru → 2.8 Платные образовательные услуги (?p=4165)](https://sit-salsk.ru/?p=4165). Дата публикации на источнике: 21.06.2014, последнее обновление: 30.07.2025.

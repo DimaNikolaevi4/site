@@ -195,9 +195,13 @@ description: Материально-техническое обеспечени�
 
 ---
 
-## Связанные подразделы
-
-- [Доступная среда](/svedenija/access/)
-- [Документы](/svedenija/dokumenty/)
-- [Расписание занятий](/studentam-i-roditeljam/raspisanie/)
-- [Библиотека](/studentam-i-roditeljam/biblioteka/)
+{% set newsMode = 'razdel' %}
+{% set newsTitle = "Связанные подразделы" %}
+{% set excludeUrls = none %}
+{% set newsCards = [
+  { url: "/svedenija/access/", emoji: "♿", title: "Доступная среда", description: "Условия для обучения лиц с ОВЗ и инвалидов." },
+  { url: "/svedenija/dokumenty/", emoji: "📜", title: "Документы", description: "Устав, локальные нормативные акты, отчёты, лицензии." },
+  { url: "/studentam-i-roditeljam/raspisanie/", emoji: "📅", title: "Расписание занятий", description: "Расписание корпусов №1 и №2, изменения и звонковая сетка." },
+  { url: "/studentam-i-roditeljam/biblioteka/", emoji: "📖", title: "Библиотека", description: "Фонд литературы, ЭБС «Юрайт» и «Лань», читальный зал." }
+] %}
+{% include "components/news.njk" %}
