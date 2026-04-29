@@ -7041,7 +7041,83 @@ body.dark-theme .post-share__tag:focus-visible {
   gap: 0.75rem;
 }
 
-.pagination-info { margin: 0; }
+.pagination-nav .pagination {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.35rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.pagination-nav .page-item { margin: 0; }
+
+.pagination-nav .page-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35rem;
+  min-width: 44px;
+  min-height: 44px;
+  padding: 0.5rem 0.85rem;
+  border: 1px solid color-mix(in srgb, var(--accent-color), transparent 65%);
+  border-radius: 8px;
+  background: var(--surface-color, #fff);
+  color: var(--default-color, #444);
+  font-weight: 500;
+  text-decoration: none;
+  transition: background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+}
+
+.pagination-nav .page-link:hover,
+.pagination-nav .page-link:focus-visible {
+  background: color-mix(in srgb, var(--accent-color), transparent 88%);
+  border-color: var(--accent-color);
+  color: var(--accent-color);
+}
+
+.pagination-nav .page-item.active .page-link,
+.pagination-nav .page-link[aria-current="page"] {
+  background: var(--accent-color);
+  border-color: var(--accent-color);
+  color: var(--contrast-color, #fff);
+  pointer-events: none;
+}
+
+.pagination-nav .page-item--ellipsis .page-link,
+.pagination-nav .page-link--ellipsis {
+  border-color: transparent;
+  background: transparent;
+  color: var(--text-muted, #888);
+  pointer-events: none;
+  padding-inline: 0.4rem;
+  min-width: 28px;
+}
+
+.pagination-info {
+  margin: 0;
+  color: var(--text-muted, #888);
+}
+
+/* На узких экранах прячем подписи «Назад/Вперёд», оставляем только иконки */
+@media (max-width: 480px) {
+  .pagination-nav .page-link__text { display: none; }
+  .pagination-nav .page-link { padding-inline: 0.6rem; }
+}
+
+/* Тёмная тема */
+:root.dark-theme .pagination-nav .page-link {
+  background: color-mix(in srgb, var(--background-color, #fff), #000 8%);
+  color: var(--default-color, #ddd);
+  border-color: color-mix(in srgb, var(--accent-color), transparent 70%);
+}
+
+:root.dark-theme .pagination-nav .page-item.active .page-link,
+:root.dark-theme .pagination-nav .page-link[aria-current="page"] {
+  background: var(--accent-color);
+  color: #0d1410;
+}
 
 /* ─── Hero-баннер (Секция 2, page-full) ─── */
 .page-hero {
