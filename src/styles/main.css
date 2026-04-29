@@ -8242,6 +8242,22 @@ body.dark-theme .anti-corruption-page .report-form {
   margin-left: 0.15rem;
 }
 
+.anti-corruption-page .form-captcha .captcha-question {
+  display: inline-block;
+  padding: 0.1rem 0.45rem;
+  margin: 0 0.15rem;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-weight: 600;
+  font-size: 1.05rem;
+  color: var(--accent-color, #1a8754);
+  background: rgba(26, 135, 84, 0.08);
+  border-radius: 4px;
+  user-select: none;
+}
+.anti-corruption-page .form-captcha input[name="captcha_answer"] {
+  max-width: 12rem;
+}
+
 .anti-corruption-page .form-consent {
   display: flex;
   align-items: flex-start;

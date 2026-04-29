@@ -226,4 +226,38 @@ document.addEventListener('DOMContentLoaded', function () {
       }
     });
   }
+
+  // ─── Math-CAPTCHA для форм обратной связи ───
+  document.querySelectorAll('form[data-honeypot]').forEach(function (form) {
+    var captchaWrap  = form.querySelector('[data-captcha]');
+    if (!captchaWrap) return;
+    var questionEl   = captchaWrap.querySelector('.captcha-question');
+    var answerInput  = captchaWrap.querySelector('input[name="captcha_answer"]');
+    if (!questionEl || !answerInput) return;
+
+    function regenerate() {
+      var a = Math.floor(Math.random() * 9) + 1;
+      var b = Math.floor(Math.random() * 9) + 1;
+      questionEl.textContent = a + ' + ' + b + ' =';
+      captchaWrap.dataset.expected = String(a + b);
+      answerInput.value = '';
+      answerInput.setCustomValidity('');
+    }
+    regenerate();
+
+    answerInput.addEventListener('input', function () {
+      answerInput.setCustomValidity('');
+    });
+
+    form.addEventListener('submit', function (e) {
+      var expected = captchaWrap.dataset.expected;
+      var got = answerInput.value.trim();
+      if (got !== expected) {
+        e.preventDefault();
+        answerInput.setCustomValidity('Неверный ответ — пересчитайте, пожалуйста');
+        answerInput.reportValidity();
+        regenerate();
+      }
+    });
+  });
 });
