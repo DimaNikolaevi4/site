@@ -23,6 +23,11 @@
   key: education
   emoji: "🎓"
   description: Лицензия, аккредитация, программы, учебные планы, ГИА
+- title: Образовательные стандарты и требования
+  url: /svedenija/standards/
+  key: standards
+  emoji: "📜"
+  description: ФГОС СПО по специальностям подготовки, копии стандартов
 - title: Руководство и ППС
   url: /svedenija/employees/
   key: employees
