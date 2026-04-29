@@ -12,3 +12,9 @@ id = "BVnVvGsqxN1f4NEoJJfhq"
 uri = "file://attached_assets/15.01.05_RP_2025_missing_43.zip"
 type = "unspecified"
 title = "15.01.05_RP_2025_missing_43.zip (43 файла, 165 МБ)"
+
+[[outputs]]
+id = "0YIBxztF_azyaTvhZq9gq"
+uri = "file://attached_assets/file_comparison.csv"
+type = "table"
+title = "Сверка файлов: продакшен vs локально (1605 записей)"
