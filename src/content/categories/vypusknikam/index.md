@@ -3,6 +3,7 @@ title: Нашим выпускникам
 layout: layouts/page-full.njk
 category: vypusknikam
 rubric: "9.5"
+permalink: /vypusknikam/
 description: 'Информация для выпускников техникума'
 ---
 

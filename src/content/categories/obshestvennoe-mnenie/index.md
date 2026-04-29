@@ -3,6 +3,7 @@ title: Результаты изучения общественного мнен
 layout: layouts/page-full.njk
 category: obshestvennoe-mnenie
 rubric: "9.4"
+permalink: /obshestvennoe-mnenie/
 description: 'Результаты анкетирования, опросов и тестирования общественного мнения'
 ---
 
