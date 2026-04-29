@@ -18,8 +18,26 @@ permalink: /uchebno-metodicheskaja-rabota/elektronnoe-obuchenie/
 
 ---
 
-## Связанные разделы
-
-- [3. Учебно-методическая работа](/uchebno-metodicheskaja-rabota/) — родительский раздел.
-- [3.2. Дополнительное образование](/uchebno-metodicheskaja-rabota/dopolnitelnoe-obrazovanie/)
-- [3.4. Практика](/uchebno-metodicheskaja-rabota/praktika/)
+{# ── Связанные разделы (карточная сетка вместо списка) ── #}
+{% set newsMode = 'razdel' %}
+{% set newsTitle = "Связанные разделы" %}
+{% set excludeUrls = none %}
+{% set newsCards = [
+  {
+    "url": "/uchebno-metodicheskaja-rabota/",
+    "emoji": "📘",
+    "title": "3. Учебно-методическая работа",
+    "description": "Родительский раздел"
+  },
+  {
+    "url": "/uchebno-metodicheskaja-rabota/dopolnitelnoe-obrazovanie/",
+    "emoji": "🎓",
+    "title": "3.2. Дополнительное образование"
+  },
+  {
+    "url": "/uchebno-metodicheskaja-rabota/praktika/",
+    "emoji": "🏭",
+    "title": "3.4. Практика"
+  }
+] %}
+{% include "components/news.njk" %}
