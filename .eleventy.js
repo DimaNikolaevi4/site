@@ -10,15 +10,23 @@ function loadRubrics() {
   return yaml.load(rubricsContent);
 }
 
-// Рекурсивное получение всех slug'ов рубрик
+// Рекурсивное получение всех slug'ов рубрик.
+// fullPath по умолчанию строится из иерархии (parent/slug),
+// но узел может задать собственный путь через поле url:
+//   url: "/svedenija/rukovodstvo/pedagogicheskiy-sostav/"  → перекрывает fullPath
 function getAllRubricSlugs(rubrics, parentSlug = '') {
   let slugs = [];
-  
+
   if (rubrics.main_rubrics) {
     rubrics.main_rubrics.forEach(rubric => {
       const currentSlug = rubric.slug;
-      const fullPath = parentSlug ? `${parentSlug}/${currentSlug}` : currentSlug;
-      
+      const inheritedPath = parentSlug ? `${parentSlug}/${currentSlug}` : currentSlug;
+      // Если у узла задан url — нормализуем его в fullPath без ведущего/конечного "/"
+      let fullPath = inheritedPath;
+      if (rubric.url && typeof rubric.url === 'string') {
+        fullPath = rubric.url.replace(/^\/+|\/+$/g, '');
+      }
+
       slugs.push({
         slug: currentSlug,
         fullPath: fullPath,
@@ -26,45 +34,33 @@ function getAllRubricSlugs(rubrics, parentSlug = '') {
         code: rubric.code,
         level: rubric.level || 0
       });
-      
+
       if (rubric.children && rubric.children.length > 0) {
+        // Дети по-прежнему наследуют ИЕРАРХИЧЕСКИЙ путь (через slug-ы),
+        // если у самих не задан url. Это сохраняет вложенность в дереве.
         const childSlugs = getAllRubricSlugs(
-          { main_rubrics: rubric.children }, 
-          fullPath
+          { main_rubrics: rubric.children },
+          inheritedPath
         );
         slugs = slugs.concat(childSlugs);
       }
     });
   }
-  
+
   return slugs;
 }
 
 module.exports = function(eleventyConfig) {
-  // === Подключение конфигурации коллекций ===
+  // === Подключение иерархии рубрик ===
+  // rubrics.yaml — НАВИГАЦИОННАЯ иерархия (header dropdown, breadcrumbs labels,
+  // карточки подразделов). Авто-регистрация per-rubric коллекций удалена:
+  // ранее создавалось 78 коллекций по пути src/content/<slug>/**/*.md, но
+  // фактический контент лежит в src/content/pages/... и src/content/abiturientam/...,
+  // поэтому все коллекции были пустыми и нигде не использовались
+  // (collections.<slug> — 0 ссылок в шаблонах, см. сверку 8.2).
   const rubrics = loadRubrics();
   const allSlugs = getAllRubricSlugs(rubrics);
-  
-  console.log(`📁 Регистрация коллекций для ${allSlugs.length} рубрик...`);
-  
-  // Создаем коллекцию для каждой рубрики
-  allSlugs.forEach(rubric => {
-    const collectionName = rubric.slug.replace(/-/g, '');
-    
-    eleventyConfig.addCollection(collectionName, function(collectionApi) {
-      return collectionApi.getFilteredByGlob(`src/content/${rubric.fullPath}/**/*.md`)
-        .sort((a, b) => {
-          if (b.date && a.date) {
-            return b.date - a.date;
-          }
-          return (a.data.title || '').localeCompare(b.data.title || '', 'ru');
-        });
-    });
-    
-    console.log(`  ✓ Коллекция "${collectionName}" (${rubric.fullPath})`);
-  });
-  
-  console.log('✅ Конфигурация коллекций загружена');
+  console.log(`📁 Загружено ${allSlugs.length} рубрик из rubrics.yaml`);
   
   // === Вспомогательные фильтры ===
   eleventyConfig.addFilter('startsWith', function(str, prefix) {

@@ -89,7 +89,8 @@ main_rubrics:
         slug: access
       - code: "2.13"
         title: "Международное сотрудничество"
-        slug: obrazovanie/mezhdunarodnoe
+        slug: mezhdunarodnoe
+        url: "/svedenija/obrazovanie/mezhdunarodnoe/"
       - code: "2.14"
         title: "Трудоустройство выпускников"
         slug: employment
@@ -133,32 +134,40 @@ main_rubrics:
           - code: "4.5.1"
             title: "ВОЛОНТЁРСКИЙ ОТРЯД «РАДУГА ДОБРА»"
             slug: raduga-dobra
+            url: "/vospitanie/raduga-dobra/"
       - code: "4.6"
         title: "Патриотическое воспитание"
         slug: patrioticheskoe
         children:
           - code: "4.6.1"
             title: "Великая Победа"
-            slug: velikaya-pobeda
+            slug: velikaja-pobeda
+            url: "/vospitanie/velikaja-pobeda/"
           - code: "4.6.2"
             title: "Клуб «ВИТЯЗЬ»"
             slug: vitjaz
+            url: "/vospitanie/vitjaz/"
       - code: "4.7"
         title: "Культурно-массовая работа"
-        slug: kulturno-massovaya
+        slug: kulturno-massovaja
+        url: "/vospitanie/kulturno-massovaja/"
         children:
           - code: "4.7.1"
             title: "Театральный клуб \"Мираж\""
             slug: teatralnyj-klub
+            url: "/vospitanie/teatralnyj-klub/"
           - code: "4.7.2"
             title: "Медиацентр «Новости СИТ»"
             slug: mediacentr
+            url: "/vospitanie/mediacentr/"
           - code: "4.7.3"
             title: "Поздравления"
             slug: pozdravlenija
+            url: "/vospitanie/pozdravlenija/"
           - code: "4.7.4"
             title: "«Движение Первых»"
             slug: dvizhenie-pervyh
+            url: "/vospitanie/dvizhenie-pervyh/"
       - code: "4.8"
         title: "Физическая культура и спорт"
         slug: fizkultura-sport
@@ -166,6 +175,7 @@ main_rubrics:
           - code: "4.8.1"
             title: "ССК \"Авангард\""
             slug: ssk-avangard
+            url: "/vospitanie/ssk-avangard/"
       - code: "4.9"
         title: "Уполномоченный по правам ребенка"
         slug: upolnomochennyj-prava
@@ -175,9 +185,6 @@ main_rubrics:
     slug: sotrudnichestvo
     level: 0
     children:
-      - code: "5.1"
-        title: "Сотрудничество с ВУЗами"
-        slug: vuzy
       - code: "5.2"
         title: "Сотрудничество с органами занятости"
         slug: zanyatost
@@ -220,12 +227,9 @@ main_rubrics:
     slug: bezopasnost
     level: 0
     children:
-      - code: "7.1"
-        title: "Антитеррористическая защищенность"
-        slug: antiterror
       - code: "7.2"
         title: "Профилактика экстремизма"
-        slug: ekstremizm
+        slug: extremizm
       - code: "7.3"
         title: "Противодействие коррупции"
         slug: antikorrupcija
@@ -245,18 +249,19 @@ main_rubrics:
         title: "Информационно-образовательные ресурсы"
         slug: resursy
         children:
-          - code: "8.1.1"
-            title: "Новости"
-            slug: novosti
           - code: "8.1.2"
             title: "Библиотека техникума"
             slug: biblioteka
+            url: "/studentam-i-roditeljam/biblioteka/"
       - code: "8.2"
         title: "Приказ о зачислении"
         slug: prikaz-zachislenie
       - code: "8.3"
         title: "Расписание занятий"
         slug: raspisanie
+      - code: "8.4"
+        title: "Родителям — общая информация"
+        slug: roditeljam
 
   - code: "9.4"
     title: "Результаты изучения общественного мнения"
