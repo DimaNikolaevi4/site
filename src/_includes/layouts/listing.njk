@@ -73,8 +73,12 @@
               {% endfor %}
             </div>
 
-            {# Пагинация — единый компонент #}
+            {# Пагинация — единый компонент.
+               Не показываем на страницах тегов: там pagination — это перебор тегов,
+               а не страниц одного листинга. #}
+            {% if not tag %}
             {% include "components/_partials/pagination.njk" %}
+            {% endif %}
 
             {% else %}
             <div class="no-results">

@@ -52,19 +52,19 @@
       {% set _showWindow = _idx >= (_cur - 2) and _idx <= (_cur + 2) %}
 
       {% if _showFirst or _showLast or _showWindow %}
-        {# Многоточие перед окном #}
-        {% if _idx == 0 and _cur > 3 %}
+        {# Якорная первая страница и многоточие перед окном #}
+        {% if _idx == 0 and _cur > 2 %}
         <li class="page-item page-item--num {% if _idx == _cur %}active{% endif %}">
           <a href="{{ pageLink }}" class="page-link"
              {% if _idx == _cur %}aria-current="page"{% endif %}>1</a>
         </li>
-        {% if _cur > 4 %}
+        {% if _cur > 3 %}
         <li class="page-item page-item--ellipsis" aria-hidden="true">
           <span class="page-link page-link--ellipsis">…</span>
         </li>
         {% endif %}
-        {% elseif _idx == (_total - 1) and _cur < (_total - 4) %}
-          {% if _cur < (_total - 5) %}
+        {% elseif _idx == (_total - 1) and _cur < (_total - 3) %}
+          {% if _cur < (_total - 4) %}
           <li class="page-item page-item--ellipsis" aria-hidden="true">
             <span class="page-link page-link--ellipsis">…</span>
           </li>
