@@ -296,6 +296,9 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addPassthroughCopy({ "node_modules/swiper/swiper-bundle.min.css": "assets/mentor/vendor/swiper/swiper-bundle.min.css" });
   eleventyConfig.addPassthroughCopy({ "node_modules/swiper/swiper-bundle.min.js": "assets/mentor/vendor/swiper/swiper-bundle.min.js" });
   eleventyConfig.addPassthroughCopy({ "node_modules/@srexi/purecounterjs/dist/purecounter_vanilla.js": "assets/mentor/vendor/purecounter/purecounter_vanilla.js" });
+  eleventyConfig.addPassthroughCopy({ "node_modules/lunr/lunr.min.js": "assets/vendor/lunr/lunr.min.js" });
+  eleventyConfig.addPassthroughCopy({ "node_modules/lunr-languages/lunr.stemmer.support.js": "assets/vendor/lunr/lunr.stemmer.support.js" });
+  eleventyConfig.addPassthroughCopy({ "node_modules/lunr-languages/lunr.ru.js": "assets/vendor/lunr/lunr.ru.js" });
   eleventyConfig.addPassthroughCopy("src/admin");
   eleventyConfig.addPassthroughCopy("src/styles");
   eleventyConfig.addPassthroughCopy({ "src/robots.txt": "robots.txt" });

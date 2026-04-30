@@ -40,14 +40,35 @@
     }
   }
 
+  // Ожидание появления Lunr.js в window (на случай гонки с defer-скриптами)
+  function waitForLunr(timeoutMs = 8000) {
+    return new Promise((resolve, reject) => {
+      if (typeof window.lunr === 'function') return resolve();
+      const start = Date.now();
+      const tick = () => {
+        if (typeof window.lunr === 'function') return resolve();
+        if (Date.now() - start > timeoutMs) return reject(new Error('lunr.js не загружен'));
+        setTimeout(tick, 50);
+      };
+      tick();
+    });
+  }
+
   // Загрузка индекса поиска
   async function loadSearchIndex() {
-    if (isLoaded || isLoading) return;
+    if (isLoaded) return;
+    if (isLoading) {
+      // Ждём завершения уже идущей загрузки
+      while (isLoading) await new Promise(r => setTimeout(r, 50));
+      return;
+    }
     isLoading = true;
 
     try {
-      const response = await fetch('/search-index.json');
-      if (!response.ok) throw new Error('Failed to load search index');
+      await waitForLunr();
+
+      const response = await fetch('/search-index.json', { cache: 'no-cache' });
+      if (!response.ok) throw new Error('Не удалось загрузить индекс поиска: ' + response.status);
 
       const data = await response.json();
       searchDocuments = data.documents || [];
@@ -62,7 +83,12 @@
       availableTags = Array.from(tagsSet).sort();
 
       // Создаём Lunr индекс на клиенте
+      const hasRussianStemmer = typeof window.lunr.ru === 'function';
+
       searchIndex = lunr(function() {
+        if (hasRussianStemmer) {
+          this.use(lunr.ru);
+        }
         this.ref('id');
         this.field('title', { boost: 10 });
         this.field('excerpt', { boost: 5 });
@@ -90,6 +116,11 @@
 
     } catch (error) {
       console.error('Error loading search index:', error);
+      if (resultsInfo) {
+        resultsInfo.innerHTML = 'Поиск временно недоступен. Обновите страницу.';
+      }
+      if (resultsContainer) resultsContainer.style.display = 'block';
+      if (tipsContainer) tipsContainer.style.display = 'none';
     } finally {
       isLoading = false;
     }

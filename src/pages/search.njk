@@ -77,10 +77,10 @@ permalink: /search/
 {{ rubrics.main_rubrics | dump | safe }}
 </script>
 
-{# Подключаем Lunr.js и скрипт поиска #}
-<script src="https://unpkg.com/lunr@2.3.9/lunr.min.js" defer></script>
-<script src="https://unpkg.com/lunr-languages@1.14.0/lunr.stemmer.support.js" defer></script>
-<script src="https://unpkg.com/lunr-languages@1.14.0/lunr.ru.js" defer></script>
+{# Подключаем Lunr.js и скрипт поиска (локальные файлы — без CDN) #}
+<script src="/assets/vendor/lunr/lunr.min.js" defer></script>
+<script src="/assets/vendor/lunr/lunr.stemmer.support.js" defer></script>
+<script src="/assets/vendor/lunr/lunr.ru.js" defer></script>
 <script src="/assets/js/search.js" defer></script>
 
 <style>
