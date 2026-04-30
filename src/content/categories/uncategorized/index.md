@@ -3,6 +3,7 @@ title: Без рубрики
 layout: layouts/page-full.njk
 category: uncategorized
 rubric: "0"
+permalink: /uncategorized/
 description: 'Материалы, не вошедшие в основную структуру рубрик'
 ---
 
