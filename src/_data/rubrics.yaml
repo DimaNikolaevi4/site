@@ -90,7 +90,7 @@ main_rubrics:
       - code: "2.13"
         title: "Международное сотрудничество"
         slug: mezhdunarodnoe
-        url: "/svedenija/obrazovanie/mezhdunarodnoe/"
+        url: "/svedenija/mezhdunarodnoe/"
       - code: "2.14"
         title: "Трудоустройство выпускников"
         slug: employment

@@ -3,7 +3,7 @@ title: Международное сотрудничество
 layout: layouts/svedenija-page.njk
 section: international
 rubric: "2.13"
-permalink: /svedenija/obrazovanie/mezhdunarodnoe/
+permalink: /svedenija/mezhdunarodnoe/
 description: Международное сотрудничество ГБПОУ РО «Сальский индустриальный техникум» — партнёрство с Республикой Беларусь, международные стажировки студентов, совместные научно-практические конференции
 ---
 

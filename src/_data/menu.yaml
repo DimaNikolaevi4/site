@@ -37,7 +37,7 @@ main:
       - title: Доступная среда
         url: /svedenija/access/
       - title: Международное сотрудничество
-        url: /svedenija/obrazovanie/mezhdunarodnoe/
+        url: /svedenija/mezhdunarodnoe/
   - title: Абитуриентам
     url: /abiturientam/
     key: abiturientam
