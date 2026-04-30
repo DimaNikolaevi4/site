@@ -120,7 +120,9 @@
 
   function buildLevel2Items(children, parentSlug) {
     return children.map(function (child) {
-      var href = '/' + parentSlug + '/' + child.slug + '/';
+      var href = child.url
+        ? ('/' + String(child.url).replace(/^\/+|\/+$/g, '') + '/')
+        : '/' + parentSlug + '/' + child.slug + '/';
       var active = isActive(href);
       var activeAttr = active ? ' class="oc-split-row__link oc-dismiss-all active" aria-current="page"' : ' class="oc-split-row__link oc-dismiss-all"';
       var activeLeafAttr = active ? ' class="oc-split-row__link oc-split-row__link--leaf oc-dismiss-all active" aria-current="page"' : ' class="oc-split-row__link oc-split-row__link--leaf oc-dismiss-all"';
@@ -145,7 +147,9 @@
 
   function buildLevel3Items(children, parentHref) {
     return children.map(function (gc) {
-      var href = parentHref + gc.slug + '/';
+      var href = gc.url
+        ? ('/' + String(gc.url).replace(/^\/+|\/+$/g, '') + '/')
+        : parentHref + gc.slug + '/';
       var active = isActive(href);
       var activeAttr = active
         ? ' class="oc-split-row__link oc-split-row__link--leaf oc-dismiss-all active" aria-current="page"'
@@ -293,7 +297,9 @@
       // Проверяем 2-й уровень
       for (var j = 0; j < rubric.children.length; j++) {
         var child = rubric.children[j];
-        var l2href = l1href + child.slug + '/';
+        var l2href = child.url
+          ? ('/' + String(child.url).replace(/^\/+|\/+$/g, '') + '/')
+          : l1href + child.slug + '/';
         if (!currentPath.startsWith(l2href)) continue;
         if (!child.children || !child.children.length) break;
 
