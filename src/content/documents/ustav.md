@@ -3,6 +3,12 @@ title: Устав техникума
 layout: layouts/page.njk
 date: 2024-01-15
 description: Устав ГБПОУ РО «Сальский индустриальный техникум» — основной учредительный документ образовательной организации
+permalink: /svedenija/dokumenty/ustav/
+breadcrumbs:
+  - { text: "Главная", url: "/" }
+  - { text: "Сведения об образовательной организации", url: "/svedenija/" }
+  - { text: "Документы", url: "/svedenija/dokumenty/" }
+  - { text: "Устав техникума" }
 showHero: false
 parentSection:
   url: /svedenija/dokumenty/

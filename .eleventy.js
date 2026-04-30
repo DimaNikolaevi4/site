@@ -311,6 +311,17 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addFilter("dateRu", require("./src/_filters/dateRu"));
   eleventyConfig.addFilter("truncate", require("./src/_filters/truncate"));
   eleventyConfig.addFilter("slugify", require("./src/_filters/slugify"));
+  // Проверка: существует ли страница тега (тег есть в коллекции tagsList)
+  // Используется в layouts/page-full.njk и layouts/post.njk, чтобы не рендерить ссылки
+  // на /tags/<slug>/ для тегов, которые встречаются только на не-новостных страницах
+  // и не имеют сгенерированной страницы тега.
+  eleventyConfig.addFilter("hasTagPage", function(tagsList, tagName) {
+    if (!Array.isArray(tagsList) || !tagName) return false;
+    const slugify = require("./src/_filters/slugify");
+    const slug = slugify(tagName);
+    if (!slug) return false;
+    return tagsList.some(t => t && t.slug === slug);
+  });
   eleventyConfig.addFilter("head", (array, n) => {
     if (!Array.isArray(array) || n === 0) return [];
     if (n < 0) return array.slice(n);

@@ -14,12 +14,11 @@ description: Официальные документы ГБПОУ РО «Сал�
 {% set newsMode = 'razdel' %}
 {% set newsTitle = "Подразделы" %}
 {% set excludeUrls = none %}
+{# Подразделы — показываем только реально существующие страницы.
+   Учебные планы, рабочие программы, методические и прочие документы пока
+   опубликованы прямо на этой странице ниже (см. разделы по темам). #}
 {% set newsCards = [
   { url: "/svedenija/dokumenty/vsoko/", emoji: "📊", title: "ВСОКО", description: "Внутренняя система оценки качества образования: положения, отчёты, результаты." },
-  { url: "/svedenija/dokumenty/uchebnye-plany/", emoji: "📚", title: "Учебные планы", description: "Учебные планы по реализуемым специальностям и профессиям." },
-  { url: "/svedenija/dokumenty/rabochie-programmy/", emoji: "📝", title: "Рабочие программы", description: "Рабочие программы дисциплин, профессиональных модулей и практик." },
-  { url: "/svedenija/dokumenty/metodicheskie-dokumenty/", emoji: "📖", title: "Методические документы", description: "Методические разработки, рекомендации, пособия." },
-  { url: "/svedenija/dokumenty/prochie-dokumenty/", emoji: "📂", title: "Прочие документы", description: "Иные документы, разрабатываемые техникумом." },
   { url: "/svedenija/dokumenty/anti-corruption/", emoji: "⚖️", title: "Антикоррупционные документы", description: "Антикоррупционная политика, нормативные акты, формы документов, отчёты." }
 ] %}
 {% include "components/news.njk" %}

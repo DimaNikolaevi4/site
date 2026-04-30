@@ -47,4 +47,4 @@ permalink: /studentam-i-roditeljam/roditeljam/
 - **E-mail:** [sitsalsk@mail.ru](mailto:sitsalsk@mail.ru)
 - **Режим работы:** Пн–Пт 08:00–17:00, Сб–Вс — выходной
 
-Полный список телефонов корпусов и подразделений — на странице [«Контакты»](/svedenija/contacts/).
+Полный список телефонов корпусов и подразделений — на странице [«Контакты»](/contacts/).

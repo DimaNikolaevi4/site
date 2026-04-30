@@ -2,13 +2,33 @@
 # Структура и принципы разработки сайта (Modern Mirror of sit-salsk.ru)
 
 > 📄 **Файл:** `STRUCTURE_AND_PRINCIPLES.md`  
-> 🔄 **Версия:** 3.7  
-> 📅 **Обновлено:** Апрель 2026 (чистка мёртвого кода, синхронизация дерева проекта с фактом)  
+> 🔄 **Версия:** 3.8  
+> 📅 **Обновлено:** Апрель 2026 (предрелизный аудит ссылок и пагинации, починка orphan-страниц)  
 > 👥 **Для команды:** Все разработчики, контент-менеджеры, тестировщики
 
 ---
 
 ## История изменений
+
+### Версия 3.8 (Апрель 2026 — предрелизный аудит)
+- 🔧 **Пагинация на тег-страницах**: `layouts/page-full.njk` и `layouts/listing.njk` больше не подключают `components/_partials/pagination.njk`, если страница рендерит конкретный `tag` (раньше показывались «соседние теги», что ломало навигацию).
+- 🔧 **Off-by-one в умной пагинации** (`src/_includes/components/_partials/pagination.njk`): пороги `_cur > 3` → `> 2` (и зеркально справа `> 4` → `> 3`) — теперь номера страниц подставляются в нужных позициях без пропусков.
+- 🆕 **Фильтр `hasTagPage`** (`.eleventy.js`, ~строки 317–327): возвращает `true` только для тегов, у которых в `tagsList` сгенерирована публичная страница `/tags/<slug>/`. Применён в блоках вывода тегов в `layouts/page-full.njk` и `layouts/post.njk` — orphan-теги (с страниц-разделов и pages, не из новостей) больше не рендерятся как «битые ссылки».
+- 🆕 **Созданы недостающие индекс-страницы Type B**:
+  - `src/content/pages/bezopasnost/index.md` → `/bezopasnost/` — раздел с карточками 4 подразделов (антикоррупция, экстремизм, антинарко, пожарная).
+  - `src/content/pages/studentam-i-roditeljam/index.md` → `/studentam-i-roditeljam/` — раздел с карточками 5 подразделов (расписание, библиотека, ресурсы, родителям, приказы о зачислении).
+  - Обе страницы используют канонический паттерн `{% set newsMode = 'razdel' %}` + `{% include "components/news.njk" %}` (как `vospitanie/index.md`), а не самописную HTML-разметку.
+- 🛠️ **`src/content/pages/svedenija/documents/index.md`**: убраны 4 несуществующих подраздела из карточек `newsCards` (`/svedenija/dokumenty/{uchebnye-plany,rabochie-programmy,metodicheskie-dokumenty,prochie-dokumenty}/`); тематические документы и так перечислены ниже на самой странице. Оставлены реальные подразделы `vsoko/` и `anti-corruption/`.
+- 🛠️ **Восстановлены битые ссылки в контенте**:
+  - `psihologicheskoe/podderzhka-ovz.md`: `/svedenija/dostupnaya-sreda/` → `/svedenija/access/` (фактический permalink раздела «Доступная среда»).
+  - `studentam-i-roditeljam/roditeljam.md`: `/svedenija/contacts/` → `/contacts/` (страница контактов лежит в корне).
+  - `abiturientam/priemnaya-kampaniya-2026.md`: локальная ссылка на `/docs/priemnaya-kampaniya-2026/Постановление-…555.rtf` заменена на официальный публикатор `publication.pravo.gov.ru`.
+- 🛠️ **Массовая замена локальных `/docs/anti-corruption/...` (41 ссылка)** в `src/_data/antiCorruption.yaml` на абсолютные `https://xn----8sbwke6acce8h.xn--p1ai/docs/dokumenty/anti-corruption/...` — файлов в репо нет, но они доступны на исходном домене.
+- 🛠️ **Массовая замена локальных `/assets/uploads/...`** на `https://sit-salsk.ru/assets/uploads/...` во всех `src/**/*.md` (sed по двум паттернам: `"/assets/uploads/` и `](/assets/uploads/`). Затрагивает 10+ страниц (Центр карьеры, виртуальная экскурсия, день открытых дверей, практики, вакансии, документы и др.).
+- 🛠️ **Чистка orphan-страниц с авто-breadcrumb `/content/`**:
+  - `src/content/documents/ustav.md` получил явный `permalink: /svedenija/dokumenty/ustav/` и ручные `breadcrumbs:` — раньше путь был `/content/documents/ustav/`, а хлебные крошки строились как `/content/` → `/content/documents/`, обе несуществующие.
+  - `src/content/categories/abiturientam.md` помечен `permalink: false` + `eleventyExcludeFromCollections: true` — это дубликат `src/content/abiturientam/index.md`. Стоявшие в `public/content/categories/abiturientam/` и `public/content/documents/ustav/` файлы удалены вручную (Eleventy не подчищает старый output).
+- ✅ **Результат аудита** (`node scripts/check-links.mjs <всех 139 публичных URL>`): 0 страниц с BAD-ссылками. Сборка `npm run build` — 141 файл за ~5.8 с, 0 ошибок.
 
 ### Версия 3.7 (Апрель 2026)
 - 🧹 **Чистка мёртвого кода и неиспользуемых ресурсов** (~11.5 МБ удалено из `src/`):

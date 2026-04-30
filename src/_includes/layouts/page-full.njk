@@ -186,7 +186,7 @@
                 <i class="bi bi-tags" aria-hidden="true"></i> Теги:
               </span>
               {% for tag in tags %}
-                {% if tag != 'nav' and tag != 'all' %}
+                {% if tag != 'nav' and tag != 'all' and (collections.tagsList | hasTagPage(tag)) %}
                 <a href="/tags/{{ tag | slugify }}/" class="tag">{{ tag }}</a>
                 {% endif %}
               {% endfor %}

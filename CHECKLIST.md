@@ -1,9 +1,30 @@
 # 📋 Чеклист разработки сайта ГБПОУ РО «СИТ»
 
 **Файл:** `CHECKLIST.md`  
-**Обновлено:** Апрель 2026  
+**Обновлено:** Апрель 2026 (предрелизный аудит)  
 **Проект:** Миграция sit-salsk.ru с WordPress на Eleventy 3.x  
 **Стек:** Eleventy 3.1.5 · Nunjucks · Bootstrap 5 · Decap CMS · GitHub  
+
+---
+
+## 📌 Предрелизный аудит (Апрель 2026)
+
+Сводка изменений после полного аудита внутренних ссылок и проверки на пред-деплой
+(подробности — в `STRUCTURE_AND_PRINCIPLES.md`, раздел «Версия 3.8»):
+
+| # | Что починили | Файлы |
+|---|--------------|-------|
+| 1 | Пагинация на тег-страницах не подключается на тегах | `_includes/layouts/page-full.njk`, `_includes/layouts/listing.njk` |
+| 2 | Off-by-one в умной пагинации (пороги 3→2 и 4→3) | `_includes/components/_partials/pagination.njk` |
+| 3 | Фильтр `hasTagPage` — не рендерим orphan-теги | `.eleventy.js`, `layouts/page-full.njk`, `layouts/post.njk` |
+| 4 | Созданы индекс-страницы `/bezopasnost/` и `/studentam-i-roditeljam/` | `src/content/pages/{bezopasnost,studentam-i-roditeljam}/index.md` |
+| 5 | Удалены 4 несуществующих подраздела из `/svedenija/dokumenty/` | `src/content/pages/svedenija/documents/index.md` |
+| 6 | Восстановлены 3 битые ссылки (`/svedenija/dostupnaya-sreda/` → `/svedenija/access/`, `/svedenija/contacts/` → `/contacts/`, локальный RTF → publication.pravo.gov.ru) | 3 страницы в `src/content/` |
+| 7 | 41 локальная ссылка `/docs/anti-corruption/...` → абсолютные на `xn----8sbwke6acce8h.xn--p1ai` | `src/_data/antiCorruption.yaml` |
+| 8 | Все локальные `/assets/uploads/...` → `https://sit-salsk.ru/assets/uploads/...` | sed по всем `src/**/*.md` (10+ страниц) |
+| 9 | Orphan-страницы `/content/documents/ustav/` и `/content/categories/abiturientam/` починены/исключены | `src/content/documents/ustav.md`, `src/content/categories/abiturientam.md`, ручная очистка `public/content/...` |
+
+**Финал**: `node scripts/check-links.mjs` по всем 139 публичным URL — **0 BAD-ссылок**. `npm run build` — 141 файл за ~5.8 с, без ошибок. Готов к деплою.
 
 ---
 

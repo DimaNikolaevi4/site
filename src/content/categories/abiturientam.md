@@ -3,7 +3,14 @@ title: Абитуриентам
 layout: layouts/page-full.njk
 category: abiturientam
 description: 'Информация для абитуриентов: правила приема, специальности, день открытых дверей'
+permalink: false
+eleventyExcludeFromCollections: true
 ---
+
+{# Файл-дубликат раздела «Абитуриентам».
+   Канонический индекс раздела — src/content/abiturientam/index.md → /abiturientam/.
+   Этот файл оставлен для исторической совместимости, но не публикуется. #}
+
 
 # Абитуриентам
 
