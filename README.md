@@ -147,10 +147,6 @@ tags: [Новости]
 npm install
 ```
 
-## 📁 Дополнительные директории
-
-- `mirror/` — оригинальное зеркало сайта sit-salsk.ru (источник контента для миграции, **не загружается** на хостинг). См. `mirror/MIRROR_README.md` и `mirror/SITE_RUBRICS_STRUCTURE.md`.
-
 ## 📚 Документация проекта
 
 - [`STRUCTURE_AND_PRINCIPLES.md`](STRUCTURE_AND_PRINCIPLES.md) — архитектура, принципы, дерево проекта
