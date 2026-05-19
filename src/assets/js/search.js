@@ -11,6 +11,7 @@
   let searchDocuments = [];
   let isLoading = false;
   let isLoaded = false;
+  let hasRussianStemmer = false;
 
   // Рубрики и теги
   let rubricsData = [];
@@ -83,7 +84,7 @@
       availableTags = Array.from(tagsSet).sort();
 
       // Создаём Lunr индекс на клиенте
-      const hasRussianStemmer = typeof window.lunr.ru === 'function';
+      hasRussianStemmer = typeof window.lunr.ru === 'function';
 
       searchIndex = lunr(function() {
         if (hasRussianStemmer) {
@@ -172,14 +173,18 @@
     }
 
     try {
-      // Подготавливаем запрос
+      // Подготавливаем запрос.
+      // При активном русском стеммере НЕ добавляем wildcard (*): он обходит
+      // pipeline стемминга, поэтому запрос `слово*` не совпадёт с
+      // проиндексированной стеммированной формой `слов`. Стеммер сам
+      // обеспечивает поиск по разным формам слова.
       const cleanQuery = query
         .toLowerCase()
         .replace(/[^\p{L}\p{N}\s]/gu, ' ')
         .trim()
         .split(/\s+/)
         .filter(word => word.length > 1)
-        .map(word => word + '*')
+        .map(word => hasRussianStemmer ? word : word + '*')
         .join(' ');
 
       if (!cleanQuery) return [];
@@ -401,9 +406,15 @@
         }, 100);
       }
 
+      // Используем actualQuery явно, чтобы не зависеть от searchInput.value в
+      // асинхронном колбэке (значение могло прийти из URL, а не из input)
       const actualQuery = query || urlQuery;
       if (actualQuery) {
         loadSearchIndex().then(() => {
+          // Ещё раз убеждаемся что поле заполнено (на случай гонки)
+          if (searchInput && !searchInput.value.trim()) {
+            searchInput.value = actualQuery;
+          }
           performAndRenderSearch();
         });
       }
