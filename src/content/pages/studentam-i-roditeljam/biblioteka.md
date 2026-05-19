@@ -13,8 +13,6 @@ permalink: /studentam-i-roditeljam/biblioteka/
 ## Документы библиотеки
 
 - 📄 [Памятка пользователя библиотекой](/assets/uploads/biblioteka/pamyatka-polzovatelya-bibliotekoy.doc) (DOC)
-- 📄 [Правила пользования библиотекой СИТа (2016)](/assets/uploads/biblioteka/pravila-polzovaniya-bibliotekoy-sita-2016.pdf) (PDF)
-- 📄 [Положение о библиотеке СИТа (2016)](/assets/uploads/biblioteka/polozhenie-o-biblioteke-sita-2016.pdf) (PDF)
 - 📄 [План работы библиотеки ГБПОУ РО «СИТ» на 2019–2020 учебный год](/assets/uploads/biblioteka/plan-raboty-biblioteki-2019-2020.docx) (DOCX)
 ## Цифровая (электронная) библиотека
 

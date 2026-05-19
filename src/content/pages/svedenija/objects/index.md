@@ -78,12 +78,9 @@ description: Материально-техническое обеспечени�
 **Лицензионные договоры с ЭБС:**
 
 - 📄 [Лицензионный договор с ООО «Издательство ЮРАЙТ» №43 с приложениями №1–3 (2025)](/assets/uploads/mto/biblioteka/Litsenzionnyy-dogovor-43-2025.pdf) ([прил. 1](/assets/uploads/mto/biblioteka/Prilozhenie-1-2025.pdf), [прил. 2](/assets/uploads/mto/biblioteka/Prilozhenie-2-2025.pdf), [прил. 3](/assets/uploads/mto/biblioteka/Prilozhenie-3-2025.pdf))
-- 📄 [Лицензионный договор с ООО «Издательство ЛАНЬ» на использование электронной библиотеки (04.03.2024)](/assets/uploads/mto/biblioteka/Dogovor-s-OOO-Izd-vo-LAN-04.03.2024.pdf)
 
 **Инструкции пользователей:**
 
-- 📄 [Инструкция для преподавателей (2023)](/assets/uploads/mto/biblioteka/Instruktsiya-dlya-prepodavateley-2023.pdf)
-- 📄 [Инструкция для студентов (2023)](/assets/uploads/mto/biblioteka/Instruktsiya-dlya-studentov-2023.pdf)
 - 📄 [Руководство по работе с мобильным приложением ЭБС «Лань»](/assets/uploads/mto/biblioteka/Rukovodstvo_mob_pril_LANY.pdf)
 
 ---
@@ -143,7 +140,6 @@ description: Материально-техническое обеспечени�
 
 **Договор на услуги связи:**
 
-- 📄 [Государственный контракт №5703704.22 с ПАО «Ростелеком» — об оказании услуг электросвязи (16.01.2024)](/assets/uploads/mto/main/Dogovor-Rostelekom-internet.pdf)
 
 ---
 
@@ -160,19 +156,10 @@ description: Материально-техническое обеспечени�
 
 **Нормативная база ЭИОС:**
 
-- 📄 [Положение об электронной информационно-образовательной среде (приложение №6 к приказу от 30.11.2023 №106а)](/assets/uploads/mto/eios/Polozhenie-EOS-2023.pdf) (PDF)
 - 📄 [Каталог электронных ресурсов](/assets/uploads/mto/eor/Katalog-elektronnyh-resursov.pdf)
 
 **Перечни ЭОР по реализуемым программам (Приказ Рособрнадзора №1493, п. 3.4 «м»):**
 
-- 📄 [09.02.01 Компьютерные системы и комплексы (2023)](/assets/uploads/mto/eor/09.02.01_perechen-EOR.pdf)
-- 📄 [38.02.01 Экономика и бухгалтерский учёт (по отраслям) (2023)](/assets/uploads/mto/eor/38.02.01_perechen-EOR.pdf)
-- 📄 [08.01.07 Мастер общестроительных работ (2023)](/assets/uploads/mto/eor/08.01.07_perechen-EOR.pdf)
-- 📄 [13.01.10 Электромонтёр по ремонту и обслуживанию электрооборудования (2023)](/assets/uploads/mto/eor/13.01.10_Perechen-EOR.pdf) · [версия 2024](/assets/uploads/mto/eor/13.01.10_Perechen-EOR.docx)
-- 📄 [15.01.05 Сварщик ручной и частично механизированной сварки (наплавки) (2023)](/assets/uploads/mto/eor/15.01.05_perechen-EOR.pdf)
-- 📄 [15.02.07 Автоматизация технологических процессов и производств (2023)](/assets/uploads/mto/eor/15.02.07_perechen-EOR.pdf)
-- 📄 [38.01.02 Продавец, контролёр-кассир (2023)](/assets/uploads/mto/eor/38.01.02_perechen-EOR.pdf)
-- 📄 [43.01.09 Повар, кондитер (2023)](/assets/uploads/mto/eor/43.01.09_perechen-EOR.pdf)
 
 ---
 
