@@ -523,6 +523,158 @@ module.exports = function(eleventyConfig) {
     });
   });
 
+  // === Автоматическое исправление атрибутов ссылок ===
+  // 1. Внешние ссылки → target="_blank" rel="noopener"
+  // 2. Ссылки на документы (.pdf, .doc, .zip и т.д.) → target="_blank"
+  // 3. Все ссылки без title → title из текста ссылки
+  // 4. Ссылки на документы без type → type по расширению файла
+  // 5. Исправление двойного URL-кодирования (mojibake) в href
+  const DOC_EXTENSIONS = {
+    '.pdf': 'application/pdf',
+    '.doc': 'application/msword',
+    '.docx': 'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
+    '.xls': 'application/vnd.ms-excel',
+    '.xlsx': 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
+    '.ppt': 'application/vnd.ms-powerpoint',
+    '.pptx': 'application/vnd.openxmlformats-officedocument.presentationml.presentation',
+    '.zip': 'application/zip',
+    '.rar': 'application/vnd.rar',
+    '.7z': 'application/x-7z-compressed',
+    '.odt': 'application/vnd.oasis.opendocument.text',
+    '.ods': 'application/vnd.oasis.opendocument.spreadsheet',
+    '.rtf': 'application/rtf',
+    '.csv': 'text/csv',
+  };
+  const SITE_DOMAINS = ['сит-сальск.рф', 'xn----8sbwke6acce8h.xn--p1ai', 'эос.сит-сальск.рф'];
+
+  // Декодирование двойного URL-кодирования (напр. %C3%90%C2%9E → О)
+  function fixDoubleEncodedHref(href) {
+    if (!href || !href.includes('%')) return href;
+    try {
+      const decoded = decodeURIComponent(href);
+      // Если после декодирования всё ещё есть %-последовательности — это двойное кодирование
+      if (decoded !== href && /%[0-9A-Fa-f]{2}/.test(decoded)) {
+        try {
+          const doubleDecoded = decodeURIComponent(decoded);
+          // Проверяем, что результат содержит кириллицу или читаемые символы
+          if (/[а-яА-ЯёЁ]/.test(doubleDecoded)) {
+            return doubleDecoded;
+          }
+        } catch (e) { /* не двойное кодирование */ }
+      }
+    } catch (e) { /* некорректное кодирование */ }
+    return href;
+  }
+
+  // Извлечение текста ссылки из HTML-контента между <a>...</a>
+  function extractLinkText(content) {
+    // Убираем HTML-теги, оставляем только текст
+    return content.replace(/<[^>]+>/g, '').replace(/\s+/g, ' ').trim();
+  }
+
+  eleventyConfig.addTransform('linkAttributes', function (content) {
+    const outputPath = this.page && this.page.outputPath;
+    if (!outputPath || !outputPath.endsWith('.html')) return content;
+
+    // Обрабатываем каждую ссылку <a ...>...</a>
+    return content.replace(/<a\b([^>]*?)>([\s\S]*?)<\/a>/gi, (fullMatch, attrsStr, innerHtml) => {
+      // Пропускаем якоря без href
+      const hrefMatch = attrsStr.match(/\bhref\s*=\s*["']([^"']*)["']/i);
+      if (!hrefMatch) return fullMatch;
+      let href = hrefMatch[1];
+
+      // Пропускаем якорные ссылки, mailto:, tel:, javascript:
+      if (!href || href.startsWith('#') || href.startsWith('mailto:') || href.startsWith('tel:') || href.startsWith('javascript:')) {
+        return fullMatch;
+      }
+
+      let attrs = attrsStr;
+      let modified = false;
+
+      // --- 5. Исправление двойного URL-кодирования ---
+      const fixedHref = fixDoubleEncodedHref(href);
+      if (fixedHref !== href) {
+        attrs = attrs.replace(/\bhref\s*=\s*["'][^"']*["']/i, `href="${fixedHref}"`);
+        href = fixedHref;
+        modified = true;
+      }
+
+      // Определяем тип ссылки
+      const isExternal = href.startsWith('http://') || href.startsWith('https://');
+      const urlPath = href.split('?')[0].split('#')[0];
+      const ext = (urlPath.match(/\.[^.\/\\]+$/) || [''])[0].toLowerCase();
+      const isDocLink = ext in DOC_EXTENSIONS;
+
+      // Проверяем, является ли внешняя ссылкой на свой же сайт
+      let isOwnDomain = false;
+      if (isExternal) {
+        for (const domain of SITE_DOMAINS) {
+          if (href.includes(domain)) { isOwnDomain = true; break; }
+        }
+      }
+
+      // --- 1. Внешние ссылки: target="_blank" rel="noopener" ---
+      if (isExternal && !isOwnDomain) {
+        if (!/\btarget\s*=/i.test(attrs)) {
+          attrs += ' target="_blank"';
+          modified = true;
+        } else if (/\btarget\s*=\s*["']?(?!_blank)["']?/i.test(attrs)) {
+          attrs = attrs.replace(/\btarget\s*=\s*["'][^"']*["']/i, 'target="_blank"');
+          modified = true;
+        }
+        if (!/\brel\s*=/i.test(attrs)) {
+          attrs += ' rel="noopener"';
+          modified = true;
+        } else if (!/\bnoopener\b/i.test(attrs)) {
+          attrs = attrs.replace(/\brel\s*=\s*["']([^"']*)["']/i, (m, v) => `rel="${v} noopener"`);
+          modified = true;
+        }
+      }
+
+      // --- 2. Ссылки на документы: target="_blank" ---
+      if (isDocLink) {
+        if (!/\btarget\s*=/i.test(attrs)) {
+          attrs += ' target="_blank"';
+          modified = true;
+        } else if (!/\b_blank\b/i.test(attrs)) {
+          attrs = attrs.replace(/\btarget\s*=\s*["'][^"']*["']/i, 'target="_blank"');
+          modified = true;
+        }
+      }
+
+      // --- 3. Все ссылки без title → title из текста ---
+      if (!/\btitle\s*=/i.test(attrs)) {
+        const linkText = extractLinkText(innerHtml);
+        if (linkText) {
+          // Убираем эмодзи и лишние пробелы, обрезаем до 120 символов
+          const cleanText = linkText
+            .replace(/[\u{1F000}-\u{1FFFF}]/gu, '')
+            .replace(/\s+/g, ' ')
+            .trim()
+            .substring(0, 120);
+          if (cleanText) {
+            // Экранируем кавычки в title
+            const escapedTitle = cleanText.replace(/"/g, '&quot;');
+            attrs += ` title="${escapedTitle}"`;
+            modified = true;
+          }
+        }
+      }
+
+      // --- 4. Ссылки на документы без type → type по расширению ---
+      if (isDocLink && !/\btype\s*=/i.test(attrs)) {
+        const mimeType = DOC_EXTENSIONS[ext];
+        if (mimeType) {
+          attrs += ` type="${mimeType}"`;
+          modified = true;
+        }
+      }
+
+      if (!modified) return fullMatch;
+      return `<a${attrs}>${innerHtml}</a>`;
+    });
+  });
+
   // === Минификация HTML (только в режиме build, не в dev/serve) ===
   // Eleventy 3.x выставляет process.env.ELEVENTY_RUN_MODE в "build"|"serve"|"watch".
   // Минифицируем только при build (npm run build), чтобы не замедлять разработку.
