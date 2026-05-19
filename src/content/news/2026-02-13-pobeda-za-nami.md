@@ -9,7 +9,7 @@ layout: layouts/post.njk
 permalink: /news/pobeda-za-nami/
 ---
 
-[![Народный фронт 2025](/images/logos/narodnyj-front-2025.png)](https://pobeda.onf.ru/requirements/rostovskaya)
+[![Народный фронт 2025](/images/logos/narodnyj-front-2025.png "Народный фронт 2025")](https://pobeda.onf.ru/requirements/rostovskaya)
 
 ## Поддержим наших ребят на передовой!
 

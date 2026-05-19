@@ -90,7 +90,7 @@
                 <div class="card-image">
                   <a href="{{ item.url }}">
                     <img src="{{ item.data.image }}"
-                         alt="{{ item.data.imageAlt or item.data.title }}"
+                         alt="{{ item.data.imageAlt or item.data.title }}" title="{{ item.data.imageAlt or item.data.title }}"
                          loading="lazy" itemprop="image">
                   </a>
                 </div>
@@ -245,7 +245,7 @@
           {% if item.image %}
           <div class="related-card__img">
             <a href="{{ item.url }}">
-              <img src="{{ item.image }}" alt="{{ item.title }}" loading="lazy">
+              <img src="{{ item.image }}" alt="{{ item.title }}" title="{{ item.title }}" loading="lazy">
             </a>
           </div>
           {% endif %}

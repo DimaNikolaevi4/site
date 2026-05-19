@@ -9,7 +9,7 @@ description: Материально-техническое обеспечени�
 
 Материально-техническое обеспечение представлено в соответствии с подпунктом «ж» пункта 3.4 Приказа Рособрнадзора №1493 и охватывает оборудованные кабинеты, объекты для проведения практических занятий, библиотеки, объекты спорта, средства обучения, условия питания и охраны здоровья, доступ к информационным системам и ЭОР.
 
-![МТО ГБПОУ РО «СИТ»](/assets/uploads/mto/main/MTO-2022-7.jpg)
+![МТО ГБПОУ РО «СИТ»](/assets/uploads/mto/main/MTO-2022-7.jpg "МТО ГБПОУ РО «СИТ»")
 
 ---
 
@@ -37,13 +37,13 @@ description: Материально-техническое обеспечени�
 
 ### Фотогалерея кабинетов
 
-- ![Кабинет безопасности жизнедеятельности](/assets/uploads/mto/main/Kabinet-bezopasnosti-zhiznedeyatelnosti.jpg)
-- ![Кабинет математики](/assets/uploads/mto/main/Kabinet-matematiki.jpg)
-- ![Кабинет общих гуманитарных и социальных дисциплин](/assets/uploads/mto/main/Kabinet-obshchih-gumanitarnyh-i-sotsialnyh-distsiplin.jpg)
-- ![Кабинет технологии кулинарного и кондитерского производства](/assets/uploads/mto/main/Kabinet-tehnologii-kulinarnogo-i-konditerskogo-proizvodstva.jpg)
-- ![Кабинет физики и электротехники](/assets/uploads/mto/main/Kabinet-fiziki-i-elektrotehniki.jpg)
-- ![Кабинет химии и биологии](/assets/uploads/mto/main/Kabinet-himii-biologii.jpg)
-- ![Кабинет экономики, менеджмента, финансов, денежного обращения и кредита](/assets/uploads/mto/main/Kabinet-ekonomiki-menedzhmenta-finansov-denezhnogo-obrashcheniya-i-kredita.jpg)
+- ![Кабинет безопасности жизнедеятельности](/assets/uploads/mto/main/Kabinet-bezopasnosti-zhiznedeyatelnosti.jpg "Кабинет безопасности жизнедеятельности")
+- ![Кабинет математики](/assets/uploads/mto/main/Kabinet-matematiki.jpg "Кабинет математики")
+- ![Кабинет общих гуманитарных и социальных дисциплин](/assets/uploads/mto/main/Kabinet-obshchih-gumanitarnyh-i-sotsialnyh-distsiplin.jpg "Кабинет общих гуманитарных и социальных дисциплин")
+- ![Кабинет технологии кулинарного и кондитерского производства](/assets/uploads/mto/main/Kabinet-tehnologii-kulinarnogo-i-konditerskogo-proizvodstva.jpg "Кабинет технологии кулинарного и кондитерского производства")
+- ![Кабинет физики и электротехники](/assets/uploads/mto/main/Kabinet-fiziki-i-elektrotehniki.jpg "Кабинет физики и электротехники")
+- ![Кабинет химии и биологии](/assets/uploads/mto/main/Kabinet-himii-biologii.jpg "Кабинет химии и биологии")
+- ![Кабинет экономики, менеджмента, финансов, денежного обращения и кредита](/assets/uploads/mto/main/Kabinet-ekonomiki-menedzhmenta-finansov-denezhnogo-obrashcheniya-i-kredita.jpg "Кабинет экономики, менеджмента, финансов, денежного обращения и кредита")
 
 ---
 
@@ -60,8 +60,8 @@ description: Материально-техническое обеспечени�
 
 ### Фото лабораторий
 
-- ![Лаборатория бухгалтерского учёта, налогов, налогообложения и аудита](/assets/uploads/mto/main/Laboratoriya-buhgalterskogo-ucheta-nalogov-i-nalogooblozheniya-audita.jpg)
-- ![Лаборатория информационных технологий](/assets/uploads/mto/main/Laboratoriya-informatsionnyh-tehnologiy.jpg)
+- ![Лаборатория бухгалтерского учёта, налогов, налогообложения и аудита](/assets/uploads/mto/main/Laboratoriya-buhgalterskogo-ucheta-nalogov-i-nalogooblozheniya-audita.jpg "Лаборатория бухгалтерского учёта, налогов, налогообложения и аудита")
+- ![Лаборатория информационных технологий](/assets/uploads/mto/main/Laboratoriya-informatsionnyh-tehnologiy.jpg "Лаборатория информационных технологий")
 
 ---
 

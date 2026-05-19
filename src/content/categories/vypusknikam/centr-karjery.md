@@ -146,7 +146,7 @@ source: https://sit-salsk.ru/?p=34985
 <h2 id="section-8" style="text-align: center;"><strong><span style="font-family: 'times new roman', times, serif; font-size: 18pt;">8. Маршрутизация</span></strong></h2>
 <hr />
 <p>&nbsp;</p>
-<p><a href="/assets/uploads/Слайд1.jpg"><img loading="lazy" decoding="async" class="alignleft size-medium wp-image-36272" src="/assets/images/vypusknikam/centr-karjery-1.jpg" alt="" width="300" height="300"   /></a><span style="font-family: 'times new roman', times, serif; font-size: 14pt;">Построй свой карьерный трек вместе с новым проектом службы занятости населения по профориентации и маршрутизации молодежи!</span></p>
+<p><a href="/assets/uploads/Слайд1.jpg"><img loading="lazy" decoding="async" class="alignleft size-medium wp-image-36272" src="/assets/images/vypusknikam/centr-karjery-1.jpg" alt="Маршрутизация — проект службы занятости" title="Маршрутизация — проект службы занятости" width="300" height="300"   /></a><span style="font-family: 'times new roman', times, serif; font-size: 14pt;">Построй свой карьерный трек вместе с новым проектом службы занятости населения по профориентации и маршрутизации молодежи!</span></p>
 <p><span style="font-family: 'times new roman', times, serif; font-size: 14pt;"><strong>Кто участвует?</strong></span></p>
 <ul>
 <li><em><span style="font-family: 'times new roman', times, serif; font-size: 14pt;">Школьники</span></em></li>

@@ -21,7 +21,7 @@ highlights:
 # Слово директора
 
 <div class="director-photo-wrapper" style="float: left; margin: 0 20px 20px 0; width: 220px;">
-  <img src="/assets/images/director-photo.jpg" alt="Директор Сальского индустриального техникума Сенченко Марина Евгеньевна" style="width: 100%; height: auto; border-radius: 4px;">
+  <img src="/assets/images/director-photo.jpg" alt="Директор Сальского индустриального техникума Сенченко Марина Евгеньевна" title="Директор Сальского индустриального техникума Сенченко Марина Евгеньевна" style="width: 100%; height: auto; border-radius: 4px;">
   <p style="font-size: 0.9em; font-style: italic; text-align: center; margin-top: 8px;">
     <strong>Сенченко Марина Евгеньевна</strong><br>
     Директор Сальского индустриального техникума

@@ -10,7 +10,7 @@ permalink: /vypusknikam/prezentacija-atp/
 description: "В Сальском индустриальном техникуме продолжается Неделя технических дисциплин."
 source: https://sit-salsk.ru/?p=5629
 ---
-<p style="text-align: left;" align="justify"><span style="font-family: times new roman,times,serif;"><a href="/assets/uploads/презентация-атп-2016-3.jpeg" rel="attachment wp-att-5632"><img fetchpriority="high" decoding="async" class="alignleft size-medium wp-image-5632" src="/assets/images/vypusknikam/prezentacija-atp-1.jpeg" alt="презентация атп - 2016 (3)" width="300" height="225"   /></a><span style="font-size: 14pt;">В Сальском индустриальном техникуме продолжается Неделя технических дисциплин.</span></span></p>
+<p style="text-align: left;" align="justify"><span style="font-family: times new roman,times,serif;"><a href="/assets/uploads/презентация-атп-2016-3.jpeg" rel="attachment wp-att-5632"><img fetchpriority="high" decoding="async" class="alignleft size-medium wp-image-5632" src="/assets/images/vypusknikam/prezentacija-atp-1.jpeg" alt="презентация атп - 2016 (3)" title="презентация атп - 2016 (3)" width="300" height="225"   /></a><span style="font-size: 14pt;">В Сальском индустриальном техникуме продолжается Неделя технических дисциплин.</span></span></p>
 <p style="text-align: left;" align="justify"><span style="font-family: times new roman,times,serif; font-size: 14pt;">В рамках Недели 26 января состоялась презентация специальности «Автоматизация технологических процессов и производств» для студентов-первокурсников групп АТП-11, АТП-12, АТП-13.</span></p>
 <p style="text-align: left;" align="justify"><span style="font-family: times new roman,times,serif; font-size: 14pt;"><span id="more-5629"></span></span></p>
 <p style="text-align: left;" align="justify"><span style="font-family: times new roman,times,serif; font-size: 14pt;">Преподаватель Чернявская Н.Н. продемонстрировала ребятам очень интересные видеоматериалы, в которых показаны различные аспекты применения и перспективы развития систем автоматизации в различных отраслях промышленности.</span></p>
@@ -35,19 +35,19 @@ source: https://sit-salsk.ru/?p=5629
 		</style>
 		<div id='gallery-1' class='gallery galleryid-5629 gallery-columns-5 gallery-size-thumbnail'><dl class='gallery-item'>
 			<dt class='gallery-icon landscape'>
-				<a href='https://sit-salsk.ru/?attachment_id=5630'><img decoding="async" width="150" height="150" src="/assets/images/vypusknikam/prezentacija-atp-2.jpeg" class="attachment-thumbnail size-thumbnail" alt="" /></a>
+				<a href='https://sit-salsk.ru/?attachment_id=5630'><img decoding="async" width="150" height="150" src="/assets/images/vypusknikam/prezentacija-atp-2.jpeg" class="attachment-thumbnail size-thumbnail" alt="Презентация специальности АТП — фото 1" title="Презентация специальности АТП — фото 1" /></a>
 			</dt></dl><dl class='gallery-item'>
 			<dt class='gallery-icon landscape'>
-				<a href='https://sit-salsk.ru/?attachment_id=5631'><img decoding="async" width="150" height="150" src="/assets/images/vypusknikam/prezentacija-atp-3.jpeg" class="attachment-thumbnail size-thumbnail" alt="" /></a>
+				<a href='https://sit-salsk.ru/?attachment_id=5631'><img decoding="async" width="150" height="150" src="/assets/images/vypusknikam/prezentacija-atp-3.jpeg" class="attachment-thumbnail size-thumbnail" alt="Презентация специальности АТП — фото 2" title="Презентация специальности АТП — фото 2" /></a>
 			</dt></dl><dl class='gallery-item'>
 			<dt class='gallery-icon landscape'>
-				<a href='https://sit-salsk.ru/?attachment_id=5632'><img loading="lazy" decoding="async" width="150" height="150" src="/assets/images/vypusknikam/prezentacija-atp-4.jpeg" class="attachment-thumbnail size-thumbnail" alt="" /></a>
+				<a href='https://sit-salsk.ru/?attachment_id=5632'><img loading="lazy" decoding="async" width="150" height="150" src="/assets/images/vypusknikam/prezentacija-atp-4.jpeg" class="attachment-thumbnail size-thumbnail" alt="Презентация специальности АТП — фото 3" title="Презентация специальности АТП — фото 3" /></a>
 			</dt></dl><dl class='gallery-item'>
 			<dt class='gallery-icon landscape'>
-				<a href='https://sit-salsk.ru/?attachment_id=5633'><img loading="lazy" decoding="async" width="150" height="150" src="/assets/images/vypusknikam/prezentacija-atp-5.jpeg" class="attachment-thumbnail size-thumbnail" alt="" /></a>
+				<a href='https://sit-salsk.ru/?attachment_id=5633'><img loading="lazy" decoding="async" width="150" height="150" src="/assets/images/vypusknikam/prezentacija-atp-5.jpeg" class="attachment-thumbnail size-thumbnail" alt="Презентация специальности АТП — фото 4" title="Презентация специальности АТП — фото 4" /></a>
 			</dt></dl><dl class='gallery-item'>
 			<dt class='gallery-icon landscape'>
-				<a href='https://sit-salsk.ru/?attachment_id=5634'><img loading="lazy" decoding="async" width="150" height="150" src="/assets/images/vypusknikam/prezentacija-atp-6.jpeg" class="attachment-thumbnail size-thumbnail" alt="" /></a>
+				<a href='https://sit-salsk.ru/?attachment_id=5634'><img loading="lazy" decoding="async" width="150" height="150" src="/assets/images/vypusknikam/prezentacija-atp-6.jpeg" class="attachment-thumbnail size-thumbnail" alt="Презентация специальности АТП — фото 5" title="Презентация специальности АТП — фото 5" /></a>
 			</dt></dl><br style="clear: both" />
 		</div>
 

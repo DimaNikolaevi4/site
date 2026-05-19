@@ -19,7 +19,7 @@ suppressSubrubrics: true
 
 # Абитуриентам
 
-<img src="/assets/images/privetstvie-abiturientov-2026.png" alt="Приветствие абитуриентов ГБПОУ РО «Сальский индустриальный техникум» — 2026" style="width:100%;height:auto;border-radius:4px;margin-bottom:1.5rem;">
+<img src="/assets/images/privetstvie-abiturientov-2026.png" alt="Приветствие абитуриентов ГБПОУ РО «Сальский индустриальный техникум» — 2026" title="Приветствие абитуриентов ГБПОУ РО «Сальский индустриальный техникум» — 2026" style="width:100%;height:auto;border-radius:4px;margin-bottom:1.5rem;">
 
 Здравствуйте, будущие студенты и их родители!
 

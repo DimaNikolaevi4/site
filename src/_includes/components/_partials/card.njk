@@ -28,7 +28,7 @@
     <a href="{{ card.url }}">
       <img 
         src="{{ card.image }}" 
-        alt="{{ card.imageAlt | default(card.title) }}"
+        alt="{{ card.imageAlt | default(card.title) }}" title="{{ card.imageAlt | default(card.title) }}"
         loading="lazy"
         itemprop="image"
       >

@@ -10,5 +10,5 @@ permalink: /vypusknikam/vnimanie-ege/
 description: "Студенты, определены сроки подачи заявлений на сдачу единого государственного экзамена (ЕГЭ) в 2016 году – с 01.12.2015 по 01.02.2016 года."
 source: https://sit-salsk.ru/?p=5077
 ---
-<p><img decoding="async" class="alignleft size-full wp-image-5083" src="/assets/images/vypusknikam/vnimanie-ege-1.png" alt="егэ-3" width="183" height="188"   />Студенты, определены сроки подачи заявлений на сдачу единого государственного экзамена (ЕГЭ) в 2016 году &#8211; с 01.12.2015 по 01.02.2016 года.</p>
+<p><img decoding="async" class="alignleft size-full wp-image-5083" src="/assets/images/vypusknikam/vnimanie-ege-1.png" alt="Информация о ЕГЭ для выпускников" title="Информация о ЕГЭ для выпускников" width="183" height="188"   />Студенты, определены сроки подачи заявлений на сдачу единого государственного экзамена (ЕГЭ) в 2016 году &#8211; с 01.12.2015 по 01.02.2016 года.</p>
 											</div>

@@ -87,7 +87,7 @@
         {% if coverImage and showHero == false %}
         <figure class="post-cover">
           <img src="{{ coverImage }}"
-               alt="{{ coverAlt or title }}"
+               alt="{{ coverAlt or title }}" title="{{ coverAlt or title }}"
                loading="eager"
                class="post-cover__img img-fluid rounded"
                itemprop="image">

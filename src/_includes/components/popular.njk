@@ -61,7 +61,7 @@
           {# Карточка текущего раздела заменена на placeholder «Расписание» #}
           <div class="col-md-6 col-xl-4 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="{{ loop.index * 100 }}">
             <div class="course-item popular-card--placeholder">
-              <img src="{{ _popularPlaceholder.image }}" class="img-fluid" alt="{{ _popularPlaceholder.alt }}" loading="lazy">
+              <img src="{{ _popularPlaceholder.image }}" class="img-fluid" alt="{{ _popularPlaceholder.alt }}" title="{{ _popularPlaceholder.alt }}" loading="lazy">
               <div class="course-content">
                 <h3>{{ _popularPlaceholder.title }}</h3>
                 <p class="description">{{ _popularPlaceholder.desc }}</p>
@@ -74,7 +74,7 @@
           {% else %}
           <div class="col-md-6 col-xl-4 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="{{ loop.index * 100 }}">
             <div class="course-item">
-              <img src="{{ _c.image }}" class="img-fluid{{ ' ' + _c.imgClass if _c.imgClass }}" alt="{{ _c.alt }}" loading="lazy">
+              <img src="{{ _c.image }}" class="img-fluid{{ ' ' + _c.imgClass if _c.imgClass }}" alt="{{ _c.alt }}" title="{{ _c.alt }}" loading="lazy">
               <div class="course-content">
                 <h3><a href="{{ _c.url }}">{{ _c.title }}</a></h3>
                 <p class="description">{{ _c.desc }}</p>
