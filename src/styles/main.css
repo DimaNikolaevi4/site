@@ -8648,3 +8648,52 @@ body.dark-theme .anti-corruption-page .report-form {
     height: 120px;
   }
 }
+
+/*--------------------------------------------------------------
+# Content Image Lightbox (GLightbox)
+# Контентные изображения (не иконки) при клике открываются
+# в модальном окне GLightbox с увеличенным разрешением.
+--------------------------------------------------------------*/
+
+/* Визуальная подсказка: курсор-лупа и hover-эффект */
+.post-content a.glightbox,
+.page-content a.glightbox,
+.post-cover a.glightbox,
+.about-img-wrap a.glightbox,
+.pobeda-banner-link a.glightbox {
+  display: inline-block;
+  cursor: zoom-in;
+  border: none;
+  outline: none;
+  text-decoration: none;
+  transition: filter 0.25s ease, box-shadow 0.25s ease;
+}
+
+.post-content a.glightbox:hover,
+.page-content a.glightbox:hover,
+.post-cover a.glightbox:hover,
+.about-img-wrap a.glightbox:hover,
+.pobeda-banner-link a.glightbox:hover {
+  filter: brightness(1.03);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+}
+
+/* Адаптация для тёмной темы */
+:root.dark-theme .post-content a.glightbox:hover,
+:root.dark-theme .page-content a.glightbox:hover,
+:root.dark-theme .post-cover a.glightbox:hover,
+:root.dark-theme .about-img-wrap a.glightbox:hover,
+:root.dark-theme .pobeda-banner-link a.glightbox:hover {
+  box-shadow: 0 4px 16px rgba(255, 255, 255, 0.1);
+}
+
+/* Уважение к prefers-reduced-motion */
+@media (prefers-reduced-motion: reduce) {
+  .post-content a.glightbox,
+  .page-content a.glightbox,
+  .post-cover a.glightbox,
+  .about-img-wrap a.glightbox,
+  .pobeda-banner-link a.glightbox {
+    transition: none;
+  }
+}

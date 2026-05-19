@@ -227,6 +227,125 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
+  // ─── Lightbox для контентных изображений (GLightbox) ───
+  // Автоматически оборачивает все <img> (не иконки) внутри контентных зон
+  // в <a class="glightbox">, чтобы при клике открывалось модальное окно
+  // с увеличенным изображением.
+  (function initContentLightbox() {
+    if (typeof GLightbox === 'undefined') return;
+
+    // Расширения файлов, которые считаются изображениями
+    var imgExt = /\.(jpg|jpeg|png|gif|webp|svg|bmp|avif)(\?.*)?$/i;
+
+    // Селекторы контентных зон, где изображения нужно увеличивать
+    var contentSelectors = [
+      '.post-content',      // текст материалов (post.njk)
+      '.page-content',      // текст статических страниц (page-full.njk)
+      '.post-cover',        // обложка материала (post.njk)
+      '.about-img-wrap',    // фото директора (about.njk)
+      '.pobeda-banner-link' // баннер «День открытых дверей» (about.njk)
+    ];
+
+    // Селекторы исключений — изображения-иконки, логотипы, декоративные
+    var excludeSelectors = [
+      '[aria-hidden="true"]',
+      '.footer-resource-icon',
+      '.footer-logo-mark',
+      '.oc-header__logo',
+      '.bf-22__logo',
+      '.card-image',        // карточки — клик ведёт на статью
+      '.course-item img',   // карточки новостей/популярное
+      '.popular-card__logo-img',
+      '.header-logo-img'
+    ];
+
+    function isExcluded(img) {
+      for (var i = 0; i < excludeSelectors.length; i++) {
+        if (img.closest(excludeSelectors[i])) return true;
+      }
+      return false;
+    }
+
+    var lightboxAdded = false;
+
+    document.querySelectorAll(contentSelectors.join(',')).forEach(function (container) {
+      container.querySelectorAll('img').forEach(function (img) {
+        // Пропускаем иконки и декоративные изображения
+        if (isExcluded(img)) return;
+        if (img.hasAttribute('aria-hidden')) return;
+        // Пропускаем очень маленькие изображения (вероятно, иконки)
+        if (img.width > 0 && img.width < 50) return;
+
+        var src = img.getAttribute('src');
+        if (!src || src.startsWith('data:')) return;
+
+        var parent = img.parentElement;
+
+        // Если уже внутри <a> тега
+        if (parent && parent.tagName === 'A') {
+          var href = parent.getAttribute('href') || '';
+          // Если ссылка ведёт на изображение — превращаем в lightbox
+          if (imgExt.test(href)) {
+            parent.classList.add('glightbox');
+            var alt = img.getAttribute('alt') || '';
+            if (alt) {
+              parent.setAttribute('data-glightbox', 'title=' + alt);
+            }
+            lightboxAdded = true;
+          }
+          // Если ссылка ведёт на другую страницу — оставляем навигацию
+          return;
+        }
+
+        // Если внутри <picture> — обрабатываем только сам <picture>
+        if (parent && parent.tagName === 'PICTURE') {
+          var pictureParent = parent.parentElement;
+          if (pictureParent && pictureParent.tagName === 'A') {
+            var phref = pictureParent.getAttribute('href') || '';
+            if (imgExt.test(phref)) {
+              pictureParent.classList.add('glightbox');
+              var palt = img.getAttribute('alt') || '';
+              if (palt) {
+                pictureParent.setAttribute('data-glightbox', 'title=' + palt);
+              }
+              lightboxAdded = true;
+            }
+            return;
+          }
+          // Оборачиваем <picture> в <a class="glightbox">
+          var a = document.createElement('a');
+          a.href = src;
+          a.classList.add('glightbox');
+          var pictAlt = img.getAttribute('alt') || '';
+          if (pictAlt) {
+            a.setAttribute('data-glightbox', 'title=' + pictAlt);
+          }
+          parent.parentNode.insertBefore(a, parent);
+          a.appendChild(parent);
+          lightboxAdded = true;
+          return;
+        }
+
+        // Одиночное изображение — оборачиваем в <a class="glightbox">
+        var wrap = document.createElement('a');
+        wrap.href = src;
+        wrap.classList.add('glightbox');
+        var imgAlt = img.getAttribute('alt') || '';
+        if (imgAlt) {
+          wrap.setAttribute('data-glightbox', 'title=' + imgAlt);
+        }
+        img.parentNode.insertBefore(wrap, img);
+        wrap.appendChild(img);
+        lightboxAdded = true;
+      });
+    });
+
+    // Инициализируем GLightbox для новых элементов
+    if (lightboxAdded) {
+      GLightbox({ selector: '.glightbox' });
+    }
+  })();
+
   // ─── Math-CAPTCHA для форм обратной связи ───
   document.querySelectorAll('form[data-honeypot]').forEach(function (form) {
     var captchaWrap  = form.querySelector('[data-captcha]');
