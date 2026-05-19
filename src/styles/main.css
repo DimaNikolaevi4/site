@@ -8463,3 +8463,79 @@ body.dark-theme .anti-corruption-page .report-form {
     font-size: 0.98rem;
   }
 }
+
+/* ─── Фотогалерея: список изображений в .page-content и .svedenija-content ─── */
+/* Применяется к <ul>, все <li> которого содержат только изображения (img или picture) */
+.page-content ul:has(li > img),
+.page-content ul:has(li > picture),
+.svedenija-content ul:has(li > img),
+.svedenija-content ul:has(li > picture) {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1rem;
+  list-style: none;
+  padding: 0;
+  margin: 1.25rem 0;
+}
+
+.page-content ul:has(li > img) li,
+.page-content ul:has(li > picture) li,
+.svedenija-content ul:has(li > img) li,
+.svedenija-content ul:has(li > picture) li {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  border-radius: 0.5rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.10);
+  background: var(--surface-color, #fff);
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.page-content ul:has(li > img) li:hover,
+.page-content ul:has(li > picture) li:hover,
+.svedenija-content ul:has(li > img) li:hover,
+.svedenija-content ul:has(li > picture) li:hover {
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+  transform: translateY(-2px);
+}
+
+.page-content ul:has(li > img) li img,
+.page-content ul:has(li > picture) li img,
+.svedenija-content ul:has(li > img) li img,
+.svedenija-content ul:has(li > picture) li img {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+  display: block;
+}
+
+.page-content ul:has(li > img) li picture,
+.page-content ul:has(li > picture) li picture,
+.svedenija-content ul:has(li > img) li picture,
+.svedenija-content ul:has(li > picture) li picture {
+  display: block;
+  width: 100%;
+  height: 160px;
+}
+
+@media (max-width: 576px) {
+  .page-content ul:has(li > img),
+  .page-content ul:has(li > picture),
+  .svedenija-content ul:has(li > img),
+  .svedenija-content ul:has(li > picture) {
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 0.65rem;
+  }
+  .page-content ul:has(li > img) li img,
+  .page-content ul:has(li > picture) li img,
+  .svedenija-content ul:has(li > img) li img,
+  .svedenija-content ul:has(li > picture) li img {
+    height: 120px;
+  }
+  .page-content ul:has(li > img) li picture,
+  .page-content ul:has(li > picture) li picture,
+  .svedenija-content ul:has(li > img) li picture,
+  .svedenija-content ul:has(li > picture) li picture {
+    height: 120px;
+  }
+}
