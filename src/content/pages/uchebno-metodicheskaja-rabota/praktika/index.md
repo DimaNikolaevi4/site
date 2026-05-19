@@ -7,9 +7,6 @@ permalink: /uchebno-metodicheskaja-rabota/praktika/
 ---
 
 # 3.4. Практика
-
-> **Источник:** [sit-salsk.ru — рубрика «3.4. Практика»](https://sit-salsk.ru/?cat=42).
-
 ## Практика в ГБПОУ РО «СИТ»
 
 📄 **[Места прохождения практики учащимися (2024)](/assets/uploads/praktika/mesta-prohozhdenija-praktiki-uchashhimisja-2024.docx)** (DOCX)
@@ -68,3 +65,4 @@ permalink: /uchebno-metodicheskaja-rabota/praktika/
   { url: "/svedenija/employment/", emoji: "🧑‍💼", title: "Сведения → Центр Карьеры", description: "Содействие трудоустройству выпускников." }
 ] %}
 {% include "components/news.njk" %}
+

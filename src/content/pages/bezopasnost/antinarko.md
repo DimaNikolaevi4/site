@@ -61,8 +61,6 @@ description: Антинаркотическая работа в ГБПОУ РО 
 - Приёмная техникума: **8 (86372) 5-05-71**
 - Педагог-психолог техникума — раздел [/psihologicheskoe/](/psihologicheskoe/)
 
-Источник телефонов: [`?p=31663`](https://sit-salsk.ru/?p=31663) — публикация общероссийской антинаркотической акции «Сообщи, где торгуют смертью» от 13.10.2024.
-
 <aside class="sos-block" role="complementary" aria-label="Экстренная связь">
   <p class="sos-block__title"><i class="bi bi-exclamation-triangle-fill" aria-hidden="true"></i> Экстренная связь</p>
   <ul class="sos-block__list">

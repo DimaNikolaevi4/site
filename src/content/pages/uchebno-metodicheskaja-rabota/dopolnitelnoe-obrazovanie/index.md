@@ -7,9 +7,6 @@ permalink: /uchebno-metodicheskaja-rabota/dopolnitelnoe-obrazovanie/
 ---
 
 # 3.2. Дополнительное образование
-
-> **Источник:** [sit-salsk.ru — рубрика «3.2. Дополнительное образование»](https://sit-salsk.ru/?cat=161) · [основной пост `?p=4155`](https://sit-salsk.ru/?p=4155) (опубликован 29/06/2014, обновлён 10/07/2025).
-
 Студенты техникума, ещё **до получения диплома**, могут пройти **дополнительную профессиональную подготовку** по программам:
 
 ## Рабочие профессии
@@ -45,3 +42,4 @@ permalink: /uchebno-metodicheskaja-rabota/dopolnitelnoe-obrazovanie/
   { url: "/svedenija/employment/", emoji: "🧑‍💼", title: "Сведения → Центр Карьеры", description: "Реализация ДПО для студентов и выпускников." }
 ] %}
 {% include "components/news.njk" %}
+
