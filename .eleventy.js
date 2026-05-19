@@ -279,6 +279,7 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addPassthroughCopy("src/assets/images");
   eleventyConfig.addPassthroughCopy("src/assets/js");
   eleventyConfig.addPassthroughCopy({ "src/assets/uploads": "assets/uploads" });
+  eleventyConfig.addPassthroughCopy({ "src/docs": "docs" });
   eleventyConfig.addPassthroughCopy({ "src/assets/template": "assets/template" });
   eleventyConfig.addPassthroughCopy({ "src/assets/vendor/php-email-form": "assets/mentor/vendor/php-email-form" });
   eleventyConfig.addPassthroughCopy("src/images");
