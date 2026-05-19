@@ -49,7 +49,7 @@ suppressSubrubrics: true
 
 - **Приёмная директора:** 8 (86372) 5-05-71
 - **Электронная почта:** [sitsalsk@mail.ru](mailto:sitsalsk@mail.ru), [sitsporo@yandex.ru](mailto:sitsporo@yandex.ru)
-- **Официальный сайт:** [сит-сальск.рф](https://xn----8sbwke6acce8h.xn--p1ai/)
+- **Официальный сайт:** [сит-сальск.рф](/)
 - **Сообщество ВКонтакте:** [vk.com/sitsalsksit](https://vk.com/sitsalsksit)
 - **График работы администрации:** пн–пт, 08:00–17:00 (перерыв 12:00–13:00).
 

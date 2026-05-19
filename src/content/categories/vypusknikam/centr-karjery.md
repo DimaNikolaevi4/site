@@ -26,7 +26,7 @@ source: https://sit-salsk.ru/?p=34985
 <h2 id="section-1" style="text-align: center;"><span style="font-size: 18pt;"><strong><span style="font-family: 'times new roman', times, serif;">1. Общая информация</span></strong></span></h2>
 <hr />
 <ul>
-<li><span style="font-family: 'times new roman', times, serif; font-size: 14pt;"><a href="https://sit-salsk.ru/assets/uploads/vypusknikam/centr-karjery-1.docx">Общая информация</a></span></li>
+<li><span style="font-family: 'times new roman', times, serif; font-size: 14pt;"><a href="/assets/uploads/vypusknikam/centr-karjery-1.docx">Общая информация</a></span></li>
 </ul>
 
                                         <div class="ead-loading-foot">
@@ -48,7 +48,7 @@ source: https://sit-salsk.ru/?p=34985
 <h2 id="section-2" style="text-align: center;"><span style="font-size: 18pt;"><strong><span style="font-family: 'times new roman', times, serif;">2. Документы</span></strong></span></h2>
 <hr />
 <ul>
-<li><span style="font-family: 'times new roman', times, serif; font-size: 14pt;"><a href="https://sit-salsk.ru/assets/uploads/vypusknikam/centr-karjery-2.pdf">Положение о Центре Карьеры техникума &#8211; Приложение к Приказу №89 от 29.08.25</a></span></li>
+<li><span style="font-family: 'times new roman', times, serif; font-size: 14pt;"><a href="/assets/uploads/vypusknikam/centr-karjery-2.pdf">Положение о Центре Карьеры техникума &#8211; Приложение к Приказу №89 от 29.08.25</a></span></li>
 </ul>
 
                                         <div class="ead-loading-foot">
@@ -60,14 +60,14 @@ source: https://sit-salsk.ru/?p=34985
                                                         <div class="ead-document-btn ead-reload-btn" role="button">
                                                                  Перезагрузить документ                                                 </div>
                                                         <span>|</span>
-                                                        <a href="https://sit-salsk.ru/assets/uploads/vypusknikam/centr-karjery-2.pdf" class="ead-document-btn" target="_blank">
+                                                        <a href="/assets/uploads/vypusknikam/centr-karjery-2.pdf" class="ead-document-btn" target="_blank">
                                                                  Открыть в новой вкладке                                                        </a>
                                         </div>
                                 </div>
                         </div>
                 </div></div>
 <ul>
-<li><a href="https://sit-salsk.ru/assets/uploads/vypusknikam/centr-karjery-3.pdf"><span style="font-family: 'times new roman', times, serif; font-size: 14pt;">Соглашение о взаимодействии с Центром занятости населения г. Сальска (2025)</span></a></li>
+<li><a href="/assets/uploads/vypusknikam/centr-karjery-3.pdf"><span style="font-family: 'times new roman', times, serif; font-size: 14pt;">Соглашение о взаимодействии с Центром занятости населения г. Сальска (2025)</span></a></li>
 </ul>
 <hr />
 <h2 id="section-3" style="text-align: center;"><span style="font-size: 18pt;"><strong><span style="font-family: 'times new roman', times, serif;">3. Мероприятия Центра карьеры</span></strong></span></h2>
@@ -80,9 +80,9 @@ source: https://sit-salsk.ru/?p=34985
 <h2 id="section-4" style="text-align: center;"><span style="font-size: 18pt;"><strong><span style="font-family: 'times new roman', times, serif;">4. Трудоустройство</span></strong></span></h2>
 <hr />
 <ul style="text-align: left;">
-<li><a href="https://sit-salsk.ru/assets/uploads/vypusknikam/centr-karjery-4.docx"><span style="font-family: 'times new roman', times, serif; font-size: 14pt;">Перечень партнеров</span></a></li>
-<li><span style="font-family: 'times new roman', times, serif; font-size: 14pt;"><a href="https://sit-salsk.ru/assets/uploads/vypusknikam/centr-karjery-5.pdf">Список актуальных вакансий (список вакансий работодателей-партнеров</a>, <a href="https://copp161.ru/vacancy">вакансии БЦК РО</a></span></li>
-<li><span style="font-family: 'times new roman', times, serif; font-size: 14pt;">Полезные материалы для студентов и выпускников (<a href="https://sit-salsk.ru/assets/uploads/vypusknikam/centr-karjery-6.doc">Составляем резюме</a>, <a href="https://sit-salsk.ru/assets/uploads/vypusknikam/centr-karjery-7.docx">Готовимся к собеседованию</a>, <a href="https://sit-salsk.ru/assets/uploads/vypusknikam/centr-karjery-8.docx">Индивидуальный план карьеры</a>, <a href="https://sit-salsk.ru/assets/uploads/vypusknikam/centr-karjery-9.docx">Как составить автобиографию</a>, <a href="https://sit-salsk.ru/assets/uploads/vypusknikam/centr-karjery-10.docx">Как составить карьерный план</a>, <a href="https://sit-salsk.ru/assets/uploads/vypusknikam/centr-karjery-11.docx">Методика поиска работы</a>, <a href="https://sit-salsk.ru/assets/uploads/vypusknikam/centr-karjery-12.docx">Памятка по трудоустройству</a>, <a href="https://sit-salsk.ru/assets/uploads/vypusknikam/centr-karjery-13.docx">Памятка для эффективной подготовки к первой встрече</a>, <a href="https://sit-salsk.ru/assets/uploads/vypusknikam/centr-karjery-14.docx">Памятка для построения индивидуальной карьерной траектории</a>)</span></li>
+<li><a href="/assets/uploads/vypusknikam/centr-karjery-4.docx"><span style="font-family: 'times new roman', times, serif; font-size: 14pt;">Перечень партнеров</span></a></li>
+<li><span style="font-family: 'times new roman', times, serif; font-size: 14pt;"><a href="/assets/uploads/vypusknikam/centr-karjery-5.pdf">Список актуальных вакансий (список вакансий работодателей-партнеров</a>, <a href="https://copp161.ru/vacancy">вакансии БЦК РО</a></span></li>
+<li><span style="font-family: 'times new roman', times, serif; font-size: 14pt;">Полезные материалы для студентов и выпускников (<a href="/assets/uploads/vypusknikam/centr-karjery-6.doc">Составляем резюме</a>, <a href="/assets/uploads/vypusknikam/centr-karjery-7.docx">Готовимся к собеседованию</a>, <a href="/assets/uploads/vypusknikam/centr-karjery-8.docx">Индивидуальный план карьеры</a>, <a href="/assets/uploads/vypusknikam/centr-karjery-9.docx">Как составить автобиографию</a>, <a href="/assets/uploads/vypusknikam/centr-karjery-10.docx">Как составить карьерный план</a>, <a href="/assets/uploads/vypusknikam/centr-karjery-11.docx">Методика поиска работы</a>, <a href="/assets/uploads/vypusknikam/centr-karjery-12.docx">Памятка по трудоустройству</a>, <a href="/assets/uploads/vypusknikam/centr-karjery-13.docx">Памятка для эффективной подготовки к первой встрече</a>, <a href="/assets/uploads/vypusknikam/centr-karjery-14.docx">Памятка для построения индивидуальной карьерной траектории</a>)</span></li>
 <li><span style="font-family: 'times new roman', times, serif; font-size: 14pt;">Ресурсы для поиска работы, сообщества и др.</span><br />
 <span style="font-family: 'times new roman', times, serif; font-size: 14pt;">(<a href="https://trudvsem.ru">Единая цифровая платформа в сфере занятости и трудовых отношений «Работа в России</a>», </span><span style="font-family: 'times new roman', times, serif; font-size: 14pt;"><a href="https://careergorizont.ru/">Карьерный навигатор «Горизонт»</a>, <a href="https://skillsnet.ru">Общероссийская социальная сеть деловых контактов «SkillsNet»</a>, </span><span style="font-family: 'times new roman', times, serif; font-size: 14pt;"><a href="https://xn--l1agf.xn--p1ai/">Цифровая платформа МСП.РФ (госплатформа поддержки предпринимателей, самозанятых и тех, кто планирует начать свой бизнес</a>, </span><span style="font-family: 'times new roman', times, serif; font-size: 14pt;"><a href="https://constructorium.ru/">Конструкториум</a>, </span><span style="font-family: 'times new roman', times, serif; font-size: 14pt;"><a href="https://morethanjob.ru/">Больше, чем работа</a>, </span><span style="font-family: 'times new roman', times, serif; font-size: 14pt;"><a href="https://abilympics-russia.ru/">Абилимпикс</a>, </span><span style="font-family: 'times new roman', times, serif; font-size: 14pt;"><a href="https://xn--b1aeda3a0j.xn--p1ai/">«Я В ДЕЛЕ» (всероссийская программа развития молодёжного предпринимательства</a>)</span></li>
 </ul>
@@ -106,7 +106,7 @@ source: https://sit-salsk.ru/?p=34985
 <h2 id="section-5" style="text-align: center;"><span style="font-size: 18pt;"><strong><span style="font-family: 'times new roman', times, serif;">5. Программы и меры поддержки для молодых специалистов</span></strong></span></h2>
 <hr />
 <ul style="text-align: left;">
-<li><span style="font-family: 'times new roman', times, serif; font-size: 14pt;"><a href="https://sit-salsk.ru/assets/uploads/vypusknikam/centr-karjery-15.docx">Информационные ресурсы для поиска работы</a></span></li>
+<li><span style="font-family: 'times new roman', times, serif; font-size: 14pt;"><a href="/assets/uploads/vypusknikam/centr-karjery-15.docx">Информационные ресурсы для поиска работы</a></span></li>
 <li><span style="font-family: 'times new roman', times, serif; font-size: 14pt;"><a href="https://minobr.donland.ru/about/projects/all/299/)">&#8220;Земский учитель&#8221;, информация о мерах поддержки молодых специалистов</a></span></li>
 <li><span style="font-family: 'times new roman', times, serif; font-size: 14pt;"><a href="https://www.donland.ru/documents/14672/">Региональная межведомственная программа «Поддержка молодых специалистов и работающей молодежи в Ростовской области на 2022 – 2030 годы»</a></span></li>
 <li><span style="font-family: 'times new roman', times, serif; font-size: 14pt;"><a href="https://copp161.ru/bck_students">Меры поддержки молодых специалистов</a></span></li>
@@ -124,7 +124,7 @@ source: https://sit-salsk.ru/?p=34985
 <h2 id="section-7" style="text-align: center;"><strong><span style="font-family: 'times new roman', times, serif; font-size: 18pt;">7. Реализация ДПО</span></strong></h2>
 <hr />
 <ul>
-<li><span style="font-family: 'times new roman', times, serif; font-size: 14pt;"><a href="https://sit-salsk.ru/assets/uploads/vypusknikam/centr-karjery-16.pdf">График проведения курсов по доп.образованию для студентов ГБПОУ РО СИТ на 2025-26 учебный год</a></span></li>
+<li><span style="font-family: 'times new roman', times, serif; font-size: 14pt;"><a href="/assets/uploads/vypusknikam/centr-karjery-16.pdf">График проведения курсов по доп.образованию для студентов ГБПОУ РО СИТ на 2025-26 учебный год</a></span></li>
 </ul>
 
                                         <div class="ead-loading-foot">
@@ -136,7 +136,7 @@ source: https://sit-salsk.ru/?p=34985
                                                         <div class="ead-document-btn ead-reload-btn" role="button">
                                                                  Перезагрузить документ                                                 </div>
                                                         <span>|</span>
-                                                        <a href="https://sit-salsk.ru/assets/uploads/vypusknikam/centr-karjery-16.pdf" class="ead-document-btn" target="_blank">
+                                                        <a href="/assets/uploads/vypusknikam/centr-karjery-16.pdf" class="ead-document-btn" target="_blank">
                                                                  Открыть в новой вкладке                                                        </a>
                                         </div>
                                 </div>
@@ -146,7 +146,7 @@ source: https://sit-salsk.ru/?p=34985
 <h2 id="section-8" style="text-align: center;"><strong><span style="font-family: 'times new roman', times, serif; font-size: 18pt;">8. Маршрутизация</span></strong></h2>
 <hr />
 <p>&nbsp;</p>
-<p><a href="https://sit-salsk.ru/wp-content/uploads/2025/08/Слайд1.jpg"><img loading="lazy" decoding="async" class="alignleft size-medium wp-image-36272" src="/assets/images/vypusknikam/centr-karjery-1.jpg" alt="" width="300" height="300"   /></a><span style="font-family: 'times new roman', times, serif; font-size: 14pt;">Построй свой карьерный трек вместе с новым проектом службы занятости населения по профориентации и маршрутизации молодежи!</span></p>
+<p><a href="/assets/uploads/Слайд1.jpg"><img loading="lazy" decoding="async" class="alignleft size-medium wp-image-36272" src="/assets/images/vypusknikam/centr-karjery-1.jpg" alt="" width="300" height="300"   /></a><span style="font-family: 'times new roman', times, serif; font-size: 14pt;">Построй свой карьерный трек вместе с новым проектом службы занятости населения по профориентации и маршрутизации молодежи!</span></p>
 <p><span style="font-family: 'times new roman', times, serif; font-size: 14pt;"><strong>Кто участвует?</strong></span></p>
 <ul>
 <li><em><span style="font-family: 'times new roman', times, serif; font-size: 14pt;">Школьники</span></em></li>
@@ -175,7 +175,7 @@ source: https://sit-salsk.ru/?p=34985
         <div class="wp-playlist-prev"></div>
         <noscript>
         <ol>
-                <li><a href='https://sit-salsk.ru/wp-content/uploads/2025/08/Маршрутизация-молодежи-Минтруд-РФ.mp4'>Маршрутизация молодежи Минтруд РФ</a></li>  </ol>
+                <li><a href='/assets/uploads/Маршрутизация-молодежи-Минтруд-РФ.mp4'>Маршрутизация молодежи Минтруд РФ</a></li>  </ol>
         </noscript>
         <script type="application/json" class="wp-playlist-script">{"type":"video","tracklist":false,"tracknumbers":true,"images":true,"artists":true,"tracks":[{"src":"https:\/\/sit-salsk.ru\/wp-content\/uploads\/2025\/08\/\u041c\u0430\u0440\u0440\u0448\u0440\u0443\u0442\u0438\u0437\u0430\u0446\u0438\u044f-\u043c\u043e\u043b\u043e\u0434\u0435\u0436\u0438-\u041c\u0438\u043d\u0442\u0440\u0443\u0434-\u0420\u0424.mp4","type":"video\/mp4","title":"\u041c\u0430\u0440\u0448\u0440\u0443\u0442\u0438\u0437\u0430\u0446\u0438\u044f \u043c\u043e\u043b\u043e\u0434\u0435\u0436\u0438 \u041c\u0438\u043d\u0442\u0440\u0443\u0434 \u0420\u0424","caption":"","description":"","meta":{"length_formatted":"1:00"},"dimensions":{"original":{"width":1920,"height":1152},"resized":{"width":828,"height":497}},"image":{"src":"https:\/\/sit-salsk.ru\/wp-includes\/images\/media\/video.svg","width":48,"height":64"},"thumb":{"src":"https:\/\/sit-salsk.ru\/wp-includes\/images\/media\/video.svg","width":48,"height":64}}]}</script>
 </div>

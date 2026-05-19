@@ -12,8 +12,8 @@ permalink: /studentam-i-roditeljam/prikaz-zachislenie/
 
 ## Приказы о зачислении 2025/2026 учебного года
 
-- 📄 [Приказ №76 — О зачислении за счёт бюджета (20.08.2025)](https://сит-сальск.рф/assets/uploads/prikazy-zachislenie/prikaz-76-byudzhet-20.08.2025.pdf) (PDF)
-- 📄 [Приказ №77 — О зачислении с полным возмещением затрат (20.08.2025)](https://сит-сальск.рф/assets/uploads/prikazy-zachislenie/prikaz-77-vozmeshenie-20.08.2025.pdf) (PDF)
+- 📄 [Приказ №76 — О зачислении за счёт бюджета (20.08.2025)](/assets/uploads/prikazy-zachislenie/prikaz-76-byudzhet-20.08.2025.pdf) (PDF)
+- 📄 [Приказ №77 — О зачислении с полным возмещением затрат (20.08.2025)](/assets/uploads/prikazy-zachislenie/prikaz-77-vozmeshenie-20.08.2025.pdf) (PDF)
 
 Источник: [«Приказ о зачислении в число студентов техникума»](https://sit-salsk.ru/?p=34260) (опубликовано 20.08.2025).
 

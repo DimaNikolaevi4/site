@@ -46,7 +46,7 @@ suppressSubrubrics: true
 
 - **Телефон:** 8 (86372) 5-05-71
 - **Электронная почта:** [sitsalsk@mail.ru](mailto:sitsalsk@mail.ru)
-- **Официальный сайт:** [сит-сальск.рф](https://xn----8sbwke6acce8h.xn--p1ai/)
+- **Официальный сайт:** [сит-сальск.рф](/)
 
 {# ── Контакты и обращение (CTA-блок) ── #}
 {% set newsMode = 'razdel' %}

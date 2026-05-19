@@ -9,7 +9,7 @@ layout: layouts/post.njk
 permalink: /vypusknikam/bud-vostrebovannym/
 source: https://sit-salsk.ru/?p=4791
 ---
-<p><span style="font-family: times new roman,times,serif; font-size: 14pt;"><a href="https://sit-salsk.ru/wp-content/uploads/2015/10/239a81348a6b836942e8bac046912bba.jpg"><img fetchpriority="high" decoding="async" class="alignleft size-full wp-image-4792" src="/assets/images/vypusknikam/bud-vostrebovannym-1.jpg" alt="239a81348a6b836942e8bac046912bba" width="500" height="289"   /></a></span></p>
+<p><span style="font-family: times new roman,times,serif; font-size: 14pt;"><a href="/assets/uploads/239a81348a6b836942e8bac046912bba.jpg"><img fetchpriority="high" decoding="async" class="alignleft size-full wp-image-4792" src="/assets/images/vypusknikam/bud-vostrebovannym-1.jpg" alt="239a81348a6b836942e8bac046912bba" width="500" height="289"   /></a></span></p>
 <p><span style="font-family: times new roman,times,serif; font-size: 14pt;"><em><strong>24 октября 2015 года на площадке ВЦ &#8220;ВертолЭкспо&#8221; состоится мероприятие для студентов и выпускников высших и средних профессиональных учебных заведений &#8220;День карьеры &#8211; Будь востребованным!&#8221;</strong></em>.</span></p>
 <p><span style="font-family: times new roman,times,serif; font-size: 14pt;"><span id="more-4791"></span></span></p>
 <p><span style="font-family: times new roman,times,serif; font-size: 14pt;">На этом мероприятии состоится ярмарка вакансий фирм-работодателей в сфере ИТ, а также мастер-классы по ИТ-специальностям и специальностям экономического цикла.</span></p>

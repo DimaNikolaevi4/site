@@ -1,4 +1,4 @@
-# Сайт ГБПОУ РО «Сальский индустриальный техникум» — https://сит-сальск.рф/
+# Сайт ГБПОУ РО «Сальский индустриальный техникум» — /
 # Открыт к индексации поисковыми системами.
 
 # robots.txt для сайта ГБПОУ РО "СИТ"
@@ -25,7 +25,7 @@ Disallow: /*.tmp$
 Disallow: /*.bak$
 
 # Sitemap
-Sitemap: https://сит-сальск.рф/sitemap.xml
+Sitemap: /sitemap.xml
 
 # Yandex specific
 User-agent: Yandex

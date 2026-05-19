@@ -16,14 +16,14 @@ description: Центр Карьеры ГБПОУ РО «Сальский инд
 
 ## 1. Общая информация
 
-📄 [Общая информация о Центре Карьеры (DOCX)](https://сит-сальск.рф/assets/uploads/employment/obschaya-informatsiya.docx)
+📄 [Общая информация о Центре Карьеры (DOCX)](/assets/uploads/employment/obschaya-informatsiya.docx)
 
 ---
 
 ## 2. Документы
 
-- 📄 [Положение о Центре Карьеры техникума — Приложение к Приказу № 89 от 29.08.2025 (PDF)](https://сит-сальск.рф/assets/uploads/employment/polozhenie-o-tsentre-karyery-prikaz-89-2025.pdf)
-- 📄 [Соглашение о взаимодействии с Центром занятости населения г. Сальска (2025) (PDF)](https://сит-сальск.рф/assets/uploads/employment/soglashenie-s-tszn-salsk-2025.pdf)
+- 📄 [Положение о Центре Карьеры техникума — Приложение к Приказу № 89 от 29.08.2025 (PDF)](/assets/uploads/employment/polozhenie-o-tsentre-karyery-prikaz-89-2025.pdf)
+- 📄 [Соглашение о взаимодействии с Центром занятости населения г. Сальска (2025) (PDF)](/assets/uploads/employment/soglashenie-s-tszn-salsk-2025.pdf)
 
 ---
 
@@ -40,21 +40,21 @@ description: Центр Карьеры ГБПОУ РО «Сальский инд
 
 ### Партнёры и вакансии
 
-- 📄 [Перечень партнёров (предприятия и логотипы) (DOCX)](https://сит-сальск.рф/assets/uploads/employment/perechen-partnerov.docx)
-- 📄 [Список актуальных вакансий работодателей-партнёров (PDF)](https://сит-сальск.рф/assets/uploads/employment/spisok-vakansiy.pdf)
+- 📄 [Перечень партнёров (предприятия и логотипы) (DOCX)](/assets/uploads/employment/perechen-partnerov.docx)
+- 📄 [Список актуальных вакансий работодателей-партнёров (PDF)](/assets/uploads/employment/spisok-vakansiy.pdf)
 - 🔗 Вакансии БЦК РО — [Базовый центр содействия трудоустройству выпускников Ростовской области](https://bckro.ru/)
 
 ### Полезные материалы для студентов и выпускников
 
-- 📄 [Составляем резюме (DOC)](https://сит-сальск.рф/assets/uploads/employment/sostavlyaem-rezyume.doc)
-- 📄 [Готовимся к собеседованию (DOCX)](https://сит-сальск.рф/assets/uploads/employment/gotovimsya-k-sobesedovaniyu.docx)
-- 📄 [Индивидуальный план карьеры (DOCX)](https://сит-сальск.рф/assets/uploads/employment/individualnyy-plan-karyery.docx)
-- 📄 [Как составить автобиографию (DOCX)](https://сит-сальск.рф/assets/uploads/employment/kak-sostavit-avtobiografiyu.docx)
-- 📄 [Как составить карьерный план (DOCX)](https://сит-сальск.рф/assets/uploads/employment/kak-sostavit-karyernyy-plan.docx)
-- 📄 [Методика поиска работы (DOCX)](https://сит-сальск.рф/assets/uploads/employment/metodika-poiska-raboty.docx)
-- 📄 [Памятка по трудоустройству (DOCX)](https://сит-сальск.рф/assets/uploads/employment/pamyatka-po-trudoustroystvu.docx)
-- 📄 [Памятка для эффективной подготовки к первой встрече (DOCX)](https://сит-сальск.рф/assets/uploads/employment/pamyatka-pervaya-vstrecha.docx)
-- 📄 [Памятка для построения индивидуальной карьерной траектории (DOCX)](https://сит-сальск.рф/assets/uploads/employment/pamyatka-individualnaya-karyernaya-traektoriya.docx)
+- 📄 [Составляем резюме (DOC)](/assets/uploads/employment/sostavlyaem-rezyume.doc)
+- 📄 [Готовимся к собеседованию (DOCX)](/assets/uploads/employment/gotovimsya-k-sobesedovaniyu.docx)
+- 📄 [Индивидуальный план карьеры (DOCX)](/assets/uploads/employment/individualnyy-plan-karyery.docx)
+- 📄 [Как составить автобиографию (DOCX)](/assets/uploads/employment/kak-sostavit-avtobiografiyu.docx)
+- 📄 [Как составить карьерный план (DOCX)](/assets/uploads/employment/kak-sostavit-karyernyy-plan.docx)
+- 📄 [Методика поиска работы (DOCX)](/assets/uploads/employment/metodika-poiska-raboty.docx)
+- 📄 [Памятка по трудоустройству (DOCX)](/assets/uploads/employment/pamyatka-po-trudoustroystvu.docx)
+- 📄 [Памятка для эффективной подготовки к первой встрече (DOCX)](/assets/uploads/employment/pamyatka-pervaya-vstrecha.docx)
+- 📄 [Памятка для построения индивидуальной карьерной траектории (DOCX)](/assets/uploads/employment/pamyatka-individualnaya-karyernaya-traektoriya.docx)
 
 ### Ресурсы для поиска работы
 
@@ -67,7 +67,7 @@ description: Центр Карьеры ГБПОУ РО «Сальский инд
 - 🔗 [Абилимпикс](https://abilympics-russia.ru/)
 - 🔗 [«Я В ДЕЛЕ» — всероссийская программа развития молодёжного предпринимательства](https://в-деле.рф/)
 
-📄 [Информационные ресурсы для поиска работы (DOCX)](https://сит-сальск.рф/assets/uploads/employment/informatsionnye-resursy-dlya-poiska-raboty.docx)
+📄 [Информационные ресурсы для поиска работы (DOCX)](/assets/uploads/employment/informatsionnye-resursy-dlya-poiska-raboty.docx)
 
 ---
 
@@ -93,7 +93,7 @@ description: Центр Карьеры ГБПОУ РО «Сальский инд
 
 ## 7. Реализация ДПО
 
-📄 [График проведения курсов по дополнительному образованию для студентов ГБПОУ РО СИТ на 2025–2026 учебный год (PDF)](https://сит-сальск.рф/assets/uploads/employment/grafik-kursov-dpo-2025-2026.pdf)
+📄 [График проведения курсов по дополнительному образованию для студентов ГБПОУ РО СИТ на 2025–2026 учебный год (PDF)](/assets/uploads/employment/grafik-kursov-dpo-2025-2026.pdf)
 
 ---
 
@@ -123,7 +123,7 @@ description: Центр Карьеры ГБПОУ РО «Сальский инд
 
 > Тем, кто не знает, куда устроиться после выпуска, мы найдём идеального работодателя. Остались вопросы? Позвоните в центр занятости населения, чтобы узнать подробности! Построим ваш карьерный маршрут вместе!
 
-🎬 [Маршрутизация молодёжи — Минтруд РФ (видео, MP4)](https://сит-сальск.рф/assets/uploads/employment/marshrutizatsiya-molodezhi-mintrud-rf.mp4)
+🎬 [Маршрутизация молодёжи — Минтруд РФ (видео, MP4)](/assets/uploads/employment/marshrutizatsiya-molodezhi-mintrud-rf.mp4)
 
 `#маршрутизация_молодёжи` &nbsp; `#карьера_молодых` &nbsp; `#работайнаДону`
 
