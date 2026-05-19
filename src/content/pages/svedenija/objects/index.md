@@ -9,7 +9,7 @@ description: Материально-техническое обеспечени�
 
 Материально-техническое обеспечение представлено в соответствии с подпунктом «ж» пункта 3.4 Приказа Рособрнадзора №1493 и охватывает оборудованные кабинеты, объекты для проведения практических занятий, библиотеки, объекты спорта, средства обучения, условия питания и охраны здоровья, доступ к информационным системам и ЭОР.
 
-![МТО ГБПОУ РО «СИТ»](https://сит-сальск.рф/assets/uploads/mto/main/MTO-2022-7.jpg)
+![МТО ГБПОУ РО «СИТ»](/assets/uploads/mto/main/MTO-2022-7.jpg)
 
 ---
 
@@ -17,8 +17,8 @@ description: Материально-техническое обеспечени�
 
 ### Сводные перечни обеспечения образовательного процесса
 
-- 📄 [Обеспечение образовательного процесса корпуса №1](https://сит-сальск.рф/assets/uploads/mto/main/Obespechenie-obrazovatelnogo-protsessa-korpusa-1.doc)
-- 📄 [Обеспечение образовательного процесса корпуса №2](https://сит-сальск.рф/assets/uploads/mto/main/Obespechenie-obrazovatelnogo-protsessa-korpusa-2.doc)
+- 📄 [Обеспечение образовательного процесса корпуса №1](/assets/uploads/mto/main/Obespechenie-obrazovatelnogo-protsessa-korpusa-1.doc)
+- 📄 [Обеспечение образовательного процесса корпуса №2](/assets/uploads/mto/main/Obespechenie-obrazovatelnogo-protsessa-korpusa-2.doc)
 
 ### Корпус №1 (г. Сальск, ул. Ленина, 1)
 
@@ -37,13 +37,13 @@ description: Материально-техническое обеспечени�
 
 ### Фотогалерея кабинетов
 
-- ![Кабинет безопасности жизнедеятельности](https://сит-сальск.рф/assets/uploads/mto/main/Kabinet-bezopasnosti-zhiznedeyatelnosti.jpg)
-- ![Кабинет математики](https://сит-сальск.рф/assets/uploads/mto/main/Kabinet-matematiki.jpg)
-- ![Кабинет общих гуманитарных и социальных дисциплин](https://сит-сальск.рф/assets/uploads/mto/main/Kabinet-obshchih-gumanitarnyh-i-sotsialnyh-distsiplin.jpg)
-- ![Кабинет технологии кулинарного и кондитерского производства](https://сит-сальск.рф/assets/uploads/mto/main/Kabinet-tehnologii-kulinarnogo-i-konditerskogo-proizvodstva.jpg)
-- ![Кабинет физики и электротехники](https://сит-сальск.рф/assets/uploads/mto/main/Kabinet-fiziki-i-elektrotehniki.jpg)
-- ![Кабинет химии и биологии](https://сит-сальск.рф/assets/uploads/mto/main/Kabinet-himii-biologii.jpg)
-- ![Кабинет экономики, менеджмента, финансов, денежного обращения и кредита](https://сит-сальск.рф/assets/uploads/mto/main/Kabinet-ekonomiki-menedzhmenta-finansov-denezhnogo-obrashcheniya-i-kredita.jpg)
+- ![Кабинет безопасности жизнедеятельности](/assets/uploads/mto/main/Kabinet-bezopasnosti-zhiznedeyatelnosti.jpg)
+- ![Кабинет математики](/assets/uploads/mto/main/Kabinet-matematiki.jpg)
+- ![Кабинет общих гуманитарных и социальных дисциплин](/assets/uploads/mto/main/Kabinet-obshchih-gumanitarnyh-i-sotsialnyh-distsiplin.jpg)
+- ![Кабинет технологии кулинарного и кондитерского производства](/assets/uploads/mto/main/Kabinet-tehnologii-kulinarnogo-i-konditerskogo-proizvodstva.jpg)
+- ![Кабинет физики и электротехники](/assets/uploads/mto/main/Kabinet-fiziki-i-elektrotehniki.jpg)
+- ![Кабинет химии и биологии](/assets/uploads/mto/main/Kabinet-himii-biologii.jpg)
+- ![Кабинет экономики, менеджмента, финансов, денежного обращения и кредита](/assets/uploads/mto/main/Kabinet-ekonomiki-menedzhmenta-finansov-denezhnogo-obrashcheniya-i-kredita.jpg)
 
 ---
 
@@ -60,8 +60,8 @@ description: Материально-техническое обеспечени�
 
 ### Фото лабораторий
 
-- ![Лаборатория бухгалтерского учёта, налогов, налогообложения и аудита](https://сит-сальск.рф/assets/uploads/mto/main/Laboratoriya-buhgalterskogo-ucheta-nalogov-i-nalogooblozheniya-audita.jpg)
-- ![Лаборатория информационных технологий](https://сит-сальск.рф/assets/uploads/mto/main/Laboratoriya-informatsionnyh-tehnologiy.jpg)
+- ![Лаборатория бухгалтерского учёта, налогов, налогообложения и аудита](/assets/uploads/mto/main/Laboratoriya-buhgalterskogo-ucheta-nalogov-i-nalogooblozheniya-audita.jpg)
+- ![Лаборатория информационных технологий](/assets/uploads/mto/main/Laboratoriya-informatsionnyh-tehnologiy.jpg)
 
 ---
 
@@ -143,7 +143,7 @@ description: Материально-техническое обеспечени�
 
 **Договор на услуги связи:**
 
-- 📄 [Государственный контракт №5703704.22 с ПАО «Ростелеком» — об оказании услуг электросвязи (16.01.2024)](https://сит-сальск.рф/assets/uploads/mto/main/Dogovor-Rostelekom-internet.pdf)
+- 📄 [Государственный контракт №5703704.22 с ПАО «Ростелеком» — об оказании услуг электросвязи (16.01.2024)](/assets/uploads/mto/main/Dogovor-Rostelekom-internet.pdf)
 
 ---
 
