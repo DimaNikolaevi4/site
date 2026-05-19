@@ -132,12 +132,12 @@ templateEngineOverride: njk,md
       <div class="backnav-prevnext">
         {% if _rubnav.prev %}
         <a href="{{ _rubnav.prev.url }}" class="backnav-link backnav-link--prev" title="{{ _rubnav.prev.title }}">
-          <i class="bi bi-chevron-left" aria-hidden="true"></i> {{ _rubnav.prev.title }}
+          <i class="bi bi-chevron-left" aria-hidden="true"></i> Предыдущий
         </a>
         {% endif %}
         {% if _rubnav.next %}
         <a href="{{ _rubnav.next.url }}" class="backnav-link backnav-link--next" title="{{ _rubnav.next.title }}">
-          {{ _rubnav.next.title }} <i class="bi bi-chevron-right" aria-hidden="true"></i>
+          Следующий <i class="bi bi-chevron-right" aria-hidden="true"></i>
         </a>
         {% endif %}
       </div>
