@@ -8464,6 +8464,107 @@ body.dark-theme .anti-corruption-page .report-form {
   }
 }
 
+/* ─── Фотогалерея: div.gallery в .page-content и .svedenija-content ─── */
+.page-content .gallery,
+.svedenija-content .gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1rem;
+  margin: 1.25rem 0;
+}
+
+/* Markdown оборачивает img в <p>, поэтому прямые дочерние <p> тоже делаем grid-ячейками */
+.page-content .gallery > p,
+.svedenija-content .gallery > p {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  border-radius: 0.5rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.10);
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+  display: block;
+}
+
+.page-content .gallery > p:hover,
+.svedenija-content .gallery > p:hover {
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+  transform: translateY(-2px);
+}
+
+.page-content .gallery img,
+.svedenija-content .gallery img {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+  display: block;
+  border-radius: 0.5rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.10);
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+/* Если img внутри <p> — отменяем дублирование стилей, <p> уже является ячейкой */
+.page-content .gallery > p > img,
+.svedenija-content .gallery > p > img {
+  border-radius: 0;
+  box-shadow: none;
+  transition: none;
+}
+
+.page-content .gallery img:hover,
+.svedenija-content .gallery img:hover {
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+  transform: translateY(-2px);
+}
+
+.page-content .gallery > p > img:hover,
+.svedenija-content .gallery > p > img:hover {
+  box-shadow: none;
+  transform: none;
+}
+
+.page-content .gallery picture,
+.svedenija-content .gallery picture {
+  display: block;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.10);
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.page-content .gallery picture:hover,
+.svedenija-content .gallery picture:hover {
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+  transform: translateY(-2px);
+}
+
+.page-content .gallery picture img,
+.svedenija-content .gallery picture img,
+.page-content .gallery > p > picture img,
+.svedenija-content .gallery > p > picture img {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+  display: block;
+  border-radius: 0;
+  box-shadow: none;
+  transform: none;
+  transition: none;
+}
+
+@media (max-width: 576px) {
+  .page-content .gallery,
+  .svedenija-content .gallery {
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 0.65rem;
+  }
+  .page-content .gallery img,
+  .svedenija-content .gallery img,
+  .page-content .gallery picture img,
+  .svedenija-content .gallery picture img {
+    height: 120px;
+  }
+}
+
 /* ─── Фотогалерея: список изображений в .page-content и .svedenija-content ─── */
 /* Применяется к <ul>, все <li> которого содержат только изображения (img или picture) */
 .page-content ul:has(li > img),
