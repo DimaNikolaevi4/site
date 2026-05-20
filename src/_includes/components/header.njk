@@ -197,22 +197,6 @@
         {# Быстрые ссылки — скрываются когда видны в шапке #}
         <ul class="list-unstyled offcanvas-quicklinks px-3 pt-2 mb-0">
           <li>
-            <a href="/svedenija/" class="offcanvas-quicklinks__link d-lg-none{% if page.url | startsWith('/svedenija/') %} active{% endif %}"
-               data-bs-dismiss="offcanvas"
-               {% if page.url | startsWith('/svedenija/') %}aria-current="page"{% endif %}>
-              <span class="offcanvas-quicklinks__icon" aria-hidden="true">📋</span>
-              Сведения об образовательной организации
-            </a>
-          </li>
-          <li>
-            <a href="/abiturientam/" class="offcanvas-quicklinks__link offcanvas-quicklinks__link--pill d-xl-none{% if page.url | startsWith('/abiturientam/') %} active{% endif %}"
-               data-bs-dismiss="offcanvas"
-               {% if page.url | startsWith('/abiturientam/') %}aria-current="page"{% endif %}>
-              <span class="offcanvas-quicklinks__icon" aria-hidden="true">🎓</span>
-              Абитуриентам
-            </a>
-          </li>
-          <li>
             <a href="https://эос.сит-сальск.рф" target="_blank" rel="noopener"
                class="offcanvas-quicklinks__link offcanvas-quicklinks__link--pill offcanvas-quicklinks__link--pill-alt d-xl-none">
               <span class="offcanvas-quicklinks__icon" aria-hidden="true">💻</span>
