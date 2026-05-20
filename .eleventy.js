@@ -615,7 +615,7 @@ module.exports = function(eleventyConfig) {
       }
 
       // --- 1. Внешние ссылки: target="_blank" rel="noopener" ---
-      if (isExternal && !isOwnDomain) {
+      if (isExternal) {
         if (!/\btarget\s*=/i.test(attrs)) {
           attrs += ' target="_blank"';
           modified = true;
@@ -643,12 +643,53 @@ module.exports = function(eleventyConfig) {
         }
       }
 
-      // --- 3. Все ссылки без title → title из текста ---
+      // --- 3. Все ссылки без title → title из текста / aria-label / alt / URL ---
       if (!/\btitle\s*=/i.test(attrs)) {
+        let titleSource = '';
+        // Сначала пробуем текст ссылки
         const linkText = extractLinkText(innerHtml);
         if (linkText) {
+          titleSource = linkText;
+        }
+        // Если текст пустой — пробуем aria-label
+        if (!titleSource) {
+          const ariaMatch = attrs.match(/\baria-label\s*=\s*["']([^"']*)["']/i);
+          if (ariaMatch && ariaMatch[1].trim()) {
+            titleSource = ariaMatch[1].trim();
+          }
+        }
+        // Если всё ещё пусто — пробуем alt/title из вложенного <img>
+        if (!titleSource) {
+          const imgTitleMatch = innerHtml.match(/<img\b[^>]*\btitle\s*=\s*["']([^"']*)["']/i);
+          if (imgTitleMatch && imgTitleMatch[1].trim()) {
+            titleSource = imgTitleMatch[1].trim();
+          } else {
+            const imgAltMatch = innerHtml.match(/<img\b[^>]*\balt\s*=\s*["']([^"']*)["']/i);
+            if (imgAltMatch && imgAltMatch[1].trim()) {
+              titleSource = imgAltMatch[1].trim();
+            }
+          }
+        }
+        // Если всё ещё пусто — генерируем из URL-пути (имя файла без расширения)
+        if (!titleSource && href) {
+          try {
+            const urlPath = href.split('?')[0].split('#')[0];
+            const segments = urlPath.split('/');
+            let fileName = segments[segments.length - 1] || segments[segments.length - 2] || '';
+            // Декодируем URL
+            fileName = decodeURIComponent(fileName);
+            // Убираем расширение файла
+            fileName = fileName.replace(/\.[^.]+$/, '');
+            // Заменяем дефисы и подчёркивания на пробелы
+            fileName = fileName.replace(/[-_]+/g, ' ').trim();
+            if (fileName) {
+              titleSource = fileName;
+            }
+          } catch (e) { /* не удалось декодировать */ }
+        }
+        if (titleSource) {
           // Убираем эмодзи и лишние пробелы, обрезаем до 120 символов
-          const cleanText = linkText
+          const cleanText = titleSource
             .replace(/[\u{1F000}-\u{1FFFF}]/gu, '')
             .replace(/\s+/g, ' ')
             .trim()
