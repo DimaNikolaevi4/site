@@ -147,76 +147,7 @@ sections:
 - id: local
   title: Локальные нормативные акты ГБПОУ РО «СИТ»
   description: Действующие локальные акты техникума по противодействию коррупции
-  documents:
-  - title: Положение об антикоррупционной политике в ГБПОУ РО «СИТ» (Приказ №143 от
-      13.12.2024)
-    date: 13.12.2024
-    type: pdf
-    size: 607 КБ
-    url: /docs/dokumenty/anti-corruption/polozhenie-antikorrupcia-143-full.pdf
-    signed: true
-  - title: Кодекс профессиональной этики работников ГБПОУ РО «СИТ» (Приказ №140 от
-      13.12.2024)
-    date: 13.12.2024
-    type: pdf
-    size: 319 КБ
-    url: /docs/dokumenty/anti-corruption/kodeks-etiki-140.pdf
-    signed: true
-  - title: Правила обмена деловыми подарками и знаками делового гостеприимства (Приказ
-      №144 от 13.12.2024)
-    date: 13.12.2024
-    type: pdf
-    size: 199 КБ
-    url: /docs/dokumenty/anti-corruption/pravila-obmena-delovymi-podarkami-144.pdf
-    signed: true
-  - title: Положение о комиссии по урегулированию конфликта интересов (Приказ №144
-      от 13.12.2024)
-    date: 13.12.2024
-    type: pdf
-    size: ''
-    url: /docs/dokumenty/anti-corruption/пол-о-ком-по-урег-конф-пр-144.pdf
-    signed: true
-  - title: Положение о комиссии по соблюдению профессиональной этики (Приказ №140
-      от 13.12.2024)
-    date: 13.12.2024
-    type: pdf
-    size: ''
-    url: /docs/dokumenty/anti-corruption/пол-о-ком-проф-этик-пр-140.pdf
-    signed: true
-  - title: Положение о взаимодействии с лицами, ответственными за профилактику коррупции
-      (Приказ №139 от 13.12.2024)
-    date: 13.12.2024
-    type: pdf
-    size: ''
-    url: /docs/dokumenty/anti-corruption/пол-о-взаим-лица-пр-139.pdf
-    signed: true
-  - title: Положение о взаимодействии с правоохранительными органами (Приказ №138
-      от 13.12.2024)
-    date: 13.12.2024
-    type: pdf
-    size: ''
-    url: /docs/dokumenty/anti-corruption/пол-о-взаим-правоох-пр-138.pdf
-    signed: true
-  - title: Порядок уведомления о фактах склонения к коррупции (Приказ №142 от 13.12.2024)
-    date: 13.12.2024
-    type: pdf
-    size: ''
-    url: /docs/dokumenty/anti-corruption/поряд-уведом-пр-142.pdf
-    signed: true
-  - title: Комплексный план противодействия идеологии терроризма в РФ на 2024–2028
-      гг. в ГБПОУ РО «СИТ»
-    date: 07.02.2025
-    type: pdf
-    size: ''
-    url: /docs/dokumenty/anti-corruption/Комплексный-план-по-противодействию-идеологии-терроризма-в-Российской-Федерации-на-2024-28-гг.-в-ГБПОУ-РО-СИТ-07.02.2025.pdf
-    signed: true
-  - title: Приказ №20 «Об утверждении Комплексного плана противодействия идеологии
-      терроризма на 2024–2028 гг.»
-    date: 07.02.2025
-    type: pdf
-    size: ''
-    url: /docs/dokumenty/anti-corruption/Приказ-№20-Об-утверждении-Комплексного-плана-по-противодействию-идеологии-терроризма-в-Российской-Федерации-на-2024-28-07.02.2025.pdf
-    signed: true
+  documents: []
 - id: methodical
   title: Методические материалы
   description: Рекомендации, методички, разъяснения по вопросам противодействия коррупции
@@ -225,22 +156,6 @@ sections:
     type: html
     size: ''
     url: https://gossluzhba.gov.ru/anticorruption
-  - title: Антикоррупционный Букварь
-    type: pdf
-    size: ''
-    url: /docs/dokumenty/anti-corruption/Антикоррупционный-Букварь.pdf
-  - title: Если вымогают взятку. Памятка студенту
-    type: pdf
-    size: ''
-    url: /docs/dokumenty/anti-corruption/Если-вымогают-взятку.-Памятка-студенту.pdf
-  - title: Зачёт без взяток. Практическое пособие для студентов
-    type: pdf
-    size: ''
-    url: /docs/dokumenty/anti-corruption/Зачет-без-взяток.-Практическое-пособие-для-студентов.pdf
-  - title: Памятка о противодействии коррупции в образовательной среде
-    type: pdf
-    size: ''
-    url: /docs/dokumenty/anti-corruption/Памятка-о-противодействии-коррупции-в-образовательной-среде.pdf
 - id: forms
   title: Формы документов
   description: Бланки и образцы для заполнения
@@ -284,20 +199,7 @@ sections:
     и контроль за выполнением обязательств сотрудниками.</p>
 
     '
-  documents:
-  - title: Положение об антикоррупционной политике (Приложение 1 к приказу №143 от
-      13.12.2024)
-    date: 13.12.2024
-    type: pdf
-    size: 607 КБ
-    url: /docs/dokumenty/anti-corruption/polozhenie-antikorrupcia-143-full.pdf
-    signed: true
-  - title: Положение об антикоррупционной комиссии в ГОУ (архивная версия)
-    date: 2015
-    type: pdf
-    size: ''
-    url: /docs/dokumenty/anti-corruption/Положение-о-антикоррупционной-комиссии-в-ГОУ.pdf
-    signed: false
+  documents: []
 - id: income
   title: Сведения о доходах руководителей
   content: '<p>Информация о доходах, расходах, об имуществе и обязательствах имущественного
@@ -317,41 +219,7 @@ sections:
 - id: reports
   title: Отчёты о мероприятиях
   description: Информация о проведённых мероприятиях по предупреждению коррупции
-  documents:
-  - title: План мероприятий антикоррупционной направленности на 2025 год (19.12.2024)
-    date: 19.12.2024
-    type: pdf
-    size: ''
-    url: /docs/dokumenty/anti-corruption/План-мероприятий-антикоррупционной-направленности-на-2025-год-ГБПОУ-РО-СИТ-19.12.2024.pdf
-    signed: true
-  - title: Отчёт о выполнении Госпрограммы «Обеспечение общественного порядка» (3
-      кв. 2024)
-    date: 2024
-    type: pdf
-    size: ''
-    url: /docs/dokumenty/anti-corruption/мониторинг-3кв.pdf
-    signed: true
-  - title: Отчёт о выполнении Госпрограммы «Обеспечение общественного порядка» (2
-      кв. 2024)
-    date: 2024
-    type: pdf
-    size: ''
-    url: /docs/dokumenty/anti-corruption/мониторинг-2кв.pdf
-    signed: true
-  - title: Отчёт о выполнении Госпрограммы «Обеспечение общественного порядка» (1
-      кв. 2024, 29.03.2024)
-    date: 29.03.2024
-    type: pdf
-    size: ''
-    url: /docs/dokumenty/anti-corruption/отчет-1-квартал.pdf
-    signed: true
-  - title: Отчёт о выполнении Госпрограммы «Обеспечение общественного порядка» (3
-      кв. 2022, 1.10.2022)
-    date: 01.10.2022
-    type: pdf
-    size: ''
-    url: /docs/dokumenty/anti-corruption/Отчет-3-кв..pdf
-    signed: true
+  documents: []
 - id: feedback
   title: Сообщить о факте коррупции
   content: '<p>Вы можете анонимно сообщить о фактах коррупции через форму ниже или
@@ -365,9 +233,5 @@ sections:
     value: sitsalsk@mail.ru
   - label: Адрес для письменных обращений
     value: 347630, Ростовская область, г. Сальск, ул. Ленина, д. 27
-  documents:
-  - title: Телефоны горячей линии по антикоррупции
-    type: pdf
-    size: ''
-    url: /docs/dokumenty/anti-corruption/Телефоны-горячей-линии-по-антикоррупции.pdf
+  documents: []
   form: true

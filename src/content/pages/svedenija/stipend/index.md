@@ -62,40 +62,21 @@ description: Стипендии и меры социальной поддерж�
 
 ## Приказы о внесении изменений в Положение о стипендиальном обеспечении
 
-- Приказ № 34 от 12.03.2025 — [О внесении изменений в положение о стипендиальном обеспечении студентов ГБПОУ РО «СИТ»](/assets/uploads/stipend/Prikaz-34-O-vnesenii-izmeneniy-v-polozhenie-o-stipendialnom-obespechenii-studentov-GBPOU-RO-SIT-12.03.2025.pdf) (PDF, 2025)
-
 ---
 
 ## Социальная поддержка детей-сирот и детей, оставшихся без попечения родителей
 
 ### Положение о порядке зачисления на полное государственное обеспечение
 
-- [Положение о порядке зачисления на полное государственное обеспечение и предоставление дополнительных гарантий по социальной защите](/assets/uploads/stipend/9.Polozhenie-o-poryadke-zachisleniya-na-polnoe-gosudarstvennoe-obespechenie-i-predostavlenie-dopolnitelnyh-garantiy-po-sotsialnoy-zashchite.pdf) (PDF)
-- [О внесении изменений в Положение о полном гос. обеспечении и дополнительных гарантиях по социальной поддержке детей-сирот, детей, оставшихся без попечения родителей при получении профессионального образования](/assets/uploads/stipend/O-vnesenii-izmeneniy-v-Polozhenie-o-polnom-gos.obespechenii-i-dopolnitelnyh-garantiyah-po-sotsialnoy-podderzhke-detey-sirot.pdf) (PDF)
-
 ### Приказы о внесении изменений в положения по детям-сиротам
-
 
 ### Положения по видам обеспечения детей-сирот
 
 Каждое положение доступно в формате PDF.
 
-- **Гигиена и медикаменты** — [PDF](/assets/uploads/stipend/Polozhenie-na-gigienu-i-medikamenty-detyam-sirotam.pdf)
-- **Одежда и обувь** — [PDF](/assets/uploads/stipend/Polozhenie-na-odezhdu-i-obuv-detyam-sirotam.pdf)
-- **Питание и проживание** — [PDF](/assets/uploads/stipend/Polozhenie-na-pitanie-i-prozhivanie-detey-sirot.pdf)
-- **Предметы первой необходимости и культурно-массовая работа** — [PDF](/assets/uploads/stipend/Polozhenie-na-predmety-pervoy-neobh.-i-kult.-mas.rab.-detyam-sirotam.pdf)
-- **Проезд** — [PDF](/assets/uploads/stipend/Polozhenie-na-proezd-detey-sirot.pdf)
-- **Дополнительные платные услуги** — [PDF](/assets/uploads/stipend/Polozhenie-o-dopolnitelnyh-platnyh-uslugah.pdf)
-- **Подготовительные курсы** — [PDF](/assets/uploads/stipend/Polozhenie-o-podgotovitelnyh-kursah-detyam-sirotam.pdf)
-- **Выпуск из техникума** — [PDF](/assets/uploads/stipend/Polozhenie-po-vypusku-detey-sirot.pdf)
-- **Денежные выплаты** — [PDF](/assets/uploads/stipend/Polozhenie-po-denezhnym-vyplatam-detyam-sirotam.pdf)
-
 ---
 
 ## Платные услуги и организация питания
-
-- [Положение о порядке предоставления платных услуг и расходовании средств](/assets/uploads/stipend/Polozhenie-o-poryadke-predostavleniya-platnyh-uslug-i-rashodovanii-sredstv.pdf) (PDF)
-- [Изменения в Положение об организации питания обучающихся ГБПОУ РО СИТ](/assets/uploads/stipend/Izmeneniya-v-Polozhenie-ob-organizatsii-pitaniya-obuchayushchihsya-GBPOU-RO-SIT.pdf) (PDF)
 
 ---
 

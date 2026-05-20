@@ -9,15 +9,6 @@ description: Платные образовательные услуги ГБПО
 
 ## Документы
 
-
-- 📄 [Приказ № 66 от 01.07.2025 «Об утверждении расходов на платные образовательные услуги на 2025–2029 уч. год»](/assets/uploads/paid-services/prikaz-66-ot-01.07.2025-rashody-2025-2029.pdf) (PDF)
-
-- 📄 [Информация о ценах на 2025–2026 уч. год](/assets/uploads/paid-services/informatsiya-o-tsenah-2025-2026.pdf) (PDF)
-
-- 📄 [Образец квитанции для оплаты за обучение студентами ГБПОУ РО «СИТ»](/assets/uploads/paid-services/obrazets-kvitantsii-dlya-oplaty.docx) (DOCX)
-
-
-
 ---
 
 {% set newsMode = 'razdel' %}

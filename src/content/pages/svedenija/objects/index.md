@@ -17,9 +17,6 @@ description: Материально-техническое обеспечени�
 
 ### Сводные перечни обеспечения образовательного процесса
 
-- 📄 [Обеспечение образовательного процесса корпуса №1](/assets/uploads/mto/main/Obespechenie-obrazovatelnogo-protsessa-korpusa-1.doc)
-- 📄 [Обеспечение образовательного процесса корпуса №2](/assets/uploads/mto/main/Obespechenie-obrazovatelnogo-protsessa-korpusa-2.doc)
-
 ### Корпус №1 (г. Сальск, ул. Ленина, 1)
 
 - 32 учебных кабинета
@@ -77,11 +74,7 @@ description: Материально-техническое обеспечени�
 
 **Лицензионные договоры с ЭБС:**
 
-- 📄 [Лицензионный договор с ООО «Издательство ЮРАЙТ» №43 с приложениями №1–3 (2025)](/assets/uploads/mto/biblioteka/Litsenzionnyy-dogovor-43-2025.pdf) ([прил. 1](/assets/uploads/mto/biblioteka/Prilozhenie-1-2025.pdf), [прил. 2](/assets/uploads/mto/biblioteka/Prilozhenie-2-2025.pdf), [прил. 3](/assets/uploads/mto/biblioteka/Prilozhenie-3-2025.pdf))
-
 **Инструкции пользователей:**
-
-- 📄 [Руководство по работе с мобильным приложением ЭБС «Лань»](/assets/uploads/mto/biblioteka/Rukovodstvo_mob_pril_LANY.pdf)
 
 ---
 
@@ -140,7 +133,6 @@ description: Материально-техническое обеспечени�
 
 **Договор на услуги связи:**
 
-
 ---
 
 ## 2.7.9 Электронные образовательные ресурсы (ЭОР)
@@ -156,10 +148,7 @@ description: Материально-техническое обеспечени�
 
 **Нормативная база ЭИОС:**
 
-- 📄 [Каталог электронных ресурсов](/assets/uploads/mto/eor/Katalog-elektronnyh-resursov.pdf)
-
 **Перечни ЭОР по реализуемым программам (Приказ Рособрнадзора №1493, п. 3.4 «м»):**
-
 
 ---
 
