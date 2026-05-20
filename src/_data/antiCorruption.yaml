@@ -147,7 +147,33 @@ sections:
 - id: local
   title: Локальные нормативные акты ГБПОУ РО «СИТ»
   description: Действующие локальные акты техникума по противодействию коррупции
-  documents: []
+  documents:
+  - title: Кодекс профессиональной этики работников ГБПОУ РО «СИТ» (Приказ №140
+      от 13.12.2024)
+    date: 13.12.2024
+    type: pdf
+    size: 318 КБ
+    url: /docs/dokumenty/anti-corruption/kodeks-etiki-140.pdf
+    signed: true
+  - title: Положение об антикоррупционной политике в ГБПОУ РО «СИТ» (Приказ №143
+      от 13.12.2024)
+    date: 13.12.2024
+    type: pdf
+    size: 607 КБ
+    url: /docs/dokumenty/anti-corruption/polozhenie-antikorrupcia-143-full.pdf
+    signed: true
+  - title: Правила обмена деловыми подарками и знаками делового гостеприимства (Приказ
+      №144 от 13.12.2024)
+    date: 13.12.2024
+    type: pdf
+    size: 199 КБ
+    url: /docs/dokumenty/anti-corruption/pravila-obmena-delovymi-podarkami-144.pdf
+    signed: true
+  - title: Антикоррупционный стандарт закупочной деятельности ГБПОУ РО «СИТ» (2024)
+    date: 2024
+    type: docx
+    size: 17 КБ
+    url: /docs/dokumenty/anti-corruption/Антикоррупционный-стандарт-закупочной-деятельности-ГБПОУ-РО-_СИТ_-2024.docx
 - id: methodical
   title: Методические материалы
   description: Рекомендации, методички, разъяснения по вопросам противодействия коррупции
