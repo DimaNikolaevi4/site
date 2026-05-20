@@ -77,10 +77,7 @@ permalink: /search/
 {{ rubrics.main_rubrics | dump | safe }}
 </script>
 
-{# Подключаем Lunr.js и скрипт поиска (локальные файлы — без CDN) #}
-<script src="/assets/vendor/lunr/lunr.min.js" defer></script>
-<script src="/assets/vendor/lunr/lunr.stemmer.support.js" defer></script>
-<script src="/assets/vendor/lunr/lunr.ru.js" defer></script>
+{# Подключаем Lunr.js (уже в base.njk) и скрипт поиска #}
 <script src="/assets/js/search.js" defer></script>
 
 <style>

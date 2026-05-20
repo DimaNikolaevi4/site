@@ -180,49 +180,87 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
-  // Инлайн-поиск
+  // Инлайн-поиск → Модальный поиск
   var searchToggle = document.getElementById('headerSearchToggle');
-  var searchWrap   = document.getElementById('headerSearchWrap');
-  var searchInput  = document.getElementById('headerSearchInput');
-  var searchClose  = document.getElementById('headerSearchClose');
+  var searchModal  = document.getElementById('searchModal');
+  var searchModalOverlay = document.getElementById('searchModalOverlay');
+  var searchModalClose   = document.getElementById('searchModalClose');
+  var searchModalInput   = document.getElementById('searchModalInput');
+  var offcanvasSearchToggle = document.getElementById('offcanvasSearchToggle');
 
-  if (searchToggle && searchWrap && searchInput) {
-    function openSearch() {
-      searchWrap.classList.add('is-open');
-      searchWrap.setAttribute('aria-hidden', 'false');
+  if (searchToggle && searchModal) {
+    var previouslyFocused = null;
+
+    function openSearchModal() {
+      previouslyFocused = document.activeElement;
+      searchModal.classList.add('is-open');
+      searchModal.setAttribute('aria-hidden', 'false');
       searchToggle.setAttribute('aria-expanded', 'true');
-      header.classList.add('header--search-open');
-      setTimeout(function () { searchInput.focus(); }, 80);
+      document.body.style.overflow = 'hidden';
+      setTimeout(function () { if (searchModalInput) searchModalInput.focus(); }, 100);
     }
 
-    function closeSearch() {
-      searchWrap.classList.remove('is-open');
-      searchWrap.setAttribute('aria-hidden', 'true');
+    function closeSearchModal() {
+      searchModal.classList.remove('is-open');
+      searchModal.setAttribute('aria-hidden', 'true');
       searchToggle.setAttribute('aria-expanded', 'false');
-      header.classList.remove('header--search-open');
-      searchInput.value = '';
+      document.body.style.overflow = '';
+      if (previouslyFocused) {
+        previouslyFocused.focus();
+        previouslyFocused = null;
+      }
     }
 
+    // Клик по кнопке поиска в шапке
     searchToggle.addEventListener('click', function () {
-      searchWrap.classList.contains('is-open') ? closeSearch() : openSearch();
-    });
-
-    if (searchClose) searchClose.addEventListener('click', closeSearch);
-
-    document.addEventListener('keydown', function (e) {
-      if (e.key === 'Escape' && searchWrap.classList.contains('is-open')) {
-        closeSearch();
-        searchToggle.focus();
+      if (searchModal.classList.contains('is-open')) {
+        closeSearchModal();
+      } else {
+        openSearchModal();
       }
     });
 
-    document.addEventListener('click', function (e) {
-      if (
-        searchWrap.classList.contains('is-open') &&
-        !searchWrap.contains(e.target) &&
-        e.target !== searchToggle
-      ) {
-        closeSearch();
+    // Клик по кнопке поиска в offcanvas
+    if (offcanvasSearchToggle) {
+      offcanvasSearchToggle.addEventListener('click', function () {
+        // Закрываем offcanvas если открыт
+        var offcanvasEl = document.getElementById('offcanvasRubrics');
+        if (offcanvasEl && typeof bootstrap !== 'undefined') {
+          var bsOffcanvas = bootstrap.Offcanvas.getInstance(offcanvasEl);
+          if (bsOffcanvas) bsOffcanvas.hide();
+        }
+        setTimeout(openSearchModal, 150);
+      });
+    }
+
+    // Кнопка закрытия
+    if (searchModalClose) {
+      searchModalClose.addEventListener('click', closeSearchModal);
+    }
+
+    // Клик по оверлею
+    if (searchModalOverlay) {
+      searchModalOverlay.addEventListener('click', closeSearchModal);
+    }
+
+    // Escape
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && searchModal.classList.contains('is-open')) {
+        closeSearchModal();
+      }
+    });
+
+    // Фокус-трап внутри модала
+    searchModal.addEventListener('keydown', function (e) {
+      if (e.key !== 'Tab') return;
+      var focusable = searchModal.querySelectorAll('button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])');
+      if (focusable.length === 0) return;
+      var first = focusable[0];
+      var last  = focusable[focusable.length - 1];
+      if (e.shiftKey) {
+        if (document.activeElement === first) { e.preventDefault(); last.focus(); }
+      } else {
+        if (document.activeElement === last) { e.preventDefault(); first.focus(); }
       }
     });
   }

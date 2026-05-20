@@ -290,14 +290,14 @@
       return `
         <li class="search-result-card">
           <h2 class="search-result-card__title">
-            <a href="${escapeHtml(result.url)}">${highlightText(result.title, query)}</a>
+            <a href="${escapeHtml(result.url)}">${escapeHtml(result.title)}</a>
           </h2>
           <p class="search-result-card__meta">
             ${result.date ? `<time datetime="${escapeHtml(result.date)}">${formatDate(result.date)}</time>` : ''}
             ${rubricHtml}
             ${result.category ? `<span class="search-result-card__category">${escapeHtml(result.category)}</span>` : ''}
           </p>
-          <p class="search-result-card__excerpt">${highlightText(result.excerpt, query)}</p>
+          <p class="search-result-card__excerpt">${escapeHtml(result.excerpt)}</p>
           ${tagsHtml}
         </li>
       `;

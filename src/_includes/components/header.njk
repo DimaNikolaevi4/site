@@ -6,23 +6,6 @@
       <img src="/assets/images/logo.png" alt="ГБПОУ РО «Сальский индустриальный техникум»" title="ГБПОУ РО «Сальский индустриальный техникум»" class="header-logo-img" width="64" height="64" loading="eager" fetchpriority="high" decoding="async">
     </a>
 
-    {# Инлайн-поиск — разворачивается поверх навигации #}
-    <div class="header-search-wrap" id="headerSearchWrap" aria-hidden="true">
-      <form role="search" action="/search/" method="get" class="header-search-form">
-        <input type="search" name="q" class="header-search-input"
-               id="headerSearchInput"
-               placeholder="Поиск по сайту…"
-               aria-label="Поиск по сайту"
-               autocomplete="off">
-        <button type="submit" class="header-search-submit" aria-label="Найти">
-          <i class="bi bi-search" aria-hidden="true"></i>
-        </button>
-        <button type="button" class="header-search-close" id="headerSearchClose" aria-label="Закрыть поиск">
-          <i class="bi bi-x-lg" aria-hidden="true"></i>
-        </button>
-      </form>
-    </div>
-
     {# Центральная навигация — от lg (992px), по центру между лого и иконками #}
     {# Порядок скрытия (сужение экрана): Контакты → ЭОС → Абитуриентам → Сведения (последним) #}
     <nav class="main-nav d-none d-lg-flex mx-auto" role="navigation" aria-label="Основная навигация">
@@ -87,7 +70,7 @@
       </a>
       <button class="header-icon-btn" id="headerSearchToggle"
               type="button"
-              title="Поиск по сайту" aria-label="Поиск" aria-expanded="false" aria-controls="headerSearchWrap">
+              title="Поиск по сайту" aria-label="Поиск" aria-expanded="false" aria-controls="searchModal">
         <i class="bi bi-search" aria-hidden="true"></i>
       </button>
       <div class="a11y-wrap">
@@ -129,6 +112,67 @@
 
   </div>
 </header>
+
+{# ─── Модальное окно поиска ─── #}
+<div class="search-modal" id="searchModal" aria-hidden="true">
+  <div class="search-modal__overlay" id="searchModalOverlay"></div>
+  <div class="search-modal__dialog" role="dialog" aria-modal="true" aria-label="Поиск по сайту">
+    <button class="search-modal__close" id="searchModalClose" aria-label="Закрыть" type="button">&times;</button>
+
+    {# Секция 1: Поиск по разделам #}
+    <div class="search-modal__section">
+      <h2 class="search-modal__heading">Поиск по разделам</h2>
+      <select class="search-modal__select" id="searchRubricSelect">
+        <option value="">Выберите нужный раздел/рубрику сайта</option>
+        {% for main in rubrics.main_rubrics %}
+          {% set mainUrl = '/' + main.slug + '/' %}
+          {% if main.url %}
+            {% set mainUrl = main.url %}
+          {% endif %}
+          <option value="{{ mainUrl }}">{{ main.code }}. {{ main.title }}</option>
+          {% if main.children %}
+            {% for child in main.children %}
+              {% set childUrl = '/' + main.slug + '/' + child.slug + '/' %}
+              {% if child.url %}
+                {% set childUrl = child.url %}
+              {% endif %}
+              <option value="{{ childUrl }}">&nbsp;&nbsp;&nbsp;{{ child.code }} {{ child.title }}</option>
+              {% if child.children %}
+                {% for grandchild in child.children %}
+                  {% set gcUrl = '/' + main.slug + '/' + child.slug + '/' + grandchild.slug + '/' %}
+                  {% if grandchild.url %}
+                    {% set gcUrl = grandchild.url %}
+                  {% endif %}
+                  <option value="{{ gcUrl }}">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ grandchild.code }} {{ grandchild.title }}</option>
+                {% endfor %}
+              {% endif %}
+            {% endfor %}
+          {% endif %}
+        {% endfor %}
+      </select>
+    </div>
+
+    {# Разделитель #}
+    <div class="search-modal__divider"></div>
+
+    {# Секция 2: Поиск по фразам #}
+    <div class="search-modal__section">
+      <h2 class="search-modal__heading">Поиск по фразам</h2>
+      <form class="search-modal__form" role="search" action="/search/" method="get">
+        <div class="search-modal__input-wrap">
+          <input type="search" name="q" class="search-modal__input" id="searchModalInput"
+                 placeholder="Введите запрос для поиска..." autocomplete="off">
+          <button type="submit" class="search-modal__submit">Найти</button>
+        </div>
+      </form>
+      {# Мгновенные результаты #}
+      <div class="search-modal__results" id="searchModalResults" style="display:none;">
+        <p class="search-modal__results-info" id="searchModalResultsInfo"></p>
+        <ul class="search-modal__results-list" id="searchModalResultsList"></ul>
+      </div>
+    </div>
+  </div>
+</div>
 
 {# Offcanvas — меню 1-го уровня (справа) #}
 <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRubrics" aria-labelledby="offcanvasRubricsLabel">
@@ -209,10 +253,11 @@
              class="header-icon-btn" title="Написать на почту: {{ contacts.email }}" aria-label="Электронная почта">
             <i class="bi bi-envelope-fill" aria-hidden="true"></i>
           </a>
-          <a href="/search/" class="header-icon-btn" data-bs-dismiss="offcanvas"
-             title="Поиск по сайту" aria-label="Поиск">
+          <button class="header-icon-btn" id="offcanvasSearchToggle"
+                  type="button"
+                  title="Поиск по сайту" aria-label="Поиск">
             <i class="bi bi-search" aria-hidden="true"></i>
-          </a>
+          </button>
           <button class="header-icon-btn" onclick="toggleA11y(); return false;"
                   title="Версия для слабовидящих" aria-label="Версия для слабовидящих">
             <i class="bi bi-eye" aria-hidden="true"></i>
