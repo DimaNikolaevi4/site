@@ -22,8 +22,8 @@
 
 {% if showHero != false %}
 
-{% set _heroImage = (hero.image if hero else null) or "/assets/template/hero-bg.jpg" %}
-{% set _heroAlt = (hero.alt if hero else null) or title or "Сальский индустриальный техникум" %}
+{% set _heroImage = (hero.image if hero and hero.image else null) or image or "/assets/template/hero-bg.jpg" %}
+{% set _heroAlt = (hero.alt if hero and hero.alt else null) or title or "Сальский индустриальный техникум" %}
 {% set _heroRubric = rubricTitle or (hero.title if hero else null) or title %}
 
 <section class="section-hero page-hero page-hero--banner component-hero" aria-label="Баннер раздела">
