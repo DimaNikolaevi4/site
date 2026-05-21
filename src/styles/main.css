@@ -6404,13 +6404,19 @@ body.dark-theme .oc-footer {
   border-top-color: rgba(95, 207, 128, 0.12);
 }
 
-body.dark-theme .oc-footer__link,
-body.dark-theme .oc-footer__call-btn {
+body.dark-theme .oc-footer__link {
   color: #8ab094;
 }
 
-body.dark-theme .oc-footer__call-btn:hover {
+body.dark-theme .oc-footer__call-btn {
+  background: #1a3d26;
   color: #5fcf80;
+  border: 1px solid rgba(95, 207, 128, 0.35);
+}
+
+body.dark-theme .oc-footer__call-btn:hover {
+  background: #1f4d2f;
+  color: #8adf9e;
 }
 
 /* ── Поиск ── */
