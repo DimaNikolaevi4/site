@@ -160,3 +160,6 @@ npm install
 ## 📞 Контакты
 
 При возникновении вопросов обращайтесь к документации Eleventy: https://www.11ty.dev/docs/
+
+
+если буду менять дизайн, идеи возьмем тут https://brand.dropbox.com/ и https://www.sourjacks.com/
