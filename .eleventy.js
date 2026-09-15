@@ -291,9 +291,6 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addPassthroughCopy({ "node_modules/aos/dist/aos.js": "assets/vendor/aos/aos.js" });
   eleventyConfig.addPassthroughCopy({ "node_modules/glightbox/dist/css/glightbox.min.css": "assets/vendor/glightbox/css/glightbox.min.css" });
   eleventyConfig.addPassthroughCopy({ "node_modules/glightbox/dist/js/glightbox.min.js": "assets/vendor/glightbox/js/glightbox.min.js" });
-  eleventyConfig.addPassthroughCopy({ "node_modules/swiper/swiper-bundle.min.css": "assets/vendor/swiper/swiper-bundle.min.css" });
-  eleventyConfig.addPassthroughCopy({ "node_modules/swiper/swiper-bundle.min.js": "assets/vendor/swiper/swiper-bundle.min.js" });
-  eleventyConfig.addPassthroughCopy({ "node_modules/@srexi/purecounterjs/dist/purecounter_vanilla.js": "assets/vendor/purecounter/purecounter_vanilla.js" });
   eleventyConfig.addPassthroughCopy({ "node_modules/lunr/lunr.min.js": "assets/vendor/lunr/lunr.min.js" });
   eleventyConfig.addPassthroughCopy({ "node_modules/lunr-languages/lunr.stemmer.support.js": "assets/vendor/lunr/lunr.stemmer.support.js" });
   eleventyConfig.addPassthroughCopy({ "node_modules/lunr-languages/lunr.ru.js": "assets/vendor/lunr/lunr.ru.js" });
