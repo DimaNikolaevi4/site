@@ -1,81 +1,73 @@
-/* Site form validation. */
+/* Validation for forms owned by Site V2. */
 (function () {
   "use strict";
 
-  let forms = document.querySelectorAll('.php-email-form');
+  const forms = document.querySelectorAll('.site-form');
 
-  forms.forEach( function(e) {
-    e.addEventListener('submit', function(event) {
+  forms.forEach((form) => {
+    form.addEventListener('submit', (event) => {
       event.preventDefault();
 
-      let thisForm = this;
-
-      let action = thisForm.getAttribute('action');
-      let recaptcha = thisForm.getAttribute('data-recaptcha-site-key');
-      
-      if( ! action ) {
-        displayError(thisForm, 'The form action property is not set!');
+      const action = form.getAttribute('action');
+      const recaptchaKey = form.getAttribute('data-recaptcha-site-key');
+      if (!action) {
+        showError(form, 'The form action property is not set!');
         return;
       }
-      thisForm.querySelector('.loading').classList.add('d-block');
-      thisForm.querySelector('.error-message').classList.remove('d-block');
-      thisForm.querySelector('.sent-message').classList.remove('d-block');
 
-      let formData = new FormData( thisForm );
+      const loading = form.querySelector('.loading');
+      const error = form.querySelector('.error-message');
+      const sent = form.querySelector('.sent-message');
+      loading?.classList.add('d-block');
+      error?.classList.remove('d-block');
+      sent?.classList.remove('d-block');
 
-      if ( recaptcha ) {
-        if(typeof grecaptcha !== "undefined" ) {
-          grecaptcha.ready(function() {
-            try {
-              grecaptcha.execute(recaptcha, {action: 'php_email_form_submit'})
-              .then(token => {
-                formData.set('recaptcha-response', token);
-                php_email_form_submit(thisForm, action, formData);
-              })
-            } catch(error) {
-              displayError(thisForm, error);
-            }
-          });
-        } else {
-          displayError(thisForm, 'The reCaptcha javascript API url is not loaded!')
-        }
+      const data = new FormData(form);
+      const submit = () => submitSiteForm(form, action, data);
+
+      if (recaptchaKey && typeof grecaptcha !== 'undefined') {
+        grecaptcha.ready(() => {
+          grecaptcha.execute(recaptchaKey, { action: 'site_form_submit' })
+            .then((token) => {
+              data.set('recaptcha-response', token);
+              submit();
+            })
+            .catch((reason) => showError(form, reason));
+        });
       } else {
-        php_email_form_submit(thisForm, action, formData);
+        submit();
       }
     });
   });
 
-  function php_email_form_submit(thisForm, action, formData) {
+  function submitSiteForm(form, action, data) {
     fetch(action, {
       method: 'POST',
-      body: formData,
-      headers: {'X-Requested-With': 'XMLHttpRequest'}
+      body: data,
+      headers: { 'X-Requested-With': 'XMLHttpRequest' }
     })
-    .then(response => {
-      if( response.ok ) {
+      .then((response) => {
+        if (!response.ok) throw new Error(`${response.status} ${response.statusText}`);
         return response.text();
-      } else {
-        throw new Error(`${response.status} ${response.statusText} ${response.url}`); 
-      }
-    })
-    .then(data => {
-      thisForm.querySelector('.loading').classList.remove('d-block');
-      if (data.trim() == 'OK') {
-        thisForm.querySelector('.sent-message').classList.add('d-block');
-        thisForm.reset(); 
-      } else {
-        throw new Error(data ? data : 'Form submission failed and no error message returned from: ' + action); 
-      }
-    })
-    .catch((error) => {
-      displayError(thisForm, error);
-    });
+      })
+      .then((result) => {
+        form.querySelector('.loading')?.classList.remove('d-block');
+        if (result.trim() === 'OK') {
+          form.querySelector('.sent-message')?.classList.add('d-block');
+          form.reset();
+        } else {
+          throw new Error(result || 'Form submission failed.');
+        }
+      })
+      .catch((reason) => showError(form, reason));
   }
 
-  function displayError(thisForm, error) {
-    thisForm.querySelector('.loading').classList.remove('d-block');
-    thisForm.querySelector('.error-message').innerHTML = error;
-    thisForm.querySelector('.error-message').classList.add('d-block');
+  function showError(form, reason) {
+    form.querySelector('.loading')?.classList.remove('d-block');
+    const error = form.querySelector('.error-message');
+    if (error) {
+      error.textContent = reason;
+      error.classList.add('d-block');
+    }
   }
-
 })();
