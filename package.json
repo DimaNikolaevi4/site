@@ -21,6 +21,7 @@
     "clean-css": "^5.3.3",
     "html-minifier-terser": "^7.2.0",
     "js-yaml": "^4.1.1",
+    "puppeteer-core": "^25.11.0",
     "sharp": "^0.34.5"
   },
   "description": "> 🏫 **ГБПОУ РО \"Сальский индустриальный техникум\"**   > 🌐 Официальный сайт: `https://сит-сальск.рф/`   > 📦 Статический сайт на **Eleventy + Decap CMS**   > 🚀 Хостинг: **Beget** (SSH, Node.js 18, PHP 8.3)",
