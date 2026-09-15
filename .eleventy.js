@@ -281,22 +281,22 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addPassthroughCopy({ "src/assets/uploads": "assets/uploads" });
   eleventyConfig.addPassthroughCopy({ "src/docs": "docs" });
   eleventyConfig.addPassthroughCopy({ "src/assets/template": "assets/template" });
-  eleventyConfig.addPassthroughCopy({ "src/assets/vendor/php-email-form": "assets/mentor/vendor/php-email-form" });
+  eleventyConfig.addPassthroughCopy({ "src/assets/vendor/form-validation": "assets/vendor/form-validation" });
   eleventyConfig.addPassthroughCopy("src/images");
-  // Vendor-библиотеки — из node_modules. URL-префикс /assets/mentor/vendor/ оставлен
+  // Vendor-библиотеки — из node_modules. URL-префикс /assets/vendor/ оставлен
   // ради совместимости со ссылками в layouts/base.njk (исторически путь шёл от
   // справочного шаблона BootstrapMade «Mentor», который из репозитория удалён).
-  eleventyConfig.addPassthroughCopy({ "node_modules/bootstrap/dist/css/bootstrap.min.css": "assets/mentor/vendor/bootstrap/css/bootstrap.min.css" });
-  eleventyConfig.addPassthroughCopy({ "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js": "assets/mentor/vendor/bootstrap/js/bootstrap.bundle.min.js" });
-  eleventyConfig.addPassthroughCopy({ "node_modules/bootstrap-icons/font/bootstrap-icons.css": "assets/mentor/vendor/bootstrap-icons/bootstrap-icons.css" });
-  eleventyConfig.addPassthroughCopy({ "node_modules/bootstrap-icons/font/fonts": "assets/mentor/vendor/bootstrap-icons/fonts" });
-  eleventyConfig.addPassthroughCopy({ "node_modules/aos/dist/aos.css": "assets/mentor/vendor/aos/aos.css" });
-  eleventyConfig.addPassthroughCopy({ "node_modules/aos/dist/aos.js": "assets/mentor/vendor/aos/aos.js" });
-  eleventyConfig.addPassthroughCopy({ "node_modules/glightbox/dist/css/glightbox.min.css": "assets/mentor/vendor/glightbox/css/glightbox.min.css" });
-  eleventyConfig.addPassthroughCopy({ "node_modules/glightbox/dist/js/glightbox.min.js": "assets/mentor/vendor/glightbox/js/glightbox.min.js" });
-  eleventyConfig.addPassthroughCopy({ "node_modules/swiper/swiper-bundle.min.css": "assets/mentor/vendor/swiper/swiper-bundle.min.css" });
-  eleventyConfig.addPassthroughCopy({ "node_modules/swiper/swiper-bundle.min.js": "assets/mentor/vendor/swiper/swiper-bundle.min.js" });
-  eleventyConfig.addPassthroughCopy({ "node_modules/@srexi/purecounterjs/dist/purecounter_vanilla.js": "assets/mentor/vendor/purecounter/purecounter_vanilla.js" });
+  eleventyConfig.addPassthroughCopy({ "node_modules/bootstrap/dist/css/bootstrap.min.css": "assets/vendor/bootstrap/css/bootstrap.min.css" });
+  eleventyConfig.addPassthroughCopy({ "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js": "assets/vendor/bootstrap/js/bootstrap.bundle.min.js" });
+  eleventyConfig.addPassthroughCopy({ "node_modules/bootstrap-icons/font/bootstrap-icons.css": "assets/vendor/bootstrap-icons/bootstrap-icons.css" });
+  eleventyConfig.addPassthroughCopy({ "node_modules/bootstrap-icons/font/fonts": "assets/vendor/bootstrap-icons/fonts" });
+  eleventyConfig.addPassthroughCopy({ "node_modules/aos/dist/aos.css": "assets/vendor/aos/aos.css" });
+  eleventyConfig.addPassthroughCopy({ "node_modules/aos/dist/aos.js": "assets/vendor/aos/aos.js" });
+  eleventyConfig.addPassthroughCopy({ "node_modules/glightbox/dist/css/glightbox.min.css": "assets/vendor/glightbox/css/glightbox.min.css" });
+  eleventyConfig.addPassthroughCopy({ "node_modules/glightbox/dist/js/glightbox.min.js": "assets/vendor/glightbox/js/glightbox.min.js" });
+  eleventyConfig.addPassthroughCopy({ "node_modules/swiper/swiper-bundle.min.css": "assets/vendor/swiper/swiper-bundle.min.css" });
+  eleventyConfig.addPassthroughCopy({ "node_modules/swiper/swiper-bundle.min.js": "assets/vendor/swiper/swiper-bundle.min.js" });
+  eleventyConfig.addPassthroughCopy({ "node_modules/@srexi/purecounterjs/dist/purecounter_vanilla.js": "assets/vendor/purecounter/purecounter_vanilla.js" });
   eleventyConfig.addPassthroughCopy({ "node_modules/lunr/lunr.min.js": "assets/vendor/lunr/lunr.min.js" });
   eleventyConfig.addPassthroughCopy({ "node_modules/lunr-languages/lunr.stemmer.support.js": "assets/vendor/lunr/lunr.stemmer.support.js" });
   eleventyConfig.addPassthroughCopy({ "node_modules/lunr-languages/lunr.ru.js": "assets/vendor/lunr/lunr.ru.js" });
