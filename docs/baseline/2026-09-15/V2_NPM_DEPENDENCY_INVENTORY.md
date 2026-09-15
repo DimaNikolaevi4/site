@@ -23,8 +23,8 @@
 | bootstrap-icons | 1.13.1 | иконки и шрифты | assets/vendor/bootstrap-icons/** |
 | aos | 2.3.4 | scroll-анимации | assets/vendor/aos/**; init-components.js |
 | glightbox | 3.3.1 | lightbox | assets/vendor/glightbox/**; base.njk |
-| swiper | 12.1.3 | слайдеры | assets/vendor/swiper/**; init-components.js |
-| @srexi/purecounterjs | 1.5.0 | счётчики | assets/vendor/purecounter/**; base.njk |
+
+> Swiper и PureCounter исключены из V2: их passthrough-копии удалены из `.eleventy.js`, они отсутствуют в текущих зависимостях и больше не подключаются шаблонами.
 
 ## Установлена, но не входит в обычный V2 output
 
