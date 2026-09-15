@@ -110,7 +110,7 @@
 - [ ] Сохранены trailing slash и правила для `index.html`.
 - [ ] Проверены `/`, `/404.html`, страницы разделов и новости.
 - [ ] Проверены `/sitemap.xml` и `/robots.txt`.
-- [ ] Проверены canonical и Open Graph для VK и Telegram: `og:title`, `og:description`, `og:url`, `og:type`, `og:image`, абсолютные HTTPS URL и корректное превью.
+- [ ] Проверены canonical и Open Graph для VK: `og:title`, `og:description`, `og:url`, `og:type`, `og:image`, абсолютные HTTPS URL и корректное превью.
 - [ ] Проверены якоря и ссылки на документы с Unicode-именами.
 - [ ] После каждой крупной миграции обновляется только отдельный манифест с
   новым commit и причиной изменения.
