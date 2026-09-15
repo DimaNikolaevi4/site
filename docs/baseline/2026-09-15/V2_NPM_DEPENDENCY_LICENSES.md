@@ -18,10 +18,12 @@
 | bootstrap-icons | 1.13.1 | MIT | CSS и шрифты иконок; assets/vendor/bootstrap-icons/** |
 | aos | 2.3.4 | MIT | scroll-анимации; assets/vendor/aos/** и src/assets/js/init-components.js |
 | glightbox | 3.3.1 | MIT | lightbox; assets/vendor/glightbox/** и base.njk |
-| swiper | 12.1.3 | MIT | слайдеры; assets/vendor/swiper/** и init-components.js |
-| @srexi/purecounterjs | 1.5.0 | MIT | счётчики; assets/vendor/purecounter/** и base.njk |
 | puppeteer-core | 25.11.0 | Apache-2.0 | только baseline screenshots; scripts/capture-baseline-screenshots.mjs, в обычный output не попадает |
+
+## Публичное размещение
+
+Для посетителей сайта опубликована страница `/third-party-notices/` со списком клиентских и сборочных библиотек, версиями и ссылками на тексты лицензий. Ссылка добавлена в общий футер.
 
 ## Вывод
 
-Все 15 прямых пакетов из package.json имеют зафиксированные версии и описанное назначение. Наличие license-поля в npm metadata не заменяет проверку notices и текстов лицензий в пункте 2.2.5. Решение об удалении неиспользуемых vendor-библиотек выполняется в пункте 2.2.3.
+Все 13 прямых пакетов из package.json имеют зафиксированные версии и описанное назначение. Наличие license-поля в npm metadata не заменяет проверку notices и текстов лицензий в пункте 2.2.5. Решение об удалении неиспользуемых vendor-библиотек выполняется в пункте 2.2.3.
