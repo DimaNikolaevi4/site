@@ -280,7 +280,7 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addPassthroughCopy("src/assets/js");
   eleventyConfig.addPassthroughCopy({ "src/assets/uploads": "assets/uploads" });
   eleventyConfig.addPassthroughCopy({ "src/docs": "docs" });
-  eleventyConfig.addPassthroughCopy({ "src/assets/site": "assets/template" });
+  eleventyConfig.addPassthroughCopy({ "src/assets/site": "assets/site" });
   eleventyConfig.addPassthroughCopy({ "src/assets/vendor/form-validation": "assets/vendor/form-validation" });
   eleventyConfig.addPassthroughCopy("src/images");
   // Vendor-библиотеки копируются в /assets/vendor/ для независимости от сторонних шаблонов.
