@@ -283,9 +283,7 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addPassthroughCopy({ "src/assets/template": "assets/template" });
   eleventyConfig.addPassthroughCopy({ "src/assets/vendor/form-validation": "assets/vendor/form-validation" });
   eleventyConfig.addPassthroughCopy("src/images");
-  // Vendor-библиотеки — из node_modules. URL-префикс /assets/vendor/ оставлен
-  // ради совместимости со ссылками в layouts/base.njk (исторически путь шёл от
-  // справочного шаблона BootstrapMade «Mentor», который из репозитория удалён).
+  // Vendor-библиотеки копируются в /assets/vendor/ для независимости от сторонних шаблонов.
   eleventyConfig.addPassthroughCopy({ "node_modules/bootstrap/dist/css/bootstrap.min.css": "assets/vendor/bootstrap/css/bootstrap.min.css" });
   eleventyConfig.addPassthroughCopy({ "node_modules/bootstrap/dist/js/bootstrap.bundle.min.js": "assets/vendor/bootstrap/js/bootstrap.bundle.min.js" });
   eleventyConfig.addPassthroughCopy({ "node_modules/bootstrap-icons/font/bootstrap-icons.css": "assets/vendor/bootstrap-icons/bootstrap-icons.css" });
