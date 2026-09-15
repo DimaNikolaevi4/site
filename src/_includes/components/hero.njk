@@ -10,7 +10,7 @@
     showHero      — false, чтобы выключить блок (по умолчанию — показываем)
     hero          — объект для тонкой настройки:
                       hero.image    — URL фонового изображения
-                                       (по умолчанию /assets/template/hero-bg.jpg)
+                                       (по умолчанию /assets/site/hero-bg.jpg)
                       hero.title    — переопределяет рубрику под чертой
                       hero.subtitle — подзаголовок (опционально)
                       hero.alt      — alt-текст фона (опционально)
@@ -22,7 +22,7 @@
 
 {% if showHero != false %}
 
-{% set _heroImage = (hero.image if hero and hero.image else null) or "/assets/template/hero-bg.jpg" %}
+{% set _heroImage = (hero.image if hero and hero.image else null) or "/assets/site/hero-bg.jpg" %}
 {% set _heroAlt = (hero.alt if hero and hero.alt else null) or title or "Сальский индустриальный техникум" %}
 {% set _heroRubric = rubricTitle or (hero.title if hero else null) or title %}
 
