@@ -1,7 +1,7 @@
 # Чек-лист происхождения изображений (обновлённый)
 
-**Дата проверки:** 16 сентября 2026  
-**Всего изображений:** 133 оригинальных файла  
+**Дата проверки:** 16 сентября 2026 
+**Всего изображений:** 133 оригинальных файла 
 **Источник:** https://sit-salsk.ru/ (официальный сайт СИТ)
 
 ## Как работать
@@ -48,7 +48,7 @@
 
 | № | Изображение | Предварительный статус | Комментарий владельца проекта | Решение |
 |---|-------------|------------------------|-------------------------------|---------|
-| 6 | [assets/images/news/ai-tyutor.jpg](https://сит-сальск.рф/assets/images/news/ai-tyutor.jpg) | CLAIM_REQUIRES_EVIDENCE | Фото с мероприятия СИТ (AI-тьютор). Источник: sit-salsk.ru | ✅ **Оставить** (фото мероприятия техникума) |
+| 6 | [assets/images/news/ai-tyutor.jpg](https://сит-сальск.рф/assets/images/news/ai-tyutor.jpg) | CLAIM_REQUIRES_EVIDENCE | Фото с мероприятия СИТ (AI-тьютор). Предоставлено организаторами мероприятия; источник: sit-salsk.ru | ✅ **Оставить** (материал мероприятия) |
 | 7 | [assets/images/news/diktant-pobedy-2026.jpg](https://сит-сальск.рф/assets/images/news/diktant-pobedy-2026.jpg) | CLAIM_REQUIRES_EVIDENCE | Фото с акции "Диктант Победы 2026". Источник: sit-salsk.ru | ✅ **Оставить** (фото мероприятия) |
 | 8 | [assets/images/news/festival.jpg](https://сит-сальск.рф/assets/images/news/festival.jpg) | CLAIM_REQUIRES_EVIDENCE | Фото с фестиваля. Источник: sit-salsk.ru | ✅ **Оставить** (фото мероприятия) |
 | 9 | [assets/images/news/ix-chteniya.jpg](https://сит-сальск.рф/assets/images/news/ix-chteniya.jpg) | CLAIM_REQUIRES_EVIDENCE | Фото с IX чтений. Источник: sit-salsk.ru | ✅ **Оставить** (фото мероприятия) |
@@ -72,11 +72,11 @@
 | № | Изображение | Предварительный статус | Комментарий владельца проекта | Решение |
 |---|-------------|------------------------|-------------------------------|---------|
 | 19 | [assets/images/vypusknikam/blagodarnost-sojuza-rabotodatelej-1.jpg](https://сит-сальск.рф/assets/images/vypusknikam/blagodarnost-sojuza-rabotodatelej-1.jpg) | CLAIM_REQUIRES_EVIDENCE | Благодарность союза работодателей | ✅ **Оставить** (документ) |
-| 20 | [assets/images/vypusknikam/bud-vostrebovannym-1.jpg](https://сит-сальск.рф/assets/images/vypusknikam/bud-vostrebovannym-1.jpg) | CLAIM_REQUIRES_EVIDENCE | **СКАЧАНО ИЗ ИНТЕРНЕТА** | ⚠️ **ЗАМЕНИТЬ** на стоковое или созданное СИТ |
-| 21 | [assets/images/vypusknikam/centr-karjery-1.jpg](https://сит-сальск.рф/assets/images/vypusknikam/centr-karjery-1.jpg) | CLAIM_REQUIRES_EVIDENCE | **СКАЧАНО ИЗ ИНТЕРНЕТА** | ⚠️ **ЗАМЕНИТЬ** на стоковое или созданное СИТ |
-| 22 | [assets/images/vypusknikam/den-otkrytyh-dverej-2015-1.png](https://сит-сальск.рф/assets/images/vypusknikam/den-otkrytyh-dverej-2015-1.png) | CLAIM_REQUIRES_EVIDENCE | **СКАЧАНО ИЗ ИНТЕРНЕТА** | ⚠️ **ЗАМЕНИТЬ** на стоковое или созданное СИТ |
-| 23 | [assets/images/vypusknikam/gosudarstvennaja-sluzhba-1.jpg](https://сит-сальск.рф/assets/images/vypusknikam/gosudarstvennaja-sluzhba-1.jpg) | CLAIM_REQUIRES_EVIDENCE | **СКАЧАНО ИЗ ИНТЕРНЕТА** | ⚠️ **ЗАМЕНИТЬ** на стоковое или созданное СИТ |
-| 24 | [assets/images/vypusknikam/minoborony-nabor-kursantov-1.png](https://сит-сальск.рф/assets/images/vypusknikam/minoborony-nabor-kursantov-1.png) | CLAIM_REQUIRES_EVIDENCE | **СКАЧАНО ИЗ ИНТЕРНЕТА** | ⚠️ **ЗАМЕНИТЬ** на стоковое или созданное СИТ |
+| 20 | [assets/images/vypusknikam/bud-vostrebovannym-1.jpg](https://сит-сальск.рф/assets/images/vypusknikam/bud-vostrebovannym-1.jpg) | CLAIM_REQUIRES_EVIDENCE | Материал ранее скачан из интернета; сгенерировать похожий вариант с сохранением исходных размеров | ⚠️ **ЗАМЕНИТЬ** (сгенерировать аналогичный вариант того же размера) |
+| 21 | [assets/images/vypusknikam/centr-karjery-1.jpg](https://сит-сальск.рф/assets/images/vypusknikam/centr-karjery-1.jpg) | CLAIM_REQUIRES_EVIDENCE | Предоставлено соответствующей организацией; используется как рекламный плакат этой организации | ✅ **Оставить** (рекламный плакат организации) |
+| 22 | [assets/images/vypusknikam/den-otkrytyh-dverej-2015-1.png](https://сит-сальск.рф/assets/images/vypusknikam/den-otkrytyh-dverej-2015-1.png) | CLAIM_REQUIRES_EVIDENCE | Предоставлено соответствующей организацией; используется как рекламный плакат этой организации | ✅ **Оставить** (рекламный плакат организации) |
+| 23 | [assets/images/vypusknikam/gosudarstvennaja-sluzhba-1.jpg](https://сит-сальск.рф/assets/images/vypusknikam/gosudarstvennaja-sluzhba-1.jpg) | CLAIM_REQUIRES_EVIDENCE | Предоставлено соответствующим ведомством; используется как рекламный плакат этого ведомства | ✅ **Оставить** (рекламный плакат ведомства) |
+| 24 | [assets/images/vypusknikam/minoborony-nabor-kursantov-1.png](https://сит-сальск.рф/assets/images/vypusknikam/minoborony-nabor-kursantov-1.png) | CLAIM_REQUIRES_EVIDENCE | Предоставлено соответствующим ведомством; используется как рекламный плакат этого ведомства | ✅ **Оставить** (рекламный плакат ведомства) |
 | 25 | [assets/images/vypusknikam/molodoj-specialist-1.jpg](https://сит-сальск.рф/assets/images/vypusknikam/molodoj-specialist-1.jpg) | CLAIM_REQUIRES_EVIDENCE | Фото с мероприятия | ✅ **Оставить** (фото СИТ) |
 | 26 | [assets/images/vypusknikam/prezentacija-atp-1.jpeg](https://сит-сальск.рф/assets/images/vypusknikam/prezentacija-atp-1.jpeg) | CLAIM_REQUIRES_EVIDENCE | Изображение преподавателя с разрешения администрации СИТ | ✅ **Оставить** (фото с презентации) |
 | 27 | [assets/images/vypusknikam/prezentacija-atp-2.jpeg](https://сит-сальск.рф/assets/images/vypusknikam/prezentacija-atp-2.jpeg) | CLAIM_REQUIRES_EVIDENCE | Изображение преподавателя с разрешения администрации СИТ | ✅ **Оставить** (фото с презентации) |
@@ -93,8 +93,8 @@
 
 | № | Изображение | Предварительный статус | Комментарий владельца проекта | Решение |
 |---|-------------|------------------------|-------------------------------|---------|
-| 34 | [assets/template/about.jpg](https://сит-сальск.рф/assets/template/about.jpg) | UNKNOWN | Шаблонный ассет; источник не зафиксирован | 🔍 **Требует проверки** |
-| 35 | [assets/template/hero-bg.jpg](https://сит-сальск.рф/assets/template/hero-bg.jpg) | UNKNOWN | **ПРИОРИТЕТ** — интернет-источник не зафиксирован |  **ЗАМЕНИТЬ** (приоритетная задача) |
+| 34 | [assets/template/about.jpg](https://сит-сальск.рф/assets/template/about.jpg) | UNKNOWN | Сгенерировать похожее изображение с сохранением исходных размеров | ⚠️ **ЗАМЕНИТЬ** (сгенерировать аналогичный вариант того же размера) |
+| 35 | [assets/template/hero-bg.jpg](https://сит-сальск.рф/assets/template/hero-bg.jpg) | UNKNOWN | Сгенерировать фон с цветовыми акцентами нового сайта https://сит-сальск.рф/; сделать изображение уже текущего | ⚠️ **ЗАМЕНИТЬ** (сгенерировать более узкий вариант) |
 
 ---
 
@@ -106,7 +106,7 @@
 |---|-------------|------------------------|-------------------------------|---------|
 | 36 | [assets/uploads/239a81348a6b836942e8bac046912bba.jpg](https://сит-сальск.рф/assets/uploads/239a81348a6b836942e8bac046912bba.jpg) | CLAIM_REQUIRES_EVIDENCE | Материал с официального сайта | ✅ **Оставить** |
 | 37 | [assets/uploads/den-otkrytyh-dverej/den-otkrytyh-dverej-1.png](https://сит-сальск.рф/assets/uploads/den-otkrytyh-dverej/den-otkrytyh-dverej-1.png) | CLAIM_REQUIRES_EVIDENCE | День открытых дверей | ✅ **Оставить** (фото мероприятия) |
-| 38 | [assets/uploads/i.jpeg](https://сит-сальск.рф/assets/uploads/i.jpeg) | CLAIM_REQUIRES_EVIDENCE | Материал с официального сайта | 🔍 **Требует проверки** |
+| 38 | [assets/uploads/i.jpeg](https://сит-сальск.рф/assets/uploads/i.jpeg) | CLAIM_REQUIRES_EVIDENCE | Исходный материал требует замены; сгенерировать похожее изображение с сохранением исходных размеров | ⚠️ **ЗАМЕНИТЬ** (сгенерировать аналогичный вариант того же размера) |
 
 #### 4.2. Международное сотрудничество
 
@@ -213,22 +213,25 @@
 
 | Категория | Всего | ✅ Оставить | ️ Заменить | 🔍 Проверить |
 |-----------|-------|-------------|-------------|--------------|
-| **Всего изображений** | **133** | **~125** | **6** | **2** |
+| **Всего изображений** | **133** | **~129** | **4** | **0** |
 
 ### Приоритетные действия
 
 #### 🔴 Красный уровень (срочно):
-1. **#35** `assets/template/hero-bg.jpg` — **ЗАМЕНИТЬ** на стоковое или созданное СИТ
-2. **#20-24** 5 файлов в `vypusknikam/` с пометкой "Скачано из интернета" — **ЗАМЕНИТЬ**
+1. **#35** `assets/template/hero-bg.jpg` — **ЗАМЕНИТЬ** на сгенерированный более узкий фон с цветовыми акцентами нового сайта
+2. **#20** `assets/images/vypusknikam/bud-vostrebovannym-1.jpg` — **ЗАМЕНИТЬ** на сгенерированный похожий вариант того же размера
+3. **#34** `assets/template/about.jpg` — **ЗАМЕНИТЬ** на сгенерированный похожий вариант того же размера
+4. **#38** `assets/uploads/i.jpeg` — **ЗАМЕНИТЬ** на сгенерированный похожий вариант того же размера
 
 #### ⚠️ Жёлтый уровень (важно):
-3. **#34** `assets/template/about.jpg` — уточнить источник
-4. **#38** `assets/uploads/i.jpeg` — проверить содержание
+— Нет отдельных задач после переноса изображений №34 и №38 в красный уровень.
 
 #### ✅ Зелёный уровень (подтверждено):
 - Все фото с официального сайта sit-salsk.ru — **ОСТАВИТЬ** (с пометкой "Источник: sit-salsk.ru, с разрешения администрации СИТ")
 - Логотипы ведомств — **ОСТАВИТЬ** (официальная символика)
 - Фото мероприятий и помещений — **ОСТАВИТЬ** (разработка медиа-группы СИТ)
+- Изображение №6 — **ОСТАВИТЬ** (предоставлено организаторами мероприятия)
+- Изображения №21–24 — **ОСТАВИТЬ** (предоставлены соответствующими организациями и ведомствами и используются как их рекламные плакаты)
 
 ---
 
@@ -236,6 +239,7 @@
 - Фотографии с официального сайта техникума используются с разрешения администрации ГБПОУ РО "СИТ"
 - Логотипы государственных ведомств — официальная символика, размещённая в информационных целях
 - Фото мероприятий и помещений — созданы медиа-группой СИТ или предоставлены техникумом
+- Для заменяемых изображений №20, №34 и №38 сохранить размеры оригиналов; для №35 сделать новый вариант уже текущего и использовать цветовые акценты сайта https://сит-сальск.рф/
 
-**Дата заполнения:** 16 сентября 2026  
+**Дата заполнения:** 16 сентября 2026 
 **Проверил:** AI Assistant
