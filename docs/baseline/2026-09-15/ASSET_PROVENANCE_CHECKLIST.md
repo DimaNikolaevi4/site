@@ -24,36 +24,41 @@
 
 | Проверка | Изображение | Предварительный статус | Комментарий владельца проекта | Решение |
 | --- | --- | --- | --- | --- |
-| [ ] | [assets/images/director-photo.jpg](https://сит-сальск.рф/assets/images/director-photo.jpg) | CLAIM_REQUIRES_EVIDENCE — материал официального сайта по сообщению владельца |  |  |
+| [ ] | [assets/images/director-photo.jpg](https://сит-сальск.рф/assets/images/director-photo.jpg) | CLAIM_REQUIRES_EVIDENCE — материал официального сайта по сообщению владельца | Изображение директором с разрешения администрации сит | Оставить |
+
 | [ ] | [assets/images/logo.png](https://сит-сальск.рф/assets/images/logo.png) | OWNER-STATED / AGREED — источник и основание использования зафиксированы | Эмблема СИТ — разработка СИТ. Использование на ресурсе СИТ согласовано с администрацией техникума; этот сайт относится к согласованным ресурсам. | Оставить |
 | [ ] | [assets/images/news/ai-tyutor.jpg](https://сит-сальск.рф/assets/images/news/ai-tyutor.jpg) | CLAIM_REQUIRES_EVIDENCE — материал официального сайта по сообщению владельца |  |  |
-| [ ] | [assets/images/news/diktant-pobedy-2026.jpg](https://сит-сальск.рф/assets/images/news/diktant-pobedy-2026.jpg) | CLAIM_REQUIRES_EVIDENCE — материал официального сайта по сообщению владельца |  |  |
+| [ ] | [assets/images/news/diktant-pobedy-2026.jpg](https://сит-сальск.рф/assets/images/news/diktant-pobedy-2026.jpg) | CLAIM_REQUIRES_EVIDENCE — материал официального сайта по сообщению владельца |  | пусто |
 | [ ] | [assets/images/news/festival.jpg](https://сит-сальск.рф/assets/images/news/festival.jpg) | CLAIM_REQUIRES_EVIDENCE — материал официального сайта по сообщению владельца |  |  |
 | [ ] | [assets/images/news/ix-chteniya.jpg](https://сит-сальск.рф/assets/images/news/ix-chteniya.jpg) | CLAIM_REQUIRES_EVIDENCE — материал официального сайта по сообщению владельца |  |  |
-| [ ] | [assets/images/news/kulich-konkurs.jpg](https://сит-сальск.рф/assets/images/news/kulich-konkurs.jpg) | CLAIM_REQUIRES_EVIDENCE — материал официального сайта по сообщению владельца |  |  |
-| [ ] | [assets/images/news/lekciya.jpg](https://сит-сальск.рф/assets/images/news/lekciya.jpg) | CLAIM_REQUIRES_EVIDENCE — материал официального сайта по сообщению владельца |  |  |
-| [ ] | [assets/images/news/olimpiada-avtomatika.jpg](https://сит-сальск.рф/assets/images/news/olimpiada-avtomatika.jpg) | CLAIM_REQUIRES_EVIDENCE — материал официального сайта по сообщению владельца |  |  |
-| [ ] | [assets/images/news/pamyat.jpg](https://сит-сальск.рф/assets/images/news/pamyat.jpg) | CLAIM_REQUIRES_EVIDENCE — материал официального сайта по сообщению владельца |  |  |
-| [ ] | [assets/images/news/razgovory-o-vazhnom.jpg](https://сит-сальск.рф/assets/images/news/razgovory-o-vazhnom.jpg) | CLAIM_REQUIRES_EVIDENCE — материал официального сайта по сообщению владельца |  |  |
-| [ ] | [assets/images/og-image.png](https://сит-сальск.рф/assets/images/og-image.png) | UNKNOWN/LOCAL — авторство нужно зафиксировать |  |  |
-| [ ] | [assets/images/og-image.svg](https://сит-сальск.рф/assets/images/og-image.svg) | UNKNOWN/LOCAL — авторство нужно зафиксировать |  |  |
-| [ ] | [assets/images/privetstvie-abiturientov-2026.png](https://сит-сальск.рф/assets/images/privetstvie-abiturientov-2026.png) | UNKNOWN — проверить вручную |  |  |
-| [ ] | [assets/images/raspisanie-placeholder.gif](https://сит-сальск.рф/assets/images/raspisanie-placeholder.gif) | UNKNOWN — проверить вручную |  |  |
-| [ ] | [assets/images/vypusknikam/blagodarnost-sojuza-rabotodatelej-1.jpg](https://сит-сальск.рф/assets/images/vypusknikam/blagodarnost-sojuza-rabotodatelej-1.jpg) | CLAIM_REQUIRES_EVIDENCE — материал официального сайта по сообщению владельца |  |  |
-| [ ] | [assets/images/vypusknikam/bud-vostrebovannym-1.jpg](https://сит-сальск.рф/assets/images/vypusknikam/bud-vostrebovannym-1.jpg) | CLAIM_REQUIRES_EVIDENCE — материал официального сайта по сообщению владельца |  |  |
-| [ ] | [assets/images/vypusknikam/centr-karjery-1.jpg](https://сит-сальск.рф/assets/images/vypusknikam/centr-karjery-1.jpg) | CLAIM_REQUIRES_EVIDENCE — материал официального сайта по сообщению владельца |  |  |
-| [ ] | [assets/images/vypusknikam/den-otkrytyh-dverej-2015-1.png](https://сит-сальск.рф/assets/images/vypusknikam/den-otkrytyh-dverej-2015-1.png) | CLAIM_REQUIRES_EVIDENCE — материал официального сайта по сообщению владельца |  |  |
-| [ ] | [assets/images/vypusknikam/gosudarstvennaja-sluzhba-1.jpg](https://сит-сальск.рф/assets/images/vypusknikam/gosudarstvennaja-sluzhba-1.jpg) | CLAIM_REQUIRES_EVIDENCE — материал официального сайта по сообщению владельца |  |  |
-| [ ] | [assets/images/vypusknikam/minoborony-nabor-kursantov-1.png](https://сит-сальск.рф/assets/images/vypusknikam/minoborony-nabor-kursantov-1.png) | CLAIM_REQUIRES_EVIDENCE — материал официального сайта по сообщению владельца |  |  |
-| [ ] | [assets/images/vypusknikam/molodoj-specialist-1.jpg](https://сит-сальск.рф/assets/images/vypusknikam/molodoj-specialist-1.jpg) | CLAIM_REQUIRES_EVIDENCE — материал официального сайта по сообщению владельца |  |  |
-| [ ] | [assets/images/vypusknikam/prezentacija-atp-1.jpeg](https://сит-сальск.рф/assets/images/vypusknikam/prezentacija-atp-1.jpeg) | CLAIM_REQUIRES_EVIDENCE — материал официального сайта по сообщению владельца |  |  |
-| [ ] | [assets/images/vypusknikam/prezentacija-atp-2.jpeg](https://сит-сальск.рф/assets/images/vypusknikam/prezentacija-atp-2.jpeg) | CLAIM_REQUIRES_EVIDENCE — материал официального сайта по сообщению владельца |  |  |
-| [ ] | [assets/images/vypusknikam/prezentacija-atp-3.jpeg](https://сит-сальск.рф/assets/images/vypusknikam/prezentacija-atp-3.jpeg) | CLAIM_REQUIRES_EVIDENCE — материал официального сайта по сообщению владельца |  |  |
-| [ ] | [assets/images/vypusknikam/prezentacija-atp-4.jpeg](https://сит-сальск.рф/assets/images/vypusknikam/prezentacija-atp-4.jpeg) | CLAIM_REQUIRES_EVIDENCE — материал официального сайта по сообщению владельца |  |  |
-| [ ] | [assets/images/vypusknikam/prezentacija-atp-5.jpeg](https://сит-сальск.рф/assets/images/vypusknikam/prezentacija-atp-5.jpeg) | CLAIM_REQUIRES_EVIDENCE — материал официального сайта по сообщению владельца |  |  |
-| [ ] | [assets/images/vypusknikam/prezentacija-atp-6.jpeg](https://сит-сальск.рф/assets/images/vypusknikam/prezentacija-atp-6.jpeg) | CLAIM_REQUIRES_EVIDENCE — материал официального сайта по сообщению владельца |  |  |
-| [ ] | [assets/images/vypusknikam/vnimanie-ege-1.png](https://сит-сальск.рф/assets/images/vypusknikam/vnimanie-ege-1.png) | CLAIM_REQUIRES_EVIDENCE — материал официального сайта по сообщению владельца |  |  |
-| [ ] | [assets/images/vypusknikam/yufu-nabor-studentov-1.png](https://сит-сальск.рф/assets/images/vypusknikam/yufu-nabor-studentov-1.png) | CLAIM_REQUIRES_EVIDENCE — материал официального сайта по сообщению владельца |  |  |
+| [ ] | [assets/images/news/kulich-konkurs.jpg](https://сит-сальск.рф/assets/images/news/kulich-konkurs.jpg) | CLAIM_REQUIRES_EVIDENCE — материал официального сайта по сообщению владельца |  | оставить (ОТКРЫТКА НА ПАСХУ) |
+| [ ] | [assets/images/news/lekciya.jpg](https://сит-сальск.рф/assets/images/news/lekciya.jpg) | CLAIM_REQUIRES_EVIDENCE — материал официального сайта по сообщению владельца |  |Изображение преподователь с разрешения администрации сит | Оставить |  |
+| [ ] | [assets/images/news/olimpiada-avtomatika.jpg](https://сит-сальск.рф/assets/images/news/olimpiada-avtomatika.jpg) | CLAIM_REQUIRES_EVIDENCE — материал официального сайта по сообщению владельца |  | Изображение студента с разрешения администрации сит | Оставить | |
+| [ ] | [assets/images/news/pamyat.jpg](https://сит-сальск.рф/assets/images/news/pamyat.jpg) | CLAIM_REQUIRES_EVIDENCE — материал официального сайта по сообщению владельца |  | Изображение студента с разрешения администрации сит | Оставить | |
+| [ ] | [assets/images/news/pamyat.jpg](https://сит-сальск.рф/assets/images/news/pamyat.jpg) | CLAIM_REQUIRES_EVIDENCE — материал официального сайта по сообщению владельца |  |Изображение студента с разрешения администрации сит | Оставить |  |
+| [ ] | [assets/images/news/razgovory-o-vazhnom.jpg](https://сит-сальск.рф/assets/images/news/razgovory-o-vazhnom.jpg) | CLAIM_REQUIRES_EVIDENCE — материал официального сайта по сообщению владельца |  | Изображение преподователь с разрешения администрации сит | Оставить | |
+| [ ] | [assets/images/og-image.png](https://сит-сальск.рф/assets/images/og-image.png) | UNKNOWN/LOCAL — авторство нужно зафиксировать |  | оставить |
+| [ ] | [assets/images/og-image.svg](https://сит-сальск.рф/assets/images/og-image.svg) | UNKNOWN/LOCAL — авторство нужно зафиксировать |  | оставить |
+| [ ] | [assets/images/privetstvie-abiturientov-2026.png](https://сит-сальск.рф/assets/images/privetstvie-abiturientov-2026.png) | UNKNOWN — проверить вручную |  | оставить |
+| [ ] | [assets/images/raspisanie-placeholder.gif](https://сит-сальск.рф/assets/images/raspisanie-placeholder.gif) | UNKNOWN — проверить вручную |  | оставить |
+| [ ] | [assets/images/vypusknikam/blagodarnost-sojuza-rabotodatelej-1.jpg](https://сит-сальск.рф/assets/images/vypusknikam/blagodarnost-sojuza-rabotodatelej-1.jpg) | CLAIM_REQUIRES_EVIDENCE — материал официального сайта по сообщению владельца |  | оставить |
+| [ ] | [assets/images/vypusknikam/bud-vostrebovannym-1.jpg](https://сит-сальск.рф/assets/images/vypusknikam/bud-vostrebovannym-1.jpg) | CLAIM_REQUIRES_EVIDENCE — материал официального сайта по сообщению владельца |  | скачано из интернета  |
+| [ ] | [assets/images/vypusknikam/centr-karjery-1.jpg](https://сит-сальск.рф/assets/images/vypusknikam/centr-karjery-1.jpg) | CLAIM_REQUIRES_EVIDENCE — материал официального сайта по сообщению владельца |  | скачано из интернета |
+| [ ] | [assets/images/vypusknikam/den-otkrytyh-dverej-2015-1.png](https://сит-сальск.рф/assets/images/vypusknikam/den-otkrytyh-dverej-2015-1.png) | CLAIM_REQUIRES_EVIDENCE — материал официального сайта по сообщению владельца |  | скачано из интернета  |
+| [ ] | [assets/images/vypusknikam/gosudarstvennaja-sluzhba-1.jpg](https://сит-сальск.рф/assets/images/vypusknikam/gosudarstvennaja-sluzhba-1.jpg) | CLAIM_REQUIRES_EVIDENCE — материал официального сайта по сообщению владельца |  | скачано из интернета |
+| [ ] | [assets/images/vypusknikam/minoborony-nabor-kursantov-1.png](https://сит-сальск.рф/assets/images/vypusknikam/minoborony-nabor-kursantov-1.png) | CLAIM_REQUIRES_EVIDENCE — материал официального сайта по сообщению владельца |  | скачано из интернета |
+| [ ] | [assets/images/vypusknikam/molodoj-specialist-1.jpg](https://сит-сальск.рф/assets/images/vypusknikam/molodoj-specialist-1.jpg) | CLAIM_REQUIRES_EVIDENCE — материал официального сайта по сообщению владельца |  | оставить |
+| [ ] | [assets/images/vypusknikam/prezentacija-atp-1.jpeg](https://сит-сальск.рф/assets/images/vypusknikam/prezentacija-atp-1.jpeg) | CLAIM_REQUIRES_EVIDENCE — материал официального сайта по сообщению владельца |  | Изображение преподователь с разрешения администрации сит | Оставить | |
+| [ ] | [assets/images/vypusknikam/prezentacija-atp-2.jpeg](https://сит-сальск.рф/assets/images/vypusknikam/prezentacija-atp-2.jpeg) | CLAIM_REQUIRES_EVIDENCE — материал официального сайта по сообщению владельца |  | Изображение преподователь с разрешения администрации сит | Оставить | |
+| [ ] | [assets/images/vypusknikam/prezentacija-atp-3.jpeg](https://сит-сальск.рф/assets/images/vypusknikam/prezentacija-atp-3.jpeg) | CLAIM_REQUIRES_EVIDENCE — материал официального сайта по сообщению владельца |  | Изображение студента с разрешения администрации сит | Оставить |
+ |
+| [ ] | [assets/images/vypusknikam/prezentacija-atp-4.jpeg](https://сит-сальск.рф/assets/images/vypusknikam/prezentacija-atp-4.jpeg) | CLAIM_REQUIRES_EVIDENCE — материал официального сайта по сообщению владельца |  | Изображение преподователь с разрешения администрации сит | Оставить | |
+| [ ] | [assets/images/vypusknikam/prezentacija-atp-5.jpeg](https://сит-сальск.рф/assets/images/vypusknikam/prezentacija-atp-5.jpeg) | CLAIM_REQUIRES_EVIDENCE — материал официального сайта по сообщению владельца |  | Изображение студента с разрешения администрации сит | Оставить |
+ |
+| [ ] | [assets/images/vypusknikam/prezentacija-atp-6.jpeg](https://сит-сальск.рф/assets/images/vypusknikam/prezentacija-atp-6.jpeg) | CLAIM_REQUIRES_EVIDENCE — материал официального сайта по сообщению владельца |  | Изображение студента с разрешения администрации сит | Оставить |
+ |
+| [ ] | [assets/images/vypusknikam/vnimanie-ege-1.png](https://сит-сальск.рф/assets/images/vypusknikam/vnimanie-ege-1.png) | CLAIM_REQUIRES_EVIDENCE — материал официального сайта по сообщению владельца |  | оставить (ИЗОБРАЖЕНИЕ ЭМБЛЕМЕ ГИА) |
+| [ ] | [assets/images/vypusknikam/yufu-nabor-studentov-1.png](https://сит-сальск.рф/assets/images/vypusknikam/yufu-nabor-studentov-1.png) | CLAIM_REQUIRES_EVIDENCE — материал официального сайта по сообщению владельца |  | ОСТАВИТЬ (ЭМБЛЕМА КОЛЕДЖА) |
 
 ### assets/template
 
