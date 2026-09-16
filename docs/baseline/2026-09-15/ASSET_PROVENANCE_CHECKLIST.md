@@ -16,16 +16,16 @@
 
 | Проверка | Изображение | Предварительный статус | Комментарий владельца проекта | Решение |
 | --- | --- | --- | --- | --- |
-| [ ] | [assets/favicons/favicon-16x16.png](https://сит-сальск.рф/assets/favicons/favicon-16x16.png) | UNKNOWN/LOCAL — авторство нужно зафиксировать |  |  |
-| [ ] | [assets/favicons/favicon-32x32.png](https://сит-сальск.рф/assets/favicons/favicon-32x32.png) | UNKNOWN/LOCAL — авторство нужно зафиксировать |  |  |
-| [ ] | [assets/favicons/favicon.png](https://сит-сальск.рф/assets/favicons/favicon.png) | UNKNOWN/LOCAL — авторство нужно зафиксировать |  |  |
+| [x] | [assets/favicons/favicon-16x16.png](https://сит-сальск.рф/assets/favicons/favicon-16x16.png) | OWNER-STATED / AGREED — источник и основание использования зафиксированы | Эмблема СИТ — разработка СИТ. Использование на ресурсе СИТ согласовано с администрацией техникума; этот сайт относится к согласованным ресурсам. | Оставить |
+| [x] | [assets/favicons/favicon-32x32.png](https://сит-сальск.рф/assets/favicons/favicon-32x32.png) | OWNER-STATED / AGREED — источник и основание использования зафиксированы | Эмблема СИТ — разработка СИТ. Использование на ресурсе СИТ согласовано с администрацией техникума; этот сайт относится к согласованным ресурсам. | Оставить |
+| [x] | [assets/favicons/favicon.png](https://сит-сальск.рф/assets/favicons/favicon.png) | OWNER-STATED / AGREED — источник и основание использования зафиксированы | Эмблема СИТ — разработка СИТ. Использование на ресурсе СИТ согласовано с администрацией техникума; этот сайт относится к согласованным ресурсам. | Оставить |
 
 ### assets/images
 
 | Проверка | Изображение | Предварительный статус | Комментарий владельца проекта | Решение |
 | --- | --- | --- | --- | --- |
 | [ ] | [assets/images/director-photo.jpg](https://сит-сальск.рф/assets/images/director-photo.jpg) | CLAIM_REQUIRES_EVIDENCE — материал официального сайта по сообщению владельца |  |  |
-| [ ] | [assets/images/logo.png](https://сит-сальск.рф/assets/images/logo.png) | CLAIM_REQUIRES_EVIDENCE — материал официального сайта по сообщению владельца |  |  |
+| [ ] | [assets/images/logo.png](https://сит-сальск.рф/assets/images/logo.png) | OWNER-STATED / AGREED — источник и основание использования зафиксированы | Эмблема СИТ — разработка СИТ. Использование на ресурсе СИТ согласовано с администрацией техникума; этот сайт относится к согласованным ресурсам. | Оставить |
 | [ ] | [assets/images/news/ai-tyutor.jpg](https://сит-сальск.рф/assets/images/news/ai-tyutor.jpg) | CLAIM_REQUIRES_EVIDENCE — материал официального сайта по сообщению владельца |  |  |
 | [ ] | [assets/images/news/diktant-pobedy-2026.jpg](https://сит-сальск.рф/assets/images/news/diktant-pobedy-2026.jpg) | CLAIM_REQUIRES_EVIDENCE — материал официального сайта по сообщению владельца |  |  |
 | [ ] | [assets/images/news/festival.jpg](https://сит-сальск.рф/assets/images/news/festival.jpg) | CLAIM_REQUIRES_EVIDENCE — материал официального сайта по сообщению владельца |  |  |
