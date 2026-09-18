@@ -72,7 +72,7 @@
 | № | Изображение | Предварительный статус | Комментарий владельца проекта | Решение |
 |---|-------------|------------------------|-------------------------------|---------|
 | 19 | [assets/images/vypusknikam/blagodarnost-sojuza-rabotodatelej-1.jpg](https://сит-сальск.рф/assets/images/vypusknikam/blagodarnost-sojuza-rabotodatelej-1.jpg) | CLAIM_REQUIRES_EVIDENCE | Благодарность союза работодателей | ✅ **Оставить** (документ) |
-| 20 | [assets/images/vypusknikam/bud-vostrebovannym-1.jpg](https://сит-сальск.рф/assets/images/vypusknikam/bud-vostrebovannym-1.jpg) | CLAIM_REQUIRES_EVIDENCE | Материал ранее скачан из интернета; сгенерировать похожий вариант с сохранением исходных размеров | ⚠️ **ЗАМЕНИТЬ** (сгенерировать аналогичный вариант того же размера) |
+| 20 | [assets/images/vypusknikam/bud-vostrebovannym-1.jpg](https://сит-сальск.рф/assets/images/vypusknikam/bud-vostrebovannym-1.jpg) | AI_GENERATED / DOCUMENTED | Изображение сгенерировано ИИ Qwen для проекта; создано заново вместо ранее скачанного материала | ✅ **Оставить (документ)** |
 | 21 | [assets/images/vypusknikam/centr-karjery-1.jpg](https://сит-сальск.рф/assets/images/vypusknikam/centr-karjery-1.jpg) | CLAIM_REQUIRES_EVIDENCE | Предоставлено соответствующей организацией; используется как рекламный плакат этой организации | ✅ **Оставить** (рекламный плакат организации) |
 | 22 | [assets/images/vypusknikam/den-otkrytyh-dverej-2015-1.png](https://сит-сальск.рф/assets/images/vypusknikam/den-otkrytyh-dverej-2015-1.png) | CLAIM_REQUIRES_EVIDENCE | Предоставлено соответствующей организацией; используется как рекламный плакат этой организации | ✅ **Оставить** (рекламный плакат организации) |
 | 23 | [assets/images/vypusknikam/gosudarstvennaja-sluzhba-1.jpg](https://сит-сальск.рф/assets/images/vypusknikam/gosudarstvennaja-sluzhba-1.jpg) | CLAIM_REQUIRES_EVIDENCE | Предоставлено соответствующим ведомством; используется как рекламный плакат этого ведомства | ✅ **Оставить** (рекламный плакат ведомства) |
@@ -219,7 +219,7 @@
 
 #### 🔴 Красный уровень (срочно):
 1. **#35** `assets/template/hero-bg.jpg` — **ЗАМЕНИТЬ** на сгенерированный более узкий фон с цветовыми акцентами нового сайта
-2. **#20** `assets/images/vypusknikam/bud-vostrebovannym-1.jpg` — **ЗАМЕНИТЬ** на сгенерированный похожий вариант того же размера
+2. **#20** `assets/images/vypusknikam/bud-vostrebovannym-1.jpg` — **ОСТАВИТЬ** (сгенерировано ИИ Qwen, документировано в чек-листе)
 3. **#34** `assets/template/about.jpg` — **ЗАМЕНИТЬ** на сгенерированный похожий вариант того же размера
 4. **#38** `assets/uploads/i.jpeg` — **ЗАМЕНИТЬ** на сгенерированный похожий вариант того же размера
 
