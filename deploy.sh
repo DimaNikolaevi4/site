@@ -78,7 +78,7 @@ run_deploy() {
     # Клонируем репозиторий
     log_info "📦 Клонируем репозиторий..."
     GIT_SSH_COMMAND="ssh -i ~/.ssh/github -o IdentitiesOnly=yes" \
-        git clone git@github.com:DimaNikolaevi4/site.git temp-build
+        git clone --branch site-v2 --single-branch git@github.com:DimaNikolaevi4/site.git temp-build
 
     cd temp-build
 
