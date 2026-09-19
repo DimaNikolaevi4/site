@@ -274,13 +274,12 @@ module.exports = function(eleventyConfig) {
   // === Копирование статики ===
   // Канонический CSS — только src/styles/main.css (см. STRUCTURE_AND_PRINCIPLES.md § 2.4).
   // Из src/assets копируем точечно подпапки, реально используемые шаблонами:
-  // favicons, images, js, uploads, template, vendor. Папка scss/ не публикуется (исходники).
+  // favicons, images, js, uploads, vendor. Папка scss/ не публикуется (исходники).
   eleventyConfig.addPassthroughCopy("src/assets/favicons");
   eleventyConfig.addPassthroughCopy("src/assets/images");
   eleventyConfig.addPassthroughCopy("src/assets/js");
   eleventyConfig.addPassthroughCopy({ "src/assets/uploads": "assets/uploads" });
   eleventyConfig.addPassthroughCopy({ "src/docs": "docs" });
-  eleventyConfig.addPassthroughCopy({ "src/assets/site": "assets/site" });
   eleventyConfig.addPassthroughCopy("src/images");
   // Vendor-библиотеки копируются в /assets/vendor/ для независимости от сторонних шаблонов.
   eleventyConfig.addPassthroughCopy({ "node_modules/bootstrap/dist/css/bootstrap.min.css": "assets/vendor/bootstrap/css/bootstrap.min.css" });

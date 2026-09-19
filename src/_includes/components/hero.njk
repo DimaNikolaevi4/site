@@ -10,7 +10,7 @@
     showHero      — false, чтобы выключить блок (по умолчанию — показываем)
     hero          — объект для тонкой настройки:
                       hero.image    — URL фонового изображения
-                                       (по умолчанию /assets/site/hero-bg.jpg)
+                                       (по умолчанию /assets/images/hero/hero-students-01.jpg; на главной выбирается случайное изображение серии)
                       hero.title    — переопределяет рубрику под чертой
                       hero.subtitle — подзаголовок (опционально)
                       hero.alt      — alt-текст фона (опционально)
@@ -22,18 +22,55 @@
 
 {% if showHero != false %}
 
-{% set _heroImage = (hero.image if hero and hero.image else null) or "/assets/site/hero-bg.jpg" %}
+{% set _heroImages = [
+  "/assets/images/hero/hero-students-01.jpg",
+  "/assets/images/hero/hero-students-02.jpg",
+  "/assets/images/hero/hero-students-03.jpg",
+  "/assets/images/hero/hero-students-04.jpg",
+  "/assets/images/hero/hero-students-05.jpg",
+  "/assets/images/hero/hero-students-06.jpg",
+  "/assets/images/hero/hero-students-07.jpg",
+  "/assets/images/hero/hero-students-08.jpg"
+] %}
+{% set _hasCustomHeroImage = hero and hero.image %}
+{% set _heroImage = (hero.image if hero and hero.image else null) or _heroImages[0] %}
 {% set _heroAlt = (hero.alt if hero and hero.alt else null) or title or "Сальский индустриальный техникум" %}
 {% set _heroRubric = rubricTitle or (hero.title if hero else null) or title %}
 
 <section class="section-hero page-hero page-hero--banner component-hero" aria-label="Баннер раздела">
 
   <div
+    id="page-hero-bg"
     class="page-hero__bg"
     style="background-image: url('{{ _heroImage }}');"
     role="img"
     aria-label="{{ _heroAlt }}"
   ></div>
+
+  {% if hideRubric and not _hasCustomHeroImage %}
+  <script>
+    (function () {
+      var bg = document.getElementById('page-hero-bg');
+      var images = {{ _heroImages | dump | safe }};
+      if (!bg || !images.length) return;
+
+      var storageKey = 'sit-hero-image';
+      var selected = null;
+      try {
+        selected = sessionStorage.getItem(storageKey);
+      } catch (e) {}
+
+      if (images.indexOf(selected) === -1) {
+        selected = images[Math.floor(Math.random() * images.length)];
+        try {
+          sessionStorage.setItem(storageKey, selected);
+        } catch (e) {}
+      }
+
+      bg.style.backgroundImage = "url('" + selected + "')";
+    })();
+  </script>
+  {% endif %}
 
   <div class="page-hero__overlay" aria-hidden="true"></div>
 
