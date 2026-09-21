@@ -29,9 +29,9 @@
 
 | № | Изображение | Предварительный статус | Комментарий владельца проекта | Решение |
 |---|-------------|------------------------|-------------------------------|---------|
-| 1 | [assets/favicons/favicon-16x16.png](https://сит-сальск.рф/assets/favicons/favicon-16x16.png) | OWNER-STATED / AGREED | Эмблема СИТ — разработка СИТ. Использование на ресурсе СИТ согласовано с администрацией техникума | ✅ **Оставить** |
-| 2 | [assets/favicons/favicon-32x32.png](https://сит-сальск.рф/assets/favicons/favicon-32x32.png) | OWNER-STATED / AGREED | Эмблема СИТ — разработка СИТ. Использование на ресурсе СИТ согласовано с администрацией техникума | ✅ **Оставить** |
-| 3 | [assets/favicons/favicon.png](https://сит-сальск.рф/assets/favicons/favicon.png) | OWNER-STATED / AGREED | Эмблема СИТ — разработка СИТ. Использование на ресурсе СИТ согласовано с администрацией техникума | ✅ **Оставить** |
+| 1 | [assets/favicons/favicon-16x16.png](https://сит-сальск.рф/assets/favicons/favicon-16x16.png) | OWNER-STATED / AGREED | Эмблема СИТ — выполнена Медиагруппой СИТ. Использование на ресурсе СИТ согласовано с администрацией техникума | ✅ **Оставить** |
+| 2 | [assets/favicons/favicon-32x32.png](https://сит-сальск.рф/assets/favicons/favicon-32x32.png) | OWNER-STATED / AGREED | Эмблема СИТ — выполнена Медиагруппой СИТ. Использование на ресурсе СИТ согласовано с администрацией техникума | ✅ **Оставить** |
+| 3 | [assets/favicons/favicon.png](https://сит-сальск.рф/assets/favicons/favicon.png) | OWNER-STATED / AGREED | Эмблема СИТ — выполнена Медиагруппой СИТ. Использование на ресурсе СИТ согласовано с администрацией техникума | ✅ **Оставить** |
 
 ---
 
@@ -41,8 +41,8 @@
 
 | № | Изображение | Предварительный статус | Комментарий владельца проекта | Решение |
 |---|-------------|------------------------|-------------------------------|---------|
-| 4 | [assets/images/director-photo.jpg](https://сит-сальск.рф/assets/images/director-photo.jpg) | CLAIM_REQUIRES_EVIDENCE | Изображение директора **Сенченко Марины Евгеньевны** с официального сайта sit-salsk.ru. С разрешения администрации СИТ | ✅ **Оставить** (источник: https://sit-salsk.ru/) |
-| 5 | [assets/images/logo.png](https://сит-сальск.рф/assets/images/logo.png) | OWNER-STATED / AGREED | Эмблема СИТ — разработка СИТ. Использование согласовано с администрацией техникума | ✅ **Оставить** |
+| 4 | [assets/images/director-photo.jpg](https://сит-сальск.рф/assets/images/director-photo.jpg) | CLAIM_REQUIRES_EVIDENCE | Изображение директора **Сенченко Марины Евгеньевны** с официального сайта sit-salsk.ru. Выполнено Медиагруппой СИТ | ✅ **Оставить** (источник: https://sit-salsk.ru/) |
+| 5 | [assets/images/logo.png](https://сит-сальск.рф/assets/images/logo.png) | OWNER-STATED / AGREED | Эмблема СИТ — выполнена Медиагруппой СИТ. Использование согласовано с администрацией техникума | ✅ **Оставить** |
 
 #### 2.2. Новостные изображения
 
@@ -53,18 +53,18 @@
 | 8 | [assets/images/news/festival.jpg](https://сит-сальск.рф/assets/images/news/festival.jpg) | CLAIM_REQUIRES_EVIDENCE | Фото с фестиваля. Источник: sit-salsk.ru | ✅ **Оставить** (фото мероприятия) |
 | 9 | [assets/images/news/ix-chteniya.jpg](https://сит-сальск.рф/assets/images/news/ix-chteniya.jpg) | CLAIM_REQUIRES_EVIDENCE | Фото с IX чтений. Источник: sit-salsk.ru | ✅ **Оставить** (фото мероприятия) |
 | 10 | [assets/images/news/kulich-konkurs.jpg](https://сит-сальск.рф/assets/images/news/kulich-konkurs.jpg) | CLAIM_REQUIRES_EVIDENCE | Открытка на Пасху | ✅ **Оставить** |
-| 11 | [assets/images/news/lekciya.jpg](https://сит-сальск.рф/assets/images/news/lekciya.jpg) | CLAIM_REQUIRES_EVIDENCE | Изображение преподавателя с разрешения администрации СИТ | ✅ **Оставить** (фото с мероприятия) |
-| 12 | [assets/images/news/olimpiada-avtomatika.jpg](https://сит-сальск.рф/assets/images/news/olimpiada-avtomatika.jpg) | CLAIM_REQUIRES_EVIDENCE | Изображение студента с разрешения администрации СИТ | ✅ **Оставить** (фото олимпиады) |
-| 13 | [assets/images/news/pamyat.jpg](https://сит-сальск.рф/assets/images/news/pamyat.jpg) | CLAIM_REQUIRES_EVIDENCE | Изображение студента с разрешения администрации СИТ | ✅ **Оставить** (памятное мероприятие) |
-| 14 | [assets/images/news/razgovory-o-vazhnom.jpg](https://сит-сальск.рф/assets/images/news/razgovory-o-vazhnom.jpg) | CLAIM_REQUIRES_EVIDENCE | Изображение преподавателя с разрешения администрации СИТ | ✅ **Оставить** (фото занятия) |
+| 11 | [assets/images/news/lekciya.jpg](https://сит-сальск.рф/assets/images/news/lekciya.jpg) | CLAIM_REQUIRES_EVIDENCE | Материал выполнен Медиагруппой СИТ | ✅ **Оставить** (фото с мероприятия) |
+| 12 | [assets/images/news/olimpiada-avtomatika.jpg](https://сит-сальск.рф/assets/images/news/olimpiada-avtomatika.jpg) | CLAIM_REQUIRES_EVIDENCE | Материал выполнен Медиагруппой СИТ | ✅ **Оставить** (фото олимпиады) |
+| 13 | [assets/images/news/pamyat.jpg](https://сит-сальск.рф/assets/images/news/pamyat.jpg) | CLAIM_REQUIRES_EVIDENCE | Материал выполнен Медиагруппой СИТ | ✅ **Оставить** (памятное мероприятие) |
+| 14 | [assets/images/news/razgovory-o-vazhnom.jpg](https://сит-сальск.рф/assets/images/news/razgovory-o-vazhnom.jpg) | CLAIM_REQUIRES_EVIDENCE | Материал выполнен Медиагруппой СИТ | ✅ **Оставить** (фото занятия) |
 
 #### 2.3. OG-изображения и технические
 
 | № | Изображение | Предварительный статус | Комментарий владельца проекта | Решение |
 |---|-------------|------------------------|-------------------------------|---------|
-| 15 | [assets/images/og-image.png](https://сит-сальск.рф/assets/images/og-image.png) | UNKNOWN / LOCAL | Open Graph изображение для соцсетей | ✅ **Оставить** (дизайн СИТ) |
-| 16 | [assets/images/og-image.svg](https://сит-сальск.рф/assets/images/og-image.svg) | UNKNOWN / LOCAL | SVG версия OG-изображения | ✅ **Оставить** (дизайн СИТ) |
-| 17 | [assets/images/privetstvie-abiturientov-2026.png](https://сит-сальск.рф/assets/images/privetstvie-abiturientov-2026.png) | UNKNOWN / REQUIRES MANUAL CHECK | Баннер для абитуриентов 2026 | ✅ **Оставить** (дизайн СИТ) |
+| 15 | [assets/images/og-image.png](https://сит-сальск.рф/assets/images/og-image.png) | UNKNOWN / LOCAL | Open Graph изображение для соцсетей | ✅ **Оставить** (дизайн, выполненный Медиагруппой СИТ) |
+| 16 | [assets/images/og-image.svg](https://сит-сальск.рф/assets/images/og-image.svg) | UNKNOWN / LOCAL | SVG версия OG-изображения | ✅ **Оставить** (дизайн, выполненный Медиагруппой СИТ) |
+| 17 | [assets/images/privetstvie-abiturientov-2026.png](https://сит-сальск.рф/assets/images/privetstvie-abiturientov-2026.png) | UNKNOWN / REQUIRES MANUAL CHECK | Баннер для абитуриентов 2026 | ✅ **Оставить** (дизайн, выполненный Медиагруппой СИТ) |
 | 18 | [assets/images/raspisanie-placeholder.gif](https://сит-сальск.рф/assets/images/raspisanie-placeholder.gif) | UNKNOWN / REQUIRES MANUAL CHECK | Заглушка расписания | ✅ **Оставить** (технический файл) |
 
 #### 2.4. Выпускникам
@@ -78,12 +78,12 @@
 | 23 | [assets/images/vypusknikam/gosudarstvennaja-sluzhba-1.jpg](https://сит-сальск.рф/assets/images/vypusknikam/gosudarstvennaja-sluzhba-1.jpg) | CLAIM_REQUIRES_EVIDENCE | Предоставлено соответствующим ведомством; используется как рекламный плакат этого ведомства | ✅ **Оставить** (рекламный плакат ведомства) |
 | 24 | [assets/images/vypusknikam/minoborony-nabor-kursantov-1.png](https://сит-сальск.рф/assets/images/vypusknikam/minoborony-nabor-kursantov-1.png) | CLAIM_REQUIRES_EVIDENCE | Предоставлено соответствующим ведомством; используется как рекламный плакат этого ведомства | ✅ **Оставить** (рекламный плакат ведомства) |
 | 25 | [assets/images/vypusknikam/molodoj-specialist-1.jpg](https://сит-сальск.рф/assets/images/vypusknikam/molodoj-specialist-1.jpg) | CLAIM_REQUIRES_EVIDENCE | Фото с мероприятия | ✅ **Оставить** (фото СИТ) |
-| 26 | [assets/images/vypusknikam/prezentacija-atp-1.jpeg](https://сит-сальск.рф/assets/images/vypusknikam/prezentacija-atp-1.jpeg) | CLAIM_REQUIRES_EVIDENCE | Изображение преподавателя с разрешения администрации СИТ | ✅ **Оставить** (фото с презентации) |
-| 27 | [assets/images/vypusknikam/prezentacija-atp-2.jpeg](https://сит-сальск.рф/assets/images/vypusknikam/prezentacija-atp-2.jpeg) | CLAIM_REQUIRES_EVIDENCE | Изображение преподавателя с разрешения администрации СИТ | ✅ **Оставить** (фото с презентации) |
-| 28 | [assets/images/vypusknikam/prezentacija-atp-3.jpeg](https://сит-сальск.рф/assets/images/vypusknikam/prezentacija-atp-3.jpeg) | CLAIM_REQUIRES_EVIDENCE | Изображение студента с разрешения администрации СИТ | ✅ **Оставить** (фото с презентации) |
-| 29 | [assets/images/vypusknikam/prezentacija-atp-4.jpeg](https://сит-сальск.рф/assets/images/vypusknikam/prezentacija-atp-4.jpeg) | CLAIM_REQUIRES_EVIDENCE | Изображение преподавателя с разрешения администрации СИТ | ✅ **Оставить** (фото с презентации) |
-| 30 | [assets/images/vypusknikam/prezentacija-atp-5.jpeg](https://сит-сальск.рф/assets/images/vypusknikam/prezentacija-atp-5.jpeg) | CLAIM_REQUIRES_EVIDENCE | Изображение студента с разрешения администрации СИТ | ✅ **Оставить** (фото с презентации) |
-| 31 | [assets/images/vypusknikam/prezentacija-atp-6.jpeg](https://сит-сальск.рф/assets/images/vypusknikam/prezentacija-atp-6.jpeg) | CLAIM_REQUIRES_EVIDENCE | Изображение студента с разрешения администрации СИТ | ✅ **Оставить** (фото с презентации) |
+| 26 | [assets/images/vypusknikam/prezentacija-atp-1.jpeg](https://сит-сальск.рф/assets/images/vypusknikam/prezentacija-atp-1.jpeg) | CLAIM_REQUIRES_EVIDENCE | Материал выполнен Медиагруппой СИТ | ✅ **Оставить** (фото с презентации) |
+| 27 | [assets/images/vypusknikam/prezentacija-atp-2.jpeg](https://сит-сальск.рф/assets/images/vypusknikam/prezentacija-atp-2.jpeg) | CLAIM_REQUIRES_EVIDENCE | Материал выполнен Медиагруппой СИТ | ✅ **Оставить** (фото с презентации) |
+| 28 | [assets/images/vypusknikam/prezentacija-atp-3.jpeg](https://сит-сальск.рф/assets/images/vypusknikam/prezentacija-atp-3.jpeg) | CLAIM_REQUIRES_EVIDENCE | Материал выполнен Медиагруппой СИТ | ✅ **Оставить** (фото с презентации) |
+| 29 | [assets/images/vypusknikam/prezentacija-atp-4.jpeg](https://сит-сальск.рф/assets/images/vypusknikam/prezentacija-atp-4.jpeg) | CLAIM_REQUIRES_EVIDENCE | Материал выполнен Медиагруппой СИТ | ✅ **Оставить** (фото с презентации) |
+| 30 | [assets/images/vypusknikam/prezentacija-atp-5.jpeg](https://сит-сальск.рф/assets/images/vypusknikam/prezentacija-atp-5.jpeg) | CLAIM_REQUIRES_EVIDENCE | Материал выполнен Медиагруппой СИТ | ✅ **Оставить** (фото с презентации) |
+| 31 | [assets/images/vypusknikam/prezentacija-atp-6.jpeg](https://сит-сальск.рф/assets/images/vypusknikam/prezentacija-atp-6.jpeg) | CLAIM_REQUIRES_EVIDENCE | Материал выполнен Медиагруппой СИТ | ✅ **Оставить** (фото с презентации) |
 | 32 | [assets/images/vypusknikam/vnimanie-ege-1.png](https://сит-сальск.рф/assets/images/vypusknikam/vnimanie-ege-1.png) | CLAIM_REQUIRES_EVIDENCE | Эмблема ГИА/ЕГЭ | ✅ **Оставить** (официальная символика) |
 | 33 | [assets/images/vypusknikam/yufu-nabor-studentov-1.png](https://сит-сальск.рф/assets/images/vypusknikam/yufu-nabor-studentov-1.png) | CLAIM_REQUIRES_EVIDENCE | Эмблема колледжа ЮФУ | ✅ **Оставить** (логотип партнёра) |
 
@@ -172,7 +172,7 @@
 |---|-------------|------------------------|-------------------------------|---------|
 | 124 | [images/banners/bpla.jpg](https://сит-сальск.рф/images/banners/bpla.jpg) | CLAIM_REQUIRES_EVIDENCE | Баннер ведомства БПЛА | ✅ **Оставить** (баннер партнёра) |
 | 125 | [images/banners/nok-2025.jpg](https://сит-сальск.рф/images/banners/nok-2025.jpg) | CLAIM_REQUIRES_EVIDENCE | Баннер ведомства НОК 2025 | ✅ **Оставить** (баннер партнёра) |
-| 126 | [images/banners/День-открытых-дверей-2-scaled.jpg](https://сит-сальск.рф/images/banners/День-открытых-дверей-2-scaled.jpg) | CLAIM_REQUIRES_EVIDENCE | Баннер Дня открытых дверей | ✅ **Оставить** (дизайн СИТ) |
+| 126 | [images/banners/День-открытых-дверей-2-scaled.jpg](https://сит-сальск.рф/images/banners/День-открытых-дверей-2-scaled.jpg) | CLAIM_REQUIRES_EVIDENCE | Баннер Дня открытых дверей | ✅ **Оставить** (дизайн, выполненный Медиагруппой СИТ) |
 
 ---
 
@@ -180,8 +180,8 @@
 
 | № | Изображение | Предварительный статус | Комментарий владельца проекта | Решение |
 |---|-------------|------------------------|-------------------------------|---------|
-| 127 | [images/fon/bg-02.svg](https://сит-сальск.рф/images/fon/bg-02.svg) | UNKNOWN / LOCAL | Фоновое SVG изображение | ✅ **Оставить** (дизайн СИТ) |
-| 128 | [images/fon/bg-03.svg](https://сит-сальск.рф/images/fon/bg-03.svg) | UNKNOWN / LOCAL | Фоновое SVG изображение | ✅ **Оставить** (дизайн СИТ) |
+| 127 | [images/fon/bg-02.svg](https://сит-сальск.рф/images/fon/bg-02.svg) | UNKNOWN / LOCAL | Фоновое SVG изображение | ✅ **Оставить** (дизайн, выполненный Медиагруппой СИТ) |
+| 128 | [images/fon/bg-03.svg](https://сит-сальск.рф/images/fon/bg-03.svg) | UNKNOWN / LOCAL | Фоновое SVG изображение | ✅ **Оставить** (дизайн, выполненный Медиагруппой СИТ) |
 
 ---
 
@@ -241,7 +241,7 @@
 #### ✅ Зелёный уровень (подтверждено):
 - Все фото с официального сайта sit-salsk.ru — **ОСТАВИТЬ** (с пометкой "Источник: sit-salsk.ru, с разрешения администрации СИТ")
 - Логотипы ведомств — **ОСТАВИТЬ** (официальная символика)
-- Фото мероприятий и помещений — **ОСТАВИТЬ** (разработка медиа-группы СИТ)
+- Фото мероприятий и помещений — **ОСТАВИТЬ** (выполнено Медиагруппой СИТ)
 - Изображение №6 — **ОСТАВИТЬ** (предоставлено организаторами мероприятия)
 - Изображения №21–24 — **ОСТАВИТЬ** (предоставлены соответствующими организациями и ведомствами и используются как их рекламные плакаты)
 
@@ -250,7 +250,7 @@
 **Основание использования:**
 - Фотографии с официального сайта техникума используются с разрешения администрации ГБПОУ РО "СИТ"
 - Логотипы государственных ведомств — официальная символика, размещённая в информационных целях
-- Фото мероприятий и помещений — созданы медиа-группой СИТ или предоставлены техникумом
+- Фото мероприятий и помещений — выполнены Медиагруппой СИТ или предоставлены техникумом
 - Изображение №38 удалено из проекта, поскольку его источник и права использования не были подтверждены. изображения №35.1–35.8 подготовлены в цветовых акцентах сайта https://сит-сальск.рф/
 - Изображения №35.1–35.8 сгенерированы ИИ Qwen3.7-Plus и технически обработаны в GIMP (изменение размера и оптимизация качества); серия зафиксирована как документированный новый материал.
 - Изображение №34 удалено из проекта, поскольку его источник и права использования не были подтверждены.
