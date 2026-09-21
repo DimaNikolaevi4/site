@@ -4,7 +4,6 @@ layout: layouts/page-full.njk
 description: "Региональный этап чемпионата «Профессионалы» по компетенции «Бухгалтерский учёт» на базе ГБПОУ РО «СИТ» (16–21 февраля 2026)"
 permalink: /professionaly-2026/
 rubric: "6"
-image: /assets/uploads/i.jpeg
 date: 2025-09-19
 updated: 2026-02-25
 source_url: https://sit-salsk.ru/?p=35352
