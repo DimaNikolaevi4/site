@@ -20,9 +20,9 @@ additionalBlocks: |
       <strong>Файл временно недоступен</strong><br>
       PDF-версия Устава в настоящее время не размещена на сайте. Для получения документа обратитесь в канцелярию техникума:
       <ul class="mb-0 mt-2">
-        <li>Лично: г. Сальск, ул. Ленина, 98</li>
-        <li>По телефону: <a href="tel:+78637242215">8 (86372) 4-22-15</a></li>
-        <li>По e-mail: <a href="mailto:info@sit-salsk.ru">info@sit-salsk.ru</a></li>
+        <li>Лично: г. Сальск, ул. Ленина, д. 27 (Корпус №1)</li>
+        <li>По телефону: <a href="tel:+78637250571">8 (86372) 5-05-71</a></li>
+        <li>По e-mail: <a href="mailto:sitsalsk@mail.ru">sitsalsk@mail.ru</a></li>
       </ul>
     </div>
   </div>
