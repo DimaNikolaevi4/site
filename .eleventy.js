@@ -278,6 +278,8 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addPassthroughCopy("src/assets/favicons");
   eleventyConfig.addPassthroughCopy("src/assets/images");
   eleventyConfig.addPassthroughCopy("src/assets/js");
+  // Неподтверждённый материал №38 удалён и не должен попадать в обработку или публикацию.
+  eleventyConfig.ignores.add("src/assets/uploads/i.jpeg");
   eleventyConfig.addPassthroughCopy({ "src/assets/uploads": "assets/uploads" });
   eleventyConfig.addPassthroughCopy({ "src/docs": "docs" });
   eleventyConfig.addPassthroughCopy("src/images");
