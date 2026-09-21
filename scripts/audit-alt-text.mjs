@@ -19,11 +19,11 @@ async function walk(dir) {
 }
 
 function lineAt(text, offset) {
-  return text.slice(0, offset).split(/\\r?\\n/).length;
+  return text.slice(0, offset).split(/\r?\n/).length;
 }
 
 function attr(tag, name) {
-  const re = new RegExp('\\\\b' + name + '\\\\s*=\\\\s*(["\\\\\'])([\\\\s\\\\S]*?)\\\\1', 'i');
+  const re = new RegExp('\\b' + name + '\\s*=\\s*(["\\'])([\\s\\S]*?)\\1', 'i');
   const match = tag.match(re);
   return match ? match[2].trim() : null;
 }
@@ -39,7 +39,7 @@ const findings = [];
 let imageCount = 0;
 for (const file of files) {
   const html = await fs.readFile(file, 'utf8');
-  const re = /<img\\b[\\s\\S]*?>/gi;
+  const re = /<img\b[\s\S]*?>/gi;
   let match;
   while ((match = re.exec(html))) {
     if (isInsideComment(html, match.index)) continue;
@@ -50,7 +50,7 @@ for (const file of files) {
     const location = file + ':' + lineAt(html, match.index);
     if (alt === null) findings.push({ type: 'missing-alt', location, src, recommendation: 'Добавить содержательный alt или явно обосновать декоративный элемент.' });
     else if (alt === '') findings.push({ type: 'empty-alt', location, src, recommendation: 'Оставлять alt="" только для декоративного изображения и проверить aria-hidden/контекст.' });
-    else if (/^(image|img|photo|picture|рисунок|фото|dsc[_-]?\\d+|\\d+)$/i.test(alt)) findings.push({ type: 'generic-alt', location, src, alt, recommendation: 'Заменить техническое или слишком общее описание на фактическое.' });
+    else if (/^(image|img|photo|picture|рисунок|фото|dsc[_-]?\d+|\d+)$/i.test(alt)) findings.push({ type: 'generic-alt', location, src, alt, recommendation: 'Заменить техническое или слишком общее описание на фактическое.' });
   }
 }
 
@@ -62,17 +62,17 @@ const report = [
   'активных тегов img: **' + imageCount + '**',
   'проблем: **' + findings.length + '**',
   '',
-  findings.length ? '| Тип | Файл и строка | src | alt | Рекомендация |\\n| --- | --- | --- | --- | --- |\\n' + findings.map((item) => '| ' + item.type + ' | ' + item.location + ' | ' + item.src + ' | ' + (item.alt || '—') + ' | ' + item.recommendation + ' |').join('\\n') : 'Проблемы не обнаружены.',
+  findings.length ? '| Тип | Файл и строка | src | alt | Рекомендация |\n| --- | --- | --- | --- | --- |\n' + findings.map((item) => '| ' + item.type + ' | ' + item.location + ' | ' + item.src + ' | ' + (item.alt || '—') + ' | ' + item.recommendation + ' |').join('\n') : 'Проблемы не обнаружены.',
   '',
   '> Комментарии HTML исключаются из проверки. Скрипт не подтверждает право публикации и не заменяет смысловую сверку изображения с alt.',
   ''
-].join('\\n');
+].join('\n');
 
 if (outputPath) {
   const existing = await fs.readFile(outputPath, 'utf8').catch(() => '');
   const marker = '## Автоматический аудит сгенерированного HTML';
   const before = existing.includes(marker) ? existing.slice(0, existing.indexOf(marker)).trimEnd() : existing.trimEnd();
-  await fs.writeFile(outputPath, before + '\\n\\n' + report, 'utf8');
+  await fs.writeFile(outputPath, before + '\n\n' + report, 'utf8');
 } else {
   process.stdout.write(report);
 }
