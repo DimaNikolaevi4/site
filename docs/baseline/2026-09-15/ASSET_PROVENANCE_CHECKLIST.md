@@ -1,6 +1,6 @@
 # Чек-лист происхождения изображений (обновлённый)
 
-**Дата проверки:** 19 сентября 2026 
+**Дата проверки:** 22 сентября 2026 
 **Всего изображений:** 140 оригинальных файлов 
 **Источник:** https://sit-salsk.ru/ (официальный сайт СИТ)
 
@@ -93,14 +93,33 @@
 
 | № | Изображение | Предварительный статус | Комментарий владельца проекта | Решение |
 |---|-------------|------------------------|-------------------------------|---------|
-| 35.1 | [assets/images/hero/hero-students-01.jpg](https://сит-сальск.рф/assets/images/hero/hero-students-01.jpg) | AI_GENERATED / TECHNICALLY_PROCESSED / DOCUMENTED | Изображение сгенерировано ИИ Qwen3.7-Plus для hero-блока главной страницы; после генерации выполнены изменение размера и оптимизация качества/веса в GIMP; визуальная композиция не изменялась | ✅ **Оставить (документ)** |
-| 35.2 | [assets/images/hero/hero-students-02.jpg](https://сит-сальск.рф/assets/images/hero/hero-students-02.jpg) | AI_GENERATED / TECHNICALLY_PROCESSED / DOCUMENTED | Изображение сгенерировано ИИ Qwen3.7-Plus для hero-блока главной страницы; после генерации выполнены изменение размера и оптимизация качества/веса в GIMP; визуальная композиция не изменялась | ✅ **Оставить (документ)** |
-| 35.3 | [assets/images/hero/hero-students-03.jpg](https://сит-сальск.рф/assets/images/hero/hero-students-03.jpg) | AI_GENERATED / TECHNICALLY_PROCESSED / DOCUMENTED | Изображение сгенерировано ИИ Qwen3.7-Plus для hero-блока главной страницы; после генерации выполнены изменение размера и оптимизация качества/веса в GIMP; визуальная композиция не изменялась | ✅ **Оставить (документ)** |
-| 35.4 | [assets/images/hero/hero-students-04.jpg](https://сит-сальск.рф/assets/images/hero/hero-students-04.jpg) | AI_GENERATED / TECHNICALLY_PROCESSED / DOCUMENTED | Изображение сгенерировано ИИ Qwen3.7-Plus для hero-блока главной страницы; после генерации выполнены изменение размера и оптимизация качества/веса в GIMP; визуальная композиция не изменялась | ✅ **Оставить (документ)** |
-| 35.5 | [assets/images/hero/hero-students-05.jpg](https://сит-сальск.рф/assets/images/hero/hero-students-05.jpg) | AI_GENERATED / TECHNICALLY_PROCESSED / DOCUMENTED | Изображение сгенерировано ИИ Qwen3.7-Plus для hero-блока главной страницы; после генерации выполнены изменение размера и оптимизация качества/веса в GIMP; визуальная композиция не изменялась | ✅ **Оставить (документ)** |
-| 35.6 | [assets/images/hero/hero-students-06.jpg](https://сит-сальск.рф/assets/images/hero/hero-students-06.jpg) | AI_GENERATED / TECHNICALLY_PROCESSED / DOCUMENTED | Изображение сгенерировано ИИ Qwen3.7-Plus для hero-блока главной страницы; после генерации выполнены изменение размера и оптимизация качества/веса в GIMP; визуальная композиция не изменялась | ✅ **Оставить (документ)** |
-| 35.7 | [assets/images/hero/hero-students-07.jpg](https://сит-сальск.рф/assets/images/hero/hero-students-07.jpg) | AI_GENERATED / TECHNICALLY_PROCESSED / DOCUMENTED | Изображение сгенерировано ИИ Qwen3.7-Plus для hero-блока главной страницы; после генерации выполнены изменение размера и оптимизация качества/веса в GIMP; визуальная композиция не изменялась | ✅ **Оставить (документ)** |
-| 35.8 | [assets/images/hero/hero-students-08.jpg](https://сит-сальск.рф/assets/images/hero/hero-students-08.jpg) | AI_GENERATED / TECHNICALLY_PROCESSED / DOCUMENTED | Изображение сгенерировано ИИ Qwen3.7-Plus для hero-блока главной страницы; после генерации выполнены изменение размера и оптимизация качества/веса в GIMP; визуальная композиция не изменялась | ✅ **Оставить (документ)** |
+| 35.1 | [assets/images/hero/hero-students-01.jpg](https://сит-сальск.рф/assets/images/hero/hero-students-01.jpg) | AI_GENERATED / SOURCE_VERIFIED / TECHNICALLY_REENCODED / DOCUMENTED | Qwen3.7-Plus и исходная обработка в GIMP подтверждены владельцем проекта; исходник и текущая производная перечислены в §3.2 | ✅ **Оставить (документ)** |
+| 35.2 | [assets/images/hero/hero-students-02.jpg](https://сит-сальск.рф/assets/images/hero/hero-students-02.jpg) | AI_GENERATED / SOURCE_VERIFIED / TECHNICALLY_REENCODED / DOCUMENTED | Qwen3.7-Plus и исходная обработка в GIMP подтверждены владельцем проекта; исходник и текущая производная перечислены в §3.2 | ✅ **Оставить (документ)** |
+| 35.3 | [assets/images/hero/hero-students-03.jpg](https://сит-сальск.рф/assets/images/hero/hero-students-03.jpg) | AI_GENERATED / SOURCE_VERIFIED / TECHNICALLY_REENCODED / DOCUMENTED | Qwen3.7-Plus и исходная обработка в GIMP подтверждены владельцем проекта; исходник и текущая производная перечислены в §3.2 | ✅ **Оставить (документ)** |
+| 35.4 | [assets/images/hero/hero-students-04.jpg](https://сит-сальск.рф/assets/images/hero/hero-students-04.jpg) | AI_GENERATED / SOURCE_VERIFIED / TECHNICALLY_REENCODED / DOCUMENTED | Qwen3.7-Plus и исходная обработка в GIMP подтверждены владельцем проекта; исходник и текущая производная перечислены в §3.2 | ✅ **Оставить (документ)** |
+| 35.5 | [assets/images/hero/hero-students-05.jpg](https://сит-сальск.рф/assets/images/hero/hero-students-05.jpg) | AI_GENERATED / SOURCE_VERIFIED / TECHNICALLY_REENCODED / DOCUMENTED | Qwen3.7-Plus и исходная обработка в GIMP подтверждены владельцем проекта; исходник и текущая производная перечислены в §3.2 | ✅ **Оставить (документ)** |
+| 35.6 | [assets/images/hero/hero-students-06.jpg](https://сит-сальск.рф/assets/images/hero/hero-students-06.jpg) | AI_GENERATED / SOURCE_VERIFIED / TECHNICALLY_REENCODED / DOCUMENTED | Qwen3.7-Plus и исходная обработка в GIMP подтверждены владельцем проекта; исходник и текущая производная перечислены в §3.2 | ✅ **Оставить (документ)** |
+| 35.7 | [assets/images/hero/hero-students-07.jpg](https://сит-сальск.рф/assets/images/hero/hero-students-07.jpg) | AI_GENERATED / SOURCE_VERIFIED / TECHNICALLY_REENCODED / DOCUMENTED | Qwen3.7-Plus и исходная обработка в GIMP подтверждены владельцем проекта; исходник и текущая производная перечислены в §3.2 | ✅ **Оставить (документ)** |
+| 35.8 | [assets/images/hero/hero-students-08.jpg](https://сит-сальск.рф/assets/images/hero/hero-students-08.jpg) | AI_GENERATED / SOURCE_VERIFIED / TECHNICALLY_REENCODED / DOCUMENTED | Qwen3.7-Plus и исходная обработка в GIMP подтверждены владельцем проекта; исходник и текущая производная перечислены в §3.2 | ✅ **Оставить (документ)** |
+
+#### 3.1. Подтверждение источника и обработки
+
+Восемь PNG-файлов из `attached_assets/screenshots/` считаются исходными материалами серии. Они были загружены в ветку `main` коммитом `23a7501624417f4491c6f8a613c1c5d191e2ac34` 22 сентября 2026 года. Порядок соответствия PNG → hero-файл зафиксирован в §3.2.
+
+По подтверждению владельца проекта, изображения сгенерированы Qwen3.7-Plus и исходно обработаны в GIMP; визуальная композиция не изменялась. Повреждённые JPG-блобы из прежнего коммита заменены 22 сентября 2026 года валидными JPEG 1664×800, пересохранёнными из соответствующих PNG с удалением метаданных, progressive encoding и quality 88. Эта восстановительная перекодировка выполнена ImageMagick и не является новым изменением композиции.
+
+#### 3.2. Source mapping и SHA-256
+
+| № | Исходный PNG | SHA-256 исходника | Производный файл | SHA-256 производного |
+|---|---|---|---|---|
+| 35.1 | [attached_assets/screenshots/1789800592.png](https://github.com/DimaNikolaevi4/site/blob/main/attached_assets/screenshots/1789800592.png) | `f63261d34a9f82984e1402eafff123465589e46d770c2f6b8d6448816f6b44d4` | `src/assets/images/hero/hero-students-01.jpg` | `d1867489d1d025e37d1d879adad0fbf595dc404bef46bc7fcb03ff3cdc21bd72` |
+| 35.2 | [attached_assets/screenshots/1789800805.png](https://github.com/DimaNikolaevi4/site/blob/main/attached_assets/screenshots/1789800805.png) | `ab77e3df6487487507827b7873a252c9b90e15432d7550ca2830b6bf298ff2c3` | `src/assets/images/hero/hero-students-02.jpg` | `ee68f345009f27a70053fd846263cbbb41a98e6ce3836102f101733f5d4387ba` |
+| 35.3 | [attached_assets/screenshots/1789800810.png](https://github.com/DimaNikolaevi4/site/blob/main/attached_assets/screenshots/1789800810.png) | `97dec5bc4371ed1e620d6e0165e1d3a8eca546df869bc9bdf7a3fde69a14b1e0` | `src/assets/images/hero/hero-students-03.jpg` | `90664150a7e30448c556cc70bb9d472fbdadd52e0dd4d478cd215b0026cda069` |
+| 35.4 | [attached_assets/screenshots/1789800817.png](https://github.com/DimaNikolaevi4/site/blob/main/attached_assets/screenshots/1789800817.png) | `3857b29021abb11a5364eec8fab266ac16042a439a04cfdd9fbe2224a46ff305` | `src/assets/images/hero/hero-students-04.jpg` | `473be631e6acc806ba5e81325a11aefc62cb1e668f4e616f419af15d2764b984` |
+| 35.5 | [attached_assets/screenshots/1789800937.png](https://github.com/DimaNikolaevi4/site/blob/main/attached_assets/screenshots/1789800937.png) | `a98ea9a95894a7535522b3d3ec8f6ff972f704b21812dcbea1ed30306da8ba77` | `src/assets/images/hero/hero-students-05.jpg` | `4b94201431b943cf5d628d1c36b15372d3526251ba21758a3e02d84835380dfc` |
+| 35.6 | [attached_assets/screenshots/1789800938.png](https://github.com/DimaNikolaevi4/site/blob/main/attached_assets/screenshots/1789800938.png) | `d9269bc968e8093d7eb6a4c52acdf621b1209e8d36242490faf1ddc695e0bf02` | `src/assets/images/hero/hero-students-06.jpg` | `29b5d21737133474eef9f917a0b1ba3f0a5300132774675d5484f160244f973b` |
+| 35.7 | [attached_assets/screenshots/1789800943.png](https://github.com/DimaNikolaevi4/site/blob/main/attached_assets/screenshots/1789800943.png) | `c3757f2f9fea6f0c4939398930500fc56c90edab016f6654f5d6df92bce0f0cc` | `src/assets/images/hero/hero-students-07.jpg` | `281e00df03b351d8dc89a39819e0f1bd09422aee18da9d3cf0ed22bad8779e55` |
+| 35.8 | [attached_assets/screenshots/1789800944.png](https://github.com/DimaNikolaevi4/site/blob/main/attached_assets/screenshots/1789800944.png) | `fb730d0121a1d57e0075b361822afb332c3635d359144dd6cf0c436441314910` | `src/assets/images/hero/hero-students-08.jpg` | `a832042a78fb9399b1cdc5ef95ca17cab518c41a847a148d30ba6f9f60888364` |
 
 #### 3.1. Исторически удалённый материал
 
