@@ -3,6 +3,7 @@ node_modules/
 
 # Результат сборки Eleventy
 public/
+public-v2/
 _site/
 .eleventy-cache/
 
