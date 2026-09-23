@@ -4,6 +4,17 @@ const fs = require('fs');
 const path = require('path');
 const { minify: minifyHtml } = require('html-minifier-terser');
 
+// Явный режим сборки: current сохраняет baseline-поведение, v2 готовит отдельный output.
+const BUILD_MODES = Object.freeze({
+  current: Object.freeze({ output: 'public' }),
+  v2: Object.freeze({ output: 'public-v2' })
+});
+const buildMode = String(process.env.SITE_MODE || 'current').trim().toLowerCase();
+if (!Object.prototype.hasOwnProperty.call(BUILD_MODES, buildMode)) {
+  throw new Error(`Неизвестный SITE_MODE "${buildMode}". Допустимые значения: current, v2.`);
+}
+const outputDirectory = BUILD_MODES[buildMode].output;
+
 // Загрузка структуры рубрик
 function loadRubrics() {
   const rubricsPath = path.join(__dirname, 'src/_data/rubrics.yaml');
@@ -52,6 +63,8 @@ function getAllRubricSlugs(rubrics, parentSlug = '') {
 }
 
 module.exports = function(eleventyConfig) {
+  console.log(`🏗️ Режим сборки: ${buildMode}; output: ${outputDirectory}`);
+  eleventyConfig.addGlobalData('siteBuildMode', buildMode);
   // === Подключение иерархии рубрик ===
   // rubrics.yaml — НАВИГАЦИОННАЯ иерархия (header dropdown, breadcrumbs labels,
   // карточки подразделов). Авто-регистрация per-rubric коллекций удалена:
@@ -469,7 +482,7 @@ module.exports = function(eleventyConfig) {
     // Соответствие webp-файлу в выходной директории (passthrough копирует туда из src/)
     const webpUrl = srcUrl.replace(/\.(jpe?g|png)$/i, '.webp');
     if (webpExistsCache.has(webpUrl)) return webpExistsCache.get(webpUrl);
-    const fsPath = path.join(__dirname, 'public', webpUrl.replace(/^\//, ''));
+    const fsPath = path.join(__dirname, outputDirectory, webpUrl.replace(/^\//, ''));
     const exists = fs.existsSync(fsPath);
     webpExistsCache.set(webpUrl, exists);
     return exists;
@@ -752,7 +765,7 @@ module.exports = function(eleventyConfig) {
   return {
     dir: {
       input: "src",
-      output: "public",
+      output: outputDirectory,
       includes: "_includes",
       data: "_data"
     },
