@@ -37,10 +37,10 @@
 
 ### 1. Битая ссылка на видео
 
-`src/content/pages/svedenija/employment/index.md` ссылается на `/assets/uploads/employment/marshrutizatsiya-molodezhi-mintrud-rf.mp4`. Файл отсутствует в checkout и на опубликованном сайте отвечает HTTP 404. Ссылка видна на странице `/svedenija/employment/`.
+Решение владельца от 23.09.2026: выбран вариант A — битая ссылка на `/assets/uploads/employment/marshrutizatsiya-molodezhi-mintrud-rf.mp4` удалена из `src/content/pages/svedenija/employment/index.md`. Исходный MP4 отсутствует и в checkout, и на опубликованном сайте; точная официальная замена не подтверждена.
 
 Варианты исправления:
-- удалить ссылку, если локальный ролик больше не нужен;
+- **Выбрано:** удалить ссылку, так как локальный ролик недоступен;
 - заменить на точную официальную ссылку на ролик Минтруда, если такой URL будет подтверждён;
 - добавить исходный MP4 в репозиторий и публиковать его из `src/assets/uploads/employment/` после проверки прав.
 
