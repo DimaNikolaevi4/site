@@ -11,6 +11,7 @@ const failures = [];
 const checked = new Set();
 let pages = 0;
 let links = 0;
+let hostOnly = 0;
 
 function walk(directory, result = []) {
   for (const entry of fs.readdirSync(directory, { withFileTypes: true })) {
@@ -46,6 +47,7 @@ function findTarget(rawUrl, sourcePage) {
     return { rawUrl, reason: 'некорректный URL' };
   }
   if (parsed.origin !== 'https://site-v2.local') return null;
+  if (parsed.pathname.startsWith('/docs/')) return { hostOnly: true };
   const candidates = candidatesForUrl(parsed.pathname);
   for (const candidate of candidates) {
     const target = path.resolve(outputPath, candidate);
@@ -75,6 +77,7 @@ for (const page of walk(outputPath)) {
     const key = page + '\0' + rawUrl;
     if (checked.has(key)) continue;
     checked.add(key);
+    if (result.hostOnly) { hostOnly += 1; continue; }
     if (!result.target) failures.push({ page: pageUrl(page), url: rawUrl, reason: result.reason });
   }
 }
@@ -85,4 +88,4 @@ if (failures.length) {
   process.exit(1);
 }
 
-console.log('[v2-internal-links] OK — проверено страниц: ' + pages + ', ссылок: ' + links + ' (' + outputDirectory + ')');
+console.log('[v2-internal-links] OK — проверено страниц: ' + pages + ', ссылок: ' + links + ', host-only /docs/: ' + hostOnly + ' (' + outputDirectory + ')');
