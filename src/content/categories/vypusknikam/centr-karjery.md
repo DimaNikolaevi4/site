@@ -167,17 +167,6 @@ source: https://sit-salsk.ru/?p=34985
 <li><em><span style="font-family: 'times new roman', times, serif; font-size: 14pt;">Найти работу. </span><span style="font-family: 'times new roman', times, serif; font-size: 14pt;">Тем, кто не знает, куда устроиться после выпуска, мы найдем идеального работодателя.</span></em></li>
 </ul>
 <p><span style="font-family: 'times new roman', times, serif; font-size: 14pt;"> Остались вопросы? Позвоните в центр занятости населения, чтобы узнать подробности! </span><span style="font-family: 'times new roman', times, serif; font-size: 14pt;">Построим ваш карьерный маршрут вместе!</span></p>
-<!--[if lt IE 9]><script>document.createElement('video');</script><![endif]-->
-        <div class="wp-playlist wp-video-playlist wp-playlist-light">
-                <video controls="controls" preload="none" width="828"
-                 height="497"   ></video>
-        <div class="wp-playlist-next"></div>
-        <div class="wp-playlist-prev"></div>
-        <noscript>
-        <ol>
-                <li><a href='/assets/uploads/Маршрутизация-молодежи-Минтруд-РФ.mp4'>Маршрутизация молодежи Минтруд РФ</a></li>  </ol>
-        </noscript>
-        <script type="application/json" class="wp-playlist-script">{"type":"video","tracklist":false,"tracknumbers":true,"images":true,"artists":true,"tracks":[{"src":"https:\/\/sit-salsk.ru\/wp-content\/uploads\/2025\/08\/\u041c\u0430\u0440\u0440\u0448\u0440\u0443\u0442\u0438\u0437\u0430\u0446\u0438\u044f-\u043c\u043e\u043b\u043e\u0434\u0435\u0436\u0438-\u041c\u0438\u043d\u0442\u0440\u0443\u0434-\u0420\u0424.mp4","type":"video\/mp4","title":"\u041c\u0430\u0440\u0448\u0440\u0443\u0442\u0438\u0437\u0430\u0446\u0438\u044f \u043c\u043e\u043b\u043e\u0434\u0435\u0436\u0438 \u041c\u0438\u043d\u0442\u0440\u0443\u0434 \u0420\u0424","caption":"","description":"","meta":{"length_formatted":"1:00"},"dimensions":{"original":{"width":1920,"height":1152},"resized":{"width":828,"height":497}},"image":{"src":"https:\/\/sit-salsk.ru\/wp-includes\/images\/media\/video.svg","width":48,"height":64"},"thumb":{"src":"https:\/\/sit-salsk.ru\/wp-includes\/images\/media\/video.svg","width":48,"height":64}}]}</script>
-</div>
+
         
 <p><span style="font-family: 'times new roman', times, serif; font-size: 14pt;">#маршрутизация_молодёжи #карьера_молодых #работайнаДону</span></p>
