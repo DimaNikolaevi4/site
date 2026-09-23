@@ -96,7 +96,7 @@
 - [x] В V2 нет второй копии Markdown-контента: дерево `site-v2` содержит единый `src/content/`, отдельных `content-v2`, `src-v2`, `pages-v2`, `documents-v2` и `news-v2` не найдено; `.eleventy.js` читает общие источники.
 - [x] В V2 нет ручного редактирования файлов из `public/`: в ветке нет отслеживаемых `public/` или `public-v2/`, а сборка формирует output из исходников через Eleventy.
 - [x] Staging-копия используется только временно и не становится вторым источником правды: в дереве нет `staging/`, `temp-build/` или `public-v2/`; `deploy.sh` удаляет `temp-build`, заново клонирует `site-v2` и собирает его из общих исходников.
-- [ ] Добавлена проверка, что V2 не читает случайные файлы из старого output.
+- [x] Добавлена проверка, что V2 не читает случайные файлы из старого output. Добавлены `scripts/check-v2-source-boundary.mjs` и `npm run check:v2:source-boundary`; проверка фиксирует input `src`, разрешённые passthrough-источники `src/node_modules`, режимный output `public-v2` и исключение `public-v2/` из Git.
 - [ ] Восстановлена сборка после очистки `public-v2/`.
 
 ## 4. Контракт URL
