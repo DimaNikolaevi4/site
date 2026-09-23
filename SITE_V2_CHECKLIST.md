@@ -104,7 +104,7 @@
 - [x] Исходный список URL сохранён в `URL_MANIFEST.tsv`.
 - [x] Добавлен скрипт проверки уникальности URL. `scripts/check-unique-urls.mjs` и `npm run check:urls:unique` проверяют заголовок, целостность строк и дубликаты URL; baseline-манифест из 144 URL прошёл проверку.
 - [x] Добавлен скрипт проверки, что каждый ожидаемый URL генерируется. `scripts/check-expected-urls.mjs` и `npm run check:urls:generated` сопоставляют URL-манифест с файлами output; в `SITE_MODE=v2` все 144 URL найдены в `public-v2/`.
-- [ ] Добавлен скрипт проверки внутренних ссылок V2.
+- [x] Добавлен скрипт проверки внутренних ссылок V2. `scripts/check-v2-internal-links.mjs` и `npm run check:links:v2` проверяют 145 HTML-страниц и 20 230 ссылок; 341 ресурс под `/docs/` учитывается как host-only, сохраняемый deploy-скриптом.
 - [ ] Для всех изменяемых маршрутов подготовлена таблица redirect.
 - [ ] Сохранены trailing slash и правила для `index.html`.
 - [ ] Проверены `/`, `/404.html`, страницы разделов и новости.
