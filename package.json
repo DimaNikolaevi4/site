@@ -8,7 +8,8 @@
     "build:v2": "SITE_MODE=v2 node scripts/generate-webp.mjs && SITE_MODE=v2 node_modules/.bin/eleventy && SITE_MODE=v2 node scripts/minify-css.mjs",
     "check:v2:source-boundary": "node scripts/check-v2-source-boundary.mjs",
     "check:urls:unique": "node scripts/check-unique-urls.mjs",
-    "check:urls:generated": "node scripts/check-expected-urls.mjs"
+    "check:urls:generated": "node scripts/check-expected-urls.mjs",
+    "check:links:v2": "node scripts/check-v2-internal-links.mjs"
   },
   "dependencies": {
     "@11ty/eleventy-navigation": "^0.3.5",
