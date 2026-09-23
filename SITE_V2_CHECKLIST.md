@@ -97,7 +97,7 @@
 - [x] В V2 нет ручного редактирования файлов из `public/`: в ветке нет отслеживаемых `public/` или `public-v2/`, а сборка формирует output из исходников через Eleventy.
 - [x] Staging-копия используется только временно и не становится вторым источником правды: в дереве нет `staging/`, `temp-build/` или `public-v2/`; `deploy.sh` удаляет `temp-build`, заново клонирует `site-v2` и собирает его из общих исходников.
 - [x] Добавлена проверка, что V2 не читает случайные файлы из старого output. Добавлены `scripts/check-v2-source-boundary.mjs` и `npm run check:v2:source-boundary`; проверка фиксирует input `src`, разрешённые passthrough-источники `src/node_modules`, режимный output `public-v2` и исключение `public-v2/` из Git.
-- [ ] Восстановлена сборка после очистки `public-v2/`.
+- [x] Восстановлена сборка после очистки `public-v2/`. В чистом checkout ветки `site-v2` выполнены `npm ci`, `rm -rf public-v2`, `npm run build:v2` и `npm run check:v2:source-boundary`; сборка завершилась успешно и записала 147 HTML-файлов.
 
 ## 4. Контракт URL
 
