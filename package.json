@@ -9,7 +9,8 @@
     "check:v2:source-boundary": "node scripts/check-v2-source-boundary.mjs",
     "check:urls:unique": "node scripts/check-unique-urls.mjs",
     "check:urls:generated": "node scripts/check-expected-urls.mjs",
-    "check:links:v2": "node scripts/check-v2-internal-links.mjs"
+    "check:links:v2": "node scripts/check-v2-internal-links.mjs",
+    "check:route-shape": "node scripts/check-route-shape.mjs"
   },
   "dependencies": {
     "@11ty/eleventy-navigation": "^0.3.5",
