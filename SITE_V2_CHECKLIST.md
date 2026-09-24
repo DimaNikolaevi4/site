@@ -108,7 +108,7 @@
 - [x] Для всех изменяемых маршрутов подготовлена таблица redirect. `docs/baseline/2026-09-15/V2_REDIRECT_TABLE.md` фиксирует: все 144 baseline-маршрута сохранены, новых redirect не требуется; добавлен только новый `/third-party-notices/`.
 - [x] Сохранены trailing slash и правила для `index.html`; V2-сборка содержит 145 HTML-маршрутов, корневой `/`, отдельный `/404.html`, без `/index.html`; все каталожные `index.html` соответствуют URL с завершающим `/`. Проверка и границы результата: `docs/reports/V2_ROUTE_SHAPE_2026-09-24.md`.
 - [x] Проверены `/`, `/404.html`, разделы `/abiturientam/` и `/svedenija/`, список `/news/` и новость `/news/intellektualniy-tyutor-ai/`; все 144 URL baseline найдены в V2. Результаты: `docs/reports/V2_KEY_PAGES_2026-09-24.md`.
-- [ ] Проверены `/sitemap.xml` и `/robots.txt`.
+- [x] Проверены `/sitemap.xml` и `/robots.txt`; отчёт: `docs/reports/V2_SITEMAP_ROBOTS_2026-09-24.md`.
 - [ ] Проверены canonical и Open Graph для VK: `og:title`, `og:description`, `og:url`, `og:type`, `og:image`, абсолютные HTTPS URL и корректное превью.
 - [ ] Проверены якоря и ссылки на документы с Unicode-именами.
 - [ ] После каждой крупной миграции обновляется только отдельный манифест с
