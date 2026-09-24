@@ -120,7 +120,7 @@
 - [x] Новый `base.njk` не содержит Mentor-названий и Mentor-путей; отчёт: `docs/reports/V2_BASE_LAYOUT_MENTOR_CHECK_2026-09-24.md`.
 - [x] Подключения CSS/JS перечислены явно и минимально; отчёт: `docs/reports/V2_ASSET_CONNECTIONS_2026-09-24.md`.
 - [x] В `<head>` есть lang, charset, viewport, title, description и favicon; отчёт: `docs/reports/V2_HEAD_METADATA_2026-09-24.md`.
-- [ ] Skip-link ведёт к основному содержимому.
+- [x] Skip-link ведёт к основному содержимому; отчёт: `docs/reports/V2_SKIP_LINK_2026-09-24.md`.
 - [ ] Header, main и footer имеют устойчивую семантическую структуру.
 - [ ] Ошибки и пустые состояния имеют отдельную разметку.
 - [ ] Нет второй кнопки «Наверх» или другого дублированного глобального элемента.
