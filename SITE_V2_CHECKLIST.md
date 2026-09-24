@@ -110,7 +110,7 @@
 - [x] Проверены `/`, `/404.html`, разделы `/abiturientam/` и `/svedenija/`, список `/news/` и новость `/news/intellektualniy-tyutor-ai/`; все 144 URL baseline найдены в V2. Результаты: `docs/reports/V2_KEY_PAGES_2026-09-24.md`.
 - [x] Проверены `/sitemap.xml` и `/robots.txt`; отчёт: `docs/reports/V2_SITEMAP_ROBOTS_2026-09-24.md`.
 - [x] Проверены canonical и Open Graph для VK: `og:title`, `og:description`, `og:url`, `og:type`, `og:image`, абсолютные HTTPS URL и корректное превью; отчёт: `docs/reports/V2_CANONICAL_OG_2026-09-24.md`.
-- [ ] Проверены якоря и ссылки на документы с Unicode-именами.
+- [x] Проверены якоря и ссылки на документы с Unicode-именами; отчёт: `docs/reports/V2_ANCHORS_UNICODE_DOCS_2026-09-24.md`.
 - [ ] После каждой крупной миграции обновляется только отдельный манифест с
   новым commit и причиной изменения.
 
