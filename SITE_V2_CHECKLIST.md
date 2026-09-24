@@ -107,7 +107,7 @@
 - [x] Добавлен скрипт проверки внутренних ссылок V2. `scripts/check-v2-internal-links.mjs` и `npm run check:links:v2` проверяют 145 HTML-страниц и 20 230 ссылок; 341 ресурс под `/docs/` учитывается как host-only, сохраняемый deploy-скриптом.
 - [x] Для всех изменяемых маршрутов подготовлена таблица redirect. `docs/baseline/2026-09-15/V2_REDIRECT_TABLE.md` фиксирует: все 144 baseline-маршрута сохранены, новых redirect не требуется; добавлен только новый `/third-party-notices/`.
 - [x] Сохранены trailing slash и правила для `index.html`; V2-сборка содержит 145 HTML-маршрутов, корневой `/`, отдельный `/404.html`, без `/index.html`; все каталожные `index.html` соответствуют URL с завершающим `/`. Проверка и границы результата: `docs/reports/V2_ROUTE_SHAPE_2026-09-24.md`.
-- [ ] Проверены `/`, `/404.html`, страницы разделов и новости.
+- [x] Проверены `/`, `/404.html`, разделы `/abiturientam/` и `/svedenija/`, список `/news/` и новость `/news/intellektualniy-tyutor-ai/`; все 144 URL baseline найдены в V2. Результаты: `docs/reports/V2_KEY_PAGES_2026-09-24.md`.
 - [ ] Проверены `/sitemap.xml` и `/robots.txt`.
 - [ ] Проверены canonical и Open Graph для VK: `og:title`, `og:description`, `og:url`, `og:type`, `og:image`, абсолютные HTTPS URL и корректное превью.
 - [ ] Проверены якоря и ссылки на документы с Unicode-именами.
