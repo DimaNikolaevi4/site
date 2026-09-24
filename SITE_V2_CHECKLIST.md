@@ -117,7 +117,7 @@
 
 ### 5.1 Общий каркас
 
-- [ ] Новый `base.njk` не содержит Mentor-названий и Mentor-путей.
+- [x] Новый `base.njk` не содержит Mentor-названий и Mentor-путей; отчёт: `docs/reports/V2_BASE_LAYOUT_MENTOR_CHECK_2026-09-24.md`.
 - [ ] Подключения CSS/JS перечислены явно и минимально.
 - [ ] В `<head>` есть lang, charset, viewport, title, description и favicon.
 - [ ] Skip-link ведёт к основному содержимому.
