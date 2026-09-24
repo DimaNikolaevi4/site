@@ -122,7 +122,7 @@
 - [x] В `<head>` есть lang, charset, viewport, title, description и favicon; отчёт: `docs/reports/V2_HEAD_METADATA_2026-09-24.md`.
 - [x] Skip-link ведёт к основному содержимому; отчёт: `docs/reports/V2_SKIP_LINK_2026-09-24.md`.
 - [x] Header, main и footer имеют устойчивую семантическую структуру; отчёт: `docs/reports/V2_SEMANTIC_SHELL_2026-09-24.md`.
-- [ ] Ошибки и пустые состояния имеют отдельную разметку.
+- [x] Ошибки и пустые состояния имеют отдельную разметку; отчёт: `docs/reports/V2_ERROR_EMPTY_STATES_2026-09-24.md`.
 - [ ] Нет второй кнопки «Наверх» или другого дублированного глобального элемента.
 
 ### 5.2 Компоненты
