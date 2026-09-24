@@ -10,7 +10,8 @@
     "check:urls:unique": "node scripts/check-unique-urls.mjs",
     "check:urls:generated": "node scripts/check-expected-urls.mjs",
     "check:links:v2": "node scripts/check-v2-internal-links.mjs",
-    "check:route-shape": "node scripts/check-route-shape.mjs"
+    "check:route-shape": "node scripts/check-route-shape.mjs",
+    "check:route-shape:v2": "node scripts/check-generated-route-shape.mjs public-v2"
   },
   "dependencies": {
     "@11ty/eleventy-navigation": "^0.3.5",
