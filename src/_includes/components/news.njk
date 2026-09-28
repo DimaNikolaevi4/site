@@ -12,7 +12,7 @@
                             newsSubtitle — подзаголовок (по умолчанию «Последние события техникума»)
 
     newsMode = 'razdel' → Единая сетка компактных ссылок с эмодзи
-                          (`<ul class="rubric-resources-grid">`) для страниц-разделов.
+                          (`<ul class="site-news__resource-grid rubric-resources-grid">`) для страниц-разделов.
                           Используется как для списка подрубрик, так и для CTA-блоков
                           «Контакты + обращение».
                           Параметры:
@@ -32,14 +32,14 @@
   {% set _newsTitle    = newsTitle    if newsTitle    else "Новости" %}
   {% set _newsSubtitle = newsSubtitle if newsSubtitle else "Последние события техникума" %}
 
-  <section id="news" class="section component-news component-news--home">
-    <div class="container section-title" data-aos="fade-up">
+  <section id="news" class="site-news site-news--home section component-news component-news--home" data-component="news">
+    <div class="site-news__heading container section-title" data-aos="fade-up">
       <h2>{{ _newsTitle }}</h2>
       <p>{{ _newsSubtitle }}</p>
     </div>
 
     <div class="container">
-      <div class="content-col">
+      <div class="site-news__content content-col">
         <div class="row">
 
           {# Фильтруем новости без картинки и берём первые _newsCount свежих. #}
@@ -53,7 +53,7 @@
           {% for post in _newsToShow %}
 
           <div class="col-md-6 col-xl-4 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="{{ loop.index * 100 }}">
-            <div class="course-item">
+            <article class="site-news__card course-item">
               <img
                 src="{{ post.data.image }}"
                 class="img-fluid"
@@ -74,6 +74,7 @@
                 </div>
               </div>
             </div>
+          </article>
           </div>
           {% else %}
           <div class="col-12 text-center">
@@ -99,7 +100,7 @@
     whitespace-control Nunjucks ({%- -%}, {{- -}}), чтобы итоговый HTML шёл
     единым блоком без переносов строк между блочными тегами.
   #}
-  <section class="section component-news component-news--razdel"><div class="container">
+  <section class="site-news site-news--section section component-news component-news--razdel" data-component="news-links"><div class="container">
     {%- if newsTitle -%}
     <div class="section-title mb-4" data-aos="fade-up"><h2>{{- newsTitle -}}</h2></div>
     {%- endif -%}
