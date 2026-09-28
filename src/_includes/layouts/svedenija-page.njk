@@ -43,7 +43,7 @@ templateEngineOverride: njk,md
         { text: "Сведения об образовательной организации" }
       ] %}
     {% else %}
-      {% set breadcrumbs = breadcrumbsFromUrl(page.url, breadcrumbTitle or title) %}
+      {% set breadcrumbs = page.url | breadcrumbsFromUrl(breadcrumbTitle or title) %}
     {% endif %}
     {% include "components/breadcrumbs.njk" %}
 
