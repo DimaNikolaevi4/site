@@ -131,7 +131,7 @@
 - [x] `hero.njk` переписан самостоятельно; структурный аудит: `docs/reports/V2_HERO_REWRITE_2026-09-28.md`.
 - [x] `breadcrumbs.njk` переписан самостоятельно; структурный аудит: `docs/reports/V2_BREADCRUMBS_REWRITE_2026-09-28.md`.
 - [x] `about.njk` переписан самостоятельно; структурный аудит: `docs/reports/V2_ABOUT_REWRITE_2026-09-28.md`.
-- [ ] `news.njk` переписан самостоятельно.
+- [x] `news.njk` переписан самостоятельно; структурный аудит: `docs/reports/V2_NEWS_REWRITE_2026-09-28.md`.
 - [ ] `popular.njk` переписан самостоятельно.
 - [ ] `sidebar.njk` переписан самостоятельно.
 - [ ] `footer.njk` переписан самостоятельно.
