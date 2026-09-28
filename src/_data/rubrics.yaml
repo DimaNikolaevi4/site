@@ -94,6 +94,9 @@ main_rubrics:
       - code: "2.14"
         title: "Трудоустройство выпускников"
         slug: employment
+      - code: "2.15"
+        title: "Организация питания"
+        slug: pitanie
 
   - code: "3"
     title: "УЧЕБНО-МЕТОДИЧЕСКАЯ РАБОТА"
@@ -134,7 +137,7 @@ main_rubrics:
           - code: "4.5.1"
             title: "ВОЛОНТЁРСКИЙ ОТРЯД «РАДУГА ДОБРА»"
             slug: raduga-dobra
-            url: "/vospitanie/raduga-dobra/"
+            url: "/vospitanie/volonterstvo/raduga-dobra/"
       - code: "4.6"
         title: "Патриотическое воспитание"
         slug: patrioticheskoe
@@ -142,11 +145,11 @@ main_rubrics:
           - code: "4.6.1"
             title: "Великая Победа"
             slug: velikaja-pobeda
-            url: "/vospitanie/velikaja-pobeda/"
+            url: "/vospitanie/patrioticheskoe/velikaja-pobeda/"
           - code: "4.6.2"
             title: "Клуб «ВИТЯЗЬ»"
             slug: vitjaz
-            url: "/vospitanie/vitjaz/"
+            url: "/vospitanie/patrioticheskoe/vitjaz/"
       - code: "4.7"
         title: "Культурно-массовая работа"
         slug: kulturno-massovaja
@@ -155,19 +158,19 @@ main_rubrics:
           - code: "4.7.1"
             title: "Театральный клуб \"Мираж\""
             slug: teatralnyj-klub
-            url: "/vospitanie/teatralnyj-klub/"
+            url: "/vospitanie/kulturno-massovaja/teatralnyj-klub/"
           - code: "4.7.2"
             title: "Медиацентр «Новости СИТ»"
             slug: mediacentr
-            url: "/vospitanie/mediacentr/"
+            url: "/vospitanie/kulturno-massovaja/mediacentr/"
           - code: "4.7.3"
             title: "Поздравления"
             slug: pozdravlenija
-            url: "/vospitanie/pozdravlenija/"
+            url: "/vospitanie/kulturno-massovaja/pozdravlenija/"
           - code: "4.7.4"
             title: "«Движение Первых»"
             slug: dvizhenie-pervyh
-            url: "/vospitanie/dvizhenie-pervyh/"
+            url: "/vospitanie/kulturno-massovaja/dvizhenie-pervyh/"
       - code: "4.8"
         title: "Физическая культура и спорт"
         slug: fizkultura-sport
@@ -175,7 +178,7 @@ main_rubrics:
           - code: "4.8.1"
             title: "ССК \"Авангард\""
             slug: ssk-avangard
-            url: "/vospitanie/ssk-avangard/"
+            url: "/vospitanie/fizkultura-sport/ssk-avangard/"
       - code: "4.9"
         title: "Уполномоченный по правам ребенка"
         slug: upolnomochennyj-prava
@@ -252,7 +255,7 @@ main_rubrics:
           - code: "8.1.2"
             title: "Библиотека техникума"
             slug: biblioteka
-            url: "/studentam-i-roditeljam/biblioteka/"
+            url: "/studentam-i-roditeljam/resursy/biblioteka/"
       - code: "8.2"
         title: "Приказ о зачислении"
         slug: prikaz-zachislenie
@@ -271,6 +274,11 @@ main_rubrics:
   - code: "9.5"
     title: "Нашим выпускникам"
     slug: vypusknikam
+    level: 0
+
+  - code: "9.6"
+    title: "Профессионалы-2026"
+    slug: professionaly-2026
     level: 0
 
   - code: "0"

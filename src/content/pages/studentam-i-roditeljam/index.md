@@ -17,7 +17,7 @@ suppressSubrubrics: true
 {% set excludeUrls = none %}
 {% set newsCards = [
   { url: "/studentam-i-roditeljam/raspisanie/", emoji: "🗓️", title: "Расписание занятий", description: "Актуальное расписание учебных групп по корпусам и сменам." },
-  { url: "/studentam-i-roditeljam/biblioteka/", emoji: "📚", title: "Библиотека", description: "Фонд библиотеки, электронные каталоги, режим работы." },
+  { url: "/studentam-i-roditeljam/resursy/biblioteka/", emoji: "📚", title: "Библиотека", description: "Фонд библиотеки, электронные каталоги, режим работы." },
   { url: "/studentam-i-roditeljam/resursy/", emoji: "🌐", title: "Образовательные ресурсы", description: "Электронно-образовательные ресурсы и сервисы для обучающихся." },
   { url: "/studentam-i-roditeljam/roditeljam/", emoji: "👨‍👩‍👧", title: "Родителям", description: "Материалы для родителей: правила, рекомендации, психологическая помощь." },
   { url: "/studentam-i-roditeljam/prikaz-zachislenie/", emoji: "📜", title: "Приказы о зачислении", description: "Приказы о зачислении в число обучающихся техникума." }

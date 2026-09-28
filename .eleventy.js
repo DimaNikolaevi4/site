@@ -52,7 +52,7 @@ function getAllRubricSlugs(rubrics, parentSlug = '') {
         // если у самих не задан url. Это сохраняет вложенность в дереве.
         const childSlugs = getAllRubricSlugs(
           { main_rubrics: rubric.children },
-          inheritedPath
+          fullPath
         );
         slugs = slugs.concat(childSlugs);
       }
