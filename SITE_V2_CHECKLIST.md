@@ -103,11 +103,11 @@
 
 - [x] Исходный список URL сохранён в `URL_MANIFEST.tsv`.
 - [x] Добавлен скрипт проверки уникальности URL. `scripts/check-unique-urls.mjs` и `npm run check:urls:unique` проверяют заголовок, целостность строк и дубликаты URL; baseline-манифест из 144 URL прошёл проверку.
-- [x] Добавлен скрипт проверки, что каждый ожидаемый URL генерируется. `scripts/check-expected-urls.mjs` и `npm run check:urls:generated` сопоставляют URL-манифест с файлами output; в `SITE_MODE=v2` все 144 URL найдены в `public-v2/`.
-- [x] Добавлен скрипт проверки внутренних ссылок V2. `scripts/check-v2-internal-links.mjs` и `npm run check:links:v2` проверяют 145 HTML-страниц и 20 230 ссылок; 341 ресурс под `/docs/` учитывается как host-only, сохраняемый deploy-скриптом.
-- [x] Для всех изменяемых маршрутов подготовлена таблица redirect. `docs/baseline/2026-09-15/V2_REDIRECT_TABLE.md` фиксирует: все 144 baseline-маршрута сохранены, новых redirect не требуется; добавлен только новый `/third-party-notices/`.
-- [x] Сохранены trailing slash и правила для `index.html`; V2-сборка содержит 145 HTML-маршрутов, корневой `/`, отдельный `/404.html`, без `/index.html`; все каталожные `index.html` соответствуют URL с завершающим `/`. Проверка и границы результата: `docs/reports/V2_ROUTE_SHAPE_2026-09-24.md`.
-- [x] Проверены `/`, `/404.html`, разделы `/abiturientam/` и `/svedenija/`, список `/news/` и новость `/news/intellektualniy-tyutor-ai/`; все 144 URL baseline найдены в V2. Результаты: `docs/reports/V2_KEY_PAGES_2026-09-24.md`.
+- [~] Добавлен скрипт проверки, что каждый ожидаемый URL генерируется. `scripts/check-expected-urls.mjs` и `npm run check:urls:generated` сопоставляют URL-манифест с файлами output; после routing-миграции статически сопоставлены 71 затронутая каноническая страница, расхождений — 0, но повторная проверка итогового output ещё не запускалась.
+- [~] Добавлен скрипт проверки внутренних ссылок V2. `scripts/check-v2-internal-links.mjs` и `npm run check:links:v2` проверяют HTML-страницы и ссылки; предыдущий результат сохранён, но после routing-миграции повторный запуск по итоговому output ещё не выполнен.
+- [~] Для всех изменяемых маршрутов подготовлена таблица redirect. `docs/baseline/2026-09-15/V2_REDIRECT_TABLE.md` обновлена по двум routing-коммитам: legacy flat URL сохранены через redirect, а статическая карта 71 затронутой канонической страницы не имеет расхождений. Фактический результат после `npm run build:v2` и output-проверок ещё не подтверждён.
+- [~] Сохранены trailing slash и правила для `index.html`; прежний отчёт отражает состояние до routing-миграции, а повторная проверка формы итогового output ещё не выполнена.
+- [~] Проверены `/`, `/404.html`, разделы `/abiturientam/` и `/svedenija/`, список `/news/` и новость `/news/intellektualniy-tyutor-ai/`; статически сопоставлены 71 затронутая каноническая страница, расхождений — 0, но проверка итогового output после миграции ещё не выполнена.
 - [x] Проверены `/sitemap.xml` и `/robots.txt`; отчёт: `docs/reports/V2_SITEMAP_ROBOTS_2026-09-24.md`.
 - [x] Проверены canonical и Open Graph для VK: `og:title`, `og:description`, `og:url`, `og:type`, `og:image`, абсолютные HTTPS URL и корректное превью; отчёт: `docs/reports/V2_CANONICAL_OG_2026-09-24.md`.
 - [x] Проверены якоря и ссылки на документы с Unicode-именами; отчёт: `docs/reports/V2_ANCHORS_UNICODE_DOCS_2026-09-24.md`.
