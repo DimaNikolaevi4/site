@@ -33,18 +33,18 @@
    A11y: <footer role="contentinfo">, aria-label на лого, visually-hidden
    подписи на иконках соцсетей, aria-labelledby на блоке ресурсов,
    aria-hidden на декоре, loading="lazy" на иконках, target="_blank"
-   + rel="noopener" на внешних ссылках.
+   + rel="noopener noreferrer" на внешних ссылках.
    ════════════════════════════════════════════════════════════════════ #}
-<footer id="footer" class="site-footer" role="contentinfo">
-  <div class="footer-decoration" aria-hidden="true"></div>
+<footer id="footer" class="site-footer component-footer" data-component="footer" role="contentinfo">
+  <div class="site-footer__decoration footer-decoration" aria-hidden="true"></div>
 
-  <div class="container">
+  <div class="site-footer__container container">
 
     {# ============ ВЕРХНИЙ БЛОК ============ #}
-    <div class="footer-top">
+    <div class="site-footer__top footer-top">
 
       {# --- Бренд --- #}
-      <div class="footer-brand">
+      <div class="site-footer__brand footer-brand">
         <a href="/" class="footer-logo" aria-label="На главную">
           <img src="/assets/images/logo.png" alt="" class="footer-logo-mark" aria-hidden="true" width="48" height="48" loading="lazy" decoding="async">
           <div class="footer-logo-text">
@@ -61,13 +61,13 @@
 
         <div class="footer-social" aria-label="Социальные сети">
           {% if social.vk %}
-          <a href="{{ social.vk }}" target="_blank" rel="noopener" class="footer-social-link" aria-label="ВКонтакте">
+          <a href="{{ social.vk }}" target="_blank" rel="noopener noreferrer" class="footer-social-link" aria-label="ВКонтакте">
             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M21.579 6.855c.17-.565 0-.98-.802-.98h-2.652c-.67 0-.979.357-1.146.752 0 0-1.34 3.283-3.237 5.414-.614.618-.893.814-1.228.814-.17 0-.42-.196-.42-.76V6.854c0-.671-.19-.98-.76-.98H9.389c-.42 0-.67.315-.67.615 0 .644.96.793 1.06 2.605v3.935c0 .864-.155 1.021-.492 1.021-.893 0-3.066-3.303-4.355-7.083C4.68 6.37 4.428 5.875 3.754 5.875H1.102c-.76 0-.913.357-.913.752 0 .704.893 4.197 4.155 8.817 2.175 3.144 5.239 4.848 8.026 4.848 1.674 0 1.88-.38 1.88-1.035v-2.385c0-.76.16-.912.694-.912.393 0 1.067.198 2.641 1.727 1.798 1.81 2.094 2.62 3.102 2.62h2.652c.76 0 1.14-.38.92-1.134-.237-.744-1.092-1.82-2.226-3.101-.614-.73-1.535-1.517-1.814-1.91-.393-.508-.28-.733 0-1.185 0 0 3.21-4.55 3.546-6.095z"/></svg>
             <span class="visually-hidden">ВКонтакте</span>
           </a>
           {% endif %}
           {% if social.rutube %}
-          <a href="{{ social.rutube }}" target="_blank" rel="noopener" class="footer-social-link" aria-label="RuTube">
+          <a href="{{ social.rutube }}" target="_blank" rel="noopener noreferrer" class="footer-social-link" aria-label="RuTube">
             <i class="bi bi-play-circle-fill" aria-hidden="true"></i>
             <span class="visually-hidden">RuTube</span>
           </a>
@@ -88,7 +88,7 @@
       </div>
 
       {# --- Корпуса --- #}
-      <div class="footer-corps-wrap">
+      <div class="site-footer__corps footer-corps-wrap">
         {% for corp in contacts.corps %}
         <div class="footer-corp-card">
           <div class="footer-corp-header">
@@ -114,7 +114,7 @@
       </div>
 
       {# --- Колонка: разделы + контакты --- #}
-      <div class="footer-nav">
+      <div class="site-footer__navigation footer-nav">
         <div class="footer-nav-block">
           <h4 class="footer-heading">Навигация</h4>
           <ul class="footer-links">
@@ -150,7 +150,7 @@
             {% if contacts.eos_url %}
             <li>
               <i class="bi bi-laptop" aria-hidden="true"></i>
-              <a href="{{ contacts.eos_url }}" target="_blank" rel="noopener">ЭОС — обучение онлайн</a>
+              <a href="{{ contacts.eos_url }}" target="_blank" rel="noopener noreferrer">ЭОС — обучение онлайн</a>
             </li>
             {% endif %}
           </ul>
@@ -159,77 +159,77 @@
     </div>
 
     {# ============ ОФИЦИАЛЬНЫЕ РЕСУРСЫ ============ #}
-    <section class="footer-resources" aria-labelledby="footer-resources-title">
+    <section class="site-footer__resources footer-resources" aria-labelledby="footer-resources-title">
       <h4 id="footer-resources-title" class="footer-heading footer-resources-title">Официальные ресурсы</h4>
       <ul class="footer-resources-grid">
         <li>
-          <a href="http://government.ru/" target="_blank" rel="noopener" class="footer-resource" title="Правительство Российской Федерации" aria-label="Правительство Российской Федерации">
+          <a href="http://government.ru/" target="_blank" rel="noopener noreferrer" class="footer-resource" title="Правительство Российской Федерации" aria-label="Правительство Российской Федерации">
             <span class="footer-resource-icon"><img src="/images/ikonccilki/government.svg" alt="Пиктограмма здания правительства" title="Пиктограмма здания правительства" loading="lazy"></span>
             <span class="footer-resource-text">Официальный сайт<br>Правительства России</span>
           </a>
         </li>
         <li>
-          <a href="https://epp.genproc.gov.ru/" target="_blank" rel="noopener" class="footer-resource" title="Генеральная прокуратура Российской Федерации" aria-label="Генеральная прокуратура Российской Федерации">
+          <a href="https://epp.genproc.gov.ru/" target="_blank" rel="noopener noreferrer" class="footer-resource" title="Генеральная прокуратура Российской Федерации" aria-label="Генеральная прокуратура Российской Федерации">
             <span class="footer-resource-icon"><img src="/images/ikonccilki/prok-rf.webp" alt="Эмблема прокуратуры Российской Федерации" title="Эмблема прокуратуры Российской Федерации" loading="lazy"></span>
             <span class="footer-resource-text">Генеральная прокуратура<br>Российской Федерации</span>
           </a>
         </li>
         <li>
-          <a href="https://mintrud.gov.ru/" target="_blank" rel="noopener" class="footer-resource" title="Министерство труда и социальной защиты" aria-label="Министерство труда и социальной защиты">
+          <a href="https://mintrud.gov.ru/" target="_blank" rel="noopener noreferrer" class="footer-resource" title="Министерство труда и социальной защиты" aria-label="Министерство труда и социальной защиты">
             <span class="footer-resource-icon"><img src="/images/ikonccilki/min-tr.webp" alt="Логотип Министерства труда и социальной защиты Российской Федерации" title="Логотип Министерства труда и социальной защиты Российской Федерации" loading="lazy"></span>
             <span class="footer-resource-text">Министерство труда<br>и социальной защиты</span>
           </a>
         </li>
         <li>
-          <a href="https://obrnadzor.gov.ru/" target="_blank" rel="noopener" class="footer-resource" title="Рособрнадзор" aria-label="Рособрнадзор">
+          <a href="https://obrnadzor.gov.ru/" target="_blank" rel="noopener noreferrer" class="footer-resource" title="Рособрнадзор" aria-label="Рособрнадзор">
             <span class="footer-resource-icon"><img src="/images/ikonccilki/cropped-logo_rosobrnadzor-2.png" alt="Эмблема Рособрнадзора" title="Эмблема Рособрнадзора" loading="lazy"></span>
             <span class="footer-resource-text">Федеральная служба по надзору<br>в сфере образования и науки</span>
           </a>
         </li>
         <li>
-          <a href="https://www.kremlin.ru/" target="_blank" rel="noopener" class="footer-resource" title="Президент Российской Федерации" aria-label="Президент Российской Федерации">
+          <a href="https://www.kremlin.ru/" target="_blank" rel="noopener noreferrer" class="footer-resource" title="Президент Российской Федерации" aria-label="Президент Российской Федерации">
             <span class="footer-resource-icon"><img src="/images/ikonccilki/pr-rf.webp" alt="Государственный герб Российской Федерации" title="Государственный герб Российской Федерации" loading="lazy"></span>
             <span class="footer-resource-text">Сайт Президента<br>Российской Федерации</span>
           </a>
         </li>
         <li>
-          <a href="https://gosnadzor.ru/" target="_blank" rel="noopener" class="footer-resource" title="Ростехнадзор" aria-label="Ростехнадзор">
+          <a href="https://gosnadzor.ru/" target="_blank" rel="noopener noreferrer" class="footer-resource" title="Ростехнадзор" aria-label="Ростехнадзор">
             <span class="footer-resource-icon"><img src="/images/ikonccilki/rtn.webp" alt="Эмблема Ростехнадзора" title="Эмблема Ростехнадзора" loading="lazy"></span>
             <span class="footer-resource-text">Федеральная служба по экологическому,<br>технологическому и атомному надзору</span>
           </a>
         </li>
         <li>
-          <a href="https://edu.gov.ru/" target="_blank" rel="noopener" class="footer-resource" title="Министерство просвещения" aria-label="Министерство просвещения">
+          <a href="https://edu.gov.ru/" target="_blank" rel="noopener noreferrer" class="footer-resource" title="Министерство просвещения" aria-label="Министерство просвещения">
             <span class="footer-resource-icon"><img src="/images/ikonccilki/min-pr.webp" alt="Эмблема Министерства просвещения Российской Федерации" title="Эмблема Министерства просвещения Российской Федерации" loading="lazy"></span>
             <span class="footer-resource-text">Министерство просвещения<br>Российской Федерации</span>
           </a>
         </li>
         <li>
-          <a href="https://rostrud.gov.ru/" target="_blank" rel="noopener" class="footer-resource" title="Роструд" aria-label="Роструд">
+          <a href="https://rostrud.gov.ru/" target="_blank" rel="noopener noreferrer" class="footer-resource" title="Роструд" aria-label="Роструд">
             <span class="footer-resource-icon"><img src="/images/ikonccilki/rostrud.gov.svg" alt="Эмблема Роструда" title="Эмблема Роструда" loading="lazy"></span>
             <span class="footer-resource-text">Федеральная служба<br>по труду и занятости</span>
           </a>
         </li>
         <li>
-          <a href="https://www.mchs.gov.ru/" target="_blank" rel="noopener" class="footer-resource" title="МЧС России" aria-label="МЧС России">
+          <a href="https://www.mchs.gov.ru/" target="_blank" rel="noopener noreferrer" class="footer-resource" title="МЧС России" aria-label="МЧС России">
             <span class="footer-resource-icon"><img src="/images/ikonccilki/MCHS.webp" alt="Эмблема МЧС России" title="Эмблема МЧС России" loading="lazy"></span>
             <span class="footer-resource-text">Официальный сайт<br>МЧС России</span>
           </a>
         </li>
         <li>
-          <a href="https://www.minobrnauki.gov.ru/" target="_blank" rel="noopener" class="footer-resource" title="Минобрнауки России" aria-label="Минобрнауки России">
+          <a href="https://www.minobrnauki.gov.ru/" target="_blank" rel="noopener noreferrer" class="footer-resource" title="Минобрнауки России" aria-label="Минобрнауки России">
             <span class="footer-resource-icon"><img src="/images/ikonccilki/MNVO.webp" alt="Эмблема Минобрнауки России" title="Эмблема Минобрнауки России" loading="lazy"></span>
             <span class="footer-resource-text">Министерство науки<br>и высшего образования РФ</span>
           </a>
         </li>
         <li>
-          <a href="https://www.donland.ru/" target="_blank" rel="noopener" class="footer-resource" title="Правительство Ростовской области" aria-label="Правительство Ростовской области">
+          <a href="https://www.donland.ru/" target="_blank" rel="noopener noreferrer" class="footer-resource" title="Правительство Ростовской области" aria-label="Правительство Ростовской области">
             <span class="footer-resource-icon"><img src="/images/ikonccilki/don-logo.svg" alt="Герб Ростовской области" title="Герб Ростовской области" loading="lazy"></span>
             <span class="footer-resource-text">Официальный портал<br>Правительства Ростовской области</span>
           </a>
         </li>
         <li>
-          <a href="https://minobr.donland.ru/" target="_blank" rel="noopener" class="footer-resource" title="Министерство образования Ростовской области" aria-label="Министерство образования Ростовской области">
+          <a href="https://minobr.donland.ru/" target="_blank" rel="noopener noreferrer" class="footer-resource" title="Министерство образования Ростовской области" aria-label="Министерство образования Ростовской области">
             <span class="footer-resource-icon"><img src="/images/ikonccilki/%D0%BB%D0%BE%D0%B3%D0%BE_%D0%BC%D0%B8%D0%BD_%D1%80%D0%BE%D1%81%D1%82.png" alt="Герб Ростовской области" title="Герб Ростовской области" loading="lazy"></span>
             <span class="footer-resource-text">Министерство общего и профессионального<br>образования Ростовской области</span>
           </a>
@@ -239,7 +239,7 @@
 
     {# ============ ЛИЦЕНЗИИ ============ #}
     {% if site.license or site.accreditation %}
-    <div class="footer-legal">
+    <div class="site-footer__legal footer-legal">
       {% if site.license %}<span class="footer-legal-item"><strong>Лицензия:</strong> {{ site.license }}</span>{% endif %}
       {% if site.accreditation %}<span class="footer-legal-item"><strong>Аккредитация:</strong> {{ site.accreditation }}</span>{% endif %}
     </div>
@@ -248,13 +248,13 @@
     <hr class="brand-divider brand-divider--light brand-divider--wide" aria-hidden="true">
 
     {# ============ НИЖНИЙ БЛОК ============ #}
-    <div class="footer-bottom">
+    <div class="site-footer__bottom footer-bottom">
       <p class="footer-copyright">
         © {{ site.copyright or "2026" }} {{ site.full_name or site.name }}.<br>
         Все права защищены.
       </p>
       <p class="footer-authorship">
-        Авторская учебная копия <a href="https://sit-salsk.ru/" target="_blank" rel="noopener">официального сайта</a>. Создано студентами ГБПОУ РО «СИТ» под руководством <a href="https://бардаков.рф/" target="_blank" rel="noopener">Бардакова Д. Н.</a>
+        Авторская учебная копия <a href="https://sit-salsk.ru/" target="_blank" rel="noopener noreferrer">официального сайта</a>. Создано студентами ГБПОУ РО «СИТ» под руководством <a href="https://бардаков.рф/" target="_blank" rel="noopener noreferrer">Бардакова Д. Н.</a>
       </p>
       <p class="footer-open-source">
         При создании сайта использовались <a href="/third-party-notices/">библиотеки</a> с открытым исходным кодом.
