@@ -1,54 +1,62 @@
-<header id="header" class="header d-flex align-items-center sticky-top">
-  <div class="container-fluid container-xl position-relative d-flex align-items-center">
-
-    {# Логотип — всегда виден #}
-    <a href="/" class="logo d-flex align-items-center flex-shrink-0" title="Главная страница ГБПОУ РО «СИТ»">
-      <img src="/assets/images/logo.png" alt="ГБПОУ РО «Сальский индустриальный техникум»" title="ГБПОУ РО «Сальский индустриальный техникум»" class="header-logo-img" width="64" height="64" loading="eager" fetchpriority="high" decoding="async">
+<header id="header" class="site-header header sticky-top" data-site-header>
+  <div class="site-header__inner container-fluid container-xl">
+    <a class="site-header__brand logo" href="/" title="Главная страница ГБПОУ РО «СИТ»">
+      <img
+        class="site-header__logo header-logo-img"
+        src="/assets/images/logo.png"
+        alt="ГБПОУ РО «Сальский индустриальный техникум»"
+        width="64"
+        height="64"
+        loading="eager"
+        fetchpriority="high"
+        decoding="async">
     </a>
 
-    {# Центральная навигация — от lg (992px), по центру между лого и иконками #}
-    {# Порядок скрытия (сужение экрана): Контакты → ЭОС → Абитуриентам → Сведения (последним) #}
-    <nav class="main-nav d-none d-lg-flex mx-auto" role="navigation" aria-label="Основная навигация">
-      <ul class="d-flex list-unstyled align-items-center m-0 p-0">
-        <li>
-          <a href="/svedenija/"
-             class="main-nav__link{% if page.url | startsWith('/svedenija/') %} active{% endif %}"
-             {% if page.url | startsWith('/svedenija/') %}aria-current="page"{% endif %}
-             title="Официальные сведения об образовательной организации">
+    <nav class="site-header__navigation main-nav d-none d-lg-flex" aria-label="Основная навигация">
+      <ul class="site-header__links">
+        <li class="site-header__item">
+          <a
+            class="site-header__link main-nav__link{% if page.url | startsWith('/svedenija/') %} active{% endif %}"
+            href="/svedenija/"
+            title="Официальные сведения об образовательной организации"
+            {% if page.url | startsWith('/svedenija/') %}aria-current="page"{% endif %}>
             <span class="main-nav__icon" aria-hidden="true">📋</span>
             <span>Сведения об образовательной организации</span>
           </a>
         </li>
-        <li class="d-none d-xl-flex">
-          <a href="/abiturientam/"
-             class="main-nav__link{% if page.url | startsWith('/abiturientam/') %} active{% endif %}"
-             {% if page.url | startsWith('/abiturientam/') %}aria-current="page"{% endif %}
-             title="Информация для абитуриентов">
+        <li class="site-header__item d-none d-xl-flex">
+          <a
+            class="site-header__link main-nav__link{% if page.url | startsWith('/abiturientam/') %} active{% endif %}"
+            href="/abiturientam/"
+            title="Информация для абитуриентов"
+            {% if page.url | startsWith('/abiturientam/') %}aria-current="page"{% endif %}>
             <span class="main-nav__icon" aria-hidden="true">🎓</span>
             <span>Абитуриентам</span>
           </a>
         </li>
-        <li class="d-none d-xl-flex">
-          <a href="https://эос.сит-сальск.рф" target="_blank" rel="noopener"
-             class="main-nav__link"
-             title="Электронная образовательная система ГБПОУ РО «СИТ»">
+        <li class="site-header__item d-none d-xl-flex">
+          <a
+            class="site-header__link main-nav__link"
+            href="https://эос.сит-сальск.рф"
+            target="_blank"
+            rel="noopener noreferrer"
+            title="Электронная образовательная система ГБПОУ РО «СИТ»">
             <span class="main-nav__icon" aria-hidden="true">💻</span>
             <span>ЭОС</span>
           </a>
         </li>
-        <li class="d-none d-xxl-flex">
-          <a href="#footer"
-             class="main-nav__link"
-             title="Контактная информация">
+        <li class="site-header__item d-none d-xxl-flex">
+          <a class="site-header__link main-nav__link" href="#footer" title="Контактная информация">
             <i class="bi bi-buildings main-nav__icon" aria-hidden="true"></i>
             <span>Контакты</span>
           </a>
         </li>
-        <li class="d-none d-xxl-flex">
-          <a href="{{ contacts.phone_link }}"
-             class="main-nav__link"
-             title="Позвонить: {{ contacts.phone_formatted }}"
-             aria-label="Позвонить: {{ contacts.phone_formatted }}">
+        <li class="site-header__item d-none d-xxl-flex">
+          <a
+            class="site-header__link main-nav__link"
+            href="{{ contacts.phone_link }}"
+            title="Позвонить: {{ contacts.phone_formatted }}"
+            aria-label="Позвонить: {{ contacts.phone_formatted }}">
             <i class="bi bi-telephone-fill main-nav__icon" aria-hidden="true"></i>
             <span>{{ contacts.phone_formatted }}</span>
           </a>
@@ -56,60 +64,60 @@
       </ul>
     </nav>
 
-    {# Иконки действий — от lg (992px) #}
-    <div class="header-icons d-none d-lg-flex align-items-center gap-1 flex-shrink-0">
-      <a href="{{ social.vk }}" target="_blank" rel="noopener"
-         class="header-icon-btn" title="Официальная группа ВКонтакте" aria-label="ВКонтакте">
+    <div class="site-header__actions header-icons d-none d-lg-flex" aria-label="Быстрые действия">
+      <a
+        class="header-icon-btn"
+        href="{{ social.vk }}"
+        target="_blank"
+        rel="noopener noreferrer"
+        title="Официальная группа ВКонтакте"
+        aria-label="ВКонтакте">
         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-          <path d="M21.579 6.855c.17-.565 0-.98-.802-.98h-2.652c-.67 0-.979.357-1.146.752 0 0-1.34 3.283-3.237 5.414-.614.618-.893.814-1.228.814-.17 0-.42-.196-.42-.76V6.854c0-.671-.19-.98-.76-.98H9.389c-.42 0-.67.315-.67.615 0 .644.96.793 1.06 2.605v3.935c0 .864-.155 1.021-.492 1.021-.893 0-3.066-3.303-4.355-7.083C4.68 6.37 4.428 5.875 3.754 5.875H1.102c-.76 0-.913.357-.913.752 0 .704.893 4.197 4.155 8.817 2.175 3.144 5.239 4.848 8.026 4.848 1.674 0 1.88-.38 1.88-1.035v-2.385c0-.76.16-.912.694-.912.393 0 1.067.198 2.641 1.727 1.798 1.81 2.094 2.62 3.102 2.62h2.652c.76 0 1.14-.38.92-1.134-.237-.744-1.092-1.82-2.226-3.101-.614-.73-1.535-1.517-1.814-1.91-.393-.508-.28-.733 0-1.185 0 0 3.21-4.55 3.546-6.095z"/>
+          <path d="M21.579 6.855c.17-.565 0-.98-.802-.98h-2.652c-.67 0-.979.357-1.146.752 0 0-1.34 3.283-3.237 5.414-.614.618-.893.814-1.228.814-.17 0-.42-.196-.42-.76V6.854c0-.671-.19-.98-.76-.98H9.389c-.42 0-.67.315-.67.615 0 .644.96.793 1.06 2.605v3.935c0 .864-.155 1.021-.492 1.021-.893 0-3.066-3.303-4.355-7.083C4.68 6.37 4.428 5.875 3.754 5.875H1.102c-.76 0-.913.357-.913.752 0 .704.893 4.197 4.155 8.817 2.175 3.144 5.239 4.848 8.026 4.848 1.674 0 1.88-.38 1.88-1.035v-2.385c0-.76.16-.912.694-.912.393 0 1.067.198 2.641 1.727 1.798 1.81 2.094 2.62 3.102 2.62h2.652c.76 0 1.14-.38.92-1.134-.237-.744-1.092-1.82-2.226-3.101-.614-.73-1.535-1.517-1.814-1.91-.393-.508 0-.733 0-1.185 0 0 3.21-4.55 3.546-6.095z"/>
         </svg>
       </a>
-      <a href="mailto:{{ contacts.email }}"
-         class="header-icon-btn" title="Написать на почту: {{ contacts.email }}" aria-label="Электронная почта">
+      <a
+        class="header-icon-btn"
+        href="mailto:{{ contacts.email }}"
+        title="Написать на почту: {{ contacts.email }}"
+        aria-label="Электронная почта">
         <i class="bi bi-envelope-fill" aria-hidden="true"></i>
       </a>
-      <button class="header-icon-btn" id="headerSearchToggle"
-              type="button"
-              title="Поиск по сайту" aria-label="Поиск" aria-expanded="false" aria-controls="searchModal">
+      <button class="header-icon-btn" id="headerSearchToggle" type="button" title="Поиск по сайту" aria-label="Поиск" aria-expanded="false" aria-controls="searchModal">
         <i class="bi bi-search" aria-hidden="true"></i>
       </button>
-      <div class="a11y-wrap">
-        <button class="header-icon-btn" id="a11yToggle"
-                type="button"
-                title="Версия для слабовидящих"
-                aria-label="Версия для слабовидящих"
-                aria-expanded="false"
-                aria-controls="a11yPanel">
-          <i class="bi bi-eye" aria-hidden="true"></i>
-        </button>
-      </div>
-      <button class="header-icon-btn" id="darkThemeToggle"
-              onclick="toggleDarkTheme(); return false;"
-              title="Тёмная тема" aria-label="Тёмная / светлая тема">
+      <button class="header-icon-btn" id="a11yToggle" type="button" title="Версия для слабовидящих" aria-label="Версия для слабовидящих" aria-expanded="false" aria-controls="a11yPanel">
+        <i class="bi bi-eye" aria-hidden="true"></i>
+      </button>
+      <button class="header-icon-btn" id="darkThemeToggle" type="button" onclick="toggleDarkTheme(); return false;" title="Тёмная тема" aria-label="Тёмная / светлая тема">
         <i class="bi bi-moon-stars" aria-hidden="true"></i>
       </button>
-      <button class="header-icon-btn"
-              data-bs-toggle="offcanvas" data-bs-target="#offcanvasRubrics"
-              aria-controls="offcanvasRubrics"
-              title="Все разделы сайта" aria-label="Все разделы">
+      <button
+        class="header-icon-btn"
+        type="button"
+        data-bs-toggle="offcanvas"
+        data-bs-target="#offcanvasRubrics"
+        aria-controls="offcanvasRubrics"
+        title="Все разделы сайта"
+        aria-label="Все разделы">
         <svg width="20" height="16" viewBox="0 0 20 16" fill="currentColor" aria-hidden="true">
-          <rect x="3" y="0"  width="14" height="2" rx="1"/>
-          <rect x="0" y="7"  width="20" height="2" rx="1"/>
+          <rect x="3" y="0" width="14" height="2" rx="1"/>
+          <rect x="0" y="7" width="20" height="2" rx="1"/>
           <rect x="3" y="14" width="14" height="2" rx="1"/>
         </svg>
       </button>
     </div>
 
-    {# Кнопка-гамбургер — мобильные и малые планшеты (< lg = < 992px) #}
-    <button class="header-icon-btn d-flex d-lg-none ms-auto offcanvas-toggle-btn"
-            type="button"
-            data-bs-toggle="offcanvas" data-bs-target="#offcanvasRubrics"
-            aria-controls="offcanvasRubrics"
-            aria-label="Открыть меню"
-            title="Меню">
+    <button
+      class="site-header__mobile-toggle header-icon-btn d-flex d-lg-none ms-auto offcanvas-toggle-btn"
+      type="button"
+      data-bs-toggle="offcanvas"
+      data-bs-target="#offcanvasRubrics"
+      aria-controls="offcanvasRubrics"
+      aria-label="Открыть меню"
+      title="Меню">
       <i class="bi bi-list fs-4" aria-hidden="true"></i>
     </button>
-
   </div>
 </header>
 
