@@ -61,7 +61,7 @@ main_rubrics:
         slug: education
       - code: "2.5"
         title: "Руководство. Педагогический (научно-педагогический) состав"
-        slug: employees
+        slug: rukovodstvo
         children:
           - code: "2.5.1"
             title: "Педагогический состав"
