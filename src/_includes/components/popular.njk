@@ -47,20 +47,20 @@
   alt: "Расписание занятий — скоро"
 } %}
 
-<section id="popular" class="section component-popular" aria-label="Популярное">
-  <div class="container section-title" data-aos="fade-up">
+<section id="popular" class="site-popular section component-popular" data-component="popular" aria-label="Популярное">
+  <div class="site-popular__heading container section-title" data-aos="fade-up">
     <h2>Популярное</h2>
     <p>Важное</p>
   </div>
 
   <div class="container">
-    <div class="content-col">
+    <div class="site-popular__content content-col">
       <div class="row">
         {% for _c in _popularItems %}
           {% if page.url | startsWith(_c.url) %}
           {# Карточка текущего раздела заменена на placeholder «Расписание» #}
           <div class="col-md-6 col-xl-4 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="{{ loop.index * 100 }}">
-            <div class="course-item popular-card--placeholder">
+            <div class="site-popular__card course-item popular-card--placeholder">
               <img src="{{ _popularPlaceholder.image }}" class="img-fluid" alt="{{ _popularPlaceholder.alt }}" title="{{ _popularPlaceholder.alt }}" loading="lazy">
               <div class="course-content">
                 <h3>{{ _popularPlaceholder.title }}</h3>
@@ -73,7 +73,7 @@
           </div>
           {% else %}
           <div class="col-md-6 col-xl-4 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="{{ loop.index * 100 }}">
-            <div class="course-item">
+            <div class="site-popular__card course-item">
               <img src="{{ _c.image }}" class="img-fluid{{ ' ' + _c.imgClass if _c.imgClass }}" alt="{{ _c.alt }}" title="{{ _c.alt }}" loading="lazy">
               <div class="course-content">
                 <h3><a href="{{ _c.url }}">{{ _c.title }}</a></h3>
