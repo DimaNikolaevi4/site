@@ -13,25 +13,25 @@
 
 - [x] Предыдущий полный SITE_V2_CHECKLIST.md завершён и перенесён в историю.
 - [x] Внешняя сборка V2 выполнена владельцем проекта и подтверждена как рабочая.
-- [ ] Результаты нового этапа подтверждены чистой установкой через npm ci.
+- [x] Результаты нового этапа подтверждены чистой установкой через npm ci в зелёном CI.
 
 ## 1. Front matter lint по типам страниц
 
-- [ ] Зафиксированы типы материалов и их обязательные поля: новости, разделы, статические страницы, категории и документы.
-- [ ] Создан scripts/check-frontmatter.mjs с проверкой YAML/front matter, обязательных полей, типов значений и дубликатов permalink.
-- [ ] Линтер учитывает допустимые исключения по типам страниц и не требует одинаковую схему от всех Markdown-файлов.
-- [ ] Добавлена команда npm run check:frontmatter.
-- [ ] Линтер выполнен на всём src/content/; исключения и причины записаны.
-- [ ] Линтер включён в GitHub Actions.
+- [x] Зафиксированы типы материалов и их обязательные поля: новости, разделы, статические страницы, категории и документы.
+- [x] Создан scripts/check-frontmatter.mjs с проверкой YAML/front matter, обязательных полей, типов значений и дубликатов permalink.
+- [x] Линтер учитывает допустимые исключения по типам страниц и не требует одинаковую схему от всех Markdown-файлов.
+- [x] Добавлена команда npm run check:frontmatter.
+- [x] Линтер выполнен на всём src/content/; исключения и причины записаны.
+- [x] Линтер включён в GitHub Actions.
 
 ## 2. GitHub Actions: build → checks
 
-- [ ] Создан .github/workflows/site-v2.yml.
-- [ ] Workflow запускается на pull request и push в site-v2.
-- [ ] Порядок шагов: checkout → setup Node → npm ci → npm run build:v2 → проверки сгенерированного output.
-- [ ] В workflow включены check:frontmatter, check:v2:source-boundary, check:urls:unique, check:links:v2 и проверка формы маршрутов.
-- [ ] Первый запуск GitHub Actions завершился успешно.
-- [ ] Порядок и команды CI зафиксированы в этом чек-листе.
+- [x] Создан .github/workflows/site-v2.yml.
+- [x] Workflow запускается на pull request и push в site-v2.
+- [x] Порядок шагов: checkout → setup Node → npm ci → npm run build:v2 → проверки сгенерированного output.
+- [x] В workflow включены check:frontmatter, check:v2:source-boundary, check:urls:unique, check:urls:generated:v2, check:links:v2 и проверка формы маршрутов.
+- [x] Первый запуск GitHub Actions завершился успешно: [run 36568819903](https://github.com/DimaNikolaevi4/site/actions/runs/36568819903).
+- [x] Порядок и команды CI зафиксированы в этом чек-листе; используется Node.js 18.
 
 ## 3. Очистка attached_assets/Pasted--*.txt
 
