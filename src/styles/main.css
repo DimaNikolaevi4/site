@@ -283,6 +283,39 @@ section,
   margin-left: 5px;
 }
 
+/* Homepage news cards: keep the three-card row independent from Bootstrap load order. */
+.site-news__content > .row {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.5rem;
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.site-news__content > .row > [class*="col-"] {
+  width: 100%;
+  max-width: none;
+  flex: none;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.site-news__content > .row > .col-12 {
+  grid-column: 1 / -1;
+}
+
+@media (max-width: 1199px) {
+  .site-news__content > .row {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 767px) {
+  .site-news__content > .row {
+    grid-template-columns: 1fr;
+  }
+}
+
 /* News, popular and related cards share this V2 contract. */
 .course-item {
   width: 100%;
