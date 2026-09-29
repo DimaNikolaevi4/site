@@ -1,0 +1,8 @@
+[build]
+  command = "npm run build:v2"
+  publish = "public-v2"
+
+[build.environment]
+  NODE_VERSION = "20"
+  NPM_CONFIG_REGISTRY = "https://registry.npmjs.org/"
+  NPM_FLAGS = "--no-audit --no-fund"
