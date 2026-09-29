@@ -13,7 +13,7 @@
 |---|---|
 | **Репозиторий** | DimaNikolaevi4/site |
 | **Рабочая ветка** | site-v2 |
-| **Статус** | Подготовлено, выполнение не начинать до 30 сентября 2026 года |
+| **Статус** | В работе с 29 сентября 2026 года по запросу владельца |
 | **Подтверждено владельцем** | Внешняя сборка V2 выполнена и работает |
 | **Не подтверждено** | Чистая установка через `npm ci`, повторная сборка, зелёный GitHub Actions |
 
@@ -48,55 +48,70 @@
 
 ## 2. Нулевая точка: чистая установка
 
-Сначала получить базовый результат **до изменений**. Это позволит отличить старые проблемы от новых.
+Базовый прогон выполнен до реализации lint. Все проверки запускаются на результате сборки V2 в public-v2.
 
-- ⬜ Выполнить чистый checkout ветки `site-v2`
-- ⬜ Выполнить `npm ci` без ручного изменения lock-файла
-- ⬜ Выполнить `npm run build:v2`
-- ⬜ Запустить уже существующие проверки и записать результат:
-  - ⬜ `npm run check:v2:source-boundary`
-  - ⬜ `npm run check:urls:unique`
-  - ⬜ `npm run check:urls:generated`
-  - ⬜ `npm run check:links:v2`
-  - ⬜ `npm run check:route-shape:v2`
-- ⬜ Отдельно записать исходные ошибки, если базовый прогон не полностью зелёный
+- ✅ Выполнить чистый checkout ветки `site-v2`
+- ✅ Выполнить `npm ci` без ручного изменения lock-файла
+- ✅ Выполнить `npm run build:v2`
+- ✅ Запустить уже существующие проверки и записать результат:
+  - ✅ `npm run check:v2:source-boundary`
+  - ✅ `npm run check:urls:unique`
+  - ✅ `npm run check:urls:generated:v2`
+  - ✅ `npm run check:links:v2`
+  - ✅ `npm run check:route-shape:v2`
+- ✅ Исходные результаты и обнаруженный блокер записаны ниже
 
-**Критерий выхода:** есть воспроизводимый baseline, а дальнейшие исправления не маскируют проблемы, существовавшие до начала этапа.
+### Результат baseline — 29 сентября 2026
+
+| Проверка | Результат | Примечание |
+|---|---|---|
+| `npm ci` | ✅ | Установлено 194 пакета; npm сообщил о 5 уязвимостях (1 moderate, 4 high). Зависимости в рамках этого этапа не обновлялись. |
+| `npm run build:v2` | ✅ | Сборка завершена; создано 150 HTML-файлов в `public-v2`. |
+| source boundary | ✅ | V2 использует источники из `src` и `node_modules`. |
+| unique URLs | ✅ | Найдено 144 уникальных URL в исходном baseline manifest. |
+| generated URLs | ✅ | Создан актуальный `docs/baseline/2026-09-29/URL_MANIFEST_V2.tsv`; проверены все 150 URL. |
+| internal links | ✅ | Проверены 150 страниц и 19 544 ссылки. |
+| route shape | ✅ | 150 HTML-файлов, 150 уникальных URL, корректные каталожные URL. |
+
+Старый manifest от 15 сентября содержал пять URL, которых больше нет в текущем контенте V2. Исторический файл не изменялся; для V2 создан отдельный актуальный baseline.
+
+**Критерий выхода:** ✅ есть воспроизводимый зелёный baseline, а дальнейшие исправления не маскируют проблемы, существовавшие до начала этапа.
 
 ---
 
 ## 3. Front matter lint по типам страниц
 
-Линтер должен проверять **не одну общую схему** для всех Markdown-файлов, а **тип материала**. Минимум нужно различать новости, разделы, статические страницы, категории и документы; допустимые исключения должны быть названы явно.
+Линтер проверяет не одну общую схему для всех Markdown-файлов, а тип материала. Допустимые исключения отражены в таблице и в правилах скрипта.
 
 ### 3.1. Подготовка схемы
 
-- ⬜ Составить таблицу типов материалов и обязательных полей
-- ⬜ Зафиксировать допустимые типы значений, необязательные поля и исключения с объяснением
-
-**Таблица типов материалов (заполнить):**
+- ✅ Составить таблицу типов материалов и обязательных полей
+- ✅ Зафиксировать допустимые типы значений, необязательные поля и исключения с объяснением
 
 | Тип материала | Обязательные поля | Типы значений | Необязательные поля | Исключения |
 |---|---|---|---|---|
-| Новость | | | | |
-| Раздел | | | | |
-| Статическая страница | | | | |
-| Категория | | | | |
-| Документ | | | | |
+| Новость | title, layout, permalink, date | строки; date — дата; permalink — `/.../` | description, category, tags, image, excerpt, source_url | description и rubric не обязательны для текущих новостей |
+| Раздел | title, layout, permalink | строки; permalink — `/.../` | description, rubric, section, sectionTitle, tags, navigation | часть исторических разделов лежит в `pages/` и проверяется как static |
+| Статическая страница | title, layout, permalink | строки; permalink — `/.../` | description, rubric, tags, breadcrumbs, navigation, showHero | служебные redirect-файлы имеют `layout: false` |
+| Категория | title, layout, permalink | строки; permalink — `/.../` | category, rubric, description | alias `categories/abiturientam.md` имеет `permalink: false` и исключён из коллекций |
+| Документ | title, layout, permalink | строки; permalink — `/.../` | date, description, breadcrumbs, parentSection, showHero, additionalBlocks | схема документа не требует rubric или tags |
+| Материал | title, layout, permalink | строки; permalink — `/.../` | date, description, category, rubric, tags, image, attachments | старые материалы могут не иметь description/tags/date |
+| Redirect / исключение | title, permalink, специальный layout или permalink | `layout: false` либо `permalink: false`; `eleventyExcludeFromCollections: true` | — | 11 redirect-файлов и 1 исторический alias проверяются отдельными правилами |
 
 ### 3.2. Реализация линтера
 
-- ⬜ Создать `scripts/check-frontmatter.mjs`
-- ⬜ Проверять YAML/front matter, обязательные поля, типы значений и дубликаты `permalink`
-- ⬜ Сделать ошибку линтера ненулевым кодом завершения
-- ⬜ Добавить в `package.json` команду `npm run check:frontmatter`
+- ✅ Создать `scripts/check-frontmatter.mjs`
+- ✅ Проверять YAML/front matter, обязательные поля, типы значений и дубликаты `permalink`
+- ✅ Сделать ошибку линтера ненулевым кодом завершения
+- ✅ Добавить в `package.json` команду `npm run check:frontmatter`
 
 ### 3.3. Проверка на контенте
 
-- ⬜ Запустить линтер на всём `src/content/`
-- ⬜ Для каждого исключения записать файл, причину и правило, по которому он разрешён
+- ✅ Запустить линтер на всём `src/content/` — проверен 121 Markdown-файл
+- ✅ Зафиксировать исключения: 11 redirect-файлов с `layout: false` и 1 alias с `permalink: false`; остальные необязательные поля разрешены схемой типа
+- ✅ Проверить отрицательный сценарий: намеренно некорректный `permalink` дал ненулевой код завершения
 
-**Критерий выхода:** линтер проходит на текущем контенте, не требует одинаковую схему для разных типов страниц и обнаруживает намеренно добавленную ошибку.
+**Критерий выхода:** ✅ линтер проходит на текущем контенте, не требует одинаковую схему для разных типов страниц и обнаруживает намеренно добавленную ошибку.
 
 ---
 
@@ -117,7 +132,7 @@ checkout → setup Node → npm ci → npm run build:v2 → checks
   - ⬜ `npm run check:frontmatter`
   - ⬜ `npm run check:v2:source-boundary`
   - ⬜ `npm run check:urls:unique`
-  - ⬜ `npm run check:urls:generated`
+  - ⬜ `npm run check:urls:generated:v2`
   - ⬜ `npm run check:links:v2`
   - ⬜ `npm run check:route-shape:v2`
 - ⬜ Выполнить первый запуск workflow
@@ -160,7 +175,7 @@ checkout → setup Node → npm ci → npm run build:v2 → checks
 - ⬜ `npm run check:frontmatter` проходит
 - ⬜ `npm run check:v2:source-boundary` проходит
 - ⬜ `npm run check:urls:unique` проходит
-- ⬜ `npm run check:urls:generated` проходит
+- ⬜ `npm run check:urls:generated:v2` проходит
 - ⬜ `npm run check:links:v2` проходит
 - ⬜ `npm run check:route-shape:v2` проходит
 - ⬜ GitHub Actions зелёный на pull request
