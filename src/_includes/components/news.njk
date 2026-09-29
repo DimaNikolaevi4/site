@@ -55,7 +55,7 @@
           <div class="col-md-6 col-xl-4 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="{{ loop.index * 100 }}">
             <article class="site-news__card course-item">
               <img
-                src="{{ post.data.image }}"
+                src="{{ post.data.image | assetUrl }}"
                 class="img-fluid"
                 alt="{{ post.data.title }}" title="{{ post.data.title }}"
                 loading="lazy"

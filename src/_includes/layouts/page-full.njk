@@ -89,7 +89,7 @@
                 {% if item.data.image %}
                 <div class="card-image">
                   <a href="{{ item.url }}">
-                    <img src="{{ item.data.image }}"
+                    <img src="{{ item.data.image | assetUrl }}"
                          alt="{{ item.data.imageAlt or item.data.title }}" title="{{ item.data.imageAlt or item.data.title }}"
                          loading="lazy" itemprop="image">
                   </a>
@@ -158,7 +158,7 @@
             <ul class="attachments-list">
               {% for attachment in attachments %}
               <li class="attachment-item">
-                <a href="{{ attachment.url }}" class="attachment-link" download>
+                <a href="{{ attachment.url | assetUrl }}" class="attachment-link" download>
                   {% set _ext = attachment.url | lower %}
                   {% if '.pdf' in _ext %}
                     <i class="bi bi-file-earmark-pdf attachment-icon attachment-icon--pdf"></i>
@@ -248,7 +248,7 @@
           {% if item.image %}
           <div class="related-card__img">
             <a href="{{ item.url }}">
-              <img src="{{ item.image }}" alt="{{ item.title }}" title="{{ item.title }}" loading="lazy">
+              <img src="{{ item.image | assetUrl }}" alt="{{ item.title }}" title="{{ item.title }}" loading="lazy">
             </a>
           </div>
           {% endif %}

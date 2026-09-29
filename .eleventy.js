@@ -14,6 +14,40 @@ if (!Object.prototype.hasOwnProperty.call(BUILD_MODES, buildMode)) {
   throw new Error(`Неизвестный SITE_MODE "${buildMode}". Допустимые значения: current, v2.`);
 }
 const outputDirectory = BUILD_MODES[buildMode].output;
+// Все локальные изображения и документы тестовых сборок загружаются с основного домена.
+const PRIMARY_ASSET_ORIGIN = 'https://сит-сальск.рф/';
+const MEDIA_FILE_PATTERN = /\.(?:avif|bmp|gif|jpe?g|png|svg|webp|pdf|docx?|xlsx?|pptx?|zip|rar|7z|odt|ods|rtf|csv)(?:[?#].*)?$/i;
+
+function toPrimaryMediaUrl(value) {
+  if (value === null || value === undefined) return '';
+  if (typeof value !== 'string') return value;
+  const trimmed = value.trim();
+  if (!trimmed || /^(?:[a-z][a-z\d+.-]*:|\/\/|#)/i.test(trimmed)) return value;
+  if (!trimmed.startsWith('/')) return value;
+  return PRIMARY_ASSET_ORIGIN + trimmed.replace(/^\/+/, '');
+}
+
+function isMediaUrl(value) {
+  const pathPart = String(value || '').split(/[?#]/, 1)[0];
+  return /^\/(?:assets\/(?:images|uploads|favicons)\/|images\/|docs\/)/i.test(pathPart)
+    || MEDIA_FILE_PATTERN.test(pathPart);
+}
+
+function rewriteMediaAttributes(content) {
+  return content.replace(/\b(src|srcset|poster|href)\s*=\s*(["'])(.*?)\2/gi, (full, name, quote, value) => {
+    const attrName = name.toLowerCase();
+    const rewritten = attrName === 'srcset'
+      ? value.split(',').map(candidate => {
+          const match = candidate.match(/^(\s*)(\S+)([\s\S]*)$/);
+          if (!match || !isMediaUrl(match[2])) return candidate;
+          return match[1] + toPrimaryMediaUrl(match[2]) + match[3];
+        }).join(',')
+      : isMediaUrl(value) ? toPrimaryMediaUrl(value) : value;
+    if (rewritten === value) return full;
+    return name + '=' + quote + rewritten + quote;
+  });
+}
+
 
 // Загрузка структуры рубрик
 function loadRubrics() {
@@ -81,6 +115,9 @@ module.exports = function(eleventyConfig) {
     if (typeof str !== 'string') return false;
     return str.startsWith(prefix);
   });
+
+  // Нормализует локальные media-ссылки на основной рабочий домен.
+  eleventyConfig.addFilter('assetUrl', toPrimaryMediaUrl);
 
   // === Фильтры для работы с рубриками ===
   eleventyConfig.addFilter('getParentRubric', function(currentSlug) {
@@ -723,6 +760,14 @@ module.exports = function(eleventyConfig) {
       if (!modified) return fullMatch;
       return `<a${attrs}>${innerHtml}</a>`;
     });
+  });
+
+  // === Абсолютные URL для изображений и документов ===
+  // Это покрывает и шаблоны, и HTML, пришедший из Markdown/front matter.
+  eleventyConfig.addTransform('absoluteMediaUrls', function (content) {
+    const outputPath = this.page && this.page.outputPath;
+    if (!outputPath || !outputPath.endsWith('.html')) return content;
+    return rewriteMediaAttributes(content);
   });
 
   // === Минификация HTML (только в режиме build, не в dev/serve) ===

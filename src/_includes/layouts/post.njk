@@ -86,7 +86,7 @@
         {# Обложка внутри контентной зоны (если нет Hero) #}
         {% if coverImage and showHero == false %}
         <figure class="post-cover">
-          <img src="{{ coverImage }}"
+          <img src="{{ coverImage | assetUrl }}"
                alt="{{ coverAlt or title }}" title="{{ coverAlt or title }}"
                loading="eager"
                class="post-cover__img img-fluid rounded"
@@ -108,7 +108,7 @@
           <ul class="attachments-list" role="list">
             {% for attachment in attachments %}
             <li class="attachment-item" role="listitem">
-              <a href="{{ attachment.url }}"
+              <a href="{{ attachment.url | assetUrl }}"
                  class="attachment-link"
                  download
                  {% if attachment.size %}title="Скачать ({{ attachment.size }})"{% endif %}>
