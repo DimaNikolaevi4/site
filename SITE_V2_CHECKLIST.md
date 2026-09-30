@@ -59,5 +59,5 @@
 - [x] check:urls:unique проходит — 144 URL.
 - [x] check:links:v2 проходит — 150 страниц, 19 544 ссылки.
 - [x] Проверка формы сгенерированных маршрутов проходит — 150 файлов и 150 уникальных URL.
-- [x] GitHub Actions зелёный для head PR #124 — run 36677886089 (успешный, событие push).
+- [x] GitHub Actions run [36677886089](https://github.com/DimaNikolaevi4/site/actions/runs/36677886089) успешно проверил коммит очистки `40ec6a7e598efc3f7d06d0cfcd3af827b3c8c9f5` (событие `push`). Последующий документационный коммит `7aeb7ca978d085976538106879c350fcb4f2832a` также прошёл CI: run [36680160249](https://github.com/DimaNikolaevi4/site/actions/runs/36680160249) (событие `push`).
 - [x] Изменения и исключения описаны в docs/reports/PASTED_DUMPS_REVIEW_2026-09-29.md.

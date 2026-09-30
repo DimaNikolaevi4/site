@@ -236,6 +236,6 @@
 - `npm run check:urls:generated:v2`: OK, все 150 URL из baseline manifest.
 - `npm run check:links:v2`: OK, 150 страниц и 19 544 ссылок; host-only `/docs/`: 0.
 - `npm run check:route-shape:v2`: OK, 150 HTML-файлов и 150 уникальных URL.
-- GitHub Actions run [36677886089](https://github.com/DimaNikolaevi4/site/actions/runs/36677886089) завершился успешно для commit `40ec6a7e598efc3f7d06d0cfcd3af827b3c8c9f5`, который является head PR #124. Событие запуска — `push`; успешный check привязан к head-коммиту PR.
+- GitHub Actions run [36677886089](https://github.com/DimaNikolaevi4/site/actions/runs/36677886089) завершился успешно для коммита очистки `40ec6a7e598efc3f7d06d0cfcd3af827b3c8c9f5` (событие `push`). Последующий документационный коммит `7aeb7ca978d085976538106879c350fcb4f2832a` также прошёл CI: run [36680160249](https://github.com/DimaNikolaevi4/site/actions/runs/36680160249) (событие `push`).
 - Ссылки на архивы `CHECKLIST_LEGACY_2026-09-29.md` и `SITE_V2_CHECKLIST_COMPLETED_2026-09-29.md` проверены; оба файла существуют. В документации найдены только ссылки на эти файлы из соответствующих чек-листов.
 - PR #124 остаётся открытым; слияние не выполнялось.

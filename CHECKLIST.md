@@ -182,7 +182,7 @@ checkout → setup Node → npm ci → npm run build:v2 → checks
 - ✅ `npm run check:urls:generated:v2` проходит — все 150 URL из манифеста.
 - ✅ `npm run check:links:v2` проходит — 150 страниц, 19 544 ссылки, 0 host-only `/docs/`.
 - ✅ `npm run check:route-shape:v2` проходит — 150 HTML-файлов и 150 уникальных URL.
-- ✅ GitHub Actions зелёный для head-коммита PR #124 `40ec6a7` — run [36677886089](https://github.com/DimaNikolaevi4/site/actions/runs/36677886089) завершился успешно (событие `push`).
+- ✅ GitHub Actions run [36677886089](https://github.com/DimaNikolaevi4/site/actions/runs/36677886089) успешно проверил коммит очистки `40ec6a7e598efc3f7d06d0cfcd3af827b3c8c9f5` (событие `push`). Последующий документационный коммит `7aeb7ca978d085976538106879c350fcb4f2832a` также прошёл CI: run [36680160249](https://github.com/DimaNikolaevi4/site/actions/runs/36680160249) (событие `push`).
 - ✅ Исключения и оставшиеся проблемы описаны в отчёте этапа; npm advisories не исправлялись, зависимости не обновлялись.
 - ✅ В `SITE_V2_CHECKLIST.md` отмечены только фактически подтверждённые пункты.
 
