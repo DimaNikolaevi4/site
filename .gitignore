@@ -30,6 +30,9 @@ attached_assets/docs.zip
 _export/
 *.zip
 
+# Временные текстовые дампы и заметки
+attached_assets/Pasted--*.txt
+
 # Системные файлы
 .DS_Store
 ._*
