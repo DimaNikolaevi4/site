@@ -351,6 +351,29 @@ section,
 .course-item .trainer-profile .trainer-link { padding-left: 10px; font-weight: 600; color: var(--default-color); }
 .course-item .trainer-profile .trainer-link:hover { color: var(--accent-color); }
 
+/* === Унификация карточек .card (страницы /news/, /tags/, разделы) ===
+   Приводим к тому же визуальному ритму, что и .course-item на главной:
+   — тонкая разделительная линия над .read-more
+   — те же отступы (padding-top: .9rem) и цвет границы
+   — кнопка прижата к низу карточки (margin-top: auto),
+     чтобы при разной высоте карточек в ряду кнопки были выровнены */
+article.card .card-content {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+  min-height: 0;
+}
+article.card .card-excerpt {
+  color: color-mix(in srgb, var(--default-color), transparent 22%);
+  margin-bottom: 0;
+}
+article.card .card-content > .read-more {
+  margin-top: auto;
+  padding-top: .9rem;
+  border-top: 1px solid color-mix(in srgb, var(--default-color), transparent 88%);
+  align-self: flex-start;  /* кнопка-пилюля не растягивается на всю ширину */
+}
+
 .read-more {
   display: inline-flex;
   align-items: center;
