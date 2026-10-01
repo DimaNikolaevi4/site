@@ -561,8 +561,12 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addTransform('imgLazy', function (content) {
     const outputPath = this.page && this.page.outputPath;
     if (!outputPath || !outputPath.endsWith('.html')) return content;
-    return content.replace(/<img\b([^>]*?)>/gi, (full, attrs) => {
-      let out = attrs;
+    // Удаляем trailing self-closing слэш (XHTML-стиль `<img ... />`),
+    // иначе новые атрибуты добавились бы ПОСЛЕ `/` и получили
+    // некорректный `<img ... /> loading="lazy">`, на котором падает
+    // html-minifier-terser с Parse Error. В HTML5 <img> не самозакрывающийся.
+    return content.replace(/<img\b([^>]*?)\s*\/?>/gi, (full, attrs) => {
+      let out = attrs.replace(/\s+$/, '');
       if (!/\bloading\s*=/i.test(out)) out += ' loading="lazy"';
       if (!/\bdecoding\s*=/i.test(out)) out += ' decoding="async"';
       return `<img${out}>`;
