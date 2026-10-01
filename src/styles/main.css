@@ -4952,6 +4952,28 @@ body.a11y-high-contrast article.card {
   -webkit-backdrop-filter: none;
 }
 
+/* === Сетка карточек новостей/материалов (.cards-grid) ===
+   Используется в layouts/page-full.njk и layouts/listing.njk для
+   вывода коллекций статей/новостей в виде сетки.
+   Раньше правило отсутствовало — карточки выводились вертикально
+   без отступов (gap: normal, display: block). */
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 1.5rem;
+  margin: 1.5rem 0 2rem;
+  padding: 0;
+  list-style: none;
+}
+@media (max-width: 575.98px) {
+  /* На очень узких экранах — одна колонка */
+  .cards-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    margin: 1rem 0 1.5rem;
+  }
+}
+
 /* === Сетка подрубрик в стиле «Ресурсы» === */
 .rubric-resources-grid {
   list-style: none;
