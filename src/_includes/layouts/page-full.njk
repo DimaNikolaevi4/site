@@ -83,8 +83,9 @@
           {% set _listItems = (tag.posts if tag) or (pagination.items if (pagination and pagination.items)) or (collections[collectionName] if collectionName) or null %}
           {% if _listItems %}
             {% if _listItems.length > 0 %}
-            <div class="cards-grid">
+            <div class="cards-grid row g-4">
               {% for item in _listItems %}
+              <div class="col-md-6 col-xl-4 d-flex align-items-stretch">
               <article class="card" itemscope itemtype="https://schema.org/Article">
                 {% if item.data.image %}
                 <div class="card-image">
@@ -125,6 +126,7 @@
                   </a>
                 </div>
               </article>
+              </div>
               {% endfor %}
             </div>
 

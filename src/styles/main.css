@@ -4915,6 +4915,11 @@ article.card {
   background: rgba(255, 255, 255, 0.72) !important;
   backdrop-filter: blur(2px);
   -webkit-backdrop-filter: blur(2px);
+  /* Растягиваем карточку на всю высоту родительской колонки
+     (col-md-6 col-xl-4 d-flex align-items-stretch) и на всю ширину */
+  width: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
 /* Тёмная тема — полупрозрачное «тёмное стекло» */
@@ -4955,21 +4960,15 @@ body.a11y-high-contrast article.card {
 /* === Сетка карточек новостей/материалов (.cards-grid) ===
    Используется в layouts/page-full.njk и layouts/listing.njk для
    вывода коллекций статей/новостей в виде сетки.
-   Раньше правило отсутствовало — карточки выводились вертикально
-   без отступов (gap: normal, display: block). */
+   .row + .col-md-6 col-xl-4 даёт 3 колонки на desktop, 2 на tablet, 1 на mobile.
+   Добавляем только отступы сверху/снизу, остальное берёт на себя Bootstrap .row .g-4. */
 .cards-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-  gap: 1.5rem;
   margin: 1.5rem 0 2rem;
   padding: 0;
   list-style: none;
 }
 @media (max-width: 575.98px) {
-  /* На очень узких экранах — одна колонка */
   .cards-grid {
-    grid-template-columns: 1fr;
-    gap: 1rem;
     margin: 1rem 0 1.5rem;
   }
 }
