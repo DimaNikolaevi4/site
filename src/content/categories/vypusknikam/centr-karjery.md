@@ -74,7 +74,7 @@ source: https://sit-salsk.ru/?p=34985
 <hr />
 <ul style="text-align: left;">
 <li style="text-align: left;"><span style="font-size: 14pt; font-family: 'times new roman', times, serif;">План мероприятий (план работы) </span></li>
-<li style="text-align: left;"><a href="https://disk.yandex.ru/i/IY8rtSNfiXZqKw"><span style="font-size: 14pt; font-family: 'times new roman', times, serif;">Информация о проведенных и предстоящих мероприятиях</span></a></li>
+<li style="text-align: left;"><span style="font-size: 14pt; font-family: 'times new roman', times, serif;">Информация о проведенных и предстоящих мероприятиях</span></li>
 </ul>
 <hr />
 <h2 id="section-4" style="text-align: center;"><span style="font-size: 18pt;"><strong><span style="font-family: 'times new roman', times, serif;">4. Трудоустройство</span></strong></span></h2>
