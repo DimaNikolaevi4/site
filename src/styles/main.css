@@ -4943,6 +4943,81 @@ article.card {
   width: 100%;
   display: flex;
   flex-direction: column;
+  /* Унификация с .course-item: тот же фон, рамка, тень, скругление */
+  background: var(--card-accent-bg) !important;
+  border: 1px solid var(--card-accent-border);
+  border-radius: var(--home-img-radius, 14px);
+  box-shadow: var(--home-img-shadow, 0 8px 22px rgba(25, 55, 35, 0.08));
+  overflow: hidden;
+}
+
+/* === Изображение карточки: 16/9, object-fit: cover, скругление сверху ===
+   То же, что и у .course-item > img, но img обёрнут в .card-image > a. */
+article.card .card-image {
+  display: block;
+  width: 100%;
+  overflow: hidden;
+}
+article.card .card-image a {
+  display: block;
+}
+article.card .card-image img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  border-radius: var(--home-img-radius, 14px) var(--home-img-radius, 14px) 0 0;
+}
+
+/* === Контентная зона: те же отступы, что у .course-content === */
+article.card .card-content {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+  min-height: 0;
+  padding: 1rem 1.1rem 1.15rem;
+}
+article.card .card-excerpt {
+  color: color-mix(in srgb, var(--default-color), transparent 22%);
+  margin-bottom: 0;
+}
+article.card .card-content > .read-more {
+  margin-top: auto;
+  padding-top: .9rem;
+  border-top: 1px solid color-mix(in srgb, var(--default-color), transparent 88%);
+  align-self: flex-start;
+}
+
+/* Заголовок, дата, категория — те же размеры/цвета, что у .course-content h3 */
+article.card .card-header {
+  margin-bottom: .65rem;
+}
+article.card .card-title {
+  margin: 0 0 .65rem;
+  font-weight: 700;
+  font-size: 1.15rem;
+}
+article.card .card-title a {
+  color: var(--heading-color);
+}
+article.card .card-title a:hover {
+  color: var(--accent-color);
+}
+article.card .card-category {
+  display: inline-block;
+  font-size: .8125rem;
+  color: var(--accent-color);
+  text-decoration: none;
+  margin-bottom: .35rem;
+}
+article.card .card-category:hover {
+  text-decoration: underline;
+}
+article.card .card-date {
+  display: block;
+  font-size: .875rem;
+  color: color-mix(in srgb, var(--default-color), transparent 22%);
+  margin-top: .25rem;
 }
 
 /* Тёмная тема — полупрозрачное «тёмное стекло» */
