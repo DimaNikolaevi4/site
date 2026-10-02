@@ -1465,12 +1465,12 @@ body.dark-theme .site-footer .footer-resource-icon {
   flex-wrap: nowrap;
 }
 
-/* === Выравнивание элементов в шапке — зеркальная раскладка ===
+/* === Выравнивание элементов в шапке ===
    .site-header__inner — flex-row с 4 элементами (desktop ≥992px):
-   1. .site-header__rubrics-toggle  → слева (order: 1)
-   2. .site-header__navigation       → центр-лево (order: 2)
-      .site-header__actions          → центр-право (order: 3)
-   3. .site-header__brand (лого)     → справа (order: 4)
+   1. .site-header__brand (лого)       → слева (order: 1)
+   2. .site-header__navigation          → центр-лево (order: 2)
+      .site-header__actions            → центр-право (order: 3)
+   3. .site-header__rubrics-toggle     → справа (order: 4)
 
    Используем CSS order + justify-content: space-between.
    Никаких явных отступов — flexbox сам распределит пространство.
@@ -1483,27 +1483,27 @@ body.dark-theme .site-footer .footer-resource-icon {
   gap: 1rem;
 }
 
-/* Десктоп (≥992px): зеркальная раскладка */
+/* Десктоп (≥992px) */
 @media (min-width: 992px) {
-  .site-header__rubrics-toggle {
+  .site-header__brand.logo {
     order: 1;
     flex-shrink: 0;
+    padding-right: 1rem;
   }
   .site-header__navigation {
     order: 2;
     flex-shrink: 1;
     min-width: 0;
-    margin-right: auto;  /* прижимает навигацию к левому краю, лого уходит вправо */
+    margin-right: auto;  /* прижимает навигацию к левому краю, rubrics-toggle уходит вправо */
   }
   .site-header__actions {
     order: 3;
     flex-shrink: 0;
     gap: 6px;
   }
-  .site-header__brand.logo {
+  .site-header__rubrics-toggle {
     order: 4;
     flex-shrink: 0;
-    padding-left: 1rem;
   }
 }
 
