@@ -5215,7 +5215,7 @@ body.dark-theme .rubric-resource-icon {
   gap: 5px;
 }
 
-/* Логотип в карточке «Сведения» — уменьшен */
+/* Логотип в карточке «Сведения» — уменьшен и отцентрован с отступами */
 .popular-card__logo-img {
   width: auto;
   max-width: 160px;
@@ -5223,6 +5223,27 @@ body.dark-theme .rubric-resource-icon {
   margin: 20px auto;
   display: block;
   object-fit: contain;
+}
+
+/* === Карточки с логотипом (а не фотографией) ===
+   Когда в .card-image лежит <img class="popular-card__logo-img">,
+   мы отменяем 16/9 aspect-ratio и object-fit: cover (которые годятся
+   для фото, но искажают логотип) и добавляем padding 10% вокруг —
+   чтобы логотип «дышал», а не прилипал к краям карточки.
+   Селектор :has() поддерживается в Chrome 105+, Firefox 121+, Safari 15.4+. */
+article.card .card-image:has(img.popular-card__logo-img) {
+  padding: 10%;
+  background: var(--surface-color, #ffffff);
+}
+article.card .card-image img.popular-card__logo-img {
+  width: 100%;
+  height: auto;
+  max-height: 180px;
+  aspect-ratio: auto;
+  object-fit: contain;
+  border-radius: 0;
+  margin: 0;
+  display: block;
 }
 
 /* ════════════════════════════════════════════════════════════════════

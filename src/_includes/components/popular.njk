@@ -80,7 +80,7 @@
             <article class="card">
               <div class="card-image">
                 <a href="{{ _c.url }}">
-                  <img src="{{ _c.image | assetUrl }}" {{ ' ' + _c.imgClass if _c.imgClass }} alt="{{ _c.alt }}" title="{{ _c.alt }}" loading="lazy">
+                  <img src="{{ _c.image | assetUrl }}" class="{{ _c.imgClass or '' }}" alt="{{ _c.alt }}" title="{{ _c.alt }}" loading="lazy">
                 </a>
               </div>
               <div class="card-content">
