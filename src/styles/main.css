@@ -1465,6 +1465,36 @@ body.dark-theme .site-footer .footer-resource-icon {
   flex-wrap: nowrap;
 }
 
+/* === Выравнивание элементов в шапке ===
+   .site-header__inner — flex-row с тремя блоками:
+   1. .site-header__brand (лого) — слева, фиксированный отступ
+   2. .site-header__navigation (меню) — посередине
+   3. .site-header__actions / .site-header__mobile-toggle — справа
+   Раньше все элементы шли впритык (gap: 0), лого прижималось к меню.
+   Добавляем:
+   - margin-right: auto на brand → прижимает лого к левому краю
+   - gap между навигацией и actions
+   - На мобильных (меню скрыто, видны только лого + гамбургер):
+     гамбургер уходит вправо (ms-auto), лого остаётся слева */
+.site-header__brand.logo {
+  margin-right: auto;
+  flex-shrink: 0;
+  padding-right: 1rem;
+}
+.site-header__navigation {
+  flex-shrink: 1;
+  min-width: 0;
+}
+.site-header__actions {
+  flex-shrink: 0;
+  margin-left: 1rem;
+}
+/* Гамбургер на мобильных — уходит вправо (Bootstrap .ms-auto уже есть,
+   но продублируем для надёжности) */
+.site-header__mobile-toggle {
+  margin-left: auto;
+}
+
 .header-logo-img {
   width: auto;
   height: clamp(32px, 5vw, 52px);
