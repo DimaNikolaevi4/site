@@ -65,29 +65,30 @@
 
   <div class="site-hero__overlay page-hero__overlay" aria-hidden="true"></div>
 
-  <p class="site-hero__credit page-hero__credit" aria-label="Информация об авторстве">
-    Авторская учебная копия <a href="https://sit-salsk.ru/" target="_blank" rel="noopener noreferrer">официального сайта</a>. Создано студентами ГБПОУ РО «СИТ» под руководством <a href="https://бардаков.рф/" target="_blank" rel="noopener noreferrer">Бардакова Д. Н.</a>
-  </p>
+  <div class="site-hero__footer page-hero__footer">
+    {# Быстрые ссылки — верхняя строка объединённой полосы.
+       3 ссылки с иконками: Расписание / Новости / Документы.
+       Не трогаем главное меню шапки (которое перегружено). #}
+    <nav class="site-hero__quicklinks page-hero__quicklinks" aria-label="Быстрые ссылки">
+      <a href="/studentam-i-roditeljam/raspisanie/" class="page-hero__quicklink">
+        <i class="bi bi-calendar-week" aria-hidden="true"></i>
+        <span>Расписание</span>
+      </a>
+      <a href="/news/" class="page-hero__quicklink">
+        <i class="bi bi-newspaper" aria-hidden="true"></i>
+        <span>Новости</span>
+      </a>
+      <a href="/documents/" class="page-hero__quicklink">
+        <i class="bi bi-file-earmark-text" aria-hidden="true"></i>
+        <span>Документы</span>
+      </a>
+    </nav>
 
-  {# Быстрые ссылки — отдельная полоса ПОД credit-полосой.
-     Симметричная навигация с иконками для самых частых запросов
-     студентов и абитуриентов: расписание, новости, документы.
-     Не трогаем главное меню шапки (которое перегружено).
-     Класс page-hero__credit наследуется для единого blur-фона и стиля. #}
-  <nav class="site-hero__quicklinks page-hero__credit page-hero__quicklinks" aria-label="Быстрые ссылки">
-    <a href="/studentam-i-roditeljam/raspisanie/" class="page-hero__quicklink">
-      <i class="bi bi-calendar-week" aria-hidden="true"></i>
-      <span>Расписание</span>
-    </a>
-    <a href="/news/" class="page-hero__quicklink">
-      <i class="bi bi-newspaper" aria-hidden="true"></i>
-      <span>Новости</span>
-    </a>
-    <a href="/documents/" class="page-hero__quicklink">
-      <i class="bi bi-file-earmark-text" aria-hidden="true"></i>
-      <span>Документы</span>
-    </a>
-  </nav>
+    {# Credit-полоса — нижняя строка объединённой полосы (подпись автора) #}
+    <p class="site-hero__credit page-hero__credit" aria-label="Информация об авторстве">
+      Авторская учебная копия <a href="https://sit-salsk.ru/" target="_blank" rel="noopener noreferrer">официального сайта</a>. Создано студентами ГБПОУ РО «СИТ» под руководством <a href="https://бардаков.рф/" target="_blank" rel="noopener noreferrer">Бардакова Д. Н.</a>
+    </p>
+  </div>
 
   <div class="site-hero__content container page-hero__content">
     <div class="site-hero__inner page-hero__inner">

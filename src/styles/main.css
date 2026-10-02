@@ -4459,64 +4459,39 @@ body.dark-theme .brand-divider {
   line-height: 1.3;
 }
 
-.page-hero__credit {
+/* === Единая полоса внизу Hero: быстрые ссылки + credit ===
+   Контейнер .page-hero__footer занимает всю нижнюю часть Hero
+   и содержит 2 строки:
+     1. .page-hero__quicklinks — 3 ссылки (Расписание / Новости / Документы)
+     2. .page-hero__credit — подпись автора
+   Обе строки разделяют единый blur-фон и белый разделитель между ними.
+   Раньше это были 2 отдельных absolute-блока с зазором между ними.
+   Теперь — один контейнер без разрыва. */
+.page-hero__footer {
   position: absolute;
   left: 0;
   right: 0;
   bottom: 0;
   z-index: 3;
-  padding: 8px 16px;
-  text-align: center;
-  font-size: 11.5px;
-  line-height: 1.45;
-  color: rgba(255, 255, 255, 0.92);
+  display: flex;
+  flex-direction: column;
   background: rgba(10, 30, 15, 0.32);
   backdrop-filter: blur(10px) saturate(140%);
   -webkit-backdrop-filter: blur(10px) saturate(140%);
   border-top: 1px solid rgba(255, 255, 255, 0.18);
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.45);
+  color: rgba(255, 255, 255, 0.92);
 }
 
-.page-hero__credit a {
-  color: #fff;
-  font-weight: 600;
-  text-decoration: underline;
-  text-decoration-color: rgba(255, 255, 255, 0.45);
-  text-underline-offset: 2px;
-}
-
-.page-hero__credit a:hover {
-  color: var(--accent-color, #5fcf80);
-  text-decoration-color: var(--accent-color, #5fcf80);
-}
-
-/* === Быстрые ссылки в Hero — полоса ПОД credit ===
-   3 ссылки с иконками: Расписание / Новости / Документы.
-   Применён класс page-hero__credit для единого визуального стиля
-   (blur-фон, белая рамка сверху, центрирование, тень текста).
-   Переопределяем position: вместо bottom: 0 (как у credit),
-   ставим выше — чтобы quicklinks шёл над credit.
-   Высота credit разная на разных viewport:
-     - desktop (≥992px): ~34px
-     - tablet (768-991px): ~50-66px
-     - mobile (<480px): ~59-66px */
-.page-hero__quicklinks.page-hero__credit {
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 60px;
-  z-index: 3;
+/* Строка 1: быстрые ссылки */
+.page-hero__quicklinks {
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 1.5rem;
+  padding: 6px 16px;
   font-size: 13px;
   line-height: 1;
-  text-align: center;
-  /* border-top из credit убираем (он снизу credit, не сверху quicklinks).
-     Вместо него — нижняя граница, создающая визуальный разделитель
-     между quicklinks и credit-полосой под ним. */
-  border-top: none;
   border-bottom: 1px solid rgba(255, 255, 255, 0.18);
 }
 .page-hero__quicklink {
@@ -4536,10 +4511,37 @@ body.dark-theme .brand-divider {
   color: var(--accent-color, #5fcf80);
 }
 
+/* Строка 2: credit (подпись автора) — убираем фон/border, наследуем от .page-hero__footer */
+.page-hero__credit {
+  position: static;
+  padding: 8px 16px;
+  text-align: center;
+  font-size: 11.5px;
+  line-height: 1.45;
+  color: inherit;
+  background: transparent;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  border-top: none;
+  text-shadow: inherit;
+}
+
+.page-hero__credit a {
+  color: #fff;
+  font-weight: 600;
+  text-decoration: underline;
+  text-decoration-color: rgba(255, 255, 255, 0.45);
+  text-underline-offset: 2px;
+}
+
+.page-hero__credit a:hover {
+  color: var(--accent-color, #5fcf80);
+  text-decoration-color: var(--accent-color, #5fcf80);
+}
+
 @media (max-width: 991.98px) {
-  /* Tablet: credit становится 2-строчным (~50-66px), поднимаем quicklinks выше */
-  .page-hero__quicklinks.page-hero__credit {
-    bottom: 80px;
+  /* Tablet: меньше отступы в quicklinks */
+  .page-hero__quicklinks {
     gap: 1rem;
     padding: 4px 12px;
   }
@@ -4552,9 +4554,8 @@ body.dark-theme .brand-divider {
 }
 
 @media (max-width: 480px) {
-  /* На очень узких — credit ~59px, ещё выше поднимаем + убираем иконки */
-  .page-hero__quicklinks.page-hero__credit {
-    bottom: 76px;
+  /* На очень узких — убираем иконки, оставляем только текст */
+  .page-hero__quicklinks {
     gap: 0.75rem;
   }
   .page-hero__quicklink i {
