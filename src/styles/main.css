@@ -1465,52 +1465,58 @@ body.dark-theme .site-footer .footer-resource-icon {
   flex-wrap: nowrap;
 }
 
-/* === Выравнивание элементов в шапке ===
-   .site-header__inner — flex-row с тремя блоками:
-   1. .site-header__brand (лого) — слева, фиксированный отступ
-   2. .site-header__navigation (меню) — посередине
-   3. .site-header__actions / .site-header__mobile-toggle — справа
-   Раньше все элементы шли впритык (gap: 0), лого прижималось к меню.
-   Добавляем:
-   - margin-right: auto на brand → прижимает лого к левому краю
-   - gap между навигацией и actions
-   - На мобильных (меню скрыто, видны только лого + гамбургер):
-     гамбургер уходит вправо (ms-auto), лого остаётся слева */
-.site-header__brand.logo {
-  margin-right: auto;
-  flex-shrink: 0;
-  padding-right: 1rem;
-}
-.site-header__navigation {
-  flex-shrink: 1;
-  min-width: 0;
-}
-.site-header__actions {
-  flex-shrink: 0;
-  margin-left: 1rem;
-  /* Растягиваем actions на всё доступное пространство после навигации,
-     чтобы margin-left: auto у кнопки «Все разделы» работал (прижимал её вправо) */
-  flex-grow: 1;
-  justify-content: flex-end;
-  gap: 6px;
-}
-/* Гамбургер на мобильных — уходит вправо (Bootstrap .ms-auto уже есть,
-   но продублируем для надёжности) */
-.site-header__mobile-toggle {
-  margin-left: auto;
+/* === Выравнивание элементов в шапке — зеркальная раскладка ===
+   .site-header__inner — flex-row с 4 элементами (desktop ≥992px):
+   1. .site-header__rubrics-toggle  → слева (order: 1)
+   2. .site-header__navigation       → центр-лево (order: 2)
+      .site-header__actions          → центр-право (order: 3)
+   3. .site-header__brand (лого)     → справа (order: 4)
+
+   Используем CSS order + justify-content: space-between.
+   Никаких явных отступов — flexbox сам распределит пространство.
+
+   На мобильных (<992px): nav и actions скрыты, rubrics-toggle тоже
+   скрыт (d-none d-lg-flex). Видны только brand + mobile-toggle.
+   Порядок: brand (order: 1) — mobile-toggle (order: 2, ms-auto прижимает вправо). */
+.site-header__inner {
+  justify-content: space-between;
+  gap: 1rem;
 }
 
-/* === Кнопка «Все разделы» (svg с 3 полосками) — прижата к правому краю ===
-   Эта кнопка — последняя в .site-header__actions, после VK/почты/поиска/a11y/тёмной темы.
-   Раньше все кнопки шли впритык (gap=0). Добавляем margin-left: auto,
-   чтобы кнопка ушла к правому краю шапки, а остальные кнопки остались слева.
-   Зеркально к .site-header__brand (лого слева через margin-right: auto). */
-.site-header__actions .header-icon-btn[data-bs-target="#offcanvasRubrics"][aria-label="Все разделы"] {
-  margin-left: auto;
+/* Десктоп (≥992px): зеркальная раскладка */
+@media (min-width: 992px) {
+  .site-header__rubrics-toggle {
+    order: 1;
+    flex-shrink: 0;
+  }
+  .site-header__navigation {
+    order: 2;
+    flex-shrink: 1;
+    min-width: 0;
+    margin-right: auto;  /* прижимает навигацию к левому краю, лого уходит вправо */
+  }
+  .site-header__actions {
+    order: 3;
+    flex-shrink: 0;
+    gap: 6px;
+  }
+  .site-header__brand.logo {
+    order: 4;
+    flex-shrink: 0;
+    padding-left: 1rem;
+  }
 }
-/* Альтернативный селектор (если aria-label изменится) — по svg внутри */
-.site-header__actions .header-icon-btn:has(> svg[viewBox="0 0 20 16"]) {
-  margin-left: auto;
+
+/* Мобильный (<992px): только лого + гамбургер */
+@media (max-width: 991.98px) {
+  .site-header__brand.logo {
+    order: 1;
+    flex-shrink: 0;
+  }
+  .site-header__mobile-toggle {
+    order: 2;
+    margin-left: auto;
+  }
 }
 
 .header-logo-img {

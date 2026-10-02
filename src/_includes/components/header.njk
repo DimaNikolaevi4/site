@@ -92,24 +92,27 @@
       <button class="header-icon-btn" id="darkThemeToggle" type="button" onclick="toggleDarkTheme(); return false;" title="Тёмная тема" aria-label="Тёмная / светлая тема">
         <i class="bi bi-moon-stars" aria-hidden="true"></i>
       </button>
-      <button
-        class="header-icon-btn"
-        type="button"
-        data-bs-toggle="offcanvas"
-        data-bs-target="#offcanvasRubrics"
-        aria-controls="offcanvasRubrics"
-        title="Все разделы сайта"
-        aria-label="Все разделы">
-        <svg width="20" height="16" viewBox="0 0 20 16" fill="currentColor" aria-hidden="true">
-          <rect x="3" y="0" width="14" height="2" rx="1"/>
-          <rect x="0" y="7" width="20" height="2" rx="1"/>
-          <rect x="3" y="14" width="14" height="2" rx="1"/>
-        </svg>
-      </button>
     </div>
 
+    {# Кнопка «Все разделы» — вынесена в отдельный блок .site-header__rubrics-toggle,
+       чтобы её можно было переставлять через CSS order независимо от .actions #}
     <button
-      class="site-header__mobile-toggle header-icon-btn d-flex d-lg-none ms-auto offcanvas-toggle-btn"
+      class="site-header__rubrics-toggle header-icon-btn d-none d-lg-flex"
+      type="button"
+      data-bs-toggle="offcanvas"
+      data-bs-target="#offcanvasRubrics"
+      aria-controls="offcanvasRubrics"
+      title="Все разделы сайта"
+      aria-label="Все разделы">
+      <svg width="20" height="16" viewBox="0 0 20 16" fill="currentColor" aria-hidden="true">
+        <rect x="3" y="0" width="14" height="2" rx="1"/>
+        <rect x="0" y="7" width="20" height="2" rx="1"/>
+        <rect x="3" y="14" width="14" height="2" rx="1"/>
+      </svg>
+    </button>
+
+    <button
+      class="site-header__mobile-toggle header-icon-btn d-flex d-lg-none offcanvas-toggle-btn"
       type="button"
       data-bs-toggle="offcanvas"
       data-bs-target="#offcanvasRubrics"
