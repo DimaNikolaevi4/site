@@ -4477,14 +4477,12 @@ body.dark-theme .brand-divider {
   background: rgba(10, 30, 15, 0.32);
   backdrop-filter: blur(10px) saturate(140%);
   -webkit-backdrop-filter: blur(10px) saturate(140%);
-  /* Простые тонкие линии сверху и снизу (как базовый divider) */
-  border-top: 1px solid rgba(255, 255, 255, 0.18);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.18);
+  /* Единый blur без внутренних разделителей — только декоративные
+     зелёные градиентные линии сверху и снизу через ::before/::after */
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.45);
   color: rgba(255, 255, 255, 0.92);
 }
-/* Декоративные градиентные линии на всю ширину footer — тот же стиль,
-   что у .post-share__label::after, но растянутый на 100%:
+/* Декоративные зелёные градиентные линии на всю ширину footer —
    прозрачные края → зелёный центр. Высота 2px, со скруглением.
    Псевдоэлементы позиционируются на верхней и нижней границе footer. */
 .page-hero__footer::before,
@@ -4507,10 +4505,10 @@ body.dark-theme .brand-divider {
   pointer-events: none;  /* чтобы линия не перехватывала клики по ссылкам */
 }
 .page-hero__footer::before {
-  top: -1px;  /* поверх border-top */
+  top: 0;  /* на верхнем краю footer */
 }
 .page-hero__footer::after {
-  bottom: -1px;  /* поверх border-bottom */
+  bottom: 0;  /* на нижнем краю footer */
 }
 
 @media (max-width: 767px) {
@@ -4529,7 +4527,6 @@ body.dark-theme .brand-divider {
 
 /* Строка 1: быстрые ссылки */
 .page-hero__quicklinks {
-  position: relative;  /* для позиционирования ::after */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -4537,28 +4534,7 @@ body.dark-theme .brand-divider {
   padding: 4px 16px;  /* минимальный вертикальный отступ вокруг текста */
   font-size: 13px;
   line-height: 1.2;
-  /* Убираем обычный border-bottom — заменяем декоративной градиентной линией */
-}
-/* Декоративная разделительная линия между quicklinks и credit —
-   тот же стиль, что у внешних ::before/::after footer, но внутри */
-.page-hero__quicklinks::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  width: 100%;
-  height: 2px;
-  border-radius: 999px;
-  background: linear-gradient(
-    90deg,
-    transparent 0%,
-    color-mix(in srgb, var(--accent-color, #5fcf80), transparent 30%) 20%,
-    var(--accent-color, #5fcf80) 50%,
-    color-mix(in srgb, var(--accent-color, #5fcf80), transparent 30%) 80%,
-    transparent 100%
-  );
-  pointer-events: none;
+  /* Убрана разделительная линия снизу — единый blur без внутренних разделителей */
 }
 .page-hero__quicklink {
   display: inline-flex;
