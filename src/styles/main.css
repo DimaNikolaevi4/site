@@ -4531,7 +4531,7 @@ body.dark-theme .brand-divider {
   justify-content: center;
   align-items: center;
   gap: 1.5rem;
-  padding: 4px 16px;  /* минимальный вертикальный отступ вокруг текста */
+  padding: 10px 16px;  /* увеличенный вертикальный отступ вокруг текста */
   font-size: 13px;
   line-height: 1.2;
   /* Убрана разделительная линия снизу — единый blur без внутренних разделителей */
@@ -4556,7 +4556,7 @@ body.dark-theme .brand-divider {
 /* Строка 2: credit (подпись автора) — убираем фон/border, наследуем от .page-hero__footer */
 .page-hero__credit {
   position: static;
-  padding: 4px 16px;  /* минимальный вертикальный отступ вокруг текста */
+  padding: 10px 16px;  /* увеличенный вертикальный отступ вокруг текста */
   margin: 0;
   text-align: center;
   font-size: 11.5px;
