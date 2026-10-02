@@ -8,13 +8,6 @@ permalink: /studentam-i-roditeljam/raspisanie/1-korpus/
 
 # Расписание занятий — 1 корпус
 
-<p class="schedule-approve">
-  УТВЕРЖДАЮ<br>
-  Директор ГБПОУ РО «СИТ»<br>
-  <u>М.Е.Сенченко</u><br>
-  <u>2026 г.</u>
-</p>
-
 <p class="lead">Расписание занятий студентов очной формы обучения на 1 полугодие 2026 учебного года</p>
 
 <div class="schedule-table-wrap">
@@ -640,8 +633,6 @@ permalink: /studentam-i-roditeljam/raspisanie/1-korpus/
 </table>
 
 </div>
-
-<p class="schedule-sign">Зам. директора по УР Т. В. Якимова</p>
 
 <div class="text-center mt-4">
   <a href="/studentam-i-roditeljam/raspisanie/" class="btn-get-started">
