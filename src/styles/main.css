@@ -4969,23 +4969,74 @@ article.card .card-image img {
   border-radius: var(--home-img-radius, 14px) var(--home-img-radius, 14px) 0 0;
 }
 
-/* === Контентная зона: те же отступы, что у .course-content === */
+/* === Контентная зона: те же отступы, что у .course-content ===
+   Используем display: block (как у .course-content в .course-item),
+   а не flex — чтобы дочерние элементы автоматически растягивались на
+   всю ширину. Кнопку .read-more прижимаем к низу через margin-top: auto,
+   но для этого нужно, чтобы .card-content имел height: 100% и был flex.
+   Компромисс: делаем .card-content flex с flex-direction: column,
+   а кнопку заворачиваем в обёртку .card-footer с border-top, как .trainer. */
 article.card .card-content {
   display: flex;
   flex-direction: column;
   flex: 1 1 auto;
   min-height: 0;
+  /* Унификация с .course-content (padding: 1rem 1.1rem 1.15rem) */
   padding: 1rem 1.1rem 1.15rem;
 }
 article.card .card-excerpt {
   color: color-mix(in srgb, var(--default-color), transparent 22%);
   margin-bottom: 0;
 }
+/* Разделитель и кнопка — аналогично .course-item .trainer.
+   В .course-item разделитель и кнопка находились в .trainer (block-level,
+   border-top, padding-top). В .card .read-more — это flex-child, который
+   не растягивается на всю ширину из-за inline-flex базового стиля.
+   Решение: переопределяем .read-more в .card как блочный flex-контейнер
+   с width: 100% и убираем inline-flex. ВАЖНО: нужно !important или
+   специфика выше, чем у базового .read-more { display: inline-flex }. */
 article.card .card-content > .read-more {
   margin-top: auto;
-  padding-top: .9rem;
+  padding: .9rem 0 0;
   border-top: 1px solid color-mix(in srgb, var(--default-color), transparent 88%);
-  align-self: flex-start;
+  display: flex !important;
+  width: 100% !important;
+  align-self: stretch;
+  justify-content: flex-start;
+  background: transparent !important;
+  color: inherit !important;
+  border-radius: 0 !important;
+  border-left: 0 !important;
+  border-right: 0 !important;
+  border-bottom: 0 !important;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+  letter-spacing: normal;
+  font-family: var(--default-font);
+  font-size: 1rem;
+  font-weight: 400;
+}
+article.card .card-content > .read-more > span {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 8px 16px;
+  border-radius: 50px;
+  background: var(--accent-color);
+  color: var(--contrast-color);
+  font-family: var(--heading-font);
+  font-weight: 500;
+  font-size: 15px;
+  letter-spacing: 1px;
+  transition: background .2s ease;
+}
+article.card .card-content > .read-more > i {
+  font-size: 18px;
+  line-height: 0;
+  color: var(--contrast-color);
+}
+article.card .card-content > .read-more:hover > span {
+  background: color-mix(in srgb, var(--accent-color), transparent 20%);
 }
 
 /* Заголовок, дата, категория — те же размеры/цвета, что у .course-content h3 */
