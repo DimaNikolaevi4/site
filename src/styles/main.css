@@ -4490,6 +4490,72 @@ body.dark-theme .brand-divider {
   text-decoration-color: var(--accent-color, #5fcf80);
 }
 
+/* === Быстрые ссылки в Hero — полоса ПОД credit ===
+   3 ссылки с иконками: Расписание / Новости / Документы.
+   Расположена ПОД credit-полосой (которая position: absolute; bottom: 0),
+   поэтому position absolute с bottom = высота credit + смещение credit.
+   Credit высота разная на разных viewport:
+     - desktop (≥768px): ~34px, смещение 0 → bottom: 34px
+     - tablet (480-767px): ~50px, → bottom: 50px
+     - mobile (<480px): ~59px, → bottom: 60px */
+.page-hero__quicklinks {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 60px;  /* запас над credit (~50px на tablet, ~34px на desktop) */
+  z-index: 3;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 6px 16px;
+  text-align: center;
+}
+.page-hero__quicklink {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: #fff;
+  font-size: 13px;
+  font-weight: 500;
+  text-decoration: none;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.55);
+  transition: color 0.2s ease;
+}
+.page-hero__quicklink i {
+  font-size: 16px;
+  line-height: 1;
+}
+.page-hero__quicklink:hover {
+  color: var(--accent-color, #5fcf80);
+}
+
+@media (max-width: 991.98px) {
+  /* Tablet: credit становится 2-строчным (~50-66px), поднимаем quicklinks выше */
+  .page-hero__quicklinks {
+    bottom: 80px;
+    gap: 1rem;
+    padding: 4px 12px;
+  }
+  .page-hero__quicklink {
+    font-size: 11.5px;
+  }
+  .page-hero__quicklink i {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  /* На очень узких — credit ~59px, ещё выше поднимаем + убираем иконки */
+  .page-hero__quicklinks {
+    bottom: 76px;
+    gap: 0.75rem;
+  }
+  .page-hero__quicklink i {
+    display: none;
+  }
+}
+
 @media (max-width: 767px) {
   .page-hero { min-height: 200px; }
   .page-hero__divider { width: 80px; margin: 12px auto 10px; }

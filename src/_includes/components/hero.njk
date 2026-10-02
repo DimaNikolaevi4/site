@@ -69,6 +69,25 @@
     Авторская учебная копия <a href="https://sit-salsk.ru/" target="_blank" rel="noopener noreferrer">официального сайта</a>. Создано студентами ГБПОУ РО «СИТ» под руководством <a href="https://бардаков.рф/" target="_blank" rel="noopener noreferrer">Бардакова Д. Н.</a>
   </p>
 
+  {# Быстрые ссылки — отдельная полоса ПОД credit-полосой.
+     Симметричная навигация с иконками для самых частых запросов
+     студентов и абитуриентов: расписание, новости, документы.
+     Не трогаем главное меню шапки (которое перегружено). #}
+  <nav class="site-hero__quicklinks page-hero__quicklinks" aria-label="Быстрые ссылки">
+    <a href="/studentam-i-roditeljam/raspisanie/" class="page-hero__quicklink">
+      <i class="bi bi-calendar-week" aria-hidden="true"></i>
+      <span>Расписание</span>
+    </a>
+    <a href="/news/" class="page-hero__quicklink">
+      <i class="bi bi-newspaper" aria-hidden="true"></i>
+      <span>Новости</span>
+    </a>
+    <a href="/documents/" class="page-hero__quicklink">
+      <i class="bi bi-file-earmark-text" aria-hidden="true"></i>
+      <span>Документы</span>
+    </a>
+  </nav>
+
   <div class="site-hero__content container page-hero__content">
     <div class="site-hero__inner page-hero__inner">
       {% if hideRubric %}
