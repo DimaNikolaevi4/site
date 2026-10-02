@@ -6217,3 +6217,158 @@ body.dark-theme .anti-corruption-page .report-form {
     transition: none;
   }
 }
+
+/* ════════════════════════════════════════════════════════════════════
+   ТАБЛИЦЫ РАСПИСАНИЯ ЗАНЯТИЙ
+   ════════════════════════════════════════════════════════════════════ */
+
+/* Блок утверждения расписания */
+.schedule-approve {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  padding: 1rem 1.25rem;
+  margin: 1.5rem 0;
+  border-left: 3px solid var(--accent-color, #5fcf80);
+  background: color-mix(in srgb, var(--accent-color, #5fcf80), transparent 92%);
+  border-radius: 0 6px 6px 0;
+}
+
+.schedule-approve u {
+  text-decoration: underline;
+  text-decoration-style: dashed;
+  text-underline-offset: 3px;
+}
+
+/* Контейнер с горизонтальным скроллом для таблиц на мобильных */
+.schedule-table-wrap {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  margin: 1rem 0 2rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+/* Заголовок группы */
+.schedule-group {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--heading-color, #37423b);
+  margin: 2rem 0 0.5rem;
+  padding: 0.5rem 0.75rem;
+  background: color-mix(in srgb, var(--accent-color, #5fcf80), transparent 88%);
+  border-left: 4px solid var(--accent-color, #5fcf80);
+  border-radius: 0 4px 4px 0;
+}
+
+/* Сама таблица */
+.schedule-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.875rem;
+  line-height: 1.4;
+  background: var(--surface-color, #ffffff);
+}
+
+/* Заголовок таблицы (дни недели) */
+.schedule-table thead th {
+  background: var(--accent-color, #5fcf80);
+  color: var(--contrast-color, #ffffff);
+  font-weight: 600;
+  font-size: 0.8125rem;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  padding: 0.625rem 0.5rem;
+  text-align: center;
+  border: 1px solid color-mix(in srgb, var(--accent-color, #5fcf80), transparent 30%);
+  white-space: nowrap;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+.schedule-table thead th:first-child {
+  width: 2.5rem;
+}
+
+/* Ячейки тела таблицы */
+.schedule-table td {
+  padding: 0.5rem 0.625rem;
+  border: 1px solid color-mix(in srgb, var(--default-color, #444444), transparent 85%);
+  vertical-align: top;
+  word-break: break-word;
+}
+
+/* Первая колонка (номер пары) */
+.schedule-table td:first-child {
+  text-align: center;
+  font-weight: 700;
+  font-size: 1rem;
+  color: var(--accent-color, #5fcf80);
+  background: color-mix(in srgb, var(--accent-color, #5fcf80), transparent 92%);
+  width: 2.5rem;
+  white-space: nowrap;
+}
+
+/* Зебра — чередование строк */
+.schedule-table tbody tr:nth-child(even) td {
+  background: color-mix(in srgb, var(--default-color, #444444), transparent 96%);
+}
+
+.schedule-table tbody tr:nth-child(even) td:first-child {
+  background: color-mix(in srgb, var(--accent-color, #5fcf80), transparent 88%);
+}
+
+/* Hover строки */
+.schedule-table tbody tr:hover td {
+  background: color-mix(in srgb, var(--accent-color, #5fcf80), transparent 90%);
+}
+
+/* "СНЯТО" — выделение серым/красным */
+.schedule-table td:empty {
+  background: color-mix(in srgb, var(--default-color, #444444), transparent 95%) !important;
+}
+
+/* "УЧЕБНАЯ ПРАКТИКА" — жёлтый/оранжевый фон */
+.schedule-practice {
+  background: color-mix(in srgb, #ffc107, transparent 80%) !important;
+  font-weight: 700;
+  text-align: center;
+  color: #856404;
+  vertical-align: middle !important;
+}
+
+/* Подпись в конце расписания */
+.schedule-sign {
+  font-size: 0.95rem;
+  font-style: italic;
+  text-align: right;
+  margin-top: 2rem;
+  padding: 0.5rem 0;
+  border-top: 1px solid color-mix(in srgb, var(--default-color, #444444), transparent 85%);
+}
+
+/* Адаптивность для мобильных */
+@media (max-width: 767.98px) {
+  .schedule-table {
+    font-size: 0.8125rem;
+  }
+
+  .schedule-table thead th {
+    font-size: 0.75rem;
+    padding: 0.5rem 0.375rem;
+  }
+
+  .schedule-table td {
+    padding: 0.375rem 0.5rem;
+  }
+
+  .schedule-group {
+    font-size: 1.1rem;
+    margin: 1.5rem 0 0.375rem;
+  }
+
+  .schedule-table-wrap {
+    /* Таблица скроллится горизонтально, но не растягивает страницу */
+    max-width: calc(100vw - 2rem);
+  }
+}
