@@ -55,39 +55,47 @@
 
   <div class="container">
     <div class="site-popular__content content-col">
-      <div class="row">
+      <div class="cards-grid row g-4">
         {% for _c in _popularItems %}
           {% if page.url | startsWith(_c.url) %}
           {# Карточка текущего раздела заменена на placeholder «Расписание» #}
           <div class="col-md-6 col-xl-4 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="{{ loop.index * 100 }}">
-            <div class="site-popular__card course-item popular-card--placeholder">
-              <img src="{{ _popularPlaceholder.image | assetUrl }}" class="img-fluid" alt="{{ _popularPlaceholder.alt }}" title="{{ _popularPlaceholder.alt }}" loading="lazy">
-              <div class="course-content">
-                <h3>{{ _popularPlaceholder.title }}</h3>
-                <p class="description">{{ _popularPlaceholder.desc }}</p>
-                <div class="trainer d-flex justify-content-between align-items-center">
+            <article class="card popular-card--placeholder">
+              <div class="card-image">
+                <img src="{{ _popularPlaceholder.image | assetUrl }}" alt="{{ _popularPlaceholder.alt }}" title="{{ _popularPlaceholder.alt }}" loading="lazy">
+              </div>
+              <div class="card-content">
+                <header class="card-header">
+                  <h3 class="card-title">{{ _popularPlaceholder.title }}</h3>
+                </header>
+                <div class="card-excerpt">{{ _popularPlaceholder.desc }}</div>
+                <div class="read-more">
                   <span class="popular-card__badge">Скоро</span>
                 </div>
               </div>
-            </div>
+            </article>
           </div>
           {% else %}
           <div class="col-md-6 col-xl-4 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="{{ loop.index * 100 }}">
-            <div class="site-popular__card course-item">
-              <img src="{{ _c.image | assetUrl }}" class="img-fluid{{ ' ' + _c.imgClass if _c.imgClass }}" alt="{{ _c.alt }}" title="{{ _c.alt }}" loading="lazy">
-              <div class="course-content">
-                <h3><a href="{{ _c.url }}">{{ _c.title }}</a></h3>
-                <p class="description">{{ _c.desc }}</p>
-                <div class="trainer d-flex justify-content-between align-items-center">
-                  <div class="trainer-profile d-flex align-items-center">
-                    <a href="{{ _c.url }}" class="read-more" aria-label="Перейти — {{ _c.title }}">
-                      <span>Перейти</span>
-                      <i class="bi bi-arrow-right" aria-hidden="true"></i>
-                    </a>
-                  </div>
-                </div>
+            <article class="card">
+              <div class="card-image">
+                <a href="{{ _c.url }}">
+                  <img src="{{ _c.image | assetUrl }}" {{ ' ' + _c.imgClass if _c.imgClass }} alt="{{ _c.alt }}" title="{{ _c.alt }}" loading="lazy">
+                </a>
               </div>
-            </div>
+              <div class="card-content">
+                <header class="card-header">
+                  <h3 class="card-title">
+                    <a href="{{ _c.url }}">{{ _c.title }}</a>
+                  </h3>
+                </header>
+                <div class="card-excerpt">{{ _c.desc }}</div>
+                <a href="{{ _c.url }}" class="read-more" aria-label="Перейти — {{ _c.title }}" title="Перейти">
+                  <span>Перейти</span>
+                  <i class="bi bi-arrow-right" aria-hidden="true"></i>
+                </a>
+              </div>
+            </article>
           </div>
           {% endif %}
         {% endfor %}
