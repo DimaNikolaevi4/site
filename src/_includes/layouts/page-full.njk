@@ -85,6 +85,7 @@
             {% if _listItems.length > 0 %}
             <div class="cards-grid row g-4">
               {% for item in _listItems %}
+              {% if not requireImage or item.data.image %}
               <div class="col-md-6 col-xl-4 d-flex align-items-stretch">
               <article class="card" itemscope itemtype="https://schema.org/Article">
                 {% if item.data.image %}
@@ -98,6 +99,11 @@
                 {% endif %}
                 <div class="card-content">
                   <header class="card-header">
+                    {% if item.data.date %}
+                    <time class="card-date" datetime="{{ item.data.date | dateToISO }}" itemprop="datePublished">
+                      {{ item.data.date | dateRu }}
+                    </time>
+                    {% endif %}
                     {% set _cat = item.data.category or item.data.section %}
                     {% if _cat %}
                     {% set _catSlug = _cat | slugify %}
@@ -110,11 +116,6 @@
                         <span itemprop="headline">{{ item.data.title }}</span>
                       </a>
                     </h3>
-                    {% if item.data.date %}
-                    <time class="card-date" datetime="{{ item.data.date | dateToISO }}" itemprop="datePublished">
-                      {{ item.data.date | dateRu }}
-                    </time>
-                    {% endif %}
                   </header>
                   {% set _excerpt = item.data.excerpt or item.data.description %}
                   {% if _excerpt %}
@@ -127,6 +128,7 @@
                 </div>
               </article>
               </div>
+              {% endif %}
               {% endfor %}
             </div>
 

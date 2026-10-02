@@ -38,6 +38,11 @@
   
   <div class="card-content">
     <header class="card-header">
+      {% if card.date %}
+      <time class="card-date" datetime="{{ card.date | dateToISO }}" itemprop="datePublished">
+        {{ card.date | dateRu }}
+      </time>
+      {% endif %}
       {% if card.category %}
       {% set _cardLabels = sectionLabels or { byUrl: {}, bySlug: {} } %}
       {% set _cardSlug = card.category | slugify %}
@@ -51,12 +56,6 @@
           <span itemprop="headline">{{ card.title }}</span>
         </a>
       </h3>
-      
-      {% if card.date %}
-      <time class="card-date" datetime="{{ card.date | dateToISO }}" itemprop="datePublished">
-        {{ card.date | dateRu }}
-      </time>
-      {% endif %}
     </header>
     
     {% if card.excerpt %}

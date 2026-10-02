@@ -66,16 +66,16 @@
               </div>
               <div class="card-content">
                 <header class="card-header">
-                  <h3 class="card-title">
-                    <a href="{{ post.url }}" itemprop="url">
-                      <span itemprop="headline">{{ post.data.title }}</span>
-                    </a>
-                  </h3>
                   {% if post.data.date %}
                   <time class="card-date" datetime="{{ post.data.date | dateToISO }}" itemprop="datePublished">
                     {{ post.data.date | dateRu }}
                   </time>
                   {% endif %}
+                  <h3 class="card-title">
+                    <a href="{{ post.url }}" itemprop="url">
+                      <span itemprop="headline">{{ post.data.title }}</span>
+                    </a>
+                  </h3>
                 </header>
                 <div class="card-excerpt" itemprop="description">{{ post.data.excerpt or (post.templateContent | truncate(120)) }}</div>
                 <a href="{{ post.url }}" class="read-more" aria-label="Читать полностью — {{ post.data.title }}" title="Читать полностью">
