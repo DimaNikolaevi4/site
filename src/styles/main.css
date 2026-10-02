@@ -4529,6 +4529,7 @@ body.dark-theme .brand-divider {
 
 /* Строка 1: быстрые ссылки */
 .page-hero__quicklinks {
+  position: relative;  /* для позиционирования ::after */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -4536,7 +4537,28 @@ body.dark-theme .brand-divider {
   padding: 4px 16px;  /* минимальный вертикальный отступ вокруг текста */
   font-size: 13px;
   line-height: 1.2;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.18);  /* разделитель между quicklinks и credit внутри полосы */
+  /* Убираем обычный border-bottom — заменяем декоративной градиентной линией */
+}
+/* Декоративная разделительная линия между quicklinks и credit —
+   тот же стиль, что у внешних ::before/::after footer, но внутри */
+.page-hero__quicklinks::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 2px;
+  border-radius: 999px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    color-mix(in srgb, var(--accent-color, #5fcf80), transparent 30%) 20%,
+    var(--accent-color, #5fcf80) 50%,
+    color-mix(in srgb, var(--accent-color, #5fcf80), transparent 30%) 80%,
+    transparent 100%
+  );
+  pointer-events: none;
 }
 .page-hero__quicklink {
   display: inline-flex;
