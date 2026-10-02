@@ -5234,15 +5234,29 @@ body.dark-theme .rubric-resource-icon {
 article.card .card-image:has(img.popular-card__logo-img) {
   padding: 10%;
   background: var(--surface-color, #ffffff);
+  /* Центрируем логотип внутри .card-image */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+/* <a> обёртка вокруг логотипа — также центрируется */
+article.card .card-image:has(img.popular-card__logo-img) > a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
 }
 article.card .card-image img.popular-card__logo-img {
-  width: 100%;
+  /* width: 100% убираем — пусть logo занимает натуральную ширину
+     до max-width (зависит от padding и ширины карточки) */
+  width: auto;
+  max-width: 100%;
   height: auto;
   max-height: 180px;
   aspect-ratio: auto;
   object-fit: contain;
   border-radius: 0;
-  margin: 0;
+  margin: 0 auto;            /* центр внутри <a> */
   display: block;
 }
 
