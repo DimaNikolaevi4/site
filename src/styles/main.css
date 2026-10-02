@@ -4492,34 +4492,40 @@ body.dark-theme .brand-divider {
 
 /* === Быстрые ссылки в Hero — полоса ПОД credit ===
    3 ссылки с иконками: Расписание / Новости / Документы.
-   Расположена ПОД credit-полосой (которая position: absolute; bottom: 0),
-   поэтому position absolute с bottom = высота credit + смещение credit.
-   Credit высота разная на разных viewport:
-     - desktop (≥768px): ~34px, смещение 0 → bottom: 34px
-     - tablet (480-767px): ~50px, → bottom: 50px
-     - mobile (<480px): ~59px, → bottom: 60px */
-.page-hero__quicklinks {
+   Применён класс page-hero__credit для единого визуального стиля
+   (blur-фон, белая рамка сверху, центрирование, тень текста).
+   Переопределяем position: вместо bottom: 0 (как у credit),
+   ставим выше — чтобы quicklinks шёл над credit.
+   Высота credit разная на разных viewport:
+     - desktop (≥992px): ~34px
+     - tablet (768-991px): ~50-66px
+     - mobile (<480px): ~59-66px */
+.page-hero__quicklinks.page-hero__credit {
   position: absolute;
   left: 0;
   right: 0;
-  bottom: 60px;  /* запас над credit (~50px на tablet, ~34px на desktop) */
+  bottom: 60px;
   z-index: 3;
   display: flex;
   justify-content: center;
   align-items: center;
   gap: 1.5rem;
-  padding: 6px 16px;
+  font-size: 13px;
+  line-height: 1;
   text-align: center;
+  /* border-top из credit убираем (он снизу credit, не сверху quicklinks).
+     Вместо него — нижняя граница, создающая визуальный разделитель
+     между quicklinks и credit-полосой под ним. */
+  border-top: none;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.18);
 }
 .page-hero__quicklink {
   display: inline-flex;
   align-items: center;
   gap: 6px;
   color: #fff;
-  font-size: 13px;
   font-weight: 500;
   text-decoration: none;
-  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.55);
   transition: color 0.2s ease;
 }
 .page-hero__quicklink i {
@@ -4532,7 +4538,7 @@ body.dark-theme .brand-divider {
 
 @media (max-width: 991.98px) {
   /* Tablet: credit становится 2-строчным (~50-66px), поднимаем quicklinks выше */
-  .page-hero__quicklinks {
+  .page-hero__quicklinks.page-hero__credit {
     bottom: 80px;
     gap: 1rem;
     padding: 4px 12px;
@@ -4547,7 +4553,7 @@ body.dark-theme .brand-divider {
 
 @media (max-width: 480px) {
   /* На очень узких — credit ~59px, ещё выше поднимаем + убираем иконки */
-  .page-hero__quicklinks {
+  .page-hero__quicklinks.page-hero__credit {
     bottom: 76px;
     gap: 0.75rem;
   }
