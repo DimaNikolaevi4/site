@@ -1488,10 +1488,28 @@ body.dark-theme .site-footer .footer-resource-icon {
 .site-header__actions {
   flex-shrink: 0;
   margin-left: 1rem;
+  /* Растягиваем actions на всё доступное пространство после навигации,
+     чтобы margin-left: auto у кнопки «Все разделы» работал (прижимал её вправо) */
+  flex-grow: 1;
+  justify-content: flex-end;
+  gap: 6px;
 }
 /* Гамбургер на мобильных — уходит вправо (Bootstrap .ms-auto уже есть,
    но продублируем для надёжности) */
 .site-header__mobile-toggle {
+  margin-left: auto;
+}
+
+/* === Кнопка «Все разделы» (svg с 3 полосками) — прижата к правому краю ===
+   Эта кнопка — последняя в .site-header__actions, после VK/почты/поиска/a11y/тёмной темы.
+   Раньше все кнопки шли впритык (gap=0). Добавляем margin-left: auto,
+   чтобы кнопка ушла к правому краю шапки, а остальные кнопки остались слева.
+   Зеркально к .site-header__brand (лого слева через margin-right: auto). */
+.site-header__actions .header-icon-btn[data-bs-target="#offcanvasRubrics"][aria-label="Все разделы"] {
+  margin-left: auto;
+}
+/* Альтернативный селектор (если aria-label изменится) — по svg внутри */
+.site-header__actions .header-icon-btn:has(> svg[viewBox="0 0 20 16"]) {
   margin-left: auto;
 }
 
