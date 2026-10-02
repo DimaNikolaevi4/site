@@ -4471,7 +4471,9 @@ body.dark-theme .brand-divider {
   position: absolute;
   left: 0;
   right: 0;
-  bottom: 0;
+  bottom: 8px;  /* небольшой зазор между footer и низом Hero */
+  margin: 0 8px;  /* боковые отступы — полоса «парит» над низом hero */
+  border-radius: 8px;  /* скругление углов «парящей» полосы */
   z-index: 3;
   display: flex;
   flex-direction: column;
@@ -4481,6 +4483,7 @@ body.dark-theme .brand-divider {
   border-top: 1px solid rgba(255, 255, 255, 0.18);
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.45);
   color: rgba(255, 255, 255, 0.92);
+  overflow: hidden;  /* скруглённые углы применяются к детям */
 }
 
 /* Строка 1: быстрые ссылки */
