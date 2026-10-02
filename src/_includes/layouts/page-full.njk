@@ -85,7 +85,6 @@
             {% if _listItems.length > 0 %}
             <div class="cards-grid row g-4">
               {% for item in _listItems %}
-              {% if not requireImage or item.data.image %}
               <div class="col-md-6 col-xl-4 d-flex align-items-stretch">
               <article class="card" itemscope itemtype="https://schema.org/Article">
                 {% if item.data.image %}
@@ -128,7 +127,6 @@
                 </div>
               </article>
               </div>
-              {% endif %}
               {% endfor %}
             </div>
 
