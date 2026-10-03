@@ -17,10 +17,6 @@
   --card-accent-border: #cfe6d5;
   --nav-color: #272828;
   --nav-hover-color: #5fcf80;
-  --nav-mobile-background-color: #ffffff;
-  --nav-dropdown-background-color: #ffffff;
-  --nav-dropdown-color: #272828;
-  --nav-dropdown-hover-color: #5fcf80;
   scroll-behavior: smooth;
 }
 
@@ -400,8 +396,6 @@ body.dark-theme .home-bg {
 #  становятся нечитаемыми — переопределяем на светлый тон)
 --------------------------------------------------------------*/
 body.dark-theme {
-  --bs-secondary-color: #b8ccbc;
-  --bs-tertiary-color:  #9bb3a0;
   --text-muted:         #b8ccbc;
 }
 
@@ -824,7 +818,6 @@ body.dark-theme .component-about--narodfront .narodfront-text-link {
   --footer-card-shadow: 0 4px 14px rgba(31, 42, 35, 0.06);
   --footer-card-shadow-hover: 0 10px 24px rgba(95, 207, 128, 0.18);
   --footer-icon-bg: color-mix(in srgb, var(--accent-color), #ffffff 80%);
-  --footer-mark-fg: #ffffff;
   --footer-accent: var(--accent-color);
 
   position: relative;
@@ -854,7 +847,6 @@ body.dark-theme .site-footer {
   --footer-card-shadow: none;
   --footer-card-shadow-hover: none;
   --footer-icon-bg: rgba(95, 207, 128, 0.15);
-  --footer-mark-fg: #0d1612;
 }
 
 .site-footer .footer-decoration {
@@ -3068,10 +3060,6 @@ body.dark-theme {
   --contrast-color:             #ffffff;
   --nav-color:                  #c5d5c8;
   --nav-hover-color:            #5fcf80;
-  --nav-mobile-background-color:#1a2720;
-  --nav-dropdown-background-color: #1a2720;
-  --nav-dropdown-color:         #c5d5c8;
-  --nav-dropdown-hover-color:   #5fcf80;
 }
 
 /* ── Основа ── */
@@ -3137,8 +3125,6 @@ body.dark-theme #darkThemeToggle {
 
 /* ── Offcanvas ── */
 body.dark-theme .offcanvas {
-  --bs-offcanvas-bg: #131f18;
-  --bs-offcanvas-color: #c5d5c8;
   background-color: #131f18;
   color: #c5d5c8;
 }
