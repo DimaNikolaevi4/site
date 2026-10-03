@@ -318,12 +318,8 @@ section,
 /* News, popular and related cards share this V2 contract. */
 
 /* === Унификация карточек .card (страницы /news/, /tags/, разделы) ===
-   — тонкая разделительная линия над .read-more
-   — те же отступы (padding-top: .9rem) и цвет границы
-   — кнопка прижата к низу карточки (margin-top: auto),
-     чтобы при разной высоте карточек в ряду кнопки были выровнены
-   Полные правила .card-content и .read-more — ниже, в секции
-   «Контентная зона» (~строка 5049). Здесь только .card-excerpt. */
+   Полные правила .card-content, .read-more и других — ниже, в секции
+   «Контентная зона» (~строка 5037). Здесь только .card-excerpt. */
 article.card .card-excerpt {
   color: color-mix(in srgb, var(--default-color), transparent 22%);
   margin-bottom: 0;
@@ -5039,11 +5035,7 @@ article.card .card-content {
   flex-direction: column;
   flex: 1 1 auto;
   min-height: 0;
-  padding: 1rem 1.25rem 1.15rem;  /* боковой отступ 20px для текста */
-}
-article.card .card-excerpt {
-  color: color-mix(in srgb, var(--default-color), transparent 22%);
-  margin-bottom: 0;
+  padding: 10px 10px 10px;  /* боковой отступ 10px */
 }
 /* === Кнопка .read-more внутри .card ===
    Растягиваем на всю ширину, border-top как разделитель. */
