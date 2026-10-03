@@ -321,22 +321,12 @@ section,
    — тонкая разделительная линия над .read-more
    — те же отступы (padding-top: .9rem) и цвет границы
    — кнопка прижата к низу карточки (margin-top: auto),
-     чтобы при разной высоте карточек в ряду кнопки были выровнены */
-article.card .card-content {
-  display: flex;
-  flex-direction: column;
-  flex: 1 1 auto;
-  min-height: 0;
-}
+     чтобы при разной высоте карточек в ряду кнопки были выровнены
+   Полные правила .card-content и .read-more — ниже, в секции
+   «Контентная зона» (~строка 5049). Здесь только .card-excerpt. */
 article.card .card-excerpt {
   color: color-mix(in srgb, var(--default-color), transparent 22%);
   margin-bottom: 0;
-}
-article.card .card-content > .read-more {
-  margin-top: auto;
-  padding-top: .9rem;
-  border-top: 1px solid color-mix(in srgb, var(--default-color), transparent 88%);
-  align-self: flex-start;  /* кнопка-пилюля не растягивается на всю ширину */
 }
 
 .read-more {
@@ -5041,28 +5031,22 @@ article.card .card-image img {
   border-radius: var(--home-img-radius, 14px) var(--home-img-radius, 14px) 0 0;
 }
 
-/* === Контентная зона: те же отступы, что у .card-content ===
-   а не flex — чтобы дочерние элементы автоматически растягивались на
-   всю ширину. Кнопку .read-more прижимаем к низу через margin-top: auto,
-   но для этого нужно, чтобы .card-content имел height: 100% и был flex.
-   Компромисс: делаем .card-content flex с flex-direction: column,
+/* === Контентная зона ===
+   .card-content — flex column для растягивания на всю высоту карточки.
+   Кнопка .read-more прижимается к низу через margin-top: auto. */
 article.card .card-content {
   display: flex;
   flex-direction: column;
   flex: 1 1 auto;
   min-height: 0;
-  /* Унификация с .card-content (padding: 1rem 1.1rem 1.15rem) */
-  padding: 1rem 1.1rem 1.15rem;
+  padding: 1rem 1.25rem 1.15rem;  /* боковой отступ 20px для текста */
 }
 article.card .card-excerpt {
   color: color-mix(in srgb, var(--default-color), transparent 22%);
   margin-bottom: 0;
 }
-   border-top, padding-top). В .card .read-more — это flex-child, который
-   не растягивается на всю ширину из-за inline-flex базового стиля.
-   Решение: переопределяем .read-more в .card как блочный flex-контейнер
-   с width: 100% и убираем inline-flex. ВАЖНО: нужно !important или
-   специфика выше, чем у базового .read-more { display: inline-flex }. */
+/* === Кнопка .read-more внутри .card ===
+   Растягиваем на всю ширину, border-top как разделитель. */
 article.card .card-content > .read-more {
   margin-top: auto;
   padding: .9rem 0 0;
