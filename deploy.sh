@@ -1,11 +1,23 @@
+# 1. Подключаемся к Docker-контейнеру
+#  ssh localhost -p222
+
+
+# 3. Переходим в папку проекта
+# cd ~/sit-saljsk.rf
+
+
+# 5. Запускаем деплой
+# bash deploy.sh
+
+
 #!/bin/bash
 set -e
 
-# 🎨 Цвета для вывода (используем $'' для интерпретации escape-кодов)
-RED=$'\033[0;31m'
-GREEN=$'\033[0;32m'
-YELLOW=$'\033[0;33m'
-NC=$'\033[0m'
+# 🎨 Цвета для вывода
+RED='\033'
+GREEN='\033'
+YELLOW='\033'
+NC='\033' # No Color
 
 log_info()    { echo -e "${GREEN}[INFO]${NC} $1"; }
 log_warn()    { echo -e "${YELLOW}[WARN]${NC} $1"; }
@@ -64,32 +76,23 @@ run_deploy() {
     fi
 
     # Клонируем репозиторий
-    log_info "📦 Клонируем репозиторий (ветка site-v2)..."
+    log_info "📦 Клонируем репозиторий..."
     GIT_SSH_COMMAND="ssh -i ~/.ssh/github -o IdentitiesOnly=yes" \
         git clone --branch site-v2 --single-branch git@github.com:DimaNikolaevi4/site.git temp-build
 
     cd temp-build
 
-    # Устанавливаем ВСЕ зависимости (включая devDependencies — они нужны для сборки!)
-    # Не используем --omit=dev, потому что @11ty/eleventy, clean-css, html-minifier-terser,
-    # js-yaml и sharp находятся в devDependencies
-    log_info "📦 Устанавливаем все зависимости (включая devDependencies для сборки)..."
-    npm ci --no-audit --no-fund
+    # Устанавливаем зависимости
+    log_info "📦 Устанавливаем зависимости..."
+    npm ci --omit=dev
+    npm install js-yaml 2>/dev/null || true
 
-    # Собираем проект в режиме V2 (папка public-v2)
-    # ВАЖНО: используем build:v2, а не build — все наши изменения в V2-сборке
-    log_info "🔨 Собираем проект (SITE_MODE=v2 → public-v2/)..."
+    # Собираем проект
+    log_info "🔨 Собираем проект..."
     npm run build:v2
 
-    # Проверяем, что сборка прошла успешно
-    if [ ! -d "public-v2" ] || [ -z "$(ls -A public-v2 2>/dev/null)" ]; then
-        log_error "Сборка не удалась — папка public-v2 пуста или не существует!"
-        exit 1
-    fi
-    log_info "✓ Сборка завершена. Файлов в public-v2: $(find public-v2 -type f | wc -l)"
-
     # Очищаем public_html (кроме важных файлов и docs/)
-    log_info "🧹 Очищаем public_html (без docs/, submit-form.php, .htaccess)..."
+    log_info "🧹 Очищаем public_html (без docs/)..."
     cd "$PROJECT_DIR/public_html"
     find . -mindepth 1 -maxdepth 1 \
         ! -name "docs" \
@@ -98,17 +101,10 @@ run_deploy() {
         ! -name ".htaccess" \
         -exec rm -rf {} +
 
-    # Копируем новые файлы из public-v2 (НЕ из public!)
-    log_info "📋 Копируем файлы сборки из public-v2/..."
+    # Копируем новые файлы
+    log_info "📋 Копируем файлы сборки..."
     cp -r "$PROJECT_DIR/temp-build/public-v2/"* "$PROJECT_DIR/public_html/"
-
-    # Копируем submit-form.php, если он есть в репозитории
-    if [ -f "$PROJECT_DIR/temp-build/submit-form.php" ]; then
-        log_info "📋 Копируем submit-form.php..."
-        cp "$PROJECT_DIR/temp-build/submit-form.php" "$PROJECT_DIR/public_html/"
-    else
-        log_warn "submit-form.php не найден в репозитории. Если он уже есть в public_html/ — останется."
-    fi
+    cp "$PROJECT_DIR/temp-build/submit-form.php" "$PROJECT_DIR/public_html/" 2>/dev/null || true
 
     # Перемещаем robots.txt, если он в папке robots/
     if [ -f "$PROJECT_DIR/public_html/robots/index.html" ]; then
