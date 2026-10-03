@@ -2,7 +2,7 @@
 title: Организация питания
 layout: layouts/svedenija-page.njk
 section: pitanie
-rubric: "2.14"
+rubric: "2.15"
 permalink: /svedenija/pitanie/
 description: Организация питания обучающихся в ГБПОУ РО «Сальский индустриальный техникум», в том числе для лиц с ОВЗ и инвалидов
 ---

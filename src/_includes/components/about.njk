@@ -24,12 +24,12 @@
 {% if aboutMode == 'home' or aboutMode == 'razdel' %}
 
   {# ── Блоки 1 + 2: пара баннеров «Народный фронт» и «Заключение контракта» ── #}
-  <section class="section component-about component-about--narodfront">
+  <section class="site-about site-about--campaign section component-about component-about--narodfront" data-component="about">
     <div class="container">
-      <div class="narodfront-card" data-aos="fade-up">
+      <div class="site-about__campaign-grid narodfront-card" data-aos="fade-up">
 
         {# 1 — Левая колонка: логотип Народного фронта + подпись снизу #}
-        <div class="narodfront-col narodfront-col--left">
+        <div class="site-about__campaign-column narodfront-col narodfront-col--left">
           <a href="https://pobeda.onf.ru/requirements/rostovskaya"
              class="narodfront-link"
              target="_blank"
@@ -59,7 +59,7 @@
         </div>
 
         {# 2 — Правая колонка: баннер «Заключение контракта» #}
-        <div class="narodfront-col narodfront-col--right">
+        <div class="site-about__campaign-column narodfront-col narodfront-col--right">
           <a href="/news/kontrakt/"
              class="narodfront-link"
              aria-label="Заключение контракта на военную службу в Ростовской области">
@@ -88,14 +88,14 @@
     {# 3 — Слово директора (под баннерами 1 и 2) #}
     {% set directorPost = collections.all | findBySlug('slovo-direktora') %}
     {% if directorPost %}
-    <section id="about" class="about section component-about component-about--director">
+    <section id="about" class="site-about site-about--director about section component-about component-about--director" data-component="about-director">
       <div class="container">
         <div class="row gy-4 align-items-center">
 
           <div class="col-lg-6 order-1" data-aos="fade-up" data-aos-delay="100">
-            <div class="about-img-wrap">
+            <div class="site-about__director-media about-img-wrap">
               <img
-                src="{{ directorPost.data.image or '/assets/template/about.jpg' }}"
+                src="{{ (directorPost.data.image or '/assets/site/about.jpg') | assetUrl }}"
                 class="img-fluid rounded shadow-sm"
                 alt="Директор ГБПОУ РО «СИТ»" title="Директор ГБПОУ РО «СИТ»"
                 loading="eager"
@@ -103,7 +103,7 @@
             </div>
           </div>
 
-          <div class="col-lg-6 order-2 content" data-aos="fade-up" data-aos-delay="200">
+          <div class="site-about__director-content col-lg-6 order-2 content" data-aos="fade-up" data-aos-delay="200">
             <h2 class="about-title">{{ directorPost.data.title }}</h2>
 
             {% if directorPost.data.excerpt %}
@@ -135,7 +135,7 @@
     {% endif %}
 
     {# 4 — Баннер «День открытых дверей» (под Словом директора) #}
-    <section class="section component-pobeda-banner">
+    <section class="site-about__open-day section component-pobeda-banner">
       <div class="container">
         <div class="pobeda-banner-link" data-aos="zoom-in">
           <img src="/images/banners/День-открытых-дверей-2-scaled.jpg"

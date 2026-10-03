@@ -2,7 +2,7 @@
 title: Родителям
 layout: layouts/page-full.njk
 description: Полезные разделы сайта и материалы для родителей и законных представителей обучающихся ГБПОУ РО «Сальский индустриальный техникум».
-rubric: "8"
+rubric: "8.4"
 permalink: /studentam-i-roditeljam/roditeljam/
 ---
 

@@ -3,7 +3,7 @@ title: Медиацентр «Новости СИТ»
 layout: layouts/page-full.njk
 category: vospitanie
 rubric: "4.7.2"
-permalink: /vospitanie/mediacentr/
+permalink: /vospitanie/kulturno-massovaja/mediacentr/
 tags:
   - воспитание
   - медиа

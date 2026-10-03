@@ -2,6 +2,8 @@
 
 Это стартовый шаблон для сайта ГБПОУ РО "Сальский индустриальный техникум" на базе Eleventy.
 
+> **Права на ассеты:** наличие изображения, документа или другого файла в Git не доказывает право его публикации. Используйте реестр происхождения `docs/baseline/2026-09-15/ASSET_PROVENANCE_REGISTRY.md`: `INTERNAL_OWNER_STATED` фиксирует внутреннее происхождение со слов владельца проекта, но не заменяет договор, официальный источник или иное юридическое подтверждение.
+
 ## 📁 Структура проекта
 
 ```
@@ -136,11 +138,9 @@ tags: [Новости]
 | `bootstrap-icons` | 1.13.x | Иконочный шрифт |
 | `aos` | 2.3.x | Анимации появления при скролле (`data-aos`) |
 | `glightbox` | 3.3.x | Лайтбокс для изображений |
-| `swiper` | 12.1.x | Слайдеры/карусели |
-| `@srexi/purecounterjs` | 1.5.x | Счётчики цифр в hero/about-блоках |
 | `lunr` | 2.3.x | Серверная генерация поискового индекса (фильтр `lunrIndex` в `.eleventy.js`) |
 
-> ℹ️ Все vendor-библиотеки (Bootstrap, AOS, Swiper, GLightbox, PureCounter) копируются Eleventy из `node_modules/` в `public/assets/mentor/vendor/` через точечные `addPassthroughCopy`. Decap CMS подключается из CDN в `src/admin/index.html`.
+> ℹ️ Клиентские vendor-библиотеки (Bootstrap, Bootstrap Icons, AOS, GLightbox, Lunr и lunr-languages) копируются Eleventy из `node_modules/` в `/assets/vendor/` через точечные `addPassthroughCopy`. Их версии и лицензии опубликованы на странице [/third-party-notices/](/third-party-notices/). Decap CMS подключается из CDN в `src/admin/index.html`.
 
 Установка:
 ```bash

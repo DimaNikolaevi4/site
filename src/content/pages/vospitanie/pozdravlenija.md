@@ -3,7 +3,7 @@ title: Поздравления
 layout: layouts/page-full.njk
 category: vospitanie
 rubric: "4.7.3"
-permalink: /vospitanie/pozdravlenija/
+permalink: /vospitanie/kulturno-massovaja/pozdravlenija/
 tags:
   - поздравления
   - праздники

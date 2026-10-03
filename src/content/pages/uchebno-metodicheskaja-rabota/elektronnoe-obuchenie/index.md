@@ -2,7 +2,7 @@
 title: 3.1. Использование электронного обучения и дистанционных образовательных технологий
 layout: layouts/page-full.njk
 description: Применение электронного обучения (ЭО) и дистанционных образовательных технологий (ДОТ) в ГБПОУ РО «Сальский индустриальный техникум».
-rubric: "3"
+rubric: "3.1"
 permalink: /uchebno-metodicheskaja-rabota/elektronnoe-obuchenie/
 ---
 

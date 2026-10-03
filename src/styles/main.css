@@ -17,10 +17,6 @@
   --card-accent-border: #cfe6d5;
   --nav-color: #272828;
   --nav-hover-color: #5fcf80;
-  --nav-mobile-background-color: #ffffff;
-  --nav-dropdown-background-color: #ffffff;
-  --nav-dropdown-color: #272828;
-  --nav-dropdown-hover-color: #5fcf80;
   scroll-behavior: smooth;
 }
 
@@ -90,11 +86,10 @@ h1, h2, h3, h4, h5, h6 {
   margin-bottom: 24px;
 }
 
-
 /*--------------------------------------------------------------
 # Scroll Top Button
 --------------------------------------------------------------*/
-.scroll-top {
+.sit-scroll-top {
   position: fixed;
   visibility: hidden;
   opacity: 0;
@@ -108,18 +103,18 @@ h1, h2, h3, h4, h5, h6 {
   transition: all 0.4s;
 }
 
-.scroll-top i {
+.sit-scroll-top i {
   font-size: 24px;
   color: var(--contrast-color);
   line-height: 0;
 }
 
-.scroll-top:hover {
+.sit-scroll-top:hover {
   background-color: color-mix(in srgb, var(--accent-color), transparent 20%);
   color: var(--contrast-color);
 }
 
-.scroll-top.active {
+.sit-scroll-top.active {
   visibility: visible;
   opacity: 1;
   bottom: 15px;
@@ -163,7 +158,7 @@ section,
 /*--------------------------------------------------------------
 # Global Section Titles
 --------------------------------------------------------------*/
-.section-title {
+.sit-section-title {
   padding-bottom: 60px;
   padding-top: 28px;
   position: relative;
@@ -172,7 +167,7 @@ section,
 /* Разделительная линия над заголовком раздела —
    тот же градиент, что и в .footer-corp-header / .svedenija-nav-title:
    мягкий зелёный с прозрачными краями. */
-.section-title::before {
+.sit-section-title::before {
   content: "";
   display: block;
   width: 100%;
@@ -191,7 +186,7 @@ section,
   background-size: 100% 2px;
 }
 
-.section-title h2 {
+.sit-section-title h2 {
   font-size: 14px;
   font-weight: 500;
   padding: 0;
@@ -204,12 +199,12 @@ section,
 }
 
 /* Старая короткая линия рядом с мини-заголовком ("новости" и т. п.)
-   убрана — её роль теперь выполняет полноширинная .section-title::before */
-.section-title h2::after {
+   убрана — её роль теперь выполняет полноширинная .sit-section-title::before */
+.sit-section-title h2::after {
   display: none;
 }
 
-.section-title p {
+.sit-section-title p {
   color: var(--heading-color);
   margin: 0;
   font-size: 36px;
@@ -283,40 +278,48 @@ section,
   margin-left: 5px;
 }
 
+/* Homepage news cards: keep the three-card row independent from Bootstrap load order. */
+.site-news__content > .row {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.5rem;
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.site-news__content > .row > [class*="col-"] {
+  width: 100%;
+  max-width: none;
+  flex: none;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.site-news__content > .row > .col-12 {
+  grid-column: 1 / -1;
+}
+
+@media (max-width: 1199px) {
+  .site-news__content > .row {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 767px) {
+  .site-news__content > .row {
+    grid-template-columns: 1fr;
+  }
+}
+
 /* News, popular and related cards share this V2 contract. */
-.course-item {
-  width: 100%;
-  overflow: hidden;
-  background: var(--card-accent-bg);
-  border: 1px solid var(--card-accent-border);
-  border-radius: 14px;
-  box-shadow: 0 8px 22px rgba(25, 55, 35, 0.08);
-}
 
-.course-item > img,
-.course-item .img-fluid {
-  display: block;
-  width: 100%;
-  aspect-ratio: 16 / 9;
-  object-fit: cover;
+/* === Унификация карточек .card (страницы /news/, /tags/, разделы) ===
+   Полные правила .card-content, .read-more и других — ниже, в секции
+   «Контентная зона» (~строка 5037). Здесь только .card-excerpt. */
+article.card .card-excerpt {
+  color: color-mix(in srgb, var(--default-color), transparent 22%);
+  margin-bottom: 0;
 }
-
-.course-content { padding: 1rem 1.1rem 1.15rem; }
-.course-content h3,
-.course-content h4 { margin: 0 0 .65rem; font-weight: 700; font-size: 1.15rem; }
-.course-content h3 a,
-.course-content h4 a { color: var(--heading-color); }
-.course-content h3 a:hover,
-.course-content h4 a:hover { color: var(--accent-color); }
-.course-content .description { color: color-mix(in srgb, var(--default-color), transparent 22%); }
-.course-item .trainer {
-  padding-top: .9rem;
-  border-top: 1px solid color-mix(in srgb, var(--default-color), transparent 88%);
-}
-.course-item .trainer-profile { min-width: 0; }
-.course-item .trainer-profile img { width: 50px; border-radius: 50%; }
-.course-item .trainer-profile .trainer-link { padding-left: 10px; font-weight: 600; color: var(--default-color); }
-.course-item .trainer-profile .trainer-link:hover { color: var(--accent-color); }
 
 .read-more {
   display: inline-flex;
@@ -336,7 +339,7 @@ section,
 .read-more:hover { color: var(--contrast-color); background: color-mix(in srgb, var(--accent-color), transparent 20%); }
 .read-more i { font-size: 18px; line-height: 0; }
 
-.btn-get-started {
+.btn-outline-accent {
   display: inline-block;
   margin-top: 1rem;
   padding: 8px 35px 10px;
@@ -346,8 +349,7 @@ section,
   font-weight: 600;
   transition: .3s;
 }
-.btn-get-started:hover { background: var(--accent-color); color: var(--contrast-color); }
-
+.btn-outline-accent:hover { background: var(--accent-color); color: var(--contrast-color); }
 
 /*--------------------------------------------------------------
 # Глобальный декоративный фон страниц (bg-02 / bg-03)
@@ -394,8 +396,6 @@ body.dark-theme .home-bg {
 #  становятся нечитаемыми — переопределяем на светлый тон)
 --------------------------------------------------------------*/
 body.dark-theme {
-  --bs-secondary-color: #b8ccbc;
-  --bs-tertiary-color:  #9bb3a0;
   --text-muted:         #b8ccbc;
 }
 
@@ -417,7 +417,6 @@ body.dark-theme .about-title {
 /* Внутренние секции — прозрачные, чтобы фон был сквозным */
 .home-bg > .section,
 .home-bg > section,
-.home-bg .courses,
 .home-bg .about,
 .home-bg .popular,
 .home-bg .component-about,
@@ -498,7 +497,7 @@ body.dark-theme .about-title {
 
 /* News и Popular: возвращаем небольшой верхний внутренний отступ,
    чтобы заголовок секции и обводка карточек не «съедались» сверху.
-   У About верхнего отступа не нужно — там фото/текст, без section-title. */
+   У About верхнего отступа не нужно — там фото/текст, без sit-section-title. */
 .home-with-sidebar > .component-news,
 .home-with-sidebar > .component-popular {
   padding-top: 1.5rem;
@@ -545,7 +544,7 @@ body.dark-theme .about-title {
 
   /* Ритм между «Словом директора», блоком новостей и «Популярное»
      на мобильной. Серую разделительную линию убрали — её роль теперь
-     выполняет градиентная линия в .section-title::before. */
+     выполняет градиентная линия в .sit-section-title::before. */
   .home-with-sidebar > .component-news,
   .home-with-sidebar > .component-popular {
     margin-top: 0.5rem;
@@ -573,6 +572,9 @@ body.dark-theme .about-title {
   display: flex;
   flex-direction: column;
   align-items: center;
+  border: 0.5px solid color-mix(in srgb, var(--default-color), transparent 88%);
+  border-radius: 8px;
+  padding: 10px;
 }
 
 .component-about--narodfront .narodfront-link {
@@ -816,7 +818,6 @@ body.dark-theme .component-about--narodfront .narodfront-text-link {
   --footer-card-shadow: 0 4px 14px rgba(31, 42, 35, 0.06);
   --footer-card-shadow-hover: 0 10px 24px rgba(95, 207, 128, 0.18);
   --footer-icon-bg: color-mix(in srgb, var(--accent-color), #ffffff 80%);
-  --footer-mark-fg: #ffffff;
   --footer-accent: var(--accent-color);
 
   position: relative;
@@ -846,7 +847,6 @@ body.dark-theme .site-footer {
   --footer-card-shadow: none;
   --footer-card-shadow-hover: none;
   --footer-icon-bg: rgba(95, 207, 128, 0.15);
-  --footer-mark-fg: #0d1612;
 }
 
 .site-footer .footer-decoration {
@@ -1401,12 +1401,65 @@ body.dark-theme .site-footer .footer-resource-icon {
   }
 }
 
-
 /* ============================================
    Шапка: иконки в одну строку с меню
    ============================================ */
 .header .container-fluid {
   flex-wrap: nowrap;
+}
+
+/* === Выравнивание элементов в шапке ===
+   .site-header__inner — flex-row с 4 элементами (desktop ≥992px):
+   1. .site-header__brand (лого)       → слева (order: 1)
+   2. .site-header__navigation          → центр-лево (order: 2)
+      .site-header__actions            → центр-право (order: 3)
+   3. .site-header__rubrics-toggle     → справа (order: 4)
+
+   Используем CSS order + justify-content: space-between.
+   Никаких явных отступов — flexbox сам распределит пространство.
+
+   На мобильных (<992px): nav и actions скрыты, rubrics-toggle тоже
+   скрыт (d-none d-lg-flex). Видны только brand + mobile-toggle.
+   Порядок: brand (order: 1) — mobile-toggle (order: 2, ms-auto прижимает вправо). */
+.site-header__inner {
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+/* Десктоп (≥992px) */
+@media (min-width: 992px) {
+  .site-header__brand.logo {
+    order: 1;
+    flex-shrink: 0;
+    padding-right: 1rem;
+  }
+  .site-header__navigation {
+    order: 2;
+    flex-shrink: 1;
+    min-width: 0;
+    margin-right: auto;  /* прижимает навигацию к левому краю, rubrics-toggle уходит вправо */
+  }
+  .site-header__actions {
+    order: 3;
+    flex-shrink: 0;
+    gap: 6px;
+  }
+  .site-header__rubrics-toggle {
+    order: 4;
+    flex-shrink: 0;
+  }
+}
+
+/* Мобильный (<992px): только лого + гамбургер */
+@media (max-width: 991.98px) {
+  .site-header__brand.logo {
+    order: 1;
+    flex-shrink: 0;
+  }
+  .site-header__mobile-toggle {
+    order: 2;
+    margin-left: auto;
+  }
 }
 
 .header-logo-img {
@@ -1964,6 +2017,22 @@ body.dark-theme .site-footer .footer-resource-icon {
   transition: transform 0.35s cubic-bezier(0.34, 1.15, 0.64, 1),
               opacity 0.28s ease,
               visibility 0s linear 0.35s;
+  /* === Оптимизация: скрытые offcanvas-панели не участвуют в рендере ===
+     content-visibility: auto пропускает layout/paint для элементов
+     вне viewport. Когда панель открывается (.is-open), visibility:visible
+     форсирует перерисовку автоматически. Поддерживается во всех
+     современных браузерах (Chrome 85+, Firefox 125+, Safari 18+). */
+  content-visibility: auto;
+  contain-intrinsic-size: var(--oc-panel-w) 100vh;
+}
+
+/* === Аналогично для Bootstrap .offcanvas (используется в шапке) ===
+   Когда offcanvas закрыт, он скрыт через .show / visibility — но всё
+   ещё находится в layout tree. content-visibility: auto убирает его
+   из layout/paint pipeline, экономя ресурсы на мобильных. */
+.offcanvas:not(.show) {
+  content-visibility: auto;
+  contain-intrinsic-size: var(--bs-offcanvas-width, 400px) 100vh;
 }
 
 /* Десктоп (≥ 960px): все три панели рядом */
@@ -2978,7 +3047,6 @@ body.a11y-no-animations *::after {
   animation: none !important;
 }
 
-
 /* ╔═══════════════════════════════════════════════════════════╗
    ║                    ТЁМНАЯ ТЕМА                            ║
    ╚═══════════════════════════════════════════════════════════╝ */
@@ -2992,12 +3060,6 @@ body.dark-theme {
   --contrast-color:             #ffffff;
   --nav-color:                  #c5d5c8;
   --nav-hover-color:            #5fcf80;
-  --nav-mobile-background-color:#1a2720;
-  --nav-dropdown-background-color: #1a2720;
-  --nav-dropdown-color:         #c5d5c8;
-  --nav-dropdown-hover-color:   #5fcf80;
-  --card-accent-bg:             #1d2c24;   /* Тёмно-зелёный сюрфейс превью-карточек (course-item) */
-  --card-accent-border:         #2a3d33;   /* Бордер карточек course-item в тёмной теме */
 }
 
 /* ── Основа ── */
@@ -3063,8 +3125,6 @@ body.dark-theme #darkThemeToggle {
 
 /* ── Offcanvas ── */
 body.dark-theme .offcanvas {
-  --bs-offcanvas-bg: #131f18;
-  --bs-offcanvas-color: #c5d5c8;
   background-color: #131f18;
   color: #c5d5c8;
 }
@@ -3230,7 +3290,7 @@ body.dark-theme .dev-banner-text {
 }
 
 /* ── Контент, карточки, секции ── */
-body.dark-theme .section-title h2 {
+body.dark-theme .sit-section-title h2 {
   color: #e4efe6;
 }
 
@@ -3315,9 +3375,8 @@ body.dark-theme select:focus {
   background-color: #1e2d24;
 }
 
-
 /* ── Кнопка "Наверх" ── */
-body.dark-theme .scroll-top {
+body.dark-theme .sit-scroll-top {
   background-color: rgba(95, 207, 128, 0.8);
 }
 
@@ -4333,22 +4392,114 @@ body.dark-theme .brand-divider {
   line-height: 1.3;
 }
 
-.page-hero__credit {
+/* === Единая полоса внизу Hero: быстрые ссылки + credit ===
+   Контейнер .page-hero__footer занимает всю нижнюю часть Hero
+   и содержит 2 строки:
+     1. .page-hero__quicklinks — 3 ссылки (Расписание / Новости / Документы)
+     2. .page-hero__credit — подпись автора
+   Обе строки разделяют единый blur-фон и белый разделитель между ними.
+   Полоса на всю ширину Hero, без скруглений, с небольшим зазором снизу. */
+.page-hero__footer {
   position: absolute;
   left: 0;
   right: 0;
-  bottom: 0;
+  bottom: 24px;  /* увеличенный зазор между полосой и низом Hero */
   z-index: 3;
-  padding: 8px 16px;
-  text-align: center;
-  font-size: 11.5px;
-  line-height: 1.45;
-  color: rgba(255, 255, 255, 0.92);
+  display: flex;
+  flex-direction: column;
   background: rgba(10, 30, 15, 0.32);
   backdrop-filter: blur(10px) saturate(140%);
   -webkit-backdrop-filter: blur(10px) saturate(140%);
-  border-top: 1px solid rgba(255, 255, 255, 0.18);
+  /* Единый blur без внутренних разделителей — только декоративные
+     зелёные градиентные линии сверху и снизу через ::before/::after */
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.45);
+  color: rgba(255, 255, 255, 0.92);
+}
+/* Декоративные зелёные градиентные линии на всю ширину footer —
+   прозрачные края → зелёный центр. Высота 2px, со скруглением.
+   Псевдоэлементы позиционируются на верхней и нижней границе footer. */
+.page-hero__footer::before,
+.page-hero__footer::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 2px;
+  border-radius: 999px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    color-mix(in srgb, var(--accent-color, #5fcf80), transparent 30%) 20%,
+    var(--accent-color, #5fcf80) 50%,
+    color-mix(in srgb, var(--accent-color, #5fcf80), transparent 30%) 80%,
+    transparent 100%
+  );
+  pointer-events: none;  /* чтобы линия не перехватывала клики по ссылкам */
+}
+.page-hero__footer::before {
+  top: 0;  /* на верхнем краю footer */
+}
+.page-hero__footer::after {
+  bottom: 0;  /* на нижнем краю footer */
+}
+
+@media (max-width: 767px) {
+  /* На мобильных чуть меньше зазор — компактнее */
+  .page-hero__footer {
+    bottom: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  /* На очень узких ещё компактнее */
+  .page-hero__footer {
+    bottom: 12px;
+  }
+}
+
+/* Строка 1: быстрые ссылки */
+.page-hero__quicklinks {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 10px 16px;  /* увеличенный вертикальный отступ вокруг текста */
+  font-size: 13px;
+  line-height: 1.2;
+  /* Убрана разделительная линия снизу — единый blur без внутренних разделителей */
+}
+.page-hero__quicklink {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: #fff;
+  font-weight: 500;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+.page-hero__quicklink i {
+  font-size: 16px;
+  line-height: 1;
+}
+.page-hero__quicklink:hover {
+  color: var(--accent-color, #5fcf80);
+}
+
+/* Строка 2: credit (подпись автора) — убираем фон/border, наследуем от .page-hero__footer */
+.page-hero__credit {
+  position: static;
+  padding: 10px 16px;  /* увеличенный вертикальный отступ вокруг текста */
+  margin: 0;
+  text-align: center;
+  font-size: 11.5px;
+  line-height: 1.3;
+  color: inherit;
+  background: transparent;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  border-top: none;
+  text-shadow: inherit;
 }
 
 .page-hero__credit a {
@@ -4362,6 +4513,30 @@ body.dark-theme .brand-divider {
 .page-hero__credit a:hover {
   color: var(--accent-color, #5fcf80);
   text-decoration-color: var(--accent-color, #5fcf80);
+}
+
+@media (max-width: 991.98px) {
+  /* Tablet: меньше отступы в quicklinks */
+  .page-hero__quicklinks {
+    gap: 1rem;
+    padding: 4px 12px;
+  }
+  .page-hero__quicklink {
+    font-size: 11.5px;
+  }
+  .page-hero__quicklink i {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  /* На очень узких — убираем иконки, оставляем только текст */
+  .page-hero__quicklinks {
+    gap: 0.75rem;
+  }
+  .page-hero__quicklink i {
+    display: none;
+  }
 }
 
 @media (max-width: 767px) {
@@ -4596,6 +4771,38 @@ body.a11y-high-contrast .tag { background: #333 !important; color: #fff !importa
   transform: translateY(-1px);
 }
 
+/* === Фикс горизонтального overflow на мобильных/планшетах ===
+   Внешний скрипт Госуслуг инжектит .pos-banner-fluid с фиксированной
+   шириной ~282px, которая на узких viewport (< 992px) выходит за пределы
+   сайдбара и создаёт горизонтальный скролл.
+   Решение: на < 992px жёстко ограничиваем ширину 100% родителя,
+   включая min-width: 0 (чтобы flex-дети могли сжиматься). */
+@media (max-width: 991.98px) {
+  .home-sidebar,
+  .sidebar-image-banners,
+  .sidebar-image-banner,
+  .sidebar-image-banner__figure,
+  .sidebar-image-banner__img,
+  .site-sidebar__public-services,
+  .sidebar-pos .pos-banner-fluid,
+  .sidebar-pos .pos-banner-fluid *,
+  .sidebar-pos .pos-banner-btn_2 {
+    max-width: 100% !important;
+    width: 100% !important;
+    min-width: 0 !important;
+    box-sizing: border-box !important;
+  }
+  .sidebar-image-banners,
+  .home-sidebar {
+    overflow: hidden;
+  }
+  /* Снимаем любые ограничения по ширине, которые Госуслуги-скрипт
+     мог установить через инлайн-стиль или external CSS. */
+  .sidebar-pos .pos-banner-fluid {
+    overflow: hidden;
+  }
+}
+
 /* Сайдбар: контейнер медиа-баннеров — вертикальные отступы между баннерами */
 .sidebar-image-banners {
   display: flex;
@@ -4640,33 +4847,10 @@ body.a11y-high-contrast .tag { background: #333 !important; color: #fff !importa
 /* ══════════════════════════════════════════════════════════════════
    Единый стиль превью-карточек: Новости · Важное · Читайте также
    ══════════════════════════════════════════════════════════════════ */
-.component-news .course-item,
-.component-popular .course-item,
-.section-related .course-item {
-  overflow: hidden;
-  box-shadow: var(--home-img-shadow);
-  background-color: var(--card-accent-bg);
-  border: 1px solid var(--card-accent-border);
-  border-radius: var(--home-img-radius);
-}
 
 /* border-radius на изображениях — кроме logo.png в popular */
-.component-news .course-item > img,
-.component-news .course-item .img-fluid,
-.component-popular .course-item > img:not(.popular-card__logo-img),
-.component-popular .course-item .img-fluid:not(.popular-card__logo-img),
-.section-related .course-item > img,
-.section-related .course-item .img-fluid {
-  border-radius: var(--home-img-radius) var(--home-img-radius) 0 0;
-}
 
 @media (max-width: 767.98px) {
-  .component-news .course-item,
-  .component-popular .course-item,
-  .section-related .course-item {
-    margin-top: 0.75rem;
-    margin-bottom: 0.75rem;
-  }
 }
 
 /* Подрубрики (на страницах разделов, для единообразия) */
@@ -4711,9 +4895,6 @@ body.a11y-high-contrast .tag { background: #333 !important; color: #fff !importa
 # Превью карточек: уменьшенные размеры текста и заголовков
 #
 # Применяется ко всем типам превью-карточек:
-#   - .component-news .course-item       — превью новостей на главной
-#   - .component-popular .course-item    — «Важное» на главной
-#   - .section-related .course-item      — «Читайте также» на страницах
 #   - .subrubric-card                    — превью разделов в листингах
 #                                          /abiturientam/, /svedenija/
 #   - .news-card                         — превью «Другие новости» на
@@ -4722,34 +4903,6 @@ body.a11y-high-contrast .tag { background: #333 !important; color: #fff !importa
 --------------------------------------------------------------*/
 
 /* Единый размер текста для всех трёх компонентов */
-.component-news .course-item .course-content,
-.component-popular .course-item .course-content,
-.section-related .course-item .course-content {
-  padding: 14px 16px 16px;
-}
-.component-news .course-item .course-content h3,
-.component-popular .course-item .course-content h3,
-.section-related .course-item .course-content h3 {
-  font-size: 15px;
-  line-height: 1.3;
-  font-weight: 700;
-  margin-bottom: 8px;
-}
-.component-news .course-item .course-content .date {
-  font-size: 12px;
-  line-height: 1.2;
-}
-.component-news .course-item .course-content .description,
-.component-popular .course-item .course-content .description,
-.section-related .course-item .course-content .description {
-  font-size: 13px;
-  line-height: 1.45;
-}
-.component-news .course-item .read-more,
-.component-popular .course-item .read-more,
-.section-related .course-item .read-more {
-  font-size: 12.5px;
-}
 
 /* Превью разделов (.subrubric-card в листингах) */
 .subrubric-card__body {
@@ -4834,6 +4987,121 @@ article.card {
   background: rgba(255, 255, 255, 0.72) !important;
   backdrop-filter: blur(2px);
   -webkit-backdrop-filter: blur(2px);
+  /* Растягиваем карточку на всю высоту родительской колонки
+     (col-md-6 col-xl-4 d-flex align-items-stretch) и на всю ширину */
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  background: var(--card-accent-bg) !important;
+  border: 1px solid var(--card-accent-border);
+  border-radius: var(--home-img-radius, 14px);
+  box-shadow: var(--home-img-shadow, 0 8px 22px rgba(25, 55, 35, 0.08));
+  overflow: hidden;
+}
+
+/* === Изображение карточки: 16/9, object-fit: cover, скругление сверху ===
+article.card .card-image {
+  display: block;
+  width: 100%;
+  overflow: hidden;
+}
+article.card .card-image a {
+  display: block;
+}
+article.card .card-image img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  border-radius: var(--home-img-radius, 14px) var(--home-img-radius, 14px) 0 0;
+}
+
+/* === Контентная зона ===
+   .card-content — flex column для растягивания на всю высоту карточки.
+   Кнопка .read-more прижимается к низу через margin-top: auto. */
+article.card .card-content {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+  min-height: 0;
+  padding: 10px 10px 10px;  /* боковой отступ 10px */
+}
+/* === Кнопка .read-more внутри .card ===
+   Растягиваем на всю ширину, border-top как разделитель. */
+article.card .card-content > .read-more {
+  margin-top: auto;
+  padding: .9rem 0 0;
+  border-top: 1px solid color-mix(in srgb, var(--default-color), transparent 88%);
+  display: flex !important;
+  width: 100% !important;
+  align-self: stretch;
+  justify-content: flex-start;
+  background: transparent !important;
+  color: inherit !important;
+  border-radius: 0 !important;
+  border-left: 0 !important;
+  border-right: 0 !important;
+  border-bottom: 0 !important;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+  letter-spacing: normal;
+  font-family: var(--default-font);
+  font-size: 1rem;
+  font-weight: 400;
+}
+article.card .card-content > .read-more > span {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 8px 16px;
+  border-radius: 50px;
+  background: var(--accent-color);
+  color: var(--contrast-color);
+  font-family: var(--heading-font);
+  font-weight: 500;
+  font-size: 15px;
+  letter-spacing: 1px;
+  transition: background .2s ease;
+}
+article.card .card-content > .read-more > i {
+  font-size: 18px;
+  line-height: 0;
+  color: var(--contrast-color);
+}
+article.card .card-content > .read-more:hover > span {
+  background: color-mix(in srgb, var(--accent-color), transparent 20%);
+}
+
+/* Заголовок, дата, категория — те же размеры/цвета, что у .card-content h3 */
+article.card .card-header {
+  margin-bottom: .65rem;
+}
+article.card .card-title {
+  margin: 0 0 .65rem;
+  font-weight: 700;
+  font-size: 1.15rem;
+}
+article.card .card-title a {
+  color: var(--heading-color);
+}
+article.card .card-title a:hover {
+  color: var(--accent-color);
+}
+article.card .card-category {
+  display: inline-block;
+  font-size: .8125rem;
+  color: var(--accent-color);
+  text-decoration: none;
+  margin-bottom: .35rem;
+}
+article.card .card-category:hover {
+  text-decoration: underline;
+}
+article.card .card-date {
+  display: block;
+  font-size: .875rem;
+  color: color-mix(in srgb, var(--default-color), transparent 22%);
+  margin-top: .25rem;
 }
 
 /* Тёмная тема — полупрозрачное «тёмное стекло» */
@@ -4869,6 +5137,22 @@ body.a11y-high-contrast article.card {
   background: #111 !important;
   backdrop-filter: none;
   -webkit-backdrop-filter: none;
+}
+
+/* === Сетка карточек новостей/материалов (.cards-grid) ===
+   Используется в layouts/page-full.njk и layouts/listing.njk для
+   вывода коллекций статей/новостей в виде сетки.
+   .row + .col-md-6 col-xl-4 даёт 3 колонки на desktop, 2 на tablet, 1 на mobile.
+   Добавляем только отступы сверху/снизу, остальное берёт на себя Bootstrap .row .g-4. */
+.cards-grid {
+  margin: 1.5rem 0 2rem;
+  padding: 0;
+  list-style: none;
+}
+@media (max-width: 575.98px) {
+  .cards-grid {
+    margin: 1rem 0 1.5rem;
+  }
 }
 
 /* === Сетка подрубрик в стиле «Ресурсы» === */
@@ -4945,7 +5229,6 @@ body.dark-theme .rubric-resource-icon {
    КОМПОНЕНТ: «Популярное» (Секция 6 канона 3.0.1)
    Подключается в index.njk, page-full.njk, page.njk, post.njk, listing.njk.
    Использует визуальный язык news.njk (режим home):
-   Bootstrap-сетка `col-md-6 col-xl-4` + карточки `.course-item` базовой темы.
    Своих стилей сетки/карточек не имеет — только бейдж placeholder-карточки.
    ════════════════════════════════════════════════════════════════════ */
 .popular-card__badge {
@@ -4964,7 +5247,7 @@ body.dark-theme .rubric-resource-icon {
   gap: 5px;
 }
 
-/* Логотип в карточке «Сведения» — уменьшен */
+/* Логотип в карточке «Сведения» — уменьшен и отцентрован с отступами */
 .popular-card__logo-img {
   width: auto;
   max-width: 160px;
@@ -4972,6 +5255,41 @@ body.dark-theme .rubric-resource-icon {
   margin: 20px auto;
   display: block;
   object-fit: contain;
+}
+
+/* === Карточки с логотипом (а не фотографией) ===
+   Когда в .card-image лежит <img class="popular-card__logo-img">,
+   мы отменяем 16/9 aspect-ratio и object-fit: cover (которые годятся
+   для фото, но искажают логотип) и добавляем padding 10% вокруг —
+   чтобы логотип «дышал», а не прилипал к краям карточки.
+   Селектор :has() поддерживается в Chrome 105+, Firefox 121+, Safari 15.4+. */
+article.card .card-image:has(img.popular-card__logo-img) {
+  padding: 10%;
+  background: var(--surface-color, #ffffff);
+  /* Центрируем логотип внутри .card-image */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+/* <a> обёртка вокруг логотипа — также центрируется */
+article.card .card-image:has(img.popular-card__logo-img) > a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+article.card .card-image img.popular-card__logo-img {
+  /* width: 100% убираем — пусть logo занимает натуральную ширину
+     до max-width (зависит от padding и ширины карточки) */
+  width: auto;
+  max-width: 100%;
+  height: auto;
+  max-height: 180px;
+  aspect-ratio: auto;
+  object-fit: contain;
+  border-radius: 0;
+  margin: 0 auto;            /* центр внутри <a> */
+  display: block;
 }
 
 /* ════════════════════════════════════════════════════════════════════
@@ -5603,6 +5921,42 @@ body.dark-theme .anti-corruption-page .report-form {
 
 /* ─── Фотогалерея: список изображений в .page-content и .svedenija-content ─── */
 /* Применяется к <ul>, все <li> которого содержат только изображения (img или picture) */
+
+/* === Fallback для браузеров без :has() (Firefox < 121, Safari < 15.4) ===
+   В таких браузерах селектор ul:has(li > img) не матчится, и списки
+   с изображениями остаются обычными <ul> с маркерами. Добавляем
+   generic-класс .gallery-list в ручную разметку как альтернативу,
+   а также применяем стили через @supports not. */
+@supports not selector(:has(*)) {
+  .page-content ul.gallery-list,
+  .svedenija-content ul.gallery-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1rem;
+    list-style: none;
+    padding: 0;
+    margin: 1.25rem 0;
+  }
+  .page-content ul.gallery-list li,
+  .svedenija-content ul.gallery-list li {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    border-radius: 0.5rem;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.10);
+    background: var(--surface-color, #fff);
+  }
+  .page-content ul.gallery-list li img,
+  .svedenija-content ul.gallery-list li img,
+  .page-content ul.gallery-list li picture,
+  .svedenija-content ul.gallery-list li picture {
+    width: 100%;
+    height: 160px;
+    object-fit: cover;
+    display: block;
+  }
+}
+
 .page-content ul:has(li > img),
 .page-content ul:has(li > picture),
 .svedenija-content ul:has(li > img),
@@ -5723,5 +6077,160 @@ body.dark-theme .anti-corruption-page .report-form {
   .about-img-wrap a.glightbox,
   .pobeda-banner-link a.glightbox {
     transition: none;
+  }
+}
+
+/* ════════════════════════════════════════════════════════════════════
+   ТАБЛИЦЫ РАСПИСАНИЯ ЗАНЯТИЙ
+   ════════════════════════════════════════════════════════════════════ */
+
+/* Блок утверждения расписания */
+.schedule-approve {
+  font-size: 0.95rem;
+  line-height: 1.6;
+  padding: 1rem 1.25rem;
+  margin: 1.5rem 0;
+  border-left: 3px solid var(--accent-color, #5fcf80);
+  background: color-mix(in srgb, var(--accent-color, #5fcf80), transparent 92%);
+  border-radius: 0 6px 6px 0;
+}
+
+.schedule-approve u {
+  text-decoration: underline;
+  text-decoration-style: dashed;
+  text-underline-offset: 3px;
+}
+
+/* Контейнер с горизонтальным скроллом для таблиц на мобильных */
+.schedule-table-wrap {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  margin: 1rem 0 2rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+/* Заголовок группы */
+.schedule-group {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--heading-color, #37423b);
+  margin: 2rem 0 0.5rem;
+  padding: 0.5rem 0.75rem;
+  background: color-mix(in srgb, var(--accent-color, #5fcf80), transparent 88%);
+  border-left: 4px solid var(--accent-color, #5fcf80);
+  border-radius: 0 4px 4px 0;
+}
+
+/* Сама таблица */
+.schedule-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.875rem;
+  line-height: 1.4;
+  background: var(--surface-color, #ffffff);
+}
+
+/* Заголовок таблицы (дни недели) */
+.schedule-table thead th {
+  background: var(--accent-color, #5fcf80);
+  color: var(--contrast-color, #ffffff);
+  font-weight: 600;
+  font-size: 0.8125rem;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  padding: 0.625rem 0.5rem;
+  text-align: center;
+  border: 1px solid color-mix(in srgb, var(--accent-color, #5fcf80), transparent 30%);
+  white-space: nowrap;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}
+
+.schedule-table thead th:first-child {
+  width: 2.5rem;
+}
+
+/* Ячейки тела таблицы */
+.schedule-table td {
+  padding: 0.5rem 0.625rem;
+  border: 1px solid color-mix(in srgb, var(--default-color, #444444), transparent 85%);
+  vertical-align: top;
+  word-break: break-word;
+}
+
+/* Первая колонка (номер пары) */
+.schedule-table td:first-child {
+  text-align: center;
+  font-weight: 700;
+  font-size: 1rem;
+  color: var(--accent-color, #5fcf80);
+  background: color-mix(in srgb, var(--accent-color, #5fcf80), transparent 92%);
+  width: 2.5rem;
+  white-space: nowrap;
+}
+
+/* Зебра — чередование строк */
+.schedule-table tbody tr:nth-child(even) td {
+  background: color-mix(in srgb, var(--default-color, #444444), transparent 96%);
+}
+
+.schedule-table tbody tr:nth-child(even) td:first-child {
+  background: color-mix(in srgb, var(--accent-color, #5fcf80), transparent 88%);
+}
+
+/* Hover строки */
+.schedule-table tbody tr:hover td {
+  background: color-mix(in srgb, var(--accent-color, #5fcf80), transparent 90%);
+}
+
+/* "СНЯТО" — выделение серым/красным */
+.schedule-table td:empty {
+  background: color-mix(in srgb, var(--default-color, #444444), transparent 95%) !important;
+}
+
+/* "УЧЕБНАЯ ПРАКТИКА" — жёлтый/оранжевый фон */
+.schedule-practice {
+  background: color-mix(in srgb, #ffc107, transparent 80%) !important;
+  font-weight: 700;
+  text-align: center;
+  color: #856404;
+  vertical-align: middle !important;
+}
+
+/* Подпись в конце расписания */
+.schedule-sign {
+  font-size: 0.95rem;
+  font-style: italic;
+  text-align: right;
+  margin-top: 2rem;
+  padding: 0.5rem 0;
+  border-top: 1px solid color-mix(in srgb, var(--default-color, #444444), transparent 85%);
+}
+
+/* Адаптивность для мобильных */
+@media (max-width: 767.98px) {
+  .schedule-table {
+    font-size: 0.8125rem;
+  }
+
+  .schedule-table thead th {
+    font-size: 0.75rem;
+    padding: 0.5rem 0.375rem;
+  }
+
+  .schedule-table td {
+    padding: 0.375rem 0.5rem;
+  }
+
+  .schedule-group {
+    font-size: 1.1rem;
+    margin: 1.5rem 0 0.375rem;
+  }
+
+  .schedule-table-wrap {
+    /* Таблица скроллится горизонтально, но не растягивает страницу */
+    max-width: calc(100vw - 2rem);
   }
 }

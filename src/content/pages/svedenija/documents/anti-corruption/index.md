@@ -11,7 +11,7 @@ breadcrumbs:
   - text: Документы
     url: /svedenija/dokumenty/
   - text: Антикоррупционные документы
-rubric: "0"
+rubric: "2.3.2"
 ---
 
 {% set antiCorruption = antiCorruption.sections %}

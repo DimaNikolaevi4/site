@@ -1,0 +1,51 @@
+name: Site V2 checks
+
+on:
+  push:
+    branches:
+      - site-v2
+  pull_request:
+    branches:
+      - site-v2
+
+permissions:
+  contents: read
+
+jobs:
+  site-v2:
+    name: Build and check V2
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build V2
+        run: npm run build:v2
+
+      - name: Check front matter
+        run: npm run check:frontmatter
+
+      - name: Check V2 source boundary
+        run: npm run check:v2:source-boundary
+
+      - name: Check URL uniqueness
+        run: npm run check:urls:unique
+
+      - name: Check generated V2 URLs
+        run: npm run check:urls:generated:v2
+
+      - name: Check V2 internal links
+        run: npm run check:links:v2
+
+      - name: Check generated route shape
+        run: npm run check:route-shape:v2

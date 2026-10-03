@@ -1,86 +1,124 @@
 {#
-  Компонент Секция 2 — Hero-баннер (для всех типов страниц)
-
-  Рендерится на любой странице, где явно подключён, и показывает:
-    1) название организации «ГБПОУ РО / Сальский индустриальный техникум» (как на главной),
-    2) горизонтальную черту,
-    3) название рубрики (раздела/подраздела) под чертой.
-
-  Управление через frontmatter:
-    showHero      — false, чтобы выключить блок (по умолчанию — показываем)
-    hero          — объект для тонкой настройки:
-                      hero.image    — URL фонового изображения
-                                       (по умолчанию /assets/template/hero-bg.jpg)
-                      hero.title    — переопределяет рубрику под чертой
-                      hero.subtitle — подзаголовок (опционально)
-                      hero.alt      — alt-текст фона (опционально)
-                      hero.cta      — { url, label } для кнопки (опционально)
-    rubricTitle   — название рубрики под чертой (приоритет над hero.title и title)
-    title         — заголовок страницы (fallback для рубрики, если ничего не задано)
-    hideRubric    — true, чтобы скрыть черту и название рубрики (используется на главной)
+  Самостоятельный компонент hero-блока V2.
+  Управляется front matter страницы:
+    showHero      — false, чтобы выключить блок;
+    hero.image    — фон (на главной по умолчанию выбирается из серии);
+    hero.title    — подпись рубрики;
+    hero.subtitle — необязательный подзаголовок;
+    hero.alt      — описание фонового изображения;
+    hero.cta      — необязательная кнопка { url, label };
+    rubricTitle   — приоритетная подпись рубрики;
+    title         — запасной текст рубрики;
+    hideRubric    — режим главной страницы без подписи рубрики.
 #}
 
 {% if showHero != false %}
 
-{% set _heroImage = (hero.image if hero and hero.image else null) or "/assets/template/hero-bg.jpg" %}
+{% set _heroImages = [
+  "/assets/images/hero/hero-students-01.jpg",
+  "/assets/images/hero/hero-students-02.jpg",
+  "/assets/images/hero/hero-students-03.jpg",
+  "/assets/images/hero/hero-students-04.jpg",
+  "/assets/images/hero/hero-students-05.jpg",
+  "/assets/images/hero/hero-students-06.jpg",
+  "/assets/images/hero/hero-students-07.jpg",
+  "/assets/images/hero/hero-students-08.jpg"
+] %}
+{% set _hasCustomHeroImage = hero and hero.image %}
+{% set _heroImage = (hero.image if hero and hero.image else null) or _heroImages[0] %}
 {% set _heroAlt = (hero.alt if hero and hero.alt else null) or title or "Сальский индустриальный техникум" %}
 {% set _heroRubric = rubricTitle or (hero.title if hero else null) or title %}
 
-<section class="section-hero page-hero page-hero--banner component-hero" aria-label="Баннер раздела">
-
+<section class="site-hero section-hero page-hero page-hero--banner component-hero" data-component="hero" aria-label="Баннер раздела">
   <div
-    class="page-hero__bg"
-    style="background-image: url('{{ _heroImage }}');"
+    id="page-hero-bg"
+    class="site-hero__background page-hero__bg"
+    style="background-image: url('{{ _heroImage | assetUrl }}');"
     role="img"
     aria-label="{{ _heroAlt }}"
   ></div>
 
-  <div class="page-hero__overlay" aria-hidden="true"></div>
+  {% if hideRubric and not _hasCustomHeroImage %}
+  <script>
+    (function () {
+      var background = document.getElementById('page-hero-bg');
+      var images = {{ _heroImages | dump | safe }};
+      if (!background || !images.length) return;
 
-  <div class="page-hero__credit" aria-label="Информация об авторстве">
-    Авторская учебная копия <a href="https://sit-salsk.ru/" target="_blank" rel="noopener">официального сайта</a>. Создано студентами ГБПОУ РО «СИТ» под руководством <a href="https://бардаков.рф/" target="_blank" rel="noopener">Бардакова Д. Н.</a>
+      var storageKey = 'sit-hero-image';
+      var selected = null;
+      try {
+        selected = sessionStorage.getItem(storageKey);
+      } catch (error) {}
+
+      if (images.indexOf(selected) === -1) {
+        selected = images[Math.floor(Math.random() * images.length)];
+        try {
+          sessionStorage.setItem(storageKey, selected);
+        } catch (error) {}
+      }
+
+      background.style.backgroundImage = "url('" + selected + "')";
+    }());
+  </script>
+  {% endif %}
+
+  <div class="site-hero__overlay page-hero__overlay" aria-hidden="true"></div>
+
+  <div class="site-hero__footer page-hero__footer">
+    {# Быстрые ссылки — верхняя строка объединённой полосы.
+       3 ссылки с иконками: Расписание / Новости / Документы.
+       Не трогаем главное меню шапки (которое перегружено). #}
+    <nav class="site-hero__quicklinks page-hero__quicklinks" aria-label="Быстрые ссылки">
+      <a href="/studentam-i-roditeljam/raspisanie/" class="page-hero__quicklink">
+        <i class="bi bi-calendar-week" aria-hidden="true"></i>
+        <span>Расписание</span>
+      </a>
+      <a href="/news/" class="page-hero__quicklink">
+        <i class="bi bi-newspaper" aria-hidden="true"></i>
+        <span>Новости</span>
+      </a>
+      <a href="/documents/" class="page-hero__quicklink">
+        <i class="bi bi-file-earmark-text" aria-hidden="true"></i>
+        <span>Документы</span>
+      </a>
+    </nav>
+
+    {# Credit-полоса — нижняя строка объединённой полосы (подпись автора) #}
+    <p class="site-hero__credit page-hero__credit" aria-label="Информация об авторстве">
+      Авторская учебная копия <a href="https://sit-salsk.ru/" target="_blank" rel="noopener noreferrer">официального сайта</a>. Создано студентами ГБПОУ РО «СИТ» под руководством <a href="https://бардаков.рф/" target="_blank" rel="noopener noreferrer">Бардакова Д. Н.</a>
+    </p>
   </div>
 
-  <div class="container page-hero__content">
-    <div class="page-hero__inner">
-
-      {# Название организации — как на главной странице.
-         На главной (hideRubric=true) — это <h1> страницы.
-         На внутренних страницах <h1> — это рубрика, а название организации — <div>. #}
+  <div class="site-hero__content container page-hero__content">
+    <div class="site-hero__inner page-hero__inner">
       {% if hideRubric %}
-      <h1 class="page-hero__org" aria-label="ГБПОУ РО Сальский индустриальный техникум">
+      <h1 class="site-hero__organization page-hero__org" aria-label="ГБПОУ РО Сальский индустриальный техникум">
         ГБПОУ РО
         <br>
         <small>«Сальский индустриальный техникум»</small>
       </h1>
       {% else %}
-      <div class="page-hero__org" aria-label="ГБПОУ РО Сальский индустриальный техникум">
+      <div class="site-hero__organization page-hero__org" aria-label="ГБПОУ РО Сальский индустриальный техникум">
         ГБПОУ РО
         <br>
         <small>«Сальский индустриальный техникум»</small>
       </div>
       {% endif %}
 
-      {# Название рубрики под горизонтальной чертой — на внутренних страницах это <h1> #}
       {% if _heroRubric and not hideRubric %}
-      <hr class="page-hero__divider" aria-hidden="true">
-      <h1 class="page-hero__rubric">{{ _heroRubric }}</h1>
+      <hr class="site-hero__divider page-hero__divider" aria-hidden="true">
+      <h1 class="site-hero__rubric page-hero__rubric">{{ _heroRubric }}</h1>
       {% endif %}
 
-      {# Подзаголовок (опционально) #}
       {% if hero and hero.subtitle %}
-      <p class="page-hero__subtitle">{{ hero.subtitle }}</p>
+      <p class="site-hero__subtitle page-hero__subtitle">{{ hero.subtitle }}</p>
       {% endif %}
 
-      {# CTA-кнопка (опционально) #}
       {% if hero and hero.cta and hero.cta.url and hero.cta.label %}
-      <a href="{{ hero.cta.url }}" class="btn btn-primary btn-lg page-hero__cta">
-        {{ hero.cta.label }}
-      </a>
+      <a href="{{ hero.cta.url }}" class="site-hero__cta btn btn-primary btn-lg page-hero__cta">{{ hero.cta.label }}</a>
       {% endif %}
-
     </div>
   </div>
-
 </section>
 {% endif %}

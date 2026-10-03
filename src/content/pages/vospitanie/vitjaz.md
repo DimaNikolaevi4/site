@@ -3,7 +3,7 @@ title: Клуб «Витязь»
 layout: layouts/page-full.njk
 category: vospitanie
 rubric: "4.6.2"
-permalink: /vospitanie/vitjaz/
+permalink: /vospitanie/patrioticheskoe/vitjaz/
 tags:
   - воспитание
   - патриотическое

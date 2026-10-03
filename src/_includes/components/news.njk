@@ -12,7 +12,7 @@
                             newsSubtitle — подзаголовок (по умолчанию «Последние события техникума»)
 
     newsMode = 'razdel' → Единая сетка компактных ссылок с эмодзи
-                          (`<ul class="rubric-resources-grid">`) для страниц-разделов.
+                          (`<ul class="site-news__resource-grid rubric-resources-grid">`) для страниц-разделов.
                           Используется как для списка подрубрик, так и для CTA-блоков
                           «Контакты + обращение».
                           Параметры:
@@ -32,15 +32,15 @@
   {% set _newsTitle    = newsTitle    if newsTitle    else "Новости" %}
   {% set _newsSubtitle = newsSubtitle if newsSubtitle else "Последние события техникума" %}
 
-  <section id="news" class="section component-news component-news--home">
-    <div class="container section-title" data-aos="fade-up">
+  <section id="news" class="site-news site-news--home section component-news component-news--home" data-component="news">
+    <div class="site-news__heading container sit-section-title" data-aos="fade-up">
       <h2>{{ _newsTitle }}</h2>
       <p>{{ _newsSubtitle }}</p>
     </div>
 
     <div class="container">
-      <div class="content-col">
-        <div class="row">
+      <div class="site-news__content content-col">
+        <div class="cards-grid row g-4">
 
           {# Фильтруем новости без картинки и берём первые _newsCount свежих. #}
           {% set _newsToShow = [] %}
@@ -53,27 +53,37 @@
           {% for post in _newsToShow %}
 
           <div class="col-md-6 col-xl-4 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="{{ loop.index * 100 }}">
-            <div class="course-item">
-              <img
-                src="{{ post.data.image }}"
-                class="img-fluid"
-                alt="{{ post.data.title }}" title="{{ post.data.title }}"
-                loading="lazy"
-              >
-              <div class="course-content">
-                <p class="date mb-3">{{ post.date | dateRu }}</p>
-                <h3><a href="{{ post.url }}">{{ post.data.title }}</a></h3>
-                <p class="description">{{ post.data.excerpt or (post.templateContent | truncate(120)) }}</p>
-                <div class="trainer d-flex justify-content-between align-items-center">
-                  <div class="trainer-profile d-flex align-items-center">
-                    <a href="{{ post.url }}" class="read-more" aria-label="Читать полностью — {{ post.data.title }}">
-                      <span>Читать полностью</span>
-                      <i class="bi bi-arrow-right" aria-hidden="true"></i>
-                    </a>
-                  </div>
-                </div>
+            <article class="card" itemscope itemtype="https://schema.org/Article">
+              <div class="card-image">
+                <a href="{{ post.url }}">
+                  <img
+                    src="{{ post.data.image | assetUrl }}"
+                    alt="{{ post.data.title }}" title="{{ post.data.title }}"
+                    loading="lazy"
+                    itemprop="image"
+                  >
+                </a>
               </div>
-            </div>
+              <div class="card-content">
+                <header class="card-header">
+                  {% if post.data.date %}
+                  <time class="card-date" datetime="{{ post.data.date | dateToISO }}" itemprop="datePublished">
+                    {{ post.data.date | dateRu }}
+                  </time>
+                  {% endif %}
+                  <h3 class="card-title">
+                    <a href="{{ post.url }}" itemprop="url">
+                      <span itemprop="headline">{{ post.data.title }}</span>
+                    </a>
+                  </h3>
+                </header>
+                <div class="card-excerpt" itemprop="description">{{ post.data.excerpt or (post.templateContent | truncate(120)) }}</div>
+                <a href="{{ post.url }}" class="read-more" aria-label="Читать полностью — {{ post.data.title }}" title="Читать полностью">
+                  <span>Читать полностью</span>
+                  <i class="bi bi-arrow-right" aria-hidden="true"></i>
+                </a>
+              </div>
+            </article>
           </div>
           {% else %}
           <div class="col-12 text-center">
@@ -83,7 +93,7 @@
         </div>
 
         <div class="text-center mt-4" data-aos="fade-up" data-aos-delay="500">
-          <a href="/news/" class="btn-get-started">Все новости</a>
+          <a href="/news/" class="btn-outline-accent">Все новости</a>
         </div>
       </div>
     </div>
@@ -99,9 +109,9 @@
     whitespace-control Nunjucks ({%- -%}, {{- -}}), чтобы итоговый HTML шёл
     единым блоком без переносов строк между блочными тегами.
   #}
-  <section class="section component-news component-news--razdel"><div class="container">
+  <section class="site-news site-news--section section component-news component-news--razdel" data-component="news-links"><div class="container">
     {%- if newsTitle -%}
-    <div class="section-title mb-4" data-aos="fade-up"><h2>{{- newsTitle -}}</h2></div>
+    <div class="sit-section-title mb-4" data-aos="fade-up"><h2>{{- newsTitle -}}</h2></div>
     {%- endif -%}
     {%- if newsCards and newsCards.length > 0 -%}
     <ul class="rubric-resources-grid">

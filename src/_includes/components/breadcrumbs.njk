@@ -26,8 +26,9 @@
 {% set _sectionLabel = sectionTitle or categoryTitle or _labels.bySlug[_sectionKey] or _sectionKey %}
 {% set _subsectionLabel = subsectionTitle or _labels.bySlug[subsection] or subsection %}
 
-<nav class="breadcrumbs component-breadcrumbs" aria-label="Хлебные крошки">
-  <ol class="breadcrumb-list"
+<nav class="site-breadcrumbs breadcrumbs component-breadcrumbs" data-component="breadcrumbs" aria-label="Хлебные крошки">
+  <div class="site-breadcrumbs__inner">
+  <ol class="site-breadcrumbs__list breadcrumb-list"
       itemscope
       itemtype="https://schema.org/BreadcrumbList">
 
@@ -35,12 +36,12 @@
     {% if breadcrumbs and breadcrumbs.length > 0 %}
 
       {% for crumb in breadcrumbs %}
-      <li class="breadcrumb-item{% if loop.last %} breadcrumb-item--current{% endif %}"
+      <li class="site-breadcrumbs__item breadcrumb-item{% if loop.last %} breadcrumb-item--current{% endif %}"
           itemprop="itemListElement"
           itemscope
           itemtype="https://schema.org/ListItem">
         {% if not loop.last and crumb.url %}
-          <a href="{{ crumb.url }}" itemprop="item">
+          <a class="site-breadcrumbs__link" href="{{ crumb.url }}" itemprop="item">
             <span itemprop="name">{{ crumb.text }}</span>
           </a>
         {% else %}
@@ -54,9 +55,9 @@
     {% elseif _sectionKey %}
 
       {# Главная #}
-      <li class="breadcrumb-item"
+      <li class="site-breadcrumbs__item breadcrumb-item"
           itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-        <a href="/" itemprop="item"><span itemprop="name">Главная</span></a>
+        <a class="site-breadcrumbs__link" href="/" itemprop="item"><span itemprop="name">Главная</span></a>
         <meta itemprop="position" content="1"/>
       </li>
 
@@ -66,15 +67,15 @@
       {% set _isRootOfSection = (page.url == _sectionUrl) and not subsection %}
 
       {% if _isRootOfSection %}
-      <li class="breadcrumb-item breadcrumb-item--current"
+      <li class="site-breadcrumbs__item breadcrumb-item breadcrumb-item--current"
           itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
         <span itemprop="name">{{ _sectionLabel }}</span>
         <meta itemprop="position" content="2"/>
       </li>
       {% else %}
-      <li class="breadcrumb-item"
+      <li class="site-breadcrumbs__item breadcrumb-item"
           itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-        <a href="{{ _sectionUrl }}" itemprop="item">
+        <a class="site-breadcrumbs__link" href="{{ _sectionUrl }}" itemprop="item">
           <span itemprop="name">{{ _sectionLabel }}</span>
         </a>
         <meta itemprop="position" content="2"/>
@@ -82,9 +83,9 @@
 
       {# Уровень 2: подраздел (опц.) #}
       {% if subsection %}
-      <li class="breadcrumb-item"
+      <li class="site-breadcrumbs__item breadcrumb-item"
           itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-        <a href="/{{ _sectionKey }}/{{ subsection }}/" itemprop="item">
+        <a class="site-breadcrumbs__link" href="/{{ _sectionKey }}/{{ subsection }}/" itemprop="item">
           <span itemprop="name">{{ _subsectionLabel }}</span>
         </a>
         <meta itemprop="position" content="3"/>
@@ -93,7 +94,7 @@
 
       {# Текущая страница #}
       {% if title %}
-      <li class="breadcrumb-item breadcrumb-item--current"
+      <li class="site-breadcrumbs__item breadcrumb-item breadcrumb-item--current"
           itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
         <span itemprop="name">{{ title }}</span>
         <meta itemprop="position"
@@ -106,9 +107,9 @@
     {% else %}
 
       {# Главная — всегда первая #}
-      <li class="breadcrumb-item"
+      <li class="site-breadcrumbs__item breadcrumb-item"
           itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-        <a href="/" itemprop="item"><span itemprop="name">Главная</span></a>
+        <a class="site-breadcrumbs__link" href="/" itemprop="item"><span itemprop="name">Главная</span></a>
         <meta itemprop="position" content="1"/>
       </li>
 
@@ -135,12 +136,12 @@
           {% set _label = _label or seg %}
         {% endif %}
 
-        <li class="breadcrumb-item{% if _isLast %} breadcrumb-item--current{% endif %}"
+        <li class="site-breadcrumbs__item breadcrumb-item{% if _isLast %} breadcrumb-item--current{% endif %}"
             itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
           {% if _isLast %}
             <span itemprop="name">{{ _label }}</span>
           {% else %}
-            <a href="{{ _accUrl }}" itemprop="item">
+            <a class="site-breadcrumbs__link" href="{{ _accUrl }}" itemprop="item">
               <span itemprop="name">{{ _label }}</span>
             </a>
           {% endif %}

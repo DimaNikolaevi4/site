@@ -4,6 +4,51 @@ const fs = require('fs');
 const path = require('path');
 const { minify: minifyHtml } = require('html-minifier-terser');
 
+// Явный режим сборки: current сохраняет baseline-поведение, v2 готовит отдельный output.
+const BUILD_MODES = Object.freeze({
+  current: Object.freeze({ output: 'public' }),
+  v2: Object.freeze({ output: 'public-v2' })
+});
+const buildMode = String(process.env.SITE_MODE || 'current').trim().toLowerCase();
+if (!Object.prototype.hasOwnProperty.call(BUILD_MODES, buildMode)) {
+  throw new Error(`Неизвестный SITE_MODE "${buildMode}". Допустимые значения: current, v2.`);
+}
+const outputDirectory = BUILD_MODES[buildMode].output;
+// Все локальные изображения и документы тестовых сборок загружаются с основного домена.
+const PRIMARY_ASSET_ORIGIN = 'https://сит-сальск.рф/';
+const MEDIA_FILE_PATTERN = /\.(?:avif|bmp|gif|jpe?g|png|svg|webp|pdf|docx?|xlsx?|pptx?|zip|rar|7z|odt|ods|rtf|csv)(?:[?#].*)?$/i;
+
+function toPrimaryMediaUrl(value) {
+  if (value === null || value === undefined) return '';
+  if (typeof value !== 'string') return value;
+  const trimmed = value.trim();
+  if (!trimmed || /^(?:[a-z][a-z\d+.-]*:|\/\/|#)/i.test(trimmed)) return value;
+  if (!trimmed.startsWith('/')) return value;
+  return PRIMARY_ASSET_ORIGIN + trimmed.replace(/^\/+/, '');
+}
+
+function isMediaUrl(value) {
+  const pathPart = String(value || '').split(/[?#]/, 1)[0];
+  return /^\/(?:assets\/(?:images|uploads|favicons)\/|images\/|docs\/)/i.test(pathPart)
+    || MEDIA_FILE_PATTERN.test(pathPart);
+}
+
+function rewriteMediaAttributes(content) {
+  return content.replace(/\b(src|srcset|poster|href)\s*=\s*(["'])(.*?)\2/gi, (full, name, quote, value) => {
+    const attrName = name.toLowerCase();
+    const rewritten = attrName === 'srcset'
+      ? value.split(',').map(candidate => {
+          const match = candidate.match(/^(\s*)(\S+)([\s\S]*)$/);
+          if (!match || !isMediaUrl(match[2])) return candidate;
+          return match[1] + toPrimaryMediaUrl(match[2]) + match[3];
+        }).join(',')
+      : isMediaUrl(value) ? toPrimaryMediaUrl(value) : value;
+    if (rewritten === value) return full;
+    return name + '=' + quote + rewritten + quote;
+  });
+}
+
+
 // Загрузка структуры рубрик
 function loadRubrics() {
   const rubricsPath = path.join(__dirname, 'src/_data/rubrics.yaml');
@@ -41,7 +86,7 @@ function getAllRubricSlugs(rubrics, parentSlug = '') {
         // если у самих не задан url. Это сохраняет вложенность в дереве.
         const childSlugs = getAllRubricSlugs(
           { main_rubrics: rubric.children },
-          inheritedPath
+          fullPath
         );
         slugs = slugs.concat(childSlugs);
       }
@@ -52,6 +97,8 @@ function getAllRubricSlugs(rubrics, parentSlug = '') {
 }
 
 module.exports = function(eleventyConfig) {
+  console.log(`🏗️ Режим сборки: ${buildMode}; output: ${outputDirectory}`);
+  eleventyConfig.addGlobalData('siteBuildMode', buildMode);
   // === Подключение иерархии рубрик ===
   // rubrics.yaml — НАВИГАЦИОННАЯ иерархия (header dropdown, breadcrumbs labels,
   // карточки подразделов). Авто-регистрация per-rubric коллекций удалена:
@@ -68,6 +115,9 @@ module.exports = function(eleventyConfig) {
     if (typeof str !== 'string') return false;
     return str.startsWith(prefix);
   });
+
+  // Нормализует локальные media-ссылки на основной рабочий домен.
+  eleventyConfig.addFilter('assetUrl', toPrimaryMediaUrl);
 
   // === Фильтры для работы с рубриками ===
   eleventyConfig.addFilter('getParentRubric', function(currentSlug) {
@@ -274,14 +324,14 @@ module.exports = function(eleventyConfig) {
   // === Копирование статики ===
   // Канонический CSS — только src/styles/main.css (см. STRUCTURE_AND_PRINCIPLES.md § 2.4).
   // Из src/assets копируем точечно подпапки, реально используемые шаблонами:
-  // favicons, images, js, uploads, template, vendor. Папка scss/ не публикуется (исходники).
+  // favicons, images, js, uploads, vendor. Папка scss/ не публикуется (исходники).
   eleventyConfig.addPassthroughCopy("src/assets/favicons");
   eleventyConfig.addPassthroughCopy("src/assets/images");
   eleventyConfig.addPassthroughCopy("src/assets/js");
+  // Неподтверждённый материал №38 удалён и не должен попадать в обработку или публикацию.
+  eleventyConfig.ignores.add("src/assets/uploads/i.jpeg");
   eleventyConfig.addPassthroughCopy({ "src/assets/uploads": "assets/uploads" });
   eleventyConfig.addPassthroughCopy({ "src/docs": "docs" });
-  eleventyConfig.addPassthroughCopy({ "src/assets/template": "assets/template" });
-  eleventyConfig.addPassthroughCopy({ "src/assets/vendor/form-validation": "assets/vendor/form-validation" });
   eleventyConfig.addPassthroughCopy("src/images");
   // Vendor-библиотеки копируются в /assets/vendor/ для независимости от сторонних шаблонов.
   eleventyConfig.addPassthroughCopy({ "node_modules/bootstrap/dist/css/bootstrap.min.css": "assets/vendor/bootstrap/css/bootstrap.min.css" });
@@ -292,9 +342,6 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addPassthroughCopy({ "node_modules/aos/dist/aos.js": "assets/vendor/aos/aos.js" });
   eleventyConfig.addPassthroughCopy({ "node_modules/glightbox/dist/css/glightbox.min.css": "assets/vendor/glightbox/css/glightbox.min.css" });
   eleventyConfig.addPassthroughCopy({ "node_modules/glightbox/dist/js/glightbox.min.js": "assets/vendor/glightbox/js/glightbox.min.js" });
-  eleventyConfig.addPassthroughCopy({ "node_modules/swiper/swiper-bundle.min.css": "assets/vendor/swiper/swiper-bundle.min.css" });
-  eleventyConfig.addPassthroughCopy({ "node_modules/swiper/swiper-bundle.min.js": "assets/vendor/swiper/swiper-bundle.min.js" });
-  eleventyConfig.addPassthroughCopy({ "node_modules/@srexi/purecounterjs/dist/purecounter_vanilla.js": "assets/vendor/purecounter/purecounter_vanilla.js" });
   eleventyConfig.addPassthroughCopy({ "node_modules/lunr/lunr.min.js": "assets/vendor/lunr/lunr.min.js" });
   eleventyConfig.addPassthroughCopy({ "node_modules/lunr-languages/lunr.stemmer.support.js": "assets/vendor/lunr/lunr.stemmer.support.js" });
   eleventyConfig.addPassthroughCopy({ "node_modules/lunr-languages/lunr.ru.js": "assets/vendor/lunr/lunr.ru.js" });
@@ -472,7 +519,7 @@ module.exports = function(eleventyConfig) {
     // Соответствие webp-файлу в выходной директории (passthrough копирует туда из src/)
     const webpUrl = srcUrl.replace(/\.(jpe?g|png)$/i, '.webp');
     if (webpExistsCache.has(webpUrl)) return webpExistsCache.get(webpUrl);
-    const fsPath = path.join(__dirname, 'public', webpUrl.replace(/^\//, ''));
+    const fsPath = path.join(__dirname, outputDirectory, webpUrl.replace(/^\//, ''));
     const exists = fs.existsSync(fsPath);
     webpExistsCache.set(webpUrl, exists);
     return exists;
@@ -514,8 +561,12 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addTransform('imgLazy', function (content) {
     const outputPath = this.page && this.page.outputPath;
     if (!outputPath || !outputPath.endsWith('.html')) return content;
-    return content.replace(/<img\b([^>]*?)>/gi, (full, attrs) => {
-      let out = attrs;
+    // Удаляем trailing self-closing слэш (XHTML-стиль `<img ... />`),
+    // иначе новые атрибуты добавились бы ПОСЛЕ `/` и получили
+    // некорректный `<img ... /> loading="lazy">`, на котором падает
+    // html-minifier-terser с Parse Error. В HTML5 <img> не самозакрывающийся.
+    return content.replace(/<img\b([^>]*?)\s*\/?>/gi, (full, attrs) => {
+      let out = attrs.replace(/\s+$/, '');
       if (!/\bloading\s*=/i.test(out)) out += ' loading="lazy"';
       if (!/\bdecoding\s*=/i.test(out)) out += ' decoding="async"';
       return `<img${out}>`;
@@ -715,6 +766,14 @@ module.exports = function(eleventyConfig) {
     });
   });
 
+  // === Абсолютные URL для изображений и документов ===
+  // Это покрывает и шаблоны, и HTML, пришедший из Markdown/front matter.
+  eleventyConfig.addTransform('absoluteMediaUrls', function (content) {
+    const outputPath = this.page && this.page.outputPath;
+    if (!outputPath || !outputPath.endsWith('.html')) return content;
+    return rewriteMediaAttributes(content);
+  });
+
   // === Минификация HTML (только в режиме build, не в dev/serve) ===
   // Eleventy 3.x выставляет process.env.ELEVENTY_RUN_MODE в "build"|"serve"|"watch".
   // Минифицируем только при build (npm run build), чтобы не замедлять разработку.
@@ -755,7 +814,7 @@ module.exports = function(eleventyConfig) {
   return {
     dir: {
       input: "src",
-      output: "public",
+      output: outputDirectory,
       includes: "_includes",
       data: "_data"
     },

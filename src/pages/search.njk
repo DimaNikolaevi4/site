@@ -12,7 +12,7 @@ permalink: /search/
 
 <!-- Основной контент -->
 <div class="container layout">
-  <main class="layout__content layout__content--full search-page" id="main-content">
+  <div class="layout__content layout__content--full search-page">
     <!-- Форма поиска -->
     <form class="search-form" role="search" action="/search/" method="get">
       <div class="search-form__row">
@@ -69,14 +69,10 @@ permalink: /search/
         <li>Поиск работает по русским и английским словам</li>
       </ul>
     </div>
-  </main>
+  </div>
 </div>
 
-{# Данные для фильтров #}
-<script id="rubricsData" type="application/json">
-{{ rubrics.main_rubrics | dump | safe }}
-</script>
-
+{# rubricsData is provided once by components/header.njk for site-wide search. #}
 {# Подключаем Lunr.js (уже в base.njk) и скрипт поиска #}
 <script src="/assets/js/search.js" defer></script>
 

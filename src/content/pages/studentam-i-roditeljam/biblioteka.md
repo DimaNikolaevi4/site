@@ -3,7 +3,7 @@ title: Библиотека техникума
 layout: layouts/page-full.njk
 description: Библиотека ГБПОУ РО «Сальский индустриальный техникум» — фонд, правила пользования, цифровая библиотека (ЭБС «Юрайт» и «Лань»).
 rubric: "8.1.2"
-permalink: /studentam-i-roditeljam/biblioteka/
+permalink: /studentam-i-roditeljam/resursy/biblioteka/
 ---
 
 # 8.1.2. Библиотека техникума

@@ -3,7 +3,7 @@ title: Волонтёрский отряд «Радуга добра»
 layout: layouts/page-full.njk
 category: vospitanie
 rubric: "4.5.1"
-permalink: /vospitanie/raduga-dobra/
+permalink: /vospitanie/volonterstvo/raduga-dobra/
 tags:
   - воспитание
   - волонтёрство
