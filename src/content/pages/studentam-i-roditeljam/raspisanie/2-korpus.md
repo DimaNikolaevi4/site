@@ -635,7 +635,7 @@ permalink: /studentam-i-roditeljam/raspisanie/2-korpus/
 </div>
 
 <div class="text-center mt-4">
-  <a href="/studentam-i-roditeljam/raspisanie/" class="btn-get-started">
+  <a href="/studentam-i-roditeljam/raspisanie/" class="btn-outline-accent">
     <i class="bi bi-arrow-left" aria-hidden="true"></i>
     Назад к расписанию
   </a>

@@ -90,11 +90,10 @@ h1, h2, h3, h4, h5, h6 {
   margin-bottom: 24px;
 }
 
-
 /*--------------------------------------------------------------
 # Scroll Top Button
 --------------------------------------------------------------*/
-.scroll-top {
+.sit-scroll-top {
   position: fixed;
   visibility: hidden;
   opacity: 0;
@@ -108,18 +107,18 @@ h1, h2, h3, h4, h5, h6 {
   transition: all 0.4s;
 }
 
-.scroll-top i {
+.sit-scroll-top i {
   font-size: 24px;
   color: var(--contrast-color);
   line-height: 0;
 }
 
-.scroll-top:hover {
+.sit-scroll-top:hover {
   background-color: color-mix(in srgb, var(--accent-color), transparent 20%);
   color: var(--contrast-color);
 }
 
-.scroll-top.active {
+.sit-scroll-top.active {
   visibility: visible;
   opacity: 1;
   bottom: 15px;
@@ -163,7 +162,7 @@ section,
 /*--------------------------------------------------------------
 # Global Section Titles
 --------------------------------------------------------------*/
-.section-title {
+.sit-section-title {
   padding-bottom: 60px;
   padding-top: 28px;
   position: relative;
@@ -172,7 +171,7 @@ section,
 /* Разделительная линия над заголовком раздела —
    тот же градиент, что и в .footer-corp-header / .svedenija-nav-title:
    мягкий зелёный с прозрачными краями. */
-.section-title::before {
+.sit-section-title::before {
   content: "";
   display: block;
   width: 100%;
@@ -191,7 +190,7 @@ section,
   background-size: 100% 2px;
 }
 
-.section-title h2 {
+.sit-section-title h2 {
   font-size: 14px;
   font-weight: 500;
   padding: 0;
@@ -204,12 +203,12 @@ section,
 }
 
 /* Старая короткая линия рядом с мини-заголовком ("новости" и т. п.)
-   убрана — её роль теперь выполняет полноширинная .section-title::before */
-.section-title h2::after {
+   убрана — её роль теперь выполняет полноширинная .sit-section-title::before */
+.sit-section-title h2::after {
   display: none;
 }
 
-.section-title p {
+.sit-section-title p {
   color: var(--heading-color);
   margin: 0;
   font-size: 36px;
@@ -317,42 +316,8 @@ section,
 }
 
 /* News, popular and related cards share this V2 contract. */
-.course-item {
-  width: 100%;
-  overflow: hidden;
-  background: var(--card-accent-bg);
-  border: 1px solid var(--card-accent-border);
-  border-radius: 14px;
-  box-shadow: 0 8px 22px rgba(25, 55, 35, 0.08);
-}
-
-.course-item > img,
-.course-item .img-fluid {
-  display: block;
-  width: 100%;
-  aspect-ratio: 16 / 9;
-  object-fit: cover;
-}
-
-.course-content { padding: 1rem 1.1rem 1.15rem; }
-.course-content h3,
-.course-content h4 { margin: 0 0 .65rem; font-weight: 700; font-size: 1.15rem; }
-.course-content h3 a,
-.course-content h4 a { color: var(--heading-color); }
-.course-content h3 a:hover,
-.course-content h4 a:hover { color: var(--accent-color); }
-.course-content .description { color: color-mix(in srgb, var(--default-color), transparent 22%); }
-.course-item .trainer {
-  padding-top: .9rem;
-  border-top: 1px solid color-mix(in srgb, var(--default-color), transparent 88%);
-}
-.course-item .trainer-profile { min-width: 0; }
-.course-item .trainer-profile img { width: 50px; border-radius: 50%; }
-.course-item .trainer-profile .trainer-link { padding-left: 10px; font-weight: 600; color: var(--default-color); }
-.course-item .trainer-profile .trainer-link:hover { color: var(--accent-color); }
 
 /* === Унификация карточек .card (страницы /news/, /tags/, разделы) ===
-   Приводим к тому же визуальному ритму, что и .course-item на главной:
    — тонкая разделительная линия над .read-more
    — те же отступы (padding-top: .9rem) и цвет границы
    — кнопка прижата к низу карточки (margin-top: auto),
@@ -392,7 +357,7 @@ article.card .card-content > .read-more {
 .read-more:hover { color: var(--contrast-color); background: color-mix(in srgb, var(--accent-color), transparent 20%); }
 .read-more i { font-size: 18px; line-height: 0; }
 
-.btn-get-started {
+.btn-outline-accent {
   display: inline-block;
   margin-top: 1rem;
   padding: 8px 35px 10px;
@@ -402,8 +367,7 @@ article.card .card-content > .read-more {
   font-weight: 600;
   transition: .3s;
 }
-.btn-get-started:hover { background: var(--accent-color); color: var(--contrast-color); }
-
+.btn-outline-accent:hover { background: var(--accent-color); color: var(--contrast-color); }
 
 /*--------------------------------------------------------------
 # Глобальный декоративный фон страниц (bg-02 / bg-03)
@@ -473,7 +437,6 @@ body.dark-theme .about-title {
 /* Внутренние секции — прозрачные, чтобы фон был сквозным */
 .home-bg > .section,
 .home-bg > section,
-.home-bg .courses,
 .home-bg .about,
 .home-bg .popular,
 .home-bg .component-about,
@@ -554,7 +517,7 @@ body.dark-theme .about-title {
 
 /* News и Popular: возвращаем небольшой верхний внутренний отступ,
    чтобы заголовок секции и обводка карточек не «съедались» сверху.
-   У About верхнего отступа не нужно — там фото/текст, без section-title. */
+   У About верхнего отступа не нужно — там фото/текст, без sit-section-title. */
 .home-with-sidebar > .component-news,
 .home-with-sidebar > .component-popular {
   padding-top: 1.5rem;
@@ -601,7 +564,7 @@ body.dark-theme .about-title {
 
   /* Ритм между «Словом директора», блоком новостей и «Популярное»
      на мобильной. Серую разделительную линию убрали — её роль теперь
-     выполняет градиентная линия в .section-title::before. */
+     выполняет градиентная линия в .sit-section-title::before. */
   .home-with-sidebar > .component-news,
   .home-with-sidebar > .component-popular {
     margin-top: 0.5rem;
@@ -1456,7 +1419,6 @@ body.dark-theme .site-footer .footer-resource-icon {
     gap: 2px;
   }
 }
-
 
 /* ============================================
    Шапка: иконки в одну строку с меню
@@ -3104,7 +3066,6 @@ body.a11y-no-animations *::after {
   animation: none !important;
 }
 
-
 /* ╔═══════════════════════════════════════════════════════════╗
    ║                    ТЁМНАЯ ТЕМА                            ║
    ╚═══════════════════════════════════════════════════════════╝ */
@@ -3122,8 +3083,6 @@ body.dark-theme {
   --nav-dropdown-background-color: #1a2720;
   --nav-dropdown-color:         #c5d5c8;
   --nav-dropdown-hover-color:   #5fcf80;
-  --card-accent-bg:             #1d2c24;   /* Тёмно-зелёный сюрфейс превью-карточек (course-item) */
-  --card-accent-border:         #2a3d33;   /* Бордер карточек course-item в тёмной теме */
 }
 
 /* ── Основа ── */
@@ -3356,7 +3315,7 @@ body.dark-theme .dev-banner-text {
 }
 
 /* ── Контент, карточки, секции ── */
-body.dark-theme .section-title h2 {
+body.dark-theme .sit-section-title h2 {
   color: #e4efe6;
 }
 
@@ -3441,9 +3400,8 @@ body.dark-theme select:focus {
   background-color: #1e2d24;
 }
 
-
 /* ── Кнопка "Наверх" ── */
-body.dark-theme .scroll-top {
+body.dark-theme .sit-scroll-top {
   background-color: rgba(95, 207, 128, 0.8);
 }
 
@@ -4914,33 +4872,10 @@ body.a11y-high-contrast .tag { background: #333 !important; color: #fff !importa
 /* ══════════════════════════════════════════════════════════════════
    Единый стиль превью-карточек: Новости · Важное · Читайте также
    ══════════════════════════════════════════════════════════════════ */
-.component-news .course-item,
-.component-popular .course-item,
-.section-related .course-item {
-  overflow: hidden;
-  box-shadow: var(--home-img-shadow);
-  background-color: var(--card-accent-bg);
-  border: 1px solid var(--card-accent-border);
-  border-radius: var(--home-img-radius);
-}
 
 /* border-radius на изображениях — кроме logo.png в popular */
-.component-news .course-item > img,
-.component-news .course-item .img-fluid,
-.component-popular .course-item > img:not(.popular-card__logo-img),
-.component-popular .course-item .img-fluid:not(.popular-card__logo-img),
-.section-related .course-item > img,
-.section-related .course-item .img-fluid {
-  border-radius: var(--home-img-radius) var(--home-img-radius) 0 0;
-}
 
 @media (max-width: 767.98px) {
-  .component-news .course-item,
-  .component-popular .course-item,
-  .section-related .course-item {
-    margin-top: 0.75rem;
-    margin-bottom: 0.75rem;
-  }
 }
 
 /* Подрубрики (на страницах разделов, для единообразия) */
@@ -4985,9 +4920,6 @@ body.a11y-high-contrast .tag { background: #333 !important; color: #fff !importa
 # Превью карточек: уменьшенные размеры текста и заголовков
 #
 # Применяется ко всем типам превью-карточек:
-#   - .component-news .course-item       — превью новостей на главной
-#   - .component-popular .course-item    — «Важное» на главной
-#   - .section-related .course-item      — «Читайте также» на страницах
 #   - .subrubric-card                    — превью разделов в листингах
 #                                          /abiturientam/, /svedenija/
 #   - .news-card                         — превью «Другие новости» на
@@ -4996,34 +4928,6 @@ body.a11y-high-contrast .tag { background: #333 !important; color: #fff !importa
 --------------------------------------------------------------*/
 
 /* Единый размер текста для всех трёх компонентов */
-.component-news .course-item .course-content,
-.component-popular .course-item .course-content,
-.section-related .course-item .course-content {
-  padding: 14px 16px 16px;
-}
-.component-news .course-item .course-content h3,
-.component-popular .course-item .course-content h3,
-.section-related .course-item .course-content h3 {
-  font-size: 15px;
-  line-height: 1.3;
-  font-weight: 700;
-  margin-bottom: 8px;
-}
-.component-news .course-item .course-content .date {
-  font-size: 12px;
-  line-height: 1.2;
-}
-.component-news .course-item .course-content .description,
-.component-popular .course-item .course-content .description,
-.section-related .course-item .course-content .description {
-  font-size: 13px;
-  line-height: 1.45;
-}
-.component-news .course-item .read-more,
-.component-popular .course-item .read-more,
-.section-related .course-item .read-more {
-  font-size: 12.5px;
-}
 
 /* Превью разделов (.subrubric-card в листингах) */
 .subrubric-card__body {
@@ -5113,7 +5017,6 @@ article.card {
   width: 100%;
   display: flex;
   flex-direction: column;
-  /* Унификация с .course-item: тот же фон, рамка, тень, скругление */
   background: var(--card-accent-bg) !important;
   border: 1px solid var(--card-accent-border);
   border-radius: var(--home-img-radius, 14px);
@@ -5122,7 +5025,6 @@ article.card {
 }
 
 /* === Изображение карточки: 16/9, object-fit: cover, скругление сверху ===
-   То же, что и у .course-item > img, но img обёрнут в .card-image > a. */
 article.card .card-image {
   display: block;
   width: 100%;
@@ -5139,27 +5041,23 @@ article.card .card-image img {
   border-radius: var(--home-img-radius, 14px) var(--home-img-radius, 14px) 0 0;
 }
 
-/* === Контентная зона: те же отступы, что у .course-content ===
-   Используем display: block (как у .course-content в .course-item),
+/* === Контентная зона: те же отступы, что у .card-content ===
    а не flex — чтобы дочерние элементы автоматически растягивались на
    всю ширину. Кнопку .read-more прижимаем к низу через margin-top: auto,
    но для этого нужно, чтобы .card-content имел height: 100% и был flex.
    Компромисс: делаем .card-content flex с flex-direction: column,
-   а кнопку заворачиваем в обёртку .card-footer с border-top, как .trainer. */
 article.card .card-content {
   display: flex;
   flex-direction: column;
   flex: 1 1 auto;
   min-height: 0;
-  /* Унификация с .course-content (padding: 1rem 1.1rem 1.15rem) */
+  /* Унификация с .card-content (padding: 1rem 1.1rem 1.15rem) */
   padding: 1rem 1.1rem 1.15rem;
 }
 article.card .card-excerpt {
   color: color-mix(in srgb, var(--default-color), transparent 22%);
   margin-bottom: 0;
 }
-/* Разделитель и кнопка — аналогично .course-item .trainer.
-   В .course-item разделитель и кнопка находились в .trainer (block-level,
    border-top, padding-top). В .card .read-more — это flex-child, который
    не растягивается на всю ширину из-за inline-flex базового стиля.
    Решение: переопределяем .read-more в .card как блочный flex-контейнер
@@ -5209,7 +5107,7 @@ article.card .card-content > .read-more:hover > span {
   background: color-mix(in srgb, var(--accent-color), transparent 20%);
 }
 
-/* Заголовок, дата, категория — те же размеры/цвета, что у .course-content h3 */
+/* Заголовок, дата, категория — те же размеры/цвета, что у .card-content h3 */
 article.card .card-header {
   margin-bottom: .65rem;
 }
@@ -5366,7 +5264,6 @@ body.dark-theme .rubric-resource-icon {
    КОМПОНЕНТ: «Популярное» (Секция 6 канона 3.0.1)
    Подключается в index.njk, page-full.njk, page.njk, post.njk, listing.njk.
    Использует визуальный язык news.njk (режим home):
-   Bootstrap-сетка `col-md-6 col-xl-4` + карточки `.course-item` базовой темы.
    Своих стилей сетки/карточек не имеет — только бейдж placeholder-карточки.
    ════════════════════════════════════════════════════════════════════ */
 .popular-card__badge {

@@ -292,7 +292,7 @@ document.addEventListener('DOMContentLoaded', function () {
       '.oc-header__logo',
       '.bf-22__logo',
       '.card-image',        // карточки — клик ведёт на статью
-      '.course-item img',   // карточки новостей/популярное
+      '.card img',   // карточки новостей/популярное
       '.popular-card__logo-img',
       '.header-logo-img'
     ];

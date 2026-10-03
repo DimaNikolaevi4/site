@@ -33,7 +33,7 @@
   {% set _newsSubtitle = newsSubtitle if newsSubtitle else "Последние события техникума" %}
 
   <section id="news" class="site-news site-news--home section component-news component-news--home" data-component="news">
-    <div class="site-news__heading container section-title" data-aos="fade-up">
+    <div class="site-news__heading container sit-section-title" data-aos="fade-up">
       <h2>{{ _newsTitle }}</h2>
       <p>{{ _newsSubtitle }}</p>
     </div>
@@ -93,7 +93,7 @@
         </div>
 
         <div class="text-center mt-4" data-aos="fade-up" data-aos-delay="500">
-          <a href="/news/" class="btn-get-started">Все новости</a>
+          <a href="/news/" class="btn-outline-accent">Все новости</a>
         </div>
       </div>
     </div>
@@ -111,7 +111,7 @@
   #}
   <section class="site-news site-news--section section component-news component-news--razdel" data-component="news-links"><div class="container">
     {%- if newsTitle -%}
-    <div class="section-title mb-4" data-aos="fade-up"><h2>{{- newsTitle -}}</h2></div>
+    <div class="sit-section-title mb-4" data-aos="fade-up"><h2>{{- newsTitle -}}</h2></div>
     {%- endif -%}
     {%- if newsCards and newsCards.length > 0 -%}
     <ul class="rubric-resources-grid">
