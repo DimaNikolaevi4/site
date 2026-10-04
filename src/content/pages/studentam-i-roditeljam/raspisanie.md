@@ -49,12 +49,14 @@ permalink: /studentam-i-roditeljam/raspisanie/
 
 <div class="row g-3 mt-2">
   <div class="col-md-6 col-lg-4">
-    <div class="card h-100">
-      <div class="card-body p-3">
-        <h3 class="h6 mb-2"><i class="bi bi-calendar-event me-2 text-primary"></i>График учебного процесса</h3>
-        <p class="small text-muted mb-0">Календарный график очного отделения на 2026-27 учебный год: начало семестров, каникулы, промежуточная аттестация.</p>
+    <a href="/docs/obrazovanie/%D0%93%D1%80%D0%B0%D1%84%D0%B8%D0%BA-%D1%83%D1%87%D0%B5%D0%B1%D0%BD%D0%BE%D0%B3%D0%BE-%D0%BF%D1%80%D0%BE%D1%86%D0%B5%D1%81%D1%81%D0%B0-%D0%BE%D1%87%D0%BD%D0%BE%D0%B3%D0%BE-%D0%BE%D1%82%D0%B4%D0%B5%D0%BB%D0%B5%D0%BD%D0%B8%D1%8F-%D0%93%D0%91%D0%9F%D0%9E%D0%A3-%D0%A0%D0%9E-%D0%A1%D0%98%D0%A2-%D0%BD%D0%B0-2026-27-%D1%83%D1%87.%D0%B3%D0%BE%D0%B4.pdf" target="_blank" rel="noopener noreferrer" class="text-decoration-none">
+      <div class="card h-100">
+        <div class="card-body p-3">
+          <h3 class="h6 mb-2"><i class="bi bi-calendar-event me-2 text-primary"></i>График учебного процесса</h3>
+          <p class="small text-muted mb-0">Календарный график очного отделения на 2026-27 учебный год: начало семестров, каникулы, промежуточная аттестация.</p>
+        </div>
       </div>
-    </div>
+    </a>
   </div>
   <div class="col-md-6 col-lg-4">
     <div class="card h-100">
