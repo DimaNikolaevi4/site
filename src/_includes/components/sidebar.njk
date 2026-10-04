@@ -19,20 +19,20 @@
   Использование:
     {% include "components/sidebar.njk" %}
 #}
-<aside class="component-sidebar" role="complementary" aria-label="Дополнительная информация">
+<aside class="site-sidebar component-sidebar" data-component="sidebar" role="complementary" aria-label="Дополнительная информация">
 
-  <div class="sidebar-image-banners">
+  <div class="site-sidebar__banners sidebar-image-banners">
 
     {# === Баннер 1: БПЛА === #}
-    <a class="sidebar-image-banner"
+    <a class="site-sidebar__banner sidebar-image-banner"
        href="https://xn--61-6kc3bbqgrrd.xn--p1ai/bpla.html"
        target="_blank"
        rel="noopener noreferrer"
        aria-label="Стань оператором БПЛА — выбери профессию будущего"
        data-aos="fade-left"
        data-aos-delay="80">
-      <figure class="sidebar-image-banner__figure">
-        <img class="sidebar-image-banner__img"
+      <figure class="site-sidebar__figure sidebar-image-banner__figure">
+        <img class="site-sidebar__image sidebar-image-banner__img"
              src="/images/banners/bpla.jpg"
              alt="Стань оператором БПЛА — выбери профессию будущего" title="Стань оператором БПЛА — выбери профессию будущего"
              loading="lazy"
@@ -59,7 +59,7 @@
 
     {# === Баннер 3: ПОС «Решаем вместе» — официальный фиксированный блок === #}
     <div id="js-show-iframe-wrapper"
-         class="sidebar-pos"
+         class="site-sidebar__public-services sidebar-pos"
          data-aos="fade-left"
          data-aos-delay="240">
       <div class="pos-banner-fluid bf-22">

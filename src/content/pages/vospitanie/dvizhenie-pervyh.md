@@ -3,7 +3,7 @@ title: «Движение Первых»
 layout: layouts/page-full.njk
 category: vospitanie
 rubric: "4.7.4"
-permalink: /vospitanie/dvizhenie-pervyh/
+permalink: /vospitanie/kulturno-massovaja/dvizhenie-pervyh/
 tags:
   - воспитание
   - движение первых

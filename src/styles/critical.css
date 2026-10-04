@@ -10,7 +10,7 @@
      5. Hero-баннер (.page-hero и все его подэлементы)
      6. Базовый layout (.container, .container-fluid, .container-xl,
         .main-content) — дублирует Bootstrap 5 grid breakpoints
-     7. Кнопка «Наверх» (.scroll-top — fixed, чтобы не прыгала)
+     7. Кнопка «Наверх» (.sit-scroll-top — fixed, чтобы не прыгала)
      8. A11y-режимы (.dark-theme, .a11y-high-contrast,
         .a11y-large-font, .a11y-no-animations) — классы ставятся
         inline-скриптом в <head> ДО загрузки main.css, поэтому
@@ -108,8 +108,8 @@ ul{padding-left:1.5rem}
 .main-content{outline:none}
 
 /* Кнопка «Наверх» (fixed, чтобы не прыгала при загрузке main.css) */
-.scroll-top{position:fixed;visibility:hidden;opacity:0;right:15px;bottom:15px;z-index:99999;background:var(--accent-color);width:40px;height:40px;border-radius:50%;transition:all .4s}
-.scroll-top.active{visibility:visible;opacity:1}
+.sit-scroll-top{position:fixed;visibility:hidden;opacity:0;right:15px;bottom:15px;z-index:99999;background:var(--accent-color);width:40px;height:40px;border-radius:50%;transition:all .4s}
+.sit-scroll-top.active{visibility:visible;opacity:1}
 
 /* A11y-режимы — выставляются inline-скриптом до загрузки main.css */
 html.dark-theme{background:#0f1411;color:#e8e8e8}

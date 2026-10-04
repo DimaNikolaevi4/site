@@ -57,7 +57,7 @@
 
             {% set _items = pagination.items if (pagination and pagination.items) else (collections[collectionName] if collectionName else null) %}
             {% if _items and _items.length > 0 %}
-            <div class="cards-grid">
+            <div class="cards-grid row g-4">
               {% for item in _items %}
                 {% set card = {
                   title: item.data.title,
@@ -69,7 +69,9 @@
                   excerpt: item.data.excerpt,
                   tags: item.data.tags
                 } %}
+                <div class="col-md-6 col-xl-4 d-flex align-items-stretch">
                 {% include "components/_partials/card.njk" %}
+                </div>
               {% endfor %}
             </div>
 

@@ -25,7 +25,7 @@ main:
       - title: Образование
         url: /svedenija/education/
       - title: Руководство и ППС
-        url: /svedenija/employees/
+        url: /svedenija/rukovodstvo/
       - title: Материально-техническое обеспечение
         url: /svedenija/objects/
       - title: Стипендии и поддержка
@@ -73,15 +73,15 @@ main:
       - title: Направления воспитания
         url: /vospitanie/#directions
       - title: Великая Победа
-        url: /vospitanie/velikaja-pobeda/
+        url: /vospitanie/patrioticheskoe/velikaja-pobeda/
       - title: Волонтерское движение
         url: /vospitanie/volonterstvo/
       - title: Культурно-массовая работа
         url: /vospitanie/kulturno-massovaja/
       - title: Медиацентр «Новости СИТ»
-        url: /vospitanie/mediacentr/
+        url: /vospitanie/kulturno-massovaja/mediacentr/
       - title: Поздравления
-        url: /vospitanie/pozdravlenija/
+        url: /vospitanie/kulturno-massovaja/pozdravlenija/
   - title: Сотрудничество
     url: /sotrudnichestvo/
     key: sotrudnichestvo
@@ -113,7 +113,7 @@ main:
       - title: Информационно-образовательные ресурсы
         url: /studentam-i-roditeljam/resursy/
       - title: Библиотека техникума
-        url: /studentam-i-roditeljam/biblioteka/
+        url: /studentam-i-roditeljam/resursy/biblioteka/
       - title: Приказ о зачислении
         url: /studentam-i-roditeljam/prikaz-zachislenie/
       - title: Родителям

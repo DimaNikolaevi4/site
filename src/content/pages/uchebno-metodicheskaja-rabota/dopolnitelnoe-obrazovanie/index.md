@@ -2,7 +2,7 @@
 title: 3.2. Дополнительное образование
 layout: layouts/page-full.njk
 description: Программы дополнительной профессиональной подготовки в ГБПОУ РО «Сальский индустриальный техникум» — список рабочих профессий и курсов для студентов.
-rubric: "3"
+rubric: "3.2"
 permalink: /uchebno-metodicheskaja-rabota/dopolnitelnoe-obrazovanie/
 ---
 

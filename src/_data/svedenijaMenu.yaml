@@ -29,8 +29,8 @@
   emoji: "📜"
   description: ФГОС СПО по специальностям подготовки, копии стандартов
 - title: Руководство и ППС
-  url: /svedenija/employees/
-  key: employees
+  url: /svedenija/rukovodstvo/
+  key: rukovodstvo
   emoji: "👥"
   description: Администрация, заведующие отделениями, преподаватели, контакты
 - title: Материально-техническое обеспечение

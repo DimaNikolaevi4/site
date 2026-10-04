@@ -3,7 +3,7 @@ title: Великая Победа
 layout: layouts/page-full.njk
 category: vospitanie
 rubric: "4.6.1"
-permalink: /vospitanie/velikaja-pobeda/
+permalink: /vospitanie/patrioticheskoe/velikaja-pobeda/
 tags:
   - Великая Победа
   - воспитание

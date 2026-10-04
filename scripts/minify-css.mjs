@@ -6,7 +6,12 @@ import CleanCSS from 'clean-css';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT = path.resolve(__dirname, '..');
-const PUBLIC_DIR = path.join(ROOT, 'public');
+const BUILD_OUTPUTS = Object.freeze({ current: 'public', v2: 'public-v2' });
+const buildMode = String(process.env.SITE_MODE || 'current').trim().toLowerCase();
+if (!Object.prototype.hasOwnProperty.call(BUILD_OUTPUTS, buildMode)) {
+  throw new Error(`Неизвестный SITE_MODE "${buildMode}". Допустимые значения: current, v2.`);
+}
+const PUBLIC_DIR = path.join(ROOT, BUILD_OUTPUTS[buildMode]);
 
 function walk(dir, out = []) {
   for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {

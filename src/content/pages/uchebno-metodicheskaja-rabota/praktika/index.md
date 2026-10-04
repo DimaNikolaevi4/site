@@ -2,7 +2,7 @@
 title: 3.4. Практика
 layout: layouts/page-full.njk
 description: Учебная и производственная практика обучающихся ГБПОУ РО «Сальский индустриальный техникум» — цели, этапы, места прохождения, социальные партнёры.
-rubric: "3"
+rubric: "3.4"
 permalink: /uchebno-metodicheskaja-rabota/praktika/
 ---
 

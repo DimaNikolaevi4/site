@@ -83,13 +83,14 @@
           {% set _listItems = (tag.posts if tag) or (pagination.items if (pagination and pagination.items)) or (collections[collectionName] if collectionName) or null %}
           {% if _listItems %}
             {% if _listItems.length > 0 %}
-            <div class="cards-grid">
+            <div class="cards-grid row g-4">
               {% for item in _listItems %}
+              <div class="col-md-6 col-xl-4 d-flex align-items-stretch">
               <article class="card" itemscope itemtype="https://schema.org/Article">
                 {% if item.data.image %}
                 <div class="card-image">
                   <a href="{{ item.url }}">
-                    <img src="{{ item.data.image }}"
+                    <img src="{{ item.data.image | assetUrl }}"
                          alt="{{ item.data.imageAlt or item.data.title }}" title="{{ item.data.imageAlt or item.data.title }}"
                          loading="lazy" itemprop="image">
                   </a>
@@ -97,6 +98,11 @@
                 {% endif %}
                 <div class="card-content">
                   <header class="card-header">
+                    {% if item.data.date %}
+                    <time class="card-date" datetime="{{ item.data.date | dateToISO }}" itemprop="datePublished">
+                      {{ item.data.date | dateRu }}
+                    </time>
+                    {% endif %}
                     {% set _cat = item.data.category or item.data.section %}
                     {% if _cat %}
                     {% set _catSlug = _cat | slugify %}
@@ -109,22 +115,18 @@
                         <span itemprop="headline">{{ item.data.title }}</span>
                       </a>
                     </h3>
-                    {% if item.data.date %}
-                    <time class="card-date" datetime="{{ item.data.date | dateToISO }}" itemprop="datePublished">
-                      {{ item.data.date | dateRu }}
-                    </time>
-                    {% endif %}
                   </header>
                   {% set _excerpt = item.data.excerpt or item.data.description %}
                   {% if _excerpt %}
                   <div class="card-excerpt" itemprop="description">{{ _excerpt }}</div>
                   {% endif %}
-                  <a href="{{ item.url }}" class="read-more" aria-label="Читать полностью — {{ item.data.title }}">
+                  <a href="{{ item.url }}" class="read-more" aria-label="Читать полностью — {{ item.data.title }}" title="Читать полностью">
                     <span>Читать полностью</span>
                     <i class="bi bi-arrow-right" aria-hidden="true"></i>
                   </a>
                 </div>
               </article>
+              </div>
               {% endfor %}
             </div>
 
@@ -158,7 +160,7 @@
             <ul class="attachments-list">
               {% for attachment in attachments %}
               <li class="attachment-item">
-                <a href="{{ attachment.url }}" class="attachment-link" download>
+                <a href="{{ attachment.url | assetUrl }}" class="attachment-link" download>
                   {% set _ext = attachment.url | lower %}
                   {% if '.pdf' in _ext %}
                     <i class="bi bi-file-earmark-pdf attachment-icon attachment-icon--pdf"></i>
@@ -248,7 +250,7 @@
           {% if item.image %}
           <div class="related-card__img">
             <a href="{{ item.url }}">
-              <img src="{{ item.image }}" alt="{{ item.title }}" title="{{ item.title }}" loading="lazy">
+              <img src="{{ item.image | assetUrl }}" alt="{{ item.title }}" title="{{ item.title }}" loading="lazy">
             </a>
           </div>
           {% endif %}
@@ -333,7 +335,7 @@
   <section class="section component-news component-news--subrubrics">
     <div class="container">
       {% if belowGridSubrubricTitle %}
-      <div class="section-title mb-4" data-aos="fade-up">
+      <div class="sit-section-title mb-4" data-aos="fade-up">
         <h2>{{ belowGridSubrubricTitle }}</h2>
       </div>
       {% endif %}

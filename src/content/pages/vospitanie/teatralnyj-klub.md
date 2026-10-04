@@ -3,7 +3,7 @@ title: Театральный клуб «Мираж»
 layout: layouts/page-full.njk
 category: vospitanie
 rubric: "4.7.1"
-permalink: /vospitanie/teatralnyj-klub/
+permalink: /vospitanie/kulturno-massovaja/teatralnyj-klub/
 tags:
   - воспитание
   - культурно-массовая работа

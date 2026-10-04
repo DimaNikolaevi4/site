@@ -88,7 +88,7 @@
             <ul class="attachments-list">
               {% for attachment in attachments %}
               <li class="attachment-item">
-                <a href="{{ attachment.url }}" class="attachment-link" download>
+                <a href="{{ attachment.url | assetUrl }}" class="attachment-link" download>
                   {% set _ext = attachment.url | lower %}
                   {% if '.pdf' in _ext %}
                     <i class="bi bi-file-earmark-pdf attachment-icon attachment-icon--pdf"></i>

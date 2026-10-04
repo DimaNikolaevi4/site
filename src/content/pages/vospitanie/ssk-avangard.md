@@ -3,7 +3,7 @@ title: ССК «Авангард»
 layout: layouts/page-full.njk
 category: vospitanie
 rubric: "4.8.1"
-permalink: /vospitanie/ssk-avangard/
+permalink: /vospitanie/fizkultura-sport/ssk-avangard/
 tags:
   - воспитание
   - спорт
